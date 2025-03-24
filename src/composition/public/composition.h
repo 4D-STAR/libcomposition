@@ -49,16 +49,16 @@ namespace composition{
      * 
      * @example Constructing a finalized composition with symbols and mass fractions:
      * @code
-     * std::vector<std::string> symbols = {"H", "O"};
-     * std::vector<double> mass_fractions = {0.1, 0.9};
+     * std::vector<std::string> symbols = {"H", "He"};
+     * std::vector<double> mass_fractions = {0.7, 0.3};
      * Composition comp(symbols, mass_fractions);
      * @endcode
      * @example Constructing a composition with symbols and finalizing it later:
      * @code
-     * std::vector<std::string> symbols = {"H", "O"};
+     * std::vector<std::string> symbols = {"H", "He"};
      * Composition comp(symbols);
-     * comp.setComposition("H", 0.1);
-     * comp.setComposition("O", 0.9);
+     * comp.setComposition("H", 0.7);
+     * comp.setComposition("He", 0.3);
      * comp.finalize();
      * @endcode
      */
