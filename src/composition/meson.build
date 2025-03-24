@@ -11,6 +11,7 @@ dependencies = [
     probe_dep,
     config_dep,
     quill_dep,
+    species_weight_dep
 ]
 
 # Define the libcomposition library so it can be linked against by other parts of the build system
