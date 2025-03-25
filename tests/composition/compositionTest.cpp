@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include <stdexcept>
 #include <string>
 #include <algorithm>
 
@@ -138,4 +139,26 @@ TEST_F(compositionTest, getComposition) {
     EXPECT_DOUBLE_EQ(compositionEntry.first.mass_fraction(), 0.6);
     EXPECT_DOUBLE_EQ(compositionEntry.second.meanParticleMass, 1.4382769310381101);
     EXPECT_DOUBLE_EQ(compositionEntry.second.specificNumberDensity, 1.0/1.4382769310381101);
+}
+
+TEST_F(compositionTest, setCompositionMode) {
+    Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    composition::Composition comp;
+    comp.registerSymbol("H-1");
+    comp.registerSymbol("He-4");
+    comp.setMassFraction("H-1", 0.6);
+    comp.setMassFraction("He-4", 0.4);
+    EXPECT_NO_THROW(comp.finalize());
+
+    EXPECT_DOUBLE_EQ(comp.getMassFraction("H-1"), 0.6);
+    EXPECT_DOUBLE_EQ(comp.getMassFraction("He-4"), 0.4);
+
+    EXPECT_NO_THROW(comp.setCompositionMode(false));
+
+    EXPECT_NO_THROW(comp.setNumberFraction("H-1", 0.9));
+    EXPECT_NO_THROW(comp.setNumberFraction("He-4", 0.1));
+
+    EXPECT_THROW(comp.setCompositionMode(true), std::runtime_error);
+    EXPECT_NO_THROW(comp.finalize());
+    EXPECT_NO_THROW(comp.setCompositionMode(true));
 }

@@ -404,6 +404,12 @@ namespace composition{
         Composition subset(const std::vector<std::string>& symbols, std::string method="norm") const;
 
         /**
+        * @brief Sets the composition mode.
+        * @param massFracMode True if mass fraction mode, false if number fraction mode.
+        */
+        void setCompositionMode(bool massFracMode);
+
+        /**
          * @brief Overloaded output stream operator for Composition.
          * @param os The output stream.
          * @param composition The Composition to output.

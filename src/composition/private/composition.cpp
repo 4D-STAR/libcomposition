@@ -460,3 +460,24 @@ Composition Composition::subset(const std::vector<std::string>& symbols, std::st
     }
     return subsetComposition;
 }
+
+void Composition::setCompositionMode(bool massFracMode) {
+    if (!m_finalized) {
+        LOG_ERROR(m_logger, "Composition has not been finalized. Mode cannot be set unless composition is finalized.");
+        throw std::runtime_error("Composition has not been finalized (Consider running .finalize()). The mode cannot be set unless the composition is finalized.");
+    }
+
+    bool okay = true;
+    for (auto& [_, entry] : m_compositions) {
+        if (massFracMode) {
+            okay = entry.setMassFracMode(m_meanParticleMass);
+        } else {
+            okay = entry.setNumberFracMode(m_specificNumberDensity);
+        }
+        if (!okay) {
+            LOG_ERROR(m_logger, "Composition mode could not be set.");
+            throw std::runtime_error("Composition mode could not be set.");
+        }
+    }
+    m_massFracMode = massFracMode;
+}
