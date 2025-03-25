@@ -49,23 +49,93 @@ TEST_F(compositionTest, setGetComposition) {
     comp.registerSymbol("H-1");
     comp.registerSymbol("He-4");
 
-    EXPECT_DOUBLE_EQ(comp.setComposition("H-1", 0.5), 0.0);
-    EXPECT_DOUBLE_EQ(comp.setComposition("He-4", 0.5), 0.0);
-    EXPECT_DOUBLE_EQ(comp.setComposition("H-1", 0.6), 0.5);
-    EXPECT_DOUBLE_EQ(comp.setComposition("He-4", 0.4), 0.5);
+    EXPECT_DOUBLE_EQ(comp.setMassFraction("H-1", 0.5), 0.0);
+    EXPECT_DOUBLE_EQ(comp.setMassFraction("He-4", 0.5), 0.0);
+    EXPECT_DOUBLE_EQ(comp.setMassFraction("H-1", 0.6), 0.5);
+    EXPECT_DOUBLE_EQ(comp.setMassFraction("He-4", 0.4), 0.5);
 
     EXPECT_NO_THROW(comp.finalize());
-    std::unordered_map<std::string, composition::CompositionEntry> compositions = comp.getCompositions();
-    EXPECT_DOUBLE_EQ(compositions["H-1"].mass_fraction, 0.6);
+    EXPECT_DOUBLE_EQ(comp.getMassFraction("H-1"), 0.6);
 
-    EXPECT_THROW(comp.setComposition("He-3", 0.3), std::runtime_error);
+    EXPECT_THROW(comp.setMassFraction("He-3", 0.3), std::runtime_error);
 
-    EXPECT_NO_THROW(comp.setComposition({"H-1", "He-4"}, {0.5, 0.5}));
+    EXPECT_NO_THROW(comp.setMassFraction({"H-1", "He-4"}, {0.5, 0.5}));
     EXPECT_THROW(comp.getComposition("H-1"), std::runtime_error);
     EXPECT_TRUE(comp.finalize());
-    EXPECT_DOUBLE_EQ(comp.getComposition("H-1").mass_fraction, 0.5);
+    EXPECT_DOUBLE_EQ(comp.getComposition("H-1").first.mass_fraction(), 0.5);
 
-    EXPECT_NO_THROW(comp.setComposition({"H-1", "He-4"}, {0.6, 0.6}));
+    EXPECT_NO_THROW(comp.setMassFraction({"H-1", "He-4"}, {0.6, 0.6}));
     EXPECT_FALSE(comp.finalize());
     EXPECT_THROW(comp.getComposition("H-1"), std::runtime_error);
+}
+
+TEST_F(compositionTest, setGetNumberFraction) {
+    Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    composition::Composition comp;
+    comp.registerSymbol("H-1", false);
+    comp.registerSymbol("He-4", false);
+
+    EXPECT_DOUBLE_EQ(comp.setNumberFraction("H-1", 0.5), 0.0);
+    EXPECT_DOUBLE_EQ(comp.setNumberFraction("He-4", 0.5), 0.0);
+    EXPECT_DOUBLE_EQ(comp.setNumberFraction("H-1", 0.6), 0.5);
+    EXPECT_DOUBLE_EQ(comp.setNumberFraction("He-4", 0.4), 0.5);
+
+    EXPECT_NO_THROW(comp.finalize());
+    EXPECT_DOUBLE_EQ(comp.getNumberFraction("H-1"), 0.6);
+
+    EXPECT_THROW(comp.setNumberFraction("He-3", 0.3), std::runtime_error);
+}
+
+TEST_F(compositionTest, subset) {
+    Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    composition::Composition comp;
+    comp.registerSymbol("H-1");
+    comp.registerSymbol("He-4");
+    comp.setMassFraction("H-1", 0.6);
+    comp.setMassFraction("He-4", 0.4);
+    EXPECT_NO_THROW(comp.finalize());
+
+    std::vector<std::string> symbols = {"H-1"};
+    composition::Composition subsetComp = comp.subset(symbols, "norm");
+    EXPECT_TRUE(subsetComp.finalize());
+    EXPECT_DOUBLE_EQ(subsetComp.getMassFraction("H-1"), 1.0);
+}
+
+TEST_F(compositionTest, finalizeWithNormalization) {
+    Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    composition::Composition comp;
+    comp.registerSymbol("H-1");
+    comp.registerSymbol("He-4");
+    comp.setMassFraction("H-1", 0.3);
+    comp.setMassFraction("He-4", 0.3);
+    EXPECT_TRUE(comp.finalize(true));
+    EXPECT_DOUBLE_EQ(comp.getMassFraction("H-1"), 0.5);
+    EXPECT_DOUBLE_EQ(comp.getMassFraction("He-4"), 0.5);
+}
+
+TEST_F(compositionTest, finalizeWithoutNormalization) {
+    Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    composition::Composition comp;
+    comp.registerSymbol("H-1");
+    comp.registerSymbol("He-4");
+    comp.setMassFraction("H-1", 0.5);
+    comp.setMassFraction("He-4", 0.5);
+    EXPECT_TRUE(comp.finalize(false));
+    EXPECT_DOUBLE_EQ(comp.getMassFraction("H-1"), 0.5);
+    EXPECT_DOUBLE_EQ(comp.getMassFraction("He-4"), 0.5);
+}
+
+TEST_F(compositionTest, getComposition) {
+    Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    composition::Composition comp;
+    comp.registerSymbol("H-1");
+    comp.registerSymbol("He-4");
+    comp.setMassFraction("H-1", 0.6);
+    comp.setMassFraction("He-4", 0.4);
+    EXPECT_NO_THROW(comp.finalize());
+
+    auto compositionEntry = comp.getComposition("H-1");
+    EXPECT_DOUBLE_EQ(compositionEntry.first.mass_fraction(), 0.6);
+    EXPECT_DOUBLE_EQ(compositionEntry.second.meanParticleMass, 1.4382769310381101);
+    EXPECT_DOUBLE_EQ(compositionEntry.second.specificNumberDensity, 1.0/1.4382769310381101);
 }
