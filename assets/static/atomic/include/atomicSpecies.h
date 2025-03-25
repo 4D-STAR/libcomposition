@@ -6,20 +6,35 @@
 
 namespace chemSpecies {
     struct Species {
-        const std::string_view m_name; //< Name of the species
-        const std::string_view m_el; //< Element symbol
-        const int m_nz; //< NZ
-        const int m_n; //< N
-        const int m_z; //< Z
-        const int m_a; //< A
-        const double m_bindingEnergy; //< Binding energy
-        const std::string_view m_betaCode; //< Beta decay code
-        const double m_betaDecayEnergy; //< Beta decay energy
-        const double m_atomicMass; //< Atomic mass
-        const double m_atomicMassUnc; //< Atomic mass uncertainty
+        std::string m_name; //< Name of the species
+        std::string m_el; //< Element symbol
+        int m_nz; //< NZ
+        int m_n; //< N
+        int m_z; //< Z
+        int m_a; //< A
+        double m_bindingEnergy; //< Binding energy
+        std::string m_betaCode; //< Beta decay code
+        double m_betaDecayEnergy; //< Beta decay energy
+        double m_atomicMass; //< Atomic mass
+        double m_atomicMassUnc; //< Atomic mass uncertainty
 
         Species(const std::string_view name, const std::string_view el, const int nz, const int n, const int z, const int a, const double bindingEnergy, const std::string_view betaCode, const double betaDecayEnergy, const double atomicMass, const double atomicMassUnc)
             : m_name(name), m_el(el), m_nz(nz), m_n(n), m_z(z), m_a(a), m_bindingEnergy(bindingEnergy), m_betaCode(betaCode), m_betaDecayEnergy(betaDecayEnergy), m_atomicMass(atomicMass), m_atomicMassUnc(atomicMassUnc) {};
+
+        //Copy constructor
+        Species(const Species& species) {
+            m_name = species.m_name;
+            m_el = species.m_el;
+            m_nz = species.m_nz;
+            m_n = species.m_n;
+            m_z = species.m_z;
+            m_a = species.m_a;
+            m_bindingEnergy = species.m_bindingEnergy;
+            m_betaCode = species.m_betaCode;
+            m_betaDecayEnergy = species.m_betaDecayEnergy;
+            m_atomicMass = species.m_atomicMass;
+            m_atomicMassUnc = species.m_atomicMassUnc;
+        }
 
 
         double mass() const {
@@ -67,7 +82,7 @@ namespace chemSpecies {
         }
 
         friend std::ostream& operator<<(std::ostream& os, const Species& species) {
-            os << static_cast<std::string>(species.m_name) << " (" << species.m_atomicMass << " u)";
+            os << species.m_name << " (" << species.m_atomicMass << " u)";
             return os;
         }
     };
