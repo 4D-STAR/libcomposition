@@ -268,6 +268,17 @@ namespace composition{
         Composition(const std::vector<std::string>& symbols);
 
         /**
+         * @brief Constructs a Composition with the given symbols as a set.
+         * @param symbols The symbols to initialize the composition with.
+         * @example
+         * @code
+         * std::set<std::string> symbols = {"H", "O"};
+         * Composition comp(symbols);
+         * @endcode
+         */
+        Composition(const std::set<std::string>& symbols);
+
+        /**
          * @brief Constructs a Composition with the given symbols and mass fractions.
          * @param symbols The symbols to initialize the composition with.
          * @param mass_fractions The mass fractions corresponding to the symbols.
@@ -356,6 +367,13 @@ namespace composition{
          */
         std::vector<double> setNumberFraction(const std::vector<std::string>& symbols, const std::vector<double>& number_fractions);
 
+        /** 
+        * @brief Mix two compositions together with a given fraction.
+        * @param other The other composition to mix with.
+        * @param fraction The fraction of the other composition to mix with. This is the fraction of the other composition wrt. to the current. i.e. fraction=1 would mean that 50% of the new composition is from the other and 50% from the current). 
+        */
+        Composition mix(const Composition& other, double fraction) const;
+
         /**
          * @brief Gets the mass fractions of all compositions.
          * @return An unordered map of compositions with their mass fractions.
@@ -403,6 +421,13 @@ namespace composition{
          */
         Composition subset(const std::vector<std::string>& symbols, std::string method="norm") const;
 
+        /** 
+        * @brief Check if a symbol is registered.
+        * @param symbol The symbol to check.
+        * @return True if the symbol is registered, false otherwise.
+        */
+        bool hasSymbol(const std::string& symbol) const;
+
         /**
         * @brief Sets the composition mode.
         * @param massFracMode True if mass fraction mode, false if number fraction mode.
@@ -415,13 +440,15 @@ namespace composition{
          * @param composition The Composition to output.
          * @return The output stream.
          */
-        friend std::ostream& operator<<(std::ostream& os, const Composition& composition) {
-            os << "Composition: \n";
-            for (const auto& [symbol, entry] : composition.m_compositions) {
-                os << entry << "\n";
-            }
-            return os;
-        }
+        friend std::ostream& operator<<(std::ostream& os, const Composition& composition);
+
+        // Overload the + operator to call mix with a fraction of 0.5
+        /**
+        * @brief Overloads the + operator to mix two compositions together with a fraction of 0.5.
+        * @param other The other composition to mix with.
+        * @return The mixed composition.
+        */
+        Composition operator+(const Composition& other) const;
 
     };
 };

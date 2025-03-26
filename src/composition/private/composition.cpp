@@ -124,6 +124,12 @@ Composition::Composition(const std::vector<std::string>& symbols) {
     }
 }
 
+Composition::Composition(const std::set<std::string>& symbols) {
+    for (const auto& symbol : symbols) {
+        registerSymbol(symbol);
+    }
+}
+
 Composition::Composition(const std::vector<std::string>& symbols, const std::vector<double>& fractions, bool massFracMode) : m_massFracMode(massFracMode) {
     if (symbols.size() != fractions.size()) {
         LOG_ERROR(m_logger, "The number of symbols and fractions must be equal.");
@@ -363,6 +369,35 @@ bool Composition::finalizeNumberFracMode(bool norm) {
     return true;
 }
 
+Composition Composition::mix(const Composition& other, double fraction) const {
+    if (!m_finalized || !other.m_finalized) {
+        LOG_ERROR(m_logger, "Compositions have not both been finalized.");
+        throw std::runtime_error("Compositions have not been finalized (Consider running .finalize()).");
+    }
+
+    if (fraction < 0.0 || fraction > 1.0) {
+        LOG_ERROR(m_logger, "Fraction must be between 0 and 1.");
+        throw std::runtime_error("Fraction must be between 0 and 1.");
+    }
+
+    std::set<std::string> mixedSymbols = other.getRegisteredSymbols();
+    // Get the union of the two sets
+    mixedSymbols.insert(m_registeredSymbols.begin(), m_registeredSymbols.end());
+
+    Composition mixedComposition(mixedSymbols);
+    for (const auto& symbol : mixedSymbols) {
+        double thisMassFrac, otherMassFrac = 0.0;
+
+        thisMassFrac = hasSymbol(symbol) ? getMassFraction(symbol) : 0.0;
+        otherMassFrac = other.hasSymbol(symbol) ? other.getMassFraction(symbol) : 0.0;
+
+        double massFraction = fraction * thisMassFrac + otherMassFrac * (1-fraction);
+        mixedComposition.setMassFraction(symbol, massFraction);
+    }
+    mixedComposition.finalize();
+    return mixedComposition;
+}
+
 double Composition::getMassFraction(const std::string& symbol) const {
     if (!m_finalized) {
         LOG_ERROR(m_logger, "Composition has not been finalized.");
@@ -476,8 +511,26 @@ void Composition::setCompositionMode(bool massFracMode) {
         }
         if (!okay) {
             LOG_ERROR(m_logger, "Composition mode could not be set.");
-            throw std::runtime_error("Composition mode could not be set.");
+            throw std::runtime_error("Composition mode could not be set due to an unknown error.");
         }
     }
     m_massFracMode = massFracMode;
+}
+
+bool Composition::hasSymbol(const std::string& symbol) const {
+    return m_compositions.count(symbol) > 0;
+}
+
+/// OVERLOADS
+
+Composition Composition::operator+(const Composition& other) const {
+    return mix(other, 0.5);
+}
+
+std::ostream& composition::operator<<(std::ostream& os, const Composition& composition) {
+    os << "Composition: \n";
+    for (const auto& [symbol, entry] : composition.m_compositions) {
+        os << entry << "\n";
+    }
+    return os;
 }

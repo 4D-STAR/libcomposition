@@ -162,3 +162,45 @@ TEST_F(compositionTest, setCompositionMode) {
     EXPECT_NO_THROW(comp.finalize());
     EXPECT_NO_THROW(comp.setCompositionMode(true));
 }
+
+TEST_F(compositionTest, hasSymbol) {
+    Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    composition::Composition comp;
+    comp.registerSymbol("H-1");
+    comp.registerSymbol("He-4");
+    comp.setMassFraction("H-1", 0.6);
+    comp.setMassFraction("He-4", 0.4);
+    EXPECT_NO_THROW(comp.finalize());
+
+    EXPECT_TRUE(comp.hasSymbol("H-1"));
+    EXPECT_TRUE(comp.hasSymbol("He-4"));
+    EXPECT_FALSE(comp.hasSymbol("H-2"));
+    EXPECT_FALSE(comp.hasSymbol("He-3"));
+}
+
+TEST_F(compositionTest, mix) {
+    Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    composition::Composition comp1;
+    comp1.registerSymbol("H-1");
+    comp1.registerSymbol("He-4");
+    comp1.setMassFraction("H-1", 0.6);
+    comp1.setMassFraction("He-4", 0.4);
+    EXPECT_NO_THROW(comp1.finalize());
+
+    composition::Composition comp2;
+    comp2.registerSymbol("H-1");
+    comp2.registerSymbol("He-4");
+    comp2.setMassFraction("H-1", 0.4);
+    comp2.setMassFraction("He-4", 0.6);
+    EXPECT_NO_THROW(comp2.finalize());
+
+    composition::Composition mixedComp = comp1 + comp2;
+    EXPECT_TRUE(mixedComp.finalize());
+    EXPECT_DOUBLE_EQ(mixedComp.getMassFraction("H-1"), 0.5);
+    EXPECT_DOUBLE_EQ(mixedComp.getMassFraction("He-4"), 0.5);
+
+    composition::Composition mixedComp2 = comp1.mix(comp2, 0.25);
+    EXPECT_TRUE(mixedComp2.finalize());
+    EXPECT_DOUBLE_EQ(mixedComp2.getMassFraction("H-1"), 0.45);
+    EXPECT_DOUBLE_EQ(mixedComp2.getMassFraction("He-4"), 0.55);
+}
