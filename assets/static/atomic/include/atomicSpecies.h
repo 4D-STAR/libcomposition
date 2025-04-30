@@ -1,5 +1,4 @@
-#ifndef SPECIES_MASS_DATA_H
-#define SPECIES_MASS_DATA_H
+#pragma once
 #include <unordered_map>
 #include <string_view>
 #include <string>
@@ -7205,4 +7204,3 @@ namespace chemSpecies {
         {"Og-295", Og_295},
     };
 }; // namespace chemSpecies
-#endif // SPECIES_MASS_DATA_H
