@@ -190,7 +190,6 @@ namespace composition{
      */
     class Composition {
     private:
-        Config& m_config = Config::getInstance();
         Probe::LogManager& m_logManager = Probe::LogManager::getInstance();
         quill::Logger* m_logger = m_logManager.getLogger("log");
 
