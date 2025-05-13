@@ -6,6 +6,8 @@ subdir('quill')
 subdir('boost')
 subdir('opatIO')
 subdir('pybind')
+subdir('mpi')
+subdir('hypre')
 
 # Set the config file error handling options
 configErr = get_option('config_error_handling')
