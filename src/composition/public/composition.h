@@ -33,7 +33,7 @@
 
 #include "atomicSpecies.h"
 
-namespace composition{
+namespace serif::composition {
     /**
      * @brief Represents the global composition of a system. This tends to be used after finalize and is primarily for internal use.
      */
@@ -42,12 +42,7 @@ namespace composition{
         double meanParticleMass; ///< The mean particle mass of the composition (\sum_{i} \frac{n_i}{m_i}. where n_i is the number fraction of the ith species and m_i is the mass of the ith species).
 
         // Overload the output stream operator for GlobalComposition
-        friend std::ostream& operator<<(std::ostream& os, const GlobalComposition& comp) {
-            os << "Global Composition: \n";
-            os << "\tSpecific Number Density: " << comp.specificNumberDensity << "\n";
-            os << "\tMean Particle Mass: " << comp.meanParticleMass << "\n";
-            return os;
-        }
+        friend std::ostream& operator<<(std::ostream& os, const GlobalComposition& comp);
     };
 
     /**
@@ -174,10 +169,7 @@ namespace composition{
          * @param entry The CompositionEntry to output.
          * @return The output stream.
          */
-        friend std::ostream& operator<<(std::ostream& os, const CompositionEntry& entry) {
-            os << "<" << entry.m_symbol << " : m_frac = " << entry.mass_fraction() << ">";
-            return os;
-        }
+        friend std::ostream& operator<<(std::ostream& os, const CompositionEntry& entry);
     };
 
     /**
@@ -210,8 +202,8 @@ namespace composition{
      */
     class Composition {
     private:
-        Config& m_config = Config::getInstance();
-        Probe::LogManager& m_logManager = Probe::LogManager::getInstance();
+        serif::config::Config& m_config = serif::config::Config::getInstance();
+        serif::probe::LogManager& m_logManager = serif::probe::LogManager::getInstance();
         quill::Logger* m_logger = m_logManager.getLogger("log");
 
         bool m_finalized = false; ///< True if the composition is finalized.
@@ -471,6 +463,6 @@ namespace composition{
         Composition operator+(const Composition& other) const;
 
     };
-};
+}; // namespace serif::composition
 
 #endif // COMPOSITION_H
