@@ -5,6 +5,8 @@ subdir('yaml-cpp')
 subdir('quill')
 subdir('boost')
 subdir('opatIO')
+subdir('mpi')
+subdir('hypre')
 subdir('pybind')
 
 # Set the config file error handling options
