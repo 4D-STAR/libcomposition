@@ -1,3 +1,23 @@
+/* ***********************************************************************
+//
+//   Copyright (C) 2025 -- The 4D-STAR Collaboration
+//   File Author: Emily Boudreaux
+//   Last Modified: March 26, 2025
+//
+//   4DSSE is free software; you can use it and/or modify
+//   it under the terms and restrictions the GNU General Library Public
+//   License version 3 (GPLv3) as published by the Free Software Foundation.
+//
+//   4DSSE is distributed in the hope that it will be useful,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+//   See the GNU Library General Public License for more details.
+//
+//   You should have received a copy of the GNU Library General Public License
+//   along with this software; if not, write to the Free Software
+//   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+//
+// *********************************************************************** */
 #ifndef COMPOSITION_H
 #define COMPOSITION_H
 
@@ -13,7 +33,7 @@
 
 #include "atomicSpecies.h"
 
-namespace composition{
+namespace serif::composition {
     /**
      * @brief Represents the global composition of a system. This tends to be used after finalize and is primarily for internal use.
      */
@@ -22,12 +42,7 @@ namespace composition{
         double meanParticleMass; ///< The mean particle mass of the composition (\sum_{i} \frac{n_i}{m_i}. where n_i is the number fraction of the ith species and m_i is the mass of the ith species).
 
         // Overload the output stream operator for GlobalComposition
-        friend std::ostream& operator<<(std::ostream& os, const GlobalComposition& comp) {
-            os << "Global Composition: \n";
-            os << "\tSpecific Number Density: " << comp.specificNumberDensity << "\n";
-            os << "\tMean Particle Mass: " << comp.meanParticleMass << "\n";
-            return os;
-        }
+        friend std::ostream& operator<<(std::ostream& os, const GlobalComposition& comp);
     };
 
     /**
@@ -154,10 +169,7 @@ namespace composition{
          * @param entry The CompositionEntry to output.
          * @return The output stream.
          */
-        friend std::ostream& operator<<(std::ostream& os, const CompositionEntry& entry) {
-            os << "<" << entry.m_symbol << " : m_frac = " << entry.mass_fraction() << ">";
-            return os;
-        }
+        friend std::ostream& operator<<(std::ostream& os, const CompositionEntry& entry);
     };
 
     /**
@@ -190,7 +202,8 @@ namespace composition{
      */
     class Composition {
     private:
-        Probe::LogManager& m_logManager = Probe::LogManager::getInstance();
+        serif::config::Config& m_config = serif::config::Config::getInstance();
+        serif::probe::LogManager& m_logManager = serif::probe::LogManager::getInstance();
         quill::Logger* m_logger = m_logManager.getLogger("log");
 
         bool m_finalized = false; ///< True if the composition is finalized.
@@ -450,6 +463,6 @@ namespace composition{
         Composition operator+(const Composition& other) const;
 
     };
-};
+}; // namespace serif::composition
 
 #endif // COMPOSITION_H

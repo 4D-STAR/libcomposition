@@ -1,3 +1,23 @@
+/* ***********************************************************************
+//
+//   Copyright (C) 2025 -- The 4D-STAR Collaboration
+//   File Author: Emily Boudreaux
+//   Last Modified: March 26, 2025
+//
+//   4DSSE is free software; you can use it and/or modify
+//   it under the terms and restrictions the GNU General Library Public
+//   License version 3 (GPLv3) as published by the Free Software Foundation.
+//
+//   4DSSE is distributed in the hope that it will be useful,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+//   See the GNU Library General Public License for more details.
+//
+//   You should have received a copy of the GNU Library General Public License
+//   along with this software; if not, write to the Free Software
+//   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+//
+// *********************************************************************** */
 #include "composition.h"
 #include "quill/LogMacros.h"
 
@@ -10,7 +30,7 @@
 
 #include "atomicSpecies.h"
 
-using namespace composition;
+namespace serif::composition {
 
 CompositionEntry::CompositionEntry() : m_symbol("H-1"), m_isotope(chemSpecies::species.at("H-1")), m_initialized(false) {}
 
@@ -527,10 +547,24 @@ Composition Composition::operator+(const Composition& other) const {
     return mix(other, 0.5);
 }
 
-std::ostream& composition::operator<<(std::ostream& os, const Composition& composition) {
+std::ostream& operator<<(std::ostream& os, const GlobalComposition& comp) {
+    os << "Global Composition: \n";
+    os << "\tSpecific Number Density: " << comp.specificNumberDensity << "\n";
+    os << "\tMean Particle Mass: " << comp.meanParticleMass << "\n";
+    return os;
+}
+
+std::ostream& operator<<(std::ostream& os, const CompositionEntry& entry) {
+    os << "<" << entry.m_symbol << " : m_frac = " << entry.mass_fraction() << ">";
+    return os;
+}
+
+std::ostream& operator<<(std::ostream& os, const Composition& composition) {
     os << "Composition: \n";
     for (const auto& [symbol, entry] : composition.m_compositions) {
         os << entry << "\n";
     }
     return os;
 }
+
+} // namespace serif::composition
