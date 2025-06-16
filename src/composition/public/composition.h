@@ -277,7 +277,7 @@ namespace serif::composition {
          * Composition comp(symbols);
          * @endcode
          */
-        Composition(const std::vector<std::string>& symbols);
+        explicit Composition(const std::vector<std::string>& symbols);
 
         /**
          * @brief Constructs a Composition with the given symbols as a set.
@@ -288,7 +288,7 @@ namespace serif::composition {
          * Composition comp(symbols);
          * @endcode
          */
-        Composition(const std::set<std::string>& symbols);
+        explicit Composition(const std::set<std::string>& symbols);
 
         /**
          * @brief Constructs a Composition with the given symbols and mass fractions.
@@ -303,6 +303,14 @@ namespace serif::composition {
          * @endcode
          */
         Composition(const std::vector<std::string>& symbols, const std::vector<double>& mass_fractions, bool massFracMode=true);
+
+        /**
+         * @brief Constructs a Composition from another Composition.
+         * @param composition The Composition to copy.
+         */
+        Composition(const Composition& composition);
+
+        Composition& operator=(Composition const& other);
 
         /**
          * @brief Registers a new symbol.
@@ -333,7 +341,7 @@ namespace serif::composition {
          * @brief Gets the registered symbols.
          * @return A set of registered symbols.
          */
-        std::set<std::string> getRegisteredSymbols() const;
+        [[nodiscard]] std::set<std::string> getRegisteredSymbols() const;
 
         /**
          * @brief Sets the mass fraction for a given symbol.
@@ -390,40 +398,52 @@ namespace serif::composition {
          * @brief Gets the mass fractions of all compositions.
          * @return An unordered map of compositions with their mass fractions.
          */
-        std::unordered_map<std::string, double> getMassFraction() const;
+        [[nodiscard]] std::unordered_map<std::string, double> getMassFraction() const;
 
         /**
          * @brief Gets the mass fraction for a given symbol.
          * @param symbol The symbol to get the mass fraction for.
          * @return The mass fraction for the given symbol.
          */
-        double getMassFraction(const std::string& symbol) const;
+        [[nodiscard]] double getMassFraction(const std::string& symbol) const;
 
         /**
          * @brief Gets the number fraction for a given symbol.
          * @param symbol The symbol to get the number fraction for.
          * @return The number fraction for the given symbol.
          */
-        double getNumberFraction(const std::string& symbol) const;
+        [[nodiscard]] double getNumberFraction(const std::string& symbol) const;
 
         /**
          * @brief Gets the number fractions of all compositions.
          * @return An unordered map of compositions with their number fractions.
          */
-        std::unordered_map<std::string, double> getNumberFraction() const;
+        [[nodiscard]] std::unordered_map<std::string, double> getNumberFraction() const;
 
         /**
          * @brief Gets the composition entry and global composition for a given symbol.
          * @param symbol The symbol to get the composition for.
          * @return A pair containing the CompositionEntry and GlobalComposition for the given symbol.
          */
-        std::pair<CompositionEntry, GlobalComposition> getComposition(const std::string& symbol) const;
+        [[nodiscard]] std::pair<CompositionEntry, GlobalComposition> getComposition(const std::string& symbol) const;
 
         /**
          * @brief Gets all composition entries and the global composition.
          * @return A pair containing an unordered map of CompositionEntries and the GlobalComposition.
          */
-        std::pair<std::unordered_map<std::string, CompositionEntry>, GlobalComposition> getComposition() const;
+        [[nodiscard]] std::pair<std::unordered_map<std::string, CompositionEntry>, GlobalComposition> getComposition() const;
+
+        /**
+         * @brief Compute the mean particle mass of the composition.
+         * @return Mean particle mass in g.
+         */
+        [[nodiscard]] double getMeanParticleMass() const;
+
+        /**
+         * @brief Compute the mean atomic mass number of the composition.
+         * @return Mean atomic mass number.
+         */
+        [[nodiscard]] double getMeanAtomicNumber() const;
 
         /**
          * @brief Gets a subset of the composition.
