@@ -68,7 +68,7 @@ namespace serif::composition {
          * @brief Constructs a CompositionEntry with the given symbol and mode.
          * @param symbol The chemical symbol of the species.
          * @param massFracMode True if mass fraction mode, false if number fraction mode.
-         * @example
+         * *Example Usage:*
          * @code
          * CompositionEntry entry("H", true);
          * @endcode
@@ -185,13 +185,13 @@ namespace serif::composition {
      * - The only exception to the finalize rule is if the compositon was constructed with symbols and mass fractions at instantiation time. In this case, the composition is automatically finalized.  
      * however, this means that the composition passed to the constructor must be valid.
      * 
-     * @example Constructing a finalized composition with symbols and mass fractions:
+     * *Example Usage:* Constructing a finalized composition with symbols and mass fractions:
      * @code
      * std::vector<std::string> symbols = {"H", "He"};
      * std::vector<double> mass_fractions = {0.7, 0.3};
      * Composition comp(symbols, mass_fractions);
      * @endcode
-     * @example Constructing a composition with symbols and finalizing it later:
+     * *Example Usage:* Constructing a composition with symbols and finalizing it later:
      * @code
      * std::vector<std::string> symbols = {"H", "He"};
      * Composition comp(symbols);
@@ -271,7 +271,7 @@ namespace serif::composition {
         /**
          * @brief Constructs a Composition with the given symbols.
          * @param symbols The symbols to initialize the composition with.
-         * @example
+         * *Example Usage:*
          * @code
          * std::vector<std::string> symbols = {"H", "O"};
          * Composition comp(symbols);
@@ -282,7 +282,7 @@ namespace serif::composition {
         /**
          * @brief Constructs a Composition with the given symbols as a set.
          * @param symbols The symbols to initialize the composition with.
-         * @example
+         * *Example Usage:*
          * @code
          * std::set<std::string> symbols = {"H", "O"};
          * Composition comp(symbols);
@@ -295,7 +295,7 @@ namespace serif::composition {
          * @param symbols The symbols to initialize the composition with.
          * @param mass_fractions The mass fractions corresponding to the symbols.
          * @param massFracMode True if mass fraction mode, false if number fraction mode.
-         * @example
+         * *Example Usage:*
          * @code
          * std::vector<std::string> symbols = {"H", "O"};
          * std::vector<double> mass_fractions = {0.1, 0.9};
@@ -308,7 +308,7 @@ namespace serif::composition {
          * @brief Registers a new symbol.
          * @param symbol The symbol to register.
          * @param massFracMode True if mass fraction mode, false if number fraction mode.
-         * @example
+         * *Example Usage:*
          * @code
          * Composition comp;
          * comp.registerSymbol("H");
@@ -320,7 +320,7 @@ namespace serif::composition {
          * @brief Registers multiple new symbols.
          * @param symbols The symbols to register.
          * @param massFracMode True if mass fraction mode, false if number fraction mode.
-         * @example
+         * *Example Usage:*
          * @code
          * std::vector<std::string> symbols = {"H", "O"};
          * Composition comp;
@@ -340,7 +340,7 @@ namespace serif::composition {
          * @param symbol The symbol to set the mass fraction for.
          * @param mass_fraction The mass fraction to set.
          * @return The mass fraction that was set.
-         * @example
+         * *Example Usage:*
          * @code
          * Composition comp;
          * comp.setMassFraction("H", 0.1);
@@ -353,7 +353,7 @@ namespace serif::composition {
          * @param symbols The symbols to set the mass fraction for.
          * @param mass_fractions The mass fractions corresponding to the symbols.
          * @return A vector of mass fractions that were set.
-         * @example
+         * *Example Usage:*
          * @code
          * std::vector<std::string> symbols = {"H", "O"};
          * std::vector<double> mass_fractions = {0.1, 0.9};
