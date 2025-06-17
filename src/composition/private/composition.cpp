@@ -333,7 +333,7 @@ namespace serif::composition {
         return old_number_fractions;
     }
 
-    bool Composition::finalize(bool norm) {
+    bool Composition::finalize(const bool norm) {
         bool finalized = false;
         if (m_massFracMode) {
             finalized = finalizeMassFracMode(norm);

@@ -18,8 +18,7 @@
 //   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 //
 // *********************************************************************** */
-#ifndef COMPOSITION_H
-#define COMPOSITION_H
+#pragma once
 
 #include <iostream>
 #include <string>
@@ -508,5 +507,3 @@ namespace serif::composition {
 
     };
 }; // namespace serif::composition
-
-#endif // COMPOSITION_H
