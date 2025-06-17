@@ -61,13 +61,13 @@ TEST_F(compositionTest, setGetComposition) {
     EXPECT_THROW(comp.setMassFraction("He-3", 0.3), std::runtime_error);
 
     EXPECT_NO_THROW(comp.setMassFraction({"H-1", "He-4"}, {0.5, 0.5}));
-    EXPECT_THROW(comp.getComposition("H-1"), std::runtime_error);
+    EXPECT_THROW(auto r = comp.getComposition("H-1"), std::runtime_error);
     EXPECT_TRUE(comp.finalize());
     EXPECT_DOUBLE_EQ(comp.getComposition("H-1").first.mass_fraction(), 0.5);
 
     EXPECT_NO_THROW(comp.setMassFraction({"H-1", "He-4"}, {0.6, 0.6}));
     EXPECT_FALSE(comp.finalize());
-    EXPECT_THROW(comp.getComposition("H-1"), std::runtime_error);
+    EXPECT_THROW(auto r = comp.getComposition("H-1"), std::runtime_error);
 }
 
 TEST_F(compositionTest, setGetNumberFraction) {
