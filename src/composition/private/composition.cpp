@@ -255,12 +255,12 @@ namespace serif::composition {
         return true;
     }
 
-    bool Composition::isValidSymbol(const std::string& symbol) const {
-        return chemSpecies::species.count(symbol) > 0;
+    bool Composition::isValidSymbol(const std::string& symbol) {
+        return chemSpecies::species.contains(symbol);
     }
 
     double Composition::setMassFraction(const std::string& symbol, const double& mass_fraction) {
-        if (m_registeredSymbols.find(symbol) == m_registeredSymbols.end()) {
+        if (!m_registeredSymbols.contains(symbol)) {
             LOG_ERROR(m_logger, "Symbol {} is not registered.", symbol);
             throw std::runtime_error("Symbol is not registered.");
         }
@@ -276,7 +276,7 @@ namespace serif::composition {
         }
 
         m_finalized = false;
-        double old_mass_fraction = m_compositions.at(symbol).mass_fraction();
+        const double old_mass_fraction = m_compositions.at(symbol).mass_fraction();
         m_compositions.at(symbol).setMassFraction(mass_fraction);
 
         return old_mass_fraction;
@@ -432,9 +432,9 @@ namespace serif::composition {
 
         Composition mixedComposition(mixedSymbols);
         for (const auto& symbol : mixedSymbols) {
-            double thisMassFrac, otherMassFrac = 0.0;
+            double otherMassFrac = 0.0;
 
-            thisMassFrac = hasSymbol(symbol) ? getMassFraction(symbol) : 0.0;
+            const double thisMassFrac = hasSymbol(symbol) ? getMassFraction(symbol) : 0.0;
             otherMassFrac = other.hasSymbol(symbol) ? other.getMassFraction(symbol) : 0.0;
 
             double massFraction = fraction * thisMassFrac + otherMassFrac * (1-fraction);
@@ -449,7 +449,7 @@ namespace serif::composition {
             LOG_ERROR(m_logger, "Composition has not been finalized.");
             throw std::runtime_error("Composition has not been finalized (Consider running .finalize()).");
         }
-        if (m_compositions.count(symbol) == 0) {
+        if (!m_compositions.contains(symbol)) {
             LOG_ERROR(m_logger, "Symbol {} is not in the composition.", symbol);
             throw std::runtime_error("Symbol is not in the composition.");
         }
@@ -462,7 +462,7 @@ namespace serif::composition {
 
     std::unordered_map<std::string, double> Composition::getMassFraction() const {
         std::unordered_map<std::string, double> mass_fractions;
-        for (const auto& [symbol, entry] : m_compositions) {
+        for (const auto &symbol: m_compositions | std::views::keys) {
             mass_fractions[symbol] = getMassFraction(symbol);
         }
         return mass_fractions;
@@ -474,7 +474,7 @@ namespace serif::composition {
             LOG_ERROR(m_logger, "Composition has not been finalized.");
             throw std::runtime_error("Composition has not been finalized (Consider running .finalize()).");
         }
-        if (m_compositions.count(symbol) == 0) {
+        if (!m_compositions.contains(symbol)) {
             LOG_ERROR(m_logger, "Symbol {} is not in the composition.", symbol);
             throw std::runtime_error("Symbol is not in the composition.");
         }
@@ -487,7 +487,7 @@ namespace serif::composition {
 
     std::unordered_map<std::string, double> Composition::getNumberFraction() const {
         std::unordered_map<std::string, double> number_fractions;
-        for (const auto& [symbol, entry] : m_compositions) {
+        for (const auto &symbol: m_compositions | std::views::keys) {
             number_fractions[symbol] = getNumberFraction(symbol);
         }
         return number_fractions;
@@ -498,7 +498,7 @@ namespace serif::composition {
             LOG_ERROR(m_logger, "Composition has not been finalized.");
             throw std::runtime_error("Composition has not been finalized (Consider running .finalize()).");
         }
-        if (m_compositions.count(symbol) == 0) {
+        if (!m_compositions.contains(symbol)) {
             LOG_ERROR(m_logger, "Symbol {} is not in the composition.", symbol);
             throw std::runtime_error("Symbol is not in the composition.");
         }
@@ -527,40 +527,29 @@ namespace serif::composition {
             throw std::runtime_error("Composition not finalized. Cannot retrieve mean atomic mass number.");
         }
 
-        double mean_A = 0.0;
+        double zSum = 0.0;
 
         // Loop through all registered species in the composition.
         for (const auto &val: m_compositions | std::views::values) {
-            const CompositionEntry& entry = val;
-            const chemSpecies::Species& species = entry.isotope();
-
-            const double mass_fraction = entry.mass_fraction();
-            const double particle_mass_g = species.mass();
-            const int mass_number = species.a();
-
-            // Avoid division by zero, though a valid species should have a positive mass.
-            if (particle_mass_g > 0) {
-                // Calculate the number fraction for this species.
-                const double number_fraction = (mass_fraction / particle_mass_g) * m_meanParticleMass;
-                mean_A += number_fraction * mass_number;
-            }
+            zSum += (val.mass_fraction() * val.m_isotope.z())/val.m_isotope.a();
         }
 
+        const double mean_A = m_meanParticleMass * zSum;
         return mean_A;
     }
 
     Composition Composition::subset(const std::vector<std::string>& symbols, std::string method) const {
-        std::array<std::string, 2> methods = {"norm", "none"};
+        const std::array<std::string, 2> methods = {"norm", "none"};
 
-        if (std::find(methods.begin(), methods.end(), method) == methods.end()) {
-            std::string errorMessage = "Invalid method: " + method + ". Valid methods are 'norm' and 'none'.";
+        if (std::ranges::find(methods, method) == methods.end()) {
+            const std::string errorMessage = "Invalid method: " + method + ". Valid methods are 'norm' and 'none'.";
             LOG_ERROR(m_logger, "Invalid method: {}. Valid methods are norm and none.", method);
             throw std::runtime_error(errorMessage);
         }
 
         Composition subsetComposition;
         for (const auto& symbol : symbols) {
-            if (m_compositions.count(symbol) == 0) {
+            if (!m_compositions.contains(symbol)) {
                 LOG_ERROR(m_logger, "Symbol {} is not in the composition.", symbol);
                 throw std::runtime_error("Symbol is not in the composition.");
             } else {
@@ -569,7 +558,7 @@ namespace serif::composition {
             subsetComposition.setMassFraction(symbol, m_compositions.at(symbol).mass_fraction());
         }
         if (method == "norm") {
-            bool isNorm = subsetComposition.finalize(true);
+            const bool isNorm = subsetComposition.finalize(true);
             if (!isNorm) {
                 LOG_ERROR(m_logger, "Subset composition is invalid.");
                 throw std::runtime_error("Subset composition is invalid.");
@@ -578,14 +567,14 @@ namespace serif::composition {
         return subsetComposition;
     }
 
-    void Composition::setCompositionMode(bool massFracMode) {
+    void Composition::setCompositionMode(const bool massFracMode) {
         if (!m_finalized) {
             LOG_ERROR(m_logger, "Composition has not been finalized. Mode cannot be set unless composition is finalized.");
             throw std::runtime_error("Composition has not been finalized (Consider running .finalize()). The mode cannot be set unless the composition is finalized.");
         }
 
         bool okay = true;
-        for (auto& [_, entry] : m_compositions) {
+        for (auto &entry: m_compositions | std::views::values) {
             if (massFracMode) {
                 okay = entry.setMassFracMode(m_meanParticleMass);
             } else {
@@ -597,6 +586,53 @@ namespace serif::composition {
             }
         }
         m_massFracMode = massFracMode;
+    }
+
+    CanonicalComposition Composition::getCanonicalComposition(bool harsh) const {
+        if (!m_finalized) {
+            LOG_ERROR(m_logger, "Composition has not been finalized.");
+            throw std::runtime_error("Composition has not been finalized (Consider running .finalize()).");
+        }
+        CanonicalComposition canonicalComposition;
+        constexpr std::array<std::string, 7> canonicalH = {
+            "H-1", "H-2", "H-3", "H-4", "H-5", "H-6", "H-7"
+        };
+        constexpr std::array<std::string, 8> canonicalHe = {
+            "He-3", "He-4", "He-5", "He-6", "He-7", "He-8", "He-9", "He-10"
+        };
+        for (const auto& symbol : canonicalH) {
+            if (hasSymbol(symbol)) {
+                canonicalComposition.X += getMassFraction(symbol);
+            }
+        }
+        for (const auto& symbol : canonicalHe) {
+            if (hasSymbol(symbol)) {
+                canonicalComposition.Y += getMassFraction(symbol);
+            }
+        }
+
+        for (const auto& symbol : getRegisteredSymbols()) {
+            const bool isHSymbol = std::ranges::find(canonicalH, symbol) != std::end(canonicalH);
+            const bool isHeSymbol = std::ranges::find(canonicalHe, symbol) != std::end(canonicalHe);
+
+            if (isHSymbol || isHeSymbol) {
+                continue; // Skip canonical H and He symbols
+            }
+
+            canonicalComposition.Z += getMassFraction(symbol);
+        }
+
+        const double Z = 1.0 - (canonicalComposition.X + canonicalComposition.Y);
+        if (std::abs(Z - canonicalComposition.Z) > 1e-6) {
+            if (!harsh) {
+                LOG_WARNING(m_logger, "Validation composition Z (X-Y = {}) is different than canonical composition Z ({}) (∑a_i where a_i != H/He).", Z, canonicalComposition.Z);
+            }
+            else {
+                LOG_ERROR(m_logger, "Validation composition Z (X-Y = {}) is different than canonical composition Z ({}) (∑a_i where a_i != H/He).", Z, canonicalComposition.Z);
+                throw std::runtime_error("Validation composition Z (X-Y = " + std::to_string(Z) + ") is different than canonical composition Z (" + std::to_string(canonicalComposition.Z) + ") (∑a_i where a_i != H/He).");
+            }
+        }
+        return canonicalComposition;
     }
 
     bool Composition::hasSymbol(const std::string& symbol) const {

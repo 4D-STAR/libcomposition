@@ -34,6 +34,20 @@
 #include "atomicSpecies.h"
 
 namespace serif::composition {
+    struct CanonicalComposition {
+        double X = 0.0; ///< Mass fraction of Hydrogen.
+        double Y = 0.0; ///< Mass fraction of Helium.
+        double Z = 0.0; ///< Mass fraction of Metals.
+
+        friend std::ostream& operator<<(std::ostream& os, const CanonicalComposition& composition) {
+            os << "<CanonicalComposition: "
+               << "X = " << composition.X << ", "
+               << "Y = " << composition.Y << ", "
+               << "Z = " << composition.Z << ">";
+            return os;
+        }
+    };
+
     /**
      * @brief Represents the global composition of a system. This tends to be used after finalize and is primarily for internal use.
      */
@@ -220,7 +234,7 @@ namespace serif::composition {
          * @param symbol The symbol to check.
          * @return True if the symbol is valid, false otherwise.
          */
-        bool isValidSymbol(const std::string& symbol) const;
+        static bool isValidSymbol(const std::string& symbol);
 
         /**
          * @brief Checks if the given mass fractions are valid.
@@ -465,6 +479,16 @@ namespace serif::composition {
         * @param massFracMode True if mass fraction mode, false if number fraction mode.
         */
         void setCompositionMode(bool massFracMode);
+
+        /**
+         * @brief Gets the current canonical composition (X, Y, Z).
+         * @param harsh If true, this will throw an error if X-Y != Z where Z is computed as the sum of all other elements.
+         * @return True if mass fraction mode, false if number fraction mode.
+         *
+         * @throws std::runtime_error if the composition is not finalized or if the canonical composition cannot be computed.
+         * @throws std::runtime_error if harsh is true and the canonical composition is not valid.
+         */
+        [[nodiscard]] CanonicalComposition getCanonicalComposition(bool harsh=false) const;
 
         /**
          * @brief Overloaded output stream operator for Composition.
