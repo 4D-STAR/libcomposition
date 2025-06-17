@@ -29,4 +29,4 @@ composition_dep = declare_dependency(
 )
 
 # Make headers accessible
-install_headers(composition_headers, subdir : '4DSSE/composition')
+install_headers(composition_headers, subdir : 'SERiF/composition')

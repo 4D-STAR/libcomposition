@@ -18,8 +18,7 @@
 //   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 //
 // *********************************************************************** */
-#ifndef COMPOSITION_H
-#define COMPOSITION_H
+#pragma once
 
 #include <iostream>
 #include <string>
@@ -34,6 +33,20 @@
 #include "atomicSpecies.h"
 
 namespace serif::composition {
+    struct CanonicalComposition {
+        double X = 0.0; ///< Mass fraction of Hydrogen.
+        double Y = 0.0; ///< Mass fraction of Helium.
+        double Z = 0.0; ///< Mass fraction of Metals.
+
+        friend std::ostream& operator<<(std::ostream& os, const CanonicalComposition& composition) {
+            os << "<CanonicalComposition: "
+               << "X = " << composition.X << ", "
+               << "Y = " << composition.Y << ", "
+               << "Z = " << composition.Z << ">";
+            return os;
+        }
+    };
+
     /**
      * @brief Represents the global composition of a system. This tends to be used after finalize and is primarily for internal use.
      */
@@ -68,7 +81,7 @@ namespace serif::composition {
          * @brief Constructs a CompositionEntry with the given symbol and mode.
          * @param symbol The chemical symbol of the species.
          * @param massFracMode True if mass fraction mode, false if number fraction mode.
-         * @example
+         * *Example Usage:*
          * @code
          * CompositionEntry entry("H", true);
          * @endcode
@@ -185,13 +198,13 @@ namespace serif::composition {
      * - The only exception to the finalize rule is if the compositon was constructed with symbols and mass fractions at instantiation time. In this case, the composition is automatically finalized.  
      * however, this means that the composition passed to the constructor must be valid.
      * 
-     * @example Constructing a finalized composition with symbols and mass fractions:
+     * *Example Usage:* Constructing a finalized composition with symbols and mass fractions:
      * @code
      * std::vector<std::string> symbols = {"H", "He"};
      * std::vector<double> mass_fractions = {0.7, 0.3};
      * Composition comp(symbols, mass_fractions);
      * @endcode
-     * @example Constructing a composition with symbols and finalizing it later:
+     * *Example Usage:* Constructing a composition with symbols and finalizing it later:
      * @code
      * std::vector<std::string> symbols = {"H", "He"};
      * Composition comp(symbols);
@@ -220,7 +233,7 @@ namespace serif::composition {
          * @param symbol The symbol to check.
          * @return True if the symbol is valid, false otherwise.
          */
-        bool isValidSymbol(const std::string& symbol) const;
+        static bool isValidSymbol(const std::string& symbol);
 
         /**
          * @brief Checks if the given mass fractions are valid.
@@ -271,31 +284,31 @@ namespace serif::composition {
         /**
          * @brief Constructs a Composition with the given symbols.
          * @param symbols The symbols to initialize the composition with.
-         * @example
+         * *Example Usage:*
          * @code
          * std::vector<std::string> symbols = {"H", "O"};
          * Composition comp(symbols);
          * @endcode
          */
-        Composition(const std::vector<std::string>& symbols);
+        explicit Composition(const std::vector<std::string>& symbols);
 
         /**
          * @brief Constructs a Composition with the given symbols as a set.
          * @param symbols The symbols to initialize the composition with.
-         * @example
+         * *Example Usage:*
          * @code
          * std::set<std::string> symbols = {"H", "O"};
          * Composition comp(symbols);
          * @endcode
          */
-        Composition(const std::set<std::string>& symbols);
+        explicit Composition(const std::set<std::string>& symbols);
 
         /**
          * @brief Constructs a Composition with the given symbols and mass fractions.
          * @param symbols The symbols to initialize the composition with.
          * @param mass_fractions The mass fractions corresponding to the symbols.
          * @param massFracMode True if mass fraction mode, false if number fraction mode.
-         * @example
+         * *Example Usage:*
          * @code
          * std::vector<std::string> symbols = {"H", "O"};
          * std::vector<double> mass_fractions = {0.1, 0.9};
@@ -305,10 +318,18 @@ namespace serif::composition {
         Composition(const std::vector<std::string>& symbols, const std::vector<double>& mass_fractions, bool massFracMode=true);
 
         /**
+         * @brief Constructs a Composition from another Composition.
+         * @param composition The Composition to copy.
+         */
+        Composition(const Composition& composition);
+
+        Composition& operator=(Composition const& other);
+
+        /**
          * @brief Registers a new symbol.
          * @param symbol The symbol to register.
          * @param massFracMode True if mass fraction mode, false if number fraction mode.
-         * @example
+         * *Example Usage:*
          * @code
          * Composition comp;
          * comp.registerSymbol("H");
@@ -320,7 +341,7 @@ namespace serif::composition {
          * @brief Registers multiple new symbols.
          * @param symbols The symbols to register.
          * @param massFracMode True if mass fraction mode, false if number fraction mode.
-         * @example
+         * *Example Usage:*
          * @code
          * std::vector<std::string> symbols = {"H", "O"};
          * Composition comp;
@@ -333,14 +354,14 @@ namespace serif::composition {
          * @brief Gets the registered symbols.
          * @return A set of registered symbols.
          */
-        std::set<std::string> getRegisteredSymbols() const;
+        [[nodiscard]] std::set<std::string> getRegisteredSymbols() const;
 
         /**
          * @brief Sets the mass fraction for a given symbol.
          * @param symbol The symbol to set the mass fraction for.
          * @param mass_fraction The mass fraction to set.
          * @return The mass fraction that was set.
-         * @example
+         * *Example Usage:*
          * @code
          * Composition comp;
          * comp.setMassFraction("H", 0.1);
@@ -353,7 +374,7 @@ namespace serif::composition {
          * @param symbols The symbols to set the mass fraction for.
          * @param mass_fractions The mass fractions corresponding to the symbols.
          * @return A vector of mass fractions that were set.
-         * @example
+         * *Example Usage:*
          * @code
          * std::vector<std::string> symbols = {"H", "O"};
          * std::vector<double> mass_fractions = {0.1, 0.9};
@@ -390,40 +411,52 @@ namespace serif::composition {
          * @brief Gets the mass fractions of all compositions.
          * @return An unordered map of compositions with their mass fractions.
          */
-        std::unordered_map<std::string, double> getMassFraction() const;
+        [[nodiscard]] std::unordered_map<std::string, double> getMassFraction() const;
 
         /**
          * @brief Gets the mass fraction for a given symbol.
          * @param symbol The symbol to get the mass fraction for.
          * @return The mass fraction for the given symbol.
          */
-        double getMassFraction(const std::string& symbol) const;
+        [[nodiscard]] double getMassFraction(const std::string& symbol) const;
 
         /**
          * @brief Gets the number fraction for a given symbol.
          * @param symbol The symbol to get the number fraction for.
          * @return The number fraction for the given symbol.
          */
-        double getNumberFraction(const std::string& symbol) const;
+        [[nodiscard]] double getNumberFraction(const std::string& symbol) const;
 
         /**
          * @brief Gets the number fractions of all compositions.
          * @return An unordered map of compositions with their number fractions.
          */
-        std::unordered_map<std::string, double> getNumberFraction() const;
+        [[nodiscard]] std::unordered_map<std::string, double> getNumberFraction() const;
 
         /**
          * @brief Gets the composition entry and global composition for a given symbol.
          * @param symbol The symbol to get the composition for.
          * @return A pair containing the CompositionEntry and GlobalComposition for the given symbol.
          */
-        std::pair<CompositionEntry, GlobalComposition> getComposition(const std::string& symbol) const;
+        [[nodiscard]] std::pair<CompositionEntry, GlobalComposition> getComposition(const std::string& symbol) const;
 
         /**
          * @brief Gets all composition entries and the global composition.
          * @return A pair containing an unordered map of CompositionEntries and the GlobalComposition.
          */
-        std::pair<std::unordered_map<std::string, CompositionEntry>, GlobalComposition> getComposition() const;
+        [[nodiscard]] std::pair<std::unordered_map<std::string, CompositionEntry>, GlobalComposition> getComposition() const;
+
+        /**
+         * @brief Compute the mean particle mass of the composition.
+         * @return Mean particle mass in g.
+         */
+        [[nodiscard]] double getMeanParticleMass() const;
+
+        /**
+         * @brief Compute the mean atomic mass number of the composition.
+         * @return Mean atomic mass number.
+         */
+        [[nodiscard]] double getMeanAtomicNumber() const;
 
         /**
          * @brief Gets a subset of the composition.
@@ -447,6 +480,16 @@ namespace serif::composition {
         void setCompositionMode(bool massFracMode);
 
         /**
+         * @brief Gets the current canonical composition (X, Y, Z).
+         * @param harsh If true, this will throw an error if X-Y != Z where Z is computed as the sum of all other elements.
+         * @return True if mass fraction mode, false if number fraction mode.
+         *
+         * @throws std::runtime_error if the composition is not finalized or if the canonical composition cannot be computed.
+         * @throws std::runtime_error if harsh is true and the canonical composition is not valid.
+         */
+        [[nodiscard]] CanonicalComposition getCanonicalComposition(bool harsh=false) const;
+
+        /**
          * @brief Overloaded output stream operator for Composition.
          * @param os The output stream.
          * @param composition The Composition to output.
@@ -464,5 +507,3 @@ namespace serif::composition {
 
     };
 }; // namespace serif::composition
-
-#endif // COMPOSITION_H
