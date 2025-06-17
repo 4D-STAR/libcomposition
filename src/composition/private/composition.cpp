@@ -357,7 +357,7 @@ namespace serif::composition {
             for (const auto& mass_fraction : mass_fractions) {
                 sum += mass_fraction;
             }
-            for (int i = 0; i < mass_fractions.size(); ++i) {
+            for (int i = 0; i < static_cast<int>(mass_fractions.size()); ++i) {
                 mass_fractions[i] /= sum;
             }
             for (auto& [symbol, entry] : m_compositions) {
@@ -594,10 +594,10 @@ namespace serif::composition {
             throw std::runtime_error("Composition has not been finalized (Consider running .finalize()).");
         }
         CanonicalComposition canonicalComposition;
-        constexpr std::array<std::string, 7> canonicalH = {
+        const std::array<std::string, 7> canonicalH = {
             "H-1", "H-2", "H-3", "H-4", "H-5", "H-6", "H-7"
         };
-        constexpr std::array<std::string, 8> canonicalHe = {
+        const std::array<std::string, 8> canonicalHe = {
             "He-3", "He-4", "He-5", "He-6", "He-7", "He-8", "He-9", "He-10"
         };
         for (const auto& symbol : canonicalH) {
