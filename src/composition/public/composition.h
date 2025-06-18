@@ -473,6 +473,8 @@ namespace serif::composition {
         */
         bool hasSymbol(const std::string& symbol) const;
 
+        bool contains(const serif::atomic::Species& isotope) const;
+
         /**
         * @brief Sets the composition mode.
         * @param massFracMode True if mass fraction mode, false if number fraction mode.

@@ -639,6 +639,19 @@ namespace serif::composition {
         return m_compositions.count(symbol) > 0;
     }
 
+    bool Composition::contains(const serif::atomic::Species &isotope) const {
+        // Check if the isotope's symbol is in the composition
+        if (!m_finalized) {
+            LOG_ERROR(m_logger, "Composition has not been finalized.");
+            throw std::runtime_error("Composition has not been finalized (Consider running .finalize()).");
+        }
+        const auto symbol = static_cast<std::string>(isotope.name());
+        if (m_compositions.contains(symbol)) {
+            return true;
+        }
+        return false;
+    }
+
     /// OVERLOADS
 
     Composition Composition::operator+(const Composition& other) const {
