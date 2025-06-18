@@ -18,10 +18,10 @@ class compositionTest : public ::testing::Test {};
  * @brief Test the constructor of the composition class.
  */
 TEST_F(compositionTest, isotopeMasses) {
-    EXPECT_NO_THROW(chemSpecies::species.at("H-1"));
-    EXPECT_DOUBLE_EQ(chemSpecies::species.at("H-1").mass(), 1.007825031898);
-    EXPECT_DOUBLE_EQ(chemSpecies::species.at("He-3").mass(), 3.0160293219700001);
-    EXPECT_DOUBLE_EQ(chemSpecies::species.at("He-4").mass(),4.0026032541300003);
+    EXPECT_NO_THROW(serif::atomic::species.at("H-1"));
+    EXPECT_DOUBLE_EQ(serif::atomic::species.at("H-1").mass(), 1.007825031898);
+    EXPECT_DOUBLE_EQ(serif::atomic::species.at("He-3").mass(), 3.0160293219700001);
+    EXPECT_DOUBLE_EQ(serif::atomic::species.at("He-4").mass(),4.0026032541300003);
 }
 
 TEST_F(compositionTest, constructor) {
@@ -135,7 +135,7 @@ TEST_F(compositionTest, getComposition) {
     comp.setMassFraction("He-4", 0.4);
     EXPECT_NO_THROW(comp.finalize());
 
-    auto compositionEntry = comp.getComposition("H-1");
+    const auto compositionEntry = comp.getComposition("H-1");
     EXPECT_DOUBLE_EQ(compositionEntry.first.mass_fraction(), 0.6);
     EXPECT_DOUBLE_EQ(compositionEntry.second.meanParticleMass, 1.4382769310381101);
     EXPECT_DOUBLE_EQ(compositionEntry.second.specificNumberDensity, 1.0/1.4382769310381101);

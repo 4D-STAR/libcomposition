@@ -33,11 +33,11 @@
 
 namespace serif::composition {
 
-    CompositionEntry::CompositionEntry() : m_symbol("H-1"), m_isotope(chemSpecies::species.at("H-1")),
+    CompositionEntry::CompositionEntry() : m_symbol("H-1"), m_isotope(serif::atomic::species.at("H-1")),
                                            m_initialized(false) {
     }
 
-    CompositionEntry::CompositionEntry(const std::string& symbol, const bool massFracMode) : m_symbol(symbol), m_isotope(chemSpecies::species.at(symbol)), m_massFracMode(massFracMode) {
+    CompositionEntry::CompositionEntry(const std::string& symbol, const bool massFracMode) : m_symbol(symbol), m_isotope(serif::atomic::species.at(symbol)), m_massFracMode(massFracMode) {
         setSpecies(symbol);
     }
 
@@ -54,11 +54,11 @@ namespace serif::composition {
         if (m_initialized) {
             throw std::runtime_error("Composition entry is already initialized.");
         }
-        if (chemSpecies::species.count(symbol) == 0) {
+        if (serif::atomic::species.count(symbol) == 0) {
             throw std::runtime_error("Invalid symbol.");
         }
         m_symbol = symbol;
-        m_isotope = chemSpecies::species.at(symbol);
+        m_isotope = serif::atomic::species.at(symbol);
         m_initialized = true;
     }
 
@@ -99,7 +99,7 @@ namespace serif::composition {
         return m_relAbundance;
     }
 
-    chemSpecies::Species CompositionEntry::isotope() const {
+    serif::atomic::Species CompositionEntry::isotope() const {
         return m_isotope;
     }
 
@@ -256,7 +256,7 @@ namespace serif::composition {
     }
 
     bool Composition::isValidSymbol(const std::string& symbol) {
-        return chemSpecies::species.contains(symbol);
+        return serif::atomic::species.contains(symbol);
     }
 
     double Composition::setMassFraction(const std::string& symbol, const double& mass_fraction) {

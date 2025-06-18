@@ -1,39 +1,59 @@
-#ifndef SPECIES_MASS_DATA_H
-#define SPECIES_MASS_DATA_H
+#pragma once
 #include <unordered_map>
 #include <string_view>
 #include <string>
+#include <iostream>
 
-namespace chemSpecies {
+namespace serif::atomic {
     struct Species {
-        const std::string_view m_name; //< Name of the species
-        const std::string_view m_el; //< Element symbol
-        const int m_nz; //< NZ
-        const int m_n; //< N
-        const int m_z; //< Z
-        const int m_a; //< A
-        const double m_bindingEnergy; //< Binding energy
-        const std::string_view m_betaCode; //< Beta decay code
-        const double m_betaDecayEnergy; //< Beta decay energy
-        const double m_atomicMass; //< Atomic mass
-        const double m_atomicMassUnc; //< Atomic mass uncertainty
+        std::string m_name; //< Name of the species
+        std::string m_el; //< Element symbol
+        int m_nz; //< NZ
+        int m_n; //< N
+        int m_z; //< Z
+        int m_a; //< A
+        double m_bindingEnergy; //< Binding energy
+        std::string m_betaCode; //< Beta decay code
+        double m_betaDecayEnergy; //< Beta decay energy
+        double m_atomicMass; //< Atomic mass
+        double m_atomicMassUnc; //< Atomic mass uncertainty
 
-        Species(const std::string_view name, const std::string_view el, const int nz, const int n, const int z, const int a, const double bindingEnergy, const std::string_view betaCode, const double betaDecayEnergy, const double atomicMass, const double atomicMassUnc)
-            : m_name(name), m_el(el), m_nz(nz), m_n(n), m_z(z), m_a(a), m_bindingEnergy(bindingEnergy), m_betaCode(betaCode), m_betaDecayEnergy(betaDecayEnergy), m_atomicMass(atomicMass), m_atomicMassUnc(atomicMassUnc) {};
+        Species(
+            const std::string_view name,
+            const std::string_view el,
+            const int nz,
+            const int n,
+            const int z,
+            const int a,
+            const double bindingEnergy,
+            const std::string_view betaCode,
+            const double betaDecayEnergy,
+            const double atomicMass,
+            const double atomicMassUnc) : 
+        m_name(name),
+        m_el(el),
+        m_nz(nz),
+        m_n(n),
+        m_z(z),
+        m_a(a),
+        m_bindingEnergy(bindingEnergy),
+        m_betaCode(betaCode),
+        m_betaDecayEnergy(betaDecayEnergy),
+        m_atomicMass(atomicMass),
+        m_atomicMassUnc(atomicMassUnc) {};
 
-        Species(const Species& species) {
-            m_name = species.m_name;
-            m_el = species.m_el;
-            m_nz = species.m_nz;
-            m_n = species.m_n;
-            m_z = species.m_z;
-            m_a = species.m_a;
-            m_bindingEnergy = species.m_bindingEnergy;
-            m_betaCode = species.m_betaCode;
-            m_betaDecayEnergy = species.m_betaDecayEnergy;
-            m_atomicMass = species.m_atomicMass;
-            m_atomicMassUnc = species.m_atomicMassUnc;
-        }
+        Species(const Species& species) : 
+        m_name(species.m_name),
+        m_el(species.m_el),
+        m_nz(species.m_nz),
+        m_n(species.m_n),
+        m_z(species.m_z),
+        m_a(species.m_a),
+        m_bindingEnergy(species.m_bindingEnergy),
+        m_betaCode(species.m_betaCode),
+        m_betaDecayEnergy(species.m_betaDecayEnergy),
+        m_atomicMass(species.m_atomicMass),
+        m_atomicMassUnc(species.m_atomicMassUnc) {};
 
         double mass() const {
             return m_atomicMass;
@@ -80,7 +100,7 @@ namespace chemSpecies {
         }
 
         friend std::ostream& operator<<(std::ostream& os, const Species& species) {
-            os << static_cast<std::string>(species.m_name) << " (" << species.m_atomicMass << " u)";
+            os << species.m_name << " (" << species.m_atomicMass << " u)";
             return os;
         }
     };
@@ -7202,10680 +7222,10679 @@ namespace chemSpecies {
         {"Og-294", Og_294},
         {"Og-295", Og_295},
     };
-}; // namespace chemSpecies
+}; // namespace serif::atomic
 
-#ifndef N_1
-    #define N_1
-#endif // N_1
-#ifndef H_1
-    #define H_1
-#endif // H_1
-#ifndef H_2
-    #define H_2
-#endif // H_2
-#ifndef H_3
-    #define H_3
-#endif // H_3
-#ifndef HE_3
-    #define HE_3
-#endif // HE_3
-#ifndef LI_3
-    #define LI_3
-#endif // LI_3
-#ifndef H_4
-    #define H_4
-#endif // H_4
-#ifndef HE_4
-    #define HE_4
-#endif // HE_4
-#ifndef LI_4
-    #define LI_4
-#endif // LI_4
-#ifndef H_5
-    #define H_5
-#endif // H_5
-#ifndef HE_5
-    #define HE_5
-#endif // HE_5
-#ifndef LI_5
-    #define LI_5
-#endif // LI_5
-#ifndef BE_5
-    #define BE_5
-#endif // BE_5
-#ifndef H_6
-    #define H_6
-#endif // H_6
-#ifndef HE_6
-    #define HE_6
-#endif // HE_6
-#ifndef LI_6
-    #define LI_6
-#endif // LI_6
-#ifndef BE_6
-    #define BE_6
-#endif // BE_6
-#ifndef B_6
-    #define B_6
-#endif // B_6
-#ifndef H_7
-    #define H_7
-#endif // H_7
-#ifndef HE_7
-    #define HE_7
-#endif // HE_7
-#ifndef LI_7
-    #define LI_7
-#endif // LI_7
-#ifndef BE_7
-    #define BE_7
-#endif // BE_7
-#ifndef B_7
-    #define B_7
-#endif // B_7
-#ifndef HE_8
-    #define HE_8
-#endif // HE_8
-#ifndef LI_8
-    #define LI_8
-#endif // LI_8
-#ifndef BE_8
-    #define BE_8
-#endif // BE_8
-#ifndef B_8
-    #define B_8
-#endif // B_8
-#ifndef C_8
-    #define C_8
-#endif // C_8
-#ifndef HE_9
-    #define HE_9
-#endif // HE_9
-#ifndef LI_9
-    #define LI_9
-#endif // LI_9
-#ifndef BE_9
-    #define BE_9
-#endif // BE_9
-#ifndef B_9
-    #define B_9
-#endif // B_9
-#ifndef C_9
-    #define C_9
-#endif // C_9
-#ifndef HE_10
-    #define HE_10
-#endif // HE_10
-#ifndef LI_10
-    #define LI_10
-#endif // LI_10
-#ifndef BE_10
-    #define BE_10
-#endif // BE_10
-#ifndef B_10
-    #define B_10
-#endif // B_10
-#ifndef C_10
-    #define C_10
-#endif // C_10
-#ifndef N_10
-    #define N_10
-#endif // N_10
-#ifndef LI_11
-    #define LI_11
-#endif // LI_11
-#ifndef BE_11
-    #define BE_11
-#endif // BE_11
-#ifndef B_11
-    #define B_11
-#endif // B_11
-#ifndef C_11
-    #define C_11
-#endif // C_11
-#ifndef N_11
-    #define N_11
-#endif // N_11
-#ifndef O_11
-    #define O_11
-#endif // O_11
-#ifndef LI_12
-    #define LI_12
-#endif // LI_12
-#ifndef BE_12
-    #define BE_12
-#endif // BE_12
-#ifndef B_12
-    #define B_12
-#endif // B_12
-#ifndef C_12
-    #define C_12
-#endif // C_12
-#ifndef N_12
-    #define N_12
-#endif // N_12
-#ifndef O_12
-    #define O_12
-#endif // O_12
-#ifndef LI_13
-    #define LI_13
-#endif // LI_13
-#ifndef BE_13
-    #define BE_13
-#endif // BE_13
-#ifndef B_13
-    #define B_13
-#endif // B_13
-#ifndef C_13
-    #define C_13
-#endif // C_13
-#ifndef N_13
-    #define N_13
-#endif // N_13
-#ifndef O_13
-    #define O_13
-#endif // O_13
-#ifndef F_13
-    #define F_13
-#endif // F_13
-#ifndef BE_14
-    #define BE_14
-#endif // BE_14
-#ifndef B_14
-    #define B_14
-#endif // B_14
-#ifndef C_14
-    #define C_14
-#endif // C_14
-#ifndef N_14
-    #define N_14
-#endif // N_14
-#ifndef O_14
-    #define O_14
-#endif // O_14
-#ifndef F_14
-    #define F_14
-#endif // F_14
-#ifndef BE_15
-    #define BE_15
-#endif // BE_15
-#ifndef B_15
-    #define B_15
-#endif // B_15
-#ifndef C_15
-    #define C_15
-#endif // C_15
-#ifndef N_15
-    #define N_15
-#endif // N_15
-#ifndef O_15
-    #define O_15
-#endif // O_15
-#ifndef F_15
-    #define F_15
-#endif // F_15
-#ifndef NE_15
-    #define NE_15
-#endif // NE_15
-#ifndef BE_16
-    #define BE_16
-#endif // BE_16
-#ifndef B_16
-    #define B_16
-#endif // B_16
-#ifndef C_16
-    #define C_16
-#endif // C_16
-#ifndef N_16
-    #define N_16
-#endif // N_16
-#ifndef O_16
-    #define O_16
-#endif // O_16
-#ifndef F_16
-    #define F_16
-#endif // F_16
-#ifndef NE_16
-    #define NE_16
-#endif // NE_16
-#ifndef B_17
-    #define B_17
-#endif // B_17
-#ifndef C_17
-    #define C_17
-#endif // C_17
-#ifndef N_17
-    #define N_17
-#endif // N_17
-#ifndef O_17
-    #define O_17
-#endif // O_17
-#ifndef F_17
-    #define F_17
-#endif // F_17
-#ifndef NE_17
-    #define NE_17
-#endif // NE_17
-#ifndef NA_17
-    #define NA_17
-#endif // NA_17
-#ifndef B_18
-    #define B_18
-#endif // B_18
-#ifndef C_18
-    #define C_18
-#endif // C_18
-#ifndef N_18
-    #define N_18
-#endif // N_18
-#ifndef O_18
-    #define O_18
-#endif // O_18
-#ifndef F_18
-    #define F_18
-#endif // F_18
-#ifndef NE_18
-    #define NE_18
-#endif // NE_18
-#ifndef NA_18
-    #define NA_18
-#endif // NA_18
-#ifndef B_19
-    #define B_19
-#endif // B_19
-#ifndef C_19
-    #define C_19
-#endif // C_19
-#ifndef N_19
-    #define N_19
-#endif // N_19
-#ifndef O_19
-    #define O_19
-#endif // O_19
-#ifndef F_19
-    #define F_19
-#endif // F_19
-#ifndef NE_19
-    #define NE_19
-#endif // NE_19
-#ifndef NA_19
-    #define NA_19
-#endif // NA_19
-#ifndef MG_19
-    #define MG_19
-#endif // MG_19
-#ifndef B_20
-    #define B_20
-#endif // B_20
-#ifndef C_20
-    #define C_20
-#endif // C_20
-#ifndef N_20
-    #define N_20
-#endif // N_20
-#ifndef O_20
-    #define O_20
-#endif // O_20
-#ifndef F_20
-    #define F_20
-#endif // F_20
-#ifndef NE_20
-    #define NE_20
-#endif // NE_20
-#ifndef NA_20
-    #define NA_20
-#endif // NA_20
-#ifndef MG_20
-    #define MG_20
-#endif // MG_20
-#ifndef B_21
-    #define B_21
-#endif // B_21
-#ifndef C_21
-    #define C_21
-#endif // C_21
-#ifndef N_21
-    #define N_21
-#endif // N_21
-#ifndef O_21
-    #define O_21
-#endif // O_21
-#ifndef F_21
-    #define F_21
-#endif // F_21
-#ifndef NE_21
-    #define NE_21
-#endif // NE_21
-#ifndef NA_21
-    #define NA_21
-#endif // NA_21
-#ifndef MG_21
-    #define MG_21
-#endif // MG_21
-#ifndef AL_21
-    #define AL_21
-#endif // AL_21
-#ifndef C_22
-    #define C_22
-#endif // C_22
-#ifndef N_22
-    #define N_22
-#endif // N_22
-#ifndef O_22
-    #define O_22
-#endif // O_22
-#ifndef F_22
-    #define F_22
-#endif // F_22
-#ifndef NE_22
-    #define NE_22
-#endif // NE_22
-#ifndef NA_22
-    #define NA_22
-#endif // NA_22
-#ifndef MG_22
-    #define MG_22
-#endif // MG_22
-#ifndef AL_22
-    #define AL_22
-#endif // AL_22
-#ifndef SI_22
-    #define SI_22
-#endif // SI_22
-#ifndef C_23
-    #define C_23
-#endif // C_23
-#ifndef N_23
-    #define N_23
-#endif // N_23
-#ifndef O_23
-    #define O_23
-#endif // O_23
-#ifndef F_23
-    #define F_23
-#endif // F_23
-#ifndef NE_23
-    #define NE_23
-#endif // NE_23
-#ifndef NA_23
-    #define NA_23
-#endif // NA_23
-#ifndef MG_23
-    #define MG_23
-#endif // MG_23
-#ifndef AL_23
-    #define AL_23
-#endif // AL_23
-#ifndef SI_23
-    #define SI_23
-#endif // SI_23
-#ifndef N_24
-    #define N_24
-#endif // N_24
-#ifndef O_24
-    #define O_24
-#endif // O_24
-#ifndef F_24
-    #define F_24
-#endif // F_24
-#ifndef NE_24
-    #define NE_24
-#endif // NE_24
-#ifndef NA_24
-    #define NA_24
-#endif // NA_24
-#ifndef MG_24
-    #define MG_24
-#endif // MG_24
-#ifndef AL_24
-    #define AL_24
-#endif // AL_24
-#ifndef SI_24
-    #define SI_24
-#endif // SI_24
-#ifndef P_24
-    #define P_24
-#endif // P_24
-#ifndef N_25
-    #define N_25
-#endif // N_25
-#ifndef O_25
-    #define O_25
-#endif // O_25
-#ifndef F_25
-    #define F_25
-#endif // F_25
-#ifndef NE_25
-    #define NE_25
-#endif // NE_25
-#ifndef NA_25
-    #define NA_25
-#endif // NA_25
-#ifndef MG_25
-    #define MG_25
-#endif // MG_25
-#ifndef AL_25
-    #define AL_25
-#endif // AL_25
-#ifndef SI_25
-    #define SI_25
-#endif // SI_25
-#ifndef P_25
-    #define P_25
-#endif // P_25
-#ifndef O_26
-    #define O_26
-#endif // O_26
-#ifndef F_26
-    #define F_26
-#endif // F_26
-#ifndef NE_26
-    #define NE_26
-#endif // NE_26
-#ifndef NA_26
-    #define NA_26
-#endif // NA_26
-#ifndef MG_26
-    #define MG_26
-#endif // MG_26
-#ifndef AL_26
-    #define AL_26
-#endif // AL_26
-#ifndef SI_26
-    #define SI_26
-#endif // SI_26
-#ifndef P_26
-    #define P_26
-#endif // P_26
-#ifndef S_26
-    #define S_26
-#endif // S_26
-#ifndef O_27
-    #define O_27
-#endif // O_27
-#ifndef F_27
-    #define F_27
-#endif // F_27
-#ifndef NE_27
-    #define NE_27
-#endif // NE_27
-#ifndef NA_27
-    #define NA_27
-#endif // NA_27
-#ifndef MG_27
-    #define MG_27
-#endif // MG_27
-#ifndef AL_27
-    #define AL_27
-#endif // AL_27
-#ifndef SI_27
-    #define SI_27
-#endif // SI_27
-#ifndef P_27
-    #define P_27
-#endif // P_27
-#ifndef S_27
-    #define S_27
-#endif // S_27
-#ifndef O_28
-    #define O_28
-#endif // O_28
-#ifndef F_28
-    #define F_28
-#endif // F_28
-#ifndef NE_28
-    #define NE_28
-#endif // NE_28
-#ifndef NA_28
-    #define NA_28
-#endif // NA_28
-#ifndef MG_28
-    #define MG_28
-#endif // MG_28
-#ifndef AL_28
-    #define AL_28
-#endif // AL_28
-#ifndef SI_28
-    #define SI_28
-#endif // SI_28
-#ifndef P_28
-    #define P_28
-#endif // P_28
-#ifndef S_28
-    #define S_28
-#endif // S_28
-#ifndef CL_28
-    #define CL_28
-#endif // CL_28
-#ifndef F_29
-    #define F_29
-#endif // F_29
-#ifndef NE_29
-    #define NE_29
-#endif // NE_29
-#ifndef NA_29
-    #define NA_29
-#endif // NA_29
-#ifndef MG_29
-    #define MG_29
-#endif // MG_29
-#ifndef AL_29
-    #define AL_29
-#endif // AL_29
-#ifndef SI_29
-    #define SI_29
-#endif // SI_29
-#ifndef P_29
-    #define P_29
-#endif // P_29
-#ifndef S_29
-    #define S_29
-#endif // S_29
-#ifndef CL_29
-    #define CL_29
-#endif // CL_29
-#ifndef AR_29
-    #define AR_29
-#endif // AR_29
-#ifndef F_30
-    #define F_30
-#endif // F_30
-#ifndef NE_30
-    #define NE_30
-#endif // NE_30
-#ifndef NA_30
-    #define NA_30
-#endif // NA_30
-#ifndef MG_30
-    #define MG_30
-#endif // MG_30
-#ifndef AL_30
-    #define AL_30
-#endif // AL_30
-#ifndef SI_30
-    #define SI_30
-#endif // SI_30
-#ifndef P_30
-    #define P_30
-#endif // P_30
-#ifndef S_30
-    #define S_30
-#endif // S_30
-#ifndef CL_30
-    #define CL_30
-#endif // CL_30
-#ifndef AR_30
-    #define AR_30
-#endif // AR_30
-#ifndef F_31
-    #define F_31
-#endif // F_31
-#ifndef NE_31
-    #define NE_31
-#endif // NE_31
-#ifndef NA_31
-    #define NA_31
-#endif // NA_31
-#ifndef MG_31
-    #define MG_31
-#endif // MG_31
-#ifndef AL_31
-    #define AL_31
-#endif // AL_31
-#ifndef SI_31
-    #define SI_31
-#endif // SI_31
-#ifndef P_31
-    #define P_31
-#endif // P_31
-#ifndef S_31
-    #define S_31
-#endif // S_31
-#ifndef CL_31
-    #define CL_31
-#endif // CL_31
-#ifndef AR_31
-    #define AR_31
-#endif // AR_31
-#ifndef K_31
-    #define K_31
-#endif // K_31
-#ifndef NE_32
-    #define NE_32
-#endif // NE_32
-#ifndef NA_32
-    #define NA_32
-#endif // NA_32
-#ifndef MG_32
-    #define MG_32
-#endif // MG_32
-#ifndef AL_32
-    #define AL_32
-#endif // AL_32
-#ifndef SI_32
-    #define SI_32
-#endif // SI_32
-#ifndef P_32
-    #define P_32
-#endif // P_32
-#ifndef S_32
-    #define S_32
-#endif // S_32
-#ifndef CL_32
-    #define CL_32
-#endif // CL_32
-#ifndef AR_32
-    #define AR_32
-#endif // AR_32
-#ifndef K_32
-    #define K_32
-#endif // K_32
-#ifndef NE_33
-    #define NE_33
-#endif // NE_33
-#ifndef NA_33
-    #define NA_33
-#endif // NA_33
-#ifndef MG_33
-    #define MG_33
-#endif // MG_33
-#ifndef AL_33
-    #define AL_33
-#endif // AL_33
-#ifndef SI_33
-    #define SI_33
-#endif // SI_33
-#ifndef P_33
-    #define P_33
-#endif // P_33
-#ifndef S_33
-    #define S_33
-#endif // S_33
-#ifndef CL_33
-    #define CL_33
-#endif // CL_33
-#ifndef AR_33
-    #define AR_33
-#endif // AR_33
-#ifndef K_33
-    #define K_33
-#endif // K_33
-#ifndef CA_33
-    #define CA_33
-#endif // CA_33
-#ifndef NE_34
-    #define NE_34
-#endif // NE_34
-#ifndef NA_34
-    #define NA_34
-#endif // NA_34
-#ifndef MG_34
-    #define MG_34
-#endif // MG_34
-#ifndef AL_34
-    #define AL_34
-#endif // AL_34
-#ifndef SI_34
-    #define SI_34
-#endif // SI_34
-#ifndef P_34
-    #define P_34
-#endif // P_34
-#ifndef S_34
-    #define S_34
-#endif // S_34
-#ifndef CL_34
-    #define CL_34
-#endif // CL_34
-#ifndef AR_34
-    #define AR_34
-#endif // AR_34
-#ifndef K_34
-    #define K_34
-#endif // K_34
-#ifndef CA_34
-    #define CA_34
-#endif // CA_34
-#ifndef NA_35
-    #define NA_35
-#endif // NA_35
-#ifndef MG_35
-    #define MG_35
-#endif // MG_35
-#ifndef AL_35
-    #define AL_35
-#endif // AL_35
-#ifndef SI_35
-    #define SI_35
-#endif // SI_35
-#ifndef P_35
-    #define P_35
-#endif // P_35
-#ifndef S_35
-    #define S_35
-#endif // S_35
-#ifndef CL_35
-    #define CL_35
-#endif // CL_35
-#ifndef AR_35
-    #define AR_35
-#endif // AR_35
-#ifndef K_35
-    #define K_35
-#endif // K_35
-#ifndef CA_35
-    #define CA_35
-#endif // CA_35
-#ifndef SC_35
-    #define SC_35
-#endif // SC_35
-#ifndef NA_36
-    #define NA_36
-#endif // NA_36
-#ifndef MG_36
-    #define MG_36
-#endif // MG_36
-#ifndef AL_36
-    #define AL_36
-#endif // AL_36
-#ifndef SI_36
-    #define SI_36
-#endif // SI_36
-#ifndef P_36
-    #define P_36
-#endif // P_36
-#ifndef S_36
-    #define S_36
-#endif // S_36
-#ifndef CL_36
-    #define CL_36
-#endif // CL_36
-#ifndef AR_36
-    #define AR_36
-#endif // AR_36
-#ifndef K_36
-    #define K_36
-#endif // K_36
-#ifndef CA_36
-    #define CA_36
-#endif // CA_36
-#ifndef SC_36
-    #define SC_36
-#endif // SC_36
-#ifndef NA_37
-    #define NA_37
-#endif // NA_37
-#ifndef MG_37
-    #define MG_37
-#endif // MG_37
-#ifndef AL_37
-    #define AL_37
-#endif // AL_37
-#ifndef SI_37
-    #define SI_37
-#endif // SI_37
-#ifndef P_37
-    #define P_37
-#endif // P_37
-#ifndef S_37
-    #define S_37
-#endif // S_37
-#ifndef CL_37
-    #define CL_37
-#endif // CL_37
-#ifndef AR_37
-    #define AR_37
-#endif // AR_37
-#ifndef K_37
-    #define K_37
-#endif // K_37
-#ifndef CA_37
-    #define CA_37
-#endif // CA_37
-#ifndef SC_37
-    #define SC_37
-#endif // SC_37
-#ifndef TI_37
-    #define TI_37
-#endif // TI_37
-#ifndef NA_38
-    #define NA_38
-#endif // NA_38
-#ifndef MG_38
-    #define MG_38
-#endif // MG_38
-#ifndef AL_38
-    #define AL_38
-#endif // AL_38
-#ifndef SI_38
-    #define SI_38
-#endif // SI_38
-#ifndef P_38
-    #define P_38
-#endif // P_38
-#ifndef S_38
-    #define S_38
-#endif // S_38
-#ifndef CL_38
-    #define CL_38
-#endif // CL_38
-#ifndef AR_38
-    #define AR_38
-#endif // AR_38
-#ifndef K_38
-    #define K_38
-#endif // K_38
-#ifndef CA_38
-    #define CA_38
-#endif // CA_38
-#ifndef SC_38
-    #define SC_38
-#endif // SC_38
-#ifndef TI_38
-    #define TI_38
-#endif // TI_38
-#ifndef NA_39
-    #define NA_39
-#endif // NA_39
-#ifndef MG_39
-    #define MG_39
-#endif // MG_39
-#ifndef AL_39
-    #define AL_39
-#endif // AL_39
-#ifndef SI_39
-    #define SI_39
-#endif // SI_39
-#ifndef P_39
-    #define P_39
-#endif // P_39
-#ifndef S_39
-    #define S_39
-#endif // S_39
-#ifndef CL_39
-    #define CL_39
-#endif // CL_39
-#ifndef AR_39
-    #define AR_39
-#endif // AR_39
-#ifndef K_39
-    #define K_39
-#endif // K_39
-#ifndef CA_39
-    #define CA_39
-#endif // CA_39
-#ifndef SC_39
-    #define SC_39
-#endif // SC_39
-#ifndef TI_39
-    #define TI_39
-#endif // TI_39
-#ifndef V_39
-    #define V_39
-#endif // V_39
-#ifndef MG_40
-    #define MG_40
-#endif // MG_40
-#ifndef AL_40
-    #define AL_40
-#endif // AL_40
-#ifndef SI_40
-    #define SI_40
-#endif // SI_40
-#ifndef P_40
-    #define P_40
-#endif // P_40
-#ifndef S_40
-    #define S_40
-#endif // S_40
-#ifndef CL_40
-    #define CL_40
-#endif // CL_40
-#ifndef AR_40
-    #define AR_40
-#endif // AR_40
-#ifndef K_40
-    #define K_40
-#endif // K_40
-#ifndef CA_40
-    #define CA_40
-#endif // CA_40
-#ifndef SC_40
-    #define SC_40
-#endif // SC_40
-#ifndef TI_40
-    #define TI_40
-#endif // TI_40
-#ifndef V_40
-    #define V_40
-#endif // V_40
-#ifndef MG_41
-    #define MG_41
-#endif // MG_41
-#ifndef AL_41
-    #define AL_41
-#endif // AL_41
-#ifndef SI_41
-    #define SI_41
-#endif // SI_41
-#ifndef P_41
-    #define P_41
-#endif // P_41
-#ifndef S_41
-    #define S_41
-#endif // S_41
-#ifndef CL_41
-    #define CL_41
-#endif // CL_41
-#ifndef AR_41
-    #define AR_41
-#endif // AR_41
-#ifndef K_41
-    #define K_41
-#endif // K_41
-#ifndef CA_41
-    #define CA_41
-#endif // CA_41
-#ifndef SC_41
-    #define SC_41
-#endif // SC_41
-#ifndef TI_41
-    #define TI_41
-#endif // TI_41
-#ifndef V_41
-    #define V_41
-#endif // V_41
-#ifndef CR_41
-    #define CR_41
-#endif // CR_41
-#ifndef AL_42
-    #define AL_42
-#endif // AL_42
-#ifndef SI_42
-    #define SI_42
-#endif // SI_42
-#ifndef P_42
-    #define P_42
-#endif // P_42
-#ifndef S_42
-    #define S_42
-#endif // S_42
-#ifndef CL_42
-    #define CL_42
-#endif // CL_42
-#ifndef AR_42
-    #define AR_42
-#endif // AR_42
-#ifndef K_42
-    #define K_42
-#endif // K_42
-#ifndef CA_42
-    #define CA_42
-#endif // CA_42
-#ifndef SC_42
-    #define SC_42
-#endif // SC_42
-#ifndef TI_42
-    #define TI_42
-#endif // TI_42
-#ifndef V_42
-    #define V_42
-#endif // V_42
-#ifndef CR_42
-    #define CR_42
-#endif // CR_42
-#ifndef AL_43
-    #define AL_43
-#endif // AL_43
-#ifndef SI_43
-    #define SI_43
-#endif // SI_43
-#ifndef P_43
-    #define P_43
-#endif // P_43
-#ifndef S_43
-    #define S_43
-#endif // S_43
-#ifndef CL_43
-    #define CL_43
-#endif // CL_43
-#ifndef AR_43
-    #define AR_43
-#endif // AR_43
-#ifndef K_43
-    #define K_43
-#endif // K_43
-#ifndef CA_43
-    #define CA_43
-#endif // CA_43
-#ifndef SC_43
-    #define SC_43
-#endif // SC_43
-#ifndef TI_43
-    #define TI_43
-#endif // TI_43
-#ifndef V_43
-    #define V_43
-#endif // V_43
-#ifndef CR_43
-    #define CR_43
-#endif // CR_43
-#ifndef MN_43
-    #define MN_43
-#endif // MN_43
-#ifndef SI_44
-    #define SI_44
-#endif // SI_44
-#ifndef P_44
-    #define P_44
-#endif // P_44
-#ifndef S_44
-    #define S_44
-#endif // S_44
-#ifndef CL_44
-    #define CL_44
-#endif // CL_44
-#ifndef AR_44
-    #define AR_44
-#endif // AR_44
-#ifndef K_44
-    #define K_44
-#endif // K_44
-#ifndef CA_44
-    #define CA_44
-#endif // CA_44
-#ifndef SC_44
-    #define SC_44
-#endif // SC_44
-#ifndef TI_44
-    #define TI_44
-#endif // TI_44
-#ifndef V_44
-    #define V_44
-#endif // V_44
-#ifndef CR_44
-    #define CR_44
-#endif // CR_44
-#ifndef MN_44
-    #define MN_44
-#endif // MN_44
-#ifndef SI_45
-    #define SI_45
-#endif // SI_45
-#ifndef P_45
-    #define P_45
-#endif // P_45
-#ifndef S_45
-    #define S_45
-#endif // S_45
-#ifndef CL_45
-    #define CL_45
-#endif // CL_45
-#ifndef AR_45
-    #define AR_45
-#endif // AR_45
-#ifndef K_45
-    #define K_45
-#endif // K_45
-#ifndef CA_45
-    #define CA_45
-#endif // CA_45
-#ifndef SC_45
-    #define SC_45
-#endif // SC_45
-#ifndef TI_45
-    #define TI_45
-#endif // TI_45
-#ifndef V_45
-    #define V_45
-#endif // V_45
-#ifndef CR_45
-    #define CR_45
-#endif // CR_45
-#ifndef MN_45
-    #define MN_45
-#endif // MN_45
-#ifndef FE_45
-    #define FE_45
-#endif // FE_45
-#ifndef P_46
-    #define P_46
-#endif // P_46
-#ifndef S_46
-    #define S_46
-#endif // S_46
-#ifndef CL_46
-    #define CL_46
-#endif // CL_46
-#ifndef AR_46
-    #define AR_46
-#endif // AR_46
-#ifndef K_46
-    #define K_46
-#endif // K_46
-#ifndef CA_46
-    #define CA_46
-#endif // CA_46
-#ifndef SC_46
-    #define SC_46
-#endif // SC_46
-#ifndef TI_46
-    #define TI_46
-#endif // TI_46
-#ifndef V_46
-    #define V_46
-#endif // V_46
-#ifndef CR_46
-    #define CR_46
-#endif // CR_46
-#ifndef MN_46
-    #define MN_46
-#endif // MN_46
-#ifndef FE_46
-    #define FE_46
-#endif // FE_46
-#ifndef P_47
-    #define P_47
-#endif // P_47
-#ifndef S_47
-    #define S_47
-#endif // S_47
-#ifndef CL_47
-    #define CL_47
-#endif // CL_47
-#ifndef AR_47
-    #define AR_47
-#endif // AR_47
-#ifndef K_47
-    #define K_47
-#endif // K_47
-#ifndef CA_47
-    #define CA_47
-#endif // CA_47
-#ifndef SC_47
-    #define SC_47
-#endif // SC_47
-#ifndef TI_47
-    #define TI_47
-#endif // TI_47
-#ifndef V_47
-    #define V_47
-#endif // V_47
-#ifndef CR_47
-    #define CR_47
-#endif // CR_47
-#ifndef MN_47
-    #define MN_47
-#endif // MN_47
-#ifndef FE_47
-    #define FE_47
-#endif // FE_47
-#ifndef CO_47
-    #define CO_47
-#endif // CO_47
-#ifndef S_48
-    #define S_48
-#endif // S_48
-#ifndef CL_48
-    #define CL_48
-#endif // CL_48
-#ifndef AR_48
-    #define AR_48
-#endif // AR_48
-#ifndef K_48
-    #define K_48
-#endif // K_48
-#ifndef CA_48
-    #define CA_48
-#endif // CA_48
-#ifndef SC_48
-    #define SC_48
-#endif // SC_48
-#ifndef TI_48
-    #define TI_48
-#endif // TI_48
-#ifndef V_48
-    #define V_48
-#endif // V_48
-#ifndef CR_48
-    #define CR_48
-#endif // CR_48
-#ifndef MN_48
-    #define MN_48
-#endif // MN_48
-#ifndef FE_48
-    #define FE_48
-#endif // FE_48
-#ifndef CO_48
-    #define CO_48
-#endif // CO_48
-#ifndef NI_48
-    #define NI_48
-#endif // NI_48
-#ifndef S_49
-    #define S_49
-#endif // S_49
-#ifndef CL_49
-    #define CL_49
-#endif // CL_49
-#ifndef AR_49
-    #define AR_49
-#endif // AR_49
-#ifndef K_49
-    #define K_49
-#endif // K_49
-#ifndef CA_49
-    #define CA_49
-#endif // CA_49
-#ifndef SC_49
-    #define SC_49
-#endif // SC_49
-#ifndef TI_49
-    #define TI_49
-#endif // TI_49
-#ifndef V_49
-    #define V_49
-#endif // V_49
-#ifndef CR_49
-    #define CR_49
-#endif // CR_49
-#ifndef MN_49
-    #define MN_49
-#endif // MN_49
-#ifndef FE_49
-    #define FE_49
-#endif // FE_49
-#ifndef CO_49
-    #define CO_49
-#endif // CO_49
-#ifndef NI_49
-    #define NI_49
-#endif // NI_49
-#ifndef CL_50
-    #define CL_50
-#endif // CL_50
-#ifndef AR_50
-    #define AR_50
-#endif // AR_50
-#ifndef K_50
-    #define K_50
-#endif // K_50
-#ifndef CA_50
-    #define CA_50
-#endif // CA_50
-#ifndef SC_50
-    #define SC_50
-#endif // SC_50
-#ifndef TI_50
-    #define TI_50
-#endif // TI_50
-#ifndef V_50
-    #define V_50
-#endif // V_50
-#ifndef CR_50
-    #define CR_50
-#endif // CR_50
-#ifndef MN_50
-    #define MN_50
-#endif // MN_50
-#ifndef FE_50
-    #define FE_50
-#endif // FE_50
-#ifndef CO_50
-    #define CO_50
-#endif // CO_50
-#ifndef NI_50
-    #define NI_50
-#endif // NI_50
-#ifndef CL_51
-    #define CL_51
-#endif // CL_51
-#ifndef AR_51
-    #define AR_51
-#endif // AR_51
-#ifndef K_51
-    #define K_51
-#endif // K_51
-#ifndef CA_51
-    #define CA_51
-#endif // CA_51
-#ifndef SC_51
-    #define SC_51
-#endif // SC_51
-#ifndef TI_51
-    #define TI_51
-#endif // TI_51
-#ifndef V_51
-    #define V_51
-#endif // V_51
-#ifndef CR_51
-    #define CR_51
-#endif // CR_51
-#ifndef MN_51
-    #define MN_51
-#endif // MN_51
-#ifndef FE_51
-    #define FE_51
-#endif // FE_51
-#ifndef CO_51
-    #define CO_51
-#endif // CO_51
-#ifndef NI_51
-    #define NI_51
-#endif // NI_51
-#ifndef CL_52
-    #define CL_52
-#endif // CL_52
-#ifndef AR_52
-    #define AR_52
-#endif // AR_52
-#ifndef K_52
-    #define K_52
-#endif // K_52
-#ifndef CA_52
-    #define CA_52
-#endif // CA_52
-#ifndef SC_52
-    #define SC_52
-#endif // SC_52
-#ifndef TI_52
-    #define TI_52
-#endif // TI_52
-#ifndef V_52
-    #define V_52
-#endif // V_52
-#ifndef CR_52
-    #define CR_52
-#endif // CR_52
-#ifndef MN_52
-    #define MN_52
-#endif // MN_52
-#ifndef FE_52
-    #define FE_52
-#endif // FE_52
-#ifndef CO_52
-    #define CO_52
-#endif // CO_52
-#ifndef NI_52
-    #define NI_52
-#endif // NI_52
-#ifndef CU_52
-    #define CU_52
-#endif // CU_52
-#ifndef AR_53
-    #define AR_53
-#endif // AR_53
-#ifndef K_53
-    #define K_53
-#endif // K_53
-#ifndef CA_53
-    #define CA_53
-#endif // CA_53
-#ifndef SC_53
-    #define SC_53
-#endif // SC_53
-#ifndef TI_53
-    #define TI_53
-#endif // TI_53
-#ifndef V_53
-    #define V_53
-#endif // V_53
-#ifndef CR_53
-    #define CR_53
-#endif // CR_53
-#ifndef MN_53
-    #define MN_53
-#endif // MN_53
-#ifndef FE_53
-    #define FE_53
-#endif // FE_53
-#ifndef CO_53
-    #define CO_53
-#endif // CO_53
-#ifndef NI_53
-    #define NI_53
-#endif // NI_53
-#ifndef CU_53
-    #define CU_53
-#endif // CU_53
-#ifndef AR_54
-    #define AR_54
-#endif // AR_54
-#ifndef K_54
-    #define K_54
-#endif // K_54
-#ifndef CA_54
-    #define CA_54
-#endif // CA_54
-#ifndef SC_54
-    #define SC_54
-#endif // SC_54
-#ifndef TI_54
-    #define TI_54
-#endif // TI_54
-#ifndef V_54
-    #define V_54
-#endif // V_54
-#ifndef CR_54
-    #define CR_54
-#endif // CR_54
-#ifndef MN_54
-    #define MN_54
-#endif // MN_54
-#ifndef FE_54
-    #define FE_54
-#endif // FE_54
-#ifndef CO_54
-    #define CO_54
-#endif // CO_54
-#ifndef NI_54
-    #define NI_54
-#endif // NI_54
-#ifndef CU_54
-    #define CU_54
-#endif // CU_54
-#ifndef ZN_54
-    #define ZN_54
-#endif // ZN_54
-#ifndef K_55
-    #define K_55
-#endif // K_55
-#ifndef CA_55
-    #define CA_55
-#endif // CA_55
-#ifndef SC_55
-    #define SC_55
-#endif // SC_55
-#ifndef TI_55
-    #define TI_55
-#endif // TI_55
-#ifndef V_55
-    #define V_55
-#endif // V_55
-#ifndef CR_55
-    #define CR_55
-#endif // CR_55
-#ifndef MN_55
-    #define MN_55
-#endif // MN_55
-#ifndef FE_55
-    #define FE_55
-#endif // FE_55
-#ifndef CO_55
-    #define CO_55
-#endif // CO_55
-#ifndef NI_55
-    #define NI_55
-#endif // NI_55
-#ifndef CU_55
-    #define CU_55
-#endif // CU_55
-#ifndef ZN_55
-    #define ZN_55
-#endif // ZN_55
-#ifndef K_56
-    #define K_56
-#endif // K_56
-#ifndef CA_56
-    #define CA_56
-#endif // CA_56
-#ifndef SC_56
-    #define SC_56
-#endif // SC_56
-#ifndef TI_56
-    #define TI_56
-#endif // TI_56
-#ifndef V_56
-    #define V_56
-#endif // V_56
-#ifndef CR_56
-    #define CR_56
-#endif // CR_56
-#ifndef MN_56
-    #define MN_56
-#endif // MN_56
-#ifndef FE_56
-    #define FE_56
-#endif // FE_56
-#ifndef CO_56
-    #define CO_56
-#endif // CO_56
-#ifndef NI_56
-    #define NI_56
-#endif // NI_56
-#ifndef CU_56
-    #define CU_56
-#endif // CU_56
-#ifndef ZN_56
-    #define ZN_56
-#endif // ZN_56
-#ifndef GA_56
-    #define GA_56
-#endif // GA_56
-#ifndef K_57
-    #define K_57
-#endif // K_57
-#ifndef CA_57
-    #define CA_57
-#endif // CA_57
-#ifndef SC_57
-    #define SC_57
-#endif // SC_57
-#ifndef TI_57
-    #define TI_57
-#endif // TI_57
-#ifndef V_57
-    #define V_57
-#endif // V_57
-#ifndef CR_57
-    #define CR_57
-#endif // CR_57
-#ifndef MN_57
-    #define MN_57
-#endif // MN_57
-#ifndef FE_57
-    #define FE_57
-#endif // FE_57
-#ifndef CO_57
-    #define CO_57
-#endif // CO_57
-#ifndef NI_57
-    #define NI_57
-#endif // NI_57
-#ifndef CU_57
-    #define CU_57
-#endif // CU_57
-#ifndef ZN_57
-    #define ZN_57
-#endif // ZN_57
-#ifndef GA_57
-    #define GA_57
-#endif // GA_57
-#ifndef K_58
-    #define K_58
-#endif // K_58
-#ifndef CA_58
-    #define CA_58
-#endif // CA_58
-#ifndef SC_58
-    #define SC_58
-#endif // SC_58
-#ifndef TI_58
-    #define TI_58
-#endif // TI_58
-#ifndef V_58
-    #define V_58
-#endif // V_58
-#ifndef CR_58
-    #define CR_58
-#endif // CR_58
-#ifndef MN_58
-    #define MN_58
-#endif // MN_58
-#ifndef FE_58
-    #define FE_58
-#endif // FE_58
-#ifndef CO_58
-    #define CO_58
-#endif // CO_58
-#ifndef NI_58
-    #define NI_58
-#endif // NI_58
-#ifndef CU_58
-    #define CU_58
-#endif // CU_58
-#ifndef ZN_58
-    #define ZN_58
-#endif // ZN_58
-#ifndef GA_58
-    #define GA_58
-#endif // GA_58
-#ifndef GE_58
-    #define GE_58
-#endif // GE_58
-#ifndef K_59
-    #define K_59
-#endif // K_59
-#ifndef CA_59
-    #define CA_59
-#endif // CA_59
-#ifndef SC_59
-    #define SC_59
-#endif // SC_59
-#ifndef TI_59
-    #define TI_59
-#endif // TI_59
-#ifndef V_59
-    #define V_59
-#endif // V_59
-#ifndef CR_59
-    #define CR_59
-#endif // CR_59
-#ifndef MN_59
-    #define MN_59
-#endif // MN_59
-#ifndef FE_59
-    #define FE_59
-#endif // FE_59
-#ifndef CO_59
-    #define CO_59
-#endif // CO_59
-#ifndef NI_59
-    #define NI_59
-#endif // NI_59
-#ifndef CU_59
-    #define CU_59
-#endif // CU_59
-#ifndef ZN_59
-    #define ZN_59
-#endif // ZN_59
-#ifndef GA_59
-    #define GA_59
-#endif // GA_59
-#ifndef GE_59
-    #define GE_59
-#endif // GE_59
-#ifndef CA_60
-    #define CA_60
-#endif // CA_60
-#ifndef SC_60
-    #define SC_60
-#endif // SC_60
-#ifndef TI_60
-    #define TI_60
-#endif // TI_60
-#ifndef V_60
-    #define V_60
-#endif // V_60
-#ifndef CR_60
-    #define CR_60
-#endif // CR_60
-#ifndef MN_60
-    #define MN_60
-#endif // MN_60
-#ifndef FE_60
-    #define FE_60
-#endif // FE_60
-#ifndef CO_60
-    #define CO_60
-#endif // CO_60
-#ifndef NI_60
-    #define NI_60
-#endif // NI_60
-#ifndef CU_60
-    #define CU_60
-#endif // CU_60
-#ifndef ZN_60
-    #define ZN_60
-#endif // ZN_60
-#ifndef GA_60
-    #define GA_60
-#endif // GA_60
-#ifndef GE_60
-    #define GE_60
-#endif // GE_60
-#ifndef AS_60
-    #define AS_60
-#endif // AS_60
-#ifndef CA_61
-    #define CA_61
-#endif // CA_61
-#ifndef SC_61
-    #define SC_61
-#endif // SC_61
-#ifndef TI_61
-    #define TI_61
-#endif // TI_61
-#ifndef V_61
-    #define V_61
-#endif // V_61
-#ifndef CR_61
-    #define CR_61
-#endif // CR_61
-#ifndef MN_61
-    #define MN_61
-#endif // MN_61
-#ifndef FE_61
-    #define FE_61
-#endif // FE_61
-#ifndef CO_61
-    #define CO_61
-#endif // CO_61
-#ifndef NI_61
-    #define NI_61
-#endif // NI_61
-#ifndef CU_61
-    #define CU_61
-#endif // CU_61
-#ifndef ZN_61
-    #define ZN_61
-#endif // ZN_61
-#ifndef GA_61
-    #define GA_61
-#endif // GA_61
-#ifndef GE_61
-    #define GE_61
-#endif // GE_61
-#ifndef AS_61
-    #define AS_61
-#endif // AS_61
-#ifndef SC_62
-    #define SC_62
-#endif // SC_62
-#ifndef TI_62
-    #define TI_62
-#endif // TI_62
-#ifndef V_62
-    #define V_62
-#endif // V_62
-#ifndef CR_62
-    #define CR_62
-#endif // CR_62
-#ifndef MN_62
-    #define MN_62
-#endif // MN_62
-#ifndef FE_62
-    #define FE_62
-#endif // FE_62
-#ifndef CO_62
-    #define CO_62
-#endif // CO_62
-#ifndef NI_62
-    #define NI_62
-#endif // NI_62
-#ifndef CU_62
-    #define CU_62
-#endif // CU_62
-#ifndef ZN_62
-    #define ZN_62
-#endif // ZN_62
-#ifndef GA_62
-    #define GA_62
-#endif // GA_62
-#ifndef GE_62
-    #define GE_62
-#endif // GE_62
-#ifndef AS_62
-    #define AS_62
-#endif // AS_62
-#ifndef SC_63
-    #define SC_63
-#endif // SC_63
-#ifndef TI_63
-    #define TI_63
-#endif // TI_63
-#ifndef V_63
-    #define V_63
-#endif // V_63
-#ifndef CR_63
-    #define CR_63
-#endif // CR_63
-#ifndef MN_63
-    #define MN_63
-#endif // MN_63
-#ifndef FE_63
-    #define FE_63
-#endif // FE_63
-#ifndef CO_63
-    #define CO_63
-#endif // CO_63
-#ifndef NI_63
-    #define NI_63
-#endif // NI_63
-#ifndef CU_63
-    #define CU_63
-#endif // CU_63
-#ifndef ZN_63
-    #define ZN_63
-#endif // ZN_63
-#ifndef GA_63
-    #define GA_63
-#endif // GA_63
-#ifndef GE_63
-    #define GE_63
-#endif // GE_63
-#ifndef AS_63
-    #define AS_63
-#endif // AS_63
-#ifndef SE_63
-    #define SE_63
-#endif // SE_63
-#ifndef TI_64
-    #define TI_64
-#endif // TI_64
-#ifndef V_64
-    #define V_64
-#endif // V_64
-#ifndef CR_64
-    #define CR_64
-#endif // CR_64
-#ifndef MN_64
-    #define MN_64
-#endif // MN_64
-#ifndef FE_64
-    #define FE_64
-#endif // FE_64
-#ifndef CO_64
-    #define CO_64
-#endif // CO_64
-#ifndef NI_64
-    #define NI_64
-#endif // NI_64
-#ifndef CU_64
-    #define CU_64
-#endif // CU_64
-#ifndef ZN_64
-    #define ZN_64
-#endif // ZN_64
-#ifndef GA_64
-    #define GA_64
-#endif // GA_64
-#ifndef GE_64
-    #define GE_64
-#endif // GE_64
-#ifndef AS_64
-    #define AS_64
-#endif // AS_64
-#ifndef SE_64
-    #define SE_64
-#endif // SE_64
-#ifndef TI_65
-    #define TI_65
-#endif // TI_65
-#ifndef V_65
-    #define V_65
-#endif // V_65
-#ifndef CR_65
-    #define CR_65
-#endif // CR_65
-#ifndef MN_65
-    #define MN_65
-#endif // MN_65
-#ifndef FE_65
-    #define FE_65
-#endif // FE_65
-#ifndef CO_65
-    #define CO_65
-#endif // CO_65
-#ifndef NI_65
-    #define NI_65
-#endif // NI_65
-#ifndef CU_65
-    #define CU_65
-#endif // CU_65
-#ifndef ZN_65
-    #define ZN_65
-#endif // ZN_65
-#ifndef GA_65
-    #define GA_65
-#endif // GA_65
-#ifndef GE_65
-    #define GE_65
-#endif // GE_65
-#ifndef AS_65
-    #define AS_65
-#endif // AS_65
-#ifndef SE_65
-    #define SE_65
-#endif // SE_65
-#ifndef BR_65
-    #define BR_65
-#endif // BR_65
-#ifndef V_66
-    #define V_66
-#endif // V_66
-#ifndef CR_66
-    #define CR_66
-#endif // CR_66
-#ifndef MN_66
-    #define MN_66
-#endif // MN_66
-#ifndef FE_66
-    #define FE_66
-#endif // FE_66
-#ifndef CO_66
-    #define CO_66
-#endif // CO_66
-#ifndef NI_66
-    #define NI_66
-#endif // NI_66
-#ifndef CU_66
-    #define CU_66
-#endif // CU_66
-#ifndef ZN_66
-    #define ZN_66
-#endif // ZN_66
-#ifndef GA_66
-    #define GA_66
-#endif // GA_66
-#ifndef GE_66
-    #define GE_66
-#endif // GE_66
-#ifndef AS_66
-    #define AS_66
-#endif // AS_66
-#ifndef SE_66
-    #define SE_66
-#endif // SE_66
-#ifndef BR_66
-    #define BR_66
-#endif // BR_66
-#ifndef V_67
-    #define V_67
-#endif // V_67
-#ifndef CR_67
-    #define CR_67
-#endif // CR_67
-#ifndef MN_67
-    #define MN_67
-#endif // MN_67
-#ifndef FE_67
-    #define FE_67
-#endif // FE_67
-#ifndef CO_67
-    #define CO_67
-#endif // CO_67
-#ifndef NI_67
-    #define NI_67
-#endif // NI_67
-#ifndef CU_67
-    #define CU_67
-#endif // CU_67
-#ifndef ZN_67
-    #define ZN_67
-#endif // ZN_67
-#ifndef GA_67
-    #define GA_67
-#endif // GA_67
-#ifndef GE_67
-    #define GE_67
-#endif // GE_67
-#ifndef AS_67
-    #define AS_67
-#endif // AS_67
-#ifndef SE_67
-    #define SE_67
-#endif // SE_67
-#ifndef BR_67
-    #define BR_67
-#endif // BR_67
-#ifndef KR_67
-    #define KR_67
-#endif // KR_67
-#ifndef CR_68
-    #define CR_68
-#endif // CR_68
-#ifndef MN_68
-    #define MN_68
-#endif // MN_68
-#ifndef FE_68
-    #define FE_68
-#endif // FE_68
-#ifndef CO_68
-    #define CO_68
-#endif // CO_68
-#ifndef NI_68
-    #define NI_68
-#endif // NI_68
-#ifndef CU_68
-    #define CU_68
-#endif // CU_68
-#ifndef ZN_68
-    #define ZN_68
-#endif // ZN_68
-#ifndef GA_68
-    #define GA_68
-#endif // GA_68
-#ifndef GE_68
-    #define GE_68
-#endif // GE_68
-#ifndef AS_68
-    #define AS_68
-#endif // AS_68
-#ifndef SE_68
-    #define SE_68
-#endif // SE_68
-#ifndef BR_68
-    #define BR_68
-#endif // BR_68
-#ifndef KR_68
-    #define KR_68
-#endif // KR_68
-#ifndef CR_69
-    #define CR_69
-#endif // CR_69
-#ifndef MN_69
-    #define MN_69
-#endif // MN_69
-#ifndef FE_69
-    #define FE_69
-#endif // FE_69
-#ifndef CO_69
-    #define CO_69
-#endif // CO_69
-#ifndef NI_69
-    #define NI_69
-#endif // NI_69
-#ifndef CU_69
-    #define CU_69
-#endif // CU_69
-#ifndef ZN_69
-    #define ZN_69
-#endif // ZN_69
-#ifndef GA_69
-    #define GA_69
-#endif // GA_69
-#ifndef GE_69
-    #define GE_69
-#endif // GE_69
-#ifndef AS_69
-    #define AS_69
-#endif // AS_69
-#ifndef SE_69
-    #define SE_69
-#endif // SE_69
-#ifndef BR_69
-    #define BR_69
-#endif // BR_69
-#ifndef KR_69
-    #define KR_69
-#endif // KR_69
-#ifndef CR_70
-    #define CR_70
-#endif // CR_70
-#ifndef MN_70
-    #define MN_70
-#endif // MN_70
-#ifndef FE_70
-    #define FE_70
-#endif // FE_70
-#ifndef CO_70
-    #define CO_70
-#endif // CO_70
-#ifndef NI_70
-    #define NI_70
-#endif // NI_70
-#ifndef CU_70
-    #define CU_70
-#endif // CU_70
-#ifndef ZN_70
-    #define ZN_70
-#endif // ZN_70
-#ifndef GA_70
-    #define GA_70
-#endif // GA_70
-#ifndef GE_70
-    #define GE_70
-#endif // GE_70
-#ifndef AS_70
-    #define AS_70
-#endif // AS_70
-#ifndef SE_70
-    #define SE_70
-#endif // SE_70
-#ifndef BR_70
-    #define BR_70
-#endif // BR_70
-#ifndef KR_70
-    #define KR_70
-#endif // KR_70
-#ifndef MN_71
-    #define MN_71
-#endif // MN_71
-#ifndef FE_71
-    #define FE_71
-#endif // FE_71
-#ifndef CO_71
-    #define CO_71
-#endif // CO_71
-#ifndef NI_71
-    #define NI_71
-#endif // NI_71
-#ifndef CU_71
-    #define CU_71
-#endif // CU_71
-#ifndef ZN_71
-    #define ZN_71
-#endif // ZN_71
-#ifndef GA_71
-    #define GA_71
-#endif // GA_71
-#ifndef GE_71
-    #define GE_71
-#endif // GE_71
-#ifndef AS_71
-    #define AS_71
-#endif // AS_71
-#ifndef SE_71
-    #define SE_71
-#endif // SE_71
-#ifndef BR_71
-    #define BR_71
-#endif // BR_71
-#ifndef KR_71
-    #define KR_71
-#endif // KR_71
-#ifndef RB_71
-    #define RB_71
-#endif // RB_71
-#ifndef MN_72
-    #define MN_72
-#endif // MN_72
-#ifndef FE_72
-    #define FE_72
-#endif // FE_72
-#ifndef CO_72
-    #define CO_72
-#endif // CO_72
-#ifndef NI_72
-    #define NI_72
-#endif // NI_72
-#ifndef CU_72
-    #define CU_72
-#endif // CU_72
-#ifndef ZN_72
-    #define ZN_72
-#endif // ZN_72
-#ifndef GA_72
-    #define GA_72
-#endif // GA_72
-#ifndef GE_72
-    #define GE_72
-#endif // GE_72
-#ifndef AS_72
-    #define AS_72
-#endif // AS_72
-#ifndef SE_72
-    #define SE_72
-#endif // SE_72
-#ifndef BR_72
-    #define BR_72
-#endif // BR_72
-#ifndef KR_72
-    #define KR_72
-#endif // KR_72
-#ifndef RB_72
-    #define RB_72
-#endif // RB_72
-#ifndef MN_73
-    #define MN_73
-#endif // MN_73
-#ifndef FE_73
-    #define FE_73
-#endif // FE_73
-#ifndef CO_73
-    #define CO_73
-#endif // CO_73
-#ifndef NI_73
-    #define NI_73
-#endif // NI_73
-#ifndef CU_73
-    #define CU_73
-#endif // CU_73
-#ifndef ZN_73
-    #define ZN_73
-#endif // ZN_73
-#ifndef GA_73
-    #define GA_73
-#endif // GA_73
-#ifndef GE_73
-    #define GE_73
-#endif // GE_73
-#ifndef AS_73
-    #define AS_73
-#endif // AS_73
-#ifndef SE_73
-    #define SE_73
-#endif // SE_73
-#ifndef BR_73
-    #define BR_73
-#endif // BR_73
-#ifndef KR_73
-    #define KR_73
-#endif // KR_73
-#ifndef RB_73
-    #define RB_73
-#endif // RB_73
-#ifndef SR_73
-    #define SR_73
-#endif // SR_73
-#ifndef FE_74
-    #define FE_74
-#endif // FE_74
-#ifndef CO_74
-    #define CO_74
-#endif // CO_74
-#ifndef NI_74
-    #define NI_74
-#endif // NI_74
-#ifndef CU_74
-    #define CU_74
-#endif // CU_74
-#ifndef ZN_74
-    #define ZN_74
-#endif // ZN_74
-#ifndef GA_74
-    #define GA_74
-#endif // GA_74
-#ifndef GE_74
-    #define GE_74
-#endif // GE_74
-#ifndef AS_74
-    #define AS_74
-#endif // AS_74
-#ifndef SE_74
-    #define SE_74
-#endif // SE_74
-#ifndef BR_74
-    #define BR_74
-#endif // BR_74
-#ifndef KR_74
-    #define KR_74
-#endif // KR_74
-#ifndef RB_74
-    #define RB_74
-#endif // RB_74
-#ifndef SR_74
-    #define SR_74
-#endif // SR_74
-#ifndef FE_75
-    #define FE_75
-#endif // FE_75
-#ifndef CO_75
-    #define CO_75
-#endif // CO_75
-#ifndef NI_75
-    #define NI_75
-#endif // NI_75
-#ifndef CU_75
-    #define CU_75
-#endif // CU_75
-#ifndef ZN_75
-    #define ZN_75
-#endif // ZN_75
-#ifndef GA_75
-    #define GA_75
-#endif // GA_75
-#ifndef GE_75
-    #define GE_75
-#endif // GE_75
-#ifndef AS_75
-    #define AS_75
-#endif // AS_75
-#ifndef SE_75
-    #define SE_75
-#endif // SE_75
-#ifndef BR_75
-    #define BR_75
-#endif // BR_75
-#ifndef KR_75
-    #define KR_75
-#endif // KR_75
-#ifndef RB_75
-    #define RB_75
-#endif // RB_75
-#ifndef SR_75
-    #define SR_75
-#endif // SR_75
-#ifndef Y_75
-    #define Y_75
-#endif // Y_75
-#ifndef FE_76
-    #define FE_76
-#endif // FE_76
-#ifndef CO_76
-    #define CO_76
-#endif // CO_76
-#ifndef NI_76
-    #define NI_76
-#endif // NI_76
-#ifndef CU_76
-    #define CU_76
-#endif // CU_76
-#ifndef ZN_76
-    #define ZN_76
-#endif // ZN_76
-#ifndef GA_76
-    #define GA_76
-#endif // GA_76
-#ifndef GE_76
-    #define GE_76
-#endif // GE_76
-#ifndef AS_76
-    #define AS_76
-#endif // AS_76
-#ifndef SE_76
-    #define SE_76
-#endif // SE_76
-#ifndef BR_76
-    #define BR_76
-#endif // BR_76
-#ifndef KR_76
-    #define KR_76
-#endif // KR_76
-#ifndef RB_76
-    #define RB_76
-#endif // RB_76
-#ifndef SR_76
-    #define SR_76
-#endif // SR_76
-#ifndef Y_76
-    #define Y_76
-#endif // Y_76
-#ifndef CO_77
-    #define CO_77
-#endif // CO_77
-#ifndef NI_77
-    #define NI_77
-#endif // NI_77
-#ifndef CU_77
-    #define CU_77
-#endif // CU_77
-#ifndef ZN_77
-    #define ZN_77
-#endif // ZN_77
-#ifndef GA_77
-    #define GA_77
-#endif // GA_77
-#ifndef GE_77
-    #define GE_77
-#endif // GE_77
-#ifndef AS_77
-    #define AS_77
-#endif // AS_77
-#ifndef SE_77
-    #define SE_77
-#endif // SE_77
-#ifndef BR_77
-    #define BR_77
-#endif // BR_77
-#ifndef KR_77
-    #define KR_77
-#endif // KR_77
-#ifndef RB_77
-    #define RB_77
-#endif // RB_77
-#ifndef SR_77
-    #define SR_77
-#endif // SR_77
-#ifndef Y_77
-    #define Y_77
-#endif // Y_77
-#ifndef ZR_77
-    #define ZR_77
-#endif // ZR_77
-#ifndef CO_78
-    #define CO_78
-#endif // CO_78
-#ifndef NI_78
-    #define NI_78
-#endif // NI_78
-#ifndef CU_78
-    #define CU_78
-#endif // CU_78
-#ifndef ZN_78
-    #define ZN_78
-#endif // ZN_78
-#ifndef GA_78
-    #define GA_78
-#endif // GA_78
-#ifndef GE_78
-    #define GE_78
-#endif // GE_78
-#ifndef AS_78
-    #define AS_78
-#endif // AS_78
-#ifndef SE_78
-    #define SE_78
-#endif // SE_78
-#ifndef BR_78
-    #define BR_78
-#endif // BR_78
-#ifndef KR_78
-    #define KR_78
-#endif // KR_78
-#ifndef RB_78
-    #define RB_78
-#endif // RB_78
-#ifndef SR_78
-    #define SR_78
-#endif // SR_78
-#ifndef Y_78
-    #define Y_78
-#endif // Y_78
-#ifndef ZR_78
-    #define ZR_78
-#endif // ZR_78
-#ifndef NI_79
-    #define NI_79
-#endif // NI_79
-#ifndef CU_79
-    #define CU_79
-#endif // CU_79
-#ifndef ZN_79
-    #define ZN_79
-#endif // ZN_79
-#ifndef GA_79
-    #define GA_79
-#endif // GA_79
-#ifndef GE_79
-    #define GE_79
-#endif // GE_79
-#ifndef AS_79
-    #define AS_79
-#endif // AS_79
-#ifndef SE_79
-    #define SE_79
-#endif // SE_79
-#ifndef BR_79
-    #define BR_79
-#endif // BR_79
-#ifndef KR_79
-    #define KR_79
-#endif // KR_79
-#ifndef RB_79
-    #define RB_79
-#endif // RB_79
-#ifndef SR_79
-    #define SR_79
-#endif // SR_79
-#ifndef Y_79
-    #define Y_79
-#endif // Y_79
-#ifndef ZR_79
-    #define ZR_79
-#endif // ZR_79
-#ifndef NB_79
-    #define NB_79
-#endif // NB_79
-#ifndef NI_80
-    #define NI_80
-#endif // NI_80
-#ifndef CU_80
-    #define CU_80
-#endif // CU_80
-#ifndef ZN_80
-    #define ZN_80
-#endif // ZN_80
-#ifndef GA_80
-    #define GA_80
-#endif // GA_80
-#ifndef GE_80
-    #define GE_80
-#endif // GE_80
-#ifndef AS_80
-    #define AS_80
-#endif // AS_80
-#ifndef SE_80
-    #define SE_80
-#endif // SE_80
-#ifndef BR_80
-    #define BR_80
-#endif // BR_80
-#ifndef KR_80
-    #define KR_80
-#endif // KR_80
-#ifndef RB_80
-    #define RB_80
-#endif // RB_80
-#ifndef SR_80
-    #define SR_80
-#endif // SR_80
-#ifndef Y_80
-    #define Y_80
-#endif // Y_80
-#ifndef ZR_80
-    #define ZR_80
-#endif // ZR_80
-#ifndef NB_80
-    #define NB_80
-#endif // NB_80
-#ifndef NI_81
-    #define NI_81
-#endif // NI_81
-#ifndef CU_81
-    #define CU_81
-#endif // CU_81
-#ifndef ZN_81
-    #define ZN_81
-#endif // ZN_81
-#ifndef GA_81
-    #define GA_81
-#endif // GA_81
-#ifndef GE_81
-    #define GE_81
-#endif // GE_81
-#ifndef AS_81
-    #define AS_81
-#endif // AS_81
-#ifndef SE_81
-    #define SE_81
-#endif // SE_81
-#ifndef BR_81
-    #define BR_81
-#endif // BR_81
-#ifndef KR_81
-    #define KR_81
-#endif // KR_81
-#ifndef RB_81
-    #define RB_81
-#endif // RB_81
-#ifndef SR_81
-    #define SR_81
-#endif // SR_81
-#ifndef Y_81
-    #define Y_81
-#endif // Y_81
-#ifndef ZR_81
-    #define ZR_81
-#endif // ZR_81
-#ifndef NB_81
-    #define NB_81
-#endif // NB_81
-#ifndef MO_81
-    #define MO_81
-#endif // MO_81
-#ifndef NI_82
-    #define NI_82
-#endif // NI_82
-#ifndef CU_82
-    #define CU_82
-#endif // CU_82
-#ifndef ZN_82
-    #define ZN_82
-#endif // ZN_82
-#ifndef GA_82
-    #define GA_82
-#endif // GA_82
-#ifndef GE_82
-    #define GE_82
-#endif // GE_82
-#ifndef AS_82
-    #define AS_82
-#endif // AS_82
-#ifndef SE_82
-    #define SE_82
-#endif // SE_82
-#ifndef BR_82
-    #define BR_82
-#endif // BR_82
-#ifndef KR_82
-    #define KR_82
-#endif // KR_82
-#ifndef RB_82
-    #define RB_82
-#endif // RB_82
-#ifndef SR_82
-    #define SR_82
-#endif // SR_82
-#ifndef Y_82
-    #define Y_82
-#endif // Y_82
-#ifndef ZR_82
-    #define ZR_82
-#endif // ZR_82
-#ifndef NB_82
-    #define NB_82
-#endif // NB_82
-#ifndef MO_82
-    #define MO_82
-#endif // MO_82
-#ifndef CU_83
-    #define CU_83
-#endif // CU_83
-#ifndef ZN_83
-    #define ZN_83
-#endif // ZN_83
-#ifndef GA_83
-    #define GA_83
-#endif // GA_83
-#ifndef GE_83
-    #define GE_83
-#endif // GE_83
-#ifndef AS_83
-    #define AS_83
-#endif // AS_83
-#ifndef SE_83
-    #define SE_83
-#endif // SE_83
-#ifndef BR_83
-    #define BR_83
-#endif // BR_83
-#ifndef KR_83
-    #define KR_83
-#endif // KR_83
-#ifndef RB_83
-    #define RB_83
-#endif // RB_83
-#ifndef SR_83
-    #define SR_83
-#endif // SR_83
-#ifndef Y_83
-    #define Y_83
-#endif // Y_83
-#ifndef ZR_83
-    #define ZR_83
-#endif // ZR_83
-#ifndef NB_83
-    #define NB_83
-#endif // NB_83
-#ifndef MO_83
-    #define MO_83
-#endif // MO_83
-#ifndef TC_83
-    #define TC_83
-#endif // TC_83
-#ifndef CU_84
-    #define CU_84
-#endif // CU_84
-#ifndef ZN_84
-    #define ZN_84
-#endif // ZN_84
-#ifndef GA_84
-    #define GA_84
-#endif // GA_84
-#ifndef GE_84
-    #define GE_84
-#endif // GE_84
-#ifndef AS_84
-    #define AS_84
-#endif // AS_84
-#ifndef SE_84
-    #define SE_84
-#endif // SE_84
-#ifndef BR_84
-    #define BR_84
-#endif // BR_84
-#ifndef KR_84
-    #define KR_84
-#endif // KR_84
-#ifndef RB_84
-    #define RB_84
-#endif // RB_84
-#ifndef SR_84
-    #define SR_84
-#endif // SR_84
-#ifndef Y_84
-    #define Y_84
-#endif // Y_84
-#ifndef ZR_84
-    #define ZR_84
-#endif // ZR_84
-#ifndef NB_84
-    #define NB_84
-#endif // NB_84
-#ifndef MO_84
-    #define MO_84
-#endif // MO_84
-#ifndef TC_84
-    #define TC_84
-#endif // TC_84
-#ifndef ZN_85
-    #define ZN_85
-#endif // ZN_85
-#ifndef GA_85
-    #define GA_85
-#endif // GA_85
-#ifndef GE_85
-    #define GE_85
-#endif // GE_85
-#ifndef AS_85
-    #define AS_85
-#endif // AS_85
-#ifndef SE_85
-    #define SE_85
-#endif // SE_85
-#ifndef BR_85
-    #define BR_85
-#endif // BR_85
-#ifndef KR_85
-    #define KR_85
-#endif // KR_85
-#ifndef RB_85
-    #define RB_85
-#endif // RB_85
-#ifndef SR_85
-    #define SR_85
-#endif // SR_85
-#ifndef Y_85
-    #define Y_85
-#endif // Y_85
-#ifndef ZR_85
-    #define ZR_85
-#endif // ZR_85
-#ifndef NB_85
-    #define NB_85
-#endif // NB_85
-#ifndef MO_85
-    #define MO_85
-#endif // MO_85
-#ifndef TC_85
-    #define TC_85
-#endif // TC_85
-#ifndef RU_85
-    #define RU_85
-#endif // RU_85
-#ifndef ZN_86
-    #define ZN_86
-#endif // ZN_86
-#ifndef GA_86
-    #define GA_86
-#endif // GA_86
-#ifndef GE_86
-    #define GE_86
-#endif // GE_86
-#ifndef AS_86
-    #define AS_86
-#endif // AS_86
-#ifndef SE_86
-    #define SE_86
-#endif // SE_86
-#ifndef BR_86
-    #define BR_86
-#endif // BR_86
-#ifndef KR_86
-    #define KR_86
-#endif // KR_86
-#ifndef RB_86
-    #define RB_86
-#endif // RB_86
-#ifndef SR_86
-    #define SR_86
-#endif // SR_86
-#ifndef Y_86
-    #define Y_86
-#endif // Y_86
-#ifndef ZR_86
-    #define ZR_86
-#endif // ZR_86
-#ifndef NB_86
-    #define NB_86
-#endif // NB_86
-#ifndef MO_86
-    #define MO_86
-#endif // MO_86
-#ifndef TC_86
-    #define TC_86
-#endif // TC_86
-#ifndef RU_86
-    #define RU_86
-#endif // RU_86
-#ifndef GA_87
-    #define GA_87
-#endif // GA_87
-#ifndef GE_87
-    #define GE_87
-#endif // GE_87
-#ifndef AS_87
-    #define AS_87
-#endif // AS_87
-#ifndef SE_87
-    #define SE_87
-#endif // SE_87
-#ifndef BR_87
-    #define BR_87
-#endif // BR_87
-#ifndef KR_87
-    #define KR_87
-#endif // KR_87
-#ifndef RB_87
-    #define RB_87
-#endif // RB_87
-#ifndef SR_87
-    #define SR_87
-#endif // SR_87
-#ifndef Y_87
-    #define Y_87
-#endif // Y_87
-#ifndef ZR_87
-    #define ZR_87
-#endif // ZR_87
-#ifndef NB_87
-    #define NB_87
-#endif // NB_87
-#ifndef MO_87
-    #define MO_87
-#endif // MO_87
-#ifndef TC_87
-    #define TC_87
-#endif // TC_87
-#ifndef RU_87
-    #define RU_87
-#endif // RU_87
-#ifndef GA_88
-    #define GA_88
-#endif // GA_88
-#ifndef GE_88
-    #define GE_88
-#endif // GE_88
-#ifndef AS_88
-    #define AS_88
-#endif // AS_88
-#ifndef SE_88
-    #define SE_88
-#endif // SE_88
-#ifndef BR_88
-    #define BR_88
-#endif // BR_88
-#ifndef KR_88
-    #define KR_88
-#endif // KR_88
-#ifndef RB_88
-    #define RB_88
-#endif // RB_88
-#ifndef SR_88
-    #define SR_88
-#endif // SR_88
-#ifndef Y_88
-    #define Y_88
-#endif // Y_88
-#ifndef ZR_88
-    #define ZR_88
-#endif // ZR_88
-#ifndef NB_88
-    #define NB_88
-#endif // NB_88
-#ifndef MO_88
-    #define MO_88
-#endif // MO_88
-#ifndef TC_88
-    #define TC_88
-#endif // TC_88
-#ifndef RU_88
-    #define RU_88
-#endif // RU_88
-#ifndef RH_88
-    #define RH_88
-#endif // RH_88
-#ifndef GE_89
-    #define GE_89
-#endif // GE_89
-#ifndef AS_89
-    #define AS_89
-#endif // AS_89
-#ifndef SE_89
-    #define SE_89
-#endif // SE_89
-#ifndef BR_89
-    #define BR_89
-#endif // BR_89
-#ifndef KR_89
-    #define KR_89
-#endif // KR_89
-#ifndef RB_89
-    #define RB_89
-#endif // RB_89
-#ifndef SR_89
-    #define SR_89
-#endif // SR_89
-#ifndef Y_89
-    #define Y_89
-#endif // Y_89
-#ifndef ZR_89
-    #define ZR_89
-#endif // ZR_89
-#ifndef NB_89
-    #define NB_89
-#endif // NB_89
-#ifndef MO_89
-    #define MO_89
-#endif // MO_89
-#ifndef TC_89
-    #define TC_89
-#endif // TC_89
-#ifndef RU_89
-    #define RU_89
-#endif // RU_89
-#ifndef RH_89
-    #define RH_89
-#endif // RH_89
-#ifndef GE_90
-    #define GE_90
-#endif // GE_90
-#ifndef AS_90
-    #define AS_90
-#endif // AS_90
-#ifndef SE_90
-    #define SE_90
-#endif // SE_90
-#ifndef BR_90
-    #define BR_90
-#endif // BR_90
-#ifndef KR_90
-    #define KR_90
-#endif // KR_90
-#ifndef RB_90
-    #define RB_90
-#endif // RB_90
-#ifndef SR_90
-    #define SR_90
-#endif // SR_90
-#ifndef Y_90
-    #define Y_90
-#endif // Y_90
-#ifndef ZR_90
-    #define ZR_90
-#endif // ZR_90
-#ifndef NB_90
-    #define NB_90
-#endif // NB_90
-#ifndef MO_90
-    #define MO_90
-#endif // MO_90
-#ifndef TC_90
-    #define TC_90
-#endif // TC_90
-#ifndef RU_90
-    #define RU_90
-#endif // RU_90
-#ifndef RH_90
-    #define RH_90
-#endif // RH_90
-#ifndef PD_90
-    #define PD_90
-#endif // PD_90
-#ifndef AS_91
-    #define AS_91
-#endif // AS_91
-#ifndef SE_91
-    #define SE_91
-#endif // SE_91
-#ifndef BR_91
-    #define BR_91
-#endif // BR_91
-#ifndef KR_91
-    #define KR_91
-#endif // KR_91
-#ifndef RB_91
-    #define RB_91
-#endif // RB_91
-#ifndef SR_91
-    #define SR_91
-#endif // SR_91
-#ifndef Y_91
-    #define Y_91
-#endif // Y_91
-#ifndef ZR_91
-    #define ZR_91
-#endif // ZR_91
-#ifndef NB_91
-    #define NB_91
-#endif // NB_91
-#ifndef MO_91
-    #define MO_91
-#endif // MO_91
-#ifndef TC_91
-    #define TC_91
-#endif // TC_91
-#ifndef RU_91
-    #define RU_91
-#endif // RU_91
-#ifndef RH_91
-    #define RH_91
-#endif // RH_91
-#ifndef PD_91
-    #define PD_91
-#endif // PD_91
-#ifndef AS_92
-    #define AS_92
-#endif // AS_92
-#ifndef SE_92
-    #define SE_92
-#endif // SE_92
-#ifndef BR_92
-    #define BR_92
-#endif // BR_92
-#ifndef KR_92
-    #define KR_92
-#endif // KR_92
-#ifndef RB_92
-    #define RB_92
-#endif // RB_92
-#ifndef SR_92
-    #define SR_92
-#endif // SR_92
-#ifndef Y_92
-    #define Y_92
-#endif // Y_92
-#ifndef ZR_92
-    #define ZR_92
-#endif // ZR_92
-#ifndef NB_92
-    #define NB_92
-#endif // NB_92
-#ifndef MO_92
-    #define MO_92
-#endif // MO_92
-#ifndef TC_92
-    #define TC_92
-#endif // TC_92
-#ifndef RU_92
-    #define RU_92
-#endif // RU_92
-#ifndef RH_92
-    #define RH_92
-#endif // RH_92
-#ifndef PD_92
-    #define PD_92
-#endif // PD_92
-#ifndef AG_92
-    #define AG_92
-#endif // AG_92
-#ifndef SE_93
-    #define SE_93
-#endif // SE_93
-#ifndef BR_93
-    #define BR_93
-#endif // BR_93
-#ifndef KR_93
-    #define KR_93
-#endif // KR_93
-#ifndef RB_93
-    #define RB_93
-#endif // RB_93
-#ifndef SR_93
-    #define SR_93
-#endif // SR_93
-#ifndef Y_93
-    #define Y_93
-#endif // Y_93
-#ifndef ZR_93
-    #define ZR_93
-#endif // ZR_93
-#ifndef NB_93
-    #define NB_93
-#endif // NB_93
-#ifndef MO_93
-    #define MO_93
-#endif // MO_93
-#ifndef TC_93
-    #define TC_93
-#endif // TC_93
-#ifndef RU_93
-    #define RU_93
-#endif // RU_93
-#ifndef RH_93
-    #define RH_93
-#endif // RH_93
-#ifndef PD_93
-    #define PD_93
-#endif // PD_93
-#ifndef AG_93
-    #define AG_93
-#endif // AG_93
-#ifndef SE_94
-    #define SE_94
-#endif // SE_94
-#ifndef BR_94
-    #define BR_94
-#endif // BR_94
-#ifndef KR_94
-    #define KR_94
-#endif // KR_94
-#ifndef RB_94
-    #define RB_94
-#endif // RB_94
-#ifndef SR_94
-    #define SR_94
-#endif // SR_94
-#ifndef Y_94
-    #define Y_94
-#endif // Y_94
-#ifndef ZR_94
-    #define ZR_94
-#endif // ZR_94
-#ifndef NB_94
-    #define NB_94
-#endif // NB_94
-#ifndef MO_94
-    #define MO_94
-#endif // MO_94
-#ifndef TC_94
-    #define TC_94
-#endif // TC_94
-#ifndef RU_94
-    #define RU_94
-#endif // RU_94
-#ifndef RH_94
-    #define RH_94
-#endif // RH_94
-#ifndef PD_94
-    #define PD_94
-#endif // PD_94
-#ifndef AG_94
-    #define AG_94
-#endif // AG_94
-#ifndef CD_94
-    #define CD_94
-#endif // CD_94
-#ifndef SE_95
-    #define SE_95
-#endif // SE_95
-#ifndef BR_95
-    #define BR_95
-#endif // BR_95
-#ifndef KR_95
-    #define KR_95
-#endif // KR_95
-#ifndef RB_95
-    #define RB_95
-#endif // RB_95
-#ifndef SR_95
-    #define SR_95
-#endif // SR_95
-#ifndef Y_95
-    #define Y_95
-#endif // Y_95
-#ifndef ZR_95
-    #define ZR_95
-#endif // ZR_95
-#ifndef NB_95
-    #define NB_95
-#endif // NB_95
-#ifndef MO_95
-    #define MO_95
-#endif // MO_95
-#ifndef TC_95
-    #define TC_95
-#endif // TC_95
-#ifndef RU_95
-    #define RU_95
-#endif // RU_95
-#ifndef RH_95
-    #define RH_95
-#endif // RH_95
-#ifndef PD_95
-    #define PD_95
-#endif // PD_95
-#ifndef AG_95
-    #define AG_95
-#endif // AG_95
-#ifndef CD_95
-    #define CD_95
-#endif // CD_95
-#ifndef BR_96
-    #define BR_96
-#endif // BR_96
-#ifndef KR_96
-    #define KR_96
-#endif // KR_96
-#ifndef RB_96
-    #define RB_96
-#endif // RB_96
-#ifndef SR_96
-    #define SR_96
-#endif // SR_96
-#ifndef Y_96
-    #define Y_96
-#endif // Y_96
-#ifndef ZR_96
-    #define ZR_96
-#endif // ZR_96
-#ifndef NB_96
-    #define NB_96
-#endif // NB_96
-#ifndef MO_96
-    #define MO_96
-#endif // MO_96
-#ifndef TC_96
-    #define TC_96
-#endif // TC_96
-#ifndef RU_96
-    #define RU_96
-#endif // RU_96
-#ifndef RH_96
-    #define RH_96
-#endif // RH_96
-#ifndef PD_96
-    #define PD_96
-#endif // PD_96
-#ifndef AG_96
-    #define AG_96
-#endif // AG_96
-#ifndef CD_96
-    #define CD_96
-#endif // CD_96
-#ifndef IN_96
-    #define IN_96
-#endif // IN_96
-#ifndef BR_97
-    #define BR_97
-#endif // BR_97
-#ifndef KR_97
-    #define KR_97
-#endif // KR_97
-#ifndef RB_97
-    #define RB_97
-#endif // RB_97
-#ifndef SR_97
-    #define SR_97
-#endif // SR_97
-#ifndef Y_97
-    #define Y_97
-#endif // Y_97
-#ifndef ZR_97
-    #define ZR_97
-#endif // ZR_97
-#ifndef NB_97
-    #define NB_97
-#endif // NB_97
-#ifndef MO_97
-    #define MO_97
-#endif // MO_97
-#ifndef TC_97
-    #define TC_97
-#endif // TC_97
-#ifndef RU_97
-    #define RU_97
-#endif // RU_97
-#ifndef RH_97
-    #define RH_97
-#endif // RH_97
-#ifndef PD_97
-    #define PD_97
-#endif // PD_97
-#ifndef AG_97
-    #define AG_97
-#endif // AG_97
-#ifndef CD_97
-    #define CD_97
-#endif // CD_97
-#ifndef IN_97
-    #define IN_97
-#endif // IN_97
-#ifndef BR_98
-    #define BR_98
-#endif // BR_98
-#ifndef KR_98
-    #define KR_98
-#endif // KR_98
-#ifndef RB_98
-    #define RB_98
-#endif // RB_98
-#ifndef SR_98
-    #define SR_98
-#endif // SR_98
-#ifndef Y_98
-    #define Y_98
-#endif // Y_98
-#ifndef ZR_98
-    #define ZR_98
-#endif // ZR_98
-#ifndef NB_98
-    #define NB_98
-#endif // NB_98
-#ifndef MO_98
-    #define MO_98
-#endif // MO_98
-#ifndef TC_98
-    #define TC_98
-#endif // TC_98
-#ifndef RU_98
-    #define RU_98
-#endif // RU_98
-#ifndef RH_98
-    #define RH_98
-#endif // RH_98
-#ifndef PD_98
-    #define PD_98
-#endif // PD_98
-#ifndef AG_98
-    #define AG_98
-#endif // AG_98
-#ifndef CD_98
-    #define CD_98
-#endif // CD_98
-#ifndef IN_98
-    #define IN_98
-#endif // IN_98
-#ifndef KR_99
-    #define KR_99
-#endif // KR_99
-#ifndef RB_99
-    #define RB_99
-#endif // RB_99
-#ifndef SR_99
-    #define SR_99
-#endif // SR_99
-#ifndef Y_99
-    #define Y_99
-#endif // Y_99
-#ifndef ZR_99
-    #define ZR_99
-#endif // ZR_99
-#ifndef NB_99
-    #define NB_99
-#endif // NB_99
-#ifndef MO_99
-    #define MO_99
-#endif // MO_99
-#ifndef TC_99
-    #define TC_99
-#endif // TC_99
-#ifndef RU_99
-    #define RU_99
-#endif // RU_99
-#ifndef RH_99
-    #define RH_99
-#endif // RH_99
-#ifndef PD_99
-    #define PD_99
-#endif // PD_99
-#ifndef AG_99
-    #define AG_99
-#endif // AG_99
-#ifndef CD_99
-    #define CD_99
-#endif // CD_99
-#ifndef IN_99
-    #define IN_99
-#endif // IN_99
-#ifndef SN_99
-    #define SN_99
-#endif // SN_99
-#ifndef KR_100
-    #define KR_100
-#endif // KR_100
-#ifndef RB_100
-    #define RB_100
-#endif // RB_100
-#ifndef SR_100
-    #define SR_100
-#endif // SR_100
-#ifndef Y_100
-    #define Y_100
-#endif // Y_100
-#ifndef ZR_100
-    #define ZR_100
-#endif // ZR_100
-#ifndef NB_100
-    #define NB_100
-#endif // NB_100
-#ifndef MO_100
-    #define MO_100
-#endif // MO_100
-#ifndef TC_100
-    #define TC_100
-#endif // TC_100
-#ifndef RU_100
-    #define RU_100
-#endif // RU_100
-#ifndef RH_100
-    #define RH_100
-#endif // RH_100
-#ifndef PD_100
-    #define PD_100
-#endif // PD_100
-#ifndef AG_100
-    #define AG_100
-#endif // AG_100
-#ifndef CD_100
-    #define CD_100
-#endif // CD_100
-#ifndef IN_100
-    #define IN_100
-#endif // IN_100
-#ifndef SN_100
-    #define SN_100
-#endif // SN_100
-#ifndef KR_101
-    #define KR_101
-#endif // KR_101
-#ifndef RB_101
-    #define RB_101
-#endif // RB_101
-#ifndef SR_101
-    #define SR_101
-#endif // SR_101
-#ifndef Y_101
-    #define Y_101
-#endif // Y_101
-#ifndef ZR_101
-    #define ZR_101
-#endif // ZR_101
-#ifndef NB_101
-    #define NB_101
-#endif // NB_101
-#ifndef MO_101
-    #define MO_101
-#endif // MO_101
-#ifndef TC_101
-    #define TC_101
-#endif // TC_101
-#ifndef RU_101
-    #define RU_101
-#endif // RU_101
-#ifndef RH_101
-    #define RH_101
-#endif // RH_101
-#ifndef PD_101
-    #define PD_101
-#endif // PD_101
-#ifndef AG_101
-    #define AG_101
-#endif // AG_101
-#ifndef CD_101
-    #define CD_101
-#endif // CD_101
-#ifndef IN_101
-    #define IN_101
-#endif // IN_101
-#ifndef SN_101
-    #define SN_101
-#endif // SN_101
-#ifndef RB_102
-    #define RB_102
-#endif // RB_102
-#ifndef SR_102
-    #define SR_102
-#endif // SR_102
-#ifndef Y_102
-    #define Y_102
-#endif // Y_102
-#ifndef ZR_102
-    #define ZR_102
-#endif // ZR_102
-#ifndef NB_102
-    #define NB_102
-#endif // NB_102
-#ifndef MO_102
-    #define MO_102
-#endif // MO_102
-#ifndef TC_102
-    #define TC_102
-#endif // TC_102
-#ifndef RU_102
-    #define RU_102
-#endif // RU_102
-#ifndef RH_102
-    #define RH_102
-#endif // RH_102
-#ifndef PD_102
-    #define PD_102
-#endif // PD_102
-#ifndef AG_102
-    #define AG_102
-#endif // AG_102
-#ifndef CD_102
-    #define CD_102
-#endif // CD_102
-#ifndef IN_102
-    #define IN_102
-#endif // IN_102
-#ifndef SN_102
-    #define SN_102
-#endif // SN_102
-#ifndef SB_102
-    #define SB_102
-#endif // SB_102
-#ifndef RB_103
-    #define RB_103
-#endif // RB_103
-#ifndef SR_103
-    #define SR_103
-#endif // SR_103
-#ifndef Y_103
-    #define Y_103
-#endif // Y_103
-#ifndef ZR_103
-    #define ZR_103
-#endif // ZR_103
-#ifndef NB_103
-    #define NB_103
-#endif // NB_103
-#ifndef MO_103
-    #define MO_103
-#endif // MO_103
-#ifndef TC_103
-    #define TC_103
-#endif // TC_103
-#ifndef RU_103
-    #define RU_103
-#endif // RU_103
-#ifndef RH_103
-    #define RH_103
-#endif // RH_103
-#ifndef PD_103
-    #define PD_103
-#endif // PD_103
-#ifndef AG_103
-    #define AG_103
-#endif // AG_103
-#ifndef CD_103
-    #define CD_103
-#endif // CD_103
-#ifndef IN_103
-    #define IN_103
-#endif // IN_103
-#ifndef SN_103
-    #define SN_103
-#endif // SN_103
-#ifndef SB_103
-    #define SB_103
-#endif // SB_103
-#ifndef RB_104
-    #define RB_104
-#endif // RB_104
-#ifndef SR_104
-    #define SR_104
-#endif // SR_104
-#ifndef Y_104
-    #define Y_104
-#endif // Y_104
-#ifndef ZR_104
-    #define ZR_104
-#endif // ZR_104
-#ifndef NB_104
-    #define NB_104
-#endif // NB_104
-#ifndef MO_104
-    #define MO_104
-#endif // MO_104
-#ifndef TC_104
-    #define TC_104
-#endif // TC_104
-#ifndef RU_104
-    #define RU_104
-#endif // RU_104
-#ifndef RH_104
-    #define RH_104
-#endif // RH_104
-#ifndef PD_104
-    #define PD_104
-#endif // PD_104
-#ifndef AG_104
-    #define AG_104
-#endif // AG_104
-#ifndef CD_104
-    #define CD_104
-#endif // CD_104
-#ifndef IN_104
-    #define IN_104
-#endif // IN_104
-#ifndef SN_104
-    #define SN_104
-#endif // SN_104
-#ifndef SB_104
-    #define SB_104
-#endif // SB_104
-#ifndef TE_104
-    #define TE_104
-#endif // TE_104
-#ifndef SR_105
-    #define SR_105
-#endif // SR_105
-#ifndef Y_105
-    #define Y_105
-#endif // Y_105
-#ifndef ZR_105
-    #define ZR_105
-#endif // ZR_105
-#ifndef NB_105
-    #define NB_105
-#endif // NB_105
-#ifndef MO_105
-    #define MO_105
-#endif // MO_105
-#ifndef TC_105
-    #define TC_105
-#endif // TC_105
-#ifndef RU_105
-    #define RU_105
-#endif // RU_105
-#ifndef RH_105
-    #define RH_105
-#endif // RH_105
-#ifndef PD_105
-    #define PD_105
-#endif // PD_105
-#ifndef AG_105
-    #define AG_105
-#endif // AG_105
-#ifndef CD_105
-    #define CD_105
-#endif // CD_105
-#ifndef IN_105
-    #define IN_105
-#endif // IN_105
-#ifndef SN_105
-    #define SN_105
-#endif // SN_105
-#ifndef SB_105
-    #define SB_105
-#endif // SB_105
-#ifndef TE_105
-    #define TE_105
-#endif // TE_105
-#ifndef SR_106
-    #define SR_106
-#endif // SR_106
-#ifndef Y_106
-    #define Y_106
-#endif // Y_106
-#ifndef ZR_106
-    #define ZR_106
-#endif // ZR_106
-#ifndef NB_106
-    #define NB_106
-#endif // NB_106
-#ifndef MO_106
-    #define MO_106
-#endif // MO_106
-#ifndef TC_106
-    #define TC_106
-#endif // TC_106
-#ifndef RU_106
-    #define RU_106
-#endif // RU_106
-#ifndef RH_106
-    #define RH_106
-#endif // RH_106
-#ifndef PD_106
-    #define PD_106
-#endif // PD_106
-#ifndef AG_106
-    #define AG_106
-#endif // AG_106
-#ifndef CD_106
-    #define CD_106
-#endif // CD_106
-#ifndef IN_106
-    #define IN_106
-#endif // IN_106
-#ifndef SN_106
-    #define SN_106
-#endif // SN_106
-#ifndef SB_106
-    #define SB_106
-#endif // SB_106
-#ifndef TE_106
-    #define TE_106
-#endif // TE_106
-#ifndef I_106
-    #define I_106
-#endif // I_106
-#ifndef SR_107
-    #define SR_107
-#endif // SR_107
-#ifndef Y_107
-    #define Y_107
-#endif // Y_107
-#ifndef ZR_107
-    #define ZR_107
-#endif // ZR_107
-#ifndef NB_107
-    #define NB_107
-#endif // NB_107
-#ifndef MO_107
-    #define MO_107
-#endif // MO_107
-#ifndef TC_107
-    #define TC_107
-#endif // TC_107
-#ifndef RU_107
-    #define RU_107
-#endif // RU_107
-#ifndef RH_107
-    #define RH_107
-#endif // RH_107
-#ifndef PD_107
-    #define PD_107
-#endif // PD_107
-#ifndef AG_107
-    #define AG_107
-#endif // AG_107
-#ifndef CD_107
-    #define CD_107
-#endif // CD_107
-#ifndef IN_107
-    #define IN_107
-#endif // IN_107
-#ifndef SN_107
-    #define SN_107
-#endif // SN_107
-#ifndef SB_107
-    #define SB_107
-#endif // SB_107
-#ifndef TE_107
-    #define TE_107
-#endif // TE_107
-#ifndef I_107
-    #define I_107
-#endif // I_107
-#ifndef Y_108
-    #define Y_108
-#endif // Y_108
-#ifndef ZR_108
-    #define ZR_108
-#endif // ZR_108
-#ifndef NB_108
-    #define NB_108
-#endif // NB_108
-#ifndef MO_108
-    #define MO_108
-#endif // MO_108
-#ifndef TC_108
-    #define TC_108
-#endif // TC_108
-#ifndef RU_108
-    #define RU_108
-#endif // RU_108
-#ifndef RH_108
-    #define RH_108
-#endif // RH_108
-#ifndef PD_108
-    #define PD_108
-#endif // PD_108
-#ifndef AG_108
-    #define AG_108
-#endif // AG_108
-#ifndef CD_108
-    #define CD_108
-#endif // CD_108
-#ifndef IN_108
-    #define IN_108
-#endif // IN_108
-#ifndef SN_108
-    #define SN_108
-#endif // SN_108
-#ifndef SB_108
-    #define SB_108
-#endif // SB_108
-#ifndef TE_108
-    #define TE_108
-#endif // TE_108
-#ifndef I_108
-    #define I_108
-#endif // I_108
-#ifndef XE_108
-    #define XE_108
-#endif // XE_108
-#ifndef Y_109
-    #define Y_109
-#endif // Y_109
-#ifndef ZR_109
-    #define ZR_109
-#endif // ZR_109
-#ifndef NB_109
-    #define NB_109
-#endif // NB_109
-#ifndef MO_109
-    #define MO_109
-#endif // MO_109
-#ifndef TC_109
-    #define TC_109
-#endif // TC_109
-#ifndef RU_109
-    #define RU_109
-#endif // RU_109
-#ifndef RH_109
-    #define RH_109
-#endif // RH_109
-#ifndef PD_109
-    #define PD_109
-#endif // PD_109
-#ifndef AG_109
-    #define AG_109
-#endif // AG_109
-#ifndef CD_109
-    #define CD_109
-#endif // CD_109
-#ifndef IN_109
-    #define IN_109
-#endif // IN_109
-#ifndef SN_109
-    #define SN_109
-#endif // SN_109
-#ifndef SB_109
-    #define SB_109
-#endif // SB_109
-#ifndef TE_109
-    #define TE_109
-#endif // TE_109
-#ifndef I_109
-    #define I_109
-#endif // I_109
-#ifndef XE_109
-    #define XE_109
-#endif // XE_109
-#ifndef ZR_110
-    #define ZR_110
-#endif // ZR_110
-#ifndef NB_110
-    #define NB_110
-#endif // NB_110
-#ifndef MO_110
-    #define MO_110
-#endif // MO_110
-#ifndef TC_110
-    #define TC_110
-#endif // TC_110
-#ifndef RU_110
-    #define RU_110
-#endif // RU_110
-#ifndef RH_110
-    #define RH_110
-#endif // RH_110
-#ifndef PD_110
-    #define PD_110
-#endif // PD_110
-#ifndef AG_110
-    #define AG_110
-#endif // AG_110
-#ifndef CD_110
-    #define CD_110
-#endif // CD_110
-#ifndef IN_110
-    #define IN_110
-#endif // IN_110
-#ifndef SN_110
-    #define SN_110
-#endif // SN_110
-#ifndef SB_110
-    #define SB_110
-#endif // SB_110
-#ifndef TE_110
-    #define TE_110
-#endif // TE_110
-#ifndef I_110
-    #define I_110
-#endif // I_110
-#ifndef XE_110
-    #define XE_110
-#endif // XE_110
-#ifndef ZR_111
-    #define ZR_111
-#endif // ZR_111
-#ifndef NB_111
-    #define NB_111
-#endif // NB_111
-#ifndef MO_111
-    #define MO_111
-#endif // MO_111
-#ifndef TC_111
-    #define TC_111
-#endif // TC_111
-#ifndef RU_111
-    #define RU_111
-#endif // RU_111
-#ifndef RH_111
-    #define RH_111
-#endif // RH_111
-#ifndef PD_111
-    #define PD_111
-#endif // PD_111
-#ifndef AG_111
-    #define AG_111
-#endif // AG_111
-#ifndef CD_111
-    #define CD_111
-#endif // CD_111
-#ifndef IN_111
-    #define IN_111
-#endif // IN_111
-#ifndef SN_111
-    #define SN_111
-#endif // SN_111
-#ifndef SB_111
-    #define SB_111
-#endif // SB_111
-#ifndef TE_111
-    #define TE_111
-#endif // TE_111
-#ifndef I_111
-    #define I_111
-#endif // I_111
-#ifndef XE_111
-    #define XE_111
-#endif // XE_111
-#ifndef CS_111
-    #define CS_111
-#endif // CS_111
-#ifndef ZR_112
-    #define ZR_112
-#endif // ZR_112
-#ifndef NB_112
-    #define NB_112
-#endif // NB_112
-#ifndef MO_112
-    #define MO_112
-#endif // MO_112
-#ifndef TC_112
-    #define TC_112
-#endif // TC_112
-#ifndef RU_112
-    #define RU_112
-#endif // RU_112
-#ifndef RH_112
-    #define RH_112
-#endif // RH_112
-#ifndef PD_112
-    #define PD_112
-#endif // PD_112
-#ifndef AG_112
-    #define AG_112
-#endif // AG_112
-#ifndef CD_112
-    #define CD_112
-#endif // CD_112
-#ifndef IN_112
-    #define IN_112
-#endif // IN_112
-#ifndef SN_112
-    #define SN_112
-#endif // SN_112
-#ifndef SB_112
-    #define SB_112
-#endif // SB_112
-#ifndef TE_112
-    #define TE_112
-#endif // TE_112
-#ifndef I_112
-    #define I_112
-#endif // I_112
-#ifndef XE_112
-    #define XE_112
-#endif // XE_112
-#ifndef CS_112
-    #define CS_112
-#endif // CS_112
-#ifndef ZR_113
-    #define ZR_113
-#endif // ZR_113
-#ifndef NB_113
-    #define NB_113
-#endif // NB_113
-#ifndef MO_113
-    #define MO_113
-#endif // MO_113
-#ifndef TC_113
-    #define TC_113
-#endif // TC_113
-#ifndef RU_113
-    #define RU_113
-#endif // RU_113
-#ifndef RH_113
-    #define RH_113
-#endif // RH_113
-#ifndef PD_113
-    #define PD_113
-#endif // PD_113
-#ifndef AG_113
-    #define AG_113
-#endif // AG_113
-#ifndef CD_113
-    #define CD_113
-#endif // CD_113
-#ifndef IN_113
-    #define IN_113
-#endif // IN_113
-#ifndef SN_113
-    #define SN_113
-#endif // SN_113
-#ifndef SB_113
-    #define SB_113
-#endif // SB_113
-#ifndef TE_113
-    #define TE_113
-#endif // TE_113
-#ifndef I_113
-    #define I_113
-#endif // I_113
-#ifndef XE_113
-    #define XE_113
-#endif // XE_113
-#ifndef CS_113
-    #define CS_113
-#endif // CS_113
-#ifndef BA_113
-    #define BA_113
-#endif // BA_113
-#ifndef NB_114
-    #define NB_114
-#endif // NB_114
-#ifndef MO_114
-    #define MO_114
-#endif // MO_114
-#ifndef TC_114
-    #define TC_114
-#endif // TC_114
-#ifndef RU_114
-    #define RU_114
-#endif // RU_114
-#ifndef RH_114
-    #define RH_114
-#endif // RH_114
-#ifndef PD_114
-    #define PD_114
-#endif // PD_114
-#ifndef AG_114
-    #define AG_114
-#endif // AG_114
-#ifndef CD_114
-    #define CD_114
-#endif // CD_114
-#ifndef IN_114
-    #define IN_114
-#endif // IN_114
-#ifndef SN_114
-    #define SN_114
-#endif // SN_114
-#ifndef SB_114
-    #define SB_114
-#endif // SB_114
-#ifndef TE_114
-    #define TE_114
-#endif // TE_114
-#ifndef I_114
-    #define I_114
-#endif // I_114
-#ifndef XE_114
-    #define XE_114
-#endif // XE_114
-#ifndef CS_114
-    #define CS_114
-#endif // CS_114
-#ifndef BA_114
-    #define BA_114
-#endif // BA_114
-#ifndef NB_115
-    #define NB_115
-#endif // NB_115
-#ifndef MO_115
-    #define MO_115
-#endif // MO_115
-#ifndef TC_115
-    #define TC_115
-#endif // TC_115
-#ifndef RU_115
-    #define RU_115
-#endif // RU_115
-#ifndef RH_115
-    #define RH_115
-#endif // RH_115
-#ifndef PD_115
-    #define PD_115
-#endif // PD_115
-#ifndef AG_115
-    #define AG_115
-#endif // AG_115
-#ifndef CD_115
-    #define CD_115
-#endif // CD_115
-#ifndef IN_115
-    #define IN_115
-#endif // IN_115
-#ifndef SN_115
-    #define SN_115
-#endif // SN_115
-#ifndef SB_115
-    #define SB_115
-#endif // SB_115
-#ifndef TE_115
-    #define TE_115
-#endif // TE_115
-#ifndef I_115
-    #define I_115
-#endif // I_115
-#ifndef XE_115
-    #define XE_115
-#endif // XE_115
-#ifndef CS_115
-    #define CS_115
-#endif // CS_115
-#ifndef BA_115
-    #define BA_115
-#endif // BA_115
-#ifndef NB_116
-    #define NB_116
-#endif // NB_116
-#ifndef MO_116
-    #define MO_116
-#endif // MO_116
-#ifndef TC_116
-    #define TC_116
-#endif // TC_116
-#ifndef RU_116
-    #define RU_116
-#endif // RU_116
-#ifndef RH_116
-    #define RH_116
-#endif // RH_116
-#ifndef PD_116
-    #define PD_116
-#endif // PD_116
-#ifndef AG_116
-    #define AG_116
-#endif // AG_116
-#ifndef CD_116
-    #define CD_116
-#endif // CD_116
-#ifndef IN_116
-    #define IN_116
-#endif // IN_116
-#ifndef SN_116
-    #define SN_116
-#endif // SN_116
-#ifndef SB_116
-    #define SB_116
-#endif // SB_116
-#ifndef TE_116
-    #define TE_116
-#endif // TE_116
-#ifndef I_116
-    #define I_116
-#endif // I_116
-#ifndef XE_116
-    #define XE_116
-#endif // XE_116
-#ifndef CS_116
-    #define CS_116
-#endif // CS_116
-#ifndef BA_116
-    #define BA_116
-#endif // BA_116
-#ifndef LA_116
-    #define LA_116
-#endif // LA_116
-#ifndef MO_117
-    #define MO_117
-#endif // MO_117
-#ifndef TC_117
-    #define TC_117
-#endif // TC_117
-#ifndef RU_117
-    #define RU_117
-#endif // RU_117
-#ifndef RH_117
-    #define RH_117
-#endif // RH_117
-#ifndef PD_117
-    #define PD_117
-#endif // PD_117
-#ifndef AG_117
-    #define AG_117
-#endif // AG_117
-#ifndef CD_117
-    #define CD_117
-#endif // CD_117
-#ifndef IN_117
-    #define IN_117
-#endif // IN_117
-#ifndef SN_117
-    #define SN_117
-#endif // SN_117
-#ifndef SB_117
-    #define SB_117
-#endif // SB_117
-#ifndef TE_117
-    #define TE_117
-#endif // TE_117
-#ifndef I_117
-    #define I_117
-#endif // I_117
-#ifndef XE_117
-    #define XE_117
-#endif // XE_117
-#ifndef CS_117
-    #define CS_117
-#endif // CS_117
-#ifndef BA_117
-    #define BA_117
-#endif // BA_117
-#ifndef LA_117
-    #define LA_117
-#endif // LA_117
-#ifndef MO_118
-    #define MO_118
-#endif // MO_118
-#ifndef TC_118
-    #define TC_118
-#endif // TC_118
-#ifndef RU_118
-    #define RU_118
-#endif // RU_118
-#ifndef RH_118
-    #define RH_118
-#endif // RH_118
-#ifndef PD_118
-    #define PD_118
-#endif // PD_118
-#ifndef AG_118
-    #define AG_118
-#endif // AG_118
-#ifndef CD_118
-    #define CD_118
-#endif // CD_118
-#ifndef IN_118
-    #define IN_118
-#endif // IN_118
-#ifndef SN_118
-    #define SN_118
-#endif // SN_118
-#ifndef SB_118
-    #define SB_118
-#endif // SB_118
-#ifndef TE_118
-    #define TE_118
-#endif // TE_118
-#ifndef I_118
-    #define I_118
-#endif // I_118
-#ifndef XE_118
-    #define XE_118
-#endif // XE_118
-#ifndef CS_118
-    #define CS_118
-#endif // CS_118
-#ifndef BA_118
-    #define BA_118
-#endif // BA_118
-#ifndef LA_118
-    #define LA_118
-#endif // LA_118
-#ifndef MO_119
-    #define MO_119
-#endif // MO_119
-#ifndef TC_119
-    #define TC_119
-#endif // TC_119
-#ifndef RU_119
-    #define RU_119
-#endif // RU_119
-#ifndef RH_119
-    #define RH_119
-#endif // RH_119
-#ifndef PD_119
-    #define PD_119
-#endif // PD_119
-#ifndef AG_119
-    #define AG_119
-#endif // AG_119
-#ifndef CD_119
-    #define CD_119
-#endif // CD_119
-#ifndef IN_119
-    #define IN_119
-#endif // IN_119
-#ifndef SN_119
-    #define SN_119
-#endif // SN_119
-#ifndef SB_119
-    #define SB_119
-#endif // SB_119
-#ifndef TE_119
-    #define TE_119
-#endif // TE_119
-#ifndef I_119
-    #define I_119
-#endif // I_119
-#ifndef XE_119
-    #define XE_119
-#endif // XE_119
-#ifndef CS_119
-    #define CS_119
-#endif // CS_119
-#ifndef BA_119
-    #define BA_119
-#endif // BA_119
-#ifndef LA_119
-    #define LA_119
-#endif // LA_119
-#ifndef CE_119
-    #define CE_119
-#endif // CE_119
-#ifndef TC_120
-    #define TC_120
-#endif // TC_120
-#ifndef RU_120
-    #define RU_120
-#endif // RU_120
-#ifndef RH_120
-    #define RH_120
-#endif // RH_120
-#ifndef PD_120
-    #define PD_120
-#endif // PD_120
-#ifndef AG_120
-    #define AG_120
-#endif // AG_120
-#ifndef CD_120
-    #define CD_120
-#endif // CD_120
-#ifndef IN_120
-    #define IN_120
-#endif // IN_120
-#ifndef SN_120
-    #define SN_120
-#endif // SN_120
-#ifndef SB_120
-    #define SB_120
-#endif // SB_120
-#ifndef TE_120
-    #define TE_120
-#endif // TE_120
-#ifndef I_120
-    #define I_120
-#endif // I_120
-#ifndef XE_120
-    #define XE_120
-#endif // XE_120
-#ifndef CS_120
-    #define CS_120
-#endif // CS_120
-#ifndef BA_120
-    #define BA_120
-#endif // BA_120
-#ifndef LA_120
-    #define LA_120
-#endif // LA_120
-#ifndef CE_120
-    #define CE_120
-#endif // CE_120
-#ifndef TC_121
-    #define TC_121
-#endif // TC_121
-#ifndef RU_121
-    #define RU_121
-#endif // RU_121
-#ifndef RH_121
-    #define RH_121
-#endif // RH_121
-#ifndef PD_121
-    #define PD_121
-#endif // PD_121
-#ifndef AG_121
-    #define AG_121
-#endif // AG_121
-#ifndef CD_121
-    #define CD_121
-#endif // CD_121
-#ifndef IN_121
-    #define IN_121
-#endif // IN_121
-#ifndef SN_121
-    #define SN_121
-#endif // SN_121
-#ifndef SB_121
-    #define SB_121
-#endif // SB_121
-#ifndef TE_121
-    #define TE_121
-#endif // TE_121
-#ifndef I_121
-    #define I_121
-#endif // I_121
-#ifndef XE_121
-    #define XE_121
-#endif // XE_121
-#ifndef CS_121
-    #define CS_121
-#endif // CS_121
-#ifndef BA_121
-    #define BA_121
-#endif // BA_121
-#ifndef LA_121
-    #define LA_121
-#endif // LA_121
-#ifndef CE_121
-    #define CE_121
-#endif // CE_121
-#ifndef PR_121
-    #define PR_121
-#endif // PR_121
-#ifndef TC_122
-    #define TC_122
-#endif // TC_122
-#ifndef RU_122
-    #define RU_122
-#endif // RU_122
-#ifndef RH_122
-    #define RH_122
-#endif // RH_122
-#ifndef PD_122
-    #define PD_122
-#endif // PD_122
-#ifndef AG_122
-    #define AG_122
-#endif // AG_122
-#ifndef CD_122
-    #define CD_122
-#endif // CD_122
-#ifndef IN_122
-    #define IN_122
-#endif // IN_122
-#ifndef SN_122
-    #define SN_122
-#endif // SN_122
-#ifndef SB_122
-    #define SB_122
-#endif // SB_122
-#ifndef TE_122
-    #define TE_122
-#endif // TE_122
-#ifndef I_122
-    #define I_122
-#endif // I_122
-#ifndef XE_122
-    #define XE_122
-#endif // XE_122
-#ifndef CS_122
-    #define CS_122
-#endif // CS_122
-#ifndef BA_122
-    #define BA_122
-#endif // BA_122
-#ifndef LA_122
-    #define LA_122
-#endif // LA_122
-#ifndef CE_122
-    #define CE_122
-#endif // CE_122
-#ifndef PR_122
-    #define PR_122
-#endif // PR_122
-#ifndef RU_123
-    #define RU_123
-#endif // RU_123
-#ifndef RH_123
-    #define RH_123
-#endif // RH_123
-#ifndef PD_123
-    #define PD_123
-#endif // PD_123
-#ifndef AG_123
-    #define AG_123
-#endif // AG_123
-#ifndef CD_123
-    #define CD_123
-#endif // CD_123
-#ifndef IN_123
-    #define IN_123
-#endif // IN_123
-#ifndef SN_123
-    #define SN_123
-#endif // SN_123
-#ifndef SB_123
-    #define SB_123
-#endif // SB_123
-#ifndef TE_123
-    #define TE_123
-#endif // TE_123
-#ifndef I_123
-    #define I_123
-#endif // I_123
-#ifndef XE_123
-    #define XE_123
-#endif // XE_123
-#ifndef CS_123
-    #define CS_123
-#endif // CS_123
-#ifndef BA_123
-    #define BA_123
-#endif // BA_123
-#ifndef LA_123
-    #define LA_123
-#endif // LA_123
-#ifndef CE_123
-    #define CE_123
-#endif // CE_123
-#ifndef PR_123
-    #define PR_123
-#endif // PR_123
-#ifndef RU_124
-    #define RU_124
-#endif // RU_124
-#ifndef RH_124
-    #define RH_124
-#endif // RH_124
-#ifndef PD_124
-    #define PD_124
-#endif // PD_124
-#ifndef AG_124
-    #define AG_124
-#endif // AG_124
-#ifndef CD_124
-    #define CD_124
-#endif // CD_124
-#ifndef IN_124
-    #define IN_124
-#endif // IN_124
-#ifndef SN_124
-    #define SN_124
-#endif // SN_124
-#ifndef SB_124
-    #define SB_124
-#endif // SB_124
-#ifndef TE_124
-    #define TE_124
-#endif // TE_124
-#ifndef I_124
-    #define I_124
-#endif // I_124
-#ifndef XE_124
-    #define XE_124
-#endif // XE_124
-#ifndef CS_124
-    #define CS_124
-#endif // CS_124
-#ifndef BA_124
-    #define BA_124
-#endif // BA_124
-#ifndef LA_124
-    #define LA_124
-#endif // LA_124
-#ifndef CE_124
-    #define CE_124
-#endif // CE_124
-#ifndef PR_124
-    #define PR_124
-#endif // PR_124
-#ifndef ND_124
-    #define ND_124
-#endif // ND_124
-#ifndef RU_125
-    #define RU_125
-#endif // RU_125
-#ifndef RH_125
-    #define RH_125
-#endif // RH_125
-#ifndef PD_125
-    #define PD_125
-#endif // PD_125
-#ifndef AG_125
-    #define AG_125
-#endif // AG_125
-#ifndef CD_125
-    #define CD_125
-#endif // CD_125
-#ifndef IN_125
-    #define IN_125
-#endif // IN_125
-#ifndef SN_125
-    #define SN_125
-#endif // SN_125
-#ifndef SB_125
-    #define SB_125
-#endif // SB_125
-#ifndef TE_125
-    #define TE_125
-#endif // TE_125
-#ifndef I_125
-    #define I_125
-#endif // I_125
-#ifndef XE_125
-    #define XE_125
-#endif // XE_125
-#ifndef CS_125
-    #define CS_125
-#endif // CS_125
-#ifndef BA_125
-    #define BA_125
-#endif // BA_125
-#ifndef LA_125
-    #define LA_125
-#endif // LA_125
-#ifndef CE_125
-    #define CE_125
-#endif // CE_125
-#ifndef PR_125
-    #define PR_125
-#endif // PR_125
-#ifndef ND_125
-    #define ND_125
-#endif // ND_125
-#ifndef RH_126
-    #define RH_126
-#endif // RH_126
-#ifndef PD_126
-    #define PD_126
-#endif // PD_126
-#ifndef AG_126
-    #define AG_126
-#endif // AG_126
-#ifndef CD_126
-    #define CD_126
-#endif // CD_126
-#ifndef IN_126
-    #define IN_126
-#endif // IN_126
-#ifndef SN_126
-    #define SN_126
-#endif // SN_126
-#ifndef SB_126
-    #define SB_126
-#endif // SB_126
-#ifndef TE_126
-    #define TE_126
-#endif // TE_126
-#ifndef I_126
-    #define I_126
-#endif // I_126
-#ifndef XE_126
-    #define XE_126
-#endif // XE_126
-#ifndef CS_126
-    #define CS_126
-#endif // CS_126
-#ifndef BA_126
-    #define BA_126
-#endif // BA_126
-#ifndef LA_126
-    #define LA_126
-#endif // LA_126
-#ifndef CE_126
-    #define CE_126
-#endif // CE_126
-#ifndef PR_126
-    #define PR_126
-#endif // PR_126
-#ifndef ND_126
-    #define ND_126
-#endif // ND_126
-#ifndef PM_126
-    #define PM_126
-#endif // PM_126
-#ifndef RH_127
-    #define RH_127
-#endif // RH_127
-#ifndef PD_127
-    #define PD_127
-#endif // PD_127
-#ifndef AG_127
-    #define AG_127
-#endif // AG_127
-#ifndef CD_127
-    #define CD_127
-#endif // CD_127
-#ifndef IN_127
-    #define IN_127
-#endif // IN_127
-#ifndef SN_127
-    #define SN_127
-#endif // SN_127
-#ifndef SB_127
-    #define SB_127
-#endif // SB_127
-#ifndef TE_127
-    #define TE_127
-#endif // TE_127
-#ifndef I_127
-    #define I_127
-#endif // I_127
-#ifndef XE_127
-    #define XE_127
-#endif // XE_127
-#ifndef CS_127
-    #define CS_127
-#endif // CS_127
-#ifndef BA_127
-    #define BA_127
-#endif // BA_127
-#ifndef LA_127
-    #define LA_127
-#endif // LA_127
-#ifndef CE_127
-    #define CE_127
-#endif // CE_127
-#ifndef PR_127
-    #define PR_127
-#endif // PR_127
-#ifndef ND_127
-    #define ND_127
-#endif // ND_127
-#ifndef PM_127
-    #define PM_127
-#endif // PM_127
-#ifndef RH_128
-    #define RH_128
-#endif // RH_128
-#ifndef PD_128
-    #define PD_128
-#endif // PD_128
-#ifndef AG_128
-    #define AG_128
-#endif // AG_128
-#ifndef CD_128
-    #define CD_128
-#endif // CD_128
-#ifndef IN_128
-    #define IN_128
-#endif // IN_128
-#ifndef SN_128
-    #define SN_128
-#endif // SN_128
-#ifndef SB_128
-    #define SB_128
-#endif // SB_128
-#ifndef TE_128
-    #define TE_128
-#endif // TE_128
-#ifndef I_128
-    #define I_128
-#endif // I_128
-#ifndef XE_128
-    #define XE_128
-#endif // XE_128
-#ifndef CS_128
-    #define CS_128
-#endif // CS_128
-#ifndef BA_128
-    #define BA_128
-#endif // BA_128
-#ifndef LA_128
-    #define LA_128
-#endif // LA_128
-#ifndef CE_128
-    #define CE_128
-#endif // CE_128
-#ifndef PR_128
-    #define PR_128
-#endif // PR_128
-#ifndef ND_128
-    #define ND_128
-#endif // ND_128
-#ifndef PM_128
-    #define PM_128
-#endif // PM_128
-#ifndef SM_128
-    #define SM_128
-#endif // SM_128
-#ifndef PD_129
-    #define PD_129
-#endif // PD_129
-#ifndef AG_129
-    #define AG_129
-#endif // AG_129
-#ifndef CD_129
-    #define CD_129
-#endif // CD_129
-#ifndef IN_129
-    #define IN_129
-#endif // IN_129
-#ifndef SN_129
-    #define SN_129
-#endif // SN_129
-#ifndef SB_129
-    #define SB_129
-#endif // SB_129
-#ifndef TE_129
-    #define TE_129
-#endif // TE_129
-#ifndef I_129
-    #define I_129
-#endif // I_129
-#ifndef XE_129
-    #define XE_129
-#endif // XE_129
-#ifndef CS_129
-    #define CS_129
-#endif // CS_129
-#ifndef BA_129
-    #define BA_129
-#endif // BA_129
-#ifndef LA_129
-    #define LA_129
-#endif // LA_129
-#ifndef CE_129
-    #define CE_129
-#endif // CE_129
-#ifndef PR_129
-    #define PR_129
-#endif // PR_129
-#ifndef ND_129
-    #define ND_129
-#endif // ND_129
-#ifndef PM_129
-    #define PM_129
-#endif // PM_129
-#ifndef SM_129
-    #define SM_129
-#endif // SM_129
-#ifndef PD_130
-    #define PD_130
-#endif // PD_130
-#ifndef AG_130
-    #define AG_130
-#endif // AG_130
-#ifndef CD_130
-    #define CD_130
-#endif // CD_130
-#ifndef IN_130
-    #define IN_130
-#endif // IN_130
-#ifndef SN_130
-    #define SN_130
-#endif // SN_130
-#ifndef SB_130
-    #define SB_130
-#endif // SB_130
-#ifndef TE_130
-    #define TE_130
-#endif // TE_130
-#ifndef I_130
-    #define I_130
-#endif // I_130
-#ifndef XE_130
-    #define XE_130
-#endif // XE_130
-#ifndef CS_130
-    #define CS_130
-#endif // CS_130
-#ifndef BA_130
-    #define BA_130
-#endif // BA_130
-#ifndef LA_130
-    #define LA_130
-#endif // LA_130
-#ifndef CE_130
-    #define CE_130
-#endif // CE_130
-#ifndef PR_130
-    #define PR_130
-#endif // PR_130
-#ifndef ND_130
-    #define ND_130
-#endif // ND_130
-#ifndef PM_130
-    #define PM_130
-#endif // PM_130
-#ifndef SM_130
-    #define SM_130
-#endif // SM_130
-#ifndef EU_130
-    #define EU_130
-#endif // EU_130
-#ifndef PD_131
-    #define PD_131
-#endif // PD_131
-#ifndef AG_131
-    #define AG_131
-#endif // AG_131
-#ifndef CD_131
-    #define CD_131
-#endif // CD_131
-#ifndef IN_131
-    #define IN_131
-#endif // IN_131
-#ifndef SN_131
-    #define SN_131
-#endif // SN_131
-#ifndef SB_131
-    #define SB_131
-#endif // SB_131
-#ifndef TE_131
-    #define TE_131
-#endif // TE_131
-#ifndef I_131
-    #define I_131
-#endif // I_131
-#ifndef XE_131
-    #define XE_131
-#endif // XE_131
-#ifndef CS_131
-    #define CS_131
-#endif // CS_131
-#ifndef BA_131
-    #define BA_131
-#endif // BA_131
-#ifndef LA_131
-    #define LA_131
-#endif // LA_131
-#ifndef CE_131
-    #define CE_131
-#endif // CE_131
-#ifndef PR_131
-    #define PR_131
-#endif // PR_131
-#ifndef ND_131
-    #define ND_131
-#endif // ND_131
-#ifndef PM_131
-    #define PM_131
-#endif // PM_131
-#ifndef SM_131
-    #define SM_131
-#endif // SM_131
-#ifndef EU_131
-    #define EU_131
-#endif // EU_131
-#ifndef AG_132
-    #define AG_132
-#endif // AG_132
-#ifndef CD_132
-    #define CD_132
-#endif // CD_132
-#ifndef IN_132
-    #define IN_132
-#endif // IN_132
-#ifndef SN_132
-    #define SN_132
-#endif // SN_132
-#ifndef SB_132
-    #define SB_132
-#endif // SB_132
-#ifndef TE_132
-    #define TE_132
-#endif // TE_132
-#ifndef I_132
-    #define I_132
-#endif // I_132
-#ifndef XE_132
-    #define XE_132
-#endif // XE_132
-#ifndef CS_132
-    #define CS_132
-#endif // CS_132
-#ifndef BA_132
-    #define BA_132
-#endif // BA_132
-#ifndef LA_132
-    #define LA_132
-#endif // LA_132
-#ifndef CE_132
-    #define CE_132
-#endif // CE_132
-#ifndef PR_132
-    #define PR_132
-#endif // PR_132
-#ifndef ND_132
-    #define ND_132
-#endif // ND_132
-#ifndef PM_132
-    #define PM_132
-#endif // PM_132
-#ifndef SM_132
-    #define SM_132
-#endif // SM_132
-#ifndef EU_132
-    #define EU_132
-#endif // EU_132
-#ifndef AG_133
-    #define AG_133
-#endif // AG_133
-#ifndef CD_133
-    #define CD_133
-#endif // CD_133
-#ifndef IN_133
-    #define IN_133
-#endif // IN_133
-#ifndef SN_133
-    #define SN_133
-#endif // SN_133
-#ifndef SB_133
-    #define SB_133
-#endif // SB_133
-#ifndef TE_133
-    #define TE_133
-#endif // TE_133
-#ifndef I_133
-    #define I_133
-#endif // I_133
-#ifndef XE_133
-    #define XE_133
-#endif // XE_133
-#ifndef CS_133
-    #define CS_133
-#endif // CS_133
-#ifndef BA_133
-    #define BA_133
-#endif // BA_133
-#ifndef LA_133
-    #define LA_133
-#endif // LA_133
-#ifndef CE_133
-    #define CE_133
-#endif // CE_133
-#ifndef PR_133
-    #define PR_133
-#endif // PR_133
-#ifndef ND_133
-    #define ND_133
-#endif // ND_133
-#ifndef PM_133
-    #define PM_133
-#endif // PM_133
-#ifndef SM_133
-    #define SM_133
-#endif // SM_133
-#ifndef EU_133
-    #define EU_133
-#endif // EU_133
-#ifndef GD_133
-    #define GD_133
-#endif // GD_133
-#ifndef CD_134
-    #define CD_134
-#endif // CD_134
-#ifndef IN_134
-    #define IN_134
-#endif // IN_134
-#ifndef SN_134
-    #define SN_134
-#endif // SN_134
-#ifndef SB_134
-    #define SB_134
-#endif // SB_134
-#ifndef TE_134
-    #define TE_134
-#endif // TE_134
-#ifndef I_134
-    #define I_134
-#endif // I_134
-#ifndef XE_134
-    #define XE_134
-#endif // XE_134
-#ifndef CS_134
-    #define CS_134
-#endif // CS_134
-#ifndef BA_134
-    #define BA_134
-#endif // BA_134
-#ifndef LA_134
-    #define LA_134
-#endif // LA_134
-#ifndef CE_134
-    #define CE_134
-#endif // CE_134
-#ifndef PR_134
-    #define PR_134
-#endif // PR_134
-#ifndef ND_134
-    #define ND_134
-#endif // ND_134
-#ifndef PM_134
-    #define PM_134
-#endif // PM_134
-#ifndef SM_134
-    #define SM_134
-#endif // SM_134
-#ifndef EU_134
-    #define EU_134
-#endif // EU_134
-#ifndef GD_134
-    #define GD_134
-#endif // GD_134
-#ifndef CD_135
-    #define CD_135
-#endif // CD_135
-#ifndef IN_135
-    #define IN_135
-#endif // IN_135
-#ifndef SN_135
-    #define SN_135
-#endif // SN_135
-#ifndef SB_135
-    #define SB_135
-#endif // SB_135
-#ifndef TE_135
-    #define TE_135
-#endif // TE_135
-#ifndef I_135
-    #define I_135
-#endif // I_135
-#ifndef XE_135
-    #define XE_135
-#endif // XE_135
-#ifndef CS_135
-    #define CS_135
-#endif // CS_135
-#ifndef BA_135
-    #define BA_135
-#endif // BA_135
-#ifndef LA_135
-    #define LA_135
-#endif // LA_135
-#ifndef CE_135
-    #define CE_135
-#endif // CE_135
-#ifndef PR_135
-    #define PR_135
-#endif // PR_135
-#ifndef ND_135
-    #define ND_135
-#endif // ND_135
-#ifndef PM_135
-    #define PM_135
-#endif // PM_135
-#ifndef SM_135
-    #define SM_135
-#endif // SM_135
-#ifndef EU_135
-    #define EU_135
-#endif // EU_135
-#ifndef GD_135
-    #define GD_135
-#endif // GD_135
-#ifndef TB_135
-    #define TB_135
-#endif // TB_135
-#ifndef IN_136
-    #define IN_136
-#endif // IN_136
-#ifndef SN_136
-    #define SN_136
-#endif // SN_136
-#ifndef SB_136
-    #define SB_136
-#endif // SB_136
-#ifndef TE_136
-    #define TE_136
-#endif // TE_136
-#ifndef I_136
-    #define I_136
-#endif // I_136
-#ifndef XE_136
-    #define XE_136
-#endif // XE_136
-#ifndef CS_136
-    #define CS_136
-#endif // CS_136
-#ifndef BA_136
-    #define BA_136
-#endif // BA_136
-#ifndef LA_136
-    #define LA_136
-#endif // LA_136
-#ifndef CE_136
-    #define CE_136
-#endif // CE_136
-#ifndef PR_136
-    #define PR_136
-#endif // PR_136
-#ifndef ND_136
-    #define ND_136
-#endif // ND_136
-#ifndef PM_136
-    #define PM_136
-#endif // PM_136
-#ifndef SM_136
-    #define SM_136
-#endif // SM_136
-#ifndef EU_136
-    #define EU_136
-#endif // EU_136
-#ifndef GD_136
-    #define GD_136
-#endif // GD_136
-#ifndef TB_136
-    #define TB_136
-#endif // TB_136
-#ifndef IN_137
-    #define IN_137
-#endif // IN_137
-#ifndef SN_137
-    #define SN_137
-#endif // SN_137
-#ifndef SB_137
-    #define SB_137
-#endif // SB_137
-#ifndef TE_137
-    #define TE_137
-#endif // TE_137
-#ifndef I_137
-    #define I_137
-#endif // I_137
-#ifndef XE_137
-    #define XE_137
-#endif // XE_137
-#ifndef CS_137
-    #define CS_137
-#endif // CS_137
-#ifndef BA_137
-    #define BA_137
-#endif // BA_137
-#ifndef LA_137
-    #define LA_137
-#endif // LA_137
-#ifndef CE_137
-    #define CE_137
-#endif // CE_137
-#ifndef PR_137
-    #define PR_137
-#endif // PR_137
-#ifndef ND_137
-    #define ND_137
-#endif // ND_137
-#ifndef PM_137
-    #define PM_137
-#endif // PM_137
-#ifndef SM_137
-    #define SM_137
-#endif // SM_137
-#ifndef EU_137
-    #define EU_137
-#endif // EU_137
-#ifndef GD_137
-    #define GD_137
-#endif // GD_137
-#ifndef TB_137
-    #define TB_137
-#endif // TB_137
-#ifndef SN_138
-    #define SN_138
-#endif // SN_138
-#ifndef SB_138
-    #define SB_138
-#endif // SB_138
-#ifndef TE_138
-    #define TE_138
-#endif // TE_138
-#ifndef I_138
-    #define I_138
-#endif // I_138
-#ifndef XE_138
-    #define XE_138
-#endif // XE_138
-#ifndef CS_138
-    #define CS_138
-#endif // CS_138
-#ifndef BA_138
-    #define BA_138
-#endif // BA_138
-#ifndef LA_138
-    #define LA_138
-#endif // LA_138
-#ifndef CE_138
-    #define CE_138
-#endif // CE_138
-#ifndef PR_138
-    #define PR_138
-#endif // PR_138
-#ifndef ND_138
-    #define ND_138
-#endif // ND_138
-#ifndef PM_138
-    #define PM_138
-#endif // PM_138
-#ifndef SM_138
-    #define SM_138
-#endif // SM_138
-#ifndef EU_138
-    #define EU_138
-#endif // EU_138
-#ifndef GD_138
-    #define GD_138
-#endif // GD_138
-#ifndef TB_138
-    #define TB_138
-#endif // TB_138
-#ifndef DY_138
-    #define DY_138
-#endif // DY_138
-#ifndef SN_139
-    #define SN_139
-#endif // SN_139
-#ifndef SB_139
-    #define SB_139
-#endif // SB_139
-#ifndef TE_139
-    #define TE_139
-#endif // TE_139
-#ifndef I_139
-    #define I_139
-#endif // I_139
-#ifndef XE_139
-    #define XE_139
-#endif // XE_139
-#ifndef CS_139
-    #define CS_139
-#endif // CS_139
-#ifndef BA_139
-    #define BA_139
-#endif // BA_139
-#ifndef LA_139
-    #define LA_139
-#endif // LA_139
-#ifndef CE_139
-    #define CE_139
-#endif // CE_139
-#ifndef PR_139
-    #define PR_139
-#endif // PR_139
-#ifndef ND_139
-    #define ND_139
-#endif // ND_139
-#ifndef PM_139
-    #define PM_139
-#endif // PM_139
-#ifndef SM_139
-    #define SM_139
-#endif // SM_139
-#ifndef EU_139
-    #define EU_139
-#endif // EU_139
-#ifndef GD_139
-    #define GD_139
-#endif // GD_139
-#ifndef TB_139
-    #define TB_139
-#endif // TB_139
-#ifndef DY_139
-    #define DY_139
-#endif // DY_139
-#ifndef SN_140
-    #define SN_140
-#endif // SN_140
-#ifndef SB_140
-    #define SB_140
-#endif // SB_140
-#ifndef TE_140
-    #define TE_140
-#endif // TE_140
-#ifndef I_140
-    #define I_140
-#endif // I_140
-#ifndef XE_140
-    #define XE_140
-#endif // XE_140
-#ifndef CS_140
-    #define CS_140
-#endif // CS_140
-#ifndef BA_140
-    #define BA_140
-#endif // BA_140
-#ifndef LA_140
-    #define LA_140
-#endif // LA_140
-#ifndef CE_140
-    #define CE_140
-#endif // CE_140
-#ifndef PR_140
-    #define PR_140
-#endif // PR_140
-#ifndef ND_140
-    #define ND_140
-#endif // ND_140
-#ifndef PM_140
-    #define PM_140
-#endif // PM_140
-#ifndef SM_140
-    #define SM_140
-#endif // SM_140
-#ifndef EU_140
-    #define EU_140
-#endif // EU_140
-#ifndef GD_140
-    #define GD_140
-#endif // GD_140
-#ifndef TB_140
-    #define TB_140
-#endif // TB_140
-#ifndef DY_140
-    #define DY_140
-#endif // DY_140
-#ifndef HO_140
-    #define HO_140
-#endif // HO_140
-#ifndef SB_141
-    #define SB_141
-#endif // SB_141
-#ifndef TE_141
-    #define TE_141
-#endif // TE_141
-#ifndef I_141
-    #define I_141
-#endif // I_141
-#ifndef XE_141
-    #define XE_141
-#endif // XE_141
-#ifndef CS_141
-    #define CS_141
-#endif // CS_141
-#ifndef BA_141
-    #define BA_141
-#endif // BA_141
-#ifndef LA_141
-    #define LA_141
-#endif // LA_141
-#ifndef CE_141
-    #define CE_141
-#endif // CE_141
-#ifndef PR_141
-    #define PR_141
-#endif // PR_141
-#ifndef ND_141
-    #define ND_141
-#endif // ND_141
-#ifndef PM_141
-    #define PM_141
-#endif // PM_141
-#ifndef SM_141
-    #define SM_141
-#endif // SM_141
-#ifndef EU_141
-    #define EU_141
-#endif // EU_141
-#ifndef GD_141
-    #define GD_141
-#endif // GD_141
-#ifndef TB_141
-    #define TB_141
-#endif // TB_141
-#ifndef DY_141
-    #define DY_141
-#endif // DY_141
-#ifndef HO_141
-    #define HO_141
-#endif // HO_141
-#ifndef SB_142
-    #define SB_142
-#endif // SB_142
-#ifndef TE_142
-    #define TE_142
-#endif // TE_142
-#ifndef I_142
-    #define I_142
-#endif // I_142
-#ifndef XE_142
-    #define XE_142
-#endif // XE_142
-#ifndef CS_142
-    #define CS_142
-#endif // CS_142
-#ifndef BA_142
-    #define BA_142
-#endif // BA_142
-#ifndef LA_142
-    #define LA_142
-#endif // LA_142
-#ifndef CE_142
-    #define CE_142
-#endif // CE_142
-#ifndef PR_142
-    #define PR_142
-#endif // PR_142
-#ifndef ND_142
-    #define ND_142
-#endif // ND_142
-#ifndef PM_142
-    #define PM_142
-#endif // PM_142
-#ifndef SM_142
-    #define SM_142
-#endif // SM_142
-#ifndef EU_142
-    #define EU_142
-#endif // EU_142
-#ifndef GD_142
-    #define GD_142
-#endif // GD_142
-#ifndef TB_142
-    #define TB_142
-#endif // TB_142
-#ifndef DY_142
-    #define DY_142
-#endif // DY_142
-#ifndef HO_142
-    #define HO_142
-#endif // HO_142
-#ifndef ER_142
-    #define ER_142
-#endif // ER_142
-#ifndef TE_143
-    #define TE_143
-#endif // TE_143
-#ifndef I_143
-    #define I_143
-#endif // I_143
-#ifndef XE_143
-    #define XE_143
-#endif // XE_143
-#ifndef CS_143
-    #define CS_143
-#endif // CS_143
-#ifndef BA_143
-    #define BA_143
-#endif // BA_143
-#ifndef LA_143
-    #define LA_143
-#endif // LA_143
-#ifndef CE_143
-    #define CE_143
-#endif // CE_143
-#ifndef PR_143
-    #define PR_143
-#endif // PR_143
-#ifndef ND_143
-    #define ND_143
-#endif // ND_143
-#ifndef PM_143
-    #define PM_143
-#endif // PM_143
-#ifndef SM_143
-    #define SM_143
-#endif // SM_143
-#ifndef EU_143
-    #define EU_143
-#endif // EU_143
-#ifndef GD_143
-    #define GD_143
-#endif // GD_143
-#ifndef TB_143
-    #define TB_143
-#endif // TB_143
-#ifndef DY_143
-    #define DY_143
-#endif // DY_143
-#ifndef HO_143
-    #define HO_143
-#endif // HO_143
-#ifndef ER_143
-    #define ER_143
-#endif // ER_143
-#ifndef TE_144
-    #define TE_144
-#endif // TE_144
-#ifndef I_144
-    #define I_144
-#endif // I_144
-#ifndef XE_144
-    #define XE_144
-#endif // XE_144
-#ifndef CS_144
-    #define CS_144
-#endif // CS_144
-#ifndef BA_144
-    #define BA_144
-#endif // BA_144
-#ifndef LA_144
-    #define LA_144
-#endif // LA_144
-#ifndef CE_144
-    #define CE_144
-#endif // CE_144
-#ifndef PR_144
-    #define PR_144
-#endif // PR_144
-#ifndef ND_144
-    #define ND_144
-#endif // ND_144
-#ifndef PM_144
-    #define PM_144
-#endif // PM_144
-#ifndef SM_144
-    #define SM_144
-#endif // SM_144
-#ifndef EU_144
-    #define EU_144
-#endif // EU_144
-#ifndef GD_144
-    #define GD_144
-#endif // GD_144
-#ifndef TB_144
-    #define TB_144
-#endif // TB_144
-#ifndef DY_144
-    #define DY_144
-#endif // DY_144
-#ifndef HO_144
-    #define HO_144
-#endif // HO_144
-#ifndef ER_144
-    #define ER_144
-#endif // ER_144
-#ifndef TM_144
-    #define TM_144
-#endif // TM_144
-#ifndef TE_145
-    #define TE_145
-#endif // TE_145
-#ifndef I_145
-    #define I_145
-#endif // I_145
-#ifndef XE_145
-    #define XE_145
-#endif // XE_145
-#ifndef CS_145
-    #define CS_145
-#endif // CS_145
-#ifndef BA_145
-    #define BA_145
-#endif // BA_145
-#ifndef LA_145
-    #define LA_145
-#endif // LA_145
-#ifndef CE_145
-    #define CE_145
-#endif // CE_145
-#ifndef PR_145
-    #define PR_145
-#endif // PR_145
-#ifndef ND_145
-    #define ND_145
-#endif // ND_145
-#ifndef PM_145
-    #define PM_145
-#endif // PM_145
-#ifndef SM_145
-    #define SM_145
-#endif // SM_145
-#ifndef EU_145
-    #define EU_145
-#endif // EU_145
-#ifndef GD_145
-    #define GD_145
-#endif // GD_145
-#ifndef TB_145
-    #define TB_145
-#endif // TB_145
-#ifndef DY_145
-    #define DY_145
-#endif // DY_145
-#ifndef HO_145
-    #define HO_145
-#endif // HO_145
-#ifndef ER_145
-    #define ER_145
-#endif // ER_145
-#ifndef TM_145
-    #define TM_145
-#endif // TM_145
-#ifndef I_146
-    #define I_146
-#endif // I_146
-#ifndef XE_146
-    #define XE_146
-#endif // XE_146
-#ifndef CS_146
-    #define CS_146
-#endif // CS_146
-#ifndef BA_146
-    #define BA_146
-#endif // BA_146
-#ifndef LA_146
-    #define LA_146
-#endif // LA_146
-#ifndef CE_146
-    #define CE_146
-#endif // CE_146
-#ifndef PR_146
-    #define PR_146
-#endif // PR_146
-#ifndef ND_146
-    #define ND_146
-#endif // ND_146
-#ifndef PM_146
-    #define PM_146
-#endif // PM_146
-#ifndef SM_146
-    #define SM_146
-#endif // SM_146
-#ifndef EU_146
-    #define EU_146
-#endif // EU_146
-#ifndef GD_146
-    #define GD_146
-#endif // GD_146
-#ifndef TB_146
-    #define TB_146
-#endif // TB_146
-#ifndef DY_146
-    #define DY_146
-#endif // DY_146
-#ifndef HO_146
-    #define HO_146
-#endif // HO_146
-#ifndef ER_146
-    #define ER_146
-#endif // ER_146
-#ifndef TM_146
-    #define TM_146
-#endif // TM_146
-#ifndef I_147
-    #define I_147
-#endif // I_147
-#ifndef XE_147
-    #define XE_147
-#endif // XE_147
-#ifndef CS_147
-    #define CS_147
-#endif // CS_147
-#ifndef BA_147
-    #define BA_147
-#endif // BA_147
-#ifndef LA_147
-    #define LA_147
-#endif // LA_147
-#ifndef CE_147
-    #define CE_147
-#endif // CE_147
-#ifndef PR_147
-    #define PR_147
-#endif // PR_147
-#ifndef ND_147
-    #define ND_147
-#endif // ND_147
-#ifndef PM_147
-    #define PM_147
-#endif // PM_147
-#ifndef SM_147
-    #define SM_147
-#endif // SM_147
-#ifndef EU_147
-    #define EU_147
-#endif // EU_147
-#ifndef GD_147
-    #define GD_147
-#endif // GD_147
-#ifndef TB_147
-    #define TB_147
-#endif // TB_147
-#ifndef DY_147
-    #define DY_147
-#endif // DY_147
-#ifndef HO_147
-    #define HO_147
-#endif // HO_147
-#ifndef ER_147
-    #define ER_147
-#endif // ER_147
-#ifndef TM_147
-    #define TM_147
-#endif // TM_147
-#ifndef XE_148
-    #define XE_148
-#endif // XE_148
-#ifndef CS_148
-    #define CS_148
-#endif // CS_148
-#ifndef BA_148
-    #define BA_148
-#endif // BA_148
-#ifndef LA_148
-    #define LA_148
-#endif // LA_148
-#ifndef CE_148
-    #define CE_148
-#endif // CE_148
-#ifndef PR_148
-    #define PR_148
-#endif // PR_148
-#ifndef ND_148
-    #define ND_148
-#endif // ND_148
-#ifndef PM_148
-    #define PM_148
-#endif // PM_148
-#ifndef SM_148
-    #define SM_148
-#endif // SM_148
-#ifndef EU_148
-    #define EU_148
-#endif // EU_148
-#ifndef GD_148
-    #define GD_148
-#endif // GD_148
-#ifndef TB_148
-    #define TB_148
-#endif // TB_148
-#ifndef DY_148
-    #define DY_148
-#endif // DY_148
-#ifndef HO_148
-    #define HO_148
-#endif // HO_148
-#ifndef ER_148
-    #define ER_148
-#endif // ER_148
-#ifndef TM_148
-    #define TM_148
-#endif // TM_148
-#ifndef YB_148
-    #define YB_148
-#endif // YB_148
-#ifndef XE_149
-    #define XE_149
-#endif // XE_149
-#ifndef CS_149
-    #define CS_149
-#endif // CS_149
-#ifndef BA_149
-    #define BA_149
-#endif // BA_149
-#ifndef LA_149
-    #define LA_149
-#endif // LA_149
-#ifndef CE_149
-    #define CE_149
-#endif // CE_149
-#ifndef PR_149
-    #define PR_149
-#endif // PR_149
-#ifndef ND_149
-    #define ND_149
-#endif // ND_149
-#ifndef PM_149
-    #define PM_149
-#endif // PM_149
-#ifndef SM_149
-    #define SM_149
-#endif // SM_149
-#ifndef EU_149
-    #define EU_149
-#endif // EU_149
-#ifndef GD_149
-    #define GD_149
-#endif // GD_149
-#ifndef TB_149
-    #define TB_149
-#endif // TB_149
-#ifndef DY_149
-    #define DY_149
-#endif // DY_149
-#ifndef HO_149
-    #define HO_149
-#endif // HO_149
-#ifndef ER_149
-    #define ER_149
-#endif // ER_149
-#ifndef TM_149
-    #define TM_149
-#endif // TM_149
-#ifndef YB_149
-    #define YB_149
-#endif // YB_149
-#ifndef XE_150
-    #define XE_150
-#endif // XE_150
-#ifndef CS_150
-    #define CS_150
-#endif // CS_150
-#ifndef BA_150
-    #define BA_150
-#endif // BA_150
-#ifndef LA_150
-    #define LA_150
-#endif // LA_150
-#ifndef CE_150
-    #define CE_150
-#endif // CE_150
-#ifndef PR_150
-    #define PR_150
-#endif // PR_150
-#ifndef ND_150
-    #define ND_150
-#endif // ND_150
-#ifndef PM_150
-    #define PM_150
-#endif // PM_150
-#ifndef SM_150
-    #define SM_150
-#endif // SM_150
-#ifndef EU_150
-    #define EU_150
-#endif // EU_150
-#ifndef GD_150
-    #define GD_150
-#endif // GD_150
-#ifndef TB_150
-    #define TB_150
-#endif // TB_150
-#ifndef DY_150
-    #define DY_150
-#endif // DY_150
-#ifndef HO_150
-    #define HO_150
-#endif // HO_150
-#ifndef ER_150
-    #define ER_150
-#endif // ER_150
-#ifndef TM_150
-    #define TM_150
-#endif // TM_150
-#ifndef YB_150
-    #define YB_150
-#endif // YB_150
-#ifndef LU_150
-    #define LU_150
-#endif // LU_150
-#ifndef CS_151
-    #define CS_151
-#endif // CS_151
-#ifndef BA_151
-    #define BA_151
-#endif // BA_151
-#ifndef LA_151
-    #define LA_151
-#endif // LA_151
-#ifndef CE_151
-    #define CE_151
-#endif // CE_151
-#ifndef PR_151
-    #define PR_151
-#endif // PR_151
-#ifndef ND_151
-    #define ND_151
-#endif // ND_151
-#ifndef PM_151
-    #define PM_151
-#endif // PM_151
-#ifndef SM_151
-    #define SM_151
-#endif // SM_151
-#ifndef EU_151
-    #define EU_151
-#endif // EU_151
-#ifndef GD_151
-    #define GD_151
-#endif // GD_151
-#ifndef TB_151
-    #define TB_151
-#endif // TB_151
-#ifndef DY_151
-    #define DY_151
-#endif // DY_151
-#ifndef HO_151
-    #define HO_151
-#endif // HO_151
-#ifndef ER_151
-    #define ER_151
-#endif // ER_151
-#ifndef TM_151
-    #define TM_151
-#endif // TM_151
-#ifndef YB_151
-    #define YB_151
-#endif // YB_151
-#ifndef LU_151
-    #define LU_151
-#endif // LU_151
-#ifndef CS_152
-    #define CS_152
-#endif // CS_152
-#ifndef BA_152
-    #define BA_152
-#endif // BA_152
-#ifndef LA_152
-    #define LA_152
-#endif // LA_152
-#ifndef CE_152
-    #define CE_152
-#endif // CE_152
-#ifndef PR_152
-    #define PR_152
-#endif // PR_152
-#ifndef ND_152
-    #define ND_152
-#endif // ND_152
-#ifndef PM_152
-    #define PM_152
-#endif // PM_152
-#ifndef SM_152
-    #define SM_152
-#endif // SM_152
-#ifndef EU_152
-    #define EU_152
-#endif // EU_152
-#ifndef GD_152
-    #define GD_152
-#endif // GD_152
-#ifndef TB_152
-    #define TB_152
-#endif // TB_152
-#ifndef DY_152
-    #define DY_152
-#endif // DY_152
-#ifndef HO_152
-    #define HO_152
-#endif // HO_152
-#ifndef ER_152
-    #define ER_152
-#endif // ER_152
-#ifndef TM_152
-    #define TM_152
-#endif // TM_152
-#ifndef YB_152
-    #define YB_152
-#endif // YB_152
-#ifndef LU_152
-    #define LU_152
-#endif // LU_152
-#ifndef BA_153
-    #define BA_153
-#endif // BA_153
-#ifndef LA_153
-    #define LA_153
-#endif // LA_153
-#ifndef CE_153
-    #define CE_153
-#endif // CE_153
-#ifndef PR_153
-    #define PR_153
-#endif // PR_153
-#ifndef ND_153
-    #define ND_153
-#endif // ND_153
-#ifndef PM_153
-    #define PM_153
-#endif // PM_153
-#ifndef SM_153
-    #define SM_153
-#endif // SM_153
-#ifndef EU_153
-    #define EU_153
-#endif // EU_153
-#ifndef GD_153
-    #define GD_153
-#endif // GD_153
-#ifndef TB_153
-    #define TB_153
-#endif // TB_153
-#ifndef DY_153
-    #define DY_153
-#endif // DY_153
-#ifndef HO_153
-    #define HO_153
-#endif // HO_153
-#ifndef ER_153
-    #define ER_153
-#endif // ER_153
-#ifndef TM_153
-    #define TM_153
-#endif // TM_153
-#ifndef YB_153
-    #define YB_153
-#endif // YB_153
-#ifndef LU_153
-    #define LU_153
-#endif // LU_153
-#ifndef HF_153
-    #define HF_153
-#endif // HF_153
-#ifndef BA_154
-    #define BA_154
-#endif // BA_154
-#ifndef LA_154
-    #define LA_154
-#endif // LA_154
-#ifndef CE_154
-    #define CE_154
-#endif // CE_154
-#ifndef PR_154
-    #define PR_154
-#endif // PR_154
-#ifndef ND_154
-    #define ND_154
-#endif // ND_154
-#ifndef PM_154
-    #define PM_154
-#endif // PM_154
-#ifndef SM_154
-    #define SM_154
-#endif // SM_154
-#ifndef EU_154
-    #define EU_154
-#endif // EU_154
-#ifndef GD_154
-    #define GD_154
-#endif // GD_154
-#ifndef TB_154
-    #define TB_154
-#endif // TB_154
-#ifndef DY_154
-    #define DY_154
-#endif // DY_154
-#ifndef HO_154
-    #define HO_154
-#endif // HO_154
-#ifndef ER_154
-    #define ER_154
-#endif // ER_154
-#ifndef TM_154
-    #define TM_154
-#endif // TM_154
-#ifndef YB_154
-    #define YB_154
-#endif // YB_154
-#ifndef LU_154
-    #define LU_154
-#endif // LU_154
-#ifndef HF_154
-    #define HF_154
-#endif // HF_154
-#ifndef LA_155
-    #define LA_155
-#endif // LA_155
-#ifndef CE_155
-    #define CE_155
-#endif // CE_155
-#ifndef PR_155
-    #define PR_155
-#endif // PR_155
-#ifndef ND_155
-    #define ND_155
-#endif // ND_155
-#ifndef PM_155
-    #define PM_155
-#endif // PM_155
-#ifndef SM_155
-    #define SM_155
-#endif // SM_155
-#ifndef EU_155
-    #define EU_155
-#endif // EU_155
-#ifndef GD_155
-    #define GD_155
-#endif // GD_155
-#ifndef TB_155
-    #define TB_155
-#endif // TB_155
-#ifndef DY_155
-    #define DY_155
-#endif // DY_155
-#ifndef HO_155
-    #define HO_155
-#endif // HO_155
-#ifndef ER_155
-    #define ER_155
-#endif // ER_155
-#ifndef TM_155
-    #define TM_155
-#endif // TM_155
-#ifndef YB_155
-    #define YB_155
-#endif // YB_155
-#ifndef LU_155
-    #define LU_155
-#endif // LU_155
-#ifndef HF_155
-    #define HF_155
-#endif // HF_155
-#ifndef TA_155
-    #define TA_155
-#endif // TA_155
-#ifndef LA_156
-    #define LA_156
-#endif // LA_156
-#ifndef CE_156
-    #define CE_156
-#endif // CE_156
-#ifndef PR_156
-    #define PR_156
-#endif // PR_156
-#ifndef ND_156
-    #define ND_156
-#endif // ND_156
-#ifndef PM_156
-    #define PM_156
-#endif // PM_156
-#ifndef SM_156
-    #define SM_156
-#endif // SM_156
-#ifndef EU_156
-    #define EU_156
-#endif // EU_156
-#ifndef GD_156
-    #define GD_156
-#endif // GD_156
-#ifndef TB_156
-    #define TB_156
-#endif // TB_156
-#ifndef DY_156
-    #define DY_156
-#endif // DY_156
-#ifndef HO_156
-    #define HO_156
-#endif // HO_156
-#ifndef ER_156
-    #define ER_156
-#endif // ER_156
-#ifndef TM_156
-    #define TM_156
-#endif // TM_156
-#ifndef YB_156
-    #define YB_156
-#endif // YB_156
-#ifndef LU_156
-    #define LU_156
-#endif // LU_156
-#ifndef HF_156
-    #define HF_156
-#endif // HF_156
-#ifndef TA_156
-    #define TA_156
-#endif // TA_156
-#ifndef LA_157
-    #define LA_157
-#endif // LA_157
-#ifndef CE_157
-    #define CE_157
-#endif // CE_157
-#ifndef PR_157
-    #define PR_157
-#endif // PR_157
-#ifndef ND_157
-    #define ND_157
-#endif // ND_157
-#ifndef PM_157
-    #define PM_157
-#endif // PM_157
-#ifndef SM_157
-    #define SM_157
-#endif // SM_157
-#ifndef EU_157
-    #define EU_157
-#endif // EU_157
-#ifndef GD_157
-    #define GD_157
-#endif // GD_157
-#ifndef TB_157
-    #define TB_157
-#endif // TB_157
-#ifndef DY_157
-    #define DY_157
-#endif // DY_157
-#ifndef HO_157
-    #define HO_157
-#endif // HO_157
-#ifndef ER_157
-    #define ER_157
-#endif // ER_157
-#ifndef TM_157
-    #define TM_157
-#endif // TM_157
-#ifndef YB_157
-    #define YB_157
-#endif // YB_157
-#ifndef LU_157
-    #define LU_157
-#endif // LU_157
-#ifndef HF_157
-    #define HF_157
-#endif // HF_157
-#ifndef TA_157
-    #define TA_157
-#endif // TA_157
-#ifndef W_157
-    #define W_157
-#endif // W_157
-#ifndef CE_158
-    #define CE_158
-#endif // CE_158
-#ifndef PR_158
-    #define PR_158
-#endif // PR_158
-#ifndef ND_158
-    #define ND_158
-#endif // ND_158
-#ifndef PM_158
-    #define PM_158
-#endif // PM_158
-#ifndef SM_158
-    #define SM_158
-#endif // SM_158
-#ifndef EU_158
-    #define EU_158
-#endif // EU_158
-#ifndef GD_158
-    #define GD_158
-#endif // GD_158
-#ifndef TB_158
-    #define TB_158
-#endif // TB_158
-#ifndef DY_158
-    #define DY_158
-#endif // DY_158
-#ifndef HO_158
-    #define HO_158
-#endif // HO_158
-#ifndef ER_158
-    #define ER_158
-#endif // ER_158
-#ifndef TM_158
-    #define TM_158
-#endif // TM_158
-#ifndef YB_158
-    #define YB_158
-#endif // YB_158
-#ifndef LU_158
-    #define LU_158
-#endif // LU_158
-#ifndef HF_158
-    #define HF_158
-#endif // HF_158
-#ifndef TA_158
-    #define TA_158
-#endif // TA_158
-#ifndef W_158
-    #define W_158
-#endif // W_158
-#ifndef CE_159
-    #define CE_159
-#endif // CE_159
-#ifndef PR_159
-    #define PR_159
-#endif // PR_159
-#ifndef ND_159
-    #define ND_159
-#endif // ND_159
-#ifndef PM_159
-    #define PM_159
-#endif // PM_159
-#ifndef SM_159
-    #define SM_159
-#endif // SM_159
-#ifndef EU_159
-    #define EU_159
-#endif // EU_159
-#ifndef GD_159
-    #define GD_159
-#endif // GD_159
-#ifndef TB_159
-    #define TB_159
-#endif // TB_159
-#ifndef DY_159
-    #define DY_159
-#endif // DY_159
-#ifndef HO_159
-    #define HO_159
-#endif // HO_159
-#ifndef ER_159
-    #define ER_159
-#endif // ER_159
-#ifndef TM_159
-    #define TM_159
-#endif // TM_159
-#ifndef YB_159
-    #define YB_159
-#endif // YB_159
-#ifndef LU_159
-    #define LU_159
-#endif // LU_159
-#ifndef HF_159
-    #define HF_159
-#endif // HF_159
-#ifndef TA_159
-    #define TA_159
-#endif // TA_159
-#ifndef W_159
-    #define W_159
-#endif // W_159
-#ifndef RE_159
-    #define RE_159
-#endif // RE_159
-#ifndef PR_160
-    #define PR_160
-#endif // PR_160
-#ifndef ND_160
-    #define ND_160
-#endif // ND_160
-#ifndef PM_160
-    #define PM_160
-#endif // PM_160
-#ifndef SM_160
-    #define SM_160
-#endif // SM_160
-#ifndef EU_160
-    #define EU_160
-#endif // EU_160
-#ifndef GD_160
-    #define GD_160
-#endif // GD_160
-#ifndef TB_160
-    #define TB_160
-#endif // TB_160
-#ifndef DY_160
-    #define DY_160
-#endif // DY_160
-#ifndef HO_160
-    #define HO_160
-#endif // HO_160
-#ifndef ER_160
-    #define ER_160
-#endif // ER_160
-#ifndef TM_160
-    #define TM_160
-#endif // TM_160
-#ifndef YB_160
-    #define YB_160
-#endif // YB_160
-#ifndef LU_160
-    #define LU_160
-#endif // LU_160
-#ifndef HF_160
-    #define HF_160
-#endif // HF_160
-#ifndef TA_160
-    #define TA_160
-#endif // TA_160
-#ifndef W_160
-    #define W_160
-#endif // W_160
-#ifndef RE_160
-    #define RE_160
-#endif // RE_160
-#ifndef PR_161
-    #define PR_161
-#endif // PR_161
-#ifndef ND_161
-    #define ND_161
-#endif // ND_161
-#ifndef PM_161
-    #define PM_161
-#endif // PM_161
-#ifndef SM_161
-    #define SM_161
-#endif // SM_161
-#ifndef EU_161
-    #define EU_161
-#endif // EU_161
-#ifndef GD_161
-    #define GD_161
-#endif // GD_161
-#ifndef TB_161
-    #define TB_161
-#endif // TB_161
-#ifndef DY_161
-    #define DY_161
-#endif // DY_161
-#ifndef HO_161
-    #define HO_161
-#endif // HO_161
-#ifndef ER_161
-    #define ER_161
-#endif // ER_161
-#ifndef TM_161
-    #define TM_161
-#endif // TM_161
-#ifndef YB_161
-    #define YB_161
-#endif // YB_161
-#ifndef LU_161
-    #define LU_161
-#endif // LU_161
-#ifndef HF_161
-    #define HF_161
-#endif // HF_161
-#ifndef TA_161
-    #define TA_161
-#endif // TA_161
-#ifndef W_161
-    #define W_161
-#endif // W_161
-#ifndef RE_161
-    #define RE_161
-#endif // RE_161
-#ifndef OS_161
-    #define OS_161
-#endif // OS_161
-#ifndef ND_162
-    #define ND_162
-#endif // ND_162
-#ifndef PM_162
-    #define PM_162
-#endif // PM_162
-#ifndef SM_162
-    #define SM_162
-#endif // SM_162
-#ifndef EU_162
-    #define EU_162
-#endif // EU_162
-#ifndef GD_162
-    #define GD_162
-#endif // GD_162
-#ifndef TB_162
-    #define TB_162
-#endif // TB_162
-#ifndef DY_162
-    #define DY_162
-#endif // DY_162
-#ifndef HO_162
-    #define HO_162
-#endif // HO_162
-#ifndef ER_162
-    #define ER_162
-#endif // ER_162
-#ifndef TM_162
-    #define TM_162
-#endif // TM_162
-#ifndef YB_162
-    #define YB_162
-#endif // YB_162
-#ifndef LU_162
-    #define LU_162
-#endif // LU_162
-#ifndef HF_162
-    #define HF_162
-#endif // HF_162
-#ifndef TA_162
-    #define TA_162
-#endif // TA_162
-#ifndef W_162
-    #define W_162
-#endif // W_162
-#ifndef RE_162
-    #define RE_162
-#endif // RE_162
-#ifndef OS_162
-    #define OS_162
-#endif // OS_162
-#ifndef ND_163
-    #define ND_163
-#endif // ND_163
-#ifndef PM_163
-    #define PM_163
-#endif // PM_163
-#ifndef SM_163
-    #define SM_163
-#endif // SM_163
-#ifndef EU_163
-    #define EU_163
-#endif // EU_163
-#ifndef GD_163
-    #define GD_163
-#endif // GD_163
-#ifndef TB_163
-    #define TB_163
-#endif // TB_163
-#ifndef DY_163
-    #define DY_163
-#endif // DY_163
-#ifndef HO_163
-    #define HO_163
-#endif // HO_163
-#ifndef ER_163
-    #define ER_163
-#endif // ER_163
-#ifndef TM_163
-    #define TM_163
-#endif // TM_163
-#ifndef YB_163
-    #define YB_163
-#endif // YB_163
-#ifndef LU_163
-    #define LU_163
-#endif // LU_163
-#ifndef HF_163
-    #define HF_163
-#endif // HF_163
-#ifndef TA_163
-    #define TA_163
-#endif // TA_163
-#ifndef W_163
-    #define W_163
-#endif // W_163
-#ifndef RE_163
-    #define RE_163
-#endif // RE_163
-#ifndef OS_163
-    #define OS_163
-#endif // OS_163
-#ifndef IR_163
-    #define IR_163
-#endif // IR_163
-#ifndef PM_164
-    #define PM_164
-#endif // PM_164
-#ifndef SM_164
-    #define SM_164
-#endif // SM_164
-#ifndef EU_164
-    #define EU_164
-#endif // EU_164
-#ifndef GD_164
-    #define GD_164
-#endif // GD_164
-#ifndef TB_164
-    #define TB_164
-#endif // TB_164
-#ifndef DY_164
-    #define DY_164
-#endif // DY_164
-#ifndef HO_164
-    #define HO_164
-#endif // HO_164
-#ifndef ER_164
-    #define ER_164
-#endif // ER_164
-#ifndef TM_164
-    #define TM_164
-#endif // TM_164
-#ifndef YB_164
-    #define YB_164
-#endif // YB_164
-#ifndef LU_164
-    #define LU_164
-#endif // LU_164
-#ifndef HF_164
-    #define HF_164
-#endif // HF_164
-#ifndef TA_164
-    #define TA_164
-#endif // TA_164
-#ifndef W_164
-    #define W_164
-#endif // W_164
-#ifndef RE_164
-    #define RE_164
-#endif // RE_164
-#ifndef OS_164
-    #define OS_164
-#endif // OS_164
-#ifndef IR_164
-    #define IR_164
-#endif // IR_164
-#ifndef PM_165
-    #define PM_165
-#endif // PM_165
-#ifndef SM_165
-    #define SM_165
-#endif // SM_165
-#ifndef EU_165
-    #define EU_165
-#endif // EU_165
-#ifndef GD_165
-    #define GD_165
-#endif // GD_165
-#ifndef TB_165
-    #define TB_165
-#endif // TB_165
-#ifndef DY_165
-    #define DY_165
-#endif // DY_165
-#ifndef HO_165
-    #define HO_165
-#endif // HO_165
-#ifndef ER_165
-    #define ER_165
-#endif // ER_165
-#ifndef TM_165
-    #define TM_165
-#endif // TM_165
-#ifndef YB_165
-    #define YB_165
-#endif // YB_165
-#ifndef LU_165
-    #define LU_165
-#endif // LU_165
-#ifndef HF_165
-    #define HF_165
-#endif // HF_165
-#ifndef TA_165
-    #define TA_165
-#endif // TA_165
-#ifndef W_165
-    #define W_165
-#endif // W_165
-#ifndef RE_165
-    #define RE_165
-#endif // RE_165
-#ifndef OS_165
-    #define OS_165
-#endif // OS_165
-#ifndef IR_165
-    #define IR_165
-#endif // IR_165
-#ifndef PT_165
-    #define PT_165
-#endif // PT_165
-#ifndef SM_166
-    #define SM_166
-#endif // SM_166
-#ifndef EU_166
-    #define EU_166
-#endif // EU_166
-#ifndef GD_166
-    #define GD_166
-#endif // GD_166
-#ifndef TB_166
-    #define TB_166
-#endif // TB_166
-#ifndef DY_166
-    #define DY_166
-#endif // DY_166
-#ifndef HO_166
-    #define HO_166
-#endif // HO_166
-#ifndef ER_166
-    #define ER_166
-#endif // ER_166
-#ifndef TM_166
-    #define TM_166
-#endif // TM_166
-#ifndef YB_166
-    #define YB_166
-#endif // YB_166
-#ifndef LU_166
-    #define LU_166
-#endif // LU_166
-#ifndef HF_166
-    #define HF_166
-#endif // HF_166
-#ifndef TA_166
-    #define TA_166
-#endif // TA_166
-#ifndef W_166
-    #define W_166
-#endif // W_166
-#ifndef RE_166
-    #define RE_166
-#endif // RE_166
-#ifndef OS_166
-    #define OS_166
-#endif // OS_166
-#ifndef IR_166
-    #define IR_166
-#endif // IR_166
-#ifndef PT_166
-    #define PT_166
-#endif // PT_166
-#ifndef SM_167
-    #define SM_167
-#endif // SM_167
-#ifndef EU_167
-    #define EU_167
-#endif // EU_167
-#ifndef GD_167
-    #define GD_167
-#endif // GD_167
-#ifndef TB_167
-    #define TB_167
-#endif // TB_167
-#ifndef DY_167
-    #define DY_167
-#endif // DY_167
-#ifndef HO_167
-    #define HO_167
-#endif // HO_167
-#ifndef ER_167
-    #define ER_167
-#endif // ER_167
-#ifndef TM_167
-    #define TM_167
-#endif // TM_167
-#ifndef YB_167
-    #define YB_167
-#endif // YB_167
-#ifndef LU_167
-    #define LU_167
-#endif // LU_167
-#ifndef HF_167
-    #define HF_167
-#endif // HF_167
-#ifndef TA_167
-    #define TA_167
-#endif // TA_167
-#ifndef W_167
-    #define W_167
-#endif // W_167
-#ifndef RE_167
-    #define RE_167
-#endif // RE_167
-#ifndef OS_167
-    #define OS_167
-#endif // OS_167
-#ifndef IR_167
-    #define IR_167
-#endif // IR_167
-#ifndef PT_167
-    #define PT_167
-#endif // PT_167
-#ifndef SM_168
-    #define SM_168
-#endif // SM_168
-#ifndef EU_168
-    #define EU_168
-#endif // EU_168
-#ifndef GD_168
-    #define GD_168
-#endif // GD_168
-#ifndef TB_168
-    #define TB_168
-#endif // TB_168
-#ifndef DY_168
-    #define DY_168
-#endif // DY_168
-#ifndef HO_168
-    #define HO_168
-#endif // HO_168
-#ifndef ER_168
-    #define ER_168
-#endif // ER_168
-#ifndef TM_168
-    #define TM_168
-#endif // TM_168
-#ifndef YB_168
-    #define YB_168
-#endif // YB_168
-#ifndef LU_168
-    #define LU_168
-#endif // LU_168
-#ifndef HF_168
-    #define HF_168
-#endif // HF_168
-#ifndef TA_168
-    #define TA_168
-#endif // TA_168
-#ifndef W_168
-    #define W_168
-#endif // W_168
-#ifndef RE_168
-    #define RE_168
-#endif // RE_168
-#ifndef OS_168
-    #define OS_168
-#endif // OS_168
-#ifndef IR_168
-    #define IR_168
-#endif // IR_168
-#ifndef PT_168
-    #define PT_168
-#endif // PT_168
-#ifndef AU_168
-    #define AU_168
-#endif // AU_168
-#ifndef EU_169
-    #define EU_169
-#endif // EU_169
-#ifndef GD_169
-    #define GD_169
-#endif // GD_169
-#ifndef TB_169
-    #define TB_169
-#endif // TB_169
-#ifndef DY_169
-    #define DY_169
-#endif // DY_169
-#ifndef HO_169
-    #define HO_169
-#endif // HO_169
-#ifndef ER_169
-    #define ER_169
-#endif // ER_169
-#ifndef TM_169
-    #define TM_169
-#endif // TM_169
-#ifndef YB_169
-    #define YB_169
-#endif // YB_169
-#ifndef LU_169
-    #define LU_169
-#endif // LU_169
-#ifndef HF_169
-    #define HF_169
-#endif // HF_169
-#ifndef TA_169
-    #define TA_169
-#endif // TA_169
-#ifndef W_169
-    #define W_169
-#endif // W_169
-#ifndef RE_169
-    #define RE_169
-#endif // RE_169
-#ifndef OS_169
-    #define OS_169
-#endif // OS_169
-#ifndef IR_169
-    #define IR_169
-#endif // IR_169
-#ifndef PT_169
-    #define PT_169
-#endif // PT_169
-#ifndef AU_169
-    #define AU_169
-#endif // AU_169
-#ifndef EU_170
-    #define EU_170
-#endif // EU_170
-#ifndef GD_170
-    #define GD_170
-#endif // GD_170
-#ifndef TB_170
-    #define TB_170
-#endif // TB_170
-#ifndef DY_170
-    #define DY_170
-#endif // DY_170
-#ifndef HO_170
-    #define HO_170
-#endif // HO_170
-#ifndef ER_170
-    #define ER_170
-#endif // ER_170
-#ifndef TM_170
-    #define TM_170
-#endif // TM_170
-#ifndef YB_170
-    #define YB_170
-#endif // YB_170
-#ifndef LU_170
-    #define LU_170
-#endif // LU_170
-#ifndef HF_170
-    #define HF_170
-#endif // HF_170
-#ifndef TA_170
-    #define TA_170
-#endif // TA_170
-#ifndef W_170
-    #define W_170
-#endif // W_170
-#ifndef RE_170
-    #define RE_170
-#endif // RE_170
-#ifndef OS_170
-    #define OS_170
-#endif // OS_170
-#ifndef IR_170
-    #define IR_170
-#endif // IR_170
-#ifndef PT_170
-    #define PT_170
-#endif // PT_170
-#ifndef AU_170
-    #define AU_170
-#endif // AU_170
-#ifndef HG_170
-    #define HG_170
-#endif // HG_170
-#ifndef GD_171
-    #define GD_171
-#endif // GD_171
-#ifndef TB_171
-    #define TB_171
-#endif // TB_171
-#ifndef DY_171
-    #define DY_171
-#endif // DY_171
-#ifndef HO_171
-    #define HO_171
-#endif // HO_171
-#ifndef ER_171
-    #define ER_171
-#endif // ER_171
-#ifndef TM_171
-    #define TM_171
-#endif // TM_171
-#ifndef YB_171
-    #define YB_171
-#endif // YB_171
-#ifndef LU_171
-    #define LU_171
-#endif // LU_171
-#ifndef HF_171
-    #define HF_171
-#endif // HF_171
-#ifndef TA_171
-    #define TA_171
-#endif // TA_171
-#ifndef W_171
-    #define W_171
-#endif // W_171
-#ifndef RE_171
-    #define RE_171
-#endif // RE_171
-#ifndef OS_171
-    #define OS_171
-#endif // OS_171
-#ifndef IR_171
-    #define IR_171
-#endif // IR_171
-#ifndef PT_171
-    #define PT_171
-#endif // PT_171
-#ifndef AU_171
-    #define AU_171
-#endif // AU_171
-#ifndef HG_171
-    #define HG_171
-#endif // HG_171
-#ifndef GD_172
-    #define GD_172
-#endif // GD_172
-#ifndef TB_172
-    #define TB_172
-#endif // TB_172
-#ifndef DY_172
-    #define DY_172
-#endif // DY_172
-#ifndef HO_172
-    #define HO_172
-#endif // HO_172
-#ifndef ER_172
-    #define ER_172
-#endif // ER_172
-#ifndef TM_172
-    #define TM_172
-#endif // TM_172
-#ifndef YB_172
-    #define YB_172
-#endif // YB_172
-#ifndef LU_172
-    #define LU_172
-#endif // LU_172
-#ifndef HF_172
-    #define HF_172
-#endif // HF_172
-#ifndef TA_172
-    #define TA_172
-#endif // TA_172
-#ifndef W_172
-    #define W_172
-#endif // W_172
-#ifndef RE_172
-    #define RE_172
-#endif // RE_172
-#ifndef OS_172
-    #define OS_172
-#endif // OS_172
-#ifndef IR_172
-    #define IR_172
-#endif // IR_172
-#ifndef PT_172
-    #define PT_172
-#endif // PT_172
-#ifndef AU_172
-    #define AU_172
-#endif // AU_172
-#ifndef HG_172
-    #define HG_172
-#endif // HG_172
-#ifndef TB_173
-    #define TB_173
-#endif // TB_173
-#ifndef DY_173
-    #define DY_173
-#endif // DY_173
-#ifndef HO_173
-    #define HO_173
-#endif // HO_173
-#ifndef ER_173
-    #define ER_173
-#endif // ER_173
-#ifndef TM_173
-    #define TM_173
-#endif // TM_173
-#ifndef YB_173
-    #define YB_173
-#endif // YB_173
-#ifndef LU_173
-    #define LU_173
-#endif // LU_173
-#ifndef HF_173
-    #define HF_173
-#endif // HF_173
-#ifndef TA_173
-    #define TA_173
-#endif // TA_173
-#ifndef W_173
-    #define W_173
-#endif // W_173
-#ifndef RE_173
-    #define RE_173
-#endif // RE_173
-#ifndef OS_173
-    #define OS_173
-#endif // OS_173
-#ifndef IR_173
-    #define IR_173
-#endif // IR_173
-#ifndef PT_173
-    #define PT_173
-#endif // PT_173
-#ifndef AU_173
-    #define AU_173
-#endif // AU_173
-#ifndef HG_173
-    #define HG_173
-#endif // HG_173
-#ifndef TB_174
-    #define TB_174
-#endif // TB_174
-#ifndef DY_174
-    #define DY_174
-#endif // DY_174
-#ifndef HO_174
-    #define HO_174
-#endif // HO_174
-#ifndef ER_174
-    #define ER_174
-#endif // ER_174
-#ifndef TM_174
-    #define TM_174
-#endif // TM_174
-#ifndef YB_174
-    #define YB_174
-#endif // YB_174
-#ifndef LU_174
-    #define LU_174
-#endif // LU_174
-#ifndef HF_174
-    #define HF_174
-#endif // HF_174
-#ifndef TA_174
-    #define TA_174
-#endif // TA_174
-#ifndef W_174
-    #define W_174
-#endif // W_174
-#ifndef RE_174
-    #define RE_174
-#endif // RE_174
-#ifndef OS_174
-    #define OS_174
-#endif // OS_174
-#ifndef IR_174
-    #define IR_174
-#endif // IR_174
-#ifndef PT_174
-    #define PT_174
-#endif // PT_174
-#ifndef AU_174
-    #define AU_174
-#endif // AU_174
-#ifndef HG_174
-    #define HG_174
-#endif // HG_174
-#ifndef DY_175
-    #define DY_175
-#endif // DY_175
-#ifndef HO_175
-    #define HO_175
-#endif // HO_175
-#ifndef ER_175
-    #define ER_175
-#endif // ER_175
-#ifndef TM_175
-    #define TM_175
-#endif // TM_175
-#ifndef YB_175
-    #define YB_175
-#endif // YB_175
-#ifndef LU_175
-    #define LU_175
-#endif // LU_175
-#ifndef HF_175
-    #define HF_175
-#endif // HF_175
-#ifndef TA_175
-    #define TA_175
-#endif // TA_175
-#ifndef W_175
-    #define W_175
-#endif // W_175
-#ifndef RE_175
-    #define RE_175
-#endif // RE_175
-#ifndef OS_175
-    #define OS_175
-#endif // OS_175
-#ifndef IR_175
-    #define IR_175
-#endif // IR_175
-#ifndef PT_175
-    #define PT_175
-#endif // PT_175
-#ifndef AU_175
-    #define AU_175
-#endif // AU_175
-#ifndef HG_175
-    #define HG_175
-#endif // HG_175
-#ifndef DY_176
-    #define DY_176
-#endif // DY_176
-#ifndef HO_176
-    #define HO_176
-#endif // HO_176
-#ifndef ER_176
-    #define ER_176
-#endif // ER_176
-#ifndef TM_176
-    #define TM_176
-#endif // TM_176
-#ifndef YB_176
-    #define YB_176
-#endif // YB_176
-#ifndef LU_176
-    #define LU_176
-#endif // LU_176
-#ifndef HF_176
-    #define HF_176
-#endif // HF_176
-#ifndef TA_176
-    #define TA_176
-#endif // TA_176
-#ifndef W_176
-    #define W_176
-#endif // W_176
-#ifndef RE_176
-    #define RE_176
-#endif // RE_176
-#ifndef OS_176
-    #define OS_176
-#endif // OS_176
-#ifndef IR_176
-    #define IR_176
-#endif // IR_176
-#ifndef PT_176
-    #define PT_176
-#endif // PT_176
-#ifndef AU_176
-    #define AU_176
-#endif // AU_176
-#ifndef HG_176
-    #define HG_176
-#endif // HG_176
-#ifndef TL_176
-    #define TL_176
-#endif // TL_176
-#ifndef HO_177
-    #define HO_177
-#endif // HO_177
-#ifndef ER_177
-    #define ER_177
-#endif // ER_177
-#ifndef TM_177
-    #define TM_177
-#endif // TM_177
-#ifndef YB_177
-    #define YB_177
-#endif // YB_177
-#ifndef LU_177
-    #define LU_177
-#endif // LU_177
-#ifndef HF_177
-    #define HF_177
-#endif // HF_177
-#ifndef TA_177
-    #define TA_177
-#endif // TA_177
-#ifndef W_177
-    #define W_177
-#endif // W_177
-#ifndef RE_177
-    #define RE_177
-#endif // RE_177
-#ifndef OS_177
-    #define OS_177
-#endif // OS_177
-#ifndef IR_177
-    #define IR_177
-#endif // IR_177
-#ifndef PT_177
-    #define PT_177
-#endif // PT_177
-#ifndef AU_177
-    #define AU_177
-#endif // AU_177
-#ifndef HG_177
-    #define HG_177
-#endif // HG_177
-#ifndef TL_177
-    #define TL_177
-#endif // TL_177
-#ifndef HO_178
-    #define HO_178
-#endif // HO_178
-#ifndef ER_178
-    #define ER_178
-#endif // ER_178
-#ifndef TM_178
-    #define TM_178
-#endif // TM_178
-#ifndef YB_178
-    #define YB_178
-#endif // YB_178
-#ifndef LU_178
-    #define LU_178
-#endif // LU_178
-#ifndef HF_178
-    #define HF_178
-#endif // HF_178
-#ifndef TA_178
-    #define TA_178
-#endif // TA_178
-#ifndef W_178
-    #define W_178
-#endif // W_178
-#ifndef RE_178
-    #define RE_178
-#endif // RE_178
-#ifndef OS_178
-    #define OS_178
-#endif // OS_178
-#ifndef IR_178
-    #define IR_178
-#endif // IR_178
-#ifndef PT_178
-    #define PT_178
-#endif // PT_178
-#ifndef AU_178
-    #define AU_178
-#endif // AU_178
-#ifndef HG_178
-    #define HG_178
-#endif // HG_178
-#ifndef TL_178
-    #define TL_178
-#endif // TL_178
-#ifndef PB_178
-    #define PB_178
-#endif // PB_178
-#ifndef ER_179
-    #define ER_179
-#endif // ER_179
-#ifndef TM_179
-    #define TM_179
-#endif // TM_179
-#ifndef YB_179
-    #define YB_179
-#endif // YB_179
-#ifndef LU_179
-    #define LU_179
-#endif // LU_179
-#ifndef HF_179
-    #define HF_179
-#endif // HF_179
-#ifndef TA_179
-    #define TA_179
-#endif // TA_179
-#ifndef W_179
-    #define W_179
-#endif // W_179
-#ifndef RE_179
-    #define RE_179
-#endif // RE_179
-#ifndef OS_179
-    #define OS_179
-#endif // OS_179
-#ifndef IR_179
-    #define IR_179
-#endif // IR_179
-#ifndef PT_179
-    #define PT_179
-#endif // PT_179
-#ifndef AU_179
-    #define AU_179
-#endif // AU_179
-#ifndef HG_179
-    #define HG_179
-#endif // HG_179
-#ifndef TL_179
-    #define TL_179
-#endif // TL_179
-#ifndef PB_179
-    #define PB_179
-#endif // PB_179
-#ifndef ER_180
-    #define ER_180
-#endif // ER_180
-#ifndef TM_180
-    #define TM_180
-#endif // TM_180
-#ifndef YB_180
-    #define YB_180
-#endif // YB_180
-#ifndef LU_180
-    #define LU_180
-#endif // LU_180
-#ifndef HF_180
-    #define HF_180
-#endif // HF_180
-#ifndef TA_180
-    #define TA_180
-#endif // TA_180
-#ifndef W_180
-    #define W_180
-#endif // W_180
-#ifndef RE_180
-    #define RE_180
-#endif // RE_180
-#ifndef OS_180
-    #define OS_180
-#endif // OS_180
-#ifndef IR_180
-    #define IR_180
-#endif // IR_180
-#ifndef PT_180
-    #define PT_180
-#endif // PT_180
-#ifndef AU_180
-    #define AU_180
-#endif // AU_180
-#ifndef HG_180
-    #define HG_180
-#endif // HG_180
-#ifndef TL_180
-    #define TL_180
-#endif // TL_180
-#ifndef PB_180
-    #define PB_180
-#endif // PB_180
-#ifndef TM_181
-    #define TM_181
-#endif // TM_181
-#ifndef YB_181
-    #define YB_181
-#endif // YB_181
-#ifndef LU_181
-    #define LU_181
-#endif // LU_181
-#ifndef HF_181
-    #define HF_181
-#endif // HF_181
-#ifndef TA_181
-    #define TA_181
-#endif // TA_181
-#ifndef W_181
-    #define W_181
-#endif // W_181
-#ifndef RE_181
-    #define RE_181
-#endif // RE_181
-#ifndef OS_181
-    #define OS_181
-#endif // OS_181
-#ifndef IR_181
-    #define IR_181
-#endif // IR_181
-#ifndef PT_181
-    #define PT_181
-#endif // PT_181
-#ifndef AU_181
-    #define AU_181
-#endif // AU_181
-#ifndef HG_181
-    #define HG_181
-#endif // HG_181
-#ifndef TL_181
-    #define TL_181
-#endif // TL_181
-#ifndef PB_181
-    #define PB_181
-#endif // PB_181
-#ifndef TM_182
-    #define TM_182
-#endif // TM_182
-#ifndef YB_182
-    #define YB_182
-#endif // YB_182
-#ifndef LU_182
-    #define LU_182
-#endif // LU_182
-#ifndef HF_182
-    #define HF_182
-#endif // HF_182
-#ifndef TA_182
-    #define TA_182
-#endif // TA_182
-#ifndef W_182
-    #define W_182
-#endif // W_182
-#ifndef RE_182
-    #define RE_182
-#endif // RE_182
-#ifndef OS_182
-    #define OS_182
-#endif // OS_182
-#ifndef IR_182
-    #define IR_182
-#endif // IR_182
-#ifndef PT_182
-    #define PT_182
-#endif // PT_182
-#ifndef AU_182
-    #define AU_182
-#endif // AU_182
-#ifndef HG_182
-    #define HG_182
-#endif // HG_182
-#ifndef TL_182
-    #define TL_182
-#endif // TL_182
-#ifndef PB_182
-    #define PB_182
-#endif // PB_182
-#ifndef YB_183
-    #define YB_183
-#endif // YB_183
-#ifndef LU_183
-    #define LU_183
-#endif // LU_183
-#ifndef HF_183
-    #define HF_183
-#endif // HF_183
-#ifndef TA_183
-    #define TA_183
-#endif // TA_183
-#ifndef W_183
-    #define W_183
-#endif // W_183
-#ifndef RE_183
-    #define RE_183
-#endif // RE_183
-#ifndef OS_183
-    #define OS_183
-#endif // OS_183
-#ifndef IR_183
-    #define IR_183
-#endif // IR_183
-#ifndef PT_183
-    #define PT_183
-#endif // PT_183
-#ifndef AU_183
-    #define AU_183
-#endif // AU_183
-#ifndef HG_183
-    #define HG_183
-#endif // HG_183
-#ifndef TL_183
-    #define TL_183
-#endif // TL_183
-#ifndef PB_183
-    #define PB_183
-#endif // PB_183
-#ifndef YB_184
-    #define YB_184
-#endif // YB_184
-#ifndef LU_184
-    #define LU_184
-#endif // LU_184
-#ifndef HF_184
-    #define HF_184
-#endif // HF_184
-#ifndef TA_184
-    #define TA_184
-#endif // TA_184
-#ifndef W_184
-    #define W_184
-#endif // W_184
-#ifndef RE_184
-    #define RE_184
-#endif // RE_184
-#ifndef OS_184
-    #define OS_184
-#endif // OS_184
-#ifndef IR_184
-    #define IR_184
-#endif // IR_184
-#ifndef PT_184
-    #define PT_184
-#endif // PT_184
-#ifndef AU_184
-    #define AU_184
-#endif // AU_184
-#ifndef HG_184
-    #define HG_184
-#endif // HG_184
-#ifndef TL_184
-    #define TL_184
-#endif // TL_184
-#ifndef PB_184
-    #define PB_184
-#endif // PB_184
-#ifndef BI_184
-    #define BI_184
-#endif // BI_184
-#ifndef YB_185
-    #define YB_185
-#endif // YB_185
-#ifndef LU_185
-    #define LU_185
-#endif // LU_185
-#ifndef HF_185
-    #define HF_185
-#endif // HF_185
-#ifndef TA_185
-    #define TA_185
-#endif // TA_185
-#ifndef W_185
-    #define W_185
-#endif // W_185
-#ifndef RE_185
-    #define RE_185
-#endif // RE_185
-#ifndef OS_185
-    #define OS_185
-#endif // OS_185
-#ifndef IR_185
-    #define IR_185
-#endif // IR_185
-#ifndef PT_185
-    #define PT_185
-#endif // PT_185
-#ifndef AU_185
-    #define AU_185
-#endif // AU_185
-#ifndef HG_185
-    #define HG_185
-#endif // HG_185
-#ifndef TL_185
-    #define TL_185
-#endif // TL_185
-#ifndef PB_185
-    #define PB_185
-#endif // PB_185
-#ifndef BI_185
-    #define BI_185
-#endif // BI_185
-#ifndef LU_186
-    #define LU_186
-#endif // LU_186
-#ifndef HF_186
-    #define HF_186
-#endif // HF_186
-#ifndef TA_186
-    #define TA_186
-#endif // TA_186
-#ifndef W_186
-    #define W_186
-#endif // W_186
-#ifndef RE_186
-    #define RE_186
-#endif // RE_186
-#ifndef OS_186
-    #define OS_186
-#endif // OS_186
-#ifndef IR_186
-    #define IR_186
-#endif // IR_186
-#ifndef PT_186
-    #define PT_186
-#endif // PT_186
-#ifndef AU_186
-    #define AU_186
-#endif // AU_186
-#ifndef HG_186
-    #define HG_186
-#endif // HG_186
-#ifndef TL_186
-    #define TL_186
-#endif // TL_186
-#ifndef PB_186
-    #define PB_186
-#endif // PB_186
-#ifndef BI_186
-    #define BI_186
-#endif // BI_186
-#ifndef PO_186
-    #define PO_186
-#endif // PO_186
-#ifndef LU_187
-    #define LU_187
-#endif // LU_187
-#ifndef HF_187
-    #define HF_187
-#endif // HF_187
-#ifndef TA_187
-    #define TA_187
-#endif // TA_187
-#ifndef W_187
-    #define W_187
-#endif // W_187
-#ifndef RE_187
-    #define RE_187
-#endif // RE_187
-#ifndef OS_187
-    #define OS_187
-#endif // OS_187
-#ifndef IR_187
-    #define IR_187
-#endif // IR_187
-#ifndef PT_187
-    #define PT_187
-#endif // PT_187
-#ifndef AU_187
-    #define AU_187
-#endif // AU_187
-#ifndef HG_187
-    #define HG_187
-#endif // HG_187
-#ifndef TL_187
-    #define TL_187
-#endif // TL_187
-#ifndef PB_187
-    #define PB_187
-#endif // PB_187
-#ifndef BI_187
-    #define BI_187
-#endif // BI_187
-#ifndef PO_187
-    #define PO_187
-#endif // PO_187
-#ifndef LU_188
-    #define LU_188
-#endif // LU_188
-#ifndef HF_188
-    #define HF_188
-#endif // HF_188
-#ifndef TA_188
-    #define TA_188
-#endif // TA_188
-#ifndef W_188
-    #define W_188
-#endif // W_188
-#ifndef RE_188
-    #define RE_188
-#endif // RE_188
-#ifndef OS_188
-    #define OS_188
-#endif // OS_188
-#ifndef IR_188
-    #define IR_188
-#endif // IR_188
-#ifndef PT_188
-    #define PT_188
-#endif // PT_188
-#ifndef AU_188
-    #define AU_188
-#endif // AU_188
-#ifndef HG_188
-    #define HG_188
-#endif // HG_188
-#ifndef TL_188
-    #define TL_188
-#endif // TL_188
-#ifndef PB_188
-    #define PB_188
-#endif // PB_188
-#ifndef BI_188
-    #define BI_188
-#endif // BI_188
-#ifndef PO_188
-    #define PO_188
-#endif // PO_188
-#ifndef HF_189
-    #define HF_189
-#endif // HF_189
-#ifndef TA_189
-    #define TA_189
-#endif // TA_189
-#ifndef W_189
-    #define W_189
-#endif // W_189
-#ifndef RE_189
-    #define RE_189
-#endif // RE_189
-#ifndef OS_189
-    #define OS_189
-#endif // OS_189
-#ifndef IR_189
-    #define IR_189
-#endif // IR_189
-#ifndef PT_189
-    #define PT_189
-#endif // PT_189
-#ifndef AU_189
-    #define AU_189
-#endif // AU_189
-#ifndef HG_189
-    #define HG_189
-#endif // HG_189
-#ifndef TL_189
-    #define TL_189
-#endif // TL_189
-#ifndef PB_189
-    #define PB_189
-#endif // PB_189
-#ifndef BI_189
-    #define BI_189
-#endif // BI_189
-#ifndef PO_189
-    #define PO_189
-#endif // PO_189
-#ifndef HF_190
-    #define HF_190
-#endif // HF_190
-#ifndef TA_190
-    #define TA_190
-#endif // TA_190
-#ifndef W_190
-    #define W_190
-#endif // W_190
-#ifndef RE_190
-    #define RE_190
-#endif // RE_190
-#ifndef OS_190
-    #define OS_190
-#endif // OS_190
-#ifndef IR_190
-    #define IR_190
-#endif // IR_190
-#ifndef PT_190
-    #define PT_190
-#endif // PT_190
-#ifndef AU_190
-    #define AU_190
-#endif // AU_190
-#ifndef HG_190
-    #define HG_190
-#endif // HG_190
-#ifndef TL_190
-    #define TL_190
-#endif // TL_190
-#ifndef PB_190
-    #define PB_190
-#endif // PB_190
-#ifndef BI_190
-    #define BI_190
-#endif // BI_190
-#ifndef PO_190
-    #define PO_190
-#endif // PO_190
-#ifndef TA_191
-    #define TA_191
-#endif // TA_191
-#ifndef W_191
-    #define W_191
-#endif // W_191
-#ifndef RE_191
-    #define RE_191
-#endif // RE_191
-#ifndef OS_191
-    #define OS_191
-#endif // OS_191
-#ifndef IR_191
-    #define IR_191
-#endif // IR_191
-#ifndef PT_191
-    #define PT_191
-#endif // PT_191
-#ifndef AU_191
-    #define AU_191
-#endif // AU_191
-#ifndef HG_191
-    #define HG_191
-#endif // HG_191
-#ifndef TL_191
-    #define TL_191
-#endif // TL_191
-#ifndef PB_191
-    #define PB_191
-#endif // PB_191
-#ifndef BI_191
-    #define BI_191
-#endif // BI_191
-#ifndef PO_191
-    #define PO_191
-#endif // PO_191
-#ifndef AT_191
-    #define AT_191
-#endif // AT_191
-#ifndef TA_192
-    #define TA_192
-#endif // TA_192
-#ifndef W_192
-    #define W_192
-#endif // W_192
-#ifndef RE_192
-    #define RE_192
-#endif // RE_192
-#ifndef OS_192
-    #define OS_192
-#endif // OS_192
-#ifndef IR_192
-    #define IR_192
-#endif // IR_192
-#ifndef PT_192
-    #define PT_192
-#endif // PT_192
-#ifndef AU_192
-    #define AU_192
-#endif // AU_192
-#ifndef HG_192
-    #define HG_192
-#endif // HG_192
-#ifndef TL_192
-    #define TL_192
-#endif // TL_192
-#ifndef PB_192
-    #define PB_192
-#endif // PB_192
-#ifndef BI_192
-    #define BI_192
-#endif // BI_192
-#ifndef PO_192
-    #define PO_192
-#endif // PO_192
-#ifndef AT_192
-    #define AT_192
-#endif // AT_192
-#ifndef TA_193
-    #define TA_193
-#endif // TA_193
-#ifndef W_193
-    #define W_193
-#endif // W_193
-#ifndef RE_193
-    #define RE_193
-#endif // RE_193
-#ifndef OS_193
-    #define OS_193
-#endif // OS_193
-#ifndef IR_193
-    #define IR_193
-#endif // IR_193
-#ifndef PT_193
-    #define PT_193
-#endif // PT_193
-#ifndef AU_193
-    #define AU_193
-#endif // AU_193
-#ifndef HG_193
-    #define HG_193
-#endif // HG_193
-#ifndef TL_193
-    #define TL_193
-#endif // TL_193
-#ifndef PB_193
-    #define PB_193
-#endif // PB_193
-#ifndef BI_193
-    #define BI_193
-#endif // BI_193
-#ifndef PO_193
-    #define PO_193
-#endif // PO_193
-#ifndef AT_193
-    #define AT_193
-#endif // AT_193
-#ifndef RN_193
-    #define RN_193
-#endif // RN_193
-#ifndef TA_194
-    #define TA_194
-#endif // TA_194
-#ifndef W_194
-    #define W_194
-#endif // W_194
-#ifndef RE_194
-    #define RE_194
-#endif // RE_194
-#ifndef OS_194
-    #define OS_194
-#endif // OS_194
-#ifndef IR_194
-    #define IR_194
-#endif // IR_194
-#ifndef PT_194
-    #define PT_194
-#endif // PT_194
-#ifndef AU_194
-    #define AU_194
-#endif // AU_194
-#ifndef HG_194
-    #define HG_194
-#endif // HG_194
-#ifndef TL_194
-    #define TL_194
-#endif // TL_194
-#ifndef PB_194
-    #define PB_194
-#endif // PB_194
-#ifndef BI_194
-    #define BI_194
-#endif // BI_194
-#ifndef PO_194
-    #define PO_194
-#endif // PO_194
-#ifndef AT_194
-    #define AT_194
-#endif // AT_194
-#ifndef RN_194
-    #define RN_194
-#endif // RN_194
-#ifndef W_195
-    #define W_195
-#endif // W_195
-#ifndef RE_195
-    #define RE_195
-#endif // RE_195
-#ifndef OS_195
-    #define OS_195
-#endif // OS_195
-#ifndef IR_195
-    #define IR_195
-#endif // IR_195
-#ifndef PT_195
-    #define PT_195
-#endif // PT_195
-#ifndef AU_195
-    #define AU_195
-#endif // AU_195
-#ifndef HG_195
-    #define HG_195
-#endif // HG_195
-#ifndef TL_195
-    #define TL_195
-#endif // TL_195
-#ifndef PB_195
-    #define PB_195
-#endif // PB_195
-#ifndef BI_195
-    #define BI_195
-#endif // BI_195
-#ifndef PO_195
-    #define PO_195
-#endif // PO_195
-#ifndef AT_195
-    #define AT_195
-#endif // AT_195
-#ifndef RN_195
-    #define RN_195
-#endif // RN_195
-#ifndef W_196
-    #define W_196
-#endif // W_196
-#ifndef RE_196
-    #define RE_196
-#endif // RE_196
-#ifndef OS_196
-    #define OS_196
-#endif // OS_196
-#ifndef IR_196
-    #define IR_196
-#endif // IR_196
-#ifndef PT_196
-    #define PT_196
-#endif // PT_196
-#ifndef AU_196
-    #define AU_196
-#endif // AU_196
-#ifndef HG_196
-    #define HG_196
-#endif // HG_196
-#ifndef TL_196
-    #define TL_196
-#endif // TL_196
-#ifndef PB_196
-    #define PB_196
-#endif // PB_196
-#ifndef BI_196
-    #define BI_196
-#endif // BI_196
-#ifndef PO_196
-    #define PO_196
-#endif // PO_196
-#ifndef AT_196
-    #define AT_196
-#endif // AT_196
-#ifndef RN_196
-    #define RN_196
-#endif // RN_196
-#ifndef W_197
-    #define W_197
-#endif // W_197
-#ifndef RE_197
-    #define RE_197
-#endif // RE_197
-#ifndef OS_197
-    #define OS_197
-#endif // OS_197
-#ifndef IR_197
-    #define IR_197
-#endif // IR_197
-#ifndef PT_197
-    #define PT_197
-#endif // PT_197
-#ifndef AU_197
-    #define AU_197
-#endif // AU_197
-#ifndef HG_197
-    #define HG_197
-#endif // HG_197
-#ifndef TL_197
-    #define TL_197
-#endif // TL_197
-#ifndef PB_197
-    #define PB_197
-#endif // PB_197
-#ifndef BI_197
-    #define BI_197
-#endif // BI_197
-#ifndef PO_197
-    #define PO_197
-#endif // PO_197
-#ifndef AT_197
-    #define AT_197
-#endif // AT_197
-#ifndef RN_197
-    #define RN_197
-#endif // RN_197
-#ifndef FR_197
-    #define FR_197
-#endif // FR_197
-#ifndef RE_198
-    #define RE_198
-#endif // RE_198
-#ifndef OS_198
-    #define OS_198
-#endif // OS_198
-#ifndef IR_198
-    #define IR_198
-#endif // IR_198
-#ifndef PT_198
-    #define PT_198
-#endif // PT_198
-#ifndef AU_198
-    #define AU_198
-#endif // AU_198
-#ifndef HG_198
-    #define HG_198
-#endif // HG_198
-#ifndef TL_198
-    #define TL_198
-#endif // TL_198
-#ifndef PB_198
-    #define PB_198
-#endif // PB_198
-#ifndef BI_198
-    #define BI_198
-#endif // BI_198
-#ifndef PO_198
-    #define PO_198
-#endif // PO_198
-#ifndef AT_198
-    #define AT_198
-#endif // AT_198
-#ifndef RN_198
-    #define RN_198
-#endif // RN_198
-#ifndef FR_198
-    #define FR_198
-#endif // FR_198
-#ifndef RE_199
-    #define RE_199
-#endif // RE_199
-#ifndef OS_199
-    #define OS_199
-#endif // OS_199
-#ifndef IR_199
-    #define IR_199
-#endif // IR_199
-#ifndef PT_199
-    #define PT_199
-#endif // PT_199
-#ifndef AU_199
-    #define AU_199
-#endif // AU_199
-#ifndef HG_199
-    #define HG_199
-#endif // HG_199
-#ifndef TL_199
-    #define TL_199
-#endif // TL_199
-#ifndef PB_199
-    #define PB_199
-#endif // PB_199
-#ifndef BI_199
-    #define BI_199
-#endif // BI_199
-#ifndef PO_199
-    #define PO_199
-#endif // PO_199
-#ifndef AT_199
-    #define AT_199
-#endif // AT_199
-#ifndef RN_199
-    #define RN_199
-#endif // RN_199
-#ifndef FR_199
-    #define FR_199
-#endif // FR_199
-#ifndef OS_200
-    #define OS_200
-#endif // OS_200
-#ifndef IR_200
-    #define IR_200
-#endif // IR_200
-#ifndef PT_200
-    #define PT_200
-#endif // PT_200
-#ifndef AU_200
-    #define AU_200
-#endif // AU_200
-#ifndef HG_200
-    #define HG_200
-#endif // HG_200
-#ifndef TL_200
-    #define TL_200
-#endif // TL_200
-#ifndef PB_200
-    #define PB_200
-#endif // PB_200
-#ifndef BI_200
-    #define BI_200
-#endif // BI_200
-#ifndef PO_200
-    #define PO_200
-#endif // PO_200
-#ifndef AT_200
-    #define AT_200
-#endif // AT_200
-#ifndef RN_200
-    #define RN_200
-#endif // RN_200
-#ifndef FR_200
-    #define FR_200
-#endif // FR_200
-#ifndef OS_201
-    #define OS_201
-#endif // OS_201
-#ifndef IR_201
-    #define IR_201
-#endif // IR_201
-#ifndef PT_201
-    #define PT_201
-#endif // PT_201
-#ifndef AU_201
-    #define AU_201
-#endif // AU_201
-#ifndef HG_201
-    #define HG_201
-#endif // HG_201
-#ifndef TL_201
-    #define TL_201
-#endif // TL_201
-#ifndef PB_201
-    #define PB_201
-#endif // PB_201
-#ifndef BI_201
-    #define BI_201
-#endif // BI_201
-#ifndef PO_201
-    #define PO_201
-#endif // PO_201
-#ifndef AT_201
-    #define AT_201
-#endif // AT_201
-#ifndef RN_201
-    #define RN_201
-#endif // RN_201
-#ifndef FR_201
-    #define FR_201
-#endif // FR_201
-#ifndef RA_201
-    #define RA_201
-#endif // RA_201
-#ifndef OS_202
-    #define OS_202
-#endif // OS_202
-#ifndef IR_202
-    #define IR_202
-#endif // IR_202
-#ifndef PT_202
-    #define PT_202
-#endif // PT_202
-#ifndef AU_202
-    #define AU_202
-#endif // AU_202
-#ifndef HG_202
-    #define HG_202
-#endif // HG_202
-#ifndef TL_202
-    #define TL_202
-#endif // TL_202
-#ifndef PB_202
-    #define PB_202
-#endif // PB_202
-#ifndef BI_202
-    #define BI_202
-#endif // BI_202
-#ifndef PO_202
-    #define PO_202
-#endif // PO_202
-#ifndef AT_202
-    #define AT_202
-#endif // AT_202
-#ifndef RN_202
-    #define RN_202
-#endif // RN_202
-#ifndef FR_202
-    #define FR_202
-#endif // FR_202
-#ifndef RA_202
-    #define RA_202
-#endif // RA_202
-#ifndef OS_203
-    #define OS_203
-#endif // OS_203
-#ifndef IR_203
-    #define IR_203
-#endif // IR_203
-#ifndef PT_203
-    #define PT_203
-#endif // PT_203
-#ifndef AU_203
-    #define AU_203
-#endif // AU_203
-#ifndef HG_203
-    #define HG_203
-#endif // HG_203
-#ifndef TL_203
-    #define TL_203
-#endif // TL_203
-#ifndef PB_203
-    #define PB_203
-#endif // PB_203
-#ifndef BI_203
-    #define BI_203
-#endif // BI_203
-#ifndef PO_203
-    #define PO_203
-#endif // PO_203
-#ifndef AT_203
-    #define AT_203
-#endif // AT_203
-#ifndef RN_203
-    #define RN_203
-#endif // RN_203
-#ifndef FR_203
-    #define FR_203
-#endif // FR_203
-#ifndef RA_203
-    #define RA_203
-#endif // RA_203
-#ifndef IR_204
-    #define IR_204
-#endif // IR_204
-#ifndef PT_204
-    #define PT_204
-#endif // PT_204
-#ifndef AU_204
-    #define AU_204
-#endif // AU_204
-#ifndef HG_204
-    #define HG_204
-#endif // HG_204
-#ifndef TL_204
-    #define TL_204
-#endif // TL_204
-#ifndef PB_204
-    #define PB_204
-#endif // PB_204
-#ifndef BI_204
-    #define BI_204
-#endif // BI_204
-#ifndef PO_204
-    #define PO_204
-#endif // PO_204
-#ifndef AT_204
-    #define AT_204
-#endif // AT_204
-#ifndef RN_204
-    #define RN_204
-#endif // RN_204
-#ifndef FR_204
-    #define FR_204
-#endif // FR_204
-#ifndef RA_204
-    #define RA_204
-#endif // RA_204
-#ifndef IR_205
-    #define IR_205
-#endif // IR_205
-#ifndef PT_205
-    #define PT_205
-#endif // PT_205
-#ifndef AU_205
-    #define AU_205
-#endif // AU_205
-#ifndef HG_205
-    #define HG_205
-#endif // HG_205
-#ifndef TL_205
-    #define TL_205
-#endif // TL_205
-#ifndef PB_205
-    #define PB_205
-#endif // PB_205
-#ifndef BI_205
-    #define BI_205
-#endif // BI_205
-#ifndef PO_205
-    #define PO_205
-#endif // PO_205
-#ifndef AT_205
-    #define AT_205
-#endif // AT_205
-#ifndef RN_205
-    #define RN_205
-#endif // RN_205
-#ifndef FR_205
-    #define FR_205
-#endif // FR_205
-#ifndef RA_205
-    #define RA_205
-#endif // RA_205
-#ifndef AC_205
-    #define AC_205
-#endif // AC_205
-#ifndef PT_206
-    #define PT_206
-#endif // PT_206
-#ifndef AU_206
-    #define AU_206
-#endif // AU_206
-#ifndef HG_206
-    #define HG_206
-#endif // HG_206
-#ifndef TL_206
-    #define TL_206
-#endif // TL_206
-#ifndef PB_206
-    #define PB_206
-#endif // PB_206
-#ifndef BI_206
-    #define BI_206
-#endif // BI_206
-#ifndef PO_206
-    #define PO_206
-#endif // PO_206
-#ifndef AT_206
-    #define AT_206
-#endif // AT_206
-#ifndef RN_206
-    #define RN_206
-#endif // RN_206
-#ifndef FR_206
-    #define FR_206
-#endif // FR_206
-#ifndef RA_206
-    #define RA_206
-#endif // RA_206
-#ifndef AC_206
-    #define AC_206
-#endif // AC_206
-#ifndef PT_207
-    #define PT_207
-#endif // PT_207
-#ifndef AU_207
-    #define AU_207
-#endif // AU_207
-#ifndef HG_207
-    #define HG_207
-#endif // HG_207
-#ifndef TL_207
-    #define TL_207
-#endif // TL_207
-#ifndef PB_207
-    #define PB_207
-#endif // PB_207
-#ifndef BI_207
-    #define BI_207
-#endif // BI_207
-#ifndef PO_207
-    #define PO_207
-#endif // PO_207
-#ifndef AT_207
-    #define AT_207
-#endif // AT_207
-#ifndef RN_207
-    #define RN_207
-#endif // RN_207
-#ifndef FR_207
-    #define FR_207
-#endif // FR_207
-#ifndef RA_207
-    #define RA_207
-#endif // RA_207
-#ifndef AC_207
-    #define AC_207
-#endif // AC_207
-#ifndef PT_208
-    #define PT_208
-#endif // PT_208
-#ifndef AU_208
-    #define AU_208
-#endif // AU_208
-#ifndef HG_208
-    #define HG_208
-#endif // HG_208
-#ifndef TL_208
-    #define TL_208
-#endif // TL_208
-#ifndef PB_208
-    #define PB_208
-#endif // PB_208
-#ifndef BI_208
-    #define BI_208
-#endif // BI_208
-#ifndef PO_208
-    #define PO_208
-#endif // PO_208
-#ifndef AT_208
-    #define AT_208
-#endif // AT_208
-#ifndef RN_208
-    #define RN_208
-#endif // RN_208
-#ifndef FR_208
-    #define FR_208
-#endif // FR_208
-#ifndef RA_208
-    #define RA_208
-#endif // RA_208
-#ifndef AC_208
-    #define AC_208
-#endif // AC_208
-#ifndef TH_208
-    #define TH_208
-#endif // TH_208
-#ifndef AU_209
-    #define AU_209
-#endif // AU_209
-#ifndef HG_209
-    #define HG_209
-#endif // HG_209
-#ifndef TL_209
-    #define TL_209
-#endif // TL_209
-#ifndef PB_209
-    #define PB_209
-#endif // PB_209
-#ifndef BI_209
-    #define BI_209
-#endif // BI_209
-#ifndef PO_209
-    #define PO_209
-#endif // PO_209
-#ifndef AT_209
-    #define AT_209
-#endif // AT_209
-#ifndef RN_209
-    #define RN_209
-#endif // RN_209
-#ifndef FR_209
-    #define FR_209
-#endif // FR_209
-#ifndef RA_209
-    #define RA_209
-#endif // RA_209
-#ifndef AC_209
-    #define AC_209
-#endif // AC_209
-#ifndef TH_209
-    #define TH_209
-#endif // TH_209
-#ifndef AU_210
-    #define AU_210
-#endif // AU_210
-#ifndef HG_210
-    #define HG_210
-#endif // HG_210
-#ifndef TL_210
-    #define TL_210
-#endif // TL_210
-#ifndef PB_210
-    #define PB_210
-#endif // PB_210
-#ifndef BI_210
-    #define BI_210
-#endif // BI_210
-#ifndef PO_210
-    #define PO_210
-#endif // PO_210
-#ifndef AT_210
-    #define AT_210
-#endif // AT_210
-#ifndef RN_210
-    #define RN_210
-#endif // RN_210
-#ifndef FR_210
-    #define FR_210
-#endif // FR_210
-#ifndef RA_210
-    #define RA_210
-#endif // RA_210
-#ifndef AC_210
-    #define AC_210
-#endif // AC_210
-#ifndef TH_210
-    #define TH_210
-#endif // TH_210
-#ifndef HG_211
-    #define HG_211
-#endif // HG_211
-#ifndef TL_211
-    #define TL_211
-#endif // TL_211
-#ifndef PB_211
-    #define PB_211
-#endif // PB_211
-#ifndef BI_211
-    #define BI_211
-#endif // BI_211
-#ifndef PO_211
-    #define PO_211
-#endif // PO_211
-#ifndef AT_211
-    #define AT_211
-#endif // AT_211
-#ifndef RN_211
-    #define RN_211
-#endif // RN_211
-#ifndef FR_211
-    #define FR_211
-#endif // FR_211
-#ifndef RA_211
-    #define RA_211
-#endif // RA_211
-#ifndef AC_211
-    #define AC_211
-#endif // AC_211
-#ifndef TH_211
-    #define TH_211
-#endif // TH_211
-#ifndef PA_211
-    #define PA_211
-#endif // PA_211
-#ifndef HG_212
-    #define HG_212
-#endif // HG_212
-#ifndef TL_212
-    #define TL_212
-#endif // TL_212
-#ifndef PB_212
-    #define PB_212
-#endif // PB_212
-#ifndef BI_212
-    #define BI_212
-#endif // BI_212
-#ifndef PO_212
-    #define PO_212
-#endif // PO_212
-#ifndef AT_212
-    #define AT_212
-#endif // AT_212
-#ifndef RN_212
-    #define RN_212
-#endif // RN_212
-#ifndef FR_212
-    #define FR_212
-#endif // FR_212
-#ifndef RA_212
-    #define RA_212
-#endif // RA_212
-#ifndef AC_212
-    #define AC_212
-#endif // AC_212
-#ifndef TH_212
-    #define TH_212
-#endif // TH_212
-#ifndef PA_212
-    #define PA_212
-#endif // PA_212
-#ifndef HG_213
-    #define HG_213
-#endif // HG_213
-#ifndef TL_213
-    #define TL_213
-#endif // TL_213
-#ifndef PB_213
-    #define PB_213
-#endif // PB_213
-#ifndef BI_213
-    #define BI_213
-#endif // BI_213
-#ifndef PO_213
-    #define PO_213
-#endif // PO_213
-#ifndef AT_213
-    #define AT_213
-#endif // AT_213
-#ifndef RN_213
-    #define RN_213
-#endif // RN_213
-#ifndef FR_213
-    #define FR_213
-#endif // FR_213
-#ifndef RA_213
-    #define RA_213
-#endif // RA_213
-#ifndef AC_213
-    #define AC_213
-#endif // AC_213
-#ifndef TH_213
-    #define TH_213
-#endif // TH_213
-#ifndef PA_213
-    #define PA_213
-#endif // PA_213
-#ifndef HG_214
-    #define HG_214
-#endif // HG_214
-#ifndef TL_214
-    #define TL_214
-#endif // TL_214
-#ifndef PB_214
-    #define PB_214
-#endif // PB_214
-#ifndef BI_214
-    #define BI_214
-#endif // BI_214
-#ifndef PO_214
-    #define PO_214
-#endif // PO_214
-#ifndef AT_214
-    #define AT_214
-#endif // AT_214
-#ifndef RN_214
-    #define RN_214
-#endif // RN_214
-#ifndef FR_214
-    #define FR_214
-#endif // FR_214
-#ifndef RA_214
-    #define RA_214
-#endif // RA_214
-#ifndef AC_214
-    #define AC_214
-#endif // AC_214
-#ifndef TH_214
-    #define TH_214
-#endif // TH_214
-#ifndef PA_214
-    #define PA_214
-#endif // PA_214
-#ifndef HG_215
-    #define HG_215
-#endif // HG_215
-#ifndef TL_215
-    #define TL_215
-#endif // TL_215
-#ifndef PB_215
-    #define PB_215
-#endif // PB_215
-#ifndef BI_215
-    #define BI_215
-#endif // BI_215
-#ifndef PO_215
-    #define PO_215
-#endif // PO_215
-#ifndef AT_215
-    #define AT_215
-#endif // AT_215
-#ifndef RN_215
-    #define RN_215
-#endif // RN_215
-#ifndef FR_215
-    #define FR_215
-#endif // FR_215
-#ifndef RA_215
-    #define RA_215
-#endif // RA_215
-#ifndef AC_215
-    #define AC_215
-#endif // AC_215
-#ifndef TH_215
-    #define TH_215
-#endif // TH_215
-#ifndef PA_215
-    #define PA_215
-#endif // PA_215
-#ifndef U_215
-    #define U_215
-#endif // U_215
-#ifndef HG_216
-    #define HG_216
-#endif // HG_216
-#ifndef TL_216
-    #define TL_216
-#endif // TL_216
-#ifndef PB_216
-    #define PB_216
-#endif // PB_216
-#ifndef BI_216
-    #define BI_216
-#endif // BI_216
-#ifndef PO_216
-    #define PO_216
-#endif // PO_216
-#ifndef AT_216
-    #define AT_216
-#endif // AT_216
-#ifndef RN_216
-    #define RN_216
-#endif // RN_216
-#ifndef FR_216
-    #define FR_216
-#endif // FR_216
-#ifndef RA_216
-    #define RA_216
-#endif // RA_216
-#ifndef AC_216
-    #define AC_216
-#endif // AC_216
-#ifndef TH_216
-    #define TH_216
-#endif // TH_216
-#ifndef PA_216
-    #define PA_216
-#endif // PA_216
-#ifndef U_216
-    #define U_216
-#endif // U_216
-#ifndef TL_217
-    #define TL_217
-#endif // TL_217
-#ifndef PB_217
-    #define PB_217
-#endif // PB_217
-#ifndef BI_217
-    #define BI_217
-#endif // BI_217
-#ifndef PO_217
-    #define PO_217
-#endif // PO_217
-#ifndef AT_217
-    #define AT_217
-#endif // AT_217
-#ifndef RN_217
-    #define RN_217
-#endif // RN_217
-#ifndef FR_217
-    #define FR_217
-#endif // FR_217
-#ifndef RA_217
-    #define RA_217
-#endif // RA_217
-#ifndef AC_217
-    #define AC_217
-#endif // AC_217
-#ifndef TH_217
-    #define TH_217
-#endif // TH_217
-#ifndef PA_217
-    #define PA_217
-#endif // PA_217
-#ifndef U_217
-    #define U_217
-#endif // U_217
-#ifndef TL_218
-    #define TL_218
-#endif // TL_218
-#ifndef PB_218
-    #define PB_218
-#endif // PB_218
-#ifndef BI_218
-    #define BI_218
-#endif // BI_218
-#ifndef PO_218
-    #define PO_218
-#endif // PO_218
-#ifndef AT_218
-    #define AT_218
-#endif // AT_218
-#ifndef RN_218
-    #define RN_218
-#endif // RN_218
-#ifndef FR_218
-    #define FR_218
-#endif // FR_218
-#ifndef RA_218
-    #define RA_218
-#endif // RA_218
-#ifndef AC_218
-    #define AC_218
-#endif // AC_218
-#ifndef TH_218
-    #define TH_218
-#endif // TH_218
-#ifndef PA_218
-    #define PA_218
-#endif // PA_218
-#ifndef U_218
-    #define U_218
-#endif // U_218
-#ifndef PB_219
-    #define PB_219
-#endif // PB_219
-#ifndef BI_219
-    #define BI_219
-#endif // BI_219
-#ifndef PO_219
-    #define PO_219
-#endif // PO_219
-#ifndef AT_219
-    #define AT_219
-#endif // AT_219
-#ifndef RN_219
-    #define RN_219
-#endif // RN_219
-#ifndef FR_219
-    #define FR_219
-#endif // FR_219
-#ifndef RA_219
-    #define RA_219
-#endif // RA_219
-#ifndef AC_219
-    #define AC_219
-#endif // AC_219
-#ifndef TH_219
-    #define TH_219
-#endif // TH_219
-#ifndef PA_219
-    #define PA_219
-#endif // PA_219
-#ifndef U_219
-    #define U_219
-#endif // U_219
-#ifndef NP_219
-    #define NP_219
-#endif // NP_219
-#ifndef PB_220
-    #define PB_220
-#endif // PB_220
-#ifndef BI_220
-    #define BI_220
-#endif // BI_220
-#ifndef PO_220
-    #define PO_220
-#endif // PO_220
-#ifndef AT_220
-    #define AT_220
-#endif // AT_220
-#ifndef RN_220
-    #define RN_220
-#endif // RN_220
-#ifndef FR_220
-    #define FR_220
-#endif // FR_220
-#ifndef RA_220
-    #define RA_220
-#endif // RA_220
-#ifndef AC_220
-    #define AC_220
-#endif // AC_220
-#ifndef TH_220
-    #define TH_220
-#endif // TH_220
-#ifndef PA_220
-    #define PA_220
-#endif // PA_220
-#ifndef U_220
-    #define U_220
-#endif // U_220
-#ifndef NP_220
-    #define NP_220
-#endif // NP_220
-#ifndef BI_221
-    #define BI_221
-#endif // BI_221
-#ifndef PO_221
-    #define PO_221
-#endif // PO_221
-#ifndef AT_221
-    #define AT_221
-#endif // AT_221
-#ifndef RN_221
-    #define RN_221
-#endif // RN_221
-#ifndef FR_221
-    #define FR_221
-#endif // FR_221
-#ifndef RA_221
-    #define RA_221
-#endif // RA_221
-#ifndef AC_221
-    #define AC_221
-#endif // AC_221
-#ifndef TH_221
-    #define TH_221
-#endif // TH_221
-#ifndef PA_221
-    #define PA_221
-#endif // PA_221
-#ifndef U_221
-    #define U_221
-#endif // U_221
-#ifndef NP_221
-    #define NP_221
-#endif // NP_221
-#ifndef PU_221
-    #define PU_221
-#endif // PU_221
-#ifndef BI_222
-    #define BI_222
-#endif // BI_222
-#ifndef PO_222
-    #define PO_222
-#endif // PO_222
-#ifndef AT_222
-    #define AT_222
-#endif // AT_222
-#ifndef RN_222
-    #define RN_222
-#endif // RN_222
-#ifndef FR_222
-    #define FR_222
-#endif // FR_222
-#ifndef RA_222
-    #define RA_222
-#endif // RA_222
-#ifndef AC_222
-    #define AC_222
-#endif // AC_222
-#ifndef TH_222
-    #define TH_222
-#endif // TH_222
-#ifndef PA_222
-    #define PA_222
-#endif // PA_222
-#ifndef U_222
-    #define U_222
-#endif // U_222
-#ifndef NP_222
-    #define NP_222
-#endif // NP_222
-#ifndef PU_222
-    #define PU_222
-#endif // PU_222
-#ifndef BI_223
-    #define BI_223
-#endif // BI_223
-#ifndef PO_223
-    #define PO_223
-#endif // PO_223
-#ifndef AT_223
-    #define AT_223
-#endif // AT_223
-#ifndef RN_223
-    #define RN_223
-#endif // RN_223
-#ifndef FR_223
-    #define FR_223
-#endif // FR_223
-#ifndef RA_223
-    #define RA_223
-#endif // RA_223
-#ifndef AC_223
-    #define AC_223
-#endif // AC_223
-#ifndef TH_223
-    #define TH_223
-#endif // TH_223
-#ifndef PA_223
-    #define PA_223
-#endif // PA_223
-#ifndef U_223
-    #define U_223
-#endif // U_223
-#ifndef NP_223
-    #define NP_223
-#endif // NP_223
-#ifndef PU_223
-    #define PU_223
-#endif // PU_223
-#ifndef AM_223
-    #define AM_223
-#endif // AM_223
-#ifndef BI_224
-    #define BI_224
-#endif // BI_224
-#ifndef PO_224
-    #define PO_224
-#endif // PO_224
-#ifndef AT_224
-    #define AT_224
-#endif // AT_224
-#ifndef RN_224
-    #define RN_224
-#endif // RN_224
-#ifndef FR_224
-    #define FR_224
-#endif // FR_224
-#ifndef RA_224
-    #define RA_224
-#endif // RA_224
-#ifndef AC_224
-    #define AC_224
-#endif // AC_224
-#ifndef TH_224
-    #define TH_224
-#endif // TH_224
-#ifndef PA_224
-    #define PA_224
-#endif // PA_224
-#ifndef U_224
-    #define U_224
-#endif // U_224
-#ifndef NP_224
-    #define NP_224
-#endif // NP_224
-#ifndef PU_224
-    #define PU_224
-#endif // PU_224
-#ifndef AM_224
-    #define AM_224
-#endif // AM_224
-#ifndef PO_225
-    #define PO_225
-#endif // PO_225
-#ifndef AT_225
-    #define AT_225
-#endif // AT_225
-#ifndef RN_225
-    #define RN_225
-#endif // RN_225
-#ifndef FR_225
-    #define FR_225
-#endif // FR_225
-#ifndef RA_225
-    #define RA_225
-#endif // RA_225
-#ifndef AC_225
-    #define AC_225
-#endif // AC_225
-#ifndef TH_225
-    #define TH_225
-#endif // TH_225
-#ifndef PA_225
-    #define PA_225
-#endif // PA_225
-#ifndef U_225
-    #define U_225
-#endif // U_225
-#ifndef NP_225
-    #define NP_225
-#endif // NP_225
-#ifndef PU_225
-    #define PU_225
-#endif // PU_225
-#ifndef AM_225
-    #define AM_225
-#endif // AM_225
-#ifndef PO_226
-    #define PO_226
-#endif // PO_226
-#ifndef AT_226
-    #define AT_226
-#endif // AT_226
-#ifndef RN_226
-    #define RN_226
-#endif // RN_226
-#ifndef FR_226
-    #define FR_226
-#endif // FR_226
-#ifndef RA_226
-    #define RA_226
-#endif // RA_226
-#ifndef AC_226
-    #define AC_226
-#endif // AC_226
-#ifndef TH_226
-    #define TH_226
-#endif // TH_226
-#ifndef PA_226
-    #define PA_226
-#endif // PA_226
-#ifndef U_226
-    #define U_226
-#endif // U_226
-#ifndef NP_226
-    #define NP_226
-#endif // NP_226
-#ifndef PU_226
-    #define PU_226
-#endif // PU_226
-#ifndef AM_226
-    #define AM_226
-#endif // AM_226
-#ifndef PO_227
-    #define PO_227
-#endif // PO_227
-#ifndef AT_227
-    #define AT_227
-#endif // AT_227
-#ifndef RN_227
-    #define RN_227
-#endif // RN_227
-#ifndef FR_227
-    #define FR_227
-#endif // FR_227
-#ifndef RA_227
-    #define RA_227
-#endif // RA_227
-#ifndef AC_227
-    #define AC_227
-#endif // AC_227
-#ifndef TH_227
-    #define TH_227
-#endif // TH_227
-#ifndef PA_227
-    #define PA_227
-#endif // PA_227
-#ifndef U_227
-    #define U_227
-#endif // U_227
-#ifndef NP_227
-    #define NP_227
-#endif // NP_227
-#ifndef PU_227
-    #define PU_227
-#endif // PU_227
-#ifndef AM_227
-    #define AM_227
-#endif // AM_227
-#ifndef AT_228
-    #define AT_228
-#endif // AT_228
-#ifndef RN_228
-    #define RN_228
-#endif // RN_228
-#ifndef FR_228
-    #define FR_228
-#endif // FR_228
-#ifndef RA_228
-    #define RA_228
-#endif // RA_228
-#ifndef AC_228
-    #define AC_228
-#endif // AC_228
-#ifndef TH_228
-    #define TH_228
-#endif // TH_228
-#ifndef PA_228
-    #define PA_228
-#endif // PA_228
-#ifndef U_228
-    #define U_228
-#endif // U_228
-#ifndef NP_228
-    #define NP_228
-#endif // NP_228
-#ifndef PU_228
-    #define PU_228
-#endif // PU_228
-#ifndef AM_228
-    #define AM_228
-#endif // AM_228
-#ifndef AT_229
-    #define AT_229
-#endif // AT_229
-#ifndef RN_229
-    #define RN_229
-#endif // RN_229
-#ifndef FR_229
-    #define FR_229
-#endif // FR_229
-#ifndef RA_229
-    #define RA_229
-#endif // RA_229
-#ifndef AC_229
-    #define AC_229
-#endif // AC_229
-#ifndef TH_229
-    #define TH_229
-#endif // TH_229
-#ifndef PA_229
-    #define PA_229
-#endif // PA_229
-#ifndef U_229
-    #define U_229
-#endif // U_229
-#ifndef NP_229
-    #define NP_229
-#endif // NP_229
-#ifndef PU_229
-    #define PU_229
-#endif // PU_229
-#ifndef AM_229
-    #define AM_229
-#endif // AM_229
-#ifndef RN_230
-    #define RN_230
-#endif // RN_230
-#ifndef FR_230
-    #define FR_230
-#endif // FR_230
-#ifndef RA_230
-    #define RA_230
-#endif // RA_230
-#ifndef AC_230
-    #define AC_230
-#endif // AC_230
-#ifndef TH_230
-    #define TH_230
-#endif // TH_230
-#ifndef PA_230
-    #define PA_230
-#endif // PA_230
-#ifndef U_230
-    #define U_230
-#endif // U_230
-#ifndef NP_230
-    #define NP_230
-#endif // NP_230
-#ifndef PU_230
-    #define PU_230
-#endif // PU_230
-#ifndef AM_230
-    #define AM_230
-#endif // AM_230
-#ifndef RN_231
-    #define RN_231
-#endif // RN_231
-#ifndef FR_231
-    #define FR_231
-#endif // FR_231
-#ifndef RA_231
-    #define RA_231
-#endif // RA_231
-#ifndef AC_231
-    #define AC_231
-#endif // AC_231
-#ifndef TH_231
-    #define TH_231
-#endif // TH_231
-#ifndef PA_231
-    #define PA_231
-#endif // PA_231
-#ifndef U_231
-    #define U_231
-#endif // U_231
-#ifndef NP_231
-    #define NP_231
-#endif // NP_231
-#ifndef PU_231
-    #define PU_231
-#endif // PU_231
-#ifndef AM_231
-    #define AM_231
-#endif // AM_231
-#ifndef CM_231
-    #define CM_231
-#endif // CM_231
-#ifndef FR_232
-    #define FR_232
-#endif // FR_232
-#ifndef RA_232
-    #define RA_232
-#endif // RA_232
-#ifndef AC_232
-    #define AC_232
-#endif // AC_232
-#ifndef TH_232
-    #define TH_232
-#endif // TH_232
-#ifndef PA_232
-    #define PA_232
-#endif // PA_232
-#ifndef U_232
-    #define U_232
-#endif // U_232
-#ifndef NP_232
-    #define NP_232
-#endif // NP_232
-#ifndef PU_232
-    #define PU_232
-#endif // PU_232
-#ifndef AM_232
-    #define AM_232
-#endif // AM_232
-#ifndef CM_232
-    #define CM_232
-#endif // CM_232
-#ifndef FR_233
-    #define FR_233
-#endif // FR_233
-#ifndef RA_233
-    #define RA_233
-#endif // RA_233
-#ifndef AC_233
-    #define AC_233
-#endif // AC_233
-#ifndef TH_233
-    #define TH_233
-#endif // TH_233
-#ifndef PA_233
-    #define PA_233
-#endif // PA_233
-#ifndef U_233
-    #define U_233
-#endif // U_233
-#ifndef NP_233
-    #define NP_233
-#endif // NP_233
-#ifndef PU_233
-    #define PU_233
-#endif // PU_233
-#ifndef AM_233
-    #define AM_233
-#endif // AM_233
-#ifndef CM_233
-    #define CM_233
-#endif // CM_233
-#ifndef BK_233
-    #define BK_233
-#endif // BK_233
-#ifndef RA_234
-    #define RA_234
-#endif // RA_234
-#ifndef AC_234
-    #define AC_234
-#endif // AC_234
-#ifndef TH_234
-    #define TH_234
-#endif // TH_234
-#ifndef PA_234
-    #define PA_234
-#endif // PA_234
-#ifndef U_234
-    #define U_234
-#endif // U_234
-#ifndef NP_234
-    #define NP_234
-#endif // NP_234
-#ifndef PU_234
-    #define PU_234
-#endif // PU_234
-#ifndef AM_234
-    #define AM_234
-#endif // AM_234
-#ifndef CM_234
-    #define CM_234
-#endif // CM_234
-#ifndef BK_234
-    #define BK_234
-#endif // BK_234
-#ifndef RA_235
-    #define RA_235
-#endif // RA_235
-#ifndef AC_235
-    #define AC_235
-#endif // AC_235
-#ifndef TH_235
-    #define TH_235
-#endif // TH_235
-#ifndef PA_235
-    #define PA_235
-#endif // PA_235
-#ifndef U_235
-    #define U_235
-#endif // U_235
-#ifndef NP_235
-    #define NP_235
-#endif // NP_235
-#ifndef PU_235
-    #define PU_235
-#endif // PU_235
-#ifndef AM_235
-    #define AM_235
-#endif // AM_235
-#ifndef CM_235
-    #define CM_235
-#endif // CM_235
-#ifndef BK_235
-    #define BK_235
-#endif // BK_235
-#ifndef AC_236
-    #define AC_236
-#endif // AC_236
-#ifndef TH_236
-    #define TH_236
-#endif // TH_236
-#ifndef PA_236
-    #define PA_236
-#endif // PA_236
-#ifndef U_236
-    #define U_236
-#endif // U_236
-#ifndef NP_236
-    #define NP_236
-#endif // NP_236
-#ifndef PU_236
-    #define PU_236
-#endif // PU_236
-#ifndef AM_236
-    #define AM_236
-#endif // AM_236
-#ifndef CM_236
-    #define CM_236
-#endif // CM_236
-#ifndef BK_236
-    #define BK_236
-#endif // BK_236
-#ifndef AC_237
-    #define AC_237
-#endif // AC_237
-#ifndef TH_237
-    #define TH_237
-#endif // TH_237
-#ifndef PA_237
-    #define PA_237
-#endif // PA_237
-#ifndef U_237
-    #define U_237
-#endif // U_237
-#ifndef NP_237
-    #define NP_237
-#endif // NP_237
-#ifndef PU_237
-    #define PU_237
-#endif // PU_237
-#ifndef AM_237
-    #define AM_237
-#endif // AM_237
-#ifndef CM_237
-    #define CM_237
-#endif // CM_237
-#ifndef BK_237
-    #define BK_237
-#endif // BK_237
-#ifndef CF_237
-    #define CF_237
-#endif // CF_237
-#ifndef TH_238
-    #define TH_238
-#endif // TH_238
-#ifndef PA_238
-    #define PA_238
-#endif // PA_238
-#ifndef U_238
-    #define U_238
-#endif // U_238
-#ifndef NP_238
-    #define NP_238
-#endif // NP_238
-#ifndef PU_238
-    #define PU_238
-#endif // PU_238
-#ifndef AM_238
-    #define AM_238
-#endif // AM_238
-#ifndef CM_238
-    #define CM_238
-#endif // CM_238
-#ifndef BK_238
-    #define BK_238
-#endif // BK_238
-#ifndef CF_238
-    #define CF_238
-#endif // CF_238
-#ifndef TH_239
-    #define TH_239
-#endif // TH_239
-#ifndef PA_239
-    #define PA_239
-#endif // PA_239
-#ifndef U_239
-    #define U_239
-#endif // U_239
-#ifndef NP_239
-    #define NP_239
-#endif // NP_239
-#ifndef PU_239
-    #define PU_239
-#endif // PU_239
-#ifndef AM_239
-    #define AM_239
-#endif // AM_239
-#ifndef CM_239
-    #define CM_239
-#endif // CM_239
-#ifndef BK_239
-    #define BK_239
-#endif // BK_239
-#ifndef CF_239
-    #define CF_239
-#endif // CF_239
-#ifndef ES_239
-    #define ES_239
-#endif // ES_239
-#ifndef PA_240
-    #define PA_240
-#endif // PA_240
-#ifndef U_240
-    #define U_240
-#endif // U_240
-#ifndef NP_240
-    #define NP_240
-#endif // NP_240
-#ifndef PU_240
-    #define PU_240
-#endif // PU_240
-#ifndef AM_240
-    #define AM_240
-#endif // AM_240
-#ifndef CM_240
-    #define CM_240
-#endif // CM_240
-#ifndef BK_240
-    #define BK_240
-#endif // BK_240
-#ifndef CF_240
-    #define CF_240
-#endif // CF_240
-#ifndef ES_240
-    #define ES_240
-#endif // ES_240
-#ifndef PA_241
-    #define PA_241
-#endif // PA_241
-#ifndef U_241
-    #define U_241
-#endif // U_241
-#ifndef NP_241
-    #define NP_241
-#endif // NP_241
-#ifndef PU_241
-    #define PU_241
-#endif // PU_241
-#ifndef AM_241
-    #define AM_241
-#endif // AM_241
-#ifndef CM_241
-    #define CM_241
-#endif // CM_241
-#ifndef BK_241
-    #define BK_241
-#endif // BK_241
-#ifndef CF_241
-    #define CF_241
-#endif // CF_241
-#ifndef ES_241
-    #define ES_241
-#endif // ES_241
-#ifndef FM_241
-    #define FM_241
-#endif // FM_241
-#ifndef U_242
-    #define U_242
-#endif // U_242
-#ifndef NP_242
-    #define NP_242
-#endif // NP_242
-#ifndef PU_242
-    #define PU_242
-#endif // PU_242
-#ifndef AM_242
-    #define AM_242
-#endif // AM_242
-#ifndef CM_242
-    #define CM_242
-#endif // CM_242
-#ifndef BK_242
-    #define BK_242
-#endif // BK_242
-#ifndef CF_242
-    #define CF_242
-#endif // CF_242
-#ifndef ES_242
-    #define ES_242
-#endif // ES_242
-#ifndef FM_242
-    #define FM_242
-#endif // FM_242
-#ifndef U_243
-    #define U_243
-#endif // U_243
-#ifndef NP_243
-    #define NP_243
-#endif // NP_243
-#ifndef PU_243
-    #define PU_243
-#endif // PU_243
-#ifndef AM_243
-    #define AM_243
-#endif // AM_243
-#ifndef CM_243
-    #define CM_243
-#endif // CM_243
-#ifndef BK_243
-    #define BK_243
-#endif // BK_243
-#ifndef CF_243
-    #define CF_243
-#endif // CF_243
-#ifndef ES_243
-    #define ES_243
-#endif // ES_243
-#ifndef FM_243
-    #define FM_243
-#endif // FM_243
-#ifndef NP_244
-    #define NP_244
-#endif // NP_244
-#ifndef PU_244
-    #define PU_244
-#endif // PU_244
-#ifndef AM_244
-    #define AM_244
-#endif // AM_244
-#ifndef CM_244
-    #define CM_244
-#endif // CM_244
-#ifndef BK_244
-    #define BK_244
-#endif // BK_244
-#ifndef CF_244
-    #define CF_244
-#endif // CF_244
-#ifndef ES_244
-    #define ES_244
-#endif // ES_244
-#ifndef FM_244
-    #define FM_244
-#endif // FM_244
-#ifndef MD_244
-    #define MD_244
-#endif // MD_244
-#ifndef NP_245
-    #define NP_245
-#endif // NP_245
-#ifndef PU_245
-    #define PU_245
-#endif // PU_245
-#ifndef AM_245
-    #define AM_245
-#endif // AM_245
-#ifndef CM_245
-    #define CM_245
-#endif // CM_245
-#ifndef BK_245
-    #define BK_245
-#endif // BK_245
-#ifndef CF_245
-    #define CF_245
-#endif // CF_245
-#ifndef ES_245
-    #define ES_245
-#endif // ES_245
-#ifndef FM_245
-    #define FM_245
-#endif // FM_245
-#ifndef MD_245
-    #define MD_245
-#endif // MD_245
-#ifndef PU_246
-    #define PU_246
-#endif // PU_246
-#ifndef AM_246
-    #define AM_246
-#endif // AM_246
-#ifndef CM_246
-    #define CM_246
-#endif // CM_246
-#ifndef BK_246
-    #define BK_246
-#endif // BK_246
-#ifndef CF_246
-    #define CF_246
-#endif // CF_246
-#ifndef ES_246
-    #define ES_246
-#endif // ES_246
-#ifndef FM_246
-    #define FM_246
-#endif // FM_246
-#ifndef MD_246
-    #define MD_246
-#endif // MD_246
-#ifndef PU_247
-    #define PU_247
-#endif // PU_247
-#ifndef AM_247
-    #define AM_247
-#endif // AM_247
-#ifndef CM_247
-    #define CM_247
-#endif // CM_247
-#ifndef BK_247
-    #define BK_247
-#endif // BK_247
-#ifndef CF_247
-    #define CF_247
-#endif // CF_247
-#ifndef ES_247
-    #define ES_247
-#endif // ES_247
-#ifndef FM_247
-    #define FM_247
-#endif // FM_247
-#ifndef MD_247
-    #define MD_247
-#endif // MD_247
-#ifndef AM_248
-    #define AM_248
-#endif // AM_248
-#ifndef CM_248
-    #define CM_248
-#endif // CM_248
-#ifndef BK_248
-    #define BK_248
-#endif // BK_248
-#ifndef CF_248
-    #define CF_248
-#endif // CF_248
-#ifndef ES_248
-    #define ES_248
-#endif // ES_248
-#ifndef FM_248
-    #define FM_248
-#endif // FM_248
-#ifndef MD_248
-    #define MD_248
-#endif // MD_248
-#ifndef NO_248
-    #define NO_248
-#endif // NO_248
-#ifndef AM_249
-    #define AM_249
-#endif // AM_249
-#ifndef CM_249
-    #define CM_249
-#endif // CM_249
-#ifndef BK_249
-    #define BK_249
-#endif // BK_249
-#ifndef CF_249
-    #define CF_249
-#endif // CF_249
-#ifndef ES_249
-    #define ES_249
-#endif // ES_249
-#ifndef FM_249
-    #define FM_249
-#endif // FM_249
-#ifndef MD_249
-    #define MD_249
-#endif // MD_249
-#ifndef NO_249
-    #define NO_249
-#endif // NO_249
-#ifndef CM_250
-    #define CM_250
-#endif // CM_250
-#ifndef BK_250
-    #define BK_250
-#endif // BK_250
-#ifndef CF_250
-    #define CF_250
-#endif // CF_250
-#ifndef ES_250
-    #define ES_250
-#endif // ES_250
-#ifndef FM_250
-    #define FM_250
-#endif // FM_250
-#ifndef MD_250
-    #define MD_250
-#endif // MD_250
-#ifndef NO_250
-    #define NO_250
-#endif // NO_250
-#ifndef CM_251
-    #define CM_251
-#endif // CM_251
-#ifndef BK_251
-    #define BK_251
-#endif // BK_251
-#ifndef CF_251
-    #define CF_251
-#endif // CF_251
-#ifndef ES_251
-    #define ES_251
-#endif // ES_251
-#ifndef FM_251
-    #define FM_251
-#endif // FM_251
-#ifndef MD_251
-    #define MD_251
-#endif // MD_251
-#ifndef NO_251
-    #define NO_251
-#endif // NO_251
-#ifndef LR_251
-    #define LR_251
-#endif // LR_251
-#ifndef CM_252
-    #define CM_252
-#endif // CM_252
-#ifndef BK_252
-    #define BK_252
-#endif // BK_252
-#ifndef CF_252
-    #define CF_252
-#endif // CF_252
-#ifndef ES_252
-    #define ES_252
-#endif // ES_252
-#ifndef FM_252
-    #define FM_252
-#endif // FM_252
-#ifndef MD_252
-    #define MD_252
-#endif // MD_252
-#ifndef NO_252
-    #define NO_252
-#endif // NO_252
-#ifndef LR_252
-    #define LR_252
-#endif // LR_252
-#ifndef BK_253
-    #define BK_253
-#endif // BK_253
-#ifndef CF_253
-    #define CF_253
-#endif // CF_253
-#ifndef ES_253
-    #define ES_253
-#endif // ES_253
-#ifndef FM_253
-    #define FM_253
-#endif // FM_253
-#ifndef MD_253
-    #define MD_253
-#endif // MD_253
-#ifndef NO_253
-    #define NO_253
-#endif // NO_253
-#ifndef LR_253
-    #define LR_253
-#endif // LR_253
-#ifndef RF_253
-    #define RF_253
-#endif // RF_253
-#ifndef BK_254
-    #define BK_254
-#endif // BK_254
-#ifndef CF_254
-    #define CF_254
-#endif // CF_254
-#ifndef ES_254
-    #define ES_254
-#endif // ES_254
-#ifndef FM_254
-    #define FM_254
-#endif // FM_254
-#ifndef MD_254
-    #define MD_254
-#endif // MD_254
-#ifndef NO_254
-    #define NO_254
-#endif // NO_254
-#ifndef LR_254
-    #define LR_254
-#endif // LR_254
-#ifndef RF_254
-    #define RF_254
-#endif // RF_254
-#ifndef CF_255
-    #define CF_255
-#endif // CF_255
-#ifndef ES_255
-    #define ES_255
-#endif // ES_255
-#ifndef FM_255
-    #define FM_255
-#endif // FM_255
-#ifndef MD_255
-    #define MD_255
-#endif // MD_255
-#ifndef NO_255
-    #define NO_255
-#endif // NO_255
-#ifndef LR_255
-    #define LR_255
-#endif // LR_255
-#ifndef RF_255
-    #define RF_255
-#endif // RF_255
-#ifndef DB_255
-    #define DB_255
-#endif // DB_255
-#ifndef CF_256
-    #define CF_256
-#endif // CF_256
-#ifndef ES_256
-    #define ES_256
-#endif // ES_256
-#ifndef FM_256
-    #define FM_256
-#endif // FM_256
-#ifndef MD_256
-    #define MD_256
-#endif // MD_256
-#ifndef NO_256
-    #define NO_256
-#endif // NO_256
-#ifndef LR_256
-    #define LR_256
-#endif // LR_256
-#ifndef RF_256
-    #define RF_256
-#endif // RF_256
-#ifndef DB_256
-    #define DB_256
-#endif // DB_256
-#ifndef ES_257
-    #define ES_257
-#endif // ES_257
-#ifndef FM_257
-    #define FM_257
-#endif // FM_257
-#ifndef MD_257
-    #define MD_257
-#endif // MD_257
-#ifndef NO_257
-    #define NO_257
-#endif // NO_257
-#ifndef LR_257
-    #define LR_257
-#endif // LR_257
-#ifndef RF_257
-    #define RF_257
-#endif // RF_257
-#ifndef DB_257
-    #define DB_257
-#endif // DB_257
-#ifndef ES_258
-    #define ES_258
-#endif // ES_258
-#ifndef FM_258
-    #define FM_258
-#endif // FM_258
-#ifndef MD_258
-    #define MD_258
-#endif // MD_258
-#ifndef NO_258
-    #define NO_258
-#endif // NO_258
-#ifndef LR_258
-    #define LR_258
-#endif // LR_258
-#ifndef RF_258
-    #define RF_258
-#endif // RF_258
-#ifndef DB_258
-    #define DB_258
-#endif // DB_258
-#ifndef SG_258
-    #define SG_258
-#endif // SG_258
-#ifndef FM_259
-    #define FM_259
-#endif // FM_259
-#ifndef MD_259
-    #define MD_259
-#endif // MD_259
-#ifndef NO_259
-    #define NO_259
-#endif // NO_259
-#ifndef LR_259
-    #define LR_259
-#endif // LR_259
-#ifndef RF_259
-    #define RF_259
-#endif // RF_259
-#ifndef DB_259
-    #define DB_259
-#endif // DB_259
-#ifndef SG_259
-    #define SG_259
-#endif // SG_259
-#ifndef FM_260
-    #define FM_260
-#endif // FM_260
-#ifndef MD_260
-    #define MD_260
-#endif // MD_260
-#ifndef NO_260
-    #define NO_260
-#endif // NO_260
-#ifndef LR_260
-    #define LR_260
-#endif // LR_260
-#ifndef RF_260
-    #define RF_260
-#endif // RF_260
-#ifndef DB_260
-    #define DB_260
-#endif // DB_260
-#ifndef SG_260
-    #define SG_260
-#endif // SG_260
-#ifndef BH_260
-    #define BH_260
-#endif // BH_260
-#ifndef MD_261
-    #define MD_261
-#endif // MD_261
-#ifndef NO_261
-    #define NO_261
-#endif // NO_261
-#ifndef LR_261
-    #define LR_261
-#endif // LR_261
-#ifndef RF_261
-    #define RF_261
-#endif // RF_261
-#ifndef DB_261
-    #define DB_261
-#endif // DB_261
-#ifndef SG_261
-    #define SG_261
-#endif // SG_261
-#ifndef BH_261
-    #define BH_261
-#endif // BH_261
-#ifndef MD_262
-    #define MD_262
-#endif // MD_262
-#ifndef NO_262
-    #define NO_262
-#endif // NO_262
-#ifndef LR_262
-    #define LR_262
-#endif // LR_262
-#ifndef RF_262
-    #define RF_262
-#endif // RF_262
-#ifndef DB_262
-    #define DB_262
-#endif // DB_262
-#ifndef SG_262
-    #define SG_262
-#endif // SG_262
-#ifndef BH_262
-    #define BH_262
-#endif // BH_262
-#ifndef NO_263
-    #define NO_263
-#endif // NO_263
-#ifndef LR_263
-    #define LR_263
-#endif // LR_263
-#ifndef RF_263
-    #define RF_263
-#endif // RF_263
-#ifndef DB_263
-    #define DB_263
-#endif // DB_263
-#ifndef SG_263
-    #define SG_263
-#endif // SG_263
-#ifndef BH_263
-    #define BH_263
-#endif // BH_263
-#ifndef HS_263
-    #define HS_263
-#endif // HS_263
-#ifndef NO_264
-    #define NO_264
-#endif // NO_264
-#ifndef LR_264
-    #define LR_264
-#endif // LR_264
-#ifndef RF_264
-    #define RF_264
-#endif // RF_264
-#ifndef DB_264
-    #define DB_264
-#endif // DB_264
-#ifndef SG_264
-    #define SG_264
-#endif // SG_264
-#ifndef BH_264
-    #define BH_264
-#endif // BH_264
-#ifndef HS_264
-    #define HS_264
-#endif // HS_264
-#ifndef LR_265
-    #define LR_265
-#endif // LR_265
-#ifndef RF_265
-    #define RF_265
-#endif // RF_265
-#ifndef DB_265
-    #define DB_265
-#endif // DB_265
-#ifndef SG_265
-    #define SG_265
-#endif // SG_265
-#ifndef BH_265
-    #define BH_265
-#endif // BH_265
-#ifndef HS_265
-    #define HS_265
-#endif // HS_265
-#ifndef MT_265
-    #define MT_265
-#endif // MT_265
-#ifndef LR_266
-    #define LR_266
-#endif // LR_266
-#ifndef RF_266
-    #define RF_266
-#endif // RF_266
-#ifndef DB_266
-    #define DB_266
-#endif // DB_266
-#ifndef SG_266
-    #define SG_266
-#endif // SG_266
-#ifndef BH_266
-    #define BH_266
-#endif // BH_266
-#ifndef HS_266
-    #define HS_266
-#endif // HS_266
-#ifndef MT_266
-    #define MT_266
-#endif // MT_266
-#ifndef RF_267
-    #define RF_267
-#endif // RF_267
-#ifndef DB_267
-    #define DB_267
-#endif // DB_267
-#ifndef SG_267
-    #define SG_267
-#endif // SG_267
-#ifndef BH_267
-    #define BH_267
-#endif // BH_267
-#ifndef HS_267
-    #define HS_267
-#endif // HS_267
-#ifndef MT_267
-    #define MT_267
-#endif // MT_267
-#ifndef DS_267
-    #define DS_267
-#endif // DS_267
-#ifndef RF_268
-    #define RF_268
-#endif // RF_268
-#ifndef DB_268
-    #define DB_268
-#endif // DB_268
-#ifndef SG_268
-    #define SG_268
-#endif // SG_268
-#ifndef BH_268
-    #define BH_268
-#endif // BH_268
-#ifndef HS_268
-    #define HS_268
-#endif // HS_268
-#ifndef MT_268
-    #define MT_268
-#endif // MT_268
-#ifndef DS_268
-    #define DS_268
-#endif // DS_268
-#ifndef DB_269
-    #define DB_269
-#endif // DB_269
-#ifndef SG_269
-    #define SG_269
-#endif // SG_269
-#ifndef BH_269
-    #define BH_269
-#endif // BH_269
-#ifndef HS_269
-    #define HS_269
-#endif // HS_269
-#ifndef MT_269
-    #define MT_269
-#endif // MT_269
-#ifndef DS_269
-    #define DS_269
-#endif // DS_269
-#ifndef DB_270
-    #define DB_270
-#endif // DB_270
-#ifndef SG_270
-    #define SG_270
-#endif // SG_270
-#ifndef BH_270
-    #define BH_270
-#endif // BH_270
-#ifndef HS_270
-    #define HS_270
-#endif // HS_270
-#ifndef MT_270
-    #define MT_270
-#endif // MT_270
-#ifndef DS_270
-    #define DS_270
-#endif // DS_270
-#ifndef SG_271
-    #define SG_271
-#endif // SG_271
-#ifndef BH_271
-    #define BH_271
-#endif // BH_271
-#ifndef HS_271
-    #define HS_271
-#endif // HS_271
-#ifndef MT_271
-    #define MT_271
-#endif // MT_271
-#ifndef DS_271
-    #define DS_271
-#endif // DS_271
-#ifndef SG_272
-    #define SG_272
-#endif // SG_272
-#ifndef BH_272
-    #define BH_272
-#endif // BH_272
-#ifndef HS_272
-    #define HS_272
-#endif // HS_272
-#ifndef MT_272
-    #define MT_272
-#endif // MT_272
-#ifndef DS_272
-    #define DS_272
-#endif // DS_272
-#ifndef RG_272
-    #define RG_272
-#endif // RG_272
-#ifndef SG_273
-    #define SG_273
-#endif // SG_273
-#ifndef BH_273
-    #define BH_273
-#endif // BH_273
-#ifndef HS_273
-    #define HS_273
-#endif // HS_273
-#ifndef MT_273
-    #define MT_273
-#endif // MT_273
-#ifndef DS_273
-    #define DS_273
-#endif // DS_273
-#ifndef RG_273
-    #define RG_273
-#endif // RG_273
-#ifndef BH_274
-    #define BH_274
-#endif // BH_274
-#ifndef HS_274
-    #define HS_274
-#endif // HS_274
-#ifndef MT_274
-    #define MT_274
-#endif // MT_274
-#ifndef DS_274
-    #define DS_274
-#endif // DS_274
-#ifndef RG_274
-    #define RG_274
-#endif // RG_274
-#ifndef BH_275
-    #define BH_275
-#endif // BH_275
-#ifndef HS_275
-    #define HS_275
-#endif // HS_275
-#ifndef MT_275
-    #define MT_275
-#endif // MT_275
-#ifndef DS_275
-    #define DS_275
-#endif // DS_275
-#ifndef RG_275
-    #define RG_275
-#endif // RG_275
-#ifndef BH_276
-    #define BH_276
-#endif // BH_276
-#ifndef HS_276
-    #define HS_276
-#endif // HS_276
-#ifndef MT_276
-    #define MT_276
-#endif // MT_276
-#ifndef DS_276
-    #define DS_276
-#endif // DS_276
-#ifndef RG_276
-    #define RG_276
-#endif // RG_276
-#ifndef CN_276
-    #define CN_276
-#endif // CN_276
-#ifndef BH_277
-    #define BH_277
-#endif // BH_277
-#ifndef HS_277
-    #define HS_277
-#endif // HS_277
-#ifndef MT_277
-    #define MT_277
-#endif // MT_277
-#ifndef DS_277
-    #define DS_277
-#endif // DS_277
-#ifndef RG_277
-    #define RG_277
-#endif // RG_277
-#ifndef CN_277
-    #define CN_277
-#endif // CN_277
-#ifndef BH_278
-    #define BH_278
-#endif // BH_278
-#ifndef HS_278
-    #define HS_278
-#endif // HS_278
-#ifndef MT_278
-    #define MT_278
-#endif // MT_278
-#ifndef DS_278
-    #define DS_278
-#endif // DS_278
-#ifndef RG_278
-    #define RG_278
-#endif // RG_278
-#ifndef CN_278
-    #define CN_278
-#endif // CN_278
-#ifndef NH_278
-    #define NH_278
-#endif // NH_278
-#ifndef HS_279
-    #define HS_279
-#endif // HS_279
-#ifndef MT_279
-    #define MT_279
-#endif // MT_279
-#ifndef DS_279
-    #define DS_279
-#endif // DS_279
-#ifndef RG_279
-    #define RG_279
-#endif // RG_279
-#ifndef CN_279
-    #define CN_279
-#endif // CN_279
-#ifndef NH_279
-    #define NH_279
-#endif // NH_279
-#ifndef HS_280
-    #define HS_280
-#endif // HS_280
-#ifndef MT_280
-    #define MT_280
-#endif // MT_280
-#ifndef DS_280
-    #define DS_280
-#endif // DS_280
-#ifndef RG_280
-    #define RG_280
-#endif // RG_280
-#ifndef CN_280
-    #define CN_280
-#endif // CN_280
-#ifndef NH_280
-    #define NH_280
-#endif // NH_280
-#ifndef MT_281
-    #define MT_281
-#endif // MT_281
-#ifndef DS_281
-    #define DS_281
-#endif // DS_281
-#ifndef RG_281
-    #define RG_281
-#endif // RG_281
-#ifndef CN_281
-    #define CN_281
-#endif // CN_281
-#ifndef NH_281
-    #define NH_281
-#endif // NH_281
-#ifndef MT_282
-    #define MT_282
-#endif // MT_282
-#ifndef DS_282
-    #define DS_282
-#endif // DS_282
-#ifndef RG_282
-    #define RG_282
-#endif // RG_282
-#ifndef CN_282
-    #define CN_282
-#endif // CN_282
-#ifndef NH_282
-    #define NH_282
-#endif // NH_282
-#ifndef DS_283
-    #define DS_283
-#endif // DS_283
-#ifndef RG_283
-    #define RG_283
-#endif // RG_283
-#ifndef CN_283
-    #define CN_283
-#endif // CN_283
-#ifndef NH_283
-    #define NH_283
-#endif // NH_283
-#ifndef DS_284
-    #define DS_284
-#endif // DS_284
-#ifndef RG_284
-    #define RG_284
-#endif // RG_284
-#ifndef CN_284
-    #define CN_284
-#endif // CN_284
-#ifndef NH_284
-    #define NH_284
-#endif // NH_284
-#ifndef FL_284
-    #define FL_284
-#endif // FL_284
-#ifndef RG_285
-    #define RG_285
-#endif // RG_285
-#ifndef CN_285
-    #define CN_285
-#endif // CN_285
-#ifndef NH_285
-    #define NH_285
-#endif // NH_285
-#ifndef FL_285
-    #define FL_285
-#endif // FL_285
-#ifndef RG_286
-    #define RG_286
-#endif // RG_286
-#ifndef CN_286
-    #define CN_286
-#endif // CN_286
-#ifndef NH_286
-    #define NH_286
-#endif // NH_286
-#ifndef FL_286
-    #define FL_286
-#endif // FL_286
-#ifndef CN_287
-    #define CN_287
-#endif // CN_287
-#ifndef NH_287
-    #define NH_287
-#endif // NH_287
-#ifndef FL_287
-    #define FL_287
-#endif // FL_287
-#ifndef MC_287
-    #define MC_287
-#endif // MC_287
-#ifndef CN_288
-    #define CN_288
-#endif // CN_288
-#ifndef NH_288
-    #define NH_288
-#endif // NH_288
-#ifndef FL_288
-    #define FL_288
-#endif // FL_288
-#ifndef MC_288
-    #define MC_288
-#endif // MC_288
-#ifndef NH_289
-    #define NH_289
-#endif // NH_289
-#ifndef FL_289
-    #define FL_289
-#endif // FL_289
-#ifndef MC_289
-    #define MC_289
-#endif // MC_289
-#ifndef LV_289
-    #define LV_289
-#endif // LV_289
-#ifndef NH_290
-    #define NH_290
-#endif // NH_290
-#ifndef FL_290
-    #define FL_290
-#endif // FL_290
-#ifndef MC_290
-    #define MC_290
-#endif // MC_290
-#ifndef LV_290
-    #define LV_290
-#endif // LV_290
-#ifndef FL_291
-    #define FL_291
-#endif // FL_291
-#ifndef MC_291
-    #define MC_291
-#endif // MC_291
-#ifndef LV_291
-    #define LV_291
-#endif // LV_291
-#ifndef TS_291
-    #define TS_291
-#endif // TS_291
-#ifndef MC_292
-    #define MC_292
-#endif // MC_292
-#ifndef LV_292
-    #define LV_292
-#endif // LV_292
-#ifndef TS_292
-    #define TS_292
-#endif // TS_292
-#ifndef LV_293
-    #define LV_293
-#endif // LV_293
-#ifndef TS_293
-    #define TS_293
-#endif // TS_293
-#ifndef OG_293
-    #define OG_293
-#endif // OG_293
-#ifndef TS_294
-    #define TS_294
-#endif // TS_294
-#ifndef OG_294
-    #define OG_294
-#endif // OG_294
-#ifndef OG_295
-    #define OG_295
-#endif // OG_295
-#endif // SPECIES_MASS_DATA_H
+#ifndef SERIF_SPECIES_N_1
+    #define SERIF_SPECIES_N_1
+#endif // SERIF_SPECIES_N_1
+#ifndef SERIF_SPECIES_H_1
+    #define SERIF_SPECIES_H_1
+#endif // SERIF_SPECIES_H_1
+#ifndef SERIF_SPECIES_H_2
+    #define SERIF_SPECIES_H_2
+#endif // SERIF_SPECIES_H_2
+#ifndef SERIF_SPECIES_H_3
+    #define SERIF_SPECIES_H_3
+#endif // SERIF_SPECIES_H_3
+#ifndef SERIF_SPECIES_HE_3
+    #define SERIF_SPECIES_HE_3
+#endif // SERIF_SPECIES_HE_3
+#ifndef SERIF_SPECIES_LI_3
+    #define SERIF_SPECIES_LI_3
+#endif // SERIF_SPECIES_LI_3
+#ifndef SERIF_SPECIES_H_4
+    #define SERIF_SPECIES_H_4
+#endif // SERIF_SPECIES_H_4
+#ifndef SERIF_SPECIES_HE_4
+    #define SERIF_SPECIES_HE_4
+#endif // SERIF_SPECIES_HE_4
+#ifndef SERIF_SPECIES_LI_4
+    #define SERIF_SPECIES_LI_4
+#endif // SERIF_SPECIES_LI_4
+#ifndef SERIF_SPECIES_H_5
+    #define SERIF_SPECIES_H_5
+#endif // SERIF_SPECIES_H_5
+#ifndef SERIF_SPECIES_HE_5
+    #define SERIF_SPECIES_HE_5
+#endif // SERIF_SPECIES_HE_5
+#ifndef SERIF_SPECIES_LI_5
+    #define SERIF_SPECIES_LI_5
+#endif // SERIF_SPECIES_LI_5
+#ifndef SERIF_SPECIES_BE_5
+    #define SERIF_SPECIES_BE_5
+#endif // SERIF_SPECIES_BE_5
+#ifndef SERIF_SPECIES_H_6
+    #define SERIF_SPECIES_H_6
+#endif // SERIF_SPECIES_H_6
+#ifndef SERIF_SPECIES_HE_6
+    #define SERIF_SPECIES_HE_6
+#endif // SERIF_SPECIES_HE_6
+#ifndef SERIF_SPECIES_LI_6
+    #define SERIF_SPECIES_LI_6
+#endif // SERIF_SPECIES_LI_6
+#ifndef SERIF_SPECIES_BE_6
+    #define SERIF_SPECIES_BE_6
+#endif // SERIF_SPECIES_BE_6
+#ifndef SERIF_SPECIES_B_6
+    #define SERIF_SPECIES_B_6
+#endif // SERIF_SPECIES_B_6
+#ifndef SERIF_SPECIES_H_7
+    #define SERIF_SPECIES_H_7
+#endif // SERIF_SPECIES_H_7
+#ifndef SERIF_SPECIES_HE_7
+    #define SERIF_SPECIES_HE_7
+#endif // SERIF_SPECIES_HE_7
+#ifndef SERIF_SPECIES_LI_7
+    #define SERIF_SPECIES_LI_7
+#endif // SERIF_SPECIES_LI_7
+#ifndef SERIF_SPECIES_BE_7
+    #define SERIF_SPECIES_BE_7
+#endif // SERIF_SPECIES_BE_7
+#ifndef SERIF_SPECIES_B_7
+    #define SERIF_SPECIES_B_7
+#endif // SERIF_SPECIES_B_7
+#ifndef SERIF_SPECIES_HE_8
+    #define SERIF_SPECIES_HE_8
+#endif // SERIF_SPECIES_HE_8
+#ifndef SERIF_SPECIES_LI_8
+    #define SERIF_SPECIES_LI_8
+#endif // SERIF_SPECIES_LI_8
+#ifndef SERIF_SPECIES_BE_8
+    #define SERIF_SPECIES_BE_8
+#endif // SERIF_SPECIES_BE_8
+#ifndef SERIF_SPECIES_B_8
+    #define SERIF_SPECIES_B_8
+#endif // SERIF_SPECIES_B_8
+#ifndef SERIF_SPECIES_C_8
+    #define SERIF_SPECIES_C_8
+#endif // SERIF_SPECIES_C_8
+#ifndef SERIF_SPECIES_HE_9
+    #define SERIF_SPECIES_HE_9
+#endif // SERIF_SPECIES_HE_9
+#ifndef SERIF_SPECIES_LI_9
+    #define SERIF_SPECIES_LI_9
+#endif // SERIF_SPECIES_LI_9
+#ifndef SERIF_SPECIES_BE_9
+    #define SERIF_SPECIES_BE_9
+#endif // SERIF_SPECIES_BE_9
+#ifndef SERIF_SPECIES_B_9
+    #define SERIF_SPECIES_B_9
+#endif // SERIF_SPECIES_B_9
+#ifndef SERIF_SPECIES_C_9
+    #define SERIF_SPECIES_C_9
+#endif // SERIF_SPECIES_C_9
+#ifndef SERIF_SPECIES_HE_10
+    #define SERIF_SPECIES_HE_10
+#endif // SERIF_SPECIES_HE_10
+#ifndef SERIF_SPECIES_LI_10
+    #define SERIF_SPECIES_LI_10
+#endif // SERIF_SPECIES_LI_10
+#ifndef SERIF_SPECIES_BE_10
+    #define SERIF_SPECIES_BE_10
+#endif // SERIF_SPECIES_BE_10
+#ifndef SERIF_SPECIES_B_10
+    #define SERIF_SPECIES_B_10
+#endif // SERIF_SPECIES_B_10
+#ifndef SERIF_SPECIES_C_10
+    #define SERIF_SPECIES_C_10
+#endif // SERIF_SPECIES_C_10
+#ifndef SERIF_SPECIES_N_10
+    #define SERIF_SPECIES_N_10
+#endif // SERIF_SPECIES_N_10
+#ifndef SERIF_SPECIES_LI_11
+    #define SERIF_SPECIES_LI_11
+#endif // SERIF_SPECIES_LI_11
+#ifndef SERIF_SPECIES_BE_11
+    #define SERIF_SPECIES_BE_11
+#endif // SERIF_SPECIES_BE_11
+#ifndef SERIF_SPECIES_B_11
+    #define SERIF_SPECIES_B_11
+#endif // SERIF_SPECIES_B_11
+#ifndef SERIF_SPECIES_C_11
+    #define SERIF_SPECIES_C_11
+#endif // SERIF_SPECIES_C_11
+#ifndef SERIF_SPECIES_N_11
+    #define SERIF_SPECIES_N_11
+#endif // SERIF_SPECIES_N_11
+#ifndef SERIF_SPECIES_O_11
+    #define SERIF_SPECIES_O_11
+#endif // SERIF_SPECIES_O_11
+#ifndef SERIF_SPECIES_LI_12
+    #define SERIF_SPECIES_LI_12
+#endif // SERIF_SPECIES_LI_12
+#ifndef SERIF_SPECIES_BE_12
+    #define SERIF_SPECIES_BE_12
+#endif // SERIF_SPECIES_BE_12
+#ifndef SERIF_SPECIES_B_12
+    #define SERIF_SPECIES_B_12
+#endif // SERIF_SPECIES_B_12
+#ifndef SERIF_SPECIES_C_12
+    #define SERIF_SPECIES_C_12
+#endif // SERIF_SPECIES_C_12
+#ifndef SERIF_SPECIES_N_12
+    #define SERIF_SPECIES_N_12
+#endif // SERIF_SPECIES_N_12
+#ifndef SERIF_SPECIES_O_12
+    #define SERIF_SPECIES_O_12
+#endif // SERIF_SPECIES_O_12
+#ifndef SERIF_SPECIES_LI_13
+    #define SERIF_SPECIES_LI_13
+#endif // SERIF_SPECIES_LI_13
+#ifndef SERIF_SPECIES_BE_13
+    #define SERIF_SPECIES_BE_13
+#endif // SERIF_SPECIES_BE_13
+#ifndef SERIF_SPECIES_B_13
+    #define SERIF_SPECIES_B_13
+#endif // SERIF_SPECIES_B_13
+#ifndef SERIF_SPECIES_C_13
+    #define SERIF_SPECIES_C_13
+#endif // SERIF_SPECIES_C_13
+#ifndef SERIF_SPECIES_N_13
+    #define SERIF_SPECIES_N_13
+#endif // SERIF_SPECIES_N_13
+#ifndef SERIF_SPECIES_O_13
+    #define SERIF_SPECIES_O_13
+#endif // SERIF_SPECIES_O_13
+#ifndef SERIF_SPECIES_F_13
+    #define SERIF_SPECIES_F_13
+#endif // SERIF_SPECIES_F_13
+#ifndef SERIF_SPECIES_BE_14
+    #define SERIF_SPECIES_BE_14
+#endif // SERIF_SPECIES_BE_14
+#ifndef SERIF_SPECIES_B_14
+    #define SERIF_SPECIES_B_14
+#endif // SERIF_SPECIES_B_14
+#ifndef SERIF_SPECIES_C_14
+    #define SERIF_SPECIES_C_14
+#endif // SERIF_SPECIES_C_14
+#ifndef SERIF_SPECIES_N_14
+    #define SERIF_SPECIES_N_14
+#endif // SERIF_SPECIES_N_14
+#ifndef SERIF_SPECIES_O_14
+    #define SERIF_SPECIES_O_14
+#endif // SERIF_SPECIES_O_14
+#ifndef SERIF_SPECIES_F_14
+    #define SERIF_SPECIES_F_14
+#endif // SERIF_SPECIES_F_14
+#ifndef SERIF_SPECIES_BE_15
+    #define SERIF_SPECIES_BE_15
+#endif // SERIF_SPECIES_BE_15
+#ifndef SERIF_SPECIES_B_15
+    #define SERIF_SPECIES_B_15
+#endif // SERIF_SPECIES_B_15
+#ifndef SERIF_SPECIES_C_15
+    #define SERIF_SPECIES_C_15
+#endif // SERIF_SPECIES_C_15
+#ifndef SERIF_SPECIES_N_15
+    #define SERIF_SPECIES_N_15
+#endif // SERIF_SPECIES_N_15
+#ifndef SERIF_SPECIES_O_15
+    #define SERIF_SPECIES_O_15
+#endif // SERIF_SPECIES_O_15
+#ifndef SERIF_SPECIES_F_15
+    #define SERIF_SPECIES_F_15
+#endif // SERIF_SPECIES_F_15
+#ifndef SERIF_SPECIES_NE_15
+    #define SERIF_SPECIES_NE_15
+#endif // SERIF_SPECIES_NE_15
+#ifndef SERIF_SPECIES_BE_16
+    #define SERIF_SPECIES_BE_16
+#endif // SERIF_SPECIES_BE_16
+#ifndef SERIF_SPECIES_B_16
+    #define SERIF_SPECIES_B_16
+#endif // SERIF_SPECIES_B_16
+#ifndef SERIF_SPECIES_C_16
+    #define SERIF_SPECIES_C_16
+#endif // SERIF_SPECIES_C_16
+#ifndef SERIF_SPECIES_N_16
+    #define SERIF_SPECIES_N_16
+#endif // SERIF_SPECIES_N_16
+#ifndef SERIF_SPECIES_O_16
+    #define SERIF_SPECIES_O_16
+#endif // SERIF_SPECIES_O_16
+#ifndef SERIF_SPECIES_F_16
+    #define SERIF_SPECIES_F_16
+#endif // SERIF_SPECIES_F_16
+#ifndef SERIF_SPECIES_NE_16
+    #define SERIF_SPECIES_NE_16
+#endif // SERIF_SPECIES_NE_16
+#ifndef SERIF_SPECIES_B_17
+    #define SERIF_SPECIES_B_17
+#endif // SERIF_SPECIES_B_17
+#ifndef SERIF_SPECIES_C_17
+    #define SERIF_SPECIES_C_17
+#endif // SERIF_SPECIES_C_17
+#ifndef SERIF_SPECIES_N_17
+    #define SERIF_SPECIES_N_17
+#endif // SERIF_SPECIES_N_17
+#ifndef SERIF_SPECIES_O_17
+    #define SERIF_SPECIES_O_17
+#endif // SERIF_SPECIES_O_17
+#ifndef SERIF_SPECIES_F_17
+    #define SERIF_SPECIES_F_17
+#endif // SERIF_SPECIES_F_17
+#ifndef SERIF_SPECIES_NE_17
+    #define SERIF_SPECIES_NE_17
+#endif // SERIF_SPECIES_NE_17
+#ifndef SERIF_SPECIES_NA_17
+    #define SERIF_SPECIES_NA_17
+#endif // SERIF_SPECIES_NA_17
+#ifndef SERIF_SPECIES_B_18
+    #define SERIF_SPECIES_B_18
+#endif // SERIF_SPECIES_B_18
+#ifndef SERIF_SPECIES_C_18
+    #define SERIF_SPECIES_C_18
+#endif // SERIF_SPECIES_C_18
+#ifndef SERIF_SPECIES_N_18
+    #define SERIF_SPECIES_N_18
+#endif // SERIF_SPECIES_N_18
+#ifndef SERIF_SPECIES_O_18
+    #define SERIF_SPECIES_O_18
+#endif // SERIF_SPECIES_O_18
+#ifndef SERIF_SPECIES_F_18
+    #define SERIF_SPECIES_F_18
+#endif // SERIF_SPECIES_F_18
+#ifndef SERIF_SPECIES_NE_18
+    #define SERIF_SPECIES_NE_18
+#endif // SERIF_SPECIES_NE_18
+#ifndef SERIF_SPECIES_NA_18
+    #define SERIF_SPECIES_NA_18
+#endif // SERIF_SPECIES_NA_18
+#ifndef SERIF_SPECIES_B_19
+    #define SERIF_SPECIES_B_19
+#endif // SERIF_SPECIES_B_19
+#ifndef SERIF_SPECIES_C_19
+    #define SERIF_SPECIES_C_19
+#endif // SERIF_SPECIES_C_19
+#ifndef SERIF_SPECIES_N_19
+    #define SERIF_SPECIES_N_19
+#endif // SERIF_SPECIES_N_19
+#ifndef SERIF_SPECIES_O_19
+    #define SERIF_SPECIES_O_19
+#endif // SERIF_SPECIES_O_19
+#ifndef SERIF_SPECIES_F_19
+    #define SERIF_SPECIES_F_19
+#endif // SERIF_SPECIES_F_19
+#ifndef SERIF_SPECIES_NE_19
+    #define SERIF_SPECIES_NE_19
+#endif // SERIF_SPECIES_NE_19
+#ifndef SERIF_SPECIES_NA_19
+    #define SERIF_SPECIES_NA_19
+#endif // SERIF_SPECIES_NA_19
+#ifndef SERIF_SPECIES_MG_19
+    #define SERIF_SPECIES_MG_19
+#endif // SERIF_SPECIES_MG_19
+#ifndef SERIF_SPECIES_B_20
+    #define SERIF_SPECIES_B_20
+#endif // SERIF_SPECIES_B_20
+#ifndef SERIF_SPECIES_C_20
+    #define SERIF_SPECIES_C_20
+#endif // SERIF_SPECIES_C_20
+#ifndef SERIF_SPECIES_N_20
+    #define SERIF_SPECIES_N_20
+#endif // SERIF_SPECIES_N_20
+#ifndef SERIF_SPECIES_O_20
+    #define SERIF_SPECIES_O_20
+#endif // SERIF_SPECIES_O_20
+#ifndef SERIF_SPECIES_F_20
+    #define SERIF_SPECIES_F_20
+#endif // SERIF_SPECIES_F_20
+#ifndef SERIF_SPECIES_NE_20
+    #define SERIF_SPECIES_NE_20
+#endif // SERIF_SPECIES_NE_20
+#ifndef SERIF_SPECIES_NA_20
+    #define SERIF_SPECIES_NA_20
+#endif // SERIF_SPECIES_NA_20
+#ifndef SERIF_SPECIES_MG_20
+    #define SERIF_SPECIES_MG_20
+#endif // SERIF_SPECIES_MG_20
+#ifndef SERIF_SPECIES_B_21
+    #define SERIF_SPECIES_B_21
+#endif // SERIF_SPECIES_B_21
+#ifndef SERIF_SPECIES_C_21
+    #define SERIF_SPECIES_C_21
+#endif // SERIF_SPECIES_C_21
+#ifndef SERIF_SPECIES_N_21
+    #define SERIF_SPECIES_N_21
+#endif // SERIF_SPECIES_N_21
+#ifndef SERIF_SPECIES_O_21
+    #define SERIF_SPECIES_O_21
+#endif // SERIF_SPECIES_O_21
+#ifndef SERIF_SPECIES_F_21
+    #define SERIF_SPECIES_F_21
+#endif // SERIF_SPECIES_F_21
+#ifndef SERIF_SPECIES_NE_21
+    #define SERIF_SPECIES_NE_21
+#endif // SERIF_SPECIES_NE_21
+#ifndef SERIF_SPECIES_NA_21
+    #define SERIF_SPECIES_NA_21
+#endif // SERIF_SPECIES_NA_21
+#ifndef SERIF_SPECIES_MG_21
+    #define SERIF_SPECIES_MG_21
+#endif // SERIF_SPECIES_MG_21
+#ifndef SERIF_SPECIES_AL_21
+    #define SERIF_SPECIES_AL_21
+#endif // SERIF_SPECIES_AL_21
+#ifndef SERIF_SPECIES_C_22
+    #define SERIF_SPECIES_C_22
+#endif // SERIF_SPECIES_C_22
+#ifndef SERIF_SPECIES_N_22
+    #define SERIF_SPECIES_N_22
+#endif // SERIF_SPECIES_N_22
+#ifndef SERIF_SPECIES_O_22
+    #define SERIF_SPECIES_O_22
+#endif // SERIF_SPECIES_O_22
+#ifndef SERIF_SPECIES_F_22
+    #define SERIF_SPECIES_F_22
+#endif // SERIF_SPECIES_F_22
+#ifndef SERIF_SPECIES_NE_22
+    #define SERIF_SPECIES_NE_22
+#endif // SERIF_SPECIES_NE_22
+#ifndef SERIF_SPECIES_NA_22
+    #define SERIF_SPECIES_NA_22
+#endif // SERIF_SPECIES_NA_22
+#ifndef SERIF_SPECIES_MG_22
+    #define SERIF_SPECIES_MG_22
+#endif // SERIF_SPECIES_MG_22
+#ifndef SERIF_SPECIES_AL_22
+    #define SERIF_SPECIES_AL_22
+#endif // SERIF_SPECIES_AL_22
+#ifndef SERIF_SPECIES_SI_22
+    #define SERIF_SPECIES_SI_22
+#endif // SERIF_SPECIES_SI_22
+#ifndef SERIF_SPECIES_C_23
+    #define SERIF_SPECIES_C_23
+#endif // SERIF_SPECIES_C_23
+#ifndef SERIF_SPECIES_N_23
+    #define SERIF_SPECIES_N_23
+#endif // SERIF_SPECIES_N_23
+#ifndef SERIF_SPECIES_O_23
+    #define SERIF_SPECIES_O_23
+#endif // SERIF_SPECIES_O_23
+#ifndef SERIF_SPECIES_F_23
+    #define SERIF_SPECIES_F_23
+#endif // SERIF_SPECIES_F_23
+#ifndef SERIF_SPECIES_NE_23
+    #define SERIF_SPECIES_NE_23
+#endif // SERIF_SPECIES_NE_23
+#ifndef SERIF_SPECIES_NA_23
+    #define SERIF_SPECIES_NA_23
+#endif // SERIF_SPECIES_NA_23
+#ifndef SERIF_SPECIES_MG_23
+    #define SERIF_SPECIES_MG_23
+#endif // SERIF_SPECIES_MG_23
+#ifndef SERIF_SPECIES_AL_23
+    #define SERIF_SPECIES_AL_23
+#endif // SERIF_SPECIES_AL_23
+#ifndef SERIF_SPECIES_SI_23
+    #define SERIF_SPECIES_SI_23
+#endif // SERIF_SPECIES_SI_23
+#ifndef SERIF_SPECIES_N_24
+    #define SERIF_SPECIES_N_24
+#endif // SERIF_SPECIES_N_24
+#ifndef SERIF_SPECIES_O_24
+    #define SERIF_SPECIES_O_24
+#endif // SERIF_SPECIES_O_24
+#ifndef SERIF_SPECIES_F_24
+    #define SERIF_SPECIES_F_24
+#endif // SERIF_SPECIES_F_24
+#ifndef SERIF_SPECIES_NE_24
+    #define SERIF_SPECIES_NE_24
+#endif // SERIF_SPECIES_NE_24
+#ifndef SERIF_SPECIES_NA_24
+    #define SERIF_SPECIES_NA_24
+#endif // SERIF_SPECIES_NA_24
+#ifndef SERIF_SPECIES_MG_24
+    #define SERIF_SPECIES_MG_24
+#endif // SERIF_SPECIES_MG_24
+#ifndef SERIF_SPECIES_AL_24
+    #define SERIF_SPECIES_AL_24
+#endif // SERIF_SPECIES_AL_24
+#ifndef SERIF_SPECIES_SI_24
+    #define SERIF_SPECIES_SI_24
+#endif // SERIF_SPECIES_SI_24
+#ifndef SERIF_SPECIES_P_24
+    #define SERIF_SPECIES_P_24
+#endif // SERIF_SPECIES_P_24
+#ifndef SERIF_SPECIES_N_25
+    #define SERIF_SPECIES_N_25
+#endif // SERIF_SPECIES_N_25
+#ifndef SERIF_SPECIES_O_25
+    #define SERIF_SPECIES_O_25
+#endif // SERIF_SPECIES_O_25
+#ifndef SERIF_SPECIES_F_25
+    #define SERIF_SPECIES_F_25
+#endif // SERIF_SPECIES_F_25
+#ifndef SERIF_SPECIES_NE_25
+    #define SERIF_SPECIES_NE_25
+#endif // SERIF_SPECIES_NE_25
+#ifndef SERIF_SPECIES_NA_25
+    #define SERIF_SPECIES_NA_25
+#endif // SERIF_SPECIES_NA_25
+#ifndef SERIF_SPECIES_MG_25
+    #define SERIF_SPECIES_MG_25
+#endif // SERIF_SPECIES_MG_25
+#ifndef SERIF_SPECIES_AL_25
+    #define SERIF_SPECIES_AL_25
+#endif // SERIF_SPECIES_AL_25
+#ifndef SERIF_SPECIES_SI_25
+    #define SERIF_SPECIES_SI_25
+#endif // SERIF_SPECIES_SI_25
+#ifndef SERIF_SPECIES_P_25
+    #define SERIF_SPECIES_P_25
+#endif // SERIF_SPECIES_P_25
+#ifndef SERIF_SPECIES_O_26
+    #define SERIF_SPECIES_O_26
+#endif // SERIF_SPECIES_O_26
+#ifndef SERIF_SPECIES_F_26
+    #define SERIF_SPECIES_F_26
+#endif // SERIF_SPECIES_F_26
+#ifndef SERIF_SPECIES_NE_26
+    #define SERIF_SPECIES_NE_26
+#endif // SERIF_SPECIES_NE_26
+#ifndef SERIF_SPECIES_NA_26
+    #define SERIF_SPECIES_NA_26
+#endif // SERIF_SPECIES_NA_26
+#ifndef SERIF_SPECIES_MG_26
+    #define SERIF_SPECIES_MG_26
+#endif // SERIF_SPECIES_MG_26
+#ifndef SERIF_SPECIES_AL_26
+    #define SERIF_SPECIES_AL_26
+#endif // SERIF_SPECIES_AL_26
+#ifndef SERIF_SPECIES_SI_26
+    #define SERIF_SPECIES_SI_26
+#endif // SERIF_SPECIES_SI_26
+#ifndef SERIF_SPECIES_P_26
+    #define SERIF_SPECIES_P_26
+#endif // SERIF_SPECIES_P_26
+#ifndef SERIF_SPECIES_S_26
+    #define SERIF_SPECIES_S_26
+#endif // SERIF_SPECIES_S_26
+#ifndef SERIF_SPECIES_O_27
+    #define SERIF_SPECIES_O_27
+#endif // SERIF_SPECIES_O_27
+#ifndef SERIF_SPECIES_F_27
+    #define SERIF_SPECIES_F_27
+#endif // SERIF_SPECIES_F_27
+#ifndef SERIF_SPECIES_NE_27
+    #define SERIF_SPECIES_NE_27
+#endif // SERIF_SPECIES_NE_27
+#ifndef SERIF_SPECIES_NA_27
+    #define SERIF_SPECIES_NA_27
+#endif // SERIF_SPECIES_NA_27
+#ifndef SERIF_SPECIES_MG_27
+    #define SERIF_SPECIES_MG_27
+#endif // SERIF_SPECIES_MG_27
+#ifndef SERIF_SPECIES_AL_27
+    #define SERIF_SPECIES_AL_27
+#endif // SERIF_SPECIES_AL_27
+#ifndef SERIF_SPECIES_SI_27
+    #define SERIF_SPECIES_SI_27
+#endif // SERIF_SPECIES_SI_27
+#ifndef SERIF_SPECIES_P_27
+    #define SERIF_SPECIES_P_27
+#endif // SERIF_SPECIES_P_27
+#ifndef SERIF_SPECIES_S_27
+    #define SERIF_SPECIES_S_27
+#endif // SERIF_SPECIES_S_27
+#ifndef SERIF_SPECIES_O_28
+    #define SERIF_SPECIES_O_28
+#endif // SERIF_SPECIES_O_28
+#ifndef SERIF_SPECIES_F_28
+    #define SERIF_SPECIES_F_28
+#endif // SERIF_SPECIES_F_28
+#ifndef SERIF_SPECIES_NE_28
+    #define SERIF_SPECIES_NE_28
+#endif // SERIF_SPECIES_NE_28
+#ifndef SERIF_SPECIES_NA_28
+    #define SERIF_SPECIES_NA_28
+#endif // SERIF_SPECIES_NA_28
+#ifndef SERIF_SPECIES_MG_28
+    #define SERIF_SPECIES_MG_28
+#endif // SERIF_SPECIES_MG_28
+#ifndef SERIF_SPECIES_AL_28
+    #define SERIF_SPECIES_AL_28
+#endif // SERIF_SPECIES_AL_28
+#ifndef SERIF_SPECIES_SI_28
+    #define SERIF_SPECIES_SI_28
+#endif // SERIF_SPECIES_SI_28
+#ifndef SERIF_SPECIES_P_28
+    #define SERIF_SPECIES_P_28
+#endif // SERIF_SPECIES_P_28
+#ifndef SERIF_SPECIES_S_28
+    #define SERIF_SPECIES_S_28
+#endif // SERIF_SPECIES_S_28
+#ifndef SERIF_SPECIES_CL_28
+    #define SERIF_SPECIES_CL_28
+#endif // SERIF_SPECIES_CL_28
+#ifndef SERIF_SPECIES_F_29
+    #define SERIF_SPECIES_F_29
+#endif // SERIF_SPECIES_F_29
+#ifndef SERIF_SPECIES_NE_29
+    #define SERIF_SPECIES_NE_29
+#endif // SERIF_SPECIES_NE_29
+#ifndef SERIF_SPECIES_NA_29
+    #define SERIF_SPECIES_NA_29
+#endif // SERIF_SPECIES_NA_29
+#ifndef SERIF_SPECIES_MG_29
+    #define SERIF_SPECIES_MG_29
+#endif // SERIF_SPECIES_MG_29
+#ifndef SERIF_SPECIES_AL_29
+    #define SERIF_SPECIES_AL_29
+#endif // SERIF_SPECIES_AL_29
+#ifndef SERIF_SPECIES_SI_29
+    #define SERIF_SPECIES_SI_29
+#endif // SERIF_SPECIES_SI_29
+#ifndef SERIF_SPECIES_P_29
+    #define SERIF_SPECIES_P_29
+#endif // SERIF_SPECIES_P_29
+#ifndef SERIF_SPECIES_S_29
+    #define SERIF_SPECIES_S_29
+#endif // SERIF_SPECIES_S_29
+#ifndef SERIF_SPECIES_CL_29
+    #define SERIF_SPECIES_CL_29
+#endif // SERIF_SPECIES_CL_29
+#ifndef SERIF_SPECIES_AR_29
+    #define SERIF_SPECIES_AR_29
+#endif // SERIF_SPECIES_AR_29
+#ifndef SERIF_SPECIES_F_30
+    #define SERIF_SPECIES_F_30
+#endif // SERIF_SPECIES_F_30
+#ifndef SERIF_SPECIES_NE_30
+    #define SERIF_SPECIES_NE_30
+#endif // SERIF_SPECIES_NE_30
+#ifndef SERIF_SPECIES_NA_30
+    #define SERIF_SPECIES_NA_30
+#endif // SERIF_SPECIES_NA_30
+#ifndef SERIF_SPECIES_MG_30
+    #define SERIF_SPECIES_MG_30
+#endif // SERIF_SPECIES_MG_30
+#ifndef SERIF_SPECIES_AL_30
+    #define SERIF_SPECIES_AL_30
+#endif // SERIF_SPECIES_AL_30
+#ifndef SERIF_SPECIES_SI_30
+    #define SERIF_SPECIES_SI_30
+#endif // SERIF_SPECIES_SI_30
+#ifndef SERIF_SPECIES_P_30
+    #define SERIF_SPECIES_P_30
+#endif // SERIF_SPECIES_P_30
+#ifndef SERIF_SPECIES_S_30
+    #define SERIF_SPECIES_S_30
+#endif // SERIF_SPECIES_S_30
+#ifndef SERIF_SPECIES_CL_30
+    #define SERIF_SPECIES_CL_30
+#endif // SERIF_SPECIES_CL_30
+#ifndef SERIF_SPECIES_AR_30
+    #define SERIF_SPECIES_AR_30
+#endif // SERIF_SPECIES_AR_30
+#ifndef SERIF_SPECIES_F_31
+    #define SERIF_SPECIES_F_31
+#endif // SERIF_SPECIES_F_31
+#ifndef SERIF_SPECIES_NE_31
+    #define SERIF_SPECIES_NE_31
+#endif // SERIF_SPECIES_NE_31
+#ifndef SERIF_SPECIES_NA_31
+    #define SERIF_SPECIES_NA_31
+#endif // SERIF_SPECIES_NA_31
+#ifndef SERIF_SPECIES_MG_31
+    #define SERIF_SPECIES_MG_31
+#endif // SERIF_SPECIES_MG_31
+#ifndef SERIF_SPECIES_AL_31
+    #define SERIF_SPECIES_AL_31
+#endif // SERIF_SPECIES_AL_31
+#ifndef SERIF_SPECIES_SI_31
+    #define SERIF_SPECIES_SI_31
+#endif // SERIF_SPECIES_SI_31
+#ifndef SERIF_SPECIES_P_31
+    #define SERIF_SPECIES_P_31
+#endif // SERIF_SPECIES_P_31
+#ifndef SERIF_SPECIES_S_31
+    #define SERIF_SPECIES_S_31
+#endif // SERIF_SPECIES_S_31
+#ifndef SERIF_SPECIES_CL_31
+    #define SERIF_SPECIES_CL_31
+#endif // SERIF_SPECIES_CL_31
+#ifndef SERIF_SPECIES_AR_31
+    #define SERIF_SPECIES_AR_31
+#endif // SERIF_SPECIES_AR_31
+#ifndef SERIF_SPECIES_K_31
+    #define SERIF_SPECIES_K_31
+#endif // SERIF_SPECIES_K_31
+#ifndef SERIF_SPECIES_NE_32
+    #define SERIF_SPECIES_NE_32
+#endif // SERIF_SPECIES_NE_32
+#ifndef SERIF_SPECIES_NA_32
+    #define SERIF_SPECIES_NA_32
+#endif // SERIF_SPECIES_NA_32
+#ifndef SERIF_SPECIES_MG_32
+    #define SERIF_SPECIES_MG_32
+#endif // SERIF_SPECIES_MG_32
+#ifndef SERIF_SPECIES_AL_32
+    #define SERIF_SPECIES_AL_32
+#endif // SERIF_SPECIES_AL_32
+#ifndef SERIF_SPECIES_SI_32
+    #define SERIF_SPECIES_SI_32
+#endif // SERIF_SPECIES_SI_32
+#ifndef SERIF_SPECIES_P_32
+    #define SERIF_SPECIES_P_32
+#endif // SERIF_SPECIES_P_32
+#ifndef SERIF_SPECIES_S_32
+    #define SERIF_SPECIES_S_32
+#endif // SERIF_SPECIES_S_32
+#ifndef SERIF_SPECIES_CL_32
+    #define SERIF_SPECIES_CL_32
+#endif // SERIF_SPECIES_CL_32
+#ifndef SERIF_SPECIES_AR_32
+    #define SERIF_SPECIES_AR_32
+#endif // SERIF_SPECIES_AR_32
+#ifndef SERIF_SPECIES_K_32
+    #define SERIF_SPECIES_K_32
+#endif // SERIF_SPECIES_K_32
+#ifndef SERIF_SPECIES_NE_33
+    #define SERIF_SPECIES_NE_33
+#endif // SERIF_SPECIES_NE_33
+#ifndef SERIF_SPECIES_NA_33
+    #define SERIF_SPECIES_NA_33
+#endif // SERIF_SPECIES_NA_33
+#ifndef SERIF_SPECIES_MG_33
+    #define SERIF_SPECIES_MG_33
+#endif // SERIF_SPECIES_MG_33
+#ifndef SERIF_SPECIES_AL_33
+    #define SERIF_SPECIES_AL_33
+#endif // SERIF_SPECIES_AL_33
+#ifndef SERIF_SPECIES_SI_33
+    #define SERIF_SPECIES_SI_33
+#endif // SERIF_SPECIES_SI_33
+#ifndef SERIF_SPECIES_P_33
+    #define SERIF_SPECIES_P_33
+#endif // SERIF_SPECIES_P_33
+#ifndef SERIF_SPECIES_S_33
+    #define SERIF_SPECIES_S_33
+#endif // SERIF_SPECIES_S_33
+#ifndef SERIF_SPECIES_CL_33
+    #define SERIF_SPECIES_CL_33
+#endif // SERIF_SPECIES_CL_33
+#ifndef SERIF_SPECIES_AR_33
+    #define SERIF_SPECIES_AR_33
+#endif // SERIF_SPECIES_AR_33
+#ifndef SERIF_SPECIES_K_33
+    #define SERIF_SPECIES_K_33
+#endif // SERIF_SPECIES_K_33
+#ifndef SERIF_SPECIES_CA_33
+    #define SERIF_SPECIES_CA_33
+#endif // SERIF_SPECIES_CA_33
+#ifndef SERIF_SPECIES_NE_34
+    #define SERIF_SPECIES_NE_34
+#endif // SERIF_SPECIES_NE_34
+#ifndef SERIF_SPECIES_NA_34
+    #define SERIF_SPECIES_NA_34
+#endif // SERIF_SPECIES_NA_34
+#ifndef SERIF_SPECIES_MG_34
+    #define SERIF_SPECIES_MG_34
+#endif // SERIF_SPECIES_MG_34
+#ifndef SERIF_SPECIES_AL_34
+    #define SERIF_SPECIES_AL_34
+#endif // SERIF_SPECIES_AL_34
+#ifndef SERIF_SPECIES_SI_34
+    #define SERIF_SPECIES_SI_34
+#endif // SERIF_SPECIES_SI_34
+#ifndef SERIF_SPECIES_P_34
+    #define SERIF_SPECIES_P_34
+#endif // SERIF_SPECIES_P_34
+#ifndef SERIF_SPECIES_S_34
+    #define SERIF_SPECIES_S_34
+#endif // SERIF_SPECIES_S_34
+#ifndef SERIF_SPECIES_CL_34
+    #define SERIF_SPECIES_CL_34
+#endif // SERIF_SPECIES_CL_34
+#ifndef SERIF_SPECIES_AR_34
+    #define SERIF_SPECIES_AR_34
+#endif // SERIF_SPECIES_AR_34
+#ifndef SERIF_SPECIES_K_34
+    #define SERIF_SPECIES_K_34
+#endif // SERIF_SPECIES_K_34
+#ifndef SERIF_SPECIES_CA_34
+    #define SERIF_SPECIES_CA_34
+#endif // SERIF_SPECIES_CA_34
+#ifndef SERIF_SPECIES_NA_35
+    #define SERIF_SPECIES_NA_35
+#endif // SERIF_SPECIES_NA_35
+#ifndef SERIF_SPECIES_MG_35
+    #define SERIF_SPECIES_MG_35
+#endif // SERIF_SPECIES_MG_35
+#ifndef SERIF_SPECIES_AL_35
+    #define SERIF_SPECIES_AL_35
+#endif // SERIF_SPECIES_AL_35
+#ifndef SERIF_SPECIES_SI_35
+    #define SERIF_SPECIES_SI_35
+#endif // SERIF_SPECIES_SI_35
+#ifndef SERIF_SPECIES_P_35
+    #define SERIF_SPECIES_P_35
+#endif // SERIF_SPECIES_P_35
+#ifndef SERIF_SPECIES_S_35
+    #define SERIF_SPECIES_S_35
+#endif // SERIF_SPECIES_S_35
+#ifndef SERIF_SPECIES_CL_35
+    #define SERIF_SPECIES_CL_35
+#endif // SERIF_SPECIES_CL_35
+#ifndef SERIF_SPECIES_AR_35
+    #define SERIF_SPECIES_AR_35
+#endif // SERIF_SPECIES_AR_35
+#ifndef SERIF_SPECIES_K_35
+    #define SERIF_SPECIES_K_35
+#endif // SERIF_SPECIES_K_35
+#ifndef SERIF_SPECIES_CA_35
+    #define SERIF_SPECIES_CA_35
+#endif // SERIF_SPECIES_CA_35
+#ifndef SERIF_SPECIES_SC_35
+    #define SERIF_SPECIES_SC_35
+#endif // SERIF_SPECIES_SC_35
+#ifndef SERIF_SPECIES_NA_36
+    #define SERIF_SPECIES_NA_36
+#endif // SERIF_SPECIES_NA_36
+#ifndef SERIF_SPECIES_MG_36
+    #define SERIF_SPECIES_MG_36
+#endif // SERIF_SPECIES_MG_36
+#ifndef SERIF_SPECIES_AL_36
+    #define SERIF_SPECIES_AL_36
+#endif // SERIF_SPECIES_AL_36
+#ifndef SERIF_SPECIES_SI_36
+    #define SERIF_SPECIES_SI_36
+#endif // SERIF_SPECIES_SI_36
+#ifndef SERIF_SPECIES_P_36
+    #define SERIF_SPECIES_P_36
+#endif // SERIF_SPECIES_P_36
+#ifndef SERIF_SPECIES_S_36
+    #define SERIF_SPECIES_S_36
+#endif // SERIF_SPECIES_S_36
+#ifndef SERIF_SPECIES_CL_36
+    #define SERIF_SPECIES_CL_36
+#endif // SERIF_SPECIES_CL_36
+#ifndef SERIF_SPECIES_AR_36
+    #define SERIF_SPECIES_AR_36
+#endif // SERIF_SPECIES_AR_36
+#ifndef SERIF_SPECIES_K_36
+    #define SERIF_SPECIES_K_36
+#endif // SERIF_SPECIES_K_36
+#ifndef SERIF_SPECIES_CA_36
+    #define SERIF_SPECIES_CA_36
+#endif // SERIF_SPECIES_CA_36
+#ifndef SERIF_SPECIES_SC_36
+    #define SERIF_SPECIES_SC_36
+#endif // SERIF_SPECIES_SC_36
+#ifndef SERIF_SPECIES_NA_37
+    #define SERIF_SPECIES_NA_37
+#endif // SERIF_SPECIES_NA_37
+#ifndef SERIF_SPECIES_MG_37
+    #define SERIF_SPECIES_MG_37
+#endif // SERIF_SPECIES_MG_37
+#ifndef SERIF_SPECIES_AL_37
+    #define SERIF_SPECIES_AL_37
+#endif // SERIF_SPECIES_AL_37
+#ifndef SERIF_SPECIES_SI_37
+    #define SERIF_SPECIES_SI_37
+#endif // SERIF_SPECIES_SI_37
+#ifndef SERIF_SPECIES_P_37
+    #define SERIF_SPECIES_P_37
+#endif // SERIF_SPECIES_P_37
+#ifndef SERIF_SPECIES_S_37
+    #define SERIF_SPECIES_S_37
+#endif // SERIF_SPECIES_S_37
+#ifndef SERIF_SPECIES_CL_37
+    #define SERIF_SPECIES_CL_37
+#endif // SERIF_SPECIES_CL_37
+#ifndef SERIF_SPECIES_AR_37
+    #define SERIF_SPECIES_AR_37
+#endif // SERIF_SPECIES_AR_37
+#ifndef SERIF_SPECIES_K_37
+    #define SERIF_SPECIES_K_37
+#endif // SERIF_SPECIES_K_37
+#ifndef SERIF_SPECIES_CA_37
+    #define SERIF_SPECIES_CA_37
+#endif // SERIF_SPECIES_CA_37
+#ifndef SERIF_SPECIES_SC_37
+    #define SERIF_SPECIES_SC_37
+#endif // SERIF_SPECIES_SC_37
+#ifndef SERIF_SPECIES_TI_37
+    #define SERIF_SPECIES_TI_37
+#endif // SERIF_SPECIES_TI_37
+#ifndef SERIF_SPECIES_NA_38
+    #define SERIF_SPECIES_NA_38
+#endif // SERIF_SPECIES_NA_38
+#ifndef SERIF_SPECIES_MG_38
+    #define SERIF_SPECIES_MG_38
+#endif // SERIF_SPECIES_MG_38
+#ifndef SERIF_SPECIES_AL_38
+    #define SERIF_SPECIES_AL_38
+#endif // SERIF_SPECIES_AL_38
+#ifndef SERIF_SPECIES_SI_38
+    #define SERIF_SPECIES_SI_38
+#endif // SERIF_SPECIES_SI_38
+#ifndef SERIF_SPECIES_P_38
+    #define SERIF_SPECIES_P_38
+#endif // SERIF_SPECIES_P_38
+#ifndef SERIF_SPECIES_S_38
+    #define SERIF_SPECIES_S_38
+#endif // SERIF_SPECIES_S_38
+#ifndef SERIF_SPECIES_CL_38
+    #define SERIF_SPECIES_CL_38
+#endif // SERIF_SPECIES_CL_38
+#ifndef SERIF_SPECIES_AR_38
+    #define SERIF_SPECIES_AR_38
+#endif // SERIF_SPECIES_AR_38
+#ifndef SERIF_SPECIES_K_38
+    #define SERIF_SPECIES_K_38
+#endif // SERIF_SPECIES_K_38
+#ifndef SERIF_SPECIES_CA_38
+    #define SERIF_SPECIES_CA_38
+#endif // SERIF_SPECIES_CA_38
+#ifndef SERIF_SPECIES_SC_38
+    #define SERIF_SPECIES_SC_38
+#endif // SERIF_SPECIES_SC_38
+#ifndef SERIF_SPECIES_TI_38
+    #define SERIF_SPECIES_TI_38
+#endif // SERIF_SPECIES_TI_38
+#ifndef SERIF_SPECIES_NA_39
+    #define SERIF_SPECIES_NA_39
+#endif // SERIF_SPECIES_NA_39
+#ifndef SERIF_SPECIES_MG_39
+    #define SERIF_SPECIES_MG_39
+#endif // SERIF_SPECIES_MG_39
+#ifndef SERIF_SPECIES_AL_39
+    #define SERIF_SPECIES_AL_39
+#endif // SERIF_SPECIES_AL_39
+#ifndef SERIF_SPECIES_SI_39
+    #define SERIF_SPECIES_SI_39
+#endif // SERIF_SPECIES_SI_39
+#ifndef SERIF_SPECIES_P_39
+    #define SERIF_SPECIES_P_39
+#endif // SERIF_SPECIES_P_39
+#ifndef SERIF_SPECIES_S_39
+    #define SERIF_SPECIES_S_39
+#endif // SERIF_SPECIES_S_39
+#ifndef SERIF_SPECIES_CL_39
+    #define SERIF_SPECIES_CL_39
+#endif // SERIF_SPECIES_CL_39
+#ifndef SERIF_SPECIES_AR_39
+    #define SERIF_SPECIES_AR_39
+#endif // SERIF_SPECIES_AR_39
+#ifndef SERIF_SPECIES_K_39
+    #define SERIF_SPECIES_K_39
+#endif // SERIF_SPECIES_K_39
+#ifndef SERIF_SPECIES_CA_39
+    #define SERIF_SPECIES_CA_39
+#endif // SERIF_SPECIES_CA_39
+#ifndef SERIF_SPECIES_SC_39
+    #define SERIF_SPECIES_SC_39
+#endif // SERIF_SPECIES_SC_39
+#ifndef SERIF_SPECIES_TI_39
+    #define SERIF_SPECIES_TI_39
+#endif // SERIF_SPECIES_TI_39
+#ifndef SERIF_SPECIES_V_39
+    #define SERIF_SPECIES_V_39
+#endif // SERIF_SPECIES_V_39
+#ifndef SERIF_SPECIES_MG_40
+    #define SERIF_SPECIES_MG_40
+#endif // SERIF_SPECIES_MG_40
+#ifndef SERIF_SPECIES_AL_40
+    #define SERIF_SPECIES_AL_40
+#endif // SERIF_SPECIES_AL_40
+#ifndef SERIF_SPECIES_SI_40
+    #define SERIF_SPECIES_SI_40
+#endif // SERIF_SPECIES_SI_40
+#ifndef SERIF_SPECIES_P_40
+    #define SERIF_SPECIES_P_40
+#endif // SERIF_SPECIES_P_40
+#ifndef SERIF_SPECIES_S_40
+    #define SERIF_SPECIES_S_40
+#endif // SERIF_SPECIES_S_40
+#ifndef SERIF_SPECIES_CL_40
+    #define SERIF_SPECIES_CL_40
+#endif // SERIF_SPECIES_CL_40
+#ifndef SERIF_SPECIES_AR_40
+    #define SERIF_SPECIES_AR_40
+#endif // SERIF_SPECIES_AR_40
+#ifndef SERIF_SPECIES_K_40
+    #define SERIF_SPECIES_K_40
+#endif // SERIF_SPECIES_K_40
+#ifndef SERIF_SPECIES_CA_40
+    #define SERIF_SPECIES_CA_40
+#endif // SERIF_SPECIES_CA_40
+#ifndef SERIF_SPECIES_SC_40
+    #define SERIF_SPECIES_SC_40
+#endif // SERIF_SPECIES_SC_40
+#ifndef SERIF_SPECIES_TI_40
+    #define SERIF_SPECIES_TI_40
+#endif // SERIF_SPECIES_TI_40
+#ifndef SERIF_SPECIES_V_40
+    #define SERIF_SPECIES_V_40
+#endif // SERIF_SPECIES_V_40
+#ifndef SERIF_SPECIES_MG_41
+    #define SERIF_SPECIES_MG_41
+#endif // SERIF_SPECIES_MG_41
+#ifndef SERIF_SPECIES_AL_41
+    #define SERIF_SPECIES_AL_41
+#endif // SERIF_SPECIES_AL_41
+#ifndef SERIF_SPECIES_SI_41
+    #define SERIF_SPECIES_SI_41
+#endif // SERIF_SPECIES_SI_41
+#ifndef SERIF_SPECIES_P_41
+    #define SERIF_SPECIES_P_41
+#endif // SERIF_SPECIES_P_41
+#ifndef SERIF_SPECIES_S_41
+    #define SERIF_SPECIES_S_41
+#endif // SERIF_SPECIES_S_41
+#ifndef SERIF_SPECIES_CL_41
+    #define SERIF_SPECIES_CL_41
+#endif // SERIF_SPECIES_CL_41
+#ifndef SERIF_SPECIES_AR_41
+    #define SERIF_SPECIES_AR_41
+#endif // SERIF_SPECIES_AR_41
+#ifndef SERIF_SPECIES_K_41
+    #define SERIF_SPECIES_K_41
+#endif // SERIF_SPECIES_K_41
+#ifndef SERIF_SPECIES_CA_41
+    #define SERIF_SPECIES_CA_41
+#endif // SERIF_SPECIES_CA_41
+#ifndef SERIF_SPECIES_SC_41
+    #define SERIF_SPECIES_SC_41
+#endif // SERIF_SPECIES_SC_41
+#ifndef SERIF_SPECIES_TI_41
+    #define SERIF_SPECIES_TI_41
+#endif // SERIF_SPECIES_TI_41
+#ifndef SERIF_SPECIES_V_41
+    #define SERIF_SPECIES_V_41
+#endif // SERIF_SPECIES_V_41
+#ifndef SERIF_SPECIES_CR_41
+    #define SERIF_SPECIES_CR_41
+#endif // SERIF_SPECIES_CR_41
+#ifndef SERIF_SPECIES_AL_42
+    #define SERIF_SPECIES_AL_42
+#endif // SERIF_SPECIES_AL_42
+#ifndef SERIF_SPECIES_SI_42
+    #define SERIF_SPECIES_SI_42
+#endif // SERIF_SPECIES_SI_42
+#ifndef SERIF_SPECIES_P_42
+    #define SERIF_SPECIES_P_42
+#endif // SERIF_SPECIES_P_42
+#ifndef SERIF_SPECIES_S_42
+    #define SERIF_SPECIES_S_42
+#endif // SERIF_SPECIES_S_42
+#ifndef SERIF_SPECIES_CL_42
+    #define SERIF_SPECIES_CL_42
+#endif // SERIF_SPECIES_CL_42
+#ifndef SERIF_SPECIES_AR_42
+    #define SERIF_SPECIES_AR_42
+#endif // SERIF_SPECIES_AR_42
+#ifndef SERIF_SPECIES_K_42
+    #define SERIF_SPECIES_K_42
+#endif // SERIF_SPECIES_K_42
+#ifndef SERIF_SPECIES_CA_42
+    #define SERIF_SPECIES_CA_42
+#endif // SERIF_SPECIES_CA_42
+#ifndef SERIF_SPECIES_SC_42
+    #define SERIF_SPECIES_SC_42
+#endif // SERIF_SPECIES_SC_42
+#ifndef SERIF_SPECIES_TI_42
+    #define SERIF_SPECIES_TI_42
+#endif // SERIF_SPECIES_TI_42
+#ifndef SERIF_SPECIES_V_42
+    #define SERIF_SPECIES_V_42
+#endif // SERIF_SPECIES_V_42
+#ifndef SERIF_SPECIES_CR_42
+    #define SERIF_SPECIES_CR_42
+#endif // SERIF_SPECIES_CR_42
+#ifndef SERIF_SPECIES_AL_43
+    #define SERIF_SPECIES_AL_43
+#endif // SERIF_SPECIES_AL_43
+#ifndef SERIF_SPECIES_SI_43
+    #define SERIF_SPECIES_SI_43
+#endif // SERIF_SPECIES_SI_43
+#ifndef SERIF_SPECIES_P_43
+    #define SERIF_SPECIES_P_43
+#endif // SERIF_SPECIES_P_43
+#ifndef SERIF_SPECIES_S_43
+    #define SERIF_SPECIES_S_43
+#endif // SERIF_SPECIES_S_43
+#ifndef SERIF_SPECIES_CL_43
+    #define SERIF_SPECIES_CL_43
+#endif // SERIF_SPECIES_CL_43
+#ifndef SERIF_SPECIES_AR_43
+    #define SERIF_SPECIES_AR_43
+#endif // SERIF_SPECIES_AR_43
+#ifndef SERIF_SPECIES_K_43
+    #define SERIF_SPECIES_K_43
+#endif // SERIF_SPECIES_K_43
+#ifndef SERIF_SPECIES_CA_43
+    #define SERIF_SPECIES_CA_43
+#endif // SERIF_SPECIES_CA_43
+#ifndef SERIF_SPECIES_SC_43
+    #define SERIF_SPECIES_SC_43
+#endif // SERIF_SPECIES_SC_43
+#ifndef SERIF_SPECIES_TI_43
+    #define SERIF_SPECIES_TI_43
+#endif // SERIF_SPECIES_TI_43
+#ifndef SERIF_SPECIES_V_43
+    #define SERIF_SPECIES_V_43
+#endif // SERIF_SPECIES_V_43
+#ifndef SERIF_SPECIES_CR_43
+    #define SERIF_SPECIES_CR_43
+#endif // SERIF_SPECIES_CR_43
+#ifndef SERIF_SPECIES_MN_43
+    #define SERIF_SPECIES_MN_43
+#endif // SERIF_SPECIES_MN_43
+#ifndef SERIF_SPECIES_SI_44
+    #define SERIF_SPECIES_SI_44
+#endif // SERIF_SPECIES_SI_44
+#ifndef SERIF_SPECIES_P_44
+    #define SERIF_SPECIES_P_44
+#endif // SERIF_SPECIES_P_44
+#ifndef SERIF_SPECIES_S_44
+    #define SERIF_SPECIES_S_44
+#endif // SERIF_SPECIES_S_44
+#ifndef SERIF_SPECIES_CL_44
+    #define SERIF_SPECIES_CL_44
+#endif // SERIF_SPECIES_CL_44
+#ifndef SERIF_SPECIES_AR_44
+    #define SERIF_SPECIES_AR_44
+#endif // SERIF_SPECIES_AR_44
+#ifndef SERIF_SPECIES_K_44
+    #define SERIF_SPECIES_K_44
+#endif // SERIF_SPECIES_K_44
+#ifndef SERIF_SPECIES_CA_44
+    #define SERIF_SPECIES_CA_44
+#endif // SERIF_SPECIES_CA_44
+#ifndef SERIF_SPECIES_SC_44
+    #define SERIF_SPECIES_SC_44
+#endif // SERIF_SPECIES_SC_44
+#ifndef SERIF_SPECIES_TI_44
+    #define SERIF_SPECIES_TI_44
+#endif // SERIF_SPECIES_TI_44
+#ifndef SERIF_SPECIES_V_44
+    #define SERIF_SPECIES_V_44
+#endif // SERIF_SPECIES_V_44
+#ifndef SERIF_SPECIES_CR_44
+    #define SERIF_SPECIES_CR_44
+#endif // SERIF_SPECIES_CR_44
+#ifndef SERIF_SPECIES_MN_44
+    #define SERIF_SPECIES_MN_44
+#endif // SERIF_SPECIES_MN_44
+#ifndef SERIF_SPECIES_SI_45
+    #define SERIF_SPECIES_SI_45
+#endif // SERIF_SPECIES_SI_45
+#ifndef SERIF_SPECIES_P_45
+    #define SERIF_SPECIES_P_45
+#endif // SERIF_SPECIES_P_45
+#ifndef SERIF_SPECIES_S_45
+    #define SERIF_SPECIES_S_45
+#endif // SERIF_SPECIES_S_45
+#ifndef SERIF_SPECIES_CL_45
+    #define SERIF_SPECIES_CL_45
+#endif // SERIF_SPECIES_CL_45
+#ifndef SERIF_SPECIES_AR_45
+    #define SERIF_SPECIES_AR_45
+#endif // SERIF_SPECIES_AR_45
+#ifndef SERIF_SPECIES_K_45
+    #define SERIF_SPECIES_K_45
+#endif // SERIF_SPECIES_K_45
+#ifndef SERIF_SPECIES_CA_45
+    #define SERIF_SPECIES_CA_45
+#endif // SERIF_SPECIES_CA_45
+#ifndef SERIF_SPECIES_SC_45
+    #define SERIF_SPECIES_SC_45
+#endif // SERIF_SPECIES_SC_45
+#ifndef SERIF_SPECIES_TI_45
+    #define SERIF_SPECIES_TI_45
+#endif // SERIF_SPECIES_TI_45
+#ifndef SERIF_SPECIES_V_45
+    #define SERIF_SPECIES_V_45
+#endif // SERIF_SPECIES_V_45
+#ifndef SERIF_SPECIES_CR_45
+    #define SERIF_SPECIES_CR_45
+#endif // SERIF_SPECIES_CR_45
+#ifndef SERIF_SPECIES_MN_45
+    #define SERIF_SPECIES_MN_45
+#endif // SERIF_SPECIES_MN_45
+#ifndef SERIF_SPECIES_FE_45
+    #define SERIF_SPECIES_FE_45
+#endif // SERIF_SPECIES_FE_45
+#ifndef SERIF_SPECIES_P_46
+    #define SERIF_SPECIES_P_46
+#endif // SERIF_SPECIES_P_46
+#ifndef SERIF_SPECIES_S_46
+    #define SERIF_SPECIES_S_46
+#endif // SERIF_SPECIES_S_46
+#ifndef SERIF_SPECIES_CL_46
+    #define SERIF_SPECIES_CL_46
+#endif // SERIF_SPECIES_CL_46
+#ifndef SERIF_SPECIES_AR_46
+    #define SERIF_SPECIES_AR_46
+#endif // SERIF_SPECIES_AR_46
+#ifndef SERIF_SPECIES_K_46
+    #define SERIF_SPECIES_K_46
+#endif // SERIF_SPECIES_K_46
+#ifndef SERIF_SPECIES_CA_46
+    #define SERIF_SPECIES_CA_46
+#endif // SERIF_SPECIES_CA_46
+#ifndef SERIF_SPECIES_SC_46
+    #define SERIF_SPECIES_SC_46
+#endif // SERIF_SPECIES_SC_46
+#ifndef SERIF_SPECIES_TI_46
+    #define SERIF_SPECIES_TI_46
+#endif // SERIF_SPECIES_TI_46
+#ifndef SERIF_SPECIES_V_46
+    #define SERIF_SPECIES_V_46
+#endif // SERIF_SPECIES_V_46
+#ifndef SERIF_SPECIES_CR_46
+    #define SERIF_SPECIES_CR_46
+#endif // SERIF_SPECIES_CR_46
+#ifndef SERIF_SPECIES_MN_46
+    #define SERIF_SPECIES_MN_46
+#endif // SERIF_SPECIES_MN_46
+#ifndef SERIF_SPECIES_FE_46
+    #define SERIF_SPECIES_FE_46
+#endif // SERIF_SPECIES_FE_46
+#ifndef SERIF_SPECIES_P_47
+    #define SERIF_SPECIES_P_47
+#endif // SERIF_SPECIES_P_47
+#ifndef SERIF_SPECIES_S_47
+    #define SERIF_SPECIES_S_47
+#endif // SERIF_SPECIES_S_47
+#ifndef SERIF_SPECIES_CL_47
+    #define SERIF_SPECIES_CL_47
+#endif // SERIF_SPECIES_CL_47
+#ifndef SERIF_SPECIES_AR_47
+    #define SERIF_SPECIES_AR_47
+#endif // SERIF_SPECIES_AR_47
+#ifndef SERIF_SPECIES_K_47
+    #define SERIF_SPECIES_K_47
+#endif // SERIF_SPECIES_K_47
+#ifndef SERIF_SPECIES_CA_47
+    #define SERIF_SPECIES_CA_47
+#endif // SERIF_SPECIES_CA_47
+#ifndef SERIF_SPECIES_SC_47
+    #define SERIF_SPECIES_SC_47
+#endif // SERIF_SPECIES_SC_47
+#ifndef SERIF_SPECIES_TI_47
+    #define SERIF_SPECIES_TI_47
+#endif // SERIF_SPECIES_TI_47
+#ifndef SERIF_SPECIES_V_47
+    #define SERIF_SPECIES_V_47
+#endif // SERIF_SPECIES_V_47
+#ifndef SERIF_SPECIES_CR_47
+    #define SERIF_SPECIES_CR_47
+#endif // SERIF_SPECIES_CR_47
+#ifndef SERIF_SPECIES_MN_47
+    #define SERIF_SPECIES_MN_47
+#endif // SERIF_SPECIES_MN_47
+#ifndef SERIF_SPECIES_FE_47
+    #define SERIF_SPECIES_FE_47
+#endif // SERIF_SPECIES_FE_47
+#ifndef SERIF_SPECIES_CO_47
+    #define SERIF_SPECIES_CO_47
+#endif // SERIF_SPECIES_CO_47
+#ifndef SERIF_SPECIES_S_48
+    #define SERIF_SPECIES_S_48
+#endif // SERIF_SPECIES_S_48
+#ifndef SERIF_SPECIES_CL_48
+    #define SERIF_SPECIES_CL_48
+#endif // SERIF_SPECIES_CL_48
+#ifndef SERIF_SPECIES_AR_48
+    #define SERIF_SPECIES_AR_48
+#endif // SERIF_SPECIES_AR_48
+#ifndef SERIF_SPECIES_K_48
+    #define SERIF_SPECIES_K_48
+#endif // SERIF_SPECIES_K_48
+#ifndef SERIF_SPECIES_CA_48
+    #define SERIF_SPECIES_CA_48
+#endif // SERIF_SPECIES_CA_48
+#ifndef SERIF_SPECIES_SC_48
+    #define SERIF_SPECIES_SC_48
+#endif // SERIF_SPECIES_SC_48
+#ifndef SERIF_SPECIES_TI_48
+    #define SERIF_SPECIES_TI_48
+#endif // SERIF_SPECIES_TI_48
+#ifndef SERIF_SPECIES_V_48
+    #define SERIF_SPECIES_V_48
+#endif // SERIF_SPECIES_V_48
+#ifndef SERIF_SPECIES_CR_48
+    #define SERIF_SPECIES_CR_48
+#endif // SERIF_SPECIES_CR_48
+#ifndef SERIF_SPECIES_MN_48
+    #define SERIF_SPECIES_MN_48
+#endif // SERIF_SPECIES_MN_48
+#ifndef SERIF_SPECIES_FE_48
+    #define SERIF_SPECIES_FE_48
+#endif // SERIF_SPECIES_FE_48
+#ifndef SERIF_SPECIES_CO_48
+    #define SERIF_SPECIES_CO_48
+#endif // SERIF_SPECIES_CO_48
+#ifndef SERIF_SPECIES_NI_48
+    #define SERIF_SPECIES_NI_48
+#endif // SERIF_SPECIES_NI_48
+#ifndef SERIF_SPECIES_S_49
+    #define SERIF_SPECIES_S_49
+#endif // SERIF_SPECIES_S_49
+#ifndef SERIF_SPECIES_CL_49
+    #define SERIF_SPECIES_CL_49
+#endif // SERIF_SPECIES_CL_49
+#ifndef SERIF_SPECIES_AR_49
+    #define SERIF_SPECIES_AR_49
+#endif // SERIF_SPECIES_AR_49
+#ifndef SERIF_SPECIES_K_49
+    #define SERIF_SPECIES_K_49
+#endif // SERIF_SPECIES_K_49
+#ifndef SERIF_SPECIES_CA_49
+    #define SERIF_SPECIES_CA_49
+#endif // SERIF_SPECIES_CA_49
+#ifndef SERIF_SPECIES_SC_49
+    #define SERIF_SPECIES_SC_49
+#endif // SERIF_SPECIES_SC_49
+#ifndef SERIF_SPECIES_TI_49
+    #define SERIF_SPECIES_TI_49
+#endif // SERIF_SPECIES_TI_49
+#ifndef SERIF_SPECIES_V_49
+    #define SERIF_SPECIES_V_49
+#endif // SERIF_SPECIES_V_49
+#ifndef SERIF_SPECIES_CR_49
+    #define SERIF_SPECIES_CR_49
+#endif // SERIF_SPECIES_CR_49
+#ifndef SERIF_SPECIES_MN_49
+    #define SERIF_SPECIES_MN_49
+#endif // SERIF_SPECIES_MN_49
+#ifndef SERIF_SPECIES_FE_49
+    #define SERIF_SPECIES_FE_49
+#endif // SERIF_SPECIES_FE_49
+#ifndef SERIF_SPECIES_CO_49
+    #define SERIF_SPECIES_CO_49
+#endif // SERIF_SPECIES_CO_49
+#ifndef SERIF_SPECIES_NI_49
+    #define SERIF_SPECIES_NI_49
+#endif // SERIF_SPECIES_NI_49
+#ifndef SERIF_SPECIES_CL_50
+    #define SERIF_SPECIES_CL_50
+#endif // SERIF_SPECIES_CL_50
+#ifndef SERIF_SPECIES_AR_50
+    #define SERIF_SPECIES_AR_50
+#endif // SERIF_SPECIES_AR_50
+#ifndef SERIF_SPECIES_K_50
+    #define SERIF_SPECIES_K_50
+#endif // SERIF_SPECIES_K_50
+#ifndef SERIF_SPECIES_CA_50
+    #define SERIF_SPECIES_CA_50
+#endif // SERIF_SPECIES_CA_50
+#ifndef SERIF_SPECIES_SC_50
+    #define SERIF_SPECIES_SC_50
+#endif // SERIF_SPECIES_SC_50
+#ifndef SERIF_SPECIES_TI_50
+    #define SERIF_SPECIES_TI_50
+#endif // SERIF_SPECIES_TI_50
+#ifndef SERIF_SPECIES_V_50
+    #define SERIF_SPECIES_V_50
+#endif // SERIF_SPECIES_V_50
+#ifndef SERIF_SPECIES_CR_50
+    #define SERIF_SPECIES_CR_50
+#endif // SERIF_SPECIES_CR_50
+#ifndef SERIF_SPECIES_MN_50
+    #define SERIF_SPECIES_MN_50
+#endif // SERIF_SPECIES_MN_50
+#ifndef SERIF_SPECIES_FE_50
+    #define SERIF_SPECIES_FE_50
+#endif // SERIF_SPECIES_FE_50
+#ifndef SERIF_SPECIES_CO_50
+    #define SERIF_SPECIES_CO_50
+#endif // SERIF_SPECIES_CO_50
+#ifndef SERIF_SPECIES_NI_50
+    #define SERIF_SPECIES_NI_50
+#endif // SERIF_SPECIES_NI_50
+#ifndef SERIF_SPECIES_CL_51
+    #define SERIF_SPECIES_CL_51
+#endif // SERIF_SPECIES_CL_51
+#ifndef SERIF_SPECIES_AR_51
+    #define SERIF_SPECIES_AR_51
+#endif // SERIF_SPECIES_AR_51
+#ifndef SERIF_SPECIES_K_51
+    #define SERIF_SPECIES_K_51
+#endif // SERIF_SPECIES_K_51
+#ifndef SERIF_SPECIES_CA_51
+    #define SERIF_SPECIES_CA_51
+#endif // SERIF_SPECIES_CA_51
+#ifndef SERIF_SPECIES_SC_51
+    #define SERIF_SPECIES_SC_51
+#endif // SERIF_SPECIES_SC_51
+#ifndef SERIF_SPECIES_TI_51
+    #define SERIF_SPECIES_TI_51
+#endif // SERIF_SPECIES_TI_51
+#ifndef SERIF_SPECIES_V_51
+    #define SERIF_SPECIES_V_51
+#endif // SERIF_SPECIES_V_51
+#ifndef SERIF_SPECIES_CR_51
+    #define SERIF_SPECIES_CR_51
+#endif // SERIF_SPECIES_CR_51
+#ifndef SERIF_SPECIES_MN_51
+    #define SERIF_SPECIES_MN_51
+#endif // SERIF_SPECIES_MN_51
+#ifndef SERIF_SPECIES_FE_51
+    #define SERIF_SPECIES_FE_51
+#endif // SERIF_SPECIES_FE_51
+#ifndef SERIF_SPECIES_CO_51
+    #define SERIF_SPECIES_CO_51
+#endif // SERIF_SPECIES_CO_51
+#ifndef SERIF_SPECIES_NI_51
+    #define SERIF_SPECIES_NI_51
+#endif // SERIF_SPECIES_NI_51
+#ifndef SERIF_SPECIES_CL_52
+    #define SERIF_SPECIES_CL_52
+#endif // SERIF_SPECIES_CL_52
+#ifndef SERIF_SPECIES_AR_52
+    #define SERIF_SPECIES_AR_52
+#endif // SERIF_SPECIES_AR_52
+#ifndef SERIF_SPECIES_K_52
+    #define SERIF_SPECIES_K_52
+#endif // SERIF_SPECIES_K_52
+#ifndef SERIF_SPECIES_CA_52
+    #define SERIF_SPECIES_CA_52
+#endif // SERIF_SPECIES_CA_52
+#ifndef SERIF_SPECIES_SC_52
+    #define SERIF_SPECIES_SC_52
+#endif // SERIF_SPECIES_SC_52
+#ifndef SERIF_SPECIES_TI_52
+    #define SERIF_SPECIES_TI_52
+#endif // SERIF_SPECIES_TI_52
+#ifndef SERIF_SPECIES_V_52
+    #define SERIF_SPECIES_V_52
+#endif // SERIF_SPECIES_V_52
+#ifndef SERIF_SPECIES_CR_52
+    #define SERIF_SPECIES_CR_52
+#endif // SERIF_SPECIES_CR_52
+#ifndef SERIF_SPECIES_MN_52
+    #define SERIF_SPECIES_MN_52
+#endif // SERIF_SPECIES_MN_52
+#ifndef SERIF_SPECIES_FE_52
+    #define SERIF_SPECIES_FE_52
+#endif // SERIF_SPECIES_FE_52
+#ifndef SERIF_SPECIES_CO_52
+    #define SERIF_SPECIES_CO_52
+#endif // SERIF_SPECIES_CO_52
+#ifndef SERIF_SPECIES_NI_52
+    #define SERIF_SPECIES_NI_52
+#endif // SERIF_SPECIES_NI_52
+#ifndef SERIF_SPECIES_CU_52
+    #define SERIF_SPECIES_CU_52
+#endif // SERIF_SPECIES_CU_52
+#ifndef SERIF_SPECIES_AR_53
+    #define SERIF_SPECIES_AR_53
+#endif // SERIF_SPECIES_AR_53
+#ifndef SERIF_SPECIES_K_53
+    #define SERIF_SPECIES_K_53
+#endif // SERIF_SPECIES_K_53
+#ifndef SERIF_SPECIES_CA_53
+    #define SERIF_SPECIES_CA_53
+#endif // SERIF_SPECIES_CA_53
+#ifndef SERIF_SPECIES_SC_53
+    #define SERIF_SPECIES_SC_53
+#endif // SERIF_SPECIES_SC_53
+#ifndef SERIF_SPECIES_TI_53
+    #define SERIF_SPECIES_TI_53
+#endif // SERIF_SPECIES_TI_53
+#ifndef SERIF_SPECIES_V_53
+    #define SERIF_SPECIES_V_53
+#endif // SERIF_SPECIES_V_53
+#ifndef SERIF_SPECIES_CR_53
+    #define SERIF_SPECIES_CR_53
+#endif // SERIF_SPECIES_CR_53
+#ifndef SERIF_SPECIES_MN_53
+    #define SERIF_SPECIES_MN_53
+#endif // SERIF_SPECIES_MN_53
+#ifndef SERIF_SPECIES_FE_53
+    #define SERIF_SPECIES_FE_53
+#endif // SERIF_SPECIES_FE_53
+#ifndef SERIF_SPECIES_CO_53
+    #define SERIF_SPECIES_CO_53
+#endif // SERIF_SPECIES_CO_53
+#ifndef SERIF_SPECIES_NI_53
+    #define SERIF_SPECIES_NI_53
+#endif // SERIF_SPECIES_NI_53
+#ifndef SERIF_SPECIES_CU_53
+    #define SERIF_SPECIES_CU_53
+#endif // SERIF_SPECIES_CU_53
+#ifndef SERIF_SPECIES_AR_54
+    #define SERIF_SPECIES_AR_54
+#endif // SERIF_SPECIES_AR_54
+#ifndef SERIF_SPECIES_K_54
+    #define SERIF_SPECIES_K_54
+#endif // SERIF_SPECIES_K_54
+#ifndef SERIF_SPECIES_CA_54
+    #define SERIF_SPECIES_CA_54
+#endif // SERIF_SPECIES_CA_54
+#ifndef SERIF_SPECIES_SC_54
+    #define SERIF_SPECIES_SC_54
+#endif // SERIF_SPECIES_SC_54
+#ifndef SERIF_SPECIES_TI_54
+    #define SERIF_SPECIES_TI_54
+#endif // SERIF_SPECIES_TI_54
+#ifndef SERIF_SPECIES_V_54
+    #define SERIF_SPECIES_V_54
+#endif // SERIF_SPECIES_V_54
+#ifndef SERIF_SPECIES_CR_54
+    #define SERIF_SPECIES_CR_54
+#endif // SERIF_SPECIES_CR_54
+#ifndef SERIF_SPECIES_MN_54
+    #define SERIF_SPECIES_MN_54
+#endif // SERIF_SPECIES_MN_54
+#ifndef SERIF_SPECIES_FE_54
+    #define SERIF_SPECIES_FE_54
+#endif // SERIF_SPECIES_FE_54
+#ifndef SERIF_SPECIES_CO_54
+    #define SERIF_SPECIES_CO_54
+#endif // SERIF_SPECIES_CO_54
+#ifndef SERIF_SPECIES_NI_54
+    #define SERIF_SPECIES_NI_54
+#endif // SERIF_SPECIES_NI_54
+#ifndef SERIF_SPECIES_CU_54
+    #define SERIF_SPECIES_CU_54
+#endif // SERIF_SPECIES_CU_54
+#ifndef SERIF_SPECIES_ZN_54
+    #define SERIF_SPECIES_ZN_54
+#endif // SERIF_SPECIES_ZN_54
+#ifndef SERIF_SPECIES_K_55
+    #define SERIF_SPECIES_K_55
+#endif // SERIF_SPECIES_K_55
+#ifndef SERIF_SPECIES_CA_55
+    #define SERIF_SPECIES_CA_55
+#endif // SERIF_SPECIES_CA_55
+#ifndef SERIF_SPECIES_SC_55
+    #define SERIF_SPECIES_SC_55
+#endif // SERIF_SPECIES_SC_55
+#ifndef SERIF_SPECIES_TI_55
+    #define SERIF_SPECIES_TI_55
+#endif // SERIF_SPECIES_TI_55
+#ifndef SERIF_SPECIES_V_55
+    #define SERIF_SPECIES_V_55
+#endif // SERIF_SPECIES_V_55
+#ifndef SERIF_SPECIES_CR_55
+    #define SERIF_SPECIES_CR_55
+#endif // SERIF_SPECIES_CR_55
+#ifndef SERIF_SPECIES_MN_55
+    #define SERIF_SPECIES_MN_55
+#endif // SERIF_SPECIES_MN_55
+#ifndef SERIF_SPECIES_FE_55
+    #define SERIF_SPECIES_FE_55
+#endif // SERIF_SPECIES_FE_55
+#ifndef SERIF_SPECIES_CO_55
+    #define SERIF_SPECIES_CO_55
+#endif // SERIF_SPECIES_CO_55
+#ifndef SERIF_SPECIES_NI_55
+    #define SERIF_SPECIES_NI_55
+#endif // SERIF_SPECIES_NI_55
+#ifndef SERIF_SPECIES_CU_55
+    #define SERIF_SPECIES_CU_55
+#endif // SERIF_SPECIES_CU_55
+#ifndef SERIF_SPECIES_ZN_55
+    #define SERIF_SPECIES_ZN_55
+#endif // SERIF_SPECIES_ZN_55
+#ifndef SERIF_SPECIES_K_56
+    #define SERIF_SPECIES_K_56
+#endif // SERIF_SPECIES_K_56
+#ifndef SERIF_SPECIES_CA_56
+    #define SERIF_SPECIES_CA_56
+#endif // SERIF_SPECIES_CA_56
+#ifndef SERIF_SPECIES_SC_56
+    #define SERIF_SPECIES_SC_56
+#endif // SERIF_SPECIES_SC_56
+#ifndef SERIF_SPECIES_TI_56
+    #define SERIF_SPECIES_TI_56
+#endif // SERIF_SPECIES_TI_56
+#ifndef SERIF_SPECIES_V_56
+    #define SERIF_SPECIES_V_56
+#endif // SERIF_SPECIES_V_56
+#ifndef SERIF_SPECIES_CR_56
+    #define SERIF_SPECIES_CR_56
+#endif // SERIF_SPECIES_CR_56
+#ifndef SERIF_SPECIES_MN_56
+    #define SERIF_SPECIES_MN_56
+#endif // SERIF_SPECIES_MN_56
+#ifndef SERIF_SPECIES_FE_56
+    #define SERIF_SPECIES_FE_56
+#endif // SERIF_SPECIES_FE_56
+#ifndef SERIF_SPECIES_CO_56
+    #define SERIF_SPECIES_CO_56
+#endif // SERIF_SPECIES_CO_56
+#ifndef SERIF_SPECIES_NI_56
+    #define SERIF_SPECIES_NI_56
+#endif // SERIF_SPECIES_NI_56
+#ifndef SERIF_SPECIES_CU_56
+    #define SERIF_SPECIES_CU_56
+#endif // SERIF_SPECIES_CU_56
+#ifndef SERIF_SPECIES_ZN_56
+    #define SERIF_SPECIES_ZN_56
+#endif // SERIF_SPECIES_ZN_56
+#ifndef SERIF_SPECIES_GA_56
+    #define SERIF_SPECIES_GA_56
+#endif // SERIF_SPECIES_GA_56
+#ifndef SERIF_SPECIES_K_57
+    #define SERIF_SPECIES_K_57
+#endif // SERIF_SPECIES_K_57
+#ifndef SERIF_SPECIES_CA_57
+    #define SERIF_SPECIES_CA_57
+#endif // SERIF_SPECIES_CA_57
+#ifndef SERIF_SPECIES_SC_57
+    #define SERIF_SPECIES_SC_57
+#endif // SERIF_SPECIES_SC_57
+#ifndef SERIF_SPECIES_TI_57
+    #define SERIF_SPECIES_TI_57
+#endif // SERIF_SPECIES_TI_57
+#ifndef SERIF_SPECIES_V_57
+    #define SERIF_SPECIES_V_57
+#endif // SERIF_SPECIES_V_57
+#ifndef SERIF_SPECIES_CR_57
+    #define SERIF_SPECIES_CR_57
+#endif // SERIF_SPECIES_CR_57
+#ifndef SERIF_SPECIES_MN_57
+    #define SERIF_SPECIES_MN_57
+#endif // SERIF_SPECIES_MN_57
+#ifndef SERIF_SPECIES_FE_57
+    #define SERIF_SPECIES_FE_57
+#endif // SERIF_SPECIES_FE_57
+#ifndef SERIF_SPECIES_CO_57
+    #define SERIF_SPECIES_CO_57
+#endif // SERIF_SPECIES_CO_57
+#ifndef SERIF_SPECIES_NI_57
+    #define SERIF_SPECIES_NI_57
+#endif // SERIF_SPECIES_NI_57
+#ifndef SERIF_SPECIES_CU_57
+    #define SERIF_SPECIES_CU_57
+#endif // SERIF_SPECIES_CU_57
+#ifndef SERIF_SPECIES_ZN_57
+    #define SERIF_SPECIES_ZN_57
+#endif // SERIF_SPECIES_ZN_57
+#ifndef SERIF_SPECIES_GA_57
+    #define SERIF_SPECIES_GA_57
+#endif // SERIF_SPECIES_GA_57
+#ifndef SERIF_SPECIES_K_58
+    #define SERIF_SPECIES_K_58
+#endif // SERIF_SPECIES_K_58
+#ifndef SERIF_SPECIES_CA_58
+    #define SERIF_SPECIES_CA_58
+#endif // SERIF_SPECIES_CA_58
+#ifndef SERIF_SPECIES_SC_58
+    #define SERIF_SPECIES_SC_58
+#endif // SERIF_SPECIES_SC_58
+#ifndef SERIF_SPECIES_TI_58
+    #define SERIF_SPECIES_TI_58
+#endif // SERIF_SPECIES_TI_58
+#ifndef SERIF_SPECIES_V_58
+    #define SERIF_SPECIES_V_58
+#endif // SERIF_SPECIES_V_58
+#ifndef SERIF_SPECIES_CR_58
+    #define SERIF_SPECIES_CR_58
+#endif // SERIF_SPECIES_CR_58
+#ifndef SERIF_SPECIES_MN_58
+    #define SERIF_SPECIES_MN_58
+#endif // SERIF_SPECIES_MN_58
+#ifndef SERIF_SPECIES_FE_58
+    #define SERIF_SPECIES_FE_58
+#endif // SERIF_SPECIES_FE_58
+#ifndef SERIF_SPECIES_CO_58
+    #define SERIF_SPECIES_CO_58
+#endif // SERIF_SPECIES_CO_58
+#ifndef SERIF_SPECIES_NI_58
+    #define SERIF_SPECIES_NI_58
+#endif // SERIF_SPECIES_NI_58
+#ifndef SERIF_SPECIES_CU_58
+    #define SERIF_SPECIES_CU_58
+#endif // SERIF_SPECIES_CU_58
+#ifndef SERIF_SPECIES_ZN_58
+    #define SERIF_SPECIES_ZN_58
+#endif // SERIF_SPECIES_ZN_58
+#ifndef SERIF_SPECIES_GA_58
+    #define SERIF_SPECIES_GA_58
+#endif // SERIF_SPECIES_GA_58
+#ifndef SERIF_SPECIES_GE_58
+    #define SERIF_SPECIES_GE_58
+#endif // SERIF_SPECIES_GE_58
+#ifndef SERIF_SPECIES_K_59
+    #define SERIF_SPECIES_K_59
+#endif // SERIF_SPECIES_K_59
+#ifndef SERIF_SPECIES_CA_59
+    #define SERIF_SPECIES_CA_59
+#endif // SERIF_SPECIES_CA_59
+#ifndef SERIF_SPECIES_SC_59
+    #define SERIF_SPECIES_SC_59
+#endif // SERIF_SPECIES_SC_59
+#ifndef SERIF_SPECIES_TI_59
+    #define SERIF_SPECIES_TI_59
+#endif // SERIF_SPECIES_TI_59
+#ifndef SERIF_SPECIES_V_59
+    #define SERIF_SPECIES_V_59
+#endif // SERIF_SPECIES_V_59
+#ifndef SERIF_SPECIES_CR_59
+    #define SERIF_SPECIES_CR_59
+#endif // SERIF_SPECIES_CR_59
+#ifndef SERIF_SPECIES_MN_59
+    #define SERIF_SPECIES_MN_59
+#endif // SERIF_SPECIES_MN_59
+#ifndef SERIF_SPECIES_FE_59
+    #define SERIF_SPECIES_FE_59
+#endif // SERIF_SPECIES_FE_59
+#ifndef SERIF_SPECIES_CO_59
+    #define SERIF_SPECIES_CO_59
+#endif // SERIF_SPECIES_CO_59
+#ifndef SERIF_SPECIES_NI_59
+    #define SERIF_SPECIES_NI_59
+#endif // SERIF_SPECIES_NI_59
+#ifndef SERIF_SPECIES_CU_59
+    #define SERIF_SPECIES_CU_59
+#endif // SERIF_SPECIES_CU_59
+#ifndef SERIF_SPECIES_ZN_59
+    #define SERIF_SPECIES_ZN_59
+#endif // SERIF_SPECIES_ZN_59
+#ifndef SERIF_SPECIES_GA_59
+    #define SERIF_SPECIES_GA_59
+#endif // SERIF_SPECIES_GA_59
+#ifndef SERIF_SPECIES_GE_59
+    #define SERIF_SPECIES_GE_59
+#endif // SERIF_SPECIES_GE_59
+#ifndef SERIF_SPECIES_CA_60
+    #define SERIF_SPECIES_CA_60
+#endif // SERIF_SPECIES_CA_60
+#ifndef SERIF_SPECIES_SC_60
+    #define SERIF_SPECIES_SC_60
+#endif // SERIF_SPECIES_SC_60
+#ifndef SERIF_SPECIES_TI_60
+    #define SERIF_SPECIES_TI_60
+#endif // SERIF_SPECIES_TI_60
+#ifndef SERIF_SPECIES_V_60
+    #define SERIF_SPECIES_V_60
+#endif // SERIF_SPECIES_V_60
+#ifndef SERIF_SPECIES_CR_60
+    #define SERIF_SPECIES_CR_60
+#endif // SERIF_SPECIES_CR_60
+#ifndef SERIF_SPECIES_MN_60
+    #define SERIF_SPECIES_MN_60
+#endif // SERIF_SPECIES_MN_60
+#ifndef SERIF_SPECIES_FE_60
+    #define SERIF_SPECIES_FE_60
+#endif // SERIF_SPECIES_FE_60
+#ifndef SERIF_SPECIES_CO_60
+    #define SERIF_SPECIES_CO_60
+#endif // SERIF_SPECIES_CO_60
+#ifndef SERIF_SPECIES_NI_60
+    #define SERIF_SPECIES_NI_60
+#endif // SERIF_SPECIES_NI_60
+#ifndef SERIF_SPECIES_CU_60
+    #define SERIF_SPECIES_CU_60
+#endif // SERIF_SPECIES_CU_60
+#ifndef SERIF_SPECIES_ZN_60
+    #define SERIF_SPECIES_ZN_60
+#endif // SERIF_SPECIES_ZN_60
+#ifndef SERIF_SPECIES_GA_60
+    #define SERIF_SPECIES_GA_60
+#endif // SERIF_SPECIES_GA_60
+#ifndef SERIF_SPECIES_GE_60
+    #define SERIF_SPECIES_GE_60
+#endif // SERIF_SPECIES_GE_60
+#ifndef SERIF_SPECIES_AS_60
+    #define SERIF_SPECIES_AS_60
+#endif // SERIF_SPECIES_AS_60
+#ifndef SERIF_SPECIES_CA_61
+    #define SERIF_SPECIES_CA_61
+#endif // SERIF_SPECIES_CA_61
+#ifndef SERIF_SPECIES_SC_61
+    #define SERIF_SPECIES_SC_61
+#endif // SERIF_SPECIES_SC_61
+#ifndef SERIF_SPECIES_TI_61
+    #define SERIF_SPECIES_TI_61
+#endif // SERIF_SPECIES_TI_61
+#ifndef SERIF_SPECIES_V_61
+    #define SERIF_SPECIES_V_61
+#endif // SERIF_SPECIES_V_61
+#ifndef SERIF_SPECIES_CR_61
+    #define SERIF_SPECIES_CR_61
+#endif // SERIF_SPECIES_CR_61
+#ifndef SERIF_SPECIES_MN_61
+    #define SERIF_SPECIES_MN_61
+#endif // SERIF_SPECIES_MN_61
+#ifndef SERIF_SPECIES_FE_61
+    #define SERIF_SPECIES_FE_61
+#endif // SERIF_SPECIES_FE_61
+#ifndef SERIF_SPECIES_CO_61
+    #define SERIF_SPECIES_CO_61
+#endif // SERIF_SPECIES_CO_61
+#ifndef SERIF_SPECIES_NI_61
+    #define SERIF_SPECIES_NI_61
+#endif // SERIF_SPECIES_NI_61
+#ifndef SERIF_SPECIES_CU_61
+    #define SERIF_SPECIES_CU_61
+#endif // SERIF_SPECIES_CU_61
+#ifndef SERIF_SPECIES_ZN_61
+    #define SERIF_SPECIES_ZN_61
+#endif // SERIF_SPECIES_ZN_61
+#ifndef SERIF_SPECIES_GA_61
+    #define SERIF_SPECIES_GA_61
+#endif // SERIF_SPECIES_GA_61
+#ifndef SERIF_SPECIES_GE_61
+    #define SERIF_SPECIES_GE_61
+#endif // SERIF_SPECIES_GE_61
+#ifndef SERIF_SPECIES_AS_61
+    #define SERIF_SPECIES_AS_61
+#endif // SERIF_SPECIES_AS_61
+#ifndef SERIF_SPECIES_SC_62
+    #define SERIF_SPECIES_SC_62
+#endif // SERIF_SPECIES_SC_62
+#ifndef SERIF_SPECIES_TI_62
+    #define SERIF_SPECIES_TI_62
+#endif // SERIF_SPECIES_TI_62
+#ifndef SERIF_SPECIES_V_62
+    #define SERIF_SPECIES_V_62
+#endif // SERIF_SPECIES_V_62
+#ifndef SERIF_SPECIES_CR_62
+    #define SERIF_SPECIES_CR_62
+#endif // SERIF_SPECIES_CR_62
+#ifndef SERIF_SPECIES_MN_62
+    #define SERIF_SPECIES_MN_62
+#endif // SERIF_SPECIES_MN_62
+#ifndef SERIF_SPECIES_FE_62
+    #define SERIF_SPECIES_FE_62
+#endif // SERIF_SPECIES_FE_62
+#ifndef SERIF_SPECIES_CO_62
+    #define SERIF_SPECIES_CO_62
+#endif // SERIF_SPECIES_CO_62
+#ifndef SERIF_SPECIES_NI_62
+    #define SERIF_SPECIES_NI_62
+#endif // SERIF_SPECIES_NI_62
+#ifndef SERIF_SPECIES_CU_62
+    #define SERIF_SPECIES_CU_62
+#endif // SERIF_SPECIES_CU_62
+#ifndef SERIF_SPECIES_ZN_62
+    #define SERIF_SPECIES_ZN_62
+#endif // SERIF_SPECIES_ZN_62
+#ifndef SERIF_SPECIES_GA_62
+    #define SERIF_SPECIES_GA_62
+#endif // SERIF_SPECIES_GA_62
+#ifndef SERIF_SPECIES_GE_62
+    #define SERIF_SPECIES_GE_62
+#endif // SERIF_SPECIES_GE_62
+#ifndef SERIF_SPECIES_AS_62
+    #define SERIF_SPECIES_AS_62
+#endif // SERIF_SPECIES_AS_62
+#ifndef SERIF_SPECIES_SC_63
+    #define SERIF_SPECIES_SC_63
+#endif // SERIF_SPECIES_SC_63
+#ifndef SERIF_SPECIES_TI_63
+    #define SERIF_SPECIES_TI_63
+#endif // SERIF_SPECIES_TI_63
+#ifndef SERIF_SPECIES_V_63
+    #define SERIF_SPECIES_V_63
+#endif // SERIF_SPECIES_V_63
+#ifndef SERIF_SPECIES_CR_63
+    #define SERIF_SPECIES_CR_63
+#endif // SERIF_SPECIES_CR_63
+#ifndef SERIF_SPECIES_MN_63
+    #define SERIF_SPECIES_MN_63
+#endif // SERIF_SPECIES_MN_63
+#ifndef SERIF_SPECIES_FE_63
+    #define SERIF_SPECIES_FE_63
+#endif // SERIF_SPECIES_FE_63
+#ifndef SERIF_SPECIES_CO_63
+    #define SERIF_SPECIES_CO_63
+#endif // SERIF_SPECIES_CO_63
+#ifndef SERIF_SPECIES_NI_63
+    #define SERIF_SPECIES_NI_63
+#endif // SERIF_SPECIES_NI_63
+#ifndef SERIF_SPECIES_CU_63
+    #define SERIF_SPECIES_CU_63
+#endif // SERIF_SPECIES_CU_63
+#ifndef SERIF_SPECIES_ZN_63
+    #define SERIF_SPECIES_ZN_63
+#endif // SERIF_SPECIES_ZN_63
+#ifndef SERIF_SPECIES_GA_63
+    #define SERIF_SPECIES_GA_63
+#endif // SERIF_SPECIES_GA_63
+#ifndef SERIF_SPECIES_GE_63
+    #define SERIF_SPECIES_GE_63
+#endif // SERIF_SPECIES_GE_63
+#ifndef SERIF_SPECIES_AS_63
+    #define SERIF_SPECIES_AS_63
+#endif // SERIF_SPECIES_AS_63
+#ifndef SERIF_SPECIES_SE_63
+    #define SERIF_SPECIES_SE_63
+#endif // SERIF_SPECIES_SE_63
+#ifndef SERIF_SPECIES_TI_64
+    #define SERIF_SPECIES_TI_64
+#endif // SERIF_SPECIES_TI_64
+#ifndef SERIF_SPECIES_V_64
+    #define SERIF_SPECIES_V_64
+#endif // SERIF_SPECIES_V_64
+#ifndef SERIF_SPECIES_CR_64
+    #define SERIF_SPECIES_CR_64
+#endif // SERIF_SPECIES_CR_64
+#ifndef SERIF_SPECIES_MN_64
+    #define SERIF_SPECIES_MN_64
+#endif // SERIF_SPECIES_MN_64
+#ifndef SERIF_SPECIES_FE_64
+    #define SERIF_SPECIES_FE_64
+#endif // SERIF_SPECIES_FE_64
+#ifndef SERIF_SPECIES_CO_64
+    #define SERIF_SPECIES_CO_64
+#endif // SERIF_SPECIES_CO_64
+#ifndef SERIF_SPECIES_NI_64
+    #define SERIF_SPECIES_NI_64
+#endif // SERIF_SPECIES_NI_64
+#ifndef SERIF_SPECIES_CU_64
+    #define SERIF_SPECIES_CU_64
+#endif // SERIF_SPECIES_CU_64
+#ifndef SERIF_SPECIES_ZN_64
+    #define SERIF_SPECIES_ZN_64
+#endif // SERIF_SPECIES_ZN_64
+#ifndef SERIF_SPECIES_GA_64
+    #define SERIF_SPECIES_GA_64
+#endif // SERIF_SPECIES_GA_64
+#ifndef SERIF_SPECIES_GE_64
+    #define SERIF_SPECIES_GE_64
+#endif // SERIF_SPECIES_GE_64
+#ifndef SERIF_SPECIES_AS_64
+    #define SERIF_SPECIES_AS_64
+#endif // SERIF_SPECIES_AS_64
+#ifndef SERIF_SPECIES_SE_64
+    #define SERIF_SPECIES_SE_64
+#endif // SERIF_SPECIES_SE_64
+#ifndef SERIF_SPECIES_TI_65
+    #define SERIF_SPECIES_TI_65
+#endif // SERIF_SPECIES_TI_65
+#ifndef SERIF_SPECIES_V_65
+    #define SERIF_SPECIES_V_65
+#endif // SERIF_SPECIES_V_65
+#ifndef SERIF_SPECIES_CR_65
+    #define SERIF_SPECIES_CR_65
+#endif // SERIF_SPECIES_CR_65
+#ifndef SERIF_SPECIES_MN_65
+    #define SERIF_SPECIES_MN_65
+#endif // SERIF_SPECIES_MN_65
+#ifndef SERIF_SPECIES_FE_65
+    #define SERIF_SPECIES_FE_65
+#endif // SERIF_SPECIES_FE_65
+#ifndef SERIF_SPECIES_CO_65
+    #define SERIF_SPECIES_CO_65
+#endif // SERIF_SPECIES_CO_65
+#ifndef SERIF_SPECIES_NI_65
+    #define SERIF_SPECIES_NI_65
+#endif // SERIF_SPECIES_NI_65
+#ifndef SERIF_SPECIES_CU_65
+    #define SERIF_SPECIES_CU_65
+#endif // SERIF_SPECIES_CU_65
+#ifndef SERIF_SPECIES_ZN_65
+    #define SERIF_SPECIES_ZN_65
+#endif // SERIF_SPECIES_ZN_65
+#ifndef SERIF_SPECIES_GA_65
+    #define SERIF_SPECIES_GA_65
+#endif // SERIF_SPECIES_GA_65
+#ifndef SERIF_SPECIES_GE_65
+    #define SERIF_SPECIES_GE_65
+#endif // SERIF_SPECIES_GE_65
+#ifndef SERIF_SPECIES_AS_65
+    #define SERIF_SPECIES_AS_65
+#endif // SERIF_SPECIES_AS_65
+#ifndef SERIF_SPECIES_SE_65
+    #define SERIF_SPECIES_SE_65
+#endif // SERIF_SPECIES_SE_65
+#ifndef SERIF_SPECIES_BR_65
+    #define SERIF_SPECIES_BR_65
+#endif // SERIF_SPECIES_BR_65
+#ifndef SERIF_SPECIES_V_66
+    #define SERIF_SPECIES_V_66
+#endif // SERIF_SPECIES_V_66
+#ifndef SERIF_SPECIES_CR_66
+    #define SERIF_SPECIES_CR_66
+#endif // SERIF_SPECIES_CR_66
+#ifndef SERIF_SPECIES_MN_66
+    #define SERIF_SPECIES_MN_66
+#endif // SERIF_SPECIES_MN_66
+#ifndef SERIF_SPECIES_FE_66
+    #define SERIF_SPECIES_FE_66
+#endif // SERIF_SPECIES_FE_66
+#ifndef SERIF_SPECIES_CO_66
+    #define SERIF_SPECIES_CO_66
+#endif // SERIF_SPECIES_CO_66
+#ifndef SERIF_SPECIES_NI_66
+    #define SERIF_SPECIES_NI_66
+#endif // SERIF_SPECIES_NI_66
+#ifndef SERIF_SPECIES_CU_66
+    #define SERIF_SPECIES_CU_66
+#endif // SERIF_SPECIES_CU_66
+#ifndef SERIF_SPECIES_ZN_66
+    #define SERIF_SPECIES_ZN_66
+#endif // SERIF_SPECIES_ZN_66
+#ifndef SERIF_SPECIES_GA_66
+    #define SERIF_SPECIES_GA_66
+#endif // SERIF_SPECIES_GA_66
+#ifndef SERIF_SPECIES_GE_66
+    #define SERIF_SPECIES_GE_66
+#endif // SERIF_SPECIES_GE_66
+#ifndef SERIF_SPECIES_AS_66
+    #define SERIF_SPECIES_AS_66
+#endif // SERIF_SPECIES_AS_66
+#ifndef SERIF_SPECIES_SE_66
+    #define SERIF_SPECIES_SE_66
+#endif // SERIF_SPECIES_SE_66
+#ifndef SERIF_SPECIES_BR_66
+    #define SERIF_SPECIES_BR_66
+#endif // SERIF_SPECIES_BR_66
+#ifndef SERIF_SPECIES_V_67
+    #define SERIF_SPECIES_V_67
+#endif // SERIF_SPECIES_V_67
+#ifndef SERIF_SPECIES_CR_67
+    #define SERIF_SPECIES_CR_67
+#endif // SERIF_SPECIES_CR_67
+#ifndef SERIF_SPECIES_MN_67
+    #define SERIF_SPECIES_MN_67
+#endif // SERIF_SPECIES_MN_67
+#ifndef SERIF_SPECIES_FE_67
+    #define SERIF_SPECIES_FE_67
+#endif // SERIF_SPECIES_FE_67
+#ifndef SERIF_SPECIES_CO_67
+    #define SERIF_SPECIES_CO_67
+#endif // SERIF_SPECIES_CO_67
+#ifndef SERIF_SPECIES_NI_67
+    #define SERIF_SPECIES_NI_67
+#endif // SERIF_SPECIES_NI_67
+#ifndef SERIF_SPECIES_CU_67
+    #define SERIF_SPECIES_CU_67
+#endif // SERIF_SPECIES_CU_67
+#ifndef SERIF_SPECIES_ZN_67
+    #define SERIF_SPECIES_ZN_67
+#endif // SERIF_SPECIES_ZN_67
+#ifndef SERIF_SPECIES_GA_67
+    #define SERIF_SPECIES_GA_67
+#endif // SERIF_SPECIES_GA_67
+#ifndef SERIF_SPECIES_GE_67
+    #define SERIF_SPECIES_GE_67
+#endif // SERIF_SPECIES_GE_67
+#ifndef SERIF_SPECIES_AS_67
+    #define SERIF_SPECIES_AS_67
+#endif // SERIF_SPECIES_AS_67
+#ifndef SERIF_SPECIES_SE_67
+    #define SERIF_SPECIES_SE_67
+#endif // SERIF_SPECIES_SE_67
+#ifndef SERIF_SPECIES_BR_67
+    #define SERIF_SPECIES_BR_67
+#endif // SERIF_SPECIES_BR_67
+#ifndef SERIF_SPECIES_KR_67
+    #define SERIF_SPECIES_KR_67
+#endif // SERIF_SPECIES_KR_67
+#ifndef SERIF_SPECIES_CR_68
+    #define SERIF_SPECIES_CR_68
+#endif // SERIF_SPECIES_CR_68
+#ifndef SERIF_SPECIES_MN_68
+    #define SERIF_SPECIES_MN_68
+#endif // SERIF_SPECIES_MN_68
+#ifndef SERIF_SPECIES_FE_68
+    #define SERIF_SPECIES_FE_68
+#endif // SERIF_SPECIES_FE_68
+#ifndef SERIF_SPECIES_CO_68
+    #define SERIF_SPECIES_CO_68
+#endif // SERIF_SPECIES_CO_68
+#ifndef SERIF_SPECIES_NI_68
+    #define SERIF_SPECIES_NI_68
+#endif // SERIF_SPECIES_NI_68
+#ifndef SERIF_SPECIES_CU_68
+    #define SERIF_SPECIES_CU_68
+#endif // SERIF_SPECIES_CU_68
+#ifndef SERIF_SPECIES_ZN_68
+    #define SERIF_SPECIES_ZN_68
+#endif // SERIF_SPECIES_ZN_68
+#ifndef SERIF_SPECIES_GA_68
+    #define SERIF_SPECIES_GA_68
+#endif // SERIF_SPECIES_GA_68
+#ifndef SERIF_SPECIES_GE_68
+    #define SERIF_SPECIES_GE_68
+#endif // SERIF_SPECIES_GE_68
+#ifndef SERIF_SPECIES_AS_68
+    #define SERIF_SPECIES_AS_68
+#endif // SERIF_SPECIES_AS_68
+#ifndef SERIF_SPECIES_SE_68
+    #define SERIF_SPECIES_SE_68
+#endif // SERIF_SPECIES_SE_68
+#ifndef SERIF_SPECIES_BR_68
+    #define SERIF_SPECIES_BR_68
+#endif // SERIF_SPECIES_BR_68
+#ifndef SERIF_SPECIES_KR_68
+    #define SERIF_SPECIES_KR_68
+#endif // SERIF_SPECIES_KR_68
+#ifndef SERIF_SPECIES_CR_69
+    #define SERIF_SPECIES_CR_69
+#endif // SERIF_SPECIES_CR_69
+#ifndef SERIF_SPECIES_MN_69
+    #define SERIF_SPECIES_MN_69
+#endif // SERIF_SPECIES_MN_69
+#ifndef SERIF_SPECIES_FE_69
+    #define SERIF_SPECIES_FE_69
+#endif // SERIF_SPECIES_FE_69
+#ifndef SERIF_SPECIES_CO_69
+    #define SERIF_SPECIES_CO_69
+#endif // SERIF_SPECIES_CO_69
+#ifndef SERIF_SPECIES_NI_69
+    #define SERIF_SPECIES_NI_69
+#endif // SERIF_SPECIES_NI_69
+#ifndef SERIF_SPECIES_CU_69
+    #define SERIF_SPECIES_CU_69
+#endif // SERIF_SPECIES_CU_69
+#ifndef SERIF_SPECIES_ZN_69
+    #define SERIF_SPECIES_ZN_69
+#endif // SERIF_SPECIES_ZN_69
+#ifndef SERIF_SPECIES_GA_69
+    #define SERIF_SPECIES_GA_69
+#endif // SERIF_SPECIES_GA_69
+#ifndef SERIF_SPECIES_GE_69
+    #define SERIF_SPECIES_GE_69
+#endif // SERIF_SPECIES_GE_69
+#ifndef SERIF_SPECIES_AS_69
+    #define SERIF_SPECIES_AS_69
+#endif // SERIF_SPECIES_AS_69
+#ifndef SERIF_SPECIES_SE_69
+    #define SERIF_SPECIES_SE_69
+#endif // SERIF_SPECIES_SE_69
+#ifndef SERIF_SPECIES_BR_69
+    #define SERIF_SPECIES_BR_69
+#endif // SERIF_SPECIES_BR_69
+#ifndef SERIF_SPECIES_KR_69
+    #define SERIF_SPECIES_KR_69
+#endif // SERIF_SPECIES_KR_69
+#ifndef SERIF_SPECIES_CR_70
+    #define SERIF_SPECIES_CR_70
+#endif // SERIF_SPECIES_CR_70
+#ifndef SERIF_SPECIES_MN_70
+    #define SERIF_SPECIES_MN_70
+#endif // SERIF_SPECIES_MN_70
+#ifndef SERIF_SPECIES_FE_70
+    #define SERIF_SPECIES_FE_70
+#endif // SERIF_SPECIES_FE_70
+#ifndef SERIF_SPECIES_CO_70
+    #define SERIF_SPECIES_CO_70
+#endif // SERIF_SPECIES_CO_70
+#ifndef SERIF_SPECIES_NI_70
+    #define SERIF_SPECIES_NI_70
+#endif // SERIF_SPECIES_NI_70
+#ifndef SERIF_SPECIES_CU_70
+    #define SERIF_SPECIES_CU_70
+#endif // SERIF_SPECIES_CU_70
+#ifndef SERIF_SPECIES_ZN_70
+    #define SERIF_SPECIES_ZN_70
+#endif // SERIF_SPECIES_ZN_70
+#ifndef SERIF_SPECIES_GA_70
+    #define SERIF_SPECIES_GA_70
+#endif // SERIF_SPECIES_GA_70
+#ifndef SERIF_SPECIES_GE_70
+    #define SERIF_SPECIES_GE_70
+#endif // SERIF_SPECIES_GE_70
+#ifndef SERIF_SPECIES_AS_70
+    #define SERIF_SPECIES_AS_70
+#endif // SERIF_SPECIES_AS_70
+#ifndef SERIF_SPECIES_SE_70
+    #define SERIF_SPECIES_SE_70
+#endif // SERIF_SPECIES_SE_70
+#ifndef SERIF_SPECIES_BR_70
+    #define SERIF_SPECIES_BR_70
+#endif // SERIF_SPECIES_BR_70
+#ifndef SERIF_SPECIES_KR_70
+    #define SERIF_SPECIES_KR_70
+#endif // SERIF_SPECIES_KR_70
+#ifndef SERIF_SPECIES_MN_71
+    #define SERIF_SPECIES_MN_71
+#endif // SERIF_SPECIES_MN_71
+#ifndef SERIF_SPECIES_FE_71
+    #define SERIF_SPECIES_FE_71
+#endif // SERIF_SPECIES_FE_71
+#ifndef SERIF_SPECIES_CO_71
+    #define SERIF_SPECIES_CO_71
+#endif // SERIF_SPECIES_CO_71
+#ifndef SERIF_SPECIES_NI_71
+    #define SERIF_SPECIES_NI_71
+#endif // SERIF_SPECIES_NI_71
+#ifndef SERIF_SPECIES_CU_71
+    #define SERIF_SPECIES_CU_71
+#endif // SERIF_SPECIES_CU_71
+#ifndef SERIF_SPECIES_ZN_71
+    #define SERIF_SPECIES_ZN_71
+#endif // SERIF_SPECIES_ZN_71
+#ifndef SERIF_SPECIES_GA_71
+    #define SERIF_SPECIES_GA_71
+#endif // SERIF_SPECIES_GA_71
+#ifndef SERIF_SPECIES_GE_71
+    #define SERIF_SPECIES_GE_71
+#endif // SERIF_SPECIES_GE_71
+#ifndef SERIF_SPECIES_AS_71
+    #define SERIF_SPECIES_AS_71
+#endif // SERIF_SPECIES_AS_71
+#ifndef SERIF_SPECIES_SE_71
+    #define SERIF_SPECIES_SE_71
+#endif // SERIF_SPECIES_SE_71
+#ifndef SERIF_SPECIES_BR_71
+    #define SERIF_SPECIES_BR_71
+#endif // SERIF_SPECIES_BR_71
+#ifndef SERIF_SPECIES_KR_71
+    #define SERIF_SPECIES_KR_71
+#endif // SERIF_SPECIES_KR_71
+#ifndef SERIF_SPECIES_RB_71
+    #define SERIF_SPECIES_RB_71
+#endif // SERIF_SPECIES_RB_71
+#ifndef SERIF_SPECIES_MN_72
+    #define SERIF_SPECIES_MN_72
+#endif // SERIF_SPECIES_MN_72
+#ifndef SERIF_SPECIES_FE_72
+    #define SERIF_SPECIES_FE_72
+#endif // SERIF_SPECIES_FE_72
+#ifndef SERIF_SPECIES_CO_72
+    #define SERIF_SPECIES_CO_72
+#endif // SERIF_SPECIES_CO_72
+#ifndef SERIF_SPECIES_NI_72
+    #define SERIF_SPECIES_NI_72
+#endif // SERIF_SPECIES_NI_72
+#ifndef SERIF_SPECIES_CU_72
+    #define SERIF_SPECIES_CU_72
+#endif // SERIF_SPECIES_CU_72
+#ifndef SERIF_SPECIES_ZN_72
+    #define SERIF_SPECIES_ZN_72
+#endif // SERIF_SPECIES_ZN_72
+#ifndef SERIF_SPECIES_GA_72
+    #define SERIF_SPECIES_GA_72
+#endif // SERIF_SPECIES_GA_72
+#ifndef SERIF_SPECIES_GE_72
+    #define SERIF_SPECIES_GE_72
+#endif // SERIF_SPECIES_GE_72
+#ifndef SERIF_SPECIES_AS_72
+    #define SERIF_SPECIES_AS_72
+#endif // SERIF_SPECIES_AS_72
+#ifndef SERIF_SPECIES_SE_72
+    #define SERIF_SPECIES_SE_72
+#endif // SERIF_SPECIES_SE_72
+#ifndef SERIF_SPECIES_BR_72
+    #define SERIF_SPECIES_BR_72
+#endif // SERIF_SPECIES_BR_72
+#ifndef SERIF_SPECIES_KR_72
+    #define SERIF_SPECIES_KR_72
+#endif // SERIF_SPECIES_KR_72
+#ifndef SERIF_SPECIES_RB_72
+    #define SERIF_SPECIES_RB_72
+#endif // SERIF_SPECIES_RB_72
+#ifndef SERIF_SPECIES_MN_73
+    #define SERIF_SPECIES_MN_73
+#endif // SERIF_SPECIES_MN_73
+#ifndef SERIF_SPECIES_FE_73
+    #define SERIF_SPECIES_FE_73
+#endif // SERIF_SPECIES_FE_73
+#ifndef SERIF_SPECIES_CO_73
+    #define SERIF_SPECIES_CO_73
+#endif // SERIF_SPECIES_CO_73
+#ifndef SERIF_SPECIES_NI_73
+    #define SERIF_SPECIES_NI_73
+#endif // SERIF_SPECIES_NI_73
+#ifndef SERIF_SPECIES_CU_73
+    #define SERIF_SPECIES_CU_73
+#endif // SERIF_SPECIES_CU_73
+#ifndef SERIF_SPECIES_ZN_73
+    #define SERIF_SPECIES_ZN_73
+#endif // SERIF_SPECIES_ZN_73
+#ifndef SERIF_SPECIES_GA_73
+    #define SERIF_SPECIES_GA_73
+#endif // SERIF_SPECIES_GA_73
+#ifndef SERIF_SPECIES_GE_73
+    #define SERIF_SPECIES_GE_73
+#endif // SERIF_SPECIES_GE_73
+#ifndef SERIF_SPECIES_AS_73
+    #define SERIF_SPECIES_AS_73
+#endif // SERIF_SPECIES_AS_73
+#ifndef SERIF_SPECIES_SE_73
+    #define SERIF_SPECIES_SE_73
+#endif // SERIF_SPECIES_SE_73
+#ifndef SERIF_SPECIES_BR_73
+    #define SERIF_SPECIES_BR_73
+#endif // SERIF_SPECIES_BR_73
+#ifndef SERIF_SPECIES_KR_73
+    #define SERIF_SPECIES_KR_73
+#endif // SERIF_SPECIES_KR_73
+#ifndef SERIF_SPECIES_RB_73
+    #define SERIF_SPECIES_RB_73
+#endif // SERIF_SPECIES_RB_73
+#ifndef SERIF_SPECIES_SR_73
+    #define SERIF_SPECIES_SR_73
+#endif // SERIF_SPECIES_SR_73
+#ifndef SERIF_SPECIES_FE_74
+    #define SERIF_SPECIES_FE_74
+#endif // SERIF_SPECIES_FE_74
+#ifndef SERIF_SPECIES_CO_74
+    #define SERIF_SPECIES_CO_74
+#endif // SERIF_SPECIES_CO_74
+#ifndef SERIF_SPECIES_NI_74
+    #define SERIF_SPECIES_NI_74
+#endif // SERIF_SPECIES_NI_74
+#ifndef SERIF_SPECIES_CU_74
+    #define SERIF_SPECIES_CU_74
+#endif // SERIF_SPECIES_CU_74
+#ifndef SERIF_SPECIES_ZN_74
+    #define SERIF_SPECIES_ZN_74
+#endif // SERIF_SPECIES_ZN_74
+#ifndef SERIF_SPECIES_GA_74
+    #define SERIF_SPECIES_GA_74
+#endif // SERIF_SPECIES_GA_74
+#ifndef SERIF_SPECIES_GE_74
+    #define SERIF_SPECIES_GE_74
+#endif // SERIF_SPECIES_GE_74
+#ifndef SERIF_SPECIES_AS_74
+    #define SERIF_SPECIES_AS_74
+#endif // SERIF_SPECIES_AS_74
+#ifndef SERIF_SPECIES_SE_74
+    #define SERIF_SPECIES_SE_74
+#endif // SERIF_SPECIES_SE_74
+#ifndef SERIF_SPECIES_BR_74
+    #define SERIF_SPECIES_BR_74
+#endif // SERIF_SPECIES_BR_74
+#ifndef SERIF_SPECIES_KR_74
+    #define SERIF_SPECIES_KR_74
+#endif // SERIF_SPECIES_KR_74
+#ifndef SERIF_SPECIES_RB_74
+    #define SERIF_SPECIES_RB_74
+#endif // SERIF_SPECIES_RB_74
+#ifndef SERIF_SPECIES_SR_74
+    #define SERIF_SPECIES_SR_74
+#endif // SERIF_SPECIES_SR_74
+#ifndef SERIF_SPECIES_FE_75
+    #define SERIF_SPECIES_FE_75
+#endif // SERIF_SPECIES_FE_75
+#ifndef SERIF_SPECIES_CO_75
+    #define SERIF_SPECIES_CO_75
+#endif // SERIF_SPECIES_CO_75
+#ifndef SERIF_SPECIES_NI_75
+    #define SERIF_SPECIES_NI_75
+#endif // SERIF_SPECIES_NI_75
+#ifndef SERIF_SPECIES_CU_75
+    #define SERIF_SPECIES_CU_75
+#endif // SERIF_SPECIES_CU_75
+#ifndef SERIF_SPECIES_ZN_75
+    #define SERIF_SPECIES_ZN_75
+#endif // SERIF_SPECIES_ZN_75
+#ifndef SERIF_SPECIES_GA_75
+    #define SERIF_SPECIES_GA_75
+#endif // SERIF_SPECIES_GA_75
+#ifndef SERIF_SPECIES_GE_75
+    #define SERIF_SPECIES_GE_75
+#endif // SERIF_SPECIES_GE_75
+#ifndef SERIF_SPECIES_AS_75
+    #define SERIF_SPECIES_AS_75
+#endif // SERIF_SPECIES_AS_75
+#ifndef SERIF_SPECIES_SE_75
+    #define SERIF_SPECIES_SE_75
+#endif // SERIF_SPECIES_SE_75
+#ifndef SERIF_SPECIES_BR_75
+    #define SERIF_SPECIES_BR_75
+#endif // SERIF_SPECIES_BR_75
+#ifndef SERIF_SPECIES_KR_75
+    #define SERIF_SPECIES_KR_75
+#endif // SERIF_SPECIES_KR_75
+#ifndef SERIF_SPECIES_RB_75
+    #define SERIF_SPECIES_RB_75
+#endif // SERIF_SPECIES_RB_75
+#ifndef SERIF_SPECIES_SR_75
+    #define SERIF_SPECIES_SR_75
+#endif // SERIF_SPECIES_SR_75
+#ifndef SERIF_SPECIES_Y_75
+    #define SERIF_SPECIES_Y_75
+#endif // SERIF_SPECIES_Y_75
+#ifndef SERIF_SPECIES_FE_76
+    #define SERIF_SPECIES_FE_76
+#endif // SERIF_SPECIES_FE_76
+#ifndef SERIF_SPECIES_CO_76
+    #define SERIF_SPECIES_CO_76
+#endif // SERIF_SPECIES_CO_76
+#ifndef SERIF_SPECIES_NI_76
+    #define SERIF_SPECIES_NI_76
+#endif // SERIF_SPECIES_NI_76
+#ifndef SERIF_SPECIES_CU_76
+    #define SERIF_SPECIES_CU_76
+#endif // SERIF_SPECIES_CU_76
+#ifndef SERIF_SPECIES_ZN_76
+    #define SERIF_SPECIES_ZN_76
+#endif // SERIF_SPECIES_ZN_76
+#ifndef SERIF_SPECIES_GA_76
+    #define SERIF_SPECIES_GA_76
+#endif // SERIF_SPECIES_GA_76
+#ifndef SERIF_SPECIES_GE_76
+    #define SERIF_SPECIES_GE_76
+#endif // SERIF_SPECIES_GE_76
+#ifndef SERIF_SPECIES_AS_76
+    #define SERIF_SPECIES_AS_76
+#endif // SERIF_SPECIES_AS_76
+#ifndef SERIF_SPECIES_SE_76
+    #define SERIF_SPECIES_SE_76
+#endif // SERIF_SPECIES_SE_76
+#ifndef SERIF_SPECIES_BR_76
+    #define SERIF_SPECIES_BR_76
+#endif // SERIF_SPECIES_BR_76
+#ifndef SERIF_SPECIES_KR_76
+    #define SERIF_SPECIES_KR_76
+#endif // SERIF_SPECIES_KR_76
+#ifndef SERIF_SPECIES_RB_76
+    #define SERIF_SPECIES_RB_76
+#endif // SERIF_SPECIES_RB_76
+#ifndef SERIF_SPECIES_SR_76
+    #define SERIF_SPECIES_SR_76
+#endif // SERIF_SPECIES_SR_76
+#ifndef SERIF_SPECIES_Y_76
+    #define SERIF_SPECIES_Y_76
+#endif // SERIF_SPECIES_Y_76
+#ifndef SERIF_SPECIES_CO_77
+    #define SERIF_SPECIES_CO_77
+#endif // SERIF_SPECIES_CO_77
+#ifndef SERIF_SPECIES_NI_77
+    #define SERIF_SPECIES_NI_77
+#endif // SERIF_SPECIES_NI_77
+#ifndef SERIF_SPECIES_CU_77
+    #define SERIF_SPECIES_CU_77
+#endif // SERIF_SPECIES_CU_77
+#ifndef SERIF_SPECIES_ZN_77
+    #define SERIF_SPECIES_ZN_77
+#endif // SERIF_SPECIES_ZN_77
+#ifndef SERIF_SPECIES_GA_77
+    #define SERIF_SPECIES_GA_77
+#endif // SERIF_SPECIES_GA_77
+#ifndef SERIF_SPECIES_GE_77
+    #define SERIF_SPECIES_GE_77
+#endif // SERIF_SPECIES_GE_77
+#ifndef SERIF_SPECIES_AS_77
+    #define SERIF_SPECIES_AS_77
+#endif // SERIF_SPECIES_AS_77
+#ifndef SERIF_SPECIES_SE_77
+    #define SERIF_SPECIES_SE_77
+#endif // SERIF_SPECIES_SE_77
+#ifndef SERIF_SPECIES_BR_77
+    #define SERIF_SPECIES_BR_77
+#endif // SERIF_SPECIES_BR_77
+#ifndef SERIF_SPECIES_KR_77
+    #define SERIF_SPECIES_KR_77
+#endif // SERIF_SPECIES_KR_77
+#ifndef SERIF_SPECIES_RB_77
+    #define SERIF_SPECIES_RB_77
+#endif // SERIF_SPECIES_RB_77
+#ifndef SERIF_SPECIES_SR_77
+    #define SERIF_SPECIES_SR_77
+#endif // SERIF_SPECIES_SR_77
+#ifndef SERIF_SPECIES_Y_77
+    #define SERIF_SPECIES_Y_77
+#endif // SERIF_SPECIES_Y_77
+#ifndef SERIF_SPECIES_ZR_77
+    #define SERIF_SPECIES_ZR_77
+#endif // SERIF_SPECIES_ZR_77
+#ifndef SERIF_SPECIES_CO_78
+    #define SERIF_SPECIES_CO_78
+#endif // SERIF_SPECIES_CO_78
+#ifndef SERIF_SPECIES_NI_78
+    #define SERIF_SPECIES_NI_78
+#endif // SERIF_SPECIES_NI_78
+#ifndef SERIF_SPECIES_CU_78
+    #define SERIF_SPECIES_CU_78
+#endif // SERIF_SPECIES_CU_78
+#ifndef SERIF_SPECIES_ZN_78
+    #define SERIF_SPECIES_ZN_78
+#endif // SERIF_SPECIES_ZN_78
+#ifndef SERIF_SPECIES_GA_78
+    #define SERIF_SPECIES_GA_78
+#endif // SERIF_SPECIES_GA_78
+#ifndef SERIF_SPECIES_GE_78
+    #define SERIF_SPECIES_GE_78
+#endif // SERIF_SPECIES_GE_78
+#ifndef SERIF_SPECIES_AS_78
+    #define SERIF_SPECIES_AS_78
+#endif // SERIF_SPECIES_AS_78
+#ifndef SERIF_SPECIES_SE_78
+    #define SERIF_SPECIES_SE_78
+#endif // SERIF_SPECIES_SE_78
+#ifndef SERIF_SPECIES_BR_78
+    #define SERIF_SPECIES_BR_78
+#endif // SERIF_SPECIES_BR_78
+#ifndef SERIF_SPECIES_KR_78
+    #define SERIF_SPECIES_KR_78
+#endif // SERIF_SPECIES_KR_78
+#ifndef SERIF_SPECIES_RB_78
+    #define SERIF_SPECIES_RB_78
+#endif // SERIF_SPECIES_RB_78
+#ifndef SERIF_SPECIES_SR_78
+    #define SERIF_SPECIES_SR_78
+#endif // SERIF_SPECIES_SR_78
+#ifndef SERIF_SPECIES_Y_78
+    #define SERIF_SPECIES_Y_78
+#endif // SERIF_SPECIES_Y_78
+#ifndef SERIF_SPECIES_ZR_78
+    #define SERIF_SPECIES_ZR_78
+#endif // SERIF_SPECIES_ZR_78
+#ifndef SERIF_SPECIES_NI_79
+    #define SERIF_SPECIES_NI_79
+#endif // SERIF_SPECIES_NI_79
+#ifndef SERIF_SPECIES_CU_79
+    #define SERIF_SPECIES_CU_79
+#endif // SERIF_SPECIES_CU_79
+#ifndef SERIF_SPECIES_ZN_79
+    #define SERIF_SPECIES_ZN_79
+#endif // SERIF_SPECIES_ZN_79
+#ifndef SERIF_SPECIES_GA_79
+    #define SERIF_SPECIES_GA_79
+#endif // SERIF_SPECIES_GA_79
+#ifndef SERIF_SPECIES_GE_79
+    #define SERIF_SPECIES_GE_79
+#endif // SERIF_SPECIES_GE_79
+#ifndef SERIF_SPECIES_AS_79
+    #define SERIF_SPECIES_AS_79
+#endif // SERIF_SPECIES_AS_79
+#ifndef SERIF_SPECIES_SE_79
+    #define SERIF_SPECIES_SE_79
+#endif // SERIF_SPECIES_SE_79
+#ifndef SERIF_SPECIES_BR_79
+    #define SERIF_SPECIES_BR_79
+#endif // SERIF_SPECIES_BR_79
+#ifndef SERIF_SPECIES_KR_79
+    #define SERIF_SPECIES_KR_79
+#endif // SERIF_SPECIES_KR_79
+#ifndef SERIF_SPECIES_RB_79
+    #define SERIF_SPECIES_RB_79
+#endif // SERIF_SPECIES_RB_79
+#ifndef SERIF_SPECIES_SR_79
+    #define SERIF_SPECIES_SR_79
+#endif // SERIF_SPECIES_SR_79
+#ifndef SERIF_SPECIES_Y_79
+    #define SERIF_SPECIES_Y_79
+#endif // SERIF_SPECIES_Y_79
+#ifndef SERIF_SPECIES_ZR_79
+    #define SERIF_SPECIES_ZR_79
+#endif // SERIF_SPECIES_ZR_79
+#ifndef SERIF_SPECIES_NB_79
+    #define SERIF_SPECIES_NB_79
+#endif // SERIF_SPECIES_NB_79
+#ifndef SERIF_SPECIES_NI_80
+    #define SERIF_SPECIES_NI_80
+#endif // SERIF_SPECIES_NI_80
+#ifndef SERIF_SPECIES_CU_80
+    #define SERIF_SPECIES_CU_80
+#endif // SERIF_SPECIES_CU_80
+#ifndef SERIF_SPECIES_ZN_80
+    #define SERIF_SPECIES_ZN_80
+#endif // SERIF_SPECIES_ZN_80
+#ifndef SERIF_SPECIES_GA_80
+    #define SERIF_SPECIES_GA_80
+#endif // SERIF_SPECIES_GA_80
+#ifndef SERIF_SPECIES_GE_80
+    #define SERIF_SPECIES_GE_80
+#endif // SERIF_SPECIES_GE_80
+#ifndef SERIF_SPECIES_AS_80
+    #define SERIF_SPECIES_AS_80
+#endif // SERIF_SPECIES_AS_80
+#ifndef SERIF_SPECIES_SE_80
+    #define SERIF_SPECIES_SE_80
+#endif // SERIF_SPECIES_SE_80
+#ifndef SERIF_SPECIES_BR_80
+    #define SERIF_SPECIES_BR_80
+#endif // SERIF_SPECIES_BR_80
+#ifndef SERIF_SPECIES_KR_80
+    #define SERIF_SPECIES_KR_80
+#endif // SERIF_SPECIES_KR_80
+#ifndef SERIF_SPECIES_RB_80
+    #define SERIF_SPECIES_RB_80
+#endif // SERIF_SPECIES_RB_80
+#ifndef SERIF_SPECIES_SR_80
+    #define SERIF_SPECIES_SR_80
+#endif // SERIF_SPECIES_SR_80
+#ifndef SERIF_SPECIES_Y_80
+    #define SERIF_SPECIES_Y_80
+#endif // SERIF_SPECIES_Y_80
+#ifndef SERIF_SPECIES_ZR_80
+    #define SERIF_SPECIES_ZR_80
+#endif // SERIF_SPECIES_ZR_80
+#ifndef SERIF_SPECIES_NB_80
+    #define SERIF_SPECIES_NB_80
+#endif // SERIF_SPECIES_NB_80
+#ifndef SERIF_SPECIES_NI_81
+    #define SERIF_SPECIES_NI_81
+#endif // SERIF_SPECIES_NI_81
+#ifndef SERIF_SPECIES_CU_81
+    #define SERIF_SPECIES_CU_81
+#endif // SERIF_SPECIES_CU_81
+#ifndef SERIF_SPECIES_ZN_81
+    #define SERIF_SPECIES_ZN_81
+#endif // SERIF_SPECIES_ZN_81
+#ifndef SERIF_SPECIES_GA_81
+    #define SERIF_SPECIES_GA_81
+#endif // SERIF_SPECIES_GA_81
+#ifndef SERIF_SPECIES_GE_81
+    #define SERIF_SPECIES_GE_81
+#endif // SERIF_SPECIES_GE_81
+#ifndef SERIF_SPECIES_AS_81
+    #define SERIF_SPECIES_AS_81
+#endif // SERIF_SPECIES_AS_81
+#ifndef SERIF_SPECIES_SE_81
+    #define SERIF_SPECIES_SE_81
+#endif // SERIF_SPECIES_SE_81
+#ifndef SERIF_SPECIES_BR_81
+    #define SERIF_SPECIES_BR_81
+#endif // SERIF_SPECIES_BR_81
+#ifndef SERIF_SPECIES_KR_81
+    #define SERIF_SPECIES_KR_81
+#endif // SERIF_SPECIES_KR_81
+#ifndef SERIF_SPECIES_RB_81
+    #define SERIF_SPECIES_RB_81
+#endif // SERIF_SPECIES_RB_81
+#ifndef SERIF_SPECIES_SR_81
+    #define SERIF_SPECIES_SR_81
+#endif // SERIF_SPECIES_SR_81
+#ifndef SERIF_SPECIES_Y_81
+    #define SERIF_SPECIES_Y_81
+#endif // SERIF_SPECIES_Y_81
+#ifndef SERIF_SPECIES_ZR_81
+    #define SERIF_SPECIES_ZR_81
+#endif // SERIF_SPECIES_ZR_81
+#ifndef SERIF_SPECIES_NB_81
+    #define SERIF_SPECIES_NB_81
+#endif // SERIF_SPECIES_NB_81
+#ifndef SERIF_SPECIES_MO_81
+    #define SERIF_SPECIES_MO_81
+#endif // SERIF_SPECIES_MO_81
+#ifndef SERIF_SPECIES_NI_82
+    #define SERIF_SPECIES_NI_82
+#endif // SERIF_SPECIES_NI_82
+#ifndef SERIF_SPECIES_CU_82
+    #define SERIF_SPECIES_CU_82
+#endif // SERIF_SPECIES_CU_82
+#ifndef SERIF_SPECIES_ZN_82
+    #define SERIF_SPECIES_ZN_82
+#endif // SERIF_SPECIES_ZN_82
+#ifndef SERIF_SPECIES_GA_82
+    #define SERIF_SPECIES_GA_82
+#endif // SERIF_SPECIES_GA_82
+#ifndef SERIF_SPECIES_GE_82
+    #define SERIF_SPECIES_GE_82
+#endif // SERIF_SPECIES_GE_82
+#ifndef SERIF_SPECIES_AS_82
+    #define SERIF_SPECIES_AS_82
+#endif // SERIF_SPECIES_AS_82
+#ifndef SERIF_SPECIES_SE_82
+    #define SERIF_SPECIES_SE_82
+#endif // SERIF_SPECIES_SE_82
+#ifndef SERIF_SPECIES_BR_82
+    #define SERIF_SPECIES_BR_82
+#endif // SERIF_SPECIES_BR_82
+#ifndef SERIF_SPECIES_KR_82
+    #define SERIF_SPECIES_KR_82
+#endif // SERIF_SPECIES_KR_82
+#ifndef SERIF_SPECIES_RB_82
+    #define SERIF_SPECIES_RB_82
+#endif // SERIF_SPECIES_RB_82
+#ifndef SERIF_SPECIES_SR_82
+    #define SERIF_SPECIES_SR_82
+#endif // SERIF_SPECIES_SR_82
+#ifndef SERIF_SPECIES_Y_82
+    #define SERIF_SPECIES_Y_82
+#endif // SERIF_SPECIES_Y_82
+#ifndef SERIF_SPECIES_ZR_82
+    #define SERIF_SPECIES_ZR_82
+#endif // SERIF_SPECIES_ZR_82
+#ifndef SERIF_SPECIES_NB_82
+    #define SERIF_SPECIES_NB_82
+#endif // SERIF_SPECIES_NB_82
+#ifndef SERIF_SPECIES_MO_82
+    #define SERIF_SPECIES_MO_82
+#endif // SERIF_SPECIES_MO_82
+#ifndef SERIF_SPECIES_CU_83
+    #define SERIF_SPECIES_CU_83
+#endif // SERIF_SPECIES_CU_83
+#ifndef SERIF_SPECIES_ZN_83
+    #define SERIF_SPECIES_ZN_83
+#endif // SERIF_SPECIES_ZN_83
+#ifndef SERIF_SPECIES_GA_83
+    #define SERIF_SPECIES_GA_83
+#endif // SERIF_SPECIES_GA_83
+#ifndef SERIF_SPECIES_GE_83
+    #define SERIF_SPECIES_GE_83
+#endif // SERIF_SPECIES_GE_83
+#ifndef SERIF_SPECIES_AS_83
+    #define SERIF_SPECIES_AS_83
+#endif // SERIF_SPECIES_AS_83
+#ifndef SERIF_SPECIES_SE_83
+    #define SERIF_SPECIES_SE_83
+#endif // SERIF_SPECIES_SE_83
+#ifndef SERIF_SPECIES_BR_83
+    #define SERIF_SPECIES_BR_83
+#endif // SERIF_SPECIES_BR_83
+#ifndef SERIF_SPECIES_KR_83
+    #define SERIF_SPECIES_KR_83
+#endif // SERIF_SPECIES_KR_83
+#ifndef SERIF_SPECIES_RB_83
+    #define SERIF_SPECIES_RB_83
+#endif // SERIF_SPECIES_RB_83
+#ifndef SERIF_SPECIES_SR_83
+    #define SERIF_SPECIES_SR_83
+#endif // SERIF_SPECIES_SR_83
+#ifndef SERIF_SPECIES_Y_83
+    #define SERIF_SPECIES_Y_83
+#endif // SERIF_SPECIES_Y_83
+#ifndef SERIF_SPECIES_ZR_83
+    #define SERIF_SPECIES_ZR_83
+#endif // SERIF_SPECIES_ZR_83
+#ifndef SERIF_SPECIES_NB_83
+    #define SERIF_SPECIES_NB_83
+#endif // SERIF_SPECIES_NB_83
+#ifndef SERIF_SPECIES_MO_83
+    #define SERIF_SPECIES_MO_83
+#endif // SERIF_SPECIES_MO_83
+#ifndef SERIF_SPECIES_TC_83
+    #define SERIF_SPECIES_TC_83
+#endif // SERIF_SPECIES_TC_83
+#ifndef SERIF_SPECIES_CU_84
+    #define SERIF_SPECIES_CU_84
+#endif // SERIF_SPECIES_CU_84
+#ifndef SERIF_SPECIES_ZN_84
+    #define SERIF_SPECIES_ZN_84
+#endif // SERIF_SPECIES_ZN_84
+#ifndef SERIF_SPECIES_GA_84
+    #define SERIF_SPECIES_GA_84
+#endif // SERIF_SPECIES_GA_84
+#ifndef SERIF_SPECIES_GE_84
+    #define SERIF_SPECIES_GE_84
+#endif // SERIF_SPECIES_GE_84
+#ifndef SERIF_SPECIES_AS_84
+    #define SERIF_SPECIES_AS_84
+#endif // SERIF_SPECIES_AS_84
+#ifndef SERIF_SPECIES_SE_84
+    #define SERIF_SPECIES_SE_84
+#endif // SERIF_SPECIES_SE_84
+#ifndef SERIF_SPECIES_BR_84
+    #define SERIF_SPECIES_BR_84
+#endif // SERIF_SPECIES_BR_84
+#ifndef SERIF_SPECIES_KR_84
+    #define SERIF_SPECIES_KR_84
+#endif // SERIF_SPECIES_KR_84
+#ifndef SERIF_SPECIES_RB_84
+    #define SERIF_SPECIES_RB_84
+#endif // SERIF_SPECIES_RB_84
+#ifndef SERIF_SPECIES_SR_84
+    #define SERIF_SPECIES_SR_84
+#endif // SERIF_SPECIES_SR_84
+#ifndef SERIF_SPECIES_Y_84
+    #define SERIF_SPECIES_Y_84
+#endif // SERIF_SPECIES_Y_84
+#ifndef SERIF_SPECIES_ZR_84
+    #define SERIF_SPECIES_ZR_84
+#endif // SERIF_SPECIES_ZR_84
+#ifndef SERIF_SPECIES_NB_84
+    #define SERIF_SPECIES_NB_84
+#endif // SERIF_SPECIES_NB_84
+#ifndef SERIF_SPECIES_MO_84
+    #define SERIF_SPECIES_MO_84
+#endif // SERIF_SPECIES_MO_84
+#ifndef SERIF_SPECIES_TC_84
+    #define SERIF_SPECIES_TC_84
+#endif // SERIF_SPECIES_TC_84
+#ifndef SERIF_SPECIES_ZN_85
+    #define SERIF_SPECIES_ZN_85
+#endif // SERIF_SPECIES_ZN_85
+#ifndef SERIF_SPECIES_GA_85
+    #define SERIF_SPECIES_GA_85
+#endif // SERIF_SPECIES_GA_85
+#ifndef SERIF_SPECIES_GE_85
+    #define SERIF_SPECIES_GE_85
+#endif // SERIF_SPECIES_GE_85
+#ifndef SERIF_SPECIES_AS_85
+    #define SERIF_SPECIES_AS_85
+#endif // SERIF_SPECIES_AS_85
+#ifndef SERIF_SPECIES_SE_85
+    #define SERIF_SPECIES_SE_85
+#endif // SERIF_SPECIES_SE_85
+#ifndef SERIF_SPECIES_BR_85
+    #define SERIF_SPECIES_BR_85
+#endif // SERIF_SPECIES_BR_85
+#ifndef SERIF_SPECIES_KR_85
+    #define SERIF_SPECIES_KR_85
+#endif // SERIF_SPECIES_KR_85
+#ifndef SERIF_SPECIES_RB_85
+    #define SERIF_SPECIES_RB_85
+#endif // SERIF_SPECIES_RB_85
+#ifndef SERIF_SPECIES_SR_85
+    #define SERIF_SPECIES_SR_85
+#endif // SERIF_SPECIES_SR_85
+#ifndef SERIF_SPECIES_Y_85
+    #define SERIF_SPECIES_Y_85
+#endif // SERIF_SPECIES_Y_85
+#ifndef SERIF_SPECIES_ZR_85
+    #define SERIF_SPECIES_ZR_85
+#endif // SERIF_SPECIES_ZR_85
+#ifndef SERIF_SPECIES_NB_85
+    #define SERIF_SPECIES_NB_85
+#endif // SERIF_SPECIES_NB_85
+#ifndef SERIF_SPECIES_MO_85
+    #define SERIF_SPECIES_MO_85
+#endif // SERIF_SPECIES_MO_85
+#ifndef SERIF_SPECIES_TC_85
+    #define SERIF_SPECIES_TC_85
+#endif // SERIF_SPECIES_TC_85
+#ifndef SERIF_SPECIES_RU_85
+    #define SERIF_SPECIES_RU_85
+#endif // SERIF_SPECIES_RU_85
+#ifndef SERIF_SPECIES_ZN_86
+    #define SERIF_SPECIES_ZN_86
+#endif // SERIF_SPECIES_ZN_86
+#ifndef SERIF_SPECIES_GA_86
+    #define SERIF_SPECIES_GA_86
+#endif // SERIF_SPECIES_GA_86
+#ifndef SERIF_SPECIES_GE_86
+    #define SERIF_SPECIES_GE_86
+#endif // SERIF_SPECIES_GE_86
+#ifndef SERIF_SPECIES_AS_86
+    #define SERIF_SPECIES_AS_86
+#endif // SERIF_SPECIES_AS_86
+#ifndef SERIF_SPECIES_SE_86
+    #define SERIF_SPECIES_SE_86
+#endif // SERIF_SPECIES_SE_86
+#ifndef SERIF_SPECIES_BR_86
+    #define SERIF_SPECIES_BR_86
+#endif // SERIF_SPECIES_BR_86
+#ifndef SERIF_SPECIES_KR_86
+    #define SERIF_SPECIES_KR_86
+#endif // SERIF_SPECIES_KR_86
+#ifndef SERIF_SPECIES_RB_86
+    #define SERIF_SPECIES_RB_86
+#endif // SERIF_SPECIES_RB_86
+#ifndef SERIF_SPECIES_SR_86
+    #define SERIF_SPECIES_SR_86
+#endif // SERIF_SPECIES_SR_86
+#ifndef SERIF_SPECIES_Y_86
+    #define SERIF_SPECIES_Y_86
+#endif // SERIF_SPECIES_Y_86
+#ifndef SERIF_SPECIES_ZR_86
+    #define SERIF_SPECIES_ZR_86
+#endif // SERIF_SPECIES_ZR_86
+#ifndef SERIF_SPECIES_NB_86
+    #define SERIF_SPECIES_NB_86
+#endif // SERIF_SPECIES_NB_86
+#ifndef SERIF_SPECIES_MO_86
+    #define SERIF_SPECIES_MO_86
+#endif // SERIF_SPECIES_MO_86
+#ifndef SERIF_SPECIES_TC_86
+    #define SERIF_SPECIES_TC_86
+#endif // SERIF_SPECIES_TC_86
+#ifndef SERIF_SPECIES_RU_86
+    #define SERIF_SPECIES_RU_86
+#endif // SERIF_SPECIES_RU_86
+#ifndef SERIF_SPECIES_GA_87
+    #define SERIF_SPECIES_GA_87
+#endif // SERIF_SPECIES_GA_87
+#ifndef SERIF_SPECIES_GE_87
+    #define SERIF_SPECIES_GE_87
+#endif // SERIF_SPECIES_GE_87
+#ifndef SERIF_SPECIES_AS_87
+    #define SERIF_SPECIES_AS_87
+#endif // SERIF_SPECIES_AS_87
+#ifndef SERIF_SPECIES_SE_87
+    #define SERIF_SPECIES_SE_87
+#endif // SERIF_SPECIES_SE_87
+#ifndef SERIF_SPECIES_BR_87
+    #define SERIF_SPECIES_BR_87
+#endif // SERIF_SPECIES_BR_87
+#ifndef SERIF_SPECIES_KR_87
+    #define SERIF_SPECIES_KR_87
+#endif // SERIF_SPECIES_KR_87
+#ifndef SERIF_SPECIES_RB_87
+    #define SERIF_SPECIES_RB_87
+#endif // SERIF_SPECIES_RB_87
+#ifndef SERIF_SPECIES_SR_87
+    #define SERIF_SPECIES_SR_87
+#endif // SERIF_SPECIES_SR_87
+#ifndef SERIF_SPECIES_Y_87
+    #define SERIF_SPECIES_Y_87
+#endif // SERIF_SPECIES_Y_87
+#ifndef SERIF_SPECIES_ZR_87
+    #define SERIF_SPECIES_ZR_87
+#endif // SERIF_SPECIES_ZR_87
+#ifndef SERIF_SPECIES_NB_87
+    #define SERIF_SPECIES_NB_87
+#endif // SERIF_SPECIES_NB_87
+#ifndef SERIF_SPECIES_MO_87
+    #define SERIF_SPECIES_MO_87
+#endif // SERIF_SPECIES_MO_87
+#ifndef SERIF_SPECIES_TC_87
+    #define SERIF_SPECIES_TC_87
+#endif // SERIF_SPECIES_TC_87
+#ifndef SERIF_SPECIES_RU_87
+    #define SERIF_SPECIES_RU_87
+#endif // SERIF_SPECIES_RU_87
+#ifndef SERIF_SPECIES_GA_88
+    #define SERIF_SPECIES_GA_88
+#endif // SERIF_SPECIES_GA_88
+#ifndef SERIF_SPECIES_GE_88
+    #define SERIF_SPECIES_GE_88
+#endif // SERIF_SPECIES_GE_88
+#ifndef SERIF_SPECIES_AS_88
+    #define SERIF_SPECIES_AS_88
+#endif // SERIF_SPECIES_AS_88
+#ifndef SERIF_SPECIES_SE_88
+    #define SERIF_SPECIES_SE_88
+#endif // SERIF_SPECIES_SE_88
+#ifndef SERIF_SPECIES_BR_88
+    #define SERIF_SPECIES_BR_88
+#endif // SERIF_SPECIES_BR_88
+#ifndef SERIF_SPECIES_KR_88
+    #define SERIF_SPECIES_KR_88
+#endif // SERIF_SPECIES_KR_88
+#ifndef SERIF_SPECIES_RB_88
+    #define SERIF_SPECIES_RB_88
+#endif // SERIF_SPECIES_RB_88
+#ifndef SERIF_SPECIES_SR_88
+    #define SERIF_SPECIES_SR_88
+#endif // SERIF_SPECIES_SR_88
+#ifndef SERIF_SPECIES_Y_88
+    #define SERIF_SPECIES_Y_88
+#endif // SERIF_SPECIES_Y_88
+#ifndef SERIF_SPECIES_ZR_88
+    #define SERIF_SPECIES_ZR_88
+#endif // SERIF_SPECIES_ZR_88
+#ifndef SERIF_SPECIES_NB_88
+    #define SERIF_SPECIES_NB_88
+#endif // SERIF_SPECIES_NB_88
+#ifndef SERIF_SPECIES_MO_88
+    #define SERIF_SPECIES_MO_88
+#endif // SERIF_SPECIES_MO_88
+#ifndef SERIF_SPECIES_TC_88
+    #define SERIF_SPECIES_TC_88
+#endif // SERIF_SPECIES_TC_88
+#ifndef SERIF_SPECIES_RU_88
+    #define SERIF_SPECIES_RU_88
+#endif // SERIF_SPECIES_RU_88
+#ifndef SERIF_SPECIES_RH_88
+    #define SERIF_SPECIES_RH_88
+#endif // SERIF_SPECIES_RH_88
+#ifndef SERIF_SPECIES_GE_89
+    #define SERIF_SPECIES_GE_89
+#endif // SERIF_SPECIES_GE_89
+#ifndef SERIF_SPECIES_AS_89
+    #define SERIF_SPECIES_AS_89
+#endif // SERIF_SPECIES_AS_89
+#ifndef SERIF_SPECIES_SE_89
+    #define SERIF_SPECIES_SE_89
+#endif // SERIF_SPECIES_SE_89
+#ifndef SERIF_SPECIES_BR_89
+    #define SERIF_SPECIES_BR_89
+#endif // SERIF_SPECIES_BR_89
+#ifndef SERIF_SPECIES_KR_89
+    #define SERIF_SPECIES_KR_89
+#endif // SERIF_SPECIES_KR_89
+#ifndef SERIF_SPECIES_RB_89
+    #define SERIF_SPECIES_RB_89
+#endif // SERIF_SPECIES_RB_89
+#ifndef SERIF_SPECIES_SR_89
+    #define SERIF_SPECIES_SR_89
+#endif // SERIF_SPECIES_SR_89
+#ifndef SERIF_SPECIES_Y_89
+    #define SERIF_SPECIES_Y_89
+#endif // SERIF_SPECIES_Y_89
+#ifndef SERIF_SPECIES_ZR_89
+    #define SERIF_SPECIES_ZR_89
+#endif // SERIF_SPECIES_ZR_89
+#ifndef SERIF_SPECIES_NB_89
+    #define SERIF_SPECIES_NB_89
+#endif // SERIF_SPECIES_NB_89
+#ifndef SERIF_SPECIES_MO_89
+    #define SERIF_SPECIES_MO_89
+#endif // SERIF_SPECIES_MO_89
+#ifndef SERIF_SPECIES_TC_89
+    #define SERIF_SPECIES_TC_89
+#endif // SERIF_SPECIES_TC_89
+#ifndef SERIF_SPECIES_RU_89
+    #define SERIF_SPECIES_RU_89
+#endif // SERIF_SPECIES_RU_89
+#ifndef SERIF_SPECIES_RH_89
+    #define SERIF_SPECIES_RH_89
+#endif // SERIF_SPECIES_RH_89
+#ifndef SERIF_SPECIES_GE_90
+    #define SERIF_SPECIES_GE_90
+#endif // SERIF_SPECIES_GE_90
+#ifndef SERIF_SPECIES_AS_90
+    #define SERIF_SPECIES_AS_90
+#endif // SERIF_SPECIES_AS_90
+#ifndef SERIF_SPECIES_SE_90
+    #define SERIF_SPECIES_SE_90
+#endif // SERIF_SPECIES_SE_90
+#ifndef SERIF_SPECIES_BR_90
+    #define SERIF_SPECIES_BR_90
+#endif // SERIF_SPECIES_BR_90
+#ifndef SERIF_SPECIES_KR_90
+    #define SERIF_SPECIES_KR_90
+#endif // SERIF_SPECIES_KR_90
+#ifndef SERIF_SPECIES_RB_90
+    #define SERIF_SPECIES_RB_90
+#endif // SERIF_SPECIES_RB_90
+#ifndef SERIF_SPECIES_SR_90
+    #define SERIF_SPECIES_SR_90
+#endif // SERIF_SPECIES_SR_90
+#ifndef SERIF_SPECIES_Y_90
+    #define SERIF_SPECIES_Y_90
+#endif // SERIF_SPECIES_Y_90
+#ifndef SERIF_SPECIES_ZR_90
+    #define SERIF_SPECIES_ZR_90
+#endif // SERIF_SPECIES_ZR_90
+#ifndef SERIF_SPECIES_NB_90
+    #define SERIF_SPECIES_NB_90
+#endif // SERIF_SPECIES_NB_90
+#ifndef SERIF_SPECIES_MO_90
+    #define SERIF_SPECIES_MO_90
+#endif // SERIF_SPECIES_MO_90
+#ifndef SERIF_SPECIES_TC_90
+    #define SERIF_SPECIES_TC_90
+#endif // SERIF_SPECIES_TC_90
+#ifndef SERIF_SPECIES_RU_90
+    #define SERIF_SPECIES_RU_90
+#endif // SERIF_SPECIES_RU_90
+#ifndef SERIF_SPECIES_RH_90
+    #define SERIF_SPECIES_RH_90
+#endif // SERIF_SPECIES_RH_90
+#ifndef SERIF_SPECIES_PD_90
+    #define SERIF_SPECIES_PD_90
+#endif // SERIF_SPECIES_PD_90
+#ifndef SERIF_SPECIES_AS_91
+    #define SERIF_SPECIES_AS_91
+#endif // SERIF_SPECIES_AS_91
+#ifndef SERIF_SPECIES_SE_91
+    #define SERIF_SPECIES_SE_91
+#endif // SERIF_SPECIES_SE_91
+#ifndef SERIF_SPECIES_BR_91
+    #define SERIF_SPECIES_BR_91
+#endif // SERIF_SPECIES_BR_91
+#ifndef SERIF_SPECIES_KR_91
+    #define SERIF_SPECIES_KR_91
+#endif // SERIF_SPECIES_KR_91
+#ifndef SERIF_SPECIES_RB_91
+    #define SERIF_SPECIES_RB_91
+#endif // SERIF_SPECIES_RB_91
+#ifndef SERIF_SPECIES_SR_91
+    #define SERIF_SPECIES_SR_91
+#endif // SERIF_SPECIES_SR_91
+#ifndef SERIF_SPECIES_Y_91
+    #define SERIF_SPECIES_Y_91
+#endif // SERIF_SPECIES_Y_91
+#ifndef SERIF_SPECIES_ZR_91
+    #define SERIF_SPECIES_ZR_91
+#endif // SERIF_SPECIES_ZR_91
+#ifndef SERIF_SPECIES_NB_91
+    #define SERIF_SPECIES_NB_91
+#endif // SERIF_SPECIES_NB_91
+#ifndef SERIF_SPECIES_MO_91
+    #define SERIF_SPECIES_MO_91
+#endif // SERIF_SPECIES_MO_91
+#ifndef SERIF_SPECIES_TC_91
+    #define SERIF_SPECIES_TC_91
+#endif // SERIF_SPECIES_TC_91
+#ifndef SERIF_SPECIES_RU_91
+    #define SERIF_SPECIES_RU_91
+#endif // SERIF_SPECIES_RU_91
+#ifndef SERIF_SPECIES_RH_91
+    #define SERIF_SPECIES_RH_91
+#endif // SERIF_SPECIES_RH_91
+#ifndef SERIF_SPECIES_PD_91
+    #define SERIF_SPECIES_PD_91
+#endif // SERIF_SPECIES_PD_91
+#ifndef SERIF_SPECIES_AS_92
+    #define SERIF_SPECIES_AS_92
+#endif // SERIF_SPECIES_AS_92
+#ifndef SERIF_SPECIES_SE_92
+    #define SERIF_SPECIES_SE_92
+#endif // SERIF_SPECIES_SE_92
+#ifndef SERIF_SPECIES_BR_92
+    #define SERIF_SPECIES_BR_92
+#endif // SERIF_SPECIES_BR_92
+#ifndef SERIF_SPECIES_KR_92
+    #define SERIF_SPECIES_KR_92
+#endif // SERIF_SPECIES_KR_92
+#ifndef SERIF_SPECIES_RB_92
+    #define SERIF_SPECIES_RB_92
+#endif // SERIF_SPECIES_RB_92
+#ifndef SERIF_SPECIES_SR_92
+    #define SERIF_SPECIES_SR_92
+#endif // SERIF_SPECIES_SR_92
+#ifndef SERIF_SPECIES_Y_92
+    #define SERIF_SPECIES_Y_92
+#endif // SERIF_SPECIES_Y_92
+#ifndef SERIF_SPECIES_ZR_92
+    #define SERIF_SPECIES_ZR_92
+#endif // SERIF_SPECIES_ZR_92
+#ifndef SERIF_SPECIES_NB_92
+    #define SERIF_SPECIES_NB_92
+#endif // SERIF_SPECIES_NB_92
+#ifndef SERIF_SPECIES_MO_92
+    #define SERIF_SPECIES_MO_92
+#endif // SERIF_SPECIES_MO_92
+#ifndef SERIF_SPECIES_TC_92
+    #define SERIF_SPECIES_TC_92
+#endif // SERIF_SPECIES_TC_92
+#ifndef SERIF_SPECIES_RU_92
+    #define SERIF_SPECIES_RU_92
+#endif // SERIF_SPECIES_RU_92
+#ifndef SERIF_SPECIES_RH_92
+    #define SERIF_SPECIES_RH_92
+#endif // SERIF_SPECIES_RH_92
+#ifndef SERIF_SPECIES_PD_92
+    #define SERIF_SPECIES_PD_92
+#endif // SERIF_SPECIES_PD_92
+#ifndef SERIF_SPECIES_AG_92
+    #define SERIF_SPECIES_AG_92
+#endif // SERIF_SPECIES_AG_92
+#ifndef SERIF_SPECIES_SE_93
+    #define SERIF_SPECIES_SE_93
+#endif // SERIF_SPECIES_SE_93
+#ifndef SERIF_SPECIES_BR_93
+    #define SERIF_SPECIES_BR_93
+#endif // SERIF_SPECIES_BR_93
+#ifndef SERIF_SPECIES_KR_93
+    #define SERIF_SPECIES_KR_93
+#endif // SERIF_SPECIES_KR_93
+#ifndef SERIF_SPECIES_RB_93
+    #define SERIF_SPECIES_RB_93
+#endif // SERIF_SPECIES_RB_93
+#ifndef SERIF_SPECIES_SR_93
+    #define SERIF_SPECIES_SR_93
+#endif // SERIF_SPECIES_SR_93
+#ifndef SERIF_SPECIES_Y_93
+    #define SERIF_SPECIES_Y_93
+#endif // SERIF_SPECIES_Y_93
+#ifndef SERIF_SPECIES_ZR_93
+    #define SERIF_SPECIES_ZR_93
+#endif // SERIF_SPECIES_ZR_93
+#ifndef SERIF_SPECIES_NB_93
+    #define SERIF_SPECIES_NB_93
+#endif // SERIF_SPECIES_NB_93
+#ifndef SERIF_SPECIES_MO_93
+    #define SERIF_SPECIES_MO_93
+#endif // SERIF_SPECIES_MO_93
+#ifndef SERIF_SPECIES_TC_93
+    #define SERIF_SPECIES_TC_93
+#endif // SERIF_SPECIES_TC_93
+#ifndef SERIF_SPECIES_RU_93
+    #define SERIF_SPECIES_RU_93
+#endif // SERIF_SPECIES_RU_93
+#ifndef SERIF_SPECIES_RH_93
+    #define SERIF_SPECIES_RH_93
+#endif // SERIF_SPECIES_RH_93
+#ifndef SERIF_SPECIES_PD_93
+    #define SERIF_SPECIES_PD_93
+#endif // SERIF_SPECIES_PD_93
+#ifndef SERIF_SPECIES_AG_93
+    #define SERIF_SPECIES_AG_93
+#endif // SERIF_SPECIES_AG_93
+#ifndef SERIF_SPECIES_SE_94
+    #define SERIF_SPECIES_SE_94
+#endif // SERIF_SPECIES_SE_94
+#ifndef SERIF_SPECIES_BR_94
+    #define SERIF_SPECIES_BR_94
+#endif // SERIF_SPECIES_BR_94
+#ifndef SERIF_SPECIES_KR_94
+    #define SERIF_SPECIES_KR_94
+#endif // SERIF_SPECIES_KR_94
+#ifndef SERIF_SPECIES_RB_94
+    #define SERIF_SPECIES_RB_94
+#endif // SERIF_SPECIES_RB_94
+#ifndef SERIF_SPECIES_SR_94
+    #define SERIF_SPECIES_SR_94
+#endif // SERIF_SPECIES_SR_94
+#ifndef SERIF_SPECIES_Y_94
+    #define SERIF_SPECIES_Y_94
+#endif // SERIF_SPECIES_Y_94
+#ifndef SERIF_SPECIES_ZR_94
+    #define SERIF_SPECIES_ZR_94
+#endif // SERIF_SPECIES_ZR_94
+#ifndef SERIF_SPECIES_NB_94
+    #define SERIF_SPECIES_NB_94
+#endif // SERIF_SPECIES_NB_94
+#ifndef SERIF_SPECIES_MO_94
+    #define SERIF_SPECIES_MO_94
+#endif // SERIF_SPECIES_MO_94
+#ifndef SERIF_SPECIES_TC_94
+    #define SERIF_SPECIES_TC_94
+#endif // SERIF_SPECIES_TC_94
+#ifndef SERIF_SPECIES_RU_94
+    #define SERIF_SPECIES_RU_94
+#endif // SERIF_SPECIES_RU_94
+#ifndef SERIF_SPECIES_RH_94
+    #define SERIF_SPECIES_RH_94
+#endif // SERIF_SPECIES_RH_94
+#ifndef SERIF_SPECIES_PD_94
+    #define SERIF_SPECIES_PD_94
+#endif // SERIF_SPECIES_PD_94
+#ifndef SERIF_SPECIES_AG_94
+    #define SERIF_SPECIES_AG_94
+#endif // SERIF_SPECIES_AG_94
+#ifndef SERIF_SPECIES_CD_94
+    #define SERIF_SPECIES_CD_94
+#endif // SERIF_SPECIES_CD_94
+#ifndef SERIF_SPECIES_SE_95
+    #define SERIF_SPECIES_SE_95
+#endif // SERIF_SPECIES_SE_95
+#ifndef SERIF_SPECIES_BR_95
+    #define SERIF_SPECIES_BR_95
+#endif // SERIF_SPECIES_BR_95
+#ifndef SERIF_SPECIES_KR_95
+    #define SERIF_SPECIES_KR_95
+#endif // SERIF_SPECIES_KR_95
+#ifndef SERIF_SPECIES_RB_95
+    #define SERIF_SPECIES_RB_95
+#endif // SERIF_SPECIES_RB_95
+#ifndef SERIF_SPECIES_SR_95
+    #define SERIF_SPECIES_SR_95
+#endif // SERIF_SPECIES_SR_95
+#ifndef SERIF_SPECIES_Y_95
+    #define SERIF_SPECIES_Y_95
+#endif // SERIF_SPECIES_Y_95
+#ifndef SERIF_SPECIES_ZR_95
+    #define SERIF_SPECIES_ZR_95
+#endif // SERIF_SPECIES_ZR_95
+#ifndef SERIF_SPECIES_NB_95
+    #define SERIF_SPECIES_NB_95
+#endif // SERIF_SPECIES_NB_95
+#ifndef SERIF_SPECIES_MO_95
+    #define SERIF_SPECIES_MO_95
+#endif // SERIF_SPECIES_MO_95
+#ifndef SERIF_SPECIES_TC_95
+    #define SERIF_SPECIES_TC_95
+#endif // SERIF_SPECIES_TC_95
+#ifndef SERIF_SPECIES_RU_95
+    #define SERIF_SPECIES_RU_95
+#endif // SERIF_SPECIES_RU_95
+#ifndef SERIF_SPECIES_RH_95
+    #define SERIF_SPECIES_RH_95
+#endif // SERIF_SPECIES_RH_95
+#ifndef SERIF_SPECIES_PD_95
+    #define SERIF_SPECIES_PD_95
+#endif // SERIF_SPECIES_PD_95
+#ifndef SERIF_SPECIES_AG_95
+    #define SERIF_SPECIES_AG_95
+#endif // SERIF_SPECIES_AG_95
+#ifndef SERIF_SPECIES_CD_95
+    #define SERIF_SPECIES_CD_95
+#endif // SERIF_SPECIES_CD_95
+#ifndef SERIF_SPECIES_BR_96
+    #define SERIF_SPECIES_BR_96
+#endif // SERIF_SPECIES_BR_96
+#ifndef SERIF_SPECIES_KR_96
+    #define SERIF_SPECIES_KR_96
+#endif // SERIF_SPECIES_KR_96
+#ifndef SERIF_SPECIES_RB_96
+    #define SERIF_SPECIES_RB_96
+#endif // SERIF_SPECIES_RB_96
+#ifndef SERIF_SPECIES_SR_96
+    #define SERIF_SPECIES_SR_96
+#endif // SERIF_SPECIES_SR_96
+#ifndef SERIF_SPECIES_Y_96
+    #define SERIF_SPECIES_Y_96
+#endif // SERIF_SPECIES_Y_96
+#ifndef SERIF_SPECIES_ZR_96
+    #define SERIF_SPECIES_ZR_96
+#endif // SERIF_SPECIES_ZR_96
+#ifndef SERIF_SPECIES_NB_96
+    #define SERIF_SPECIES_NB_96
+#endif // SERIF_SPECIES_NB_96
+#ifndef SERIF_SPECIES_MO_96
+    #define SERIF_SPECIES_MO_96
+#endif // SERIF_SPECIES_MO_96
+#ifndef SERIF_SPECIES_TC_96
+    #define SERIF_SPECIES_TC_96
+#endif // SERIF_SPECIES_TC_96
+#ifndef SERIF_SPECIES_RU_96
+    #define SERIF_SPECIES_RU_96
+#endif // SERIF_SPECIES_RU_96
+#ifndef SERIF_SPECIES_RH_96
+    #define SERIF_SPECIES_RH_96
+#endif // SERIF_SPECIES_RH_96
+#ifndef SERIF_SPECIES_PD_96
+    #define SERIF_SPECIES_PD_96
+#endif // SERIF_SPECIES_PD_96
+#ifndef SERIF_SPECIES_AG_96
+    #define SERIF_SPECIES_AG_96
+#endif // SERIF_SPECIES_AG_96
+#ifndef SERIF_SPECIES_CD_96
+    #define SERIF_SPECIES_CD_96
+#endif // SERIF_SPECIES_CD_96
+#ifndef SERIF_SPECIES_IN_96
+    #define SERIF_SPECIES_IN_96
+#endif // SERIF_SPECIES_IN_96
+#ifndef SERIF_SPECIES_BR_97
+    #define SERIF_SPECIES_BR_97
+#endif // SERIF_SPECIES_BR_97
+#ifndef SERIF_SPECIES_KR_97
+    #define SERIF_SPECIES_KR_97
+#endif // SERIF_SPECIES_KR_97
+#ifndef SERIF_SPECIES_RB_97
+    #define SERIF_SPECIES_RB_97
+#endif // SERIF_SPECIES_RB_97
+#ifndef SERIF_SPECIES_SR_97
+    #define SERIF_SPECIES_SR_97
+#endif // SERIF_SPECIES_SR_97
+#ifndef SERIF_SPECIES_Y_97
+    #define SERIF_SPECIES_Y_97
+#endif // SERIF_SPECIES_Y_97
+#ifndef SERIF_SPECIES_ZR_97
+    #define SERIF_SPECIES_ZR_97
+#endif // SERIF_SPECIES_ZR_97
+#ifndef SERIF_SPECIES_NB_97
+    #define SERIF_SPECIES_NB_97
+#endif // SERIF_SPECIES_NB_97
+#ifndef SERIF_SPECIES_MO_97
+    #define SERIF_SPECIES_MO_97
+#endif // SERIF_SPECIES_MO_97
+#ifndef SERIF_SPECIES_TC_97
+    #define SERIF_SPECIES_TC_97
+#endif // SERIF_SPECIES_TC_97
+#ifndef SERIF_SPECIES_RU_97
+    #define SERIF_SPECIES_RU_97
+#endif // SERIF_SPECIES_RU_97
+#ifndef SERIF_SPECIES_RH_97
+    #define SERIF_SPECIES_RH_97
+#endif // SERIF_SPECIES_RH_97
+#ifndef SERIF_SPECIES_PD_97
+    #define SERIF_SPECIES_PD_97
+#endif // SERIF_SPECIES_PD_97
+#ifndef SERIF_SPECIES_AG_97
+    #define SERIF_SPECIES_AG_97
+#endif // SERIF_SPECIES_AG_97
+#ifndef SERIF_SPECIES_CD_97
+    #define SERIF_SPECIES_CD_97
+#endif // SERIF_SPECIES_CD_97
+#ifndef SERIF_SPECIES_IN_97
+    #define SERIF_SPECIES_IN_97
+#endif // SERIF_SPECIES_IN_97
+#ifndef SERIF_SPECIES_BR_98
+    #define SERIF_SPECIES_BR_98
+#endif // SERIF_SPECIES_BR_98
+#ifndef SERIF_SPECIES_KR_98
+    #define SERIF_SPECIES_KR_98
+#endif // SERIF_SPECIES_KR_98
+#ifndef SERIF_SPECIES_RB_98
+    #define SERIF_SPECIES_RB_98
+#endif // SERIF_SPECIES_RB_98
+#ifndef SERIF_SPECIES_SR_98
+    #define SERIF_SPECIES_SR_98
+#endif // SERIF_SPECIES_SR_98
+#ifndef SERIF_SPECIES_Y_98
+    #define SERIF_SPECIES_Y_98
+#endif // SERIF_SPECIES_Y_98
+#ifndef SERIF_SPECIES_ZR_98
+    #define SERIF_SPECIES_ZR_98
+#endif // SERIF_SPECIES_ZR_98
+#ifndef SERIF_SPECIES_NB_98
+    #define SERIF_SPECIES_NB_98
+#endif // SERIF_SPECIES_NB_98
+#ifndef SERIF_SPECIES_MO_98
+    #define SERIF_SPECIES_MO_98
+#endif // SERIF_SPECIES_MO_98
+#ifndef SERIF_SPECIES_TC_98
+    #define SERIF_SPECIES_TC_98
+#endif // SERIF_SPECIES_TC_98
+#ifndef SERIF_SPECIES_RU_98
+    #define SERIF_SPECIES_RU_98
+#endif // SERIF_SPECIES_RU_98
+#ifndef SERIF_SPECIES_RH_98
+    #define SERIF_SPECIES_RH_98
+#endif // SERIF_SPECIES_RH_98
+#ifndef SERIF_SPECIES_PD_98
+    #define SERIF_SPECIES_PD_98
+#endif // SERIF_SPECIES_PD_98
+#ifndef SERIF_SPECIES_AG_98
+    #define SERIF_SPECIES_AG_98
+#endif // SERIF_SPECIES_AG_98
+#ifndef SERIF_SPECIES_CD_98
+    #define SERIF_SPECIES_CD_98
+#endif // SERIF_SPECIES_CD_98
+#ifndef SERIF_SPECIES_IN_98
+    #define SERIF_SPECIES_IN_98
+#endif // SERIF_SPECIES_IN_98
+#ifndef SERIF_SPECIES_KR_99
+    #define SERIF_SPECIES_KR_99
+#endif // SERIF_SPECIES_KR_99
+#ifndef SERIF_SPECIES_RB_99
+    #define SERIF_SPECIES_RB_99
+#endif // SERIF_SPECIES_RB_99
+#ifndef SERIF_SPECIES_SR_99
+    #define SERIF_SPECIES_SR_99
+#endif // SERIF_SPECIES_SR_99
+#ifndef SERIF_SPECIES_Y_99
+    #define SERIF_SPECIES_Y_99
+#endif // SERIF_SPECIES_Y_99
+#ifndef SERIF_SPECIES_ZR_99
+    #define SERIF_SPECIES_ZR_99
+#endif // SERIF_SPECIES_ZR_99
+#ifndef SERIF_SPECIES_NB_99
+    #define SERIF_SPECIES_NB_99
+#endif // SERIF_SPECIES_NB_99
+#ifndef SERIF_SPECIES_MO_99
+    #define SERIF_SPECIES_MO_99
+#endif // SERIF_SPECIES_MO_99
+#ifndef SERIF_SPECIES_TC_99
+    #define SERIF_SPECIES_TC_99
+#endif // SERIF_SPECIES_TC_99
+#ifndef SERIF_SPECIES_RU_99
+    #define SERIF_SPECIES_RU_99
+#endif // SERIF_SPECIES_RU_99
+#ifndef SERIF_SPECIES_RH_99
+    #define SERIF_SPECIES_RH_99
+#endif // SERIF_SPECIES_RH_99
+#ifndef SERIF_SPECIES_PD_99
+    #define SERIF_SPECIES_PD_99
+#endif // SERIF_SPECIES_PD_99
+#ifndef SERIF_SPECIES_AG_99
+    #define SERIF_SPECIES_AG_99
+#endif // SERIF_SPECIES_AG_99
+#ifndef SERIF_SPECIES_CD_99
+    #define SERIF_SPECIES_CD_99
+#endif // SERIF_SPECIES_CD_99
+#ifndef SERIF_SPECIES_IN_99
+    #define SERIF_SPECIES_IN_99
+#endif // SERIF_SPECIES_IN_99
+#ifndef SERIF_SPECIES_SN_99
+    #define SERIF_SPECIES_SN_99
+#endif // SERIF_SPECIES_SN_99
+#ifndef SERIF_SPECIES_KR_100
+    #define SERIF_SPECIES_KR_100
+#endif // SERIF_SPECIES_KR_100
+#ifndef SERIF_SPECIES_RB_100
+    #define SERIF_SPECIES_RB_100
+#endif // SERIF_SPECIES_RB_100
+#ifndef SERIF_SPECIES_SR_100
+    #define SERIF_SPECIES_SR_100
+#endif // SERIF_SPECIES_SR_100
+#ifndef SERIF_SPECIES_Y_100
+    #define SERIF_SPECIES_Y_100
+#endif // SERIF_SPECIES_Y_100
+#ifndef SERIF_SPECIES_ZR_100
+    #define SERIF_SPECIES_ZR_100
+#endif // SERIF_SPECIES_ZR_100
+#ifndef SERIF_SPECIES_NB_100
+    #define SERIF_SPECIES_NB_100
+#endif // SERIF_SPECIES_NB_100
+#ifndef SERIF_SPECIES_MO_100
+    #define SERIF_SPECIES_MO_100
+#endif // SERIF_SPECIES_MO_100
+#ifndef SERIF_SPECIES_TC_100
+    #define SERIF_SPECIES_TC_100
+#endif // SERIF_SPECIES_TC_100
+#ifndef SERIF_SPECIES_RU_100
+    #define SERIF_SPECIES_RU_100
+#endif // SERIF_SPECIES_RU_100
+#ifndef SERIF_SPECIES_RH_100
+    #define SERIF_SPECIES_RH_100
+#endif // SERIF_SPECIES_RH_100
+#ifndef SERIF_SPECIES_PD_100
+    #define SERIF_SPECIES_PD_100
+#endif // SERIF_SPECIES_PD_100
+#ifndef SERIF_SPECIES_AG_100
+    #define SERIF_SPECIES_AG_100
+#endif // SERIF_SPECIES_AG_100
+#ifndef SERIF_SPECIES_CD_100
+    #define SERIF_SPECIES_CD_100
+#endif // SERIF_SPECIES_CD_100
+#ifndef SERIF_SPECIES_IN_100
+    #define SERIF_SPECIES_IN_100
+#endif // SERIF_SPECIES_IN_100
+#ifndef SERIF_SPECIES_SN_100
+    #define SERIF_SPECIES_SN_100
+#endif // SERIF_SPECIES_SN_100
+#ifndef SERIF_SPECIES_KR_101
+    #define SERIF_SPECIES_KR_101
+#endif // SERIF_SPECIES_KR_101
+#ifndef SERIF_SPECIES_RB_101
+    #define SERIF_SPECIES_RB_101
+#endif // SERIF_SPECIES_RB_101
+#ifndef SERIF_SPECIES_SR_101
+    #define SERIF_SPECIES_SR_101
+#endif // SERIF_SPECIES_SR_101
+#ifndef SERIF_SPECIES_Y_101
+    #define SERIF_SPECIES_Y_101
+#endif // SERIF_SPECIES_Y_101
+#ifndef SERIF_SPECIES_ZR_101
+    #define SERIF_SPECIES_ZR_101
+#endif // SERIF_SPECIES_ZR_101
+#ifndef SERIF_SPECIES_NB_101
+    #define SERIF_SPECIES_NB_101
+#endif // SERIF_SPECIES_NB_101
+#ifndef SERIF_SPECIES_MO_101
+    #define SERIF_SPECIES_MO_101
+#endif // SERIF_SPECIES_MO_101
+#ifndef SERIF_SPECIES_TC_101
+    #define SERIF_SPECIES_TC_101
+#endif // SERIF_SPECIES_TC_101
+#ifndef SERIF_SPECIES_RU_101
+    #define SERIF_SPECIES_RU_101
+#endif // SERIF_SPECIES_RU_101
+#ifndef SERIF_SPECIES_RH_101
+    #define SERIF_SPECIES_RH_101
+#endif // SERIF_SPECIES_RH_101
+#ifndef SERIF_SPECIES_PD_101
+    #define SERIF_SPECIES_PD_101
+#endif // SERIF_SPECIES_PD_101
+#ifndef SERIF_SPECIES_AG_101
+    #define SERIF_SPECIES_AG_101
+#endif // SERIF_SPECIES_AG_101
+#ifndef SERIF_SPECIES_CD_101
+    #define SERIF_SPECIES_CD_101
+#endif // SERIF_SPECIES_CD_101
+#ifndef SERIF_SPECIES_IN_101
+    #define SERIF_SPECIES_IN_101
+#endif // SERIF_SPECIES_IN_101
+#ifndef SERIF_SPECIES_SN_101
+    #define SERIF_SPECIES_SN_101
+#endif // SERIF_SPECIES_SN_101
+#ifndef SERIF_SPECIES_RB_102
+    #define SERIF_SPECIES_RB_102
+#endif // SERIF_SPECIES_RB_102
+#ifndef SERIF_SPECIES_SR_102
+    #define SERIF_SPECIES_SR_102
+#endif // SERIF_SPECIES_SR_102
+#ifndef SERIF_SPECIES_Y_102
+    #define SERIF_SPECIES_Y_102
+#endif // SERIF_SPECIES_Y_102
+#ifndef SERIF_SPECIES_ZR_102
+    #define SERIF_SPECIES_ZR_102
+#endif // SERIF_SPECIES_ZR_102
+#ifndef SERIF_SPECIES_NB_102
+    #define SERIF_SPECIES_NB_102
+#endif // SERIF_SPECIES_NB_102
+#ifndef SERIF_SPECIES_MO_102
+    #define SERIF_SPECIES_MO_102
+#endif // SERIF_SPECIES_MO_102
+#ifndef SERIF_SPECIES_TC_102
+    #define SERIF_SPECIES_TC_102
+#endif // SERIF_SPECIES_TC_102
+#ifndef SERIF_SPECIES_RU_102
+    #define SERIF_SPECIES_RU_102
+#endif // SERIF_SPECIES_RU_102
+#ifndef SERIF_SPECIES_RH_102
+    #define SERIF_SPECIES_RH_102
+#endif // SERIF_SPECIES_RH_102
+#ifndef SERIF_SPECIES_PD_102
+    #define SERIF_SPECIES_PD_102
+#endif // SERIF_SPECIES_PD_102
+#ifndef SERIF_SPECIES_AG_102
+    #define SERIF_SPECIES_AG_102
+#endif // SERIF_SPECIES_AG_102
+#ifndef SERIF_SPECIES_CD_102
+    #define SERIF_SPECIES_CD_102
+#endif // SERIF_SPECIES_CD_102
+#ifndef SERIF_SPECIES_IN_102
+    #define SERIF_SPECIES_IN_102
+#endif // SERIF_SPECIES_IN_102
+#ifndef SERIF_SPECIES_SN_102
+    #define SERIF_SPECIES_SN_102
+#endif // SERIF_SPECIES_SN_102
+#ifndef SERIF_SPECIES_SB_102
+    #define SERIF_SPECIES_SB_102
+#endif // SERIF_SPECIES_SB_102
+#ifndef SERIF_SPECIES_RB_103
+    #define SERIF_SPECIES_RB_103
+#endif // SERIF_SPECIES_RB_103
+#ifndef SERIF_SPECIES_SR_103
+    #define SERIF_SPECIES_SR_103
+#endif // SERIF_SPECIES_SR_103
+#ifndef SERIF_SPECIES_Y_103
+    #define SERIF_SPECIES_Y_103
+#endif // SERIF_SPECIES_Y_103
+#ifndef SERIF_SPECIES_ZR_103
+    #define SERIF_SPECIES_ZR_103
+#endif // SERIF_SPECIES_ZR_103
+#ifndef SERIF_SPECIES_NB_103
+    #define SERIF_SPECIES_NB_103
+#endif // SERIF_SPECIES_NB_103
+#ifndef SERIF_SPECIES_MO_103
+    #define SERIF_SPECIES_MO_103
+#endif // SERIF_SPECIES_MO_103
+#ifndef SERIF_SPECIES_TC_103
+    #define SERIF_SPECIES_TC_103
+#endif // SERIF_SPECIES_TC_103
+#ifndef SERIF_SPECIES_RU_103
+    #define SERIF_SPECIES_RU_103
+#endif // SERIF_SPECIES_RU_103
+#ifndef SERIF_SPECIES_RH_103
+    #define SERIF_SPECIES_RH_103
+#endif // SERIF_SPECIES_RH_103
+#ifndef SERIF_SPECIES_PD_103
+    #define SERIF_SPECIES_PD_103
+#endif // SERIF_SPECIES_PD_103
+#ifndef SERIF_SPECIES_AG_103
+    #define SERIF_SPECIES_AG_103
+#endif // SERIF_SPECIES_AG_103
+#ifndef SERIF_SPECIES_CD_103
+    #define SERIF_SPECIES_CD_103
+#endif // SERIF_SPECIES_CD_103
+#ifndef SERIF_SPECIES_IN_103
+    #define SERIF_SPECIES_IN_103
+#endif // SERIF_SPECIES_IN_103
+#ifndef SERIF_SPECIES_SN_103
+    #define SERIF_SPECIES_SN_103
+#endif // SERIF_SPECIES_SN_103
+#ifndef SERIF_SPECIES_SB_103
+    #define SERIF_SPECIES_SB_103
+#endif // SERIF_SPECIES_SB_103
+#ifndef SERIF_SPECIES_RB_104
+    #define SERIF_SPECIES_RB_104
+#endif // SERIF_SPECIES_RB_104
+#ifndef SERIF_SPECIES_SR_104
+    #define SERIF_SPECIES_SR_104
+#endif // SERIF_SPECIES_SR_104
+#ifndef SERIF_SPECIES_Y_104
+    #define SERIF_SPECIES_Y_104
+#endif // SERIF_SPECIES_Y_104
+#ifndef SERIF_SPECIES_ZR_104
+    #define SERIF_SPECIES_ZR_104
+#endif // SERIF_SPECIES_ZR_104
+#ifndef SERIF_SPECIES_NB_104
+    #define SERIF_SPECIES_NB_104
+#endif // SERIF_SPECIES_NB_104
+#ifndef SERIF_SPECIES_MO_104
+    #define SERIF_SPECIES_MO_104
+#endif // SERIF_SPECIES_MO_104
+#ifndef SERIF_SPECIES_TC_104
+    #define SERIF_SPECIES_TC_104
+#endif // SERIF_SPECIES_TC_104
+#ifndef SERIF_SPECIES_RU_104
+    #define SERIF_SPECIES_RU_104
+#endif // SERIF_SPECIES_RU_104
+#ifndef SERIF_SPECIES_RH_104
+    #define SERIF_SPECIES_RH_104
+#endif // SERIF_SPECIES_RH_104
+#ifndef SERIF_SPECIES_PD_104
+    #define SERIF_SPECIES_PD_104
+#endif // SERIF_SPECIES_PD_104
+#ifndef SERIF_SPECIES_AG_104
+    #define SERIF_SPECIES_AG_104
+#endif // SERIF_SPECIES_AG_104
+#ifndef SERIF_SPECIES_CD_104
+    #define SERIF_SPECIES_CD_104
+#endif // SERIF_SPECIES_CD_104
+#ifndef SERIF_SPECIES_IN_104
+    #define SERIF_SPECIES_IN_104
+#endif // SERIF_SPECIES_IN_104
+#ifndef SERIF_SPECIES_SN_104
+    #define SERIF_SPECIES_SN_104
+#endif // SERIF_SPECIES_SN_104
+#ifndef SERIF_SPECIES_SB_104
+    #define SERIF_SPECIES_SB_104
+#endif // SERIF_SPECIES_SB_104
+#ifndef SERIF_SPECIES_TE_104
+    #define SERIF_SPECIES_TE_104
+#endif // SERIF_SPECIES_TE_104
+#ifndef SERIF_SPECIES_SR_105
+    #define SERIF_SPECIES_SR_105
+#endif // SERIF_SPECIES_SR_105
+#ifndef SERIF_SPECIES_Y_105
+    #define SERIF_SPECIES_Y_105
+#endif // SERIF_SPECIES_Y_105
+#ifndef SERIF_SPECIES_ZR_105
+    #define SERIF_SPECIES_ZR_105
+#endif // SERIF_SPECIES_ZR_105
+#ifndef SERIF_SPECIES_NB_105
+    #define SERIF_SPECIES_NB_105
+#endif // SERIF_SPECIES_NB_105
+#ifndef SERIF_SPECIES_MO_105
+    #define SERIF_SPECIES_MO_105
+#endif // SERIF_SPECIES_MO_105
+#ifndef SERIF_SPECIES_TC_105
+    #define SERIF_SPECIES_TC_105
+#endif // SERIF_SPECIES_TC_105
+#ifndef SERIF_SPECIES_RU_105
+    #define SERIF_SPECIES_RU_105
+#endif // SERIF_SPECIES_RU_105
+#ifndef SERIF_SPECIES_RH_105
+    #define SERIF_SPECIES_RH_105
+#endif // SERIF_SPECIES_RH_105
+#ifndef SERIF_SPECIES_PD_105
+    #define SERIF_SPECIES_PD_105
+#endif // SERIF_SPECIES_PD_105
+#ifndef SERIF_SPECIES_AG_105
+    #define SERIF_SPECIES_AG_105
+#endif // SERIF_SPECIES_AG_105
+#ifndef SERIF_SPECIES_CD_105
+    #define SERIF_SPECIES_CD_105
+#endif // SERIF_SPECIES_CD_105
+#ifndef SERIF_SPECIES_IN_105
+    #define SERIF_SPECIES_IN_105
+#endif // SERIF_SPECIES_IN_105
+#ifndef SERIF_SPECIES_SN_105
+    #define SERIF_SPECIES_SN_105
+#endif // SERIF_SPECIES_SN_105
+#ifndef SERIF_SPECIES_SB_105
+    #define SERIF_SPECIES_SB_105
+#endif // SERIF_SPECIES_SB_105
+#ifndef SERIF_SPECIES_TE_105
+    #define SERIF_SPECIES_TE_105
+#endif // SERIF_SPECIES_TE_105
+#ifndef SERIF_SPECIES_SR_106
+    #define SERIF_SPECIES_SR_106
+#endif // SERIF_SPECIES_SR_106
+#ifndef SERIF_SPECIES_Y_106
+    #define SERIF_SPECIES_Y_106
+#endif // SERIF_SPECIES_Y_106
+#ifndef SERIF_SPECIES_ZR_106
+    #define SERIF_SPECIES_ZR_106
+#endif // SERIF_SPECIES_ZR_106
+#ifndef SERIF_SPECIES_NB_106
+    #define SERIF_SPECIES_NB_106
+#endif // SERIF_SPECIES_NB_106
+#ifndef SERIF_SPECIES_MO_106
+    #define SERIF_SPECIES_MO_106
+#endif // SERIF_SPECIES_MO_106
+#ifndef SERIF_SPECIES_TC_106
+    #define SERIF_SPECIES_TC_106
+#endif // SERIF_SPECIES_TC_106
+#ifndef SERIF_SPECIES_RU_106
+    #define SERIF_SPECIES_RU_106
+#endif // SERIF_SPECIES_RU_106
+#ifndef SERIF_SPECIES_RH_106
+    #define SERIF_SPECIES_RH_106
+#endif // SERIF_SPECIES_RH_106
+#ifndef SERIF_SPECIES_PD_106
+    #define SERIF_SPECIES_PD_106
+#endif // SERIF_SPECIES_PD_106
+#ifndef SERIF_SPECIES_AG_106
+    #define SERIF_SPECIES_AG_106
+#endif // SERIF_SPECIES_AG_106
+#ifndef SERIF_SPECIES_CD_106
+    #define SERIF_SPECIES_CD_106
+#endif // SERIF_SPECIES_CD_106
+#ifndef SERIF_SPECIES_IN_106
+    #define SERIF_SPECIES_IN_106
+#endif // SERIF_SPECIES_IN_106
+#ifndef SERIF_SPECIES_SN_106
+    #define SERIF_SPECIES_SN_106
+#endif // SERIF_SPECIES_SN_106
+#ifndef SERIF_SPECIES_SB_106
+    #define SERIF_SPECIES_SB_106
+#endif // SERIF_SPECIES_SB_106
+#ifndef SERIF_SPECIES_TE_106
+    #define SERIF_SPECIES_TE_106
+#endif // SERIF_SPECIES_TE_106
+#ifndef SERIF_SPECIES_I_106
+    #define SERIF_SPECIES_I_106
+#endif // SERIF_SPECIES_I_106
+#ifndef SERIF_SPECIES_SR_107
+    #define SERIF_SPECIES_SR_107
+#endif // SERIF_SPECIES_SR_107
+#ifndef SERIF_SPECIES_Y_107
+    #define SERIF_SPECIES_Y_107
+#endif // SERIF_SPECIES_Y_107
+#ifndef SERIF_SPECIES_ZR_107
+    #define SERIF_SPECIES_ZR_107
+#endif // SERIF_SPECIES_ZR_107
+#ifndef SERIF_SPECIES_NB_107
+    #define SERIF_SPECIES_NB_107
+#endif // SERIF_SPECIES_NB_107
+#ifndef SERIF_SPECIES_MO_107
+    #define SERIF_SPECIES_MO_107
+#endif // SERIF_SPECIES_MO_107
+#ifndef SERIF_SPECIES_TC_107
+    #define SERIF_SPECIES_TC_107
+#endif // SERIF_SPECIES_TC_107
+#ifndef SERIF_SPECIES_RU_107
+    #define SERIF_SPECIES_RU_107
+#endif // SERIF_SPECIES_RU_107
+#ifndef SERIF_SPECIES_RH_107
+    #define SERIF_SPECIES_RH_107
+#endif // SERIF_SPECIES_RH_107
+#ifndef SERIF_SPECIES_PD_107
+    #define SERIF_SPECIES_PD_107
+#endif // SERIF_SPECIES_PD_107
+#ifndef SERIF_SPECIES_AG_107
+    #define SERIF_SPECIES_AG_107
+#endif // SERIF_SPECIES_AG_107
+#ifndef SERIF_SPECIES_CD_107
+    #define SERIF_SPECIES_CD_107
+#endif // SERIF_SPECIES_CD_107
+#ifndef SERIF_SPECIES_IN_107
+    #define SERIF_SPECIES_IN_107
+#endif // SERIF_SPECIES_IN_107
+#ifndef SERIF_SPECIES_SN_107
+    #define SERIF_SPECIES_SN_107
+#endif // SERIF_SPECIES_SN_107
+#ifndef SERIF_SPECIES_SB_107
+    #define SERIF_SPECIES_SB_107
+#endif // SERIF_SPECIES_SB_107
+#ifndef SERIF_SPECIES_TE_107
+    #define SERIF_SPECIES_TE_107
+#endif // SERIF_SPECIES_TE_107
+#ifndef SERIF_SPECIES_I_107
+    #define SERIF_SPECIES_I_107
+#endif // SERIF_SPECIES_I_107
+#ifndef SERIF_SPECIES_Y_108
+    #define SERIF_SPECIES_Y_108
+#endif // SERIF_SPECIES_Y_108
+#ifndef SERIF_SPECIES_ZR_108
+    #define SERIF_SPECIES_ZR_108
+#endif // SERIF_SPECIES_ZR_108
+#ifndef SERIF_SPECIES_NB_108
+    #define SERIF_SPECIES_NB_108
+#endif // SERIF_SPECIES_NB_108
+#ifndef SERIF_SPECIES_MO_108
+    #define SERIF_SPECIES_MO_108
+#endif // SERIF_SPECIES_MO_108
+#ifndef SERIF_SPECIES_TC_108
+    #define SERIF_SPECIES_TC_108
+#endif // SERIF_SPECIES_TC_108
+#ifndef SERIF_SPECIES_RU_108
+    #define SERIF_SPECIES_RU_108
+#endif // SERIF_SPECIES_RU_108
+#ifndef SERIF_SPECIES_RH_108
+    #define SERIF_SPECIES_RH_108
+#endif // SERIF_SPECIES_RH_108
+#ifndef SERIF_SPECIES_PD_108
+    #define SERIF_SPECIES_PD_108
+#endif // SERIF_SPECIES_PD_108
+#ifndef SERIF_SPECIES_AG_108
+    #define SERIF_SPECIES_AG_108
+#endif // SERIF_SPECIES_AG_108
+#ifndef SERIF_SPECIES_CD_108
+    #define SERIF_SPECIES_CD_108
+#endif // SERIF_SPECIES_CD_108
+#ifndef SERIF_SPECIES_IN_108
+    #define SERIF_SPECIES_IN_108
+#endif // SERIF_SPECIES_IN_108
+#ifndef SERIF_SPECIES_SN_108
+    #define SERIF_SPECIES_SN_108
+#endif // SERIF_SPECIES_SN_108
+#ifndef SERIF_SPECIES_SB_108
+    #define SERIF_SPECIES_SB_108
+#endif // SERIF_SPECIES_SB_108
+#ifndef SERIF_SPECIES_TE_108
+    #define SERIF_SPECIES_TE_108
+#endif // SERIF_SPECIES_TE_108
+#ifndef SERIF_SPECIES_I_108
+    #define SERIF_SPECIES_I_108
+#endif // SERIF_SPECIES_I_108
+#ifndef SERIF_SPECIES_XE_108
+    #define SERIF_SPECIES_XE_108
+#endif // SERIF_SPECIES_XE_108
+#ifndef SERIF_SPECIES_Y_109
+    #define SERIF_SPECIES_Y_109
+#endif // SERIF_SPECIES_Y_109
+#ifndef SERIF_SPECIES_ZR_109
+    #define SERIF_SPECIES_ZR_109
+#endif // SERIF_SPECIES_ZR_109
+#ifndef SERIF_SPECIES_NB_109
+    #define SERIF_SPECIES_NB_109
+#endif // SERIF_SPECIES_NB_109
+#ifndef SERIF_SPECIES_MO_109
+    #define SERIF_SPECIES_MO_109
+#endif // SERIF_SPECIES_MO_109
+#ifndef SERIF_SPECIES_TC_109
+    #define SERIF_SPECIES_TC_109
+#endif // SERIF_SPECIES_TC_109
+#ifndef SERIF_SPECIES_RU_109
+    #define SERIF_SPECIES_RU_109
+#endif // SERIF_SPECIES_RU_109
+#ifndef SERIF_SPECIES_RH_109
+    #define SERIF_SPECIES_RH_109
+#endif // SERIF_SPECIES_RH_109
+#ifndef SERIF_SPECIES_PD_109
+    #define SERIF_SPECIES_PD_109
+#endif // SERIF_SPECIES_PD_109
+#ifndef SERIF_SPECIES_AG_109
+    #define SERIF_SPECIES_AG_109
+#endif // SERIF_SPECIES_AG_109
+#ifndef SERIF_SPECIES_CD_109
+    #define SERIF_SPECIES_CD_109
+#endif // SERIF_SPECIES_CD_109
+#ifndef SERIF_SPECIES_IN_109
+    #define SERIF_SPECIES_IN_109
+#endif // SERIF_SPECIES_IN_109
+#ifndef SERIF_SPECIES_SN_109
+    #define SERIF_SPECIES_SN_109
+#endif // SERIF_SPECIES_SN_109
+#ifndef SERIF_SPECIES_SB_109
+    #define SERIF_SPECIES_SB_109
+#endif // SERIF_SPECIES_SB_109
+#ifndef SERIF_SPECIES_TE_109
+    #define SERIF_SPECIES_TE_109
+#endif // SERIF_SPECIES_TE_109
+#ifndef SERIF_SPECIES_I_109
+    #define SERIF_SPECIES_I_109
+#endif // SERIF_SPECIES_I_109
+#ifndef SERIF_SPECIES_XE_109
+    #define SERIF_SPECIES_XE_109
+#endif // SERIF_SPECIES_XE_109
+#ifndef SERIF_SPECIES_ZR_110
+    #define SERIF_SPECIES_ZR_110
+#endif // SERIF_SPECIES_ZR_110
+#ifndef SERIF_SPECIES_NB_110
+    #define SERIF_SPECIES_NB_110
+#endif // SERIF_SPECIES_NB_110
+#ifndef SERIF_SPECIES_MO_110
+    #define SERIF_SPECIES_MO_110
+#endif // SERIF_SPECIES_MO_110
+#ifndef SERIF_SPECIES_TC_110
+    #define SERIF_SPECIES_TC_110
+#endif // SERIF_SPECIES_TC_110
+#ifndef SERIF_SPECIES_RU_110
+    #define SERIF_SPECIES_RU_110
+#endif // SERIF_SPECIES_RU_110
+#ifndef SERIF_SPECIES_RH_110
+    #define SERIF_SPECIES_RH_110
+#endif // SERIF_SPECIES_RH_110
+#ifndef SERIF_SPECIES_PD_110
+    #define SERIF_SPECIES_PD_110
+#endif // SERIF_SPECIES_PD_110
+#ifndef SERIF_SPECIES_AG_110
+    #define SERIF_SPECIES_AG_110
+#endif // SERIF_SPECIES_AG_110
+#ifndef SERIF_SPECIES_CD_110
+    #define SERIF_SPECIES_CD_110
+#endif // SERIF_SPECIES_CD_110
+#ifndef SERIF_SPECIES_IN_110
+    #define SERIF_SPECIES_IN_110
+#endif // SERIF_SPECIES_IN_110
+#ifndef SERIF_SPECIES_SN_110
+    #define SERIF_SPECIES_SN_110
+#endif // SERIF_SPECIES_SN_110
+#ifndef SERIF_SPECIES_SB_110
+    #define SERIF_SPECIES_SB_110
+#endif // SERIF_SPECIES_SB_110
+#ifndef SERIF_SPECIES_TE_110
+    #define SERIF_SPECIES_TE_110
+#endif // SERIF_SPECIES_TE_110
+#ifndef SERIF_SPECIES_I_110
+    #define SERIF_SPECIES_I_110
+#endif // SERIF_SPECIES_I_110
+#ifndef SERIF_SPECIES_XE_110
+    #define SERIF_SPECIES_XE_110
+#endif // SERIF_SPECIES_XE_110
+#ifndef SERIF_SPECIES_ZR_111
+    #define SERIF_SPECIES_ZR_111
+#endif // SERIF_SPECIES_ZR_111
+#ifndef SERIF_SPECIES_NB_111
+    #define SERIF_SPECIES_NB_111
+#endif // SERIF_SPECIES_NB_111
+#ifndef SERIF_SPECIES_MO_111
+    #define SERIF_SPECIES_MO_111
+#endif // SERIF_SPECIES_MO_111
+#ifndef SERIF_SPECIES_TC_111
+    #define SERIF_SPECIES_TC_111
+#endif // SERIF_SPECIES_TC_111
+#ifndef SERIF_SPECIES_RU_111
+    #define SERIF_SPECIES_RU_111
+#endif // SERIF_SPECIES_RU_111
+#ifndef SERIF_SPECIES_RH_111
+    #define SERIF_SPECIES_RH_111
+#endif // SERIF_SPECIES_RH_111
+#ifndef SERIF_SPECIES_PD_111
+    #define SERIF_SPECIES_PD_111
+#endif // SERIF_SPECIES_PD_111
+#ifndef SERIF_SPECIES_AG_111
+    #define SERIF_SPECIES_AG_111
+#endif // SERIF_SPECIES_AG_111
+#ifndef SERIF_SPECIES_CD_111
+    #define SERIF_SPECIES_CD_111
+#endif // SERIF_SPECIES_CD_111
+#ifndef SERIF_SPECIES_IN_111
+    #define SERIF_SPECIES_IN_111
+#endif // SERIF_SPECIES_IN_111
+#ifndef SERIF_SPECIES_SN_111
+    #define SERIF_SPECIES_SN_111
+#endif // SERIF_SPECIES_SN_111
+#ifndef SERIF_SPECIES_SB_111
+    #define SERIF_SPECIES_SB_111
+#endif // SERIF_SPECIES_SB_111
+#ifndef SERIF_SPECIES_TE_111
+    #define SERIF_SPECIES_TE_111
+#endif // SERIF_SPECIES_TE_111
+#ifndef SERIF_SPECIES_I_111
+    #define SERIF_SPECIES_I_111
+#endif // SERIF_SPECIES_I_111
+#ifndef SERIF_SPECIES_XE_111
+    #define SERIF_SPECIES_XE_111
+#endif // SERIF_SPECIES_XE_111
+#ifndef SERIF_SPECIES_CS_111
+    #define SERIF_SPECIES_CS_111
+#endif // SERIF_SPECIES_CS_111
+#ifndef SERIF_SPECIES_ZR_112
+    #define SERIF_SPECIES_ZR_112
+#endif // SERIF_SPECIES_ZR_112
+#ifndef SERIF_SPECIES_NB_112
+    #define SERIF_SPECIES_NB_112
+#endif // SERIF_SPECIES_NB_112
+#ifndef SERIF_SPECIES_MO_112
+    #define SERIF_SPECIES_MO_112
+#endif // SERIF_SPECIES_MO_112
+#ifndef SERIF_SPECIES_TC_112
+    #define SERIF_SPECIES_TC_112
+#endif // SERIF_SPECIES_TC_112
+#ifndef SERIF_SPECIES_RU_112
+    #define SERIF_SPECIES_RU_112
+#endif // SERIF_SPECIES_RU_112
+#ifndef SERIF_SPECIES_RH_112
+    #define SERIF_SPECIES_RH_112
+#endif // SERIF_SPECIES_RH_112
+#ifndef SERIF_SPECIES_PD_112
+    #define SERIF_SPECIES_PD_112
+#endif // SERIF_SPECIES_PD_112
+#ifndef SERIF_SPECIES_AG_112
+    #define SERIF_SPECIES_AG_112
+#endif // SERIF_SPECIES_AG_112
+#ifndef SERIF_SPECIES_CD_112
+    #define SERIF_SPECIES_CD_112
+#endif // SERIF_SPECIES_CD_112
+#ifndef SERIF_SPECIES_IN_112
+    #define SERIF_SPECIES_IN_112
+#endif // SERIF_SPECIES_IN_112
+#ifndef SERIF_SPECIES_SN_112
+    #define SERIF_SPECIES_SN_112
+#endif // SERIF_SPECIES_SN_112
+#ifndef SERIF_SPECIES_SB_112
+    #define SERIF_SPECIES_SB_112
+#endif // SERIF_SPECIES_SB_112
+#ifndef SERIF_SPECIES_TE_112
+    #define SERIF_SPECIES_TE_112
+#endif // SERIF_SPECIES_TE_112
+#ifndef SERIF_SPECIES_I_112
+    #define SERIF_SPECIES_I_112
+#endif // SERIF_SPECIES_I_112
+#ifndef SERIF_SPECIES_XE_112
+    #define SERIF_SPECIES_XE_112
+#endif // SERIF_SPECIES_XE_112
+#ifndef SERIF_SPECIES_CS_112
+    #define SERIF_SPECIES_CS_112
+#endif // SERIF_SPECIES_CS_112
+#ifndef SERIF_SPECIES_ZR_113
+    #define SERIF_SPECIES_ZR_113
+#endif // SERIF_SPECIES_ZR_113
+#ifndef SERIF_SPECIES_NB_113
+    #define SERIF_SPECIES_NB_113
+#endif // SERIF_SPECIES_NB_113
+#ifndef SERIF_SPECIES_MO_113
+    #define SERIF_SPECIES_MO_113
+#endif // SERIF_SPECIES_MO_113
+#ifndef SERIF_SPECIES_TC_113
+    #define SERIF_SPECIES_TC_113
+#endif // SERIF_SPECIES_TC_113
+#ifndef SERIF_SPECIES_RU_113
+    #define SERIF_SPECIES_RU_113
+#endif // SERIF_SPECIES_RU_113
+#ifndef SERIF_SPECIES_RH_113
+    #define SERIF_SPECIES_RH_113
+#endif // SERIF_SPECIES_RH_113
+#ifndef SERIF_SPECIES_PD_113
+    #define SERIF_SPECIES_PD_113
+#endif // SERIF_SPECIES_PD_113
+#ifndef SERIF_SPECIES_AG_113
+    #define SERIF_SPECIES_AG_113
+#endif // SERIF_SPECIES_AG_113
+#ifndef SERIF_SPECIES_CD_113
+    #define SERIF_SPECIES_CD_113
+#endif // SERIF_SPECIES_CD_113
+#ifndef SERIF_SPECIES_IN_113
+    #define SERIF_SPECIES_IN_113
+#endif // SERIF_SPECIES_IN_113
+#ifndef SERIF_SPECIES_SN_113
+    #define SERIF_SPECIES_SN_113
+#endif // SERIF_SPECIES_SN_113
+#ifndef SERIF_SPECIES_SB_113
+    #define SERIF_SPECIES_SB_113
+#endif // SERIF_SPECIES_SB_113
+#ifndef SERIF_SPECIES_TE_113
+    #define SERIF_SPECIES_TE_113
+#endif // SERIF_SPECIES_TE_113
+#ifndef SERIF_SPECIES_I_113
+    #define SERIF_SPECIES_I_113
+#endif // SERIF_SPECIES_I_113
+#ifndef SERIF_SPECIES_XE_113
+    #define SERIF_SPECIES_XE_113
+#endif // SERIF_SPECIES_XE_113
+#ifndef SERIF_SPECIES_CS_113
+    #define SERIF_SPECIES_CS_113
+#endif // SERIF_SPECIES_CS_113
+#ifndef SERIF_SPECIES_BA_113
+    #define SERIF_SPECIES_BA_113
+#endif // SERIF_SPECIES_BA_113
+#ifndef SERIF_SPECIES_NB_114
+    #define SERIF_SPECIES_NB_114
+#endif // SERIF_SPECIES_NB_114
+#ifndef SERIF_SPECIES_MO_114
+    #define SERIF_SPECIES_MO_114
+#endif // SERIF_SPECIES_MO_114
+#ifndef SERIF_SPECIES_TC_114
+    #define SERIF_SPECIES_TC_114
+#endif // SERIF_SPECIES_TC_114
+#ifndef SERIF_SPECIES_RU_114
+    #define SERIF_SPECIES_RU_114
+#endif // SERIF_SPECIES_RU_114
+#ifndef SERIF_SPECIES_RH_114
+    #define SERIF_SPECIES_RH_114
+#endif // SERIF_SPECIES_RH_114
+#ifndef SERIF_SPECIES_PD_114
+    #define SERIF_SPECIES_PD_114
+#endif // SERIF_SPECIES_PD_114
+#ifndef SERIF_SPECIES_AG_114
+    #define SERIF_SPECIES_AG_114
+#endif // SERIF_SPECIES_AG_114
+#ifndef SERIF_SPECIES_CD_114
+    #define SERIF_SPECIES_CD_114
+#endif // SERIF_SPECIES_CD_114
+#ifndef SERIF_SPECIES_IN_114
+    #define SERIF_SPECIES_IN_114
+#endif // SERIF_SPECIES_IN_114
+#ifndef SERIF_SPECIES_SN_114
+    #define SERIF_SPECIES_SN_114
+#endif // SERIF_SPECIES_SN_114
+#ifndef SERIF_SPECIES_SB_114
+    #define SERIF_SPECIES_SB_114
+#endif // SERIF_SPECIES_SB_114
+#ifndef SERIF_SPECIES_TE_114
+    #define SERIF_SPECIES_TE_114
+#endif // SERIF_SPECIES_TE_114
+#ifndef SERIF_SPECIES_I_114
+    #define SERIF_SPECIES_I_114
+#endif // SERIF_SPECIES_I_114
+#ifndef SERIF_SPECIES_XE_114
+    #define SERIF_SPECIES_XE_114
+#endif // SERIF_SPECIES_XE_114
+#ifndef SERIF_SPECIES_CS_114
+    #define SERIF_SPECIES_CS_114
+#endif // SERIF_SPECIES_CS_114
+#ifndef SERIF_SPECIES_BA_114
+    #define SERIF_SPECIES_BA_114
+#endif // SERIF_SPECIES_BA_114
+#ifndef SERIF_SPECIES_NB_115
+    #define SERIF_SPECIES_NB_115
+#endif // SERIF_SPECIES_NB_115
+#ifndef SERIF_SPECIES_MO_115
+    #define SERIF_SPECIES_MO_115
+#endif // SERIF_SPECIES_MO_115
+#ifndef SERIF_SPECIES_TC_115
+    #define SERIF_SPECIES_TC_115
+#endif // SERIF_SPECIES_TC_115
+#ifndef SERIF_SPECIES_RU_115
+    #define SERIF_SPECIES_RU_115
+#endif // SERIF_SPECIES_RU_115
+#ifndef SERIF_SPECIES_RH_115
+    #define SERIF_SPECIES_RH_115
+#endif // SERIF_SPECIES_RH_115
+#ifndef SERIF_SPECIES_PD_115
+    #define SERIF_SPECIES_PD_115
+#endif // SERIF_SPECIES_PD_115
+#ifndef SERIF_SPECIES_AG_115
+    #define SERIF_SPECIES_AG_115
+#endif // SERIF_SPECIES_AG_115
+#ifndef SERIF_SPECIES_CD_115
+    #define SERIF_SPECIES_CD_115
+#endif // SERIF_SPECIES_CD_115
+#ifndef SERIF_SPECIES_IN_115
+    #define SERIF_SPECIES_IN_115
+#endif // SERIF_SPECIES_IN_115
+#ifndef SERIF_SPECIES_SN_115
+    #define SERIF_SPECIES_SN_115
+#endif // SERIF_SPECIES_SN_115
+#ifndef SERIF_SPECIES_SB_115
+    #define SERIF_SPECIES_SB_115
+#endif // SERIF_SPECIES_SB_115
+#ifndef SERIF_SPECIES_TE_115
+    #define SERIF_SPECIES_TE_115
+#endif // SERIF_SPECIES_TE_115
+#ifndef SERIF_SPECIES_I_115
+    #define SERIF_SPECIES_I_115
+#endif // SERIF_SPECIES_I_115
+#ifndef SERIF_SPECIES_XE_115
+    #define SERIF_SPECIES_XE_115
+#endif // SERIF_SPECIES_XE_115
+#ifndef SERIF_SPECIES_CS_115
+    #define SERIF_SPECIES_CS_115
+#endif // SERIF_SPECIES_CS_115
+#ifndef SERIF_SPECIES_BA_115
+    #define SERIF_SPECIES_BA_115
+#endif // SERIF_SPECIES_BA_115
+#ifndef SERIF_SPECIES_NB_116
+    #define SERIF_SPECIES_NB_116
+#endif // SERIF_SPECIES_NB_116
+#ifndef SERIF_SPECIES_MO_116
+    #define SERIF_SPECIES_MO_116
+#endif // SERIF_SPECIES_MO_116
+#ifndef SERIF_SPECIES_TC_116
+    #define SERIF_SPECIES_TC_116
+#endif // SERIF_SPECIES_TC_116
+#ifndef SERIF_SPECIES_RU_116
+    #define SERIF_SPECIES_RU_116
+#endif // SERIF_SPECIES_RU_116
+#ifndef SERIF_SPECIES_RH_116
+    #define SERIF_SPECIES_RH_116
+#endif // SERIF_SPECIES_RH_116
+#ifndef SERIF_SPECIES_PD_116
+    #define SERIF_SPECIES_PD_116
+#endif // SERIF_SPECIES_PD_116
+#ifndef SERIF_SPECIES_AG_116
+    #define SERIF_SPECIES_AG_116
+#endif // SERIF_SPECIES_AG_116
+#ifndef SERIF_SPECIES_CD_116
+    #define SERIF_SPECIES_CD_116
+#endif // SERIF_SPECIES_CD_116
+#ifndef SERIF_SPECIES_IN_116
+    #define SERIF_SPECIES_IN_116
+#endif // SERIF_SPECIES_IN_116
+#ifndef SERIF_SPECIES_SN_116
+    #define SERIF_SPECIES_SN_116
+#endif // SERIF_SPECIES_SN_116
+#ifndef SERIF_SPECIES_SB_116
+    #define SERIF_SPECIES_SB_116
+#endif // SERIF_SPECIES_SB_116
+#ifndef SERIF_SPECIES_TE_116
+    #define SERIF_SPECIES_TE_116
+#endif // SERIF_SPECIES_TE_116
+#ifndef SERIF_SPECIES_I_116
+    #define SERIF_SPECIES_I_116
+#endif // SERIF_SPECIES_I_116
+#ifndef SERIF_SPECIES_XE_116
+    #define SERIF_SPECIES_XE_116
+#endif // SERIF_SPECIES_XE_116
+#ifndef SERIF_SPECIES_CS_116
+    #define SERIF_SPECIES_CS_116
+#endif // SERIF_SPECIES_CS_116
+#ifndef SERIF_SPECIES_BA_116
+    #define SERIF_SPECIES_BA_116
+#endif // SERIF_SPECIES_BA_116
+#ifndef SERIF_SPECIES_LA_116
+    #define SERIF_SPECIES_LA_116
+#endif // SERIF_SPECIES_LA_116
+#ifndef SERIF_SPECIES_MO_117
+    #define SERIF_SPECIES_MO_117
+#endif // SERIF_SPECIES_MO_117
+#ifndef SERIF_SPECIES_TC_117
+    #define SERIF_SPECIES_TC_117
+#endif // SERIF_SPECIES_TC_117
+#ifndef SERIF_SPECIES_RU_117
+    #define SERIF_SPECIES_RU_117
+#endif // SERIF_SPECIES_RU_117
+#ifndef SERIF_SPECIES_RH_117
+    #define SERIF_SPECIES_RH_117
+#endif // SERIF_SPECIES_RH_117
+#ifndef SERIF_SPECIES_PD_117
+    #define SERIF_SPECIES_PD_117
+#endif // SERIF_SPECIES_PD_117
+#ifndef SERIF_SPECIES_AG_117
+    #define SERIF_SPECIES_AG_117
+#endif // SERIF_SPECIES_AG_117
+#ifndef SERIF_SPECIES_CD_117
+    #define SERIF_SPECIES_CD_117
+#endif // SERIF_SPECIES_CD_117
+#ifndef SERIF_SPECIES_IN_117
+    #define SERIF_SPECIES_IN_117
+#endif // SERIF_SPECIES_IN_117
+#ifndef SERIF_SPECIES_SN_117
+    #define SERIF_SPECIES_SN_117
+#endif // SERIF_SPECIES_SN_117
+#ifndef SERIF_SPECIES_SB_117
+    #define SERIF_SPECIES_SB_117
+#endif // SERIF_SPECIES_SB_117
+#ifndef SERIF_SPECIES_TE_117
+    #define SERIF_SPECIES_TE_117
+#endif // SERIF_SPECIES_TE_117
+#ifndef SERIF_SPECIES_I_117
+    #define SERIF_SPECIES_I_117
+#endif // SERIF_SPECIES_I_117
+#ifndef SERIF_SPECIES_XE_117
+    #define SERIF_SPECIES_XE_117
+#endif // SERIF_SPECIES_XE_117
+#ifndef SERIF_SPECIES_CS_117
+    #define SERIF_SPECIES_CS_117
+#endif // SERIF_SPECIES_CS_117
+#ifndef SERIF_SPECIES_BA_117
+    #define SERIF_SPECIES_BA_117
+#endif // SERIF_SPECIES_BA_117
+#ifndef SERIF_SPECIES_LA_117
+    #define SERIF_SPECIES_LA_117
+#endif // SERIF_SPECIES_LA_117
+#ifndef SERIF_SPECIES_MO_118
+    #define SERIF_SPECIES_MO_118
+#endif // SERIF_SPECIES_MO_118
+#ifndef SERIF_SPECIES_TC_118
+    #define SERIF_SPECIES_TC_118
+#endif // SERIF_SPECIES_TC_118
+#ifndef SERIF_SPECIES_RU_118
+    #define SERIF_SPECIES_RU_118
+#endif // SERIF_SPECIES_RU_118
+#ifndef SERIF_SPECIES_RH_118
+    #define SERIF_SPECIES_RH_118
+#endif // SERIF_SPECIES_RH_118
+#ifndef SERIF_SPECIES_PD_118
+    #define SERIF_SPECIES_PD_118
+#endif // SERIF_SPECIES_PD_118
+#ifndef SERIF_SPECIES_AG_118
+    #define SERIF_SPECIES_AG_118
+#endif // SERIF_SPECIES_AG_118
+#ifndef SERIF_SPECIES_CD_118
+    #define SERIF_SPECIES_CD_118
+#endif // SERIF_SPECIES_CD_118
+#ifndef SERIF_SPECIES_IN_118
+    #define SERIF_SPECIES_IN_118
+#endif // SERIF_SPECIES_IN_118
+#ifndef SERIF_SPECIES_SN_118
+    #define SERIF_SPECIES_SN_118
+#endif // SERIF_SPECIES_SN_118
+#ifndef SERIF_SPECIES_SB_118
+    #define SERIF_SPECIES_SB_118
+#endif // SERIF_SPECIES_SB_118
+#ifndef SERIF_SPECIES_TE_118
+    #define SERIF_SPECIES_TE_118
+#endif // SERIF_SPECIES_TE_118
+#ifndef SERIF_SPECIES_I_118
+    #define SERIF_SPECIES_I_118
+#endif // SERIF_SPECIES_I_118
+#ifndef SERIF_SPECIES_XE_118
+    #define SERIF_SPECIES_XE_118
+#endif // SERIF_SPECIES_XE_118
+#ifndef SERIF_SPECIES_CS_118
+    #define SERIF_SPECIES_CS_118
+#endif // SERIF_SPECIES_CS_118
+#ifndef SERIF_SPECIES_BA_118
+    #define SERIF_SPECIES_BA_118
+#endif // SERIF_SPECIES_BA_118
+#ifndef SERIF_SPECIES_LA_118
+    #define SERIF_SPECIES_LA_118
+#endif // SERIF_SPECIES_LA_118
+#ifndef SERIF_SPECIES_MO_119
+    #define SERIF_SPECIES_MO_119
+#endif // SERIF_SPECIES_MO_119
+#ifndef SERIF_SPECIES_TC_119
+    #define SERIF_SPECIES_TC_119
+#endif // SERIF_SPECIES_TC_119
+#ifndef SERIF_SPECIES_RU_119
+    #define SERIF_SPECIES_RU_119
+#endif // SERIF_SPECIES_RU_119
+#ifndef SERIF_SPECIES_RH_119
+    #define SERIF_SPECIES_RH_119
+#endif // SERIF_SPECIES_RH_119
+#ifndef SERIF_SPECIES_PD_119
+    #define SERIF_SPECIES_PD_119
+#endif // SERIF_SPECIES_PD_119
+#ifndef SERIF_SPECIES_AG_119
+    #define SERIF_SPECIES_AG_119
+#endif // SERIF_SPECIES_AG_119
+#ifndef SERIF_SPECIES_CD_119
+    #define SERIF_SPECIES_CD_119
+#endif // SERIF_SPECIES_CD_119
+#ifndef SERIF_SPECIES_IN_119
+    #define SERIF_SPECIES_IN_119
+#endif // SERIF_SPECIES_IN_119
+#ifndef SERIF_SPECIES_SN_119
+    #define SERIF_SPECIES_SN_119
+#endif // SERIF_SPECIES_SN_119
+#ifndef SERIF_SPECIES_SB_119
+    #define SERIF_SPECIES_SB_119
+#endif // SERIF_SPECIES_SB_119
+#ifndef SERIF_SPECIES_TE_119
+    #define SERIF_SPECIES_TE_119
+#endif // SERIF_SPECIES_TE_119
+#ifndef SERIF_SPECIES_I_119
+    #define SERIF_SPECIES_I_119
+#endif // SERIF_SPECIES_I_119
+#ifndef SERIF_SPECIES_XE_119
+    #define SERIF_SPECIES_XE_119
+#endif // SERIF_SPECIES_XE_119
+#ifndef SERIF_SPECIES_CS_119
+    #define SERIF_SPECIES_CS_119
+#endif // SERIF_SPECIES_CS_119
+#ifndef SERIF_SPECIES_BA_119
+    #define SERIF_SPECIES_BA_119
+#endif // SERIF_SPECIES_BA_119
+#ifndef SERIF_SPECIES_LA_119
+    #define SERIF_SPECIES_LA_119
+#endif // SERIF_SPECIES_LA_119
+#ifndef SERIF_SPECIES_CE_119
+    #define SERIF_SPECIES_CE_119
+#endif // SERIF_SPECIES_CE_119
+#ifndef SERIF_SPECIES_TC_120
+    #define SERIF_SPECIES_TC_120
+#endif // SERIF_SPECIES_TC_120
+#ifndef SERIF_SPECIES_RU_120
+    #define SERIF_SPECIES_RU_120
+#endif // SERIF_SPECIES_RU_120
+#ifndef SERIF_SPECIES_RH_120
+    #define SERIF_SPECIES_RH_120
+#endif // SERIF_SPECIES_RH_120
+#ifndef SERIF_SPECIES_PD_120
+    #define SERIF_SPECIES_PD_120
+#endif // SERIF_SPECIES_PD_120
+#ifndef SERIF_SPECIES_AG_120
+    #define SERIF_SPECIES_AG_120
+#endif // SERIF_SPECIES_AG_120
+#ifndef SERIF_SPECIES_CD_120
+    #define SERIF_SPECIES_CD_120
+#endif // SERIF_SPECIES_CD_120
+#ifndef SERIF_SPECIES_IN_120
+    #define SERIF_SPECIES_IN_120
+#endif // SERIF_SPECIES_IN_120
+#ifndef SERIF_SPECIES_SN_120
+    #define SERIF_SPECIES_SN_120
+#endif // SERIF_SPECIES_SN_120
+#ifndef SERIF_SPECIES_SB_120
+    #define SERIF_SPECIES_SB_120
+#endif // SERIF_SPECIES_SB_120
+#ifndef SERIF_SPECIES_TE_120
+    #define SERIF_SPECIES_TE_120
+#endif // SERIF_SPECIES_TE_120
+#ifndef SERIF_SPECIES_I_120
+    #define SERIF_SPECIES_I_120
+#endif // SERIF_SPECIES_I_120
+#ifndef SERIF_SPECIES_XE_120
+    #define SERIF_SPECIES_XE_120
+#endif // SERIF_SPECIES_XE_120
+#ifndef SERIF_SPECIES_CS_120
+    #define SERIF_SPECIES_CS_120
+#endif // SERIF_SPECIES_CS_120
+#ifndef SERIF_SPECIES_BA_120
+    #define SERIF_SPECIES_BA_120
+#endif // SERIF_SPECIES_BA_120
+#ifndef SERIF_SPECIES_LA_120
+    #define SERIF_SPECIES_LA_120
+#endif // SERIF_SPECIES_LA_120
+#ifndef SERIF_SPECIES_CE_120
+    #define SERIF_SPECIES_CE_120
+#endif // SERIF_SPECIES_CE_120
+#ifndef SERIF_SPECIES_TC_121
+    #define SERIF_SPECIES_TC_121
+#endif // SERIF_SPECIES_TC_121
+#ifndef SERIF_SPECIES_RU_121
+    #define SERIF_SPECIES_RU_121
+#endif // SERIF_SPECIES_RU_121
+#ifndef SERIF_SPECIES_RH_121
+    #define SERIF_SPECIES_RH_121
+#endif // SERIF_SPECIES_RH_121
+#ifndef SERIF_SPECIES_PD_121
+    #define SERIF_SPECIES_PD_121
+#endif // SERIF_SPECIES_PD_121
+#ifndef SERIF_SPECIES_AG_121
+    #define SERIF_SPECIES_AG_121
+#endif // SERIF_SPECIES_AG_121
+#ifndef SERIF_SPECIES_CD_121
+    #define SERIF_SPECIES_CD_121
+#endif // SERIF_SPECIES_CD_121
+#ifndef SERIF_SPECIES_IN_121
+    #define SERIF_SPECIES_IN_121
+#endif // SERIF_SPECIES_IN_121
+#ifndef SERIF_SPECIES_SN_121
+    #define SERIF_SPECIES_SN_121
+#endif // SERIF_SPECIES_SN_121
+#ifndef SERIF_SPECIES_SB_121
+    #define SERIF_SPECIES_SB_121
+#endif // SERIF_SPECIES_SB_121
+#ifndef SERIF_SPECIES_TE_121
+    #define SERIF_SPECIES_TE_121
+#endif // SERIF_SPECIES_TE_121
+#ifndef SERIF_SPECIES_I_121
+    #define SERIF_SPECIES_I_121
+#endif // SERIF_SPECIES_I_121
+#ifndef SERIF_SPECIES_XE_121
+    #define SERIF_SPECIES_XE_121
+#endif // SERIF_SPECIES_XE_121
+#ifndef SERIF_SPECIES_CS_121
+    #define SERIF_SPECIES_CS_121
+#endif // SERIF_SPECIES_CS_121
+#ifndef SERIF_SPECIES_BA_121
+    #define SERIF_SPECIES_BA_121
+#endif // SERIF_SPECIES_BA_121
+#ifndef SERIF_SPECIES_LA_121
+    #define SERIF_SPECIES_LA_121
+#endif // SERIF_SPECIES_LA_121
+#ifndef SERIF_SPECIES_CE_121
+    #define SERIF_SPECIES_CE_121
+#endif // SERIF_SPECIES_CE_121
+#ifndef SERIF_SPECIES_PR_121
+    #define SERIF_SPECIES_PR_121
+#endif // SERIF_SPECIES_PR_121
+#ifndef SERIF_SPECIES_TC_122
+    #define SERIF_SPECIES_TC_122
+#endif // SERIF_SPECIES_TC_122
+#ifndef SERIF_SPECIES_RU_122
+    #define SERIF_SPECIES_RU_122
+#endif // SERIF_SPECIES_RU_122
+#ifndef SERIF_SPECIES_RH_122
+    #define SERIF_SPECIES_RH_122
+#endif // SERIF_SPECIES_RH_122
+#ifndef SERIF_SPECIES_PD_122
+    #define SERIF_SPECIES_PD_122
+#endif // SERIF_SPECIES_PD_122
+#ifndef SERIF_SPECIES_AG_122
+    #define SERIF_SPECIES_AG_122
+#endif // SERIF_SPECIES_AG_122
+#ifndef SERIF_SPECIES_CD_122
+    #define SERIF_SPECIES_CD_122
+#endif // SERIF_SPECIES_CD_122
+#ifndef SERIF_SPECIES_IN_122
+    #define SERIF_SPECIES_IN_122
+#endif // SERIF_SPECIES_IN_122
+#ifndef SERIF_SPECIES_SN_122
+    #define SERIF_SPECIES_SN_122
+#endif // SERIF_SPECIES_SN_122
+#ifndef SERIF_SPECIES_SB_122
+    #define SERIF_SPECIES_SB_122
+#endif // SERIF_SPECIES_SB_122
+#ifndef SERIF_SPECIES_TE_122
+    #define SERIF_SPECIES_TE_122
+#endif // SERIF_SPECIES_TE_122
+#ifndef SERIF_SPECIES_I_122
+    #define SERIF_SPECIES_I_122
+#endif // SERIF_SPECIES_I_122
+#ifndef SERIF_SPECIES_XE_122
+    #define SERIF_SPECIES_XE_122
+#endif // SERIF_SPECIES_XE_122
+#ifndef SERIF_SPECIES_CS_122
+    #define SERIF_SPECIES_CS_122
+#endif // SERIF_SPECIES_CS_122
+#ifndef SERIF_SPECIES_BA_122
+    #define SERIF_SPECIES_BA_122
+#endif // SERIF_SPECIES_BA_122
+#ifndef SERIF_SPECIES_LA_122
+    #define SERIF_SPECIES_LA_122
+#endif // SERIF_SPECIES_LA_122
+#ifndef SERIF_SPECIES_CE_122
+    #define SERIF_SPECIES_CE_122
+#endif // SERIF_SPECIES_CE_122
+#ifndef SERIF_SPECIES_PR_122
+    #define SERIF_SPECIES_PR_122
+#endif // SERIF_SPECIES_PR_122
+#ifndef SERIF_SPECIES_RU_123
+    #define SERIF_SPECIES_RU_123
+#endif // SERIF_SPECIES_RU_123
+#ifndef SERIF_SPECIES_RH_123
+    #define SERIF_SPECIES_RH_123
+#endif // SERIF_SPECIES_RH_123
+#ifndef SERIF_SPECIES_PD_123
+    #define SERIF_SPECIES_PD_123
+#endif // SERIF_SPECIES_PD_123
+#ifndef SERIF_SPECIES_AG_123
+    #define SERIF_SPECIES_AG_123
+#endif // SERIF_SPECIES_AG_123
+#ifndef SERIF_SPECIES_CD_123
+    #define SERIF_SPECIES_CD_123
+#endif // SERIF_SPECIES_CD_123
+#ifndef SERIF_SPECIES_IN_123
+    #define SERIF_SPECIES_IN_123
+#endif // SERIF_SPECIES_IN_123
+#ifndef SERIF_SPECIES_SN_123
+    #define SERIF_SPECIES_SN_123
+#endif // SERIF_SPECIES_SN_123
+#ifndef SERIF_SPECIES_SB_123
+    #define SERIF_SPECIES_SB_123
+#endif // SERIF_SPECIES_SB_123
+#ifndef SERIF_SPECIES_TE_123
+    #define SERIF_SPECIES_TE_123
+#endif // SERIF_SPECIES_TE_123
+#ifndef SERIF_SPECIES_I_123
+    #define SERIF_SPECIES_I_123
+#endif // SERIF_SPECIES_I_123
+#ifndef SERIF_SPECIES_XE_123
+    #define SERIF_SPECIES_XE_123
+#endif // SERIF_SPECIES_XE_123
+#ifndef SERIF_SPECIES_CS_123
+    #define SERIF_SPECIES_CS_123
+#endif // SERIF_SPECIES_CS_123
+#ifndef SERIF_SPECIES_BA_123
+    #define SERIF_SPECIES_BA_123
+#endif // SERIF_SPECIES_BA_123
+#ifndef SERIF_SPECIES_LA_123
+    #define SERIF_SPECIES_LA_123
+#endif // SERIF_SPECIES_LA_123
+#ifndef SERIF_SPECIES_CE_123
+    #define SERIF_SPECIES_CE_123
+#endif // SERIF_SPECIES_CE_123
+#ifndef SERIF_SPECIES_PR_123
+    #define SERIF_SPECIES_PR_123
+#endif // SERIF_SPECIES_PR_123
+#ifndef SERIF_SPECIES_RU_124
+    #define SERIF_SPECIES_RU_124
+#endif // SERIF_SPECIES_RU_124
+#ifndef SERIF_SPECIES_RH_124
+    #define SERIF_SPECIES_RH_124
+#endif // SERIF_SPECIES_RH_124
+#ifndef SERIF_SPECIES_PD_124
+    #define SERIF_SPECIES_PD_124
+#endif // SERIF_SPECIES_PD_124
+#ifndef SERIF_SPECIES_AG_124
+    #define SERIF_SPECIES_AG_124
+#endif // SERIF_SPECIES_AG_124
+#ifndef SERIF_SPECIES_CD_124
+    #define SERIF_SPECIES_CD_124
+#endif // SERIF_SPECIES_CD_124
+#ifndef SERIF_SPECIES_IN_124
+    #define SERIF_SPECIES_IN_124
+#endif // SERIF_SPECIES_IN_124
+#ifndef SERIF_SPECIES_SN_124
+    #define SERIF_SPECIES_SN_124
+#endif // SERIF_SPECIES_SN_124
+#ifndef SERIF_SPECIES_SB_124
+    #define SERIF_SPECIES_SB_124
+#endif // SERIF_SPECIES_SB_124
+#ifndef SERIF_SPECIES_TE_124
+    #define SERIF_SPECIES_TE_124
+#endif // SERIF_SPECIES_TE_124
+#ifndef SERIF_SPECIES_I_124
+    #define SERIF_SPECIES_I_124
+#endif // SERIF_SPECIES_I_124
+#ifndef SERIF_SPECIES_XE_124
+    #define SERIF_SPECIES_XE_124
+#endif // SERIF_SPECIES_XE_124
+#ifndef SERIF_SPECIES_CS_124
+    #define SERIF_SPECIES_CS_124
+#endif // SERIF_SPECIES_CS_124
+#ifndef SERIF_SPECIES_BA_124
+    #define SERIF_SPECIES_BA_124
+#endif // SERIF_SPECIES_BA_124
+#ifndef SERIF_SPECIES_LA_124
+    #define SERIF_SPECIES_LA_124
+#endif // SERIF_SPECIES_LA_124
+#ifndef SERIF_SPECIES_CE_124
+    #define SERIF_SPECIES_CE_124
+#endif // SERIF_SPECIES_CE_124
+#ifndef SERIF_SPECIES_PR_124
+    #define SERIF_SPECIES_PR_124
+#endif // SERIF_SPECIES_PR_124
+#ifndef SERIF_SPECIES_ND_124
+    #define SERIF_SPECIES_ND_124
+#endif // SERIF_SPECIES_ND_124
+#ifndef SERIF_SPECIES_RU_125
+    #define SERIF_SPECIES_RU_125
+#endif // SERIF_SPECIES_RU_125
+#ifndef SERIF_SPECIES_RH_125
+    #define SERIF_SPECIES_RH_125
+#endif // SERIF_SPECIES_RH_125
+#ifndef SERIF_SPECIES_PD_125
+    #define SERIF_SPECIES_PD_125
+#endif // SERIF_SPECIES_PD_125
+#ifndef SERIF_SPECIES_AG_125
+    #define SERIF_SPECIES_AG_125
+#endif // SERIF_SPECIES_AG_125
+#ifndef SERIF_SPECIES_CD_125
+    #define SERIF_SPECIES_CD_125
+#endif // SERIF_SPECIES_CD_125
+#ifndef SERIF_SPECIES_IN_125
+    #define SERIF_SPECIES_IN_125
+#endif // SERIF_SPECIES_IN_125
+#ifndef SERIF_SPECIES_SN_125
+    #define SERIF_SPECIES_SN_125
+#endif // SERIF_SPECIES_SN_125
+#ifndef SERIF_SPECIES_SB_125
+    #define SERIF_SPECIES_SB_125
+#endif // SERIF_SPECIES_SB_125
+#ifndef SERIF_SPECIES_TE_125
+    #define SERIF_SPECIES_TE_125
+#endif // SERIF_SPECIES_TE_125
+#ifndef SERIF_SPECIES_I_125
+    #define SERIF_SPECIES_I_125
+#endif // SERIF_SPECIES_I_125
+#ifndef SERIF_SPECIES_XE_125
+    #define SERIF_SPECIES_XE_125
+#endif // SERIF_SPECIES_XE_125
+#ifndef SERIF_SPECIES_CS_125
+    #define SERIF_SPECIES_CS_125
+#endif // SERIF_SPECIES_CS_125
+#ifndef SERIF_SPECIES_BA_125
+    #define SERIF_SPECIES_BA_125
+#endif // SERIF_SPECIES_BA_125
+#ifndef SERIF_SPECIES_LA_125
+    #define SERIF_SPECIES_LA_125
+#endif // SERIF_SPECIES_LA_125
+#ifndef SERIF_SPECIES_CE_125
+    #define SERIF_SPECIES_CE_125
+#endif // SERIF_SPECIES_CE_125
+#ifndef SERIF_SPECIES_PR_125
+    #define SERIF_SPECIES_PR_125
+#endif // SERIF_SPECIES_PR_125
+#ifndef SERIF_SPECIES_ND_125
+    #define SERIF_SPECIES_ND_125
+#endif // SERIF_SPECIES_ND_125
+#ifndef SERIF_SPECIES_RH_126
+    #define SERIF_SPECIES_RH_126
+#endif // SERIF_SPECIES_RH_126
+#ifndef SERIF_SPECIES_PD_126
+    #define SERIF_SPECIES_PD_126
+#endif // SERIF_SPECIES_PD_126
+#ifndef SERIF_SPECIES_AG_126
+    #define SERIF_SPECIES_AG_126
+#endif // SERIF_SPECIES_AG_126
+#ifndef SERIF_SPECIES_CD_126
+    #define SERIF_SPECIES_CD_126
+#endif // SERIF_SPECIES_CD_126
+#ifndef SERIF_SPECIES_IN_126
+    #define SERIF_SPECIES_IN_126
+#endif // SERIF_SPECIES_IN_126
+#ifndef SERIF_SPECIES_SN_126
+    #define SERIF_SPECIES_SN_126
+#endif // SERIF_SPECIES_SN_126
+#ifndef SERIF_SPECIES_SB_126
+    #define SERIF_SPECIES_SB_126
+#endif // SERIF_SPECIES_SB_126
+#ifndef SERIF_SPECIES_TE_126
+    #define SERIF_SPECIES_TE_126
+#endif // SERIF_SPECIES_TE_126
+#ifndef SERIF_SPECIES_I_126
+    #define SERIF_SPECIES_I_126
+#endif // SERIF_SPECIES_I_126
+#ifndef SERIF_SPECIES_XE_126
+    #define SERIF_SPECIES_XE_126
+#endif // SERIF_SPECIES_XE_126
+#ifndef SERIF_SPECIES_CS_126
+    #define SERIF_SPECIES_CS_126
+#endif // SERIF_SPECIES_CS_126
+#ifndef SERIF_SPECIES_BA_126
+    #define SERIF_SPECIES_BA_126
+#endif // SERIF_SPECIES_BA_126
+#ifndef SERIF_SPECIES_LA_126
+    #define SERIF_SPECIES_LA_126
+#endif // SERIF_SPECIES_LA_126
+#ifndef SERIF_SPECIES_CE_126
+    #define SERIF_SPECIES_CE_126
+#endif // SERIF_SPECIES_CE_126
+#ifndef SERIF_SPECIES_PR_126
+    #define SERIF_SPECIES_PR_126
+#endif // SERIF_SPECIES_PR_126
+#ifndef SERIF_SPECIES_ND_126
+    #define SERIF_SPECIES_ND_126
+#endif // SERIF_SPECIES_ND_126
+#ifndef SERIF_SPECIES_PM_126
+    #define SERIF_SPECIES_PM_126
+#endif // SERIF_SPECIES_PM_126
+#ifndef SERIF_SPECIES_RH_127
+    #define SERIF_SPECIES_RH_127
+#endif // SERIF_SPECIES_RH_127
+#ifndef SERIF_SPECIES_PD_127
+    #define SERIF_SPECIES_PD_127
+#endif // SERIF_SPECIES_PD_127
+#ifndef SERIF_SPECIES_AG_127
+    #define SERIF_SPECIES_AG_127
+#endif // SERIF_SPECIES_AG_127
+#ifndef SERIF_SPECIES_CD_127
+    #define SERIF_SPECIES_CD_127
+#endif // SERIF_SPECIES_CD_127
+#ifndef SERIF_SPECIES_IN_127
+    #define SERIF_SPECIES_IN_127
+#endif // SERIF_SPECIES_IN_127
+#ifndef SERIF_SPECIES_SN_127
+    #define SERIF_SPECIES_SN_127
+#endif // SERIF_SPECIES_SN_127
+#ifndef SERIF_SPECIES_SB_127
+    #define SERIF_SPECIES_SB_127
+#endif // SERIF_SPECIES_SB_127
+#ifndef SERIF_SPECIES_TE_127
+    #define SERIF_SPECIES_TE_127
+#endif // SERIF_SPECIES_TE_127
+#ifndef SERIF_SPECIES_I_127
+    #define SERIF_SPECIES_I_127
+#endif // SERIF_SPECIES_I_127
+#ifndef SERIF_SPECIES_XE_127
+    #define SERIF_SPECIES_XE_127
+#endif // SERIF_SPECIES_XE_127
+#ifndef SERIF_SPECIES_CS_127
+    #define SERIF_SPECIES_CS_127
+#endif // SERIF_SPECIES_CS_127
+#ifndef SERIF_SPECIES_BA_127
+    #define SERIF_SPECIES_BA_127
+#endif // SERIF_SPECIES_BA_127
+#ifndef SERIF_SPECIES_LA_127
+    #define SERIF_SPECIES_LA_127
+#endif // SERIF_SPECIES_LA_127
+#ifndef SERIF_SPECIES_CE_127
+    #define SERIF_SPECIES_CE_127
+#endif // SERIF_SPECIES_CE_127
+#ifndef SERIF_SPECIES_PR_127
+    #define SERIF_SPECIES_PR_127
+#endif // SERIF_SPECIES_PR_127
+#ifndef SERIF_SPECIES_ND_127
+    #define SERIF_SPECIES_ND_127
+#endif // SERIF_SPECIES_ND_127
+#ifndef SERIF_SPECIES_PM_127
+    #define SERIF_SPECIES_PM_127
+#endif // SERIF_SPECIES_PM_127
+#ifndef SERIF_SPECIES_RH_128
+    #define SERIF_SPECIES_RH_128
+#endif // SERIF_SPECIES_RH_128
+#ifndef SERIF_SPECIES_PD_128
+    #define SERIF_SPECIES_PD_128
+#endif // SERIF_SPECIES_PD_128
+#ifndef SERIF_SPECIES_AG_128
+    #define SERIF_SPECIES_AG_128
+#endif // SERIF_SPECIES_AG_128
+#ifndef SERIF_SPECIES_CD_128
+    #define SERIF_SPECIES_CD_128
+#endif // SERIF_SPECIES_CD_128
+#ifndef SERIF_SPECIES_IN_128
+    #define SERIF_SPECIES_IN_128
+#endif // SERIF_SPECIES_IN_128
+#ifndef SERIF_SPECIES_SN_128
+    #define SERIF_SPECIES_SN_128
+#endif // SERIF_SPECIES_SN_128
+#ifndef SERIF_SPECIES_SB_128
+    #define SERIF_SPECIES_SB_128
+#endif // SERIF_SPECIES_SB_128
+#ifndef SERIF_SPECIES_TE_128
+    #define SERIF_SPECIES_TE_128
+#endif // SERIF_SPECIES_TE_128
+#ifndef SERIF_SPECIES_I_128
+    #define SERIF_SPECIES_I_128
+#endif // SERIF_SPECIES_I_128
+#ifndef SERIF_SPECIES_XE_128
+    #define SERIF_SPECIES_XE_128
+#endif // SERIF_SPECIES_XE_128
+#ifndef SERIF_SPECIES_CS_128
+    #define SERIF_SPECIES_CS_128
+#endif // SERIF_SPECIES_CS_128
+#ifndef SERIF_SPECIES_BA_128
+    #define SERIF_SPECIES_BA_128
+#endif // SERIF_SPECIES_BA_128
+#ifndef SERIF_SPECIES_LA_128
+    #define SERIF_SPECIES_LA_128
+#endif // SERIF_SPECIES_LA_128
+#ifndef SERIF_SPECIES_CE_128
+    #define SERIF_SPECIES_CE_128
+#endif // SERIF_SPECIES_CE_128
+#ifndef SERIF_SPECIES_PR_128
+    #define SERIF_SPECIES_PR_128
+#endif // SERIF_SPECIES_PR_128
+#ifndef SERIF_SPECIES_ND_128
+    #define SERIF_SPECIES_ND_128
+#endif // SERIF_SPECIES_ND_128
+#ifndef SERIF_SPECIES_PM_128
+    #define SERIF_SPECIES_PM_128
+#endif // SERIF_SPECIES_PM_128
+#ifndef SERIF_SPECIES_SM_128
+    #define SERIF_SPECIES_SM_128
+#endif // SERIF_SPECIES_SM_128
+#ifndef SERIF_SPECIES_PD_129
+    #define SERIF_SPECIES_PD_129
+#endif // SERIF_SPECIES_PD_129
+#ifndef SERIF_SPECIES_AG_129
+    #define SERIF_SPECIES_AG_129
+#endif // SERIF_SPECIES_AG_129
+#ifndef SERIF_SPECIES_CD_129
+    #define SERIF_SPECIES_CD_129
+#endif // SERIF_SPECIES_CD_129
+#ifndef SERIF_SPECIES_IN_129
+    #define SERIF_SPECIES_IN_129
+#endif // SERIF_SPECIES_IN_129
+#ifndef SERIF_SPECIES_SN_129
+    #define SERIF_SPECIES_SN_129
+#endif // SERIF_SPECIES_SN_129
+#ifndef SERIF_SPECIES_SB_129
+    #define SERIF_SPECIES_SB_129
+#endif // SERIF_SPECIES_SB_129
+#ifndef SERIF_SPECIES_TE_129
+    #define SERIF_SPECIES_TE_129
+#endif // SERIF_SPECIES_TE_129
+#ifndef SERIF_SPECIES_I_129
+    #define SERIF_SPECIES_I_129
+#endif // SERIF_SPECIES_I_129
+#ifndef SERIF_SPECIES_XE_129
+    #define SERIF_SPECIES_XE_129
+#endif // SERIF_SPECIES_XE_129
+#ifndef SERIF_SPECIES_CS_129
+    #define SERIF_SPECIES_CS_129
+#endif // SERIF_SPECIES_CS_129
+#ifndef SERIF_SPECIES_BA_129
+    #define SERIF_SPECIES_BA_129
+#endif // SERIF_SPECIES_BA_129
+#ifndef SERIF_SPECIES_LA_129
+    #define SERIF_SPECIES_LA_129
+#endif // SERIF_SPECIES_LA_129
+#ifndef SERIF_SPECIES_CE_129
+    #define SERIF_SPECIES_CE_129
+#endif // SERIF_SPECIES_CE_129
+#ifndef SERIF_SPECIES_PR_129
+    #define SERIF_SPECIES_PR_129
+#endif // SERIF_SPECIES_PR_129
+#ifndef SERIF_SPECIES_ND_129
+    #define SERIF_SPECIES_ND_129
+#endif // SERIF_SPECIES_ND_129
+#ifndef SERIF_SPECIES_PM_129
+    #define SERIF_SPECIES_PM_129
+#endif // SERIF_SPECIES_PM_129
+#ifndef SERIF_SPECIES_SM_129
+    #define SERIF_SPECIES_SM_129
+#endif // SERIF_SPECIES_SM_129
+#ifndef SERIF_SPECIES_PD_130
+    #define SERIF_SPECIES_PD_130
+#endif // SERIF_SPECIES_PD_130
+#ifndef SERIF_SPECIES_AG_130
+    #define SERIF_SPECIES_AG_130
+#endif // SERIF_SPECIES_AG_130
+#ifndef SERIF_SPECIES_CD_130
+    #define SERIF_SPECIES_CD_130
+#endif // SERIF_SPECIES_CD_130
+#ifndef SERIF_SPECIES_IN_130
+    #define SERIF_SPECIES_IN_130
+#endif // SERIF_SPECIES_IN_130
+#ifndef SERIF_SPECIES_SN_130
+    #define SERIF_SPECIES_SN_130
+#endif // SERIF_SPECIES_SN_130
+#ifndef SERIF_SPECIES_SB_130
+    #define SERIF_SPECIES_SB_130
+#endif // SERIF_SPECIES_SB_130
+#ifndef SERIF_SPECIES_TE_130
+    #define SERIF_SPECIES_TE_130
+#endif // SERIF_SPECIES_TE_130
+#ifndef SERIF_SPECIES_I_130
+    #define SERIF_SPECIES_I_130
+#endif // SERIF_SPECIES_I_130
+#ifndef SERIF_SPECIES_XE_130
+    #define SERIF_SPECIES_XE_130
+#endif // SERIF_SPECIES_XE_130
+#ifndef SERIF_SPECIES_CS_130
+    #define SERIF_SPECIES_CS_130
+#endif // SERIF_SPECIES_CS_130
+#ifndef SERIF_SPECIES_BA_130
+    #define SERIF_SPECIES_BA_130
+#endif // SERIF_SPECIES_BA_130
+#ifndef SERIF_SPECIES_LA_130
+    #define SERIF_SPECIES_LA_130
+#endif // SERIF_SPECIES_LA_130
+#ifndef SERIF_SPECIES_CE_130
+    #define SERIF_SPECIES_CE_130
+#endif // SERIF_SPECIES_CE_130
+#ifndef SERIF_SPECIES_PR_130
+    #define SERIF_SPECIES_PR_130
+#endif // SERIF_SPECIES_PR_130
+#ifndef SERIF_SPECIES_ND_130
+    #define SERIF_SPECIES_ND_130
+#endif // SERIF_SPECIES_ND_130
+#ifndef SERIF_SPECIES_PM_130
+    #define SERIF_SPECIES_PM_130
+#endif // SERIF_SPECIES_PM_130
+#ifndef SERIF_SPECIES_SM_130
+    #define SERIF_SPECIES_SM_130
+#endif // SERIF_SPECIES_SM_130
+#ifndef SERIF_SPECIES_EU_130
+    #define SERIF_SPECIES_EU_130
+#endif // SERIF_SPECIES_EU_130
+#ifndef SERIF_SPECIES_PD_131
+    #define SERIF_SPECIES_PD_131
+#endif // SERIF_SPECIES_PD_131
+#ifndef SERIF_SPECIES_AG_131
+    #define SERIF_SPECIES_AG_131
+#endif // SERIF_SPECIES_AG_131
+#ifndef SERIF_SPECIES_CD_131
+    #define SERIF_SPECIES_CD_131
+#endif // SERIF_SPECIES_CD_131
+#ifndef SERIF_SPECIES_IN_131
+    #define SERIF_SPECIES_IN_131
+#endif // SERIF_SPECIES_IN_131
+#ifndef SERIF_SPECIES_SN_131
+    #define SERIF_SPECIES_SN_131
+#endif // SERIF_SPECIES_SN_131
+#ifndef SERIF_SPECIES_SB_131
+    #define SERIF_SPECIES_SB_131
+#endif // SERIF_SPECIES_SB_131
+#ifndef SERIF_SPECIES_TE_131
+    #define SERIF_SPECIES_TE_131
+#endif // SERIF_SPECIES_TE_131
+#ifndef SERIF_SPECIES_I_131
+    #define SERIF_SPECIES_I_131
+#endif // SERIF_SPECIES_I_131
+#ifndef SERIF_SPECIES_XE_131
+    #define SERIF_SPECIES_XE_131
+#endif // SERIF_SPECIES_XE_131
+#ifndef SERIF_SPECIES_CS_131
+    #define SERIF_SPECIES_CS_131
+#endif // SERIF_SPECIES_CS_131
+#ifndef SERIF_SPECIES_BA_131
+    #define SERIF_SPECIES_BA_131
+#endif // SERIF_SPECIES_BA_131
+#ifndef SERIF_SPECIES_LA_131
+    #define SERIF_SPECIES_LA_131
+#endif // SERIF_SPECIES_LA_131
+#ifndef SERIF_SPECIES_CE_131
+    #define SERIF_SPECIES_CE_131
+#endif // SERIF_SPECIES_CE_131
+#ifndef SERIF_SPECIES_PR_131
+    #define SERIF_SPECIES_PR_131
+#endif // SERIF_SPECIES_PR_131
+#ifndef SERIF_SPECIES_ND_131
+    #define SERIF_SPECIES_ND_131
+#endif // SERIF_SPECIES_ND_131
+#ifndef SERIF_SPECIES_PM_131
+    #define SERIF_SPECIES_PM_131
+#endif // SERIF_SPECIES_PM_131
+#ifndef SERIF_SPECIES_SM_131
+    #define SERIF_SPECIES_SM_131
+#endif // SERIF_SPECIES_SM_131
+#ifndef SERIF_SPECIES_EU_131
+    #define SERIF_SPECIES_EU_131
+#endif // SERIF_SPECIES_EU_131
+#ifndef SERIF_SPECIES_AG_132
+    #define SERIF_SPECIES_AG_132
+#endif // SERIF_SPECIES_AG_132
+#ifndef SERIF_SPECIES_CD_132
+    #define SERIF_SPECIES_CD_132
+#endif // SERIF_SPECIES_CD_132
+#ifndef SERIF_SPECIES_IN_132
+    #define SERIF_SPECIES_IN_132
+#endif // SERIF_SPECIES_IN_132
+#ifndef SERIF_SPECIES_SN_132
+    #define SERIF_SPECIES_SN_132
+#endif // SERIF_SPECIES_SN_132
+#ifndef SERIF_SPECIES_SB_132
+    #define SERIF_SPECIES_SB_132
+#endif // SERIF_SPECIES_SB_132
+#ifndef SERIF_SPECIES_TE_132
+    #define SERIF_SPECIES_TE_132
+#endif // SERIF_SPECIES_TE_132
+#ifndef SERIF_SPECIES_I_132
+    #define SERIF_SPECIES_I_132
+#endif // SERIF_SPECIES_I_132
+#ifndef SERIF_SPECIES_XE_132
+    #define SERIF_SPECIES_XE_132
+#endif // SERIF_SPECIES_XE_132
+#ifndef SERIF_SPECIES_CS_132
+    #define SERIF_SPECIES_CS_132
+#endif // SERIF_SPECIES_CS_132
+#ifndef SERIF_SPECIES_BA_132
+    #define SERIF_SPECIES_BA_132
+#endif // SERIF_SPECIES_BA_132
+#ifndef SERIF_SPECIES_LA_132
+    #define SERIF_SPECIES_LA_132
+#endif // SERIF_SPECIES_LA_132
+#ifndef SERIF_SPECIES_CE_132
+    #define SERIF_SPECIES_CE_132
+#endif // SERIF_SPECIES_CE_132
+#ifndef SERIF_SPECIES_PR_132
+    #define SERIF_SPECIES_PR_132
+#endif // SERIF_SPECIES_PR_132
+#ifndef SERIF_SPECIES_ND_132
+    #define SERIF_SPECIES_ND_132
+#endif // SERIF_SPECIES_ND_132
+#ifndef SERIF_SPECIES_PM_132
+    #define SERIF_SPECIES_PM_132
+#endif // SERIF_SPECIES_PM_132
+#ifndef SERIF_SPECIES_SM_132
+    #define SERIF_SPECIES_SM_132
+#endif // SERIF_SPECIES_SM_132
+#ifndef SERIF_SPECIES_EU_132
+    #define SERIF_SPECIES_EU_132
+#endif // SERIF_SPECIES_EU_132
+#ifndef SERIF_SPECIES_AG_133
+    #define SERIF_SPECIES_AG_133
+#endif // SERIF_SPECIES_AG_133
+#ifndef SERIF_SPECIES_CD_133
+    #define SERIF_SPECIES_CD_133
+#endif // SERIF_SPECIES_CD_133
+#ifndef SERIF_SPECIES_IN_133
+    #define SERIF_SPECIES_IN_133
+#endif // SERIF_SPECIES_IN_133
+#ifndef SERIF_SPECIES_SN_133
+    #define SERIF_SPECIES_SN_133
+#endif // SERIF_SPECIES_SN_133
+#ifndef SERIF_SPECIES_SB_133
+    #define SERIF_SPECIES_SB_133
+#endif // SERIF_SPECIES_SB_133
+#ifndef SERIF_SPECIES_TE_133
+    #define SERIF_SPECIES_TE_133
+#endif // SERIF_SPECIES_TE_133
+#ifndef SERIF_SPECIES_I_133
+    #define SERIF_SPECIES_I_133
+#endif // SERIF_SPECIES_I_133
+#ifndef SERIF_SPECIES_XE_133
+    #define SERIF_SPECIES_XE_133
+#endif // SERIF_SPECIES_XE_133
+#ifndef SERIF_SPECIES_CS_133
+    #define SERIF_SPECIES_CS_133
+#endif // SERIF_SPECIES_CS_133
+#ifndef SERIF_SPECIES_BA_133
+    #define SERIF_SPECIES_BA_133
+#endif // SERIF_SPECIES_BA_133
+#ifndef SERIF_SPECIES_LA_133
+    #define SERIF_SPECIES_LA_133
+#endif // SERIF_SPECIES_LA_133
+#ifndef SERIF_SPECIES_CE_133
+    #define SERIF_SPECIES_CE_133
+#endif // SERIF_SPECIES_CE_133
+#ifndef SERIF_SPECIES_PR_133
+    #define SERIF_SPECIES_PR_133
+#endif // SERIF_SPECIES_PR_133
+#ifndef SERIF_SPECIES_ND_133
+    #define SERIF_SPECIES_ND_133
+#endif // SERIF_SPECIES_ND_133
+#ifndef SERIF_SPECIES_PM_133
+    #define SERIF_SPECIES_PM_133
+#endif // SERIF_SPECIES_PM_133
+#ifndef SERIF_SPECIES_SM_133
+    #define SERIF_SPECIES_SM_133
+#endif // SERIF_SPECIES_SM_133
+#ifndef SERIF_SPECIES_EU_133
+    #define SERIF_SPECIES_EU_133
+#endif // SERIF_SPECIES_EU_133
+#ifndef SERIF_SPECIES_GD_133
+    #define SERIF_SPECIES_GD_133
+#endif // SERIF_SPECIES_GD_133
+#ifndef SERIF_SPECIES_CD_134
+    #define SERIF_SPECIES_CD_134
+#endif // SERIF_SPECIES_CD_134
+#ifndef SERIF_SPECIES_IN_134
+    #define SERIF_SPECIES_IN_134
+#endif // SERIF_SPECIES_IN_134
+#ifndef SERIF_SPECIES_SN_134
+    #define SERIF_SPECIES_SN_134
+#endif // SERIF_SPECIES_SN_134
+#ifndef SERIF_SPECIES_SB_134
+    #define SERIF_SPECIES_SB_134
+#endif // SERIF_SPECIES_SB_134
+#ifndef SERIF_SPECIES_TE_134
+    #define SERIF_SPECIES_TE_134
+#endif // SERIF_SPECIES_TE_134
+#ifndef SERIF_SPECIES_I_134
+    #define SERIF_SPECIES_I_134
+#endif // SERIF_SPECIES_I_134
+#ifndef SERIF_SPECIES_XE_134
+    #define SERIF_SPECIES_XE_134
+#endif // SERIF_SPECIES_XE_134
+#ifndef SERIF_SPECIES_CS_134
+    #define SERIF_SPECIES_CS_134
+#endif // SERIF_SPECIES_CS_134
+#ifndef SERIF_SPECIES_BA_134
+    #define SERIF_SPECIES_BA_134
+#endif // SERIF_SPECIES_BA_134
+#ifndef SERIF_SPECIES_LA_134
+    #define SERIF_SPECIES_LA_134
+#endif // SERIF_SPECIES_LA_134
+#ifndef SERIF_SPECIES_CE_134
+    #define SERIF_SPECIES_CE_134
+#endif // SERIF_SPECIES_CE_134
+#ifndef SERIF_SPECIES_PR_134
+    #define SERIF_SPECIES_PR_134
+#endif // SERIF_SPECIES_PR_134
+#ifndef SERIF_SPECIES_ND_134
+    #define SERIF_SPECIES_ND_134
+#endif // SERIF_SPECIES_ND_134
+#ifndef SERIF_SPECIES_PM_134
+    #define SERIF_SPECIES_PM_134
+#endif // SERIF_SPECIES_PM_134
+#ifndef SERIF_SPECIES_SM_134
+    #define SERIF_SPECIES_SM_134
+#endif // SERIF_SPECIES_SM_134
+#ifndef SERIF_SPECIES_EU_134
+    #define SERIF_SPECIES_EU_134
+#endif // SERIF_SPECIES_EU_134
+#ifndef SERIF_SPECIES_GD_134
+    #define SERIF_SPECIES_GD_134
+#endif // SERIF_SPECIES_GD_134
+#ifndef SERIF_SPECIES_CD_135
+    #define SERIF_SPECIES_CD_135
+#endif // SERIF_SPECIES_CD_135
+#ifndef SERIF_SPECIES_IN_135
+    #define SERIF_SPECIES_IN_135
+#endif // SERIF_SPECIES_IN_135
+#ifndef SERIF_SPECIES_SN_135
+    #define SERIF_SPECIES_SN_135
+#endif // SERIF_SPECIES_SN_135
+#ifndef SERIF_SPECIES_SB_135
+    #define SERIF_SPECIES_SB_135
+#endif // SERIF_SPECIES_SB_135
+#ifndef SERIF_SPECIES_TE_135
+    #define SERIF_SPECIES_TE_135
+#endif // SERIF_SPECIES_TE_135
+#ifndef SERIF_SPECIES_I_135
+    #define SERIF_SPECIES_I_135
+#endif // SERIF_SPECIES_I_135
+#ifndef SERIF_SPECIES_XE_135
+    #define SERIF_SPECIES_XE_135
+#endif // SERIF_SPECIES_XE_135
+#ifndef SERIF_SPECIES_CS_135
+    #define SERIF_SPECIES_CS_135
+#endif // SERIF_SPECIES_CS_135
+#ifndef SERIF_SPECIES_BA_135
+    #define SERIF_SPECIES_BA_135
+#endif // SERIF_SPECIES_BA_135
+#ifndef SERIF_SPECIES_LA_135
+    #define SERIF_SPECIES_LA_135
+#endif // SERIF_SPECIES_LA_135
+#ifndef SERIF_SPECIES_CE_135
+    #define SERIF_SPECIES_CE_135
+#endif // SERIF_SPECIES_CE_135
+#ifndef SERIF_SPECIES_PR_135
+    #define SERIF_SPECIES_PR_135
+#endif // SERIF_SPECIES_PR_135
+#ifndef SERIF_SPECIES_ND_135
+    #define SERIF_SPECIES_ND_135
+#endif // SERIF_SPECIES_ND_135
+#ifndef SERIF_SPECIES_PM_135
+    #define SERIF_SPECIES_PM_135
+#endif // SERIF_SPECIES_PM_135
+#ifndef SERIF_SPECIES_SM_135
+    #define SERIF_SPECIES_SM_135
+#endif // SERIF_SPECIES_SM_135
+#ifndef SERIF_SPECIES_EU_135
+    #define SERIF_SPECIES_EU_135
+#endif // SERIF_SPECIES_EU_135
+#ifndef SERIF_SPECIES_GD_135
+    #define SERIF_SPECIES_GD_135
+#endif // SERIF_SPECIES_GD_135
+#ifndef SERIF_SPECIES_TB_135
+    #define SERIF_SPECIES_TB_135
+#endif // SERIF_SPECIES_TB_135
+#ifndef SERIF_SPECIES_IN_136
+    #define SERIF_SPECIES_IN_136
+#endif // SERIF_SPECIES_IN_136
+#ifndef SERIF_SPECIES_SN_136
+    #define SERIF_SPECIES_SN_136
+#endif // SERIF_SPECIES_SN_136
+#ifndef SERIF_SPECIES_SB_136
+    #define SERIF_SPECIES_SB_136
+#endif // SERIF_SPECIES_SB_136
+#ifndef SERIF_SPECIES_TE_136
+    #define SERIF_SPECIES_TE_136
+#endif // SERIF_SPECIES_TE_136
+#ifndef SERIF_SPECIES_I_136
+    #define SERIF_SPECIES_I_136
+#endif // SERIF_SPECIES_I_136
+#ifndef SERIF_SPECIES_XE_136
+    #define SERIF_SPECIES_XE_136
+#endif // SERIF_SPECIES_XE_136
+#ifndef SERIF_SPECIES_CS_136
+    #define SERIF_SPECIES_CS_136
+#endif // SERIF_SPECIES_CS_136
+#ifndef SERIF_SPECIES_BA_136
+    #define SERIF_SPECIES_BA_136
+#endif // SERIF_SPECIES_BA_136
+#ifndef SERIF_SPECIES_LA_136
+    #define SERIF_SPECIES_LA_136
+#endif // SERIF_SPECIES_LA_136
+#ifndef SERIF_SPECIES_CE_136
+    #define SERIF_SPECIES_CE_136
+#endif // SERIF_SPECIES_CE_136
+#ifndef SERIF_SPECIES_PR_136
+    #define SERIF_SPECIES_PR_136
+#endif // SERIF_SPECIES_PR_136
+#ifndef SERIF_SPECIES_ND_136
+    #define SERIF_SPECIES_ND_136
+#endif // SERIF_SPECIES_ND_136
+#ifndef SERIF_SPECIES_PM_136
+    #define SERIF_SPECIES_PM_136
+#endif // SERIF_SPECIES_PM_136
+#ifndef SERIF_SPECIES_SM_136
+    #define SERIF_SPECIES_SM_136
+#endif // SERIF_SPECIES_SM_136
+#ifndef SERIF_SPECIES_EU_136
+    #define SERIF_SPECIES_EU_136
+#endif // SERIF_SPECIES_EU_136
+#ifndef SERIF_SPECIES_GD_136
+    #define SERIF_SPECIES_GD_136
+#endif // SERIF_SPECIES_GD_136
+#ifndef SERIF_SPECIES_TB_136
+    #define SERIF_SPECIES_TB_136
+#endif // SERIF_SPECIES_TB_136
+#ifndef SERIF_SPECIES_IN_137
+    #define SERIF_SPECIES_IN_137
+#endif // SERIF_SPECIES_IN_137
+#ifndef SERIF_SPECIES_SN_137
+    #define SERIF_SPECIES_SN_137
+#endif // SERIF_SPECIES_SN_137
+#ifndef SERIF_SPECIES_SB_137
+    #define SERIF_SPECIES_SB_137
+#endif // SERIF_SPECIES_SB_137
+#ifndef SERIF_SPECIES_TE_137
+    #define SERIF_SPECIES_TE_137
+#endif // SERIF_SPECIES_TE_137
+#ifndef SERIF_SPECIES_I_137
+    #define SERIF_SPECIES_I_137
+#endif // SERIF_SPECIES_I_137
+#ifndef SERIF_SPECIES_XE_137
+    #define SERIF_SPECIES_XE_137
+#endif // SERIF_SPECIES_XE_137
+#ifndef SERIF_SPECIES_CS_137
+    #define SERIF_SPECIES_CS_137
+#endif // SERIF_SPECIES_CS_137
+#ifndef SERIF_SPECIES_BA_137
+    #define SERIF_SPECIES_BA_137
+#endif // SERIF_SPECIES_BA_137
+#ifndef SERIF_SPECIES_LA_137
+    #define SERIF_SPECIES_LA_137
+#endif // SERIF_SPECIES_LA_137
+#ifndef SERIF_SPECIES_CE_137
+    #define SERIF_SPECIES_CE_137
+#endif // SERIF_SPECIES_CE_137
+#ifndef SERIF_SPECIES_PR_137
+    #define SERIF_SPECIES_PR_137
+#endif // SERIF_SPECIES_PR_137
+#ifndef SERIF_SPECIES_ND_137
+    #define SERIF_SPECIES_ND_137
+#endif // SERIF_SPECIES_ND_137
+#ifndef SERIF_SPECIES_PM_137
+    #define SERIF_SPECIES_PM_137
+#endif // SERIF_SPECIES_PM_137
+#ifndef SERIF_SPECIES_SM_137
+    #define SERIF_SPECIES_SM_137
+#endif // SERIF_SPECIES_SM_137
+#ifndef SERIF_SPECIES_EU_137
+    #define SERIF_SPECIES_EU_137
+#endif // SERIF_SPECIES_EU_137
+#ifndef SERIF_SPECIES_GD_137
+    #define SERIF_SPECIES_GD_137
+#endif // SERIF_SPECIES_GD_137
+#ifndef SERIF_SPECIES_TB_137
+    #define SERIF_SPECIES_TB_137
+#endif // SERIF_SPECIES_TB_137
+#ifndef SERIF_SPECIES_SN_138
+    #define SERIF_SPECIES_SN_138
+#endif // SERIF_SPECIES_SN_138
+#ifndef SERIF_SPECIES_SB_138
+    #define SERIF_SPECIES_SB_138
+#endif // SERIF_SPECIES_SB_138
+#ifndef SERIF_SPECIES_TE_138
+    #define SERIF_SPECIES_TE_138
+#endif // SERIF_SPECIES_TE_138
+#ifndef SERIF_SPECIES_I_138
+    #define SERIF_SPECIES_I_138
+#endif // SERIF_SPECIES_I_138
+#ifndef SERIF_SPECIES_XE_138
+    #define SERIF_SPECIES_XE_138
+#endif // SERIF_SPECIES_XE_138
+#ifndef SERIF_SPECIES_CS_138
+    #define SERIF_SPECIES_CS_138
+#endif // SERIF_SPECIES_CS_138
+#ifndef SERIF_SPECIES_BA_138
+    #define SERIF_SPECIES_BA_138
+#endif // SERIF_SPECIES_BA_138
+#ifndef SERIF_SPECIES_LA_138
+    #define SERIF_SPECIES_LA_138
+#endif // SERIF_SPECIES_LA_138
+#ifndef SERIF_SPECIES_CE_138
+    #define SERIF_SPECIES_CE_138
+#endif // SERIF_SPECIES_CE_138
+#ifndef SERIF_SPECIES_PR_138
+    #define SERIF_SPECIES_PR_138
+#endif // SERIF_SPECIES_PR_138
+#ifndef SERIF_SPECIES_ND_138
+    #define SERIF_SPECIES_ND_138
+#endif // SERIF_SPECIES_ND_138
+#ifndef SERIF_SPECIES_PM_138
+    #define SERIF_SPECIES_PM_138
+#endif // SERIF_SPECIES_PM_138
+#ifndef SERIF_SPECIES_SM_138
+    #define SERIF_SPECIES_SM_138
+#endif // SERIF_SPECIES_SM_138
+#ifndef SERIF_SPECIES_EU_138
+    #define SERIF_SPECIES_EU_138
+#endif // SERIF_SPECIES_EU_138
+#ifndef SERIF_SPECIES_GD_138
+    #define SERIF_SPECIES_GD_138
+#endif // SERIF_SPECIES_GD_138
+#ifndef SERIF_SPECIES_TB_138
+    #define SERIF_SPECIES_TB_138
+#endif // SERIF_SPECIES_TB_138
+#ifndef SERIF_SPECIES_DY_138
+    #define SERIF_SPECIES_DY_138
+#endif // SERIF_SPECIES_DY_138
+#ifndef SERIF_SPECIES_SN_139
+    #define SERIF_SPECIES_SN_139
+#endif // SERIF_SPECIES_SN_139
+#ifndef SERIF_SPECIES_SB_139
+    #define SERIF_SPECIES_SB_139
+#endif // SERIF_SPECIES_SB_139
+#ifndef SERIF_SPECIES_TE_139
+    #define SERIF_SPECIES_TE_139
+#endif // SERIF_SPECIES_TE_139
+#ifndef SERIF_SPECIES_I_139
+    #define SERIF_SPECIES_I_139
+#endif // SERIF_SPECIES_I_139
+#ifndef SERIF_SPECIES_XE_139
+    #define SERIF_SPECIES_XE_139
+#endif // SERIF_SPECIES_XE_139
+#ifndef SERIF_SPECIES_CS_139
+    #define SERIF_SPECIES_CS_139
+#endif // SERIF_SPECIES_CS_139
+#ifndef SERIF_SPECIES_BA_139
+    #define SERIF_SPECIES_BA_139
+#endif // SERIF_SPECIES_BA_139
+#ifndef SERIF_SPECIES_LA_139
+    #define SERIF_SPECIES_LA_139
+#endif // SERIF_SPECIES_LA_139
+#ifndef SERIF_SPECIES_CE_139
+    #define SERIF_SPECIES_CE_139
+#endif // SERIF_SPECIES_CE_139
+#ifndef SERIF_SPECIES_PR_139
+    #define SERIF_SPECIES_PR_139
+#endif // SERIF_SPECIES_PR_139
+#ifndef SERIF_SPECIES_ND_139
+    #define SERIF_SPECIES_ND_139
+#endif // SERIF_SPECIES_ND_139
+#ifndef SERIF_SPECIES_PM_139
+    #define SERIF_SPECIES_PM_139
+#endif // SERIF_SPECIES_PM_139
+#ifndef SERIF_SPECIES_SM_139
+    #define SERIF_SPECIES_SM_139
+#endif // SERIF_SPECIES_SM_139
+#ifndef SERIF_SPECIES_EU_139
+    #define SERIF_SPECIES_EU_139
+#endif // SERIF_SPECIES_EU_139
+#ifndef SERIF_SPECIES_GD_139
+    #define SERIF_SPECIES_GD_139
+#endif // SERIF_SPECIES_GD_139
+#ifndef SERIF_SPECIES_TB_139
+    #define SERIF_SPECIES_TB_139
+#endif // SERIF_SPECIES_TB_139
+#ifndef SERIF_SPECIES_DY_139
+    #define SERIF_SPECIES_DY_139
+#endif // SERIF_SPECIES_DY_139
+#ifndef SERIF_SPECIES_SN_140
+    #define SERIF_SPECIES_SN_140
+#endif // SERIF_SPECIES_SN_140
+#ifndef SERIF_SPECIES_SB_140
+    #define SERIF_SPECIES_SB_140
+#endif // SERIF_SPECIES_SB_140
+#ifndef SERIF_SPECIES_TE_140
+    #define SERIF_SPECIES_TE_140
+#endif // SERIF_SPECIES_TE_140
+#ifndef SERIF_SPECIES_I_140
+    #define SERIF_SPECIES_I_140
+#endif // SERIF_SPECIES_I_140
+#ifndef SERIF_SPECIES_XE_140
+    #define SERIF_SPECIES_XE_140
+#endif // SERIF_SPECIES_XE_140
+#ifndef SERIF_SPECIES_CS_140
+    #define SERIF_SPECIES_CS_140
+#endif // SERIF_SPECIES_CS_140
+#ifndef SERIF_SPECIES_BA_140
+    #define SERIF_SPECIES_BA_140
+#endif // SERIF_SPECIES_BA_140
+#ifndef SERIF_SPECIES_LA_140
+    #define SERIF_SPECIES_LA_140
+#endif // SERIF_SPECIES_LA_140
+#ifndef SERIF_SPECIES_CE_140
+    #define SERIF_SPECIES_CE_140
+#endif // SERIF_SPECIES_CE_140
+#ifndef SERIF_SPECIES_PR_140
+    #define SERIF_SPECIES_PR_140
+#endif // SERIF_SPECIES_PR_140
+#ifndef SERIF_SPECIES_ND_140
+    #define SERIF_SPECIES_ND_140
+#endif // SERIF_SPECIES_ND_140
+#ifndef SERIF_SPECIES_PM_140
+    #define SERIF_SPECIES_PM_140
+#endif // SERIF_SPECIES_PM_140
+#ifndef SERIF_SPECIES_SM_140
+    #define SERIF_SPECIES_SM_140
+#endif // SERIF_SPECIES_SM_140
+#ifndef SERIF_SPECIES_EU_140
+    #define SERIF_SPECIES_EU_140
+#endif // SERIF_SPECIES_EU_140
+#ifndef SERIF_SPECIES_GD_140
+    #define SERIF_SPECIES_GD_140
+#endif // SERIF_SPECIES_GD_140
+#ifndef SERIF_SPECIES_TB_140
+    #define SERIF_SPECIES_TB_140
+#endif // SERIF_SPECIES_TB_140
+#ifndef SERIF_SPECIES_DY_140
+    #define SERIF_SPECIES_DY_140
+#endif // SERIF_SPECIES_DY_140
+#ifndef SERIF_SPECIES_HO_140
+    #define SERIF_SPECIES_HO_140
+#endif // SERIF_SPECIES_HO_140
+#ifndef SERIF_SPECIES_SB_141
+    #define SERIF_SPECIES_SB_141
+#endif // SERIF_SPECIES_SB_141
+#ifndef SERIF_SPECIES_TE_141
+    #define SERIF_SPECIES_TE_141
+#endif // SERIF_SPECIES_TE_141
+#ifndef SERIF_SPECIES_I_141
+    #define SERIF_SPECIES_I_141
+#endif // SERIF_SPECIES_I_141
+#ifndef SERIF_SPECIES_XE_141
+    #define SERIF_SPECIES_XE_141
+#endif // SERIF_SPECIES_XE_141
+#ifndef SERIF_SPECIES_CS_141
+    #define SERIF_SPECIES_CS_141
+#endif // SERIF_SPECIES_CS_141
+#ifndef SERIF_SPECIES_BA_141
+    #define SERIF_SPECIES_BA_141
+#endif // SERIF_SPECIES_BA_141
+#ifndef SERIF_SPECIES_LA_141
+    #define SERIF_SPECIES_LA_141
+#endif // SERIF_SPECIES_LA_141
+#ifndef SERIF_SPECIES_CE_141
+    #define SERIF_SPECIES_CE_141
+#endif // SERIF_SPECIES_CE_141
+#ifndef SERIF_SPECIES_PR_141
+    #define SERIF_SPECIES_PR_141
+#endif // SERIF_SPECIES_PR_141
+#ifndef SERIF_SPECIES_ND_141
+    #define SERIF_SPECIES_ND_141
+#endif // SERIF_SPECIES_ND_141
+#ifndef SERIF_SPECIES_PM_141
+    #define SERIF_SPECIES_PM_141
+#endif // SERIF_SPECIES_PM_141
+#ifndef SERIF_SPECIES_SM_141
+    #define SERIF_SPECIES_SM_141
+#endif // SERIF_SPECIES_SM_141
+#ifndef SERIF_SPECIES_EU_141
+    #define SERIF_SPECIES_EU_141
+#endif // SERIF_SPECIES_EU_141
+#ifndef SERIF_SPECIES_GD_141
+    #define SERIF_SPECIES_GD_141
+#endif // SERIF_SPECIES_GD_141
+#ifndef SERIF_SPECIES_TB_141
+    #define SERIF_SPECIES_TB_141
+#endif // SERIF_SPECIES_TB_141
+#ifndef SERIF_SPECIES_DY_141
+    #define SERIF_SPECIES_DY_141
+#endif // SERIF_SPECIES_DY_141
+#ifndef SERIF_SPECIES_HO_141
+    #define SERIF_SPECIES_HO_141
+#endif // SERIF_SPECIES_HO_141
+#ifndef SERIF_SPECIES_SB_142
+    #define SERIF_SPECIES_SB_142
+#endif // SERIF_SPECIES_SB_142
+#ifndef SERIF_SPECIES_TE_142
+    #define SERIF_SPECIES_TE_142
+#endif // SERIF_SPECIES_TE_142
+#ifndef SERIF_SPECIES_I_142
+    #define SERIF_SPECIES_I_142
+#endif // SERIF_SPECIES_I_142
+#ifndef SERIF_SPECIES_XE_142
+    #define SERIF_SPECIES_XE_142
+#endif // SERIF_SPECIES_XE_142
+#ifndef SERIF_SPECIES_CS_142
+    #define SERIF_SPECIES_CS_142
+#endif // SERIF_SPECIES_CS_142
+#ifndef SERIF_SPECIES_BA_142
+    #define SERIF_SPECIES_BA_142
+#endif // SERIF_SPECIES_BA_142
+#ifndef SERIF_SPECIES_LA_142
+    #define SERIF_SPECIES_LA_142
+#endif // SERIF_SPECIES_LA_142
+#ifndef SERIF_SPECIES_CE_142
+    #define SERIF_SPECIES_CE_142
+#endif // SERIF_SPECIES_CE_142
+#ifndef SERIF_SPECIES_PR_142
+    #define SERIF_SPECIES_PR_142
+#endif // SERIF_SPECIES_PR_142
+#ifndef SERIF_SPECIES_ND_142
+    #define SERIF_SPECIES_ND_142
+#endif // SERIF_SPECIES_ND_142
+#ifndef SERIF_SPECIES_PM_142
+    #define SERIF_SPECIES_PM_142
+#endif // SERIF_SPECIES_PM_142
+#ifndef SERIF_SPECIES_SM_142
+    #define SERIF_SPECIES_SM_142
+#endif // SERIF_SPECIES_SM_142
+#ifndef SERIF_SPECIES_EU_142
+    #define SERIF_SPECIES_EU_142
+#endif // SERIF_SPECIES_EU_142
+#ifndef SERIF_SPECIES_GD_142
+    #define SERIF_SPECIES_GD_142
+#endif // SERIF_SPECIES_GD_142
+#ifndef SERIF_SPECIES_TB_142
+    #define SERIF_SPECIES_TB_142
+#endif // SERIF_SPECIES_TB_142
+#ifndef SERIF_SPECIES_DY_142
+    #define SERIF_SPECIES_DY_142
+#endif // SERIF_SPECIES_DY_142
+#ifndef SERIF_SPECIES_HO_142
+    #define SERIF_SPECIES_HO_142
+#endif // SERIF_SPECIES_HO_142
+#ifndef SERIF_SPECIES_ER_142
+    #define SERIF_SPECIES_ER_142
+#endif // SERIF_SPECIES_ER_142
+#ifndef SERIF_SPECIES_TE_143
+    #define SERIF_SPECIES_TE_143
+#endif // SERIF_SPECIES_TE_143
+#ifndef SERIF_SPECIES_I_143
+    #define SERIF_SPECIES_I_143
+#endif // SERIF_SPECIES_I_143
+#ifndef SERIF_SPECIES_XE_143
+    #define SERIF_SPECIES_XE_143
+#endif // SERIF_SPECIES_XE_143
+#ifndef SERIF_SPECIES_CS_143
+    #define SERIF_SPECIES_CS_143
+#endif // SERIF_SPECIES_CS_143
+#ifndef SERIF_SPECIES_BA_143
+    #define SERIF_SPECIES_BA_143
+#endif // SERIF_SPECIES_BA_143
+#ifndef SERIF_SPECIES_LA_143
+    #define SERIF_SPECIES_LA_143
+#endif // SERIF_SPECIES_LA_143
+#ifndef SERIF_SPECIES_CE_143
+    #define SERIF_SPECIES_CE_143
+#endif // SERIF_SPECIES_CE_143
+#ifndef SERIF_SPECIES_PR_143
+    #define SERIF_SPECIES_PR_143
+#endif // SERIF_SPECIES_PR_143
+#ifndef SERIF_SPECIES_ND_143
+    #define SERIF_SPECIES_ND_143
+#endif // SERIF_SPECIES_ND_143
+#ifndef SERIF_SPECIES_PM_143
+    #define SERIF_SPECIES_PM_143
+#endif // SERIF_SPECIES_PM_143
+#ifndef SERIF_SPECIES_SM_143
+    #define SERIF_SPECIES_SM_143
+#endif // SERIF_SPECIES_SM_143
+#ifndef SERIF_SPECIES_EU_143
+    #define SERIF_SPECIES_EU_143
+#endif // SERIF_SPECIES_EU_143
+#ifndef SERIF_SPECIES_GD_143
+    #define SERIF_SPECIES_GD_143
+#endif // SERIF_SPECIES_GD_143
+#ifndef SERIF_SPECIES_TB_143
+    #define SERIF_SPECIES_TB_143
+#endif // SERIF_SPECIES_TB_143
+#ifndef SERIF_SPECIES_DY_143
+    #define SERIF_SPECIES_DY_143
+#endif // SERIF_SPECIES_DY_143
+#ifndef SERIF_SPECIES_HO_143
+    #define SERIF_SPECIES_HO_143
+#endif // SERIF_SPECIES_HO_143
+#ifndef SERIF_SPECIES_ER_143
+    #define SERIF_SPECIES_ER_143
+#endif // SERIF_SPECIES_ER_143
+#ifndef SERIF_SPECIES_TE_144
+    #define SERIF_SPECIES_TE_144
+#endif // SERIF_SPECIES_TE_144
+#ifndef SERIF_SPECIES_I_144
+    #define SERIF_SPECIES_I_144
+#endif // SERIF_SPECIES_I_144
+#ifndef SERIF_SPECIES_XE_144
+    #define SERIF_SPECIES_XE_144
+#endif // SERIF_SPECIES_XE_144
+#ifndef SERIF_SPECIES_CS_144
+    #define SERIF_SPECIES_CS_144
+#endif // SERIF_SPECIES_CS_144
+#ifndef SERIF_SPECIES_BA_144
+    #define SERIF_SPECIES_BA_144
+#endif // SERIF_SPECIES_BA_144
+#ifndef SERIF_SPECIES_LA_144
+    #define SERIF_SPECIES_LA_144
+#endif // SERIF_SPECIES_LA_144
+#ifndef SERIF_SPECIES_CE_144
+    #define SERIF_SPECIES_CE_144
+#endif // SERIF_SPECIES_CE_144
+#ifndef SERIF_SPECIES_PR_144
+    #define SERIF_SPECIES_PR_144
+#endif // SERIF_SPECIES_PR_144
+#ifndef SERIF_SPECIES_ND_144
+    #define SERIF_SPECIES_ND_144
+#endif // SERIF_SPECIES_ND_144
+#ifndef SERIF_SPECIES_PM_144
+    #define SERIF_SPECIES_PM_144
+#endif // SERIF_SPECIES_PM_144
+#ifndef SERIF_SPECIES_SM_144
+    #define SERIF_SPECIES_SM_144
+#endif // SERIF_SPECIES_SM_144
+#ifndef SERIF_SPECIES_EU_144
+    #define SERIF_SPECIES_EU_144
+#endif // SERIF_SPECIES_EU_144
+#ifndef SERIF_SPECIES_GD_144
+    #define SERIF_SPECIES_GD_144
+#endif // SERIF_SPECIES_GD_144
+#ifndef SERIF_SPECIES_TB_144
+    #define SERIF_SPECIES_TB_144
+#endif // SERIF_SPECIES_TB_144
+#ifndef SERIF_SPECIES_DY_144
+    #define SERIF_SPECIES_DY_144
+#endif // SERIF_SPECIES_DY_144
+#ifndef SERIF_SPECIES_HO_144
+    #define SERIF_SPECIES_HO_144
+#endif // SERIF_SPECIES_HO_144
+#ifndef SERIF_SPECIES_ER_144
+    #define SERIF_SPECIES_ER_144
+#endif // SERIF_SPECIES_ER_144
+#ifndef SERIF_SPECIES_TM_144
+    #define SERIF_SPECIES_TM_144
+#endif // SERIF_SPECIES_TM_144
+#ifndef SERIF_SPECIES_TE_145
+    #define SERIF_SPECIES_TE_145
+#endif // SERIF_SPECIES_TE_145
+#ifndef SERIF_SPECIES_I_145
+    #define SERIF_SPECIES_I_145
+#endif // SERIF_SPECIES_I_145
+#ifndef SERIF_SPECIES_XE_145
+    #define SERIF_SPECIES_XE_145
+#endif // SERIF_SPECIES_XE_145
+#ifndef SERIF_SPECIES_CS_145
+    #define SERIF_SPECIES_CS_145
+#endif // SERIF_SPECIES_CS_145
+#ifndef SERIF_SPECIES_BA_145
+    #define SERIF_SPECIES_BA_145
+#endif // SERIF_SPECIES_BA_145
+#ifndef SERIF_SPECIES_LA_145
+    #define SERIF_SPECIES_LA_145
+#endif // SERIF_SPECIES_LA_145
+#ifndef SERIF_SPECIES_CE_145
+    #define SERIF_SPECIES_CE_145
+#endif // SERIF_SPECIES_CE_145
+#ifndef SERIF_SPECIES_PR_145
+    #define SERIF_SPECIES_PR_145
+#endif // SERIF_SPECIES_PR_145
+#ifndef SERIF_SPECIES_ND_145
+    #define SERIF_SPECIES_ND_145
+#endif // SERIF_SPECIES_ND_145
+#ifndef SERIF_SPECIES_PM_145
+    #define SERIF_SPECIES_PM_145
+#endif // SERIF_SPECIES_PM_145
+#ifndef SERIF_SPECIES_SM_145
+    #define SERIF_SPECIES_SM_145
+#endif // SERIF_SPECIES_SM_145
+#ifndef SERIF_SPECIES_EU_145
+    #define SERIF_SPECIES_EU_145
+#endif // SERIF_SPECIES_EU_145
+#ifndef SERIF_SPECIES_GD_145
+    #define SERIF_SPECIES_GD_145
+#endif // SERIF_SPECIES_GD_145
+#ifndef SERIF_SPECIES_TB_145
+    #define SERIF_SPECIES_TB_145
+#endif // SERIF_SPECIES_TB_145
+#ifndef SERIF_SPECIES_DY_145
+    #define SERIF_SPECIES_DY_145
+#endif // SERIF_SPECIES_DY_145
+#ifndef SERIF_SPECIES_HO_145
+    #define SERIF_SPECIES_HO_145
+#endif // SERIF_SPECIES_HO_145
+#ifndef SERIF_SPECIES_ER_145
+    #define SERIF_SPECIES_ER_145
+#endif // SERIF_SPECIES_ER_145
+#ifndef SERIF_SPECIES_TM_145
+    #define SERIF_SPECIES_TM_145
+#endif // SERIF_SPECIES_TM_145
+#ifndef SERIF_SPECIES_I_146
+    #define SERIF_SPECIES_I_146
+#endif // SERIF_SPECIES_I_146
+#ifndef SERIF_SPECIES_XE_146
+    #define SERIF_SPECIES_XE_146
+#endif // SERIF_SPECIES_XE_146
+#ifndef SERIF_SPECIES_CS_146
+    #define SERIF_SPECIES_CS_146
+#endif // SERIF_SPECIES_CS_146
+#ifndef SERIF_SPECIES_BA_146
+    #define SERIF_SPECIES_BA_146
+#endif // SERIF_SPECIES_BA_146
+#ifndef SERIF_SPECIES_LA_146
+    #define SERIF_SPECIES_LA_146
+#endif // SERIF_SPECIES_LA_146
+#ifndef SERIF_SPECIES_CE_146
+    #define SERIF_SPECIES_CE_146
+#endif // SERIF_SPECIES_CE_146
+#ifndef SERIF_SPECIES_PR_146
+    #define SERIF_SPECIES_PR_146
+#endif // SERIF_SPECIES_PR_146
+#ifndef SERIF_SPECIES_ND_146
+    #define SERIF_SPECIES_ND_146
+#endif // SERIF_SPECIES_ND_146
+#ifndef SERIF_SPECIES_PM_146
+    #define SERIF_SPECIES_PM_146
+#endif // SERIF_SPECIES_PM_146
+#ifndef SERIF_SPECIES_SM_146
+    #define SERIF_SPECIES_SM_146
+#endif // SERIF_SPECIES_SM_146
+#ifndef SERIF_SPECIES_EU_146
+    #define SERIF_SPECIES_EU_146
+#endif // SERIF_SPECIES_EU_146
+#ifndef SERIF_SPECIES_GD_146
+    #define SERIF_SPECIES_GD_146
+#endif // SERIF_SPECIES_GD_146
+#ifndef SERIF_SPECIES_TB_146
+    #define SERIF_SPECIES_TB_146
+#endif // SERIF_SPECIES_TB_146
+#ifndef SERIF_SPECIES_DY_146
+    #define SERIF_SPECIES_DY_146
+#endif // SERIF_SPECIES_DY_146
+#ifndef SERIF_SPECIES_HO_146
+    #define SERIF_SPECIES_HO_146
+#endif // SERIF_SPECIES_HO_146
+#ifndef SERIF_SPECIES_ER_146
+    #define SERIF_SPECIES_ER_146
+#endif // SERIF_SPECIES_ER_146
+#ifndef SERIF_SPECIES_TM_146
+    #define SERIF_SPECIES_TM_146
+#endif // SERIF_SPECIES_TM_146
+#ifndef SERIF_SPECIES_I_147
+    #define SERIF_SPECIES_I_147
+#endif // SERIF_SPECIES_I_147
+#ifndef SERIF_SPECIES_XE_147
+    #define SERIF_SPECIES_XE_147
+#endif // SERIF_SPECIES_XE_147
+#ifndef SERIF_SPECIES_CS_147
+    #define SERIF_SPECIES_CS_147
+#endif // SERIF_SPECIES_CS_147
+#ifndef SERIF_SPECIES_BA_147
+    #define SERIF_SPECIES_BA_147
+#endif // SERIF_SPECIES_BA_147
+#ifndef SERIF_SPECIES_LA_147
+    #define SERIF_SPECIES_LA_147
+#endif // SERIF_SPECIES_LA_147
+#ifndef SERIF_SPECIES_CE_147
+    #define SERIF_SPECIES_CE_147
+#endif // SERIF_SPECIES_CE_147
+#ifndef SERIF_SPECIES_PR_147
+    #define SERIF_SPECIES_PR_147
+#endif // SERIF_SPECIES_PR_147
+#ifndef SERIF_SPECIES_ND_147
+    #define SERIF_SPECIES_ND_147
+#endif // SERIF_SPECIES_ND_147
+#ifndef SERIF_SPECIES_PM_147
+    #define SERIF_SPECIES_PM_147
+#endif // SERIF_SPECIES_PM_147
+#ifndef SERIF_SPECIES_SM_147
+    #define SERIF_SPECIES_SM_147
+#endif // SERIF_SPECIES_SM_147
+#ifndef SERIF_SPECIES_EU_147
+    #define SERIF_SPECIES_EU_147
+#endif // SERIF_SPECIES_EU_147
+#ifndef SERIF_SPECIES_GD_147
+    #define SERIF_SPECIES_GD_147
+#endif // SERIF_SPECIES_GD_147
+#ifndef SERIF_SPECIES_TB_147
+    #define SERIF_SPECIES_TB_147
+#endif // SERIF_SPECIES_TB_147
+#ifndef SERIF_SPECIES_DY_147
+    #define SERIF_SPECIES_DY_147
+#endif // SERIF_SPECIES_DY_147
+#ifndef SERIF_SPECIES_HO_147
+    #define SERIF_SPECIES_HO_147
+#endif // SERIF_SPECIES_HO_147
+#ifndef SERIF_SPECIES_ER_147
+    #define SERIF_SPECIES_ER_147
+#endif // SERIF_SPECIES_ER_147
+#ifndef SERIF_SPECIES_TM_147
+    #define SERIF_SPECIES_TM_147
+#endif // SERIF_SPECIES_TM_147
+#ifndef SERIF_SPECIES_XE_148
+    #define SERIF_SPECIES_XE_148
+#endif // SERIF_SPECIES_XE_148
+#ifndef SERIF_SPECIES_CS_148
+    #define SERIF_SPECIES_CS_148
+#endif // SERIF_SPECIES_CS_148
+#ifndef SERIF_SPECIES_BA_148
+    #define SERIF_SPECIES_BA_148
+#endif // SERIF_SPECIES_BA_148
+#ifndef SERIF_SPECIES_LA_148
+    #define SERIF_SPECIES_LA_148
+#endif // SERIF_SPECIES_LA_148
+#ifndef SERIF_SPECIES_CE_148
+    #define SERIF_SPECIES_CE_148
+#endif // SERIF_SPECIES_CE_148
+#ifndef SERIF_SPECIES_PR_148
+    #define SERIF_SPECIES_PR_148
+#endif // SERIF_SPECIES_PR_148
+#ifndef SERIF_SPECIES_ND_148
+    #define SERIF_SPECIES_ND_148
+#endif // SERIF_SPECIES_ND_148
+#ifndef SERIF_SPECIES_PM_148
+    #define SERIF_SPECIES_PM_148
+#endif // SERIF_SPECIES_PM_148
+#ifndef SERIF_SPECIES_SM_148
+    #define SERIF_SPECIES_SM_148
+#endif // SERIF_SPECIES_SM_148
+#ifndef SERIF_SPECIES_EU_148
+    #define SERIF_SPECIES_EU_148
+#endif // SERIF_SPECIES_EU_148
+#ifndef SERIF_SPECIES_GD_148
+    #define SERIF_SPECIES_GD_148
+#endif // SERIF_SPECIES_GD_148
+#ifndef SERIF_SPECIES_TB_148
+    #define SERIF_SPECIES_TB_148
+#endif // SERIF_SPECIES_TB_148
+#ifndef SERIF_SPECIES_DY_148
+    #define SERIF_SPECIES_DY_148
+#endif // SERIF_SPECIES_DY_148
+#ifndef SERIF_SPECIES_HO_148
+    #define SERIF_SPECIES_HO_148
+#endif // SERIF_SPECIES_HO_148
+#ifndef SERIF_SPECIES_ER_148
+    #define SERIF_SPECIES_ER_148
+#endif // SERIF_SPECIES_ER_148
+#ifndef SERIF_SPECIES_TM_148
+    #define SERIF_SPECIES_TM_148
+#endif // SERIF_SPECIES_TM_148
+#ifndef SERIF_SPECIES_YB_148
+    #define SERIF_SPECIES_YB_148
+#endif // SERIF_SPECIES_YB_148
+#ifndef SERIF_SPECIES_XE_149
+    #define SERIF_SPECIES_XE_149
+#endif // SERIF_SPECIES_XE_149
+#ifndef SERIF_SPECIES_CS_149
+    #define SERIF_SPECIES_CS_149
+#endif // SERIF_SPECIES_CS_149
+#ifndef SERIF_SPECIES_BA_149
+    #define SERIF_SPECIES_BA_149
+#endif // SERIF_SPECIES_BA_149
+#ifndef SERIF_SPECIES_LA_149
+    #define SERIF_SPECIES_LA_149
+#endif // SERIF_SPECIES_LA_149
+#ifndef SERIF_SPECIES_CE_149
+    #define SERIF_SPECIES_CE_149
+#endif // SERIF_SPECIES_CE_149
+#ifndef SERIF_SPECIES_PR_149
+    #define SERIF_SPECIES_PR_149
+#endif // SERIF_SPECIES_PR_149
+#ifndef SERIF_SPECIES_ND_149
+    #define SERIF_SPECIES_ND_149
+#endif // SERIF_SPECIES_ND_149
+#ifndef SERIF_SPECIES_PM_149
+    #define SERIF_SPECIES_PM_149
+#endif // SERIF_SPECIES_PM_149
+#ifndef SERIF_SPECIES_SM_149
+    #define SERIF_SPECIES_SM_149
+#endif // SERIF_SPECIES_SM_149
+#ifndef SERIF_SPECIES_EU_149
+    #define SERIF_SPECIES_EU_149
+#endif // SERIF_SPECIES_EU_149
+#ifndef SERIF_SPECIES_GD_149
+    #define SERIF_SPECIES_GD_149
+#endif // SERIF_SPECIES_GD_149
+#ifndef SERIF_SPECIES_TB_149
+    #define SERIF_SPECIES_TB_149
+#endif // SERIF_SPECIES_TB_149
+#ifndef SERIF_SPECIES_DY_149
+    #define SERIF_SPECIES_DY_149
+#endif // SERIF_SPECIES_DY_149
+#ifndef SERIF_SPECIES_HO_149
+    #define SERIF_SPECIES_HO_149
+#endif // SERIF_SPECIES_HO_149
+#ifndef SERIF_SPECIES_ER_149
+    #define SERIF_SPECIES_ER_149
+#endif // SERIF_SPECIES_ER_149
+#ifndef SERIF_SPECIES_TM_149
+    #define SERIF_SPECIES_TM_149
+#endif // SERIF_SPECIES_TM_149
+#ifndef SERIF_SPECIES_YB_149
+    #define SERIF_SPECIES_YB_149
+#endif // SERIF_SPECIES_YB_149
+#ifndef SERIF_SPECIES_XE_150
+    #define SERIF_SPECIES_XE_150
+#endif // SERIF_SPECIES_XE_150
+#ifndef SERIF_SPECIES_CS_150
+    #define SERIF_SPECIES_CS_150
+#endif // SERIF_SPECIES_CS_150
+#ifndef SERIF_SPECIES_BA_150
+    #define SERIF_SPECIES_BA_150
+#endif // SERIF_SPECIES_BA_150
+#ifndef SERIF_SPECIES_LA_150
+    #define SERIF_SPECIES_LA_150
+#endif // SERIF_SPECIES_LA_150
+#ifndef SERIF_SPECIES_CE_150
+    #define SERIF_SPECIES_CE_150
+#endif // SERIF_SPECIES_CE_150
+#ifndef SERIF_SPECIES_PR_150
+    #define SERIF_SPECIES_PR_150
+#endif // SERIF_SPECIES_PR_150
+#ifndef SERIF_SPECIES_ND_150
+    #define SERIF_SPECIES_ND_150
+#endif // SERIF_SPECIES_ND_150
+#ifndef SERIF_SPECIES_PM_150
+    #define SERIF_SPECIES_PM_150
+#endif // SERIF_SPECIES_PM_150
+#ifndef SERIF_SPECIES_SM_150
+    #define SERIF_SPECIES_SM_150
+#endif // SERIF_SPECIES_SM_150
+#ifndef SERIF_SPECIES_EU_150
+    #define SERIF_SPECIES_EU_150
+#endif // SERIF_SPECIES_EU_150
+#ifndef SERIF_SPECIES_GD_150
+    #define SERIF_SPECIES_GD_150
+#endif // SERIF_SPECIES_GD_150
+#ifndef SERIF_SPECIES_TB_150
+    #define SERIF_SPECIES_TB_150
+#endif // SERIF_SPECIES_TB_150
+#ifndef SERIF_SPECIES_DY_150
+    #define SERIF_SPECIES_DY_150
+#endif // SERIF_SPECIES_DY_150
+#ifndef SERIF_SPECIES_HO_150
+    #define SERIF_SPECIES_HO_150
+#endif // SERIF_SPECIES_HO_150
+#ifndef SERIF_SPECIES_ER_150
+    #define SERIF_SPECIES_ER_150
+#endif // SERIF_SPECIES_ER_150
+#ifndef SERIF_SPECIES_TM_150
+    #define SERIF_SPECIES_TM_150
+#endif // SERIF_SPECIES_TM_150
+#ifndef SERIF_SPECIES_YB_150
+    #define SERIF_SPECIES_YB_150
+#endif // SERIF_SPECIES_YB_150
+#ifndef SERIF_SPECIES_LU_150
+    #define SERIF_SPECIES_LU_150
+#endif // SERIF_SPECIES_LU_150
+#ifndef SERIF_SPECIES_CS_151
+    #define SERIF_SPECIES_CS_151
+#endif // SERIF_SPECIES_CS_151
+#ifndef SERIF_SPECIES_BA_151
+    #define SERIF_SPECIES_BA_151
+#endif // SERIF_SPECIES_BA_151
+#ifndef SERIF_SPECIES_LA_151
+    #define SERIF_SPECIES_LA_151
+#endif // SERIF_SPECIES_LA_151
+#ifndef SERIF_SPECIES_CE_151
+    #define SERIF_SPECIES_CE_151
+#endif // SERIF_SPECIES_CE_151
+#ifndef SERIF_SPECIES_PR_151
+    #define SERIF_SPECIES_PR_151
+#endif // SERIF_SPECIES_PR_151
+#ifndef SERIF_SPECIES_ND_151
+    #define SERIF_SPECIES_ND_151
+#endif // SERIF_SPECIES_ND_151
+#ifndef SERIF_SPECIES_PM_151
+    #define SERIF_SPECIES_PM_151
+#endif // SERIF_SPECIES_PM_151
+#ifndef SERIF_SPECIES_SM_151
+    #define SERIF_SPECIES_SM_151
+#endif // SERIF_SPECIES_SM_151
+#ifndef SERIF_SPECIES_EU_151
+    #define SERIF_SPECIES_EU_151
+#endif // SERIF_SPECIES_EU_151
+#ifndef SERIF_SPECIES_GD_151
+    #define SERIF_SPECIES_GD_151
+#endif // SERIF_SPECIES_GD_151
+#ifndef SERIF_SPECIES_TB_151
+    #define SERIF_SPECIES_TB_151
+#endif // SERIF_SPECIES_TB_151
+#ifndef SERIF_SPECIES_DY_151
+    #define SERIF_SPECIES_DY_151
+#endif // SERIF_SPECIES_DY_151
+#ifndef SERIF_SPECIES_HO_151
+    #define SERIF_SPECIES_HO_151
+#endif // SERIF_SPECIES_HO_151
+#ifndef SERIF_SPECIES_ER_151
+    #define SERIF_SPECIES_ER_151
+#endif // SERIF_SPECIES_ER_151
+#ifndef SERIF_SPECIES_TM_151
+    #define SERIF_SPECIES_TM_151
+#endif // SERIF_SPECIES_TM_151
+#ifndef SERIF_SPECIES_YB_151
+    #define SERIF_SPECIES_YB_151
+#endif // SERIF_SPECIES_YB_151
+#ifndef SERIF_SPECIES_LU_151
+    #define SERIF_SPECIES_LU_151
+#endif // SERIF_SPECIES_LU_151
+#ifndef SERIF_SPECIES_CS_152
+    #define SERIF_SPECIES_CS_152
+#endif // SERIF_SPECIES_CS_152
+#ifndef SERIF_SPECIES_BA_152
+    #define SERIF_SPECIES_BA_152
+#endif // SERIF_SPECIES_BA_152
+#ifndef SERIF_SPECIES_LA_152
+    #define SERIF_SPECIES_LA_152
+#endif // SERIF_SPECIES_LA_152
+#ifndef SERIF_SPECIES_CE_152
+    #define SERIF_SPECIES_CE_152
+#endif // SERIF_SPECIES_CE_152
+#ifndef SERIF_SPECIES_PR_152
+    #define SERIF_SPECIES_PR_152
+#endif // SERIF_SPECIES_PR_152
+#ifndef SERIF_SPECIES_ND_152
+    #define SERIF_SPECIES_ND_152
+#endif // SERIF_SPECIES_ND_152
+#ifndef SERIF_SPECIES_PM_152
+    #define SERIF_SPECIES_PM_152
+#endif // SERIF_SPECIES_PM_152
+#ifndef SERIF_SPECIES_SM_152
+    #define SERIF_SPECIES_SM_152
+#endif // SERIF_SPECIES_SM_152
+#ifndef SERIF_SPECIES_EU_152
+    #define SERIF_SPECIES_EU_152
+#endif // SERIF_SPECIES_EU_152
+#ifndef SERIF_SPECIES_GD_152
+    #define SERIF_SPECIES_GD_152
+#endif // SERIF_SPECIES_GD_152
+#ifndef SERIF_SPECIES_TB_152
+    #define SERIF_SPECIES_TB_152
+#endif // SERIF_SPECIES_TB_152
+#ifndef SERIF_SPECIES_DY_152
+    #define SERIF_SPECIES_DY_152
+#endif // SERIF_SPECIES_DY_152
+#ifndef SERIF_SPECIES_HO_152
+    #define SERIF_SPECIES_HO_152
+#endif // SERIF_SPECIES_HO_152
+#ifndef SERIF_SPECIES_ER_152
+    #define SERIF_SPECIES_ER_152
+#endif // SERIF_SPECIES_ER_152
+#ifndef SERIF_SPECIES_TM_152
+    #define SERIF_SPECIES_TM_152
+#endif // SERIF_SPECIES_TM_152
+#ifndef SERIF_SPECIES_YB_152
+    #define SERIF_SPECIES_YB_152
+#endif // SERIF_SPECIES_YB_152
+#ifndef SERIF_SPECIES_LU_152
+    #define SERIF_SPECIES_LU_152
+#endif // SERIF_SPECIES_LU_152
+#ifndef SERIF_SPECIES_BA_153
+    #define SERIF_SPECIES_BA_153
+#endif // SERIF_SPECIES_BA_153
+#ifndef SERIF_SPECIES_LA_153
+    #define SERIF_SPECIES_LA_153
+#endif // SERIF_SPECIES_LA_153
+#ifndef SERIF_SPECIES_CE_153
+    #define SERIF_SPECIES_CE_153
+#endif // SERIF_SPECIES_CE_153
+#ifndef SERIF_SPECIES_PR_153
+    #define SERIF_SPECIES_PR_153
+#endif // SERIF_SPECIES_PR_153
+#ifndef SERIF_SPECIES_ND_153
+    #define SERIF_SPECIES_ND_153
+#endif // SERIF_SPECIES_ND_153
+#ifndef SERIF_SPECIES_PM_153
+    #define SERIF_SPECIES_PM_153
+#endif // SERIF_SPECIES_PM_153
+#ifndef SERIF_SPECIES_SM_153
+    #define SERIF_SPECIES_SM_153
+#endif // SERIF_SPECIES_SM_153
+#ifndef SERIF_SPECIES_EU_153
+    #define SERIF_SPECIES_EU_153
+#endif // SERIF_SPECIES_EU_153
+#ifndef SERIF_SPECIES_GD_153
+    #define SERIF_SPECIES_GD_153
+#endif // SERIF_SPECIES_GD_153
+#ifndef SERIF_SPECIES_TB_153
+    #define SERIF_SPECIES_TB_153
+#endif // SERIF_SPECIES_TB_153
+#ifndef SERIF_SPECIES_DY_153
+    #define SERIF_SPECIES_DY_153
+#endif // SERIF_SPECIES_DY_153
+#ifndef SERIF_SPECIES_HO_153
+    #define SERIF_SPECIES_HO_153
+#endif // SERIF_SPECIES_HO_153
+#ifndef SERIF_SPECIES_ER_153
+    #define SERIF_SPECIES_ER_153
+#endif // SERIF_SPECIES_ER_153
+#ifndef SERIF_SPECIES_TM_153
+    #define SERIF_SPECIES_TM_153
+#endif // SERIF_SPECIES_TM_153
+#ifndef SERIF_SPECIES_YB_153
+    #define SERIF_SPECIES_YB_153
+#endif // SERIF_SPECIES_YB_153
+#ifndef SERIF_SPECIES_LU_153
+    #define SERIF_SPECIES_LU_153
+#endif // SERIF_SPECIES_LU_153
+#ifndef SERIF_SPECIES_HF_153
+    #define SERIF_SPECIES_HF_153
+#endif // SERIF_SPECIES_HF_153
+#ifndef SERIF_SPECIES_BA_154
+    #define SERIF_SPECIES_BA_154
+#endif // SERIF_SPECIES_BA_154
+#ifndef SERIF_SPECIES_LA_154
+    #define SERIF_SPECIES_LA_154
+#endif // SERIF_SPECIES_LA_154
+#ifndef SERIF_SPECIES_CE_154
+    #define SERIF_SPECIES_CE_154
+#endif // SERIF_SPECIES_CE_154
+#ifndef SERIF_SPECIES_PR_154
+    #define SERIF_SPECIES_PR_154
+#endif // SERIF_SPECIES_PR_154
+#ifndef SERIF_SPECIES_ND_154
+    #define SERIF_SPECIES_ND_154
+#endif // SERIF_SPECIES_ND_154
+#ifndef SERIF_SPECIES_PM_154
+    #define SERIF_SPECIES_PM_154
+#endif // SERIF_SPECIES_PM_154
+#ifndef SERIF_SPECIES_SM_154
+    #define SERIF_SPECIES_SM_154
+#endif // SERIF_SPECIES_SM_154
+#ifndef SERIF_SPECIES_EU_154
+    #define SERIF_SPECIES_EU_154
+#endif // SERIF_SPECIES_EU_154
+#ifndef SERIF_SPECIES_GD_154
+    #define SERIF_SPECIES_GD_154
+#endif // SERIF_SPECIES_GD_154
+#ifndef SERIF_SPECIES_TB_154
+    #define SERIF_SPECIES_TB_154
+#endif // SERIF_SPECIES_TB_154
+#ifndef SERIF_SPECIES_DY_154
+    #define SERIF_SPECIES_DY_154
+#endif // SERIF_SPECIES_DY_154
+#ifndef SERIF_SPECIES_HO_154
+    #define SERIF_SPECIES_HO_154
+#endif // SERIF_SPECIES_HO_154
+#ifndef SERIF_SPECIES_ER_154
+    #define SERIF_SPECIES_ER_154
+#endif // SERIF_SPECIES_ER_154
+#ifndef SERIF_SPECIES_TM_154
+    #define SERIF_SPECIES_TM_154
+#endif // SERIF_SPECIES_TM_154
+#ifndef SERIF_SPECIES_YB_154
+    #define SERIF_SPECIES_YB_154
+#endif // SERIF_SPECIES_YB_154
+#ifndef SERIF_SPECIES_LU_154
+    #define SERIF_SPECIES_LU_154
+#endif // SERIF_SPECIES_LU_154
+#ifndef SERIF_SPECIES_HF_154
+    #define SERIF_SPECIES_HF_154
+#endif // SERIF_SPECIES_HF_154
+#ifndef SERIF_SPECIES_LA_155
+    #define SERIF_SPECIES_LA_155
+#endif // SERIF_SPECIES_LA_155
+#ifndef SERIF_SPECIES_CE_155
+    #define SERIF_SPECIES_CE_155
+#endif // SERIF_SPECIES_CE_155
+#ifndef SERIF_SPECIES_PR_155
+    #define SERIF_SPECIES_PR_155
+#endif // SERIF_SPECIES_PR_155
+#ifndef SERIF_SPECIES_ND_155
+    #define SERIF_SPECIES_ND_155
+#endif // SERIF_SPECIES_ND_155
+#ifndef SERIF_SPECIES_PM_155
+    #define SERIF_SPECIES_PM_155
+#endif // SERIF_SPECIES_PM_155
+#ifndef SERIF_SPECIES_SM_155
+    #define SERIF_SPECIES_SM_155
+#endif // SERIF_SPECIES_SM_155
+#ifndef SERIF_SPECIES_EU_155
+    #define SERIF_SPECIES_EU_155
+#endif // SERIF_SPECIES_EU_155
+#ifndef SERIF_SPECIES_GD_155
+    #define SERIF_SPECIES_GD_155
+#endif // SERIF_SPECIES_GD_155
+#ifndef SERIF_SPECIES_TB_155
+    #define SERIF_SPECIES_TB_155
+#endif // SERIF_SPECIES_TB_155
+#ifndef SERIF_SPECIES_DY_155
+    #define SERIF_SPECIES_DY_155
+#endif // SERIF_SPECIES_DY_155
+#ifndef SERIF_SPECIES_HO_155
+    #define SERIF_SPECIES_HO_155
+#endif // SERIF_SPECIES_HO_155
+#ifndef SERIF_SPECIES_ER_155
+    #define SERIF_SPECIES_ER_155
+#endif // SERIF_SPECIES_ER_155
+#ifndef SERIF_SPECIES_TM_155
+    #define SERIF_SPECIES_TM_155
+#endif // SERIF_SPECIES_TM_155
+#ifndef SERIF_SPECIES_YB_155
+    #define SERIF_SPECIES_YB_155
+#endif // SERIF_SPECIES_YB_155
+#ifndef SERIF_SPECIES_LU_155
+    #define SERIF_SPECIES_LU_155
+#endif // SERIF_SPECIES_LU_155
+#ifndef SERIF_SPECIES_HF_155
+    #define SERIF_SPECIES_HF_155
+#endif // SERIF_SPECIES_HF_155
+#ifndef SERIF_SPECIES_TA_155
+    #define SERIF_SPECIES_TA_155
+#endif // SERIF_SPECIES_TA_155
+#ifndef SERIF_SPECIES_LA_156
+    #define SERIF_SPECIES_LA_156
+#endif // SERIF_SPECIES_LA_156
+#ifndef SERIF_SPECIES_CE_156
+    #define SERIF_SPECIES_CE_156
+#endif // SERIF_SPECIES_CE_156
+#ifndef SERIF_SPECIES_PR_156
+    #define SERIF_SPECIES_PR_156
+#endif // SERIF_SPECIES_PR_156
+#ifndef SERIF_SPECIES_ND_156
+    #define SERIF_SPECIES_ND_156
+#endif // SERIF_SPECIES_ND_156
+#ifndef SERIF_SPECIES_PM_156
+    #define SERIF_SPECIES_PM_156
+#endif // SERIF_SPECIES_PM_156
+#ifndef SERIF_SPECIES_SM_156
+    #define SERIF_SPECIES_SM_156
+#endif // SERIF_SPECIES_SM_156
+#ifndef SERIF_SPECIES_EU_156
+    #define SERIF_SPECIES_EU_156
+#endif // SERIF_SPECIES_EU_156
+#ifndef SERIF_SPECIES_GD_156
+    #define SERIF_SPECIES_GD_156
+#endif // SERIF_SPECIES_GD_156
+#ifndef SERIF_SPECIES_TB_156
+    #define SERIF_SPECIES_TB_156
+#endif // SERIF_SPECIES_TB_156
+#ifndef SERIF_SPECIES_DY_156
+    #define SERIF_SPECIES_DY_156
+#endif // SERIF_SPECIES_DY_156
+#ifndef SERIF_SPECIES_HO_156
+    #define SERIF_SPECIES_HO_156
+#endif // SERIF_SPECIES_HO_156
+#ifndef SERIF_SPECIES_ER_156
+    #define SERIF_SPECIES_ER_156
+#endif // SERIF_SPECIES_ER_156
+#ifndef SERIF_SPECIES_TM_156
+    #define SERIF_SPECIES_TM_156
+#endif // SERIF_SPECIES_TM_156
+#ifndef SERIF_SPECIES_YB_156
+    #define SERIF_SPECIES_YB_156
+#endif // SERIF_SPECIES_YB_156
+#ifndef SERIF_SPECIES_LU_156
+    #define SERIF_SPECIES_LU_156
+#endif // SERIF_SPECIES_LU_156
+#ifndef SERIF_SPECIES_HF_156
+    #define SERIF_SPECIES_HF_156
+#endif // SERIF_SPECIES_HF_156
+#ifndef SERIF_SPECIES_TA_156
+    #define SERIF_SPECIES_TA_156
+#endif // SERIF_SPECIES_TA_156
+#ifndef SERIF_SPECIES_LA_157
+    #define SERIF_SPECIES_LA_157
+#endif // SERIF_SPECIES_LA_157
+#ifndef SERIF_SPECIES_CE_157
+    #define SERIF_SPECIES_CE_157
+#endif // SERIF_SPECIES_CE_157
+#ifndef SERIF_SPECIES_PR_157
+    #define SERIF_SPECIES_PR_157
+#endif // SERIF_SPECIES_PR_157
+#ifndef SERIF_SPECIES_ND_157
+    #define SERIF_SPECIES_ND_157
+#endif // SERIF_SPECIES_ND_157
+#ifndef SERIF_SPECIES_PM_157
+    #define SERIF_SPECIES_PM_157
+#endif // SERIF_SPECIES_PM_157
+#ifndef SERIF_SPECIES_SM_157
+    #define SERIF_SPECIES_SM_157
+#endif // SERIF_SPECIES_SM_157
+#ifndef SERIF_SPECIES_EU_157
+    #define SERIF_SPECIES_EU_157
+#endif // SERIF_SPECIES_EU_157
+#ifndef SERIF_SPECIES_GD_157
+    #define SERIF_SPECIES_GD_157
+#endif // SERIF_SPECIES_GD_157
+#ifndef SERIF_SPECIES_TB_157
+    #define SERIF_SPECIES_TB_157
+#endif // SERIF_SPECIES_TB_157
+#ifndef SERIF_SPECIES_DY_157
+    #define SERIF_SPECIES_DY_157
+#endif // SERIF_SPECIES_DY_157
+#ifndef SERIF_SPECIES_HO_157
+    #define SERIF_SPECIES_HO_157
+#endif // SERIF_SPECIES_HO_157
+#ifndef SERIF_SPECIES_ER_157
+    #define SERIF_SPECIES_ER_157
+#endif // SERIF_SPECIES_ER_157
+#ifndef SERIF_SPECIES_TM_157
+    #define SERIF_SPECIES_TM_157
+#endif // SERIF_SPECIES_TM_157
+#ifndef SERIF_SPECIES_YB_157
+    #define SERIF_SPECIES_YB_157
+#endif // SERIF_SPECIES_YB_157
+#ifndef SERIF_SPECIES_LU_157
+    #define SERIF_SPECIES_LU_157
+#endif // SERIF_SPECIES_LU_157
+#ifndef SERIF_SPECIES_HF_157
+    #define SERIF_SPECIES_HF_157
+#endif // SERIF_SPECIES_HF_157
+#ifndef SERIF_SPECIES_TA_157
+    #define SERIF_SPECIES_TA_157
+#endif // SERIF_SPECIES_TA_157
+#ifndef SERIF_SPECIES_W_157
+    #define SERIF_SPECIES_W_157
+#endif // SERIF_SPECIES_W_157
+#ifndef SERIF_SPECIES_CE_158
+    #define SERIF_SPECIES_CE_158
+#endif // SERIF_SPECIES_CE_158
+#ifndef SERIF_SPECIES_PR_158
+    #define SERIF_SPECIES_PR_158
+#endif // SERIF_SPECIES_PR_158
+#ifndef SERIF_SPECIES_ND_158
+    #define SERIF_SPECIES_ND_158
+#endif // SERIF_SPECIES_ND_158
+#ifndef SERIF_SPECIES_PM_158
+    #define SERIF_SPECIES_PM_158
+#endif // SERIF_SPECIES_PM_158
+#ifndef SERIF_SPECIES_SM_158
+    #define SERIF_SPECIES_SM_158
+#endif // SERIF_SPECIES_SM_158
+#ifndef SERIF_SPECIES_EU_158
+    #define SERIF_SPECIES_EU_158
+#endif // SERIF_SPECIES_EU_158
+#ifndef SERIF_SPECIES_GD_158
+    #define SERIF_SPECIES_GD_158
+#endif // SERIF_SPECIES_GD_158
+#ifndef SERIF_SPECIES_TB_158
+    #define SERIF_SPECIES_TB_158
+#endif // SERIF_SPECIES_TB_158
+#ifndef SERIF_SPECIES_DY_158
+    #define SERIF_SPECIES_DY_158
+#endif // SERIF_SPECIES_DY_158
+#ifndef SERIF_SPECIES_HO_158
+    #define SERIF_SPECIES_HO_158
+#endif // SERIF_SPECIES_HO_158
+#ifndef SERIF_SPECIES_ER_158
+    #define SERIF_SPECIES_ER_158
+#endif // SERIF_SPECIES_ER_158
+#ifndef SERIF_SPECIES_TM_158
+    #define SERIF_SPECIES_TM_158
+#endif // SERIF_SPECIES_TM_158
+#ifndef SERIF_SPECIES_YB_158
+    #define SERIF_SPECIES_YB_158
+#endif // SERIF_SPECIES_YB_158
+#ifndef SERIF_SPECIES_LU_158
+    #define SERIF_SPECIES_LU_158
+#endif // SERIF_SPECIES_LU_158
+#ifndef SERIF_SPECIES_HF_158
+    #define SERIF_SPECIES_HF_158
+#endif // SERIF_SPECIES_HF_158
+#ifndef SERIF_SPECIES_TA_158
+    #define SERIF_SPECIES_TA_158
+#endif // SERIF_SPECIES_TA_158
+#ifndef SERIF_SPECIES_W_158
+    #define SERIF_SPECIES_W_158
+#endif // SERIF_SPECIES_W_158
+#ifndef SERIF_SPECIES_CE_159
+    #define SERIF_SPECIES_CE_159
+#endif // SERIF_SPECIES_CE_159
+#ifndef SERIF_SPECIES_PR_159
+    #define SERIF_SPECIES_PR_159
+#endif // SERIF_SPECIES_PR_159
+#ifndef SERIF_SPECIES_ND_159
+    #define SERIF_SPECIES_ND_159
+#endif // SERIF_SPECIES_ND_159
+#ifndef SERIF_SPECIES_PM_159
+    #define SERIF_SPECIES_PM_159
+#endif // SERIF_SPECIES_PM_159
+#ifndef SERIF_SPECIES_SM_159
+    #define SERIF_SPECIES_SM_159
+#endif // SERIF_SPECIES_SM_159
+#ifndef SERIF_SPECIES_EU_159
+    #define SERIF_SPECIES_EU_159
+#endif // SERIF_SPECIES_EU_159
+#ifndef SERIF_SPECIES_GD_159
+    #define SERIF_SPECIES_GD_159
+#endif // SERIF_SPECIES_GD_159
+#ifndef SERIF_SPECIES_TB_159
+    #define SERIF_SPECIES_TB_159
+#endif // SERIF_SPECIES_TB_159
+#ifndef SERIF_SPECIES_DY_159
+    #define SERIF_SPECIES_DY_159
+#endif // SERIF_SPECIES_DY_159
+#ifndef SERIF_SPECIES_HO_159
+    #define SERIF_SPECIES_HO_159
+#endif // SERIF_SPECIES_HO_159
+#ifndef SERIF_SPECIES_ER_159
+    #define SERIF_SPECIES_ER_159
+#endif // SERIF_SPECIES_ER_159
+#ifndef SERIF_SPECIES_TM_159
+    #define SERIF_SPECIES_TM_159
+#endif // SERIF_SPECIES_TM_159
+#ifndef SERIF_SPECIES_YB_159
+    #define SERIF_SPECIES_YB_159
+#endif // SERIF_SPECIES_YB_159
+#ifndef SERIF_SPECIES_LU_159
+    #define SERIF_SPECIES_LU_159
+#endif // SERIF_SPECIES_LU_159
+#ifndef SERIF_SPECIES_HF_159
+    #define SERIF_SPECIES_HF_159
+#endif // SERIF_SPECIES_HF_159
+#ifndef SERIF_SPECIES_TA_159
+    #define SERIF_SPECIES_TA_159
+#endif // SERIF_SPECIES_TA_159
+#ifndef SERIF_SPECIES_W_159
+    #define SERIF_SPECIES_W_159
+#endif // SERIF_SPECIES_W_159
+#ifndef SERIF_SPECIES_RE_159
+    #define SERIF_SPECIES_RE_159
+#endif // SERIF_SPECIES_RE_159
+#ifndef SERIF_SPECIES_PR_160
+    #define SERIF_SPECIES_PR_160
+#endif // SERIF_SPECIES_PR_160
+#ifndef SERIF_SPECIES_ND_160
+    #define SERIF_SPECIES_ND_160
+#endif // SERIF_SPECIES_ND_160
+#ifndef SERIF_SPECIES_PM_160
+    #define SERIF_SPECIES_PM_160
+#endif // SERIF_SPECIES_PM_160
+#ifndef SERIF_SPECIES_SM_160
+    #define SERIF_SPECIES_SM_160
+#endif // SERIF_SPECIES_SM_160
+#ifndef SERIF_SPECIES_EU_160
+    #define SERIF_SPECIES_EU_160
+#endif // SERIF_SPECIES_EU_160
+#ifndef SERIF_SPECIES_GD_160
+    #define SERIF_SPECIES_GD_160
+#endif // SERIF_SPECIES_GD_160
+#ifndef SERIF_SPECIES_TB_160
+    #define SERIF_SPECIES_TB_160
+#endif // SERIF_SPECIES_TB_160
+#ifndef SERIF_SPECIES_DY_160
+    #define SERIF_SPECIES_DY_160
+#endif // SERIF_SPECIES_DY_160
+#ifndef SERIF_SPECIES_HO_160
+    #define SERIF_SPECIES_HO_160
+#endif // SERIF_SPECIES_HO_160
+#ifndef SERIF_SPECIES_ER_160
+    #define SERIF_SPECIES_ER_160
+#endif // SERIF_SPECIES_ER_160
+#ifndef SERIF_SPECIES_TM_160
+    #define SERIF_SPECIES_TM_160
+#endif // SERIF_SPECIES_TM_160
+#ifndef SERIF_SPECIES_YB_160
+    #define SERIF_SPECIES_YB_160
+#endif // SERIF_SPECIES_YB_160
+#ifndef SERIF_SPECIES_LU_160
+    #define SERIF_SPECIES_LU_160
+#endif // SERIF_SPECIES_LU_160
+#ifndef SERIF_SPECIES_HF_160
+    #define SERIF_SPECIES_HF_160
+#endif // SERIF_SPECIES_HF_160
+#ifndef SERIF_SPECIES_TA_160
+    #define SERIF_SPECIES_TA_160
+#endif // SERIF_SPECIES_TA_160
+#ifndef SERIF_SPECIES_W_160
+    #define SERIF_SPECIES_W_160
+#endif // SERIF_SPECIES_W_160
+#ifndef SERIF_SPECIES_RE_160
+    #define SERIF_SPECIES_RE_160
+#endif // SERIF_SPECIES_RE_160
+#ifndef SERIF_SPECIES_PR_161
+    #define SERIF_SPECIES_PR_161
+#endif // SERIF_SPECIES_PR_161
+#ifndef SERIF_SPECIES_ND_161
+    #define SERIF_SPECIES_ND_161
+#endif // SERIF_SPECIES_ND_161
+#ifndef SERIF_SPECIES_PM_161
+    #define SERIF_SPECIES_PM_161
+#endif // SERIF_SPECIES_PM_161
+#ifndef SERIF_SPECIES_SM_161
+    #define SERIF_SPECIES_SM_161
+#endif // SERIF_SPECIES_SM_161
+#ifndef SERIF_SPECIES_EU_161
+    #define SERIF_SPECIES_EU_161
+#endif // SERIF_SPECIES_EU_161
+#ifndef SERIF_SPECIES_GD_161
+    #define SERIF_SPECIES_GD_161
+#endif // SERIF_SPECIES_GD_161
+#ifndef SERIF_SPECIES_TB_161
+    #define SERIF_SPECIES_TB_161
+#endif // SERIF_SPECIES_TB_161
+#ifndef SERIF_SPECIES_DY_161
+    #define SERIF_SPECIES_DY_161
+#endif // SERIF_SPECIES_DY_161
+#ifndef SERIF_SPECIES_HO_161
+    #define SERIF_SPECIES_HO_161
+#endif // SERIF_SPECIES_HO_161
+#ifndef SERIF_SPECIES_ER_161
+    #define SERIF_SPECIES_ER_161
+#endif // SERIF_SPECIES_ER_161
+#ifndef SERIF_SPECIES_TM_161
+    #define SERIF_SPECIES_TM_161
+#endif // SERIF_SPECIES_TM_161
+#ifndef SERIF_SPECIES_YB_161
+    #define SERIF_SPECIES_YB_161
+#endif // SERIF_SPECIES_YB_161
+#ifndef SERIF_SPECIES_LU_161
+    #define SERIF_SPECIES_LU_161
+#endif // SERIF_SPECIES_LU_161
+#ifndef SERIF_SPECIES_HF_161
+    #define SERIF_SPECIES_HF_161
+#endif // SERIF_SPECIES_HF_161
+#ifndef SERIF_SPECIES_TA_161
+    #define SERIF_SPECIES_TA_161
+#endif // SERIF_SPECIES_TA_161
+#ifndef SERIF_SPECIES_W_161
+    #define SERIF_SPECIES_W_161
+#endif // SERIF_SPECIES_W_161
+#ifndef SERIF_SPECIES_RE_161
+    #define SERIF_SPECIES_RE_161
+#endif // SERIF_SPECIES_RE_161
+#ifndef SERIF_SPECIES_OS_161
+    #define SERIF_SPECIES_OS_161
+#endif // SERIF_SPECIES_OS_161
+#ifndef SERIF_SPECIES_ND_162
+    #define SERIF_SPECIES_ND_162
+#endif // SERIF_SPECIES_ND_162
+#ifndef SERIF_SPECIES_PM_162
+    #define SERIF_SPECIES_PM_162
+#endif // SERIF_SPECIES_PM_162
+#ifndef SERIF_SPECIES_SM_162
+    #define SERIF_SPECIES_SM_162
+#endif // SERIF_SPECIES_SM_162
+#ifndef SERIF_SPECIES_EU_162
+    #define SERIF_SPECIES_EU_162
+#endif // SERIF_SPECIES_EU_162
+#ifndef SERIF_SPECIES_GD_162
+    #define SERIF_SPECIES_GD_162
+#endif // SERIF_SPECIES_GD_162
+#ifndef SERIF_SPECIES_TB_162
+    #define SERIF_SPECIES_TB_162
+#endif // SERIF_SPECIES_TB_162
+#ifndef SERIF_SPECIES_DY_162
+    #define SERIF_SPECIES_DY_162
+#endif // SERIF_SPECIES_DY_162
+#ifndef SERIF_SPECIES_HO_162
+    #define SERIF_SPECIES_HO_162
+#endif // SERIF_SPECIES_HO_162
+#ifndef SERIF_SPECIES_ER_162
+    #define SERIF_SPECIES_ER_162
+#endif // SERIF_SPECIES_ER_162
+#ifndef SERIF_SPECIES_TM_162
+    #define SERIF_SPECIES_TM_162
+#endif // SERIF_SPECIES_TM_162
+#ifndef SERIF_SPECIES_YB_162
+    #define SERIF_SPECIES_YB_162
+#endif // SERIF_SPECIES_YB_162
+#ifndef SERIF_SPECIES_LU_162
+    #define SERIF_SPECIES_LU_162
+#endif // SERIF_SPECIES_LU_162
+#ifndef SERIF_SPECIES_HF_162
+    #define SERIF_SPECIES_HF_162
+#endif // SERIF_SPECIES_HF_162
+#ifndef SERIF_SPECIES_TA_162
+    #define SERIF_SPECIES_TA_162
+#endif // SERIF_SPECIES_TA_162
+#ifndef SERIF_SPECIES_W_162
+    #define SERIF_SPECIES_W_162
+#endif // SERIF_SPECIES_W_162
+#ifndef SERIF_SPECIES_RE_162
+    #define SERIF_SPECIES_RE_162
+#endif // SERIF_SPECIES_RE_162
+#ifndef SERIF_SPECIES_OS_162
+    #define SERIF_SPECIES_OS_162
+#endif // SERIF_SPECIES_OS_162
+#ifndef SERIF_SPECIES_ND_163
+    #define SERIF_SPECIES_ND_163
+#endif // SERIF_SPECIES_ND_163
+#ifndef SERIF_SPECIES_PM_163
+    #define SERIF_SPECIES_PM_163
+#endif // SERIF_SPECIES_PM_163
+#ifndef SERIF_SPECIES_SM_163
+    #define SERIF_SPECIES_SM_163
+#endif // SERIF_SPECIES_SM_163
+#ifndef SERIF_SPECIES_EU_163
+    #define SERIF_SPECIES_EU_163
+#endif // SERIF_SPECIES_EU_163
+#ifndef SERIF_SPECIES_GD_163
+    #define SERIF_SPECIES_GD_163
+#endif // SERIF_SPECIES_GD_163
+#ifndef SERIF_SPECIES_TB_163
+    #define SERIF_SPECIES_TB_163
+#endif // SERIF_SPECIES_TB_163
+#ifndef SERIF_SPECIES_DY_163
+    #define SERIF_SPECIES_DY_163
+#endif // SERIF_SPECIES_DY_163
+#ifndef SERIF_SPECIES_HO_163
+    #define SERIF_SPECIES_HO_163
+#endif // SERIF_SPECIES_HO_163
+#ifndef SERIF_SPECIES_ER_163
+    #define SERIF_SPECIES_ER_163
+#endif // SERIF_SPECIES_ER_163
+#ifndef SERIF_SPECIES_TM_163
+    #define SERIF_SPECIES_TM_163
+#endif // SERIF_SPECIES_TM_163
+#ifndef SERIF_SPECIES_YB_163
+    #define SERIF_SPECIES_YB_163
+#endif // SERIF_SPECIES_YB_163
+#ifndef SERIF_SPECIES_LU_163
+    #define SERIF_SPECIES_LU_163
+#endif // SERIF_SPECIES_LU_163
+#ifndef SERIF_SPECIES_HF_163
+    #define SERIF_SPECIES_HF_163
+#endif // SERIF_SPECIES_HF_163
+#ifndef SERIF_SPECIES_TA_163
+    #define SERIF_SPECIES_TA_163
+#endif // SERIF_SPECIES_TA_163
+#ifndef SERIF_SPECIES_W_163
+    #define SERIF_SPECIES_W_163
+#endif // SERIF_SPECIES_W_163
+#ifndef SERIF_SPECIES_RE_163
+    #define SERIF_SPECIES_RE_163
+#endif // SERIF_SPECIES_RE_163
+#ifndef SERIF_SPECIES_OS_163
+    #define SERIF_SPECIES_OS_163
+#endif // SERIF_SPECIES_OS_163
+#ifndef SERIF_SPECIES_IR_163
+    #define SERIF_SPECIES_IR_163
+#endif // SERIF_SPECIES_IR_163
+#ifndef SERIF_SPECIES_PM_164
+    #define SERIF_SPECIES_PM_164
+#endif // SERIF_SPECIES_PM_164
+#ifndef SERIF_SPECIES_SM_164
+    #define SERIF_SPECIES_SM_164
+#endif // SERIF_SPECIES_SM_164
+#ifndef SERIF_SPECIES_EU_164
+    #define SERIF_SPECIES_EU_164
+#endif // SERIF_SPECIES_EU_164
+#ifndef SERIF_SPECIES_GD_164
+    #define SERIF_SPECIES_GD_164
+#endif // SERIF_SPECIES_GD_164
+#ifndef SERIF_SPECIES_TB_164
+    #define SERIF_SPECIES_TB_164
+#endif // SERIF_SPECIES_TB_164
+#ifndef SERIF_SPECIES_DY_164
+    #define SERIF_SPECIES_DY_164
+#endif // SERIF_SPECIES_DY_164
+#ifndef SERIF_SPECIES_HO_164
+    #define SERIF_SPECIES_HO_164
+#endif // SERIF_SPECIES_HO_164
+#ifndef SERIF_SPECIES_ER_164
+    #define SERIF_SPECIES_ER_164
+#endif // SERIF_SPECIES_ER_164
+#ifndef SERIF_SPECIES_TM_164
+    #define SERIF_SPECIES_TM_164
+#endif // SERIF_SPECIES_TM_164
+#ifndef SERIF_SPECIES_YB_164
+    #define SERIF_SPECIES_YB_164
+#endif // SERIF_SPECIES_YB_164
+#ifndef SERIF_SPECIES_LU_164
+    #define SERIF_SPECIES_LU_164
+#endif // SERIF_SPECIES_LU_164
+#ifndef SERIF_SPECIES_HF_164
+    #define SERIF_SPECIES_HF_164
+#endif // SERIF_SPECIES_HF_164
+#ifndef SERIF_SPECIES_TA_164
+    #define SERIF_SPECIES_TA_164
+#endif // SERIF_SPECIES_TA_164
+#ifndef SERIF_SPECIES_W_164
+    #define SERIF_SPECIES_W_164
+#endif // SERIF_SPECIES_W_164
+#ifndef SERIF_SPECIES_RE_164
+    #define SERIF_SPECIES_RE_164
+#endif // SERIF_SPECIES_RE_164
+#ifndef SERIF_SPECIES_OS_164
+    #define SERIF_SPECIES_OS_164
+#endif // SERIF_SPECIES_OS_164
+#ifndef SERIF_SPECIES_IR_164
+    #define SERIF_SPECIES_IR_164
+#endif // SERIF_SPECIES_IR_164
+#ifndef SERIF_SPECIES_PM_165
+    #define SERIF_SPECIES_PM_165
+#endif // SERIF_SPECIES_PM_165
+#ifndef SERIF_SPECIES_SM_165
+    #define SERIF_SPECIES_SM_165
+#endif // SERIF_SPECIES_SM_165
+#ifndef SERIF_SPECIES_EU_165
+    #define SERIF_SPECIES_EU_165
+#endif // SERIF_SPECIES_EU_165
+#ifndef SERIF_SPECIES_GD_165
+    #define SERIF_SPECIES_GD_165
+#endif // SERIF_SPECIES_GD_165
+#ifndef SERIF_SPECIES_TB_165
+    #define SERIF_SPECIES_TB_165
+#endif // SERIF_SPECIES_TB_165
+#ifndef SERIF_SPECIES_DY_165
+    #define SERIF_SPECIES_DY_165
+#endif // SERIF_SPECIES_DY_165
+#ifndef SERIF_SPECIES_HO_165
+    #define SERIF_SPECIES_HO_165
+#endif // SERIF_SPECIES_HO_165
+#ifndef SERIF_SPECIES_ER_165
+    #define SERIF_SPECIES_ER_165
+#endif // SERIF_SPECIES_ER_165
+#ifndef SERIF_SPECIES_TM_165
+    #define SERIF_SPECIES_TM_165
+#endif // SERIF_SPECIES_TM_165
+#ifndef SERIF_SPECIES_YB_165
+    #define SERIF_SPECIES_YB_165
+#endif // SERIF_SPECIES_YB_165
+#ifndef SERIF_SPECIES_LU_165
+    #define SERIF_SPECIES_LU_165
+#endif // SERIF_SPECIES_LU_165
+#ifndef SERIF_SPECIES_HF_165
+    #define SERIF_SPECIES_HF_165
+#endif // SERIF_SPECIES_HF_165
+#ifndef SERIF_SPECIES_TA_165
+    #define SERIF_SPECIES_TA_165
+#endif // SERIF_SPECIES_TA_165
+#ifndef SERIF_SPECIES_W_165
+    #define SERIF_SPECIES_W_165
+#endif // SERIF_SPECIES_W_165
+#ifndef SERIF_SPECIES_RE_165
+    #define SERIF_SPECIES_RE_165
+#endif // SERIF_SPECIES_RE_165
+#ifndef SERIF_SPECIES_OS_165
+    #define SERIF_SPECIES_OS_165
+#endif // SERIF_SPECIES_OS_165
+#ifndef SERIF_SPECIES_IR_165
+    #define SERIF_SPECIES_IR_165
+#endif // SERIF_SPECIES_IR_165
+#ifndef SERIF_SPECIES_PT_165
+    #define SERIF_SPECIES_PT_165
+#endif // SERIF_SPECIES_PT_165
+#ifndef SERIF_SPECIES_SM_166
+    #define SERIF_SPECIES_SM_166
+#endif // SERIF_SPECIES_SM_166
+#ifndef SERIF_SPECIES_EU_166
+    #define SERIF_SPECIES_EU_166
+#endif // SERIF_SPECIES_EU_166
+#ifndef SERIF_SPECIES_GD_166
+    #define SERIF_SPECIES_GD_166
+#endif // SERIF_SPECIES_GD_166
+#ifndef SERIF_SPECIES_TB_166
+    #define SERIF_SPECIES_TB_166
+#endif // SERIF_SPECIES_TB_166
+#ifndef SERIF_SPECIES_DY_166
+    #define SERIF_SPECIES_DY_166
+#endif // SERIF_SPECIES_DY_166
+#ifndef SERIF_SPECIES_HO_166
+    #define SERIF_SPECIES_HO_166
+#endif // SERIF_SPECIES_HO_166
+#ifndef SERIF_SPECIES_ER_166
+    #define SERIF_SPECIES_ER_166
+#endif // SERIF_SPECIES_ER_166
+#ifndef SERIF_SPECIES_TM_166
+    #define SERIF_SPECIES_TM_166
+#endif // SERIF_SPECIES_TM_166
+#ifndef SERIF_SPECIES_YB_166
+    #define SERIF_SPECIES_YB_166
+#endif // SERIF_SPECIES_YB_166
+#ifndef SERIF_SPECIES_LU_166
+    #define SERIF_SPECIES_LU_166
+#endif // SERIF_SPECIES_LU_166
+#ifndef SERIF_SPECIES_HF_166
+    #define SERIF_SPECIES_HF_166
+#endif // SERIF_SPECIES_HF_166
+#ifndef SERIF_SPECIES_TA_166
+    #define SERIF_SPECIES_TA_166
+#endif // SERIF_SPECIES_TA_166
+#ifndef SERIF_SPECIES_W_166
+    #define SERIF_SPECIES_W_166
+#endif // SERIF_SPECIES_W_166
+#ifndef SERIF_SPECIES_RE_166
+    #define SERIF_SPECIES_RE_166
+#endif // SERIF_SPECIES_RE_166
+#ifndef SERIF_SPECIES_OS_166
+    #define SERIF_SPECIES_OS_166
+#endif // SERIF_SPECIES_OS_166
+#ifndef SERIF_SPECIES_IR_166
+    #define SERIF_SPECIES_IR_166
+#endif // SERIF_SPECIES_IR_166
+#ifndef SERIF_SPECIES_PT_166
+    #define SERIF_SPECIES_PT_166
+#endif // SERIF_SPECIES_PT_166
+#ifndef SERIF_SPECIES_SM_167
+    #define SERIF_SPECIES_SM_167
+#endif // SERIF_SPECIES_SM_167
+#ifndef SERIF_SPECIES_EU_167
+    #define SERIF_SPECIES_EU_167
+#endif // SERIF_SPECIES_EU_167
+#ifndef SERIF_SPECIES_GD_167
+    #define SERIF_SPECIES_GD_167
+#endif // SERIF_SPECIES_GD_167
+#ifndef SERIF_SPECIES_TB_167
+    #define SERIF_SPECIES_TB_167
+#endif // SERIF_SPECIES_TB_167
+#ifndef SERIF_SPECIES_DY_167
+    #define SERIF_SPECIES_DY_167
+#endif // SERIF_SPECIES_DY_167
+#ifndef SERIF_SPECIES_HO_167
+    #define SERIF_SPECIES_HO_167
+#endif // SERIF_SPECIES_HO_167
+#ifndef SERIF_SPECIES_ER_167
+    #define SERIF_SPECIES_ER_167
+#endif // SERIF_SPECIES_ER_167
+#ifndef SERIF_SPECIES_TM_167
+    #define SERIF_SPECIES_TM_167
+#endif // SERIF_SPECIES_TM_167
+#ifndef SERIF_SPECIES_YB_167
+    #define SERIF_SPECIES_YB_167
+#endif // SERIF_SPECIES_YB_167
+#ifndef SERIF_SPECIES_LU_167
+    #define SERIF_SPECIES_LU_167
+#endif // SERIF_SPECIES_LU_167
+#ifndef SERIF_SPECIES_HF_167
+    #define SERIF_SPECIES_HF_167
+#endif // SERIF_SPECIES_HF_167
+#ifndef SERIF_SPECIES_TA_167
+    #define SERIF_SPECIES_TA_167
+#endif // SERIF_SPECIES_TA_167
+#ifndef SERIF_SPECIES_W_167
+    #define SERIF_SPECIES_W_167
+#endif // SERIF_SPECIES_W_167
+#ifndef SERIF_SPECIES_RE_167
+    #define SERIF_SPECIES_RE_167
+#endif // SERIF_SPECIES_RE_167
+#ifndef SERIF_SPECIES_OS_167
+    #define SERIF_SPECIES_OS_167
+#endif // SERIF_SPECIES_OS_167
+#ifndef SERIF_SPECIES_IR_167
+    #define SERIF_SPECIES_IR_167
+#endif // SERIF_SPECIES_IR_167
+#ifndef SERIF_SPECIES_PT_167
+    #define SERIF_SPECIES_PT_167
+#endif // SERIF_SPECIES_PT_167
+#ifndef SERIF_SPECIES_SM_168
+    #define SERIF_SPECIES_SM_168
+#endif // SERIF_SPECIES_SM_168
+#ifndef SERIF_SPECIES_EU_168
+    #define SERIF_SPECIES_EU_168
+#endif // SERIF_SPECIES_EU_168
+#ifndef SERIF_SPECIES_GD_168
+    #define SERIF_SPECIES_GD_168
+#endif // SERIF_SPECIES_GD_168
+#ifndef SERIF_SPECIES_TB_168
+    #define SERIF_SPECIES_TB_168
+#endif // SERIF_SPECIES_TB_168
+#ifndef SERIF_SPECIES_DY_168
+    #define SERIF_SPECIES_DY_168
+#endif // SERIF_SPECIES_DY_168
+#ifndef SERIF_SPECIES_HO_168
+    #define SERIF_SPECIES_HO_168
+#endif // SERIF_SPECIES_HO_168
+#ifndef SERIF_SPECIES_ER_168
+    #define SERIF_SPECIES_ER_168
+#endif // SERIF_SPECIES_ER_168
+#ifndef SERIF_SPECIES_TM_168
+    #define SERIF_SPECIES_TM_168
+#endif // SERIF_SPECIES_TM_168
+#ifndef SERIF_SPECIES_YB_168
+    #define SERIF_SPECIES_YB_168
+#endif // SERIF_SPECIES_YB_168
+#ifndef SERIF_SPECIES_LU_168
+    #define SERIF_SPECIES_LU_168
+#endif // SERIF_SPECIES_LU_168
+#ifndef SERIF_SPECIES_HF_168
+    #define SERIF_SPECIES_HF_168
+#endif // SERIF_SPECIES_HF_168
+#ifndef SERIF_SPECIES_TA_168
+    #define SERIF_SPECIES_TA_168
+#endif // SERIF_SPECIES_TA_168
+#ifndef SERIF_SPECIES_W_168
+    #define SERIF_SPECIES_W_168
+#endif // SERIF_SPECIES_W_168
+#ifndef SERIF_SPECIES_RE_168
+    #define SERIF_SPECIES_RE_168
+#endif // SERIF_SPECIES_RE_168
+#ifndef SERIF_SPECIES_OS_168
+    #define SERIF_SPECIES_OS_168
+#endif // SERIF_SPECIES_OS_168
+#ifndef SERIF_SPECIES_IR_168
+    #define SERIF_SPECIES_IR_168
+#endif // SERIF_SPECIES_IR_168
+#ifndef SERIF_SPECIES_PT_168
+    #define SERIF_SPECIES_PT_168
+#endif // SERIF_SPECIES_PT_168
+#ifndef SERIF_SPECIES_AU_168
+    #define SERIF_SPECIES_AU_168
+#endif // SERIF_SPECIES_AU_168
+#ifndef SERIF_SPECIES_EU_169
+    #define SERIF_SPECIES_EU_169
+#endif // SERIF_SPECIES_EU_169
+#ifndef SERIF_SPECIES_GD_169
+    #define SERIF_SPECIES_GD_169
+#endif // SERIF_SPECIES_GD_169
+#ifndef SERIF_SPECIES_TB_169
+    #define SERIF_SPECIES_TB_169
+#endif // SERIF_SPECIES_TB_169
+#ifndef SERIF_SPECIES_DY_169
+    #define SERIF_SPECIES_DY_169
+#endif // SERIF_SPECIES_DY_169
+#ifndef SERIF_SPECIES_HO_169
+    #define SERIF_SPECIES_HO_169
+#endif // SERIF_SPECIES_HO_169
+#ifndef SERIF_SPECIES_ER_169
+    #define SERIF_SPECIES_ER_169
+#endif // SERIF_SPECIES_ER_169
+#ifndef SERIF_SPECIES_TM_169
+    #define SERIF_SPECIES_TM_169
+#endif // SERIF_SPECIES_TM_169
+#ifndef SERIF_SPECIES_YB_169
+    #define SERIF_SPECIES_YB_169
+#endif // SERIF_SPECIES_YB_169
+#ifndef SERIF_SPECIES_LU_169
+    #define SERIF_SPECIES_LU_169
+#endif // SERIF_SPECIES_LU_169
+#ifndef SERIF_SPECIES_HF_169
+    #define SERIF_SPECIES_HF_169
+#endif // SERIF_SPECIES_HF_169
+#ifndef SERIF_SPECIES_TA_169
+    #define SERIF_SPECIES_TA_169
+#endif // SERIF_SPECIES_TA_169
+#ifndef SERIF_SPECIES_W_169
+    #define SERIF_SPECIES_W_169
+#endif // SERIF_SPECIES_W_169
+#ifndef SERIF_SPECIES_RE_169
+    #define SERIF_SPECIES_RE_169
+#endif // SERIF_SPECIES_RE_169
+#ifndef SERIF_SPECIES_OS_169
+    #define SERIF_SPECIES_OS_169
+#endif // SERIF_SPECIES_OS_169
+#ifndef SERIF_SPECIES_IR_169
+    #define SERIF_SPECIES_IR_169
+#endif // SERIF_SPECIES_IR_169
+#ifndef SERIF_SPECIES_PT_169
+    #define SERIF_SPECIES_PT_169
+#endif // SERIF_SPECIES_PT_169
+#ifndef SERIF_SPECIES_AU_169
+    #define SERIF_SPECIES_AU_169
+#endif // SERIF_SPECIES_AU_169
+#ifndef SERIF_SPECIES_EU_170
+    #define SERIF_SPECIES_EU_170
+#endif // SERIF_SPECIES_EU_170
+#ifndef SERIF_SPECIES_GD_170
+    #define SERIF_SPECIES_GD_170
+#endif // SERIF_SPECIES_GD_170
+#ifndef SERIF_SPECIES_TB_170
+    #define SERIF_SPECIES_TB_170
+#endif // SERIF_SPECIES_TB_170
+#ifndef SERIF_SPECIES_DY_170
+    #define SERIF_SPECIES_DY_170
+#endif // SERIF_SPECIES_DY_170
+#ifndef SERIF_SPECIES_HO_170
+    #define SERIF_SPECIES_HO_170
+#endif // SERIF_SPECIES_HO_170
+#ifndef SERIF_SPECIES_ER_170
+    #define SERIF_SPECIES_ER_170
+#endif // SERIF_SPECIES_ER_170
+#ifndef SERIF_SPECIES_TM_170
+    #define SERIF_SPECIES_TM_170
+#endif // SERIF_SPECIES_TM_170
+#ifndef SERIF_SPECIES_YB_170
+    #define SERIF_SPECIES_YB_170
+#endif // SERIF_SPECIES_YB_170
+#ifndef SERIF_SPECIES_LU_170
+    #define SERIF_SPECIES_LU_170
+#endif // SERIF_SPECIES_LU_170
+#ifndef SERIF_SPECIES_HF_170
+    #define SERIF_SPECIES_HF_170
+#endif // SERIF_SPECIES_HF_170
+#ifndef SERIF_SPECIES_TA_170
+    #define SERIF_SPECIES_TA_170
+#endif // SERIF_SPECIES_TA_170
+#ifndef SERIF_SPECIES_W_170
+    #define SERIF_SPECIES_W_170
+#endif // SERIF_SPECIES_W_170
+#ifndef SERIF_SPECIES_RE_170
+    #define SERIF_SPECIES_RE_170
+#endif // SERIF_SPECIES_RE_170
+#ifndef SERIF_SPECIES_OS_170
+    #define SERIF_SPECIES_OS_170
+#endif // SERIF_SPECIES_OS_170
+#ifndef SERIF_SPECIES_IR_170
+    #define SERIF_SPECIES_IR_170
+#endif // SERIF_SPECIES_IR_170
+#ifndef SERIF_SPECIES_PT_170
+    #define SERIF_SPECIES_PT_170
+#endif // SERIF_SPECIES_PT_170
+#ifndef SERIF_SPECIES_AU_170
+    #define SERIF_SPECIES_AU_170
+#endif // SERIF_SPECIES_AU_170
+#ifndef SERIF_SPECIES_HG_170
+    #define SERIF_SPECIES_HG_170
+#endif // SERIF_SPECIES_HG_170
+#ifndef SERIF_SPECIES_GD_171
+    #define SERIF_SPECIES_GD_171
+#endif // SERIF_SPECIES_GD_171
+#ifndef SERIF_SPECIES_TB_171
+    #define SERIF_SPECIES_TB_171
+#endif // SERIF_SPECIES_TB_171
+#ifndef SERIF_SPECIES_DY_171
+    #define SERIF_SPECIES_DY_171
+#endif // SERIF_SPECIES_DY_171
+#ifndef SERIF_SPECIES_HO_171
+    #define SERIF_SPECIES_HO_171
+#endif // SERIF_SPECIES_HO_171
+#ifndef SERIF_SPECIES_ER_171
+    #define SERIF_SPECIES_ER_171
+#endif // SERIF_SPECIES_ER_171
+#ifndef SERIF_SPECIES_TM_171
+    #define SERIF_SPECIES_TM_171
+#endif // SERIF_SPECIES_TM_171
+#ifndef SERIF_SPECIES_YB_171
+    #define SERIF_SPECIES_YB_171
+#endif // SERIF_SPECIES_YB_171
+#ifndef SERIF_SPECIES_LU_171
+    #define SERIF_SPECIES_LU_171
+#endif // SERIF_SPECIES_LU_171
+#ifndef SERIF_SPECIES_HF_171
+    #define SERIF_SPECIES_HF_171
+#endif // SERIF_SPECIES_HF_171
+#ifndef SERIF_SPECIES_TA_171
+    #define SERIF_SPECIES_TA_171
+#endif // SERIF_SPECIES_TA_171
+#ifndef SERIF_SPECIES_W_171
+    #define SERIF_SPECIES_W_171
+#endif // SERIF_SPECIES_W_171
+#ifndef SERIF_SPECIES_RE_171
+    #define SERIF_SPECIES_RE_171
+#endif // SERIF_SPECIES_RE_171
+#ifndef SERIF_SPECIES_OS_171
+    #define SERIF_SPECIES_OS_171
+#endif // SERIF_SPECIES_OS_171
+#ifndef SERIF_SPECIES_IR_171
+    #define SERIF_SPECIES_IR_171
+#endif // SERIF_SPECIES_IR_171
+#ifndef SERIF_SPECIES_PT_171
+    #define SERIF_SPECIES_PT_171
+#endif // SERIF_SPECIES_PT_171
+#ifndef SERIF_SPECIES_AU_171
+    #define SERIF_SPECIES_AU_171
+#endif // SERIF_SPECIES_AU_171
+#ifndef SERIF_SPECIES_HG_171
+    #define SERIF_SPECIES_HG_171
+#endif // SERIF_SPECIES_HG_171
+#ifndef SERIF_SPECIES_GD_172
+    #define SERIF_SPECIES_GD_172
+#endif // SERIF_SPECIES_GD_172
+#ifndef SERIF_SPECIES_TB_172
+    #define SERIF_SPECIES_TB_172
+#endif // SERIF_SPECIES_TB_172
+#ifndef SERIF_SPECIES_DY_172
+    #define SERIF_SPECIES_DY_172
+#endif // SERIF_SPECIES_DY_172
+#ifndef SERIF_SPECIES_HO_172
+    #define SERIF_SPECIES_HO_172
+#endif // SERIF_SPECIES_HO_172
+#ifndef SERIF_SPECIES_ER_172
+    #define SERIF_SPECIES_ER_172
+#endif // SERIF_SPECIES_ER_172
+#ifndef SERIF_SPECIES_TM_172
+    #define SERIF_SPECIES_TM_172
+#endif // SERIF_SPECIES_TM_172
+#ifndef SERIF_SPECIES_YB_172
+    #define SERIF_SPECIES_YB_172
+#endif // SERIF_SPECIES_YB_172
+#ifndef SERIF_SPECIES_LU_172
+    #define SERIF_SPECIES_LU_172
+#endif // SERIF_SPECIES_LU_172
+#ifndef SERIF_SPECIES_HF_172
+    #define SERIF_SPECIES_HF_172
+#endif // SERIF_SPECIES_HF_172
+#ifndef SERIF_SPECIES_TA_172
+    #define SERIF_SPECIES_TA_172
+#endif // SERIF_SPECIES_TA_172
+#ifndef SERIF_SPECIES_W_172
+    #define SERIF_SPECIES_W_172
+#endif // SERIF_SPECIES_W_172
+#ifndef SERIF_SPECIES_RE_172
+    #define SERIF_SPECIES_RE_172
+#endif // SERIF_SPECIES_RE_172
+#ifndef SERIF_SPECIES_OS_172
+    #define SERIF_SPECIES_OS_172
+#endif // SERIF_SPECIES_OS_172
+#ifndef SERIF_SPECIES_IR_172
+    #define SERIF_SPECIES_IR_172
+#endif // SERIF_SPECIES_IR_172
+#ifndef SERIF_SPECIES_PT_172
+    #define SERIF_SPECIES_PT_172
+#endif // SERIF_SPECIES_PT_172
+#ifndef SERIF_SPECIES_AU_172
+    #define SERIF_SPECIES_AU_172
+#endif // SERIF_SPECIES_AU_172
+#ifndef SERIF_SPECIES_HG_172
+    #define SERIF_SPECIES_HG_172
+#endif // SERIF_SPECIES_HG_172
+#ifndef SERIF_SPECIES_TB_173
+    #define SERIF_SPECIES_TB_173
+#endif // SERIF_SPECIES_TB_173
+#ifndef SERIF_SPECIES_DY_173
+    #define SERIF_SPECIES_DY_173
+#endif // SERIF_SPECIES_DY_173
+#ifndef SERIF_SPECIES_HO_173
+    #define SERIF_SPECIES_HO_173
+#endif // SERIF_SPECIES_HO_173
+#ifndef SERIF_SPECIES_ER_173
+    #define SERIF_SPECIES_ER_173
+#endif // SERIF_SPECIES_ER_173
+#ifndef SERIF_SPECIES_TM_173
+    #define SERIF_SPECIES_TM_173
+#endif // SERIF_SPECIES_TM_173
+#ifndef SERIF_SPECIES_YB_173
+    #define SERIF_SPECIES_YB_173
+#endif // SERIF_SPECIES_YB_173
+#ifndef SERIF_SPECIES_LU_173
+    #define SERIF_SPECIES_LU_173
+#endif // SERIF_SPECIES_LU_173
+#ifndef SERIF_SPECIES_HF_173
+    #define SERIF_SPECIES_HF_173
+#endif // SERIF_SPECIES_HF_173
+#ifndef SERIF_SPECIES_TA_173
+    #define SERIF_SPECIES_TA_173
+#endif // SERIF_SPECIES_TA_173
+#ifndef SERIF_SPECIES_W_173
+    #define SERIF_SPECIES_W_173
+#endif // SERIF_SPECIES_W_173
+#ifndef SERIF_SPECIES_RE_173
+    #define SERIF_SPECIES_RE_173
+#endif // SERIF_SPECIES_RE_173
+#ifndef SERIF_SPECIES_OS_173
+    #define SERIF_SPECIES_OS_173
+#endif // SERIF_SPECIES_OS_173
+#ifndef SERIF_SPECIES_IR_173
+    #define SERIF_SPECIES_IR_173
+#endif // SERIF_SPECIES_IR_173
+#ifndef SERIF_SPECIES_PT_173
+    #define SERIF_SPECIES_PT_173
+#endif // SERIF_SPECIES_PT_173
+#ifndef SERIF_SPECIES_AU_173
+    #define SERIF_SPECIES_AU_173
+#endif // SERIF_SPECIES_AU_173
+#ifndef SERIF_SPECIES_HG_173
+    #define SERIF_SPECIES_HG_173
+#endif // SERIF_SPECIES_HG_173
+#ifndef SERIF_SPECIES_TB_174
+    #define SERIF_SPECIES_TB_174
+#endif // SERIF_SPECIES_TB_174
+#ifndef SERIF_SPECIES_DY_174
+    #define SERIF_SPECIES_DY_174
+#endif // SERIF_SPECIES_DY_174
+#ifndef SERIF_SPECIES_HO_174
+    #define SERIF_SPECIES_HO_174
+#endif // SERIF_SPECIES_HO_174
+#ifndef SERIF_SPECIES_ER_174
+    #define SERIF_SPECIES_ER_174
+#endif // SERIF_SPECIES_ER_174
+#ifndef SERIF_SPECIES_TM_174
+    #define SERIF_SPECIES_TM_174
+#endif // SERIF_SPECIES_TM_174
+#ifndef SERIF_SPECIES_YB_174
+    #define SERIF_SPECIES_YB_174
+#endif // SERIF_SPECIES_YB_174
+#ifndef SERIF_SPECIES_LU_174
+    #define SERIF_SPECIES_LU_174
+#endif // SERIF_SPECIES_LU_174
+#ifndef SERIF_SPECIES_HF_174
+    #define SERIF_SPECIES_HF_174
+#endif // SERIF_SPECIES_HF_174
+#ifndef SERIF_SPECIES_TA_174
+    #define SERIF_SPECIES_TA_174
+#endif // SERIF_SPECIES_TA_174
+#ifndef SERIF_SPECIES_W_174
+    #define SERIF_SPECIES_W_174
+#endif // SERIF_SPECIES_W_174
+#ifndef SERIF_SPECIES_RE_174
+    #define SERIF_SPECIES_RE_174
+#endif // SERIF_SPECIES_RE_174
+#ifndef SERIF_SPECIES_OS_174
+    #define SERIF_SPECIES_OS_174
+#endif // SERIF_SPECIES_OS_174
+#ifndef SERIF_SPECIES_IR_174
+    #define SERIF_SPECIES_IR_174
+#endif // SERIF_SPECIES_IR_174
+#ifndef SERIF_SPECIES_PT_174
+    #define SERIF_SPECIES_PT_174
+#endif // SERIF_SPECIES_PT_174
+#ifndef SERIF_SPECIES_AU_174
+    #define SERIF_SPECIES_AU_174
+#endif // SERIF_SPECIES_AU_174
+#ifndef SERIF_SPECIES_HG_174
+    #define SERIF_SPECIES_HG_174
+#endif // SERIF_SPECIES_HG_174
+#ifndef SERIF_SPECIES_DY_175
+    #define SERIF_SPECIES_DY_175
+#endif // SERIF_SPECIES_DY_175
+#ifndef SERIF_SPECIES_HO_175
+    #define SERIF_SPECIES_HO_175
+#endif // SERIF_SPECIES_HO_175
+#ifndef SERIF_SPECIES_ER_175
+    #define SERIF_SPECIES_ER_175
+#endif // SERIF_SPECIES_ER_175
+#ifndef SERIF_SPECIES_TM_175
+    #define SERIF_SPECIES_TM_175
+#endif // SERIF_SPECIES_TM_175
+#ifndef SERIF_SPECIES_YB_175
+    #define SERIF_SPECIES_YB_175
+#endif // SERIF_SPECIES_YB_175
+#ifndef SERIF_SPECIES_LU_175
+    #define SERIF_SPECIES_LU_175
+#endif // SERIF_SPECIES_LU_175
+#ifndef SERIF_SPECIES_HF_175
+    #define SERIF_SPECIES_HF_175
+#endif // SERIF_SPECIES_HF_175
+#ifndef SERIF_SPECIES_TA_175
+    #define SERIF_SPECIES_TA_175
+#endif // SERIF_SPECIES_TA_175
+#ifndef SERIF_SPECIES_W_175
+    #define SERIF_SPECIES_W_175
+#endif // SERIF_SPECIES_W_175
+#ifndef SERIF_SPECIES_RE_175
+    #define SERIF_SPECIES_RE_175
+#endif // SERIF_SPECIES_RE_175
+#ifndef SERIF_SPECIES_OS_175
+    #define SERIF_SPECIES_OS_175
+#endif // SERIF_SPECIES_OS_175
+#ifndef SERIF_SPECIES_IR_175
+    #define SERIF_SPECIES_IR_175
+#endif // SERIF_SPECIES_IR_175
+#ifndef SERIF_SPECIES_PT_175
+    #define SERIF_SPECIES_PT_175
+#endif // SERIF_SPECIES_PT_175
+#ifndef SERIF_SPECIES_AU_175
+    #define SERIF_SPECIES_AU_175
+#endif // SERIF_SPECIES_AU_175
+#ifndef SERIF_SPECIES_HG_175
+    #define SERIF_SPECIES_HG_175
+#endif // SERIF_SPECIES_HG_175
+#ifndef SERIF_SPECIES_DY_176
+    #define SERIF_SPECIES_DY_176
+#endif // SERIF_SPECIES_DY_176
+#ifndef SERIF_SPECIES_HO_176
+    #define SERIF_SPECIES_HO_176
+#endif // SERIF_SPECIES_HO_176
+#ifndef SERIF_SPECIES_ER_176
+    #define SERIF_SPECIES_ER_176
+#endif // SERIF_SPECIES_ER_176
+#ifndef SERIF_SPECIES_TM_176
+    #define SERIF_SPECIES_TM_176
+#endif // SERIF_SPECIES_TM_176
+#ifndef SERIF_SPECIES_YB_176
+    #define SERIF_SPECIES_YB_176
+#endif // SERIF_SPECIES_YB_176
+#ifndef SERIF_SPECIES_LU_176
+    #define SERIF_SPECIES_LU_176
+#endif // SERIF_SPECIES_LU_176
+#ifndef SERIF_SPECIES_HF_176
+    #define SERIF_SPECIES_HF_176
+#endif // SERIF_SPECIES_HF_176
+#ifndef SERIF_SPECIES_TA_176
+    #define SERIF_SPECIES_TA_176
+#endif // SERIF_SPECIES_TA_176
+#ifndef SERIF_SPECIES_W_176
+    #define SERIF_SPECIES_W_176
+#endif // SERIF_SPECIES_W_176
+#ifndef SERIF_SPECIES_RE_176
+    #define SERIF_SPECIES_RE_176
+#endif // SERIF_SPECIES_RE_176
+#ifndef SERIF_SPECIES_OS_176
+    #define SERIF_SPECIES_OS_176
+#endif // SERIF_SPECIES_OS_176
+#ifndef SERIF_SPECIES_IR_176
+    #define SERIF_SPECIES_IR_176
+#endif // SERIF_SPECIES_IR_176
+#ifndef SERIF_SPECIES_PT_176
+    #define SERIF_SPECIES_PT_176
+#endif // SERIF_SPECIES_PT_176
+#ifndef SERIF_SPECIES_AU_176
+    #define SERIF_SPECIES_AU_176
+#endif // SERIF_SPECIES_AU_176
+#ifndef SERIF_SPECIES_HG_176
+    #define SERIF_SPECIES_HG_176
+#endif // SERIF_SPECIES_HG_176
+#ifndef SERIF_SPECIES_TL_176
+    #define SERIF_SPECIES_TL_176
+#endif // SERIF_SPECIES_TL_176
+#ifndef SERIF_SPECIES_HO_177
+    #define SERIF_SPECIES_HO_177
+#endif // SERIF_SPECIES_HO_177
+#ifndef SERIF_SPECIES_ER_177
+    #define SERIF_SPECIES_ER_177
+#endif // SERIF_SPECIES_ER_177
+#ifndef SERIF_SPECIES_TM_177
+    #define SERIF_SPECIES_TM_177
+#endif // SERIF_SPECIES_TM_177
+#ifndef SERIF_SPECIES_YB_177
+    #define SERIF_SPECIES_YB_177
+#endif // SERIF_SPECIES_YB_177
+#ifndef SERIF_SPECIES_LU_177
+    #define SERIF_SPECIES_LU_177
+#endif // SERIF_SPECIES_LU_177
+#ifndef SERIF_SPECIES_HF_177
+    #define SERIF_SPECIES_HF_177
+#endif // SERIF_SPECIES_HF_177
+#ifndef SERIF_SPECIES_TA_177
+    #define SERIF_SPECIES_TA_177
+#endif // SERIF_SPECIES_TA_177
+#ifndef SERIF_SPECIES_W_177
+    #define SERIF_SPECIES_W_177
+#endif // SERIF_SPECIES_W_177
+#ifndef SERIF_SPECIES_RE_177
+    #define SERIF_SPECIES_RE_177
+#endif // SERIF_SPECIES_RE_177
+#ifndef SERIF_SPECIES_OS_177
+    #define SERIF_SPECIES_OS_177
+#endif // SERIF_SPECIES_OS_177
+#ifndef SERIF_SPECIES_IR_177
+    #define SERIF_SPECIES_IR_177
+#endif // SERIF_SPECIES_IR_177
+#ifndef SERIF_SPECIES_PT_177
+    #define SERIF_SPECIES_PT_177
+#endif // SERIF_SPECIES_PT_177
+#ifndef SERIF_SPECIES_AU_177
+    #define SERIF_SPECIES_AU_177
+#endif // SERIF_SPECIES_AU_177
+#ifndef SERIF_SPECIES_HG_177
+    #define SERIF_SPECIES_HG_177
+#endif // SERIF_SPECIES_HG_177
+#ifndef SERIF_SPECIES_TL_177
+    #define SERIF_SPECIES_TL_177
+#endif // SERIF_SPECIES_TL_177
+#ifndef SERIF_SPECIES_HO_178
+    #define SERIF_SPECIES_HO_178
+#endif // SERIF_SPECIES_HO_178
+#ifndef SERIF_SPECIES_ER_178
+    #define SERIF_SPECIES_ER_178
+#endif // SERIF_SPECIES_ER_178
+#ifndef SERIF_SPECIES_TM_178
+    #define SERIF_SPECIES_TM_178
+#endif // SERIF_SPECIES_TM_178
+#ifndef SERIF_SPECIES_YB_178
+    #define SERIF_SPECIES_YB_178
+#endif // SERIF_SPECIES_YB_178
+#ifndef SERIF_SPECIES_LU_178
+    #define SERIF_SPECIES_LU_178
+#endif // SERIF_SPECIES_LU_178
+#ifndef SERIF_SPECIES_HF_178
+    #define SERIF_SPECIES_HF_178
+#endif // SERIF_SPECIES_HF_178
+#ifndef SERIF_SPECIES_TA_178
+    #define SERIF_SPECIES_TA_178
+#endif // SERIF_SPECIES_TA_178
+#ifndef SERIF_SPECIES_W_178
+    #define SERIF_SPECIES_W_178
+#endif // SERIF_SPECIES_W_178
+#ifndef SERIF_SPECIES_RE_178
+    #define SERIF_SPECIES_RE_178
+#endif // SERIF_SPECIES_RE_178
+#ifndef SERIF_SPECIES_OS_178
+    #define SERIF_SPECIES_OS_178
+#endif // SERIF_SPECIES_OS_178
+#ifndef SERIF_SPECIES_IR_178
+    #define SERIF_SPECIES_IR_178
+#endif // SERIF_SPECIES_IR_178
+#ifndef SERIF_SPECIES_PT_178
+    #define SERIF_SPECIES_PT_178
+#endif // SERIF_SPECIES_PT_178
+#ifndef SERIF_SPECIES_AU_178
+    #define SERIF_SPECIES_AU_178
+#endif // SERIF_SPECIES_AU_178
+#ifndef SERIF_SPECIES_HG_178
+    #define SERIF_SPECIES_HG_178
+#endif // SERIF_SPECIES_HG_178
+#ifndef SERIF_SPECIES_TL_178
+    #define SERIF_SPECIES_TL_178
+#endif // SERIF_SPECIES_TL_178
+#ifndef SERIF_SPECIES_PB_178
+    #define SERIF_SPECIES_PB_178
+#endif // SERIF_SPECIES_PB_178
+#ifndef SERIF_SPECIES_ER_179
+    #define SERIF_SPECIES_ER_179
+#endif // SERIF_SPECIES_ER_179
+#ifndef SERIF_SPECIES_TM_179
+    #define SERIF_SPECIES_TM_179
+#endif // SERIF_SPECIES_TM_179
+#ifndef SERIF_SPECIES_YB_179
+    #define SERIF_SPECIES_YB_179
+#endif // SERIF_SPECIES_YB_179
+#ifndef SERIF_SPECIES_LU_179
+    #define SERIF_SPECIES_LU_179
+#endif // SERIF_SPECIES_LU_179
+#ifndef SERIF_SPECIES_HF_179
+    #define SERIF_SPECIES_HF_179
+#endif // SERIF_SPECIES_HF_179
+#ifndef SERIF_SPECIES_TA_179
+    #define SERIF_SPECIES_TA_179
+#endif // SERIF_SPECIES_TA_179
+#ifndef SERIF_SPECIES_W_179
+    #define SERIF_SPECIES_W_179
+#endif // SERIF_SPECIES_W_179
+#ifndef SERIF_SPECIES_RE_179
+    #define SERIF_SPECIES_RE_179
+#endif // SERIF_SPECIES_RE_179
+#ifndef SERIF_SPECIES_OS_179
+    #define SERIF_SPECIES_OS_179
+#endif // SERIF_SPECIES_OS_179
+#ifndef SERIF_SPECIES_IR_179
+    #define SERIF_SPECIES_IR_179
+#endif // SERIF_SPECIES_IR_179
+#ifndef SERIF_SPECIES_PT_179
+    #define SERIF_SPECIES_PT_179
+#endif // SERIF_SPECIES_PT_179
+#ifndef SERIF_SPECIES_AU_179
+    #define SERIF_SPECIES_AU_179
+#endif // SERIF_SPECIES_AU_179
+#ifndef SERIF_SPECIES_HG_179
+    #define SERIF_SPECIES_HG_179
+#endif // SERIF_SPECIES_HG_179
+#ifndef SERIF_SPECIES_TL_179
+    #define SERIF_SPECIES_TL_179
+#endif // SERIF_SPECIES_TL_179
+#ifndef SERIF_SPECIES_PB_179
+    #define SERIF_SPECIES_PB_179
+#endif // SERIF_SPECIES_PB_179
+#ifndef SERIF_SPECIES_ER_180
+    #define SERIF_SPECIES_ER_180
+#endif // SERIF_SPECIES_ER_180
+#ifndef SERIF_SPECIES_TM_180
+    #define SERIF_SPECIES_TM_180
+#endif // SERIF_SPECIES_TM_180
+#ifndef SERIF_SPECIES_YB_180
+    #define SERIF_SPECIES_YB_180
+#endif // SERIF_SPECIES_YB_180
+#ifndef SERIF_SPECIES_LU_180
+    #define SERIF_SPECIES_LU_180
+#endif // SERIF_SPECIES_LU_180
+#ifndef SERIF_SPECIES_HF_180
+    #define SERIF_SPECIES_HF_180
+#endif // SERIF_SPECIES_HF_180
+#ifndef SERIF_SPECIES_TA_180
+    #define SERIF_SPECIES_TA_180
+#endif // SERIF_SPECIES_TA_180
+#ifndef SERIF_SPECIES_W_180
+    #define SERIF_SPECIES_W_180
+#endif // SERIF_SPECIES_W_180
+#ifndef SERIF_SPECIES_RE_180
+    #define SERIF_SPECIES_RE_180
+#endif // SERIF_SPECIES_RE_180
+#ifndef SERIF_SPECIES_OS_180
+    #define SERIF_SPECIES_OS_180
+#endif // SERIF_SPECIES_OS_180
+#ifndef SERIF_SPECIES_IR_180
+    #define SERIF_SPECIES_IR_180
+#endif // SERIF_SPECIES_IR_180
+#ifndef SERIF_SPECIES_PT_180
+    #define SERIF_SPECIES_PT_180
+#endif // SERIF_SPECIES_PT_180
+#ifndef SERIF_SPECIES_AU_180
+    #define SERIF_SPECIES_AU_180
+#endif // SERIF_SPECIES_AU_180
+#ifndef SERIF_SPECIES_HG_180
+    #define SERIF_SPECIES_HG_180
+#endif // SERIF_SPECIES_HG_180
+#ifndef SERIF_SPECIES_TL_180
+    #define SERIF_SPECIES_TL_180
+#endif // SERIF_SPECIES_TL_180
+#ifndef SERIF_SPECIES_PB_180
+    #define SERIF_SPECIES_PB_180
+#endif // SERIF_SPECIES_PB_180
+#ifndef SERIF_SPECIES_TM_181
+    #define SERIF_SPECIES_TM_181
+#endif // SERIF_SPECIES_TM_181
+#ifndef SERIF_SPECIES_YB_181
+    #define SERIF_SPECIES_YB_181
+#endif // SERIF_SPECIES_YB_181
+#ifndef SERIF_SPECIES_LU_181
+    #define SERIF_SPECIES_LU_181
+#endif // SERIF_SPECIES_LU_181
+#ifndef SERIF_SPECIES_HF_181
+    #define SERIF_SPECIES_HF_181
+#endif // SERIF_SPECIES_HF_181
+#ifndef SERIF_SPECIES_TA_181
+    #define SERIF_SPECIES_TA_181
+#endif // SERIF_SPECIES_TA_181
+#ifndef SERIF_SPECIES_W_181
+    #define SERIF_SPECIES_W_181
+#endif // SERIF_SPECIES_W_181
+#ifndef SERIF_SPECIES_RE_181
+    #define SERIF_SPECIES_RE_181
+#endif // SERIF_SPECIES_RE_181
+#ifndef SERIF_SPECIES_OS_181
+    #define SERIF_SPECIES_OS_181
+#endif // SERIF_SPECIES_OS_181
+#ifndef SERIF_SPECIES_IR_181
+    #define SERIF_SPECIES_IR_181
+#endif // SERIF_SPECIES_IR_181
+#ifndef SERIF_SPECIES_PT_181
+    #define SERIF_SPECIES_PT_181
+#endif // SERIF_SPECIES_PT_181
+#ifndef SERIF_SPECIES_AU_181
+    #define SERIF_SPECIES_AU_181
+#endif // SERIF_SPECIES_AU_181
+#ifndef SERIF_SPECIES_HG_181
+    #define SERIF_SPECIES_HG_181
+#endif // SERIF_SPECIES_HG_181
+#ifndef SERIF_SPECIES_TL_181
+    #define SERIF_SPECIES_TL_181
+#endif // SERIF_SPECIES_TL_181
+#ifndef SERIF_SPECIES_PB_181
+    #define SERIF_SPECIES_PB_181
+#endif // SERIF_SPECIES_PB_181
+#ifndef SERIF_SPECIES_TM_182
+    #define SERIF_SPECIES_TM_182
+#endif // SERIF_SPECIES_TM_182
+#ifndef SERIF_SPECIES_YB_182
+    #define SERIF_SPECIES_YB_182
+#endif // SERIF_SPECIES_YB_182
+#ifndef SERIF_SPECIES_LU_182
+    #define SERIF_SPECIES_LU_182
+#endif // SERIF_SPECIES_LU_182
+#ifndef SERIF_SPECIES_HF_182
+    #define SERIF_SPECIES_HF_182
+#endif // SERIF_SPECIES_HF_182
+#ifndef SERIF_SPECIES_TA_182
+    #define SERIF_SPECIES_TA_182
+#endif // SERIF_SPECIES_TA_182
+#ifndef SERIF_SPECIES_W_182
+    #define SERIF_SPECIES_W_182
+#endif // SERIF_SPECIES_W_182
+#ifndef SERIF_SPECIES_RE_182
+    #define SERIF_SPECIES_RE_182
+#endif // SERIF_SPECIES_RE_182
+#ifndef SERIF_SPECIES_OS_182
+    #define SERIF_SPECIES_OS_182
+#endif // SERIF_SPECIES_OS_182
+#ifndef SERIF_SPECIES_IR_182
+    #define SERIF_SPECIES_IR_182
+#endif // SERIF_SPECIES_IR_182
+#ifndef SERIF_SPECIES_PT_182
+    #define SERIF_SPECIES_PT_182
+#endif // SERIF_SPECIES_PT_182
+#ifndef SERIF_SPECIES_AU_182
+    #define SERIF_SPECIES_AU_182
+#endif // SERIF_SPECIES_AU_182
+#ifndef SERIF_SPECIES_HG_182
+    #define SERIF_SPECIES_HG_182
+#endif // SERIF_SPECIES_HG_182
+#ifndef SERIF_SPECIES_TL_182
+    #define SERIF_SPECIES_TL_182
+#endif // SERIF_SPECIES_TL_182
+#ifndef SERIF_SPECIES_PB_182
+    #define SERIF_SPECIES_PB_182
+#endif // SERIF_SPECIES_PB_182
+#ifndef SERIF_SPECIES_YB_183
+    #define SERIF_SPECIES_YB_183
+#endif // SERIF_SPECIES_YB_183
+#ifndef SERIF_SPECIES_LU_183
+    #define SERIF_SPECIES_LU_183
+#endif // SERIF_SPECIES_LU_183
+#ifndef SERIF_SPECIES_HF_183
+    #define SERIF_SPECIES_HF_183
+#endif // SERIF_SPECIES_HF_183
+#ifndef SERIF_SPECIES_TA_183
+    #define SERIF_SPECIES_TA_183
+#endif // SERIF_SPECIES_TA_183
+#ifndef SERIF_SPECIES_W_183
+    #define SERIF_SPECIES_W_183
+#endif // SERIF_SPECIES_W_183
+#ifndef SERIF_SPECIES_RE_183
+    #define SERIF_SPECIES_RE_183
+#endif // SERIF_SPECIES_RE_183
+#ifndef SERIF_SPECIES_OS_183
+    #define SERIF_SPECIES_OS_183
+#endif // SERIF_SPECIES_OS_183
+#ifndef SERIF_SPECIES_IR_183
+    #define SERIF_SPECIES_IR_183
+#endif // SERIF_SPECIES_IR_183
+#ifndef SERIF_SPECIES_PT_183
+    #define SERIF_SPECIES_PT_183
+#endif // SERIF_SPECIES_PT_183
+#ifndef SERIF_SPECIES_AU_183
+    #define SERIF_SPECIES_AU_183
+#endif // SERIF_SPECIES_AU_183
+#ifndef SERIF_SPECIES_HG_183
+    #define SERIF_SPECIES_HG_183
+#endif // SERIF_SPECIES_HG_183
+#ifndef SERIF_SPECIES_TL_183
+    #define SERIF_SPECIES_TL_183
+#endif // SERIF_SPECIES_TL_183
+#ifndef SERIF_SPECIES_PB_183
+    #define SERIF_SPECIES_PB_183
+#endif // SERIF_SPECIES_PB_183
+#ifndef SERIF_SPECIES_YB_184
+    #define SERIF_SPECIES_YB_184
+#endif // SERIF_SPECIES_YB_184
+#ifndef SERIF_SPECIES_LU_184
+    #define SERIF_SPECIES_LU_184
+#endif // SERIF_SPECIES_LU_184
+#ifndef SERIF_SPECIES_HF_184
+    #define SERIF_SPECIES_HF_184
+#endif // SERIF_SPECIES_HF_184
+#ifndef SERIF_SPECIES_TA_184
+    #define SERIF_SPECIES_TA_184
+#endif // SERIF_SPECIES_TA_184
+#ifndef SERIF_SPECIES_W_184
+    #define SERIF_SPECIES_W_184
+#endif // SERIF_SPECIES_W_184
+#ifndef SERIF_SPECIES_RE_184
+    #define SERIF_SPECIES_RE_184
+#endif // SERIF_SPECIES_RE_184
+#ifndef SERIF_SPECIES_OS_184
+    #define SERIF_SPECIES_OS_184
+#endif // SERIF_SPECIES_OS_184
+#ifndef SERIF_SPECIES_IR_184
+    #define SERIF_SPECIES_IR_184
+#endif // SERIF_SPECIES_IR_184
+#ifndef SERIF_SPECIES_PT_184
+    #define SERIF_SPECIES_PT_184
+#endif // SERIF_SPECIES_PT_184
+#ifndef SERIF_SPECIES_AU_184
+    #define SERIF_SPECIES_AU_184
+#endif // SERIF_SPECIES_AU_184
+#ifndef SERIF_SPECIES_HG_184
+    #define SERIF_SPECIES_HG_184
+#endif // SERIF_SPECIES_HG_184
+#ifndef SERIF_SPECIES_TL_184
+    #define SERIF_SPECIES_TL_184
+#endif // SERIF_SPECIES_TL_184
+#ifndef SERIF_SPECIES_PB_184
+    #define SERIF_SPECIES_PB_184
+#endif // SERIF_SPECIES_PB_184
+#ifndef SERIF_SPECIES_BI_184
+    #define SERIF_SPECIES_BI_184
+#endif // SERIF_SPECIES_BI_184
+#ifndef SERIF_SPECIES_YB_185
+    #define SERIF_SPECIES_YB_185
+#endif // SERIF_SPECIES_YB_185
+#ifndef SERIF_SPECIES_LU_185
+    #define SERIF_SPECIES_LU_185
+#endif // SERIF_SPECIES_LU_185
+#ifndef SERIF_SPECIES_HF_185
+    #define SERIF_SPECIES_HF_185
+#endif // SERIF_SPECIES_HF_185
+#ifndef SERIF_SPECIES_TA_185
+    #define SERIF_SPECIES_TA_185
+#endif // SERIF_SPECIES_TA_185
+#ifndef SERIF_SPECIES_W_185
+    #define SERIF_SPECIES_W_185
+#endif // SERIF_SPECIES_W_185
+#ifndef SERIF_SPECIES_RE_185
+    #define SERIF_SPECIES_RE_185
+#endif // SERIF_SPECIES_RE_185
+#ifndef SERIF_SPECIES_OS_185
+    #define SERIF_SPECIES_OS_185
+#endif // SERIF_SPECIES_OS_185
+#ifndef SERIF_SPECIES_IR_185
+    #define SERIF_SPECIES_IR_185
+#endif // SERIF_SPECIES_IR_185
+#ifndef SERIF_SPECIES_PT_185
+    #define SERIF_SPECIES_PT_185
+#endif // SERIF_SPECIES_PT_185
+#ifndef SERIF_SPECIES_AU_185
+    #define SERIF_SPECIES_AU_185
+#endif // SERIF_SPECIES_AU_185
+#ifndef SERIF_SPECIES_HG_185
+    #define SERIF_SPECIES_HG_185
+#endif // SERIF_SPECIES_HG_185
+#ifndef SERIF_SPECIES_TL_185
+    #define SERIF_SPECIES_TL_185
+#endif // SERIF_SPECIES_TL_185
+#ifndef SERIF_SPECIES_PB_185
+    #define SERIF_SPECIES_PB_185
+#endif // SERIF_SPECIES_PB_185
+#ifndef SERIF_SPECIES_BI_185
+    #define SERIF_SPECIES_BI_185
+#endif // SERIF_SPECIES_BI_185
+#ifndef SERIF_SPECIES_LU_186
+    #define SERIF_SPECIES_LU_186
+#endif // SERIF_SPECIES_LU_186
+#ifndef SERIF_SPECIES_HF_186
+    #define SERIF_SPECIES_HF_186
+#endif // SERIF_SPECIES_HF_186
+#ifndef SERIF_SPECIES_TA_186
+    #define SERIF_SPECIES_TA_186
+#endif // SERIF_SPECIES_TA_186
+#ifndef SERIF_SPECIES_W_186
+    #define SERIF_SPECIES_W_186
+#endif // SERIF_SPECIES_W_186
+#ifndef SERIF_SPECIES_RE_186
+    #define SERIF_SPECIES_RE_186
+#endif // SERIF_SPECIES_RE_186
+#ifndef SERIF_SPECIES_OS_186
+    #define SERIF_SPECIES_OS_186
+#endif // SERIF_SPECIES_OS_186
+#ifndef SERIF_SPECIES_IR_186
+    #define SERIF_SPECIES_IR_186
+#endif // SERIF_SPECIES_IR_186
+#ifndef SERIF_SPECIES_PT_186
+    #define SERIF_SPECIES_PT_186
+#endif // SERIF_SPECIES_PT_186
+#ifndef SERIF_SPECIES_AU_186
+    #define SERIF_SPECIES_AU_186
+#endif // SERIF_SPECIES_AU_186
+#ifndef SERIF_SPECIES_HG_186
+    #define SERIF_SPECIES_HG_186
+#endif // SERIF_SPECIES_HG_186
+#ifndef SERIF_SPECIES_TL_186
+    #define SERIF_SPECIES_TL_186
+#endif // SERIF_SPECIES_TL_186
+#ifndef SERIF_SPECIES_PB_186
+    #define SERIF_SPECIES_PB_186
+#endif // SERIF_SPECIES_PB_186
+#ifndef SERIF_SPECIES_BI_186
+    #define SERIF_SPECIES_BI_186
+#endif // SERIF_SPECIES_BI_186
+#ifndef SERIF_SPECIES_PO_186
+    #define SERIF_SPECIES_PO_186
+#endif // SERIF_SPECIES_PO_186
+#ifndef SERIF_SPECIES_LU_187
+    #define SERIF_SPECIES_LU_187
+#endif // SERIF_SPECIES_LU_187
+#ifndef SERIF_SPECIES_HF_187
+    #define SERIF_SPECIES_HF_187
+#endif // SERIF_SPECIES_HF_187
+#ifndef SERIF_SPECIES_TA_187
+    #define SERIF_SPECIES_TA_187
+#endif // SERIF_SPECIES_TA_187
+#ifndef SERIF_SPECIES_W_187
+    #define SERIF_SPECIES_W_187
+#endif // SERIF_SPECIES_W_187
+#ifndef SERIF_SPECIES_RE_187
+    #define SERIF_SPECIES_RE_187
+#endif // SERIF_SPECIES_RE_187
+#ifndef SERIF_SPECIES_OS_187
+    #define SERIF_SPECIES_OS_187
+#endif // SERIF_SPECIES_OS_187
+#ifndef SERIF_SPECIES_IR_187
+    #define SERIF_SPECIES_IR_187
+#endif // SERIF_SPECIES_IR_187
+#ifndef SERIF_SPECIES_PT_187
+    #define SERIF_SPECIES_PT_187
+#endif // SERIF_SPECIES_PT_187
+#ifndef SERIF_SPECIES_AU_187
+    #define SERIF_SPECIES_AU_187
+#endif // SERIF_SPECIES_AU_187
+#ifndef SERIF_SPECIES_HG_187
+    #define SERIF_SPECIES_HG_187
+#endif // SERIF_SPECIES_HG_187
+#ifndef SERIF_SPECIES_TL_187
+    #define SERIF_SPECIES_TL_187
+#endif // SERIF_SPECIES_TL_187
+#ifndef SERIF_SPECIES_PB_187
+    #define SERIF_SPECIES_PB_187
+#endif // SERIF_SPECIES_PB_187
+#ifndef SERIF_SPECIES_BI_187
+    #define SERIF_SPECIES_BI_187
+#endif // SERIF_SPECIES_BI_187
+#ifndef SERIF_SPECIES_PO_187
+    #define SERIF_SPECIES_PO_187
+#endif // SERIF_SPECIES_PO_187
+#ifndef SERIF_SPECIES_LU_188
+    #define SERIF_SPECIES_LU_188
+#endif // SERIF_SPECIES_LU_188
+#ifndef SERIF_SPECIES_HF_188
+    #define SERIF_SPECIES_HF_188
+#endif // SERIF_SPECIES_HF_188
+#ifndef SERIF_SPECIES_TA_188
+    #define SERIF_SPECIES_TA_188
+#endif // SERIF_SPECIES_TA_188
+#ifndef SERIF_SPECIES_W_188
+    #define SERIF_SPECIES_W_188
+#endif // SERIF_SPECIES_W_188
+#ifndef SERIF_SPECIES_RE_188
+    #define SERIF_SPECIES_RE_188
+#endif // SERIF_SPECIES_RE_188
+#ifndef SERIF_SPECIES_OS_188
+    #define SERIF_SPECIES_OS_188
+#endif // SERIF_SPECIES_OS_188
+#ifndef SERIF_SPECIES_IR_188
+    #define SERIF_SPECIES_IR_188
+#endif // SERIF_SPECIES_IR_188
+#ifndef SERIF_SPECIES_PT_188
+    #define SERIF_SPECIES_PT_188
+#endif // SERIF_SPECIES_PT_188
+#ifndef SERIF_SPECIES_AU_188
+    #define SERIF_SPECIES_AU_188
+#endif // SERIF_SPECIES_AU_188
+#ifndef SERIF_SPECIES_HG_188
+    #define SERIF_SPECIES_HG_188
+#endif // SERIF_SPECIES_HG_188
+#ifndef SERIF_SPECIES_TL_188
+    #define SERIF_SPECIES_TL_188
+#endif // SERIF_SPECIES_TL_188
+#ifndef SERIF_SPECIES_PB_188
+    #define SERIF_SPECIES_PB_188
+#endif // SERIF_SPECIES_PB_188
+#ifndef SERIF_SPECIES_BI_188
+    #define SERIF_SPECIES_BI_188
+#endif // SERIF_SPECIES_BI_188
+#ifndef SERIF_SPECIES_PO_188
+    #define SERIF_SPECIES_PO_188
+#endif // SERIF_SPECIES_PO_188
+#ifndef SERIF_SPECIES_HF_189
+    #define SERIF_SPECIES_HF_189
+#endif // SERIF_SPECIES_HF_189
+#ifndef SERIF_SPECIES_TA_189
+    #define SERIF_SPECIES_TA_189
+#endif // SERIF_SPECIES_TA_189
+#ifndef SERIF_SPECIES_W_189
+    #define SERIF_SPECIES_W_189
+#endif // SERIF_SPECIES_W_189
+#ifndef SERIF_SPECIES_RE_189
+    #define SERIF_SPECIES_RE_189
+#endif // SERIF_SPECIES_RE_189
+#ifndef SERIF_SPECIES_OS_189
+    #define SERIF_SPECIES_OS_189
+#endif // SERIF_SPECIES_OS_189
+#ifndef SERIF_SPECIES_IR_189
+    #define SERIF_SPECIES_IR_189
+#endif // SERIF_SPECIES_IR_189
+#ifndef SERIF_SPECIES_PT_189
+    #define SERIF_SPECIES_PT_189
+#endif // SERIF_SPECIES_PT_189
+#ifndef SERIF_SPECIES_AU_189
+    #define SERIF_SPECIES_AU_189
+#endif // SERIF_SPECIES_AU_189
+#ifndef SERIF_SPECIES_HG_189
+    #define SERIF_SPECIES_HG_189
+#endif // SERIF_SPECIES_HG_189
+#ifndef SERIF_SPECIES_TL_189
+    #define SERIF_SPECIES_TL_189
+#endif // SERIF_SPECIES_TL_189
+#ifndef SERIF_SPECIES_PB_189
+    #define SERIF_SPECIES_PB_189
+#endif // SERIF_SPECIES_PB_189
+#ifndef SERIF_SPECIES_BI_189
+    #define SERIF_SPECIES_BI_189
+#endif // SERIF_SPECIES_BI_189
+#ifndef SERIF_SPECIES_PO_189
+    #define SERIF_SPECIES_PO_189
+#endif // SERIF_SPECIES_PO_189
+#ifndef SERIF_SPECIES_HF_190
+    #define SERIF_SPECIES_HF_190
+#endif // SERIF_SPECIES_HF_190
+#ifndef SERIF_SPECIES_TA_190
+    #define SERIF_SPECIES_TA_190
+#endif // SERIF_SPECIES_TA_190
+#ifndef SERIF_SPECIES_W_190
+    #define SERIF_SPECIES_W_190
+#endif // SERIF_SPECIES_W_190
+#ifndef SERIF_SPECIES_RE_190
+    #define SERIF_SPECIES_RE_190
+#endif // SERIF_SPECIES_RE_190
+#ifndef SERIF_SPECIES_OS_190
+    #define SERIF_SPECIES_OS_190
+#endif // SERIF_SPECIES_OS_190
+#ifndef SERIF_SPECIES_IR_190
+    #define SERIF_SPECIES_IR_190
+#endif // SERIF_SPECIES_IR_190
+#ifndef SERIF_SPECIES_PT_190
+    #define SERIF_SPECIES_PT_190
+#endif // SERIF_SPECIES_PT_190
+#ifndef SERIF_SPECIES_AU_190
+    #define SERIF_SPECIES_AU_190
+#endif // SERIF_SPECIES_AU_190
+#ifndef SERIF_SPECIES_HG_190
+    #define SERIF_SPECIES_HG_190
+#endif // SERIF_SPECIES_HG_190
+#ifndef SERIF_SPECIES_TL_190
+    #define SERIF_SPECIES_TL_190
+#endif // SERIF_SPECIES_TL_190
+#ifndef SERIF_SPECIES_PB_190
+    #define SERIF_SPECIES_PB_190
+#endif // SERIF_SPECIES_PB_190
+#ifndef SERIF_SPECIES_BI_190
+    #define SERIF_SPECIES_BI_190
+#endif // SERIF_SPECIES_BI_190
+#ifndef SERIF_SPECIES_PO_190
+    #define SERIF_SPECIES_PO_190
+#endif // SERIF_SPECIES_PO_190
+#ifndef SERIF_SPECIES_TA_191
+    #define SERIF_SPECIES_TA_191
+#endif // SERIF_SPECIES_TA_191
+#ifndef SERIF_SPECIES_W_191
+    #define SERIF_SPECIES_W_191
+#endif // SERIF_SPECIES_W_191
+#ifndef SERIF_SPECIES_RE_191
+    #define SERIF_SPECIES_RE_191
+#endif // SERIF_SPECIES_RE_191
+#ifndef SERIF_SPECIES_OS_191
+    #define SERIF_SPECIES_OS_191
+#endif // SERIF_SPECIES_OS_191
+#ifndef SERIF_SPECIES_IR_191
+    #define SERIF_SPECIES_IR_191
+#endif // SERIF_SPECIES_IR_191
+#ifndef SERIF_SPECIES_PT_191
+    #define SERIF_SPECIES_PT_191
+#endif // SERIF_SPECIES_PT_191
+#ifndef SERIF_SPECIES_AU_191
+    #define SERIF_SPECIES_AU_191
+#endif // SERIF_SPECIES_AU_191
+#ifndef SERIF_SPECIES_HG_191
+    #define SERIF_SPECIES_HG_191
+#endif // SERIF_SPECIES_HG_191
+#ifndef SERIF_SPECIES_TL_191
+    #define SERIF_SPECIES_TL_191
+#endif // SERIF_SPECIES_TL_191
+#ifndef SERIF_SPECIES_PB_191
+    #define SERIF_SPECIES_PB_191
+#endif // SERIF_SPECIES_PB_191
+#ifndef SERIF_SPECIES_BI_191
+    #define SERIF_SPECIES_BI_191
+#endif // SERIF_SPECIES_BI_191
+#ifndef SERIF_SPECIES_PO_191
+    #define SERIF_SPECIES_PO_191
+#endif // SERIF_SPECIES_PO_191
+#ifndef SERIF_SPECIES_AT_191
+    #define SERIF_SPECIES_AT_191
+#endif // SERIF_SPECIES_AT_191
+#ifndef SERIF_SPECIES_TA_192
+    #define SERIF_SPECIES_TA_192
+#endif // SERIF_SPECIES_TA_192
+#ifndef SERIF_SPECIES_W_192
+    #define SERIF_SPECIES_W_192
+#endif // SERIF_SPECIES_W_192
+#ifndef SERIF_SPECIES_RE_192
+    #define SERIF_SPECIES_RE_192
+#endif // SERIF_SPECIES_RE_192
+#ifndef SERIF_SPECIES_OS_192
+    #define SERIF_SPECIES_OS_192
+#endif // SERIF_SPECIES_OS_192
+#ifndef SERIF_SPECIES_IR_192
+    #define SERIF_SPECIES_IR_192
+#endif // SERIF_SPECIES_IR_192
+#ifndef SERIF_SPECIES_PT_192
+    #define SERIF_SPECIES_PT_192
+#endif // SERIF_SPECIES_PT_192
+#ifndef SERIF_SPECIES_AU_192
+    #define SERIF_SPECIES_AU_192
+#endif // SERIF_SPECIES_AU_192
+#ifndef SERIF_SPECIES_HG_192
+    #define SERIF_SPECIES_HG_192
+#endif // SERIF_SPECIES_HG_192
+#ifndef SERIF_SPECIES_TL_192
+    #define SERIF_SPECIES_TL_192
+#endif // SERIF_SPECIES_TL_192
+#ifndef SERIF_SPECIES_PB_192
+    #define SERIF_SPECIES_PB_192
+#endif // SERIF_SPECIES_PB_192
+#ifndef SERIF_SPECIES_BI_192
+    #define SERIF_SPECIES_BI_192
+#endif // SERIF_SPECIES_BI_192
+#ifndef SERIF_SPECIES_PO_192
+    #define SERIF_SPECIES_PO_192
+#endif // SERIF_SPECIES_PO_192
+#ifndef SERIF_SPECIES_AT_192
+    #define SERIF_SPECIES_AT_192
+#endif // SERIF_SPECIES_AT_192
+#ifndef SERIF_SPECIES_TA_193
+    #define SERIF_SPECIES_TA_193
+#endif // SERIF_SPECIES_TA_193
+#ifndef SERIF_SPECIES_W_193
+    #define SERIF_SPECIES_W_193
+#endif // SERIF_SPECIES_W_193
+#ifndef SERIF_SPECIES_RE_193
+    #define SERIF_SPECIES_RE_193
+#endif // SERIF_SPECIES_RE_193
+#ifndef SERIF_SPECIES_OS_193
+    #define SERIF_SPECIES_OS_193
+#endif // SERIF_SPECIES_OS_193
+#ifndef SERIF_SPECIES_IR_193
+    #define SERIF_SPECIES_IR_193
+#endif // SERIF_SPECIES_IR_193
+#ifndef SERIF_SPECIES_PT_193
+    #define SERIF_SPECIES_PT_193
+#endif // SERIF_SPECIES_PT_193
+#ifndef SERIF_SPECIES_AU_193
+    #define SERIF_SPECIES_AU_193
+#endif // SERIF_SPECIES_AU_193
+#ifndef SERIF_SPECIES_HG_193
+    #define SERIF_SPECIES_HG_193
+#endif // SERIF_SPECIES_HG_193
+#ifndef SERIF_SPECIES_TL_193
+    #define SERIF_SPECIES_TL_193
+#endif // SERIF_SPECIES_TL_193
+#ifndef SERIF_SPECIES_PB_193
+    #define SERIF_SPECIES_PB_193
+#endif // SERIF_SPECIES_PB_193
+#ifndef SERIF_SPECIES_BI_193
+    #define SERIF_SPECIES_BI_193
+#endif // SERIF_SPECIES_BI_193
+#ifndef SERIF_SPECIES_PO_193
+    #define SERIF_SPECIES_PO_193
+#endif // SERIF_SPECIES_PO_193
+#ifndef SERIF_SPECIES_AT_193
+    #define SERIF_SPECIES_AT_193
+#endif // SERIF_SPECIES_AT_193
+#ifndef SERIF_SPECIES_RN_193
+    #define SERIF_SPECIES_RN_193
+#endif // SERIF_SPECIES_RN_193
+#ifndef SERIF_SPECIES_TA_194
+    #define SERIF_SPECIES_TA_194
+#endif // SERIF_SPECIES_TA_194
+#ifndef SERIF_SPECIES_W_194
+    #define SERIF_SPECIES_W_194
+#endif // SERIF_SPECIES_W_194
+#ifndef SERIF_SPECIES_RE_194
+    #define SERIF_SPECIES_RE_194
+#endif // SERIF_SPECIES_RE_194
+#ifndef SERIF_SPECIES_OS_194
+    #define SERIF_SPECIES_OS_194
+#endif // SERIF_SPECIES_OS_194
+#ifndef SERIF_SPECIES_IR_194
+    #define SERIF_SPECIES_IR_194
+#endif // SERIF_SPECIES_IR_194
+#ifndef SERIF_SPECIES_PT_194
+    #define SERIF_SPECIES_PT_194
+#endif // SERIF_SPECIES_PT_194
+#ifndef SERIF_SPECIES_AU_194
+    #define SERIF_SPECIES_AU_194
+#endif // SERIF_SPECIES_AU_194
+#ifndef SERIF_SPECIES_HG_194
+    #define SERIF_SPECIES_HG_194
+#endif // SERIF_SPECIES_HG_194
+#ifndef SERIF_SPECIES_TL_194
+    #define SERIF_SPECIES_TL_194
+#endif // SERIF_SPECIES_TL_194
+#ifndef SERIF_SPECIES_PB_194
+    #define SERIF_SPECIES_PB_194
+#endif // SERIF_SPECIES_PB_194
+#ifndef SERIF_SPECIES_BI_194
+    #define SERIF_SPECIES_BI_194
+#endif // SERIF_SPECIES_BI_194
+#ifndef SERIF_SPECIES_PO_194
+    #define SERIF_SPECIES_PO_194
+#endif // SERIF_SPECIES_PO_194
+#ifndef SERIF_SPECIES_AT_194
+    #define SERIF_SPECIES_AT_194
+#endif // SERIF_SPECIES_AT_194
+#ifndef SERIF_SPECIES_RN_194
+    #define SERIF_SPECIES_RN_194
+#endif // SERIF_SPECIES_RN_194
+#ifndef SERIF_SPECIES_W_195
+    #define SERIF_SPECIES_W_195
+#endif // SERIF_SPECIES_W_195
+#ifndef SERIF_SPECIES_RE_195
+    #define SERIF_SPECIES_RE_195
+#endif // SERIF_SPECIES_RE_195
+#ifndef SERIF_SPECIES_OS_195
+    #define SERIF_SPECIES_OS_195
+#endif // SERIF_SPECIES_OS_195
+#ifndef SERIF_SPECIES_IR_195
+    #define SERIF_SPECIES_IR_195
+#endif // SERIF_SPECIES_IR_195
+#ifndef SERIF_SPECIES_PT_195
+    #define SERIF_SPECIES_PT_195
+#endif // SERIF_SPECIES_PT_195
+#ifndef SERIF_SPECIES_AU_195
+    #define SERIF_SPECIES_AU_195
+#endif // SERIF_SPECIES_AU_195
+#ifndef SERIF_SPECIES_HG_195
+    #define SERIF_SPECIES_HG_195
+#endif // SERIF_SPECIES_HG_195
+#ifndef SERIF_SPECIES_TL_195
+    #define SERIF_SPECIES_TL_195
+#endif // SERIF_SPECIES_TL_195
+#ifndef SERIF_SPECIES_PB_195
+    #define SERIF_SPECIES_PB_195
+#endif // SERIF_SPECIES_PB_195
+#ifndef SERIF_SPECIES_BI_195
+    #define SERIF_SPECIES_BI_195
+#endif // SERIF_SPECIES_BI_195
+#ifndef SERIF_SPECIES_PO_195
+    #define SERIF_SPECIES_PO_195
+#endif // SERIF_SPECIES_PO_195
+#ifndef SERIF_SPECIES_AT_195
+    #define SERIF_SPECIES_AT_195
+#endif // SERIF_SPECIES_AT_195
+#ifndef SERIF_SPECIES_RN_195
+    #define SERIF_SPECIES_RN_195
+#endif // SERIF_SPECIES_RN_195
+#ifndef SERIF_SPECIES_W_196
+    #define SERIF_SPECIES_W_196
+#endif // SERIF_SPECIES_W_196
+#ifndef SERIF_SPECIES_RE_196
+    #define SERIF_SPECIES_RE_196
+#endif // SERIF_SPECIES_RE_196
+#ifndef SERIF_SPECIES_OS_196
+    #define SERIF_SPECIES_OS_196
+#endif // SERIF_SPECIES_OS_196
+#ifndef SERIF_SPECIES_IR_196
+    #define SERIF_SPECIES_IR_196
+#endif // SERIF_SPECIES_IR_196
+#ifndef SERIF_SPECIES_PT_196
+    #define SERIF_SPECIES_PT_196
+#endif // SERIF_SPECIES_PT_196
+#ifndef SERIF_SPECIES_AU_196
+    #define SERIF_SPECIES_AU_196
+#endif // SERIF_SPECIES_AU_196
+#ifndef SERIF_SPECIES_HG_196
+    #define SERIF_SPECIES_HG_196
+#endif // SERIF_SPECIES_HG_196
+#ifndef SERIF_SPECIES_TL_196
+    #define SERIF_SPECIES_TL_196
+#endif // SERIF_SPECIES_TL_196
+#ifndef SERIF_SPECIES_PB_196
+    #define SERIF_SPECIES_PB_196
+#endif // SERIF_SPECIES_PB_196
+#ifndef SERIF_SPECIES_BI_196
+    #define SERIF_SPECIES_BI_196
+#endif // SERIF_SPECIES_BI_196
+#ifndef SERIF_SPECIES_PO_196
+    #define SERIF_SPECIES_PO_196
+#endif // SERIF_SPECIES_PO_196
+#ifndef SERIF_SPECIES_AT_196
+    #define SERIF_SPECIES_AT_196
+#endif // SERIF_SPECIES_AT_196
+#ifndef SERIF_SPECIES_RN_196
+    #define SERIF_SPECIES_RN_196
+#endif // SERIF_SPECIES_RN_196
+#ifndef SERIF_SPECIES_W_197
+    #define SERIF_SPECIES_W_197
+#endif // SERIF_SPECIES_W_197
+#ifndef SERIF_SPECIES_RE_197
+    #define SERIF_SPECIES_RE_197
+#endif // SERIF_SPECIES_RE_197
+#ifndef SERIF_SPECIES_OS_197
+    #define SERIF_SPECIES_OS_197
+#endif // SERIF_SPECIES_OS_197
+#ifndef SERIF_SPECIES_IR_197
+    #define SERIF_SPECIES_IR_197
+#endif // SERIF_SPECIES_IR_197
+#ifndef SERIF_SPECIES_PT_197
+    #define SERIF_SPECIES_PT_197
+#endif // SERIF_SPECIES_PT_197
+#ifndef SERIF_SPECIES_AU_197
+    #define SERIF_SPECIES_AU_197
+#endif // SERIF_SPECIES_AU_197
+#ifndef SERIF_SPECIES_HG_197
+    #define SERIF_SPECIES_HG_197
+#endif // SERIF_SPECIES_HG_197
+#ifndef SERIF_SPECIES_TL_197
+    #define SERIF_SPECIES_TL_197
+#endif // SERIF_SPECIES_TL_197
+#ifndef SERIF_SPECIES_PB_197
+    #define SERIF_SPECIES_PB_197
+#endif // SERIF_SPECIES_PB_197
+#ifndef SERIF_SPECIES_BI_197
+    #define SERIF_SPECIES_BI_197
+#endif // SERIF_SPECIES_BI_197
+#ifndef SERIF_SPECIES_PO_197
+    #define SERIF_SPECIES_PO_197
+#endif // SERIF_SPECIES_PO_197
+#ifndef SERIF_SPECIES_AT_197
+    #define SERIF_SPECIES_AT_197
+#endif // SERIF_SPECIES_AT_197
+#ifndef SERIF_SPECIES_RN_197
+    #define SERIF_SPECIES_RN_197
+#endif // SERIF_SPECIES_RN_197
+#ifndef SERIF_SPECIES_FR_197
+    #define SERIF_SPECIES_FR_197
+#endif // SERIF_SPECIES_FR_197
+#ifndef SERIF_SPECIES_RE_198
+    #define SERIF_SPECIES_RE_198
+#endif // SERIF_SPECIES_RE_198
+#ifndef SERIF_SPECIES_OS_198
+    #define SERIF_SPECIES_OS_198
+#endif // SERIF_SPECIES_OS_198
+#ifndef SERIF_SPECIES_IR_198
+    #define SERIF_SPECIES_IR_198
+#endif // SERIF_SPECIES_IR_198
+#ifndef SERIF_SPECIES_PT_198
+    #define SERIF_SPECIES_PT_198
+#endif // SERIF_SPECIES_PT_198
+#ifndef SERIF_SPECIES_AU_198
+    #define SERIF_SPECIES_AU_198
+#endif // SERIF_SPECIES_AU_198
+#ifndef SERIF_SPECIES_HG_198
+    #define SERIF_SPECIES_HG_198
+#endif // SERIF_SPECIES_HG_198
+#ifndef SERIF_SPECIES_TL_198
+    #define SERIF_SPECIES_TL_198
+#endif // SERIF_SPECIES_TL_198
+#ifndef SERIF_SPECIES_PB_198
+    #define SERIF_SPECIES_PB_198
+#endif // SERIF_SPECIES_PB_198
+#ifndef SERIF_SPECIES_BI_198
+    #define SERIF_SPECIES_BI_198
+#endif // SERIF_SPECIES_BI_198
+#ifndef SERIF_SPECIES_PO_198
+    #define SERIF_SPECIES_PO_198
+#endif // SERIF_SPECIES_PO_198
+#ifndef SERIF_SPECIES_AT_198
+    #define SERIF_SPECIES_AT_198
+#endif // SERIF_SPECIES_AT_198
+#ifndef SERIF_SPECIES_RN_198
+    #define SERIF_SPECIES_RN_198
+#endif // SERIF_SPECIES_RN_198
+#ifndef SERIF_SPECIES_FR_198
+    #define SERIF_SPECIES_FR_198
+#endif // SERIF_SPECIES_FR_198
+#ifndef SERIF_SPECIES_RE_199
+    #define SERIF_SPECIES_RE_199
+#endif // SERIF_SPECIES_RE_199
+#ifndef SERIF_SPECIES_OS_199
+    #define SERIF_SPECIES_OS_199
+#endif // SERIF_SPECIES_OS_199
+#ifndef SERIF_SPECIES_IR_199
+    #define SERIF_SPECIES_IR_199
+#endif // SERIF_SPECIES_IR_199
+#ifndef SERIF_SPECIES_PT_199
+    #define SERIF_SPECIES_PT_199
+#endif // SERIF_SPECIES_PT_199
+#ifndef SERIF_SPECIES_AU_199
+    #define SERIF_SPECIES_AU_199
+#endif // SERIF_SPECIES_AU_199
+#ifndef SERIF_SPECIES_HG_199
+    #define SERIF_SPECIES_HG_199
+#endif // SERIF_SPECIES_HG_199
+#ifndef SERIF_SPECIES_TL_199
+    #define SERIF_SPECIES_TL_199
+#endif // SERIF_SPECIES_TL_199
+#ifndef SERIF_SPECIES_PB_199
+    #define SERIF_SPECIES_PB_199
+#endif // SERIF_SPECIES_PB_199
+#ifndef SERIF_SPECIES_BI_199
+    #define SERIF_SPECIES_BI_199
+#endif // SERIF_SPECIES_BI_199
+#ifndef SERIF_SPECIES_PO_199
+    #define SERIF_SPECIES_PO_199
+#endif // SERIF_SPECIES_PO_199
+#ifndef SERIF_SPECIES_AT_199
+    #define SERIF_SPECIES_AT_199
+#endif // SERIF_SPECIES_AT_199
+#ifndef SERIF_SPECIES_RN_199
+    #define SERIF_SPECIES_RN_199
+#endif // SERIF_SPECIES_RN_199
+#ifndef SERIF_SPECIES_FR_199
+    #define SERIF_SPECIES_FR_199
+#endif // SERIF_SPECIES_FR_199
+#ifndef SERIF_SPECIES_OS_200
+    #define SERIF_SPECIES_OS_200
+#endif // SERIF_SPECIES_OS_200
+#ifndef SERIF_SPECIES_IR_200
+    #define SERIF_SPECIES_IR_200
+#endif // SERIF_SPECIES_IR_200
+#ifndef SERIF_SPECIES_PT_200
+    #define SERIF_SPECIES_PT_200
+#endif // SERIF_SPECIES_PT_200
+#ifndef SERIF_SPECIES_AU_200
+    #define SERIF_SPECIES_AU_200
+#endif // SERIF_SPECIES_AU_200
+#ifndef SERIF_SPECIES_HG_200
+    #define SERIF_SPECIES_HG_200
+#endif // SERIF_SPECIES_HG_200
+#ifndef SERIF_SPECIES_TL_200
+    #define SERIF_SPECIES_TL_200
+#endif // SERIF_SPECIES_TL_200
+#ifndef SERIF_SPECIES_PB_200
+    #define SERIF_SPECIES_PB_200
+#endif // SERIF_SPECIES_PB_200
+#ifndef SERIF_SPECIES_BI_200
+    #define SERIF_SPECIES_BI_200
+#endif // SERIF_SPECIES_BI_200
+#ifndef SERIF_SPECIES_PO_200
+    #define SERIF_SPECIES_PO_200
+#endif // SERIF_SPECIES_PO_200
+#ifndef SERIF_SPECIES_AT_200
+    #define SERIF_SPECIES_AT_200
+#endif // SERIF_SPECIES_AT_200
+#ifndef SERIF_SPECIES_RN_200
+    #define SERIF_SPECIES_RN_200
+#endif // SERIF_SPECIES_RN_200
+#ifndef SERIF_SPECIES_FR_200
+    #define SERIF_SPECIES_FR_200
+#endif // SERIF_SPECIES_FR_200
+#ifndef SERIF_SPECIES_OS_201
+    #define SERIF_SPECIES_OS_201
+#endif // SERIF_SPECIES_OS_201
+#ifndef SERIF_SPECIES_IR_201
+    #define SERIF_SPECIES_IR_201
+#endif // SERIF_SPECIES_IR_201
+#ifndef SERIF_SPECIES_PT_201
+    #define SERIF_SPECIES_PT_201
+#endif // SERIF_SPECIES_PT_201
+#ifndef SERIF_SPECIES_AU_201
+    #define SERIF_SPECIES_AU_201
+#endif // SERIF_SPECIES_AU_201
+#ifndef SERIF_SPECIES_HG_201
+    #define SERIF_SPECIES_HG_201
+#endif // SERIF_SPECIES_HG_201
+#ifndef SERIF_SPECIES_TL_201
+    #define SERIF_SPECIES_TL_201
+#endif // SERIF_SPECIES_TL_201
+#ifndef SERIF_SPECIES_PB_201
+    #define SERIF_SPECIES_PB_201
+#endif // SERIF_SPECIES_PB_201
+#ifndef SERIF_SPECIES_BI_201
+    #define SERIF_SPECIES_BI_201
+#endif // SERIF_SPECIES_BI_201
+#ifndef SERIF_SPECIES_PO_201
+    #define SERIF_SPECIES_PO_201
+#endif // SERIF_SPECIES_PO_201
+#ifndef SERIF_SPECIES_AT_201
+    #define SERIF_SPECIES_AT_201
+#endif // SERIF_SPECIES_AT_201
+#ifndef SERIF_SPECIES_RN_201
+    #define SERIF_SPECIES_RN_201
+#endif // SERIF_SPECIES_RN_201
+#ifndef SERIF_SPECIES_FR_201
+    #define SERIF_SPECIES_FR_201
+#endif // SERIF_SPECIES_FR_201
+#ifndef SERIF_SPECIES_RA_201
+    #define SERIF_SPECIES_RA_201
+#endif // SERIF_SPECIES_RA_201
+#ifndef SERIF_SPECIES_OS_202
+    #define SERIF_SPECIES_OS_202
+#endif // SERIF_SPECIES_OS_202
+#ifndef SERIF_SPECIES_IR_202
+    #define SERIF_SPECIES_IR_202
+#endif // SERIF_SPECIES_IR_202
+#ifndef SERIF_SPECIES_PT_202
+    #define SERIF_SPECIES_PT_202
+#endif // SERIF_SPECIES_PT_202
+#ifndef SERIF_SPECIES_AU_202
+    #define SERIF_SPECIES_AU_202
+#endif // SERIF_SPECIES_AU_202
+#ifndef SERIF_SPECIES_HG_202
+    #define SERIF_SPECIES_HG_202
+#endif // SERIF_SPECIES_HG_202
+#ifndef SERIF_SPECIES_TL_202
+    #define SERIF_SPECIES_TL_202
+#endif // SERIF_SPECIES_TL_202
+#ifndef SERIF_SPECIES_PB_202
+    #define SERIF_SPECIES_PB_202
+#endif // SERIF_SPECIES_PB_202
+#ifndef SERIF_SPECIES_BI_202
+    #define SERIF_SPECIES_BI_202
+#endif // SERIF_SPECIES_BI_202
+#ifndef SERIF_SPECIES_PO_202
+    #define SERIF_SPECIES_PO_202
+#endif // SERIF_SPECIES_PO_202
+#ifndef SERIF_SPECIES_AT_202
+    #define SERIF_SPECIES_AT_202
+#endif // SERIF_SPECIES_AT_202
+#ifndef SERIF_SPECIES_RN_202
+    #define SERIF_SPECIES_RN_202
+#endif // SERIF_SPECIES_RN_202
+#ifndef SERIF_SPECIES_FR_202
+    #define SERIF_SPECIES_FR_202
+#endif // SERIF_SPECIES_FR_202
+#ifndef SERIF_SPECIES_RA_202
+    #define SERIF_SPECIES_RA_202
+#endif // SERIF_SPECIES_RA_202
+#ifndef SERIF_SPECIES_OS_203
+    #define SERIF_SPECIES_OS_203
+#endif // SERIF_SPECIES_OS_203
+#ifndef SERIF_SPECIES_IR_203
+    #define SERIF_SPECIES_IR_203
+#endif // SERIF_SPECIES_IR_203
+#ifndef SERIF_SPECIES_PT_203
+    #define SERIF_SPECIES_PT_203
+#endif // SERIF_SPECIES_PT_203
+#ifndef SERIF_SPECIES_AU_203
+    #define SERIF_SPECIES_AU_203
+#endif // SERIF_SPECIES_AU_203
+#ifndef SERIF_SPECIES_HG_203
+    #define SERIF_SPECIES_HG_203
+#endif // SERIF_SPECIES_HG_203
+#ifndef SERIF_SPECIES_TL_203
+    #define SERIF_SPECIES_TL_203
+#endif // SERIF_SPECIES_TL_203
+#ifndef SERIF_SPECIES_PB_203
+    #define SERIF_SPECIES_PB_203
+#endif // SERIF_SPECIES_PB_203
+#ifndef SERIF_SPECIES_BI_203
+    #define SERIF_SPECIES_BI_203
+#endif // SERIF_SPECIES_BI_203
+#ifndef SERIF_SPECIES_PO_203
+    #define SERIF_SPECIES_PO_203
+#endif // SERIF_SPECIES_PO_203
+#ifndef SERIF_SPECIES_AT_203
+    #define SERIF_SPECIES_AT_203
+#endif // SERIF_SPECIES_AT_203
+#ifndef SERIF_SPECIES_RN_203
+    #define SERIF_SPECIES_RN_203
+#endif // SERIF_SPECIES_RN_203
+#ifndef SERIF_SPECIES_FR_203
+    #define SERIF_SPECIES_FR_203
+#endif // SERIF_SPECIES_FR_203
+#ifndef SERIF_SPECIES_RA_203
+    #define SERIF_SPECIES_RA_203
+#endif // SERIF_SPECIES_RA_203
+#ifndef SERIF_SPECIES_IR_204
+    #define SERIF_SPECIES_IR_204
+#endif // SERIF_SPECIES_IR_204
+#ifndef SERIF_SPECIES_PT_204
+    #define SERIF_SPECIES_PT_204
+#endif // SERIF_SPECIES_PT_204
+#ifndef SERIF_SPECIES_AU_204
+    #define SERIF_SPECIES_AU_204
+#endif // SERIF_SPECIES_AU_204
+#ifndef SERIF_SPECIES_HG_204
+    #define SERIF_SPECIES_HG_204
+#endif // SERIF_SPECIES_HG_204
+#ifndef SERIF_SPECIES_TL_204
+    #define SERIF_SPECIES_TL_204
+#endif // SERIF_SPECIES_TL_204
+#ifndef SERIF_SPECIES_PB_204
+    #define SERIF_SPECIES_PB_204
+#endif // SERIF_SPECIES_PB_204
+#ifndef SERIF_SPECIES_BI_204
+    #define SERIF_SPECIES_BI_204
+#endif // SERIF_SPECIES_BI_204
+#ifndef SERIF_SPECIES_PO_204
+    #define SERIF_SPECIES_PO_204
+#endif // SERIF_SPECIES_PO_204
+#ifndef SERIF_SPECIES_AT_204
+    #define SERIF_SPECIES_AT_204
+#endif // SERIF_SPECIES_AT_204
+#ifndef SERIF_SPECIES_RN_204
+    #define SERIF_SPECIES_RN_204
+#endif // SERIF_SPECIES_RN_204
+#ifndef SERIF_SPECIES_FR_204
+    #define SERIF_SPECIES_FR_204
+#endif // SERIF_SPECIES_FR_204
+#ifndef SERIF_SPECIES_RA_204
+    #define SERIF_SPECIES_RA_204
+#endif // SERIF_SPECIES_RA_204
+#ifndef SERIF_SPECIES_IR_205
+    #define SERIF_SPECIES_IR_205
+#endif // SERIF_SPECIES_IR_205
+#ifndef SERIF_SPECIES_PT_205
+    #define SERIF_SPECIES_PT_205
+#endif // SERIF_SPECIES_PT_205
+#ifndef SERIF_SPECIES_AU_205
+    #define SERIF_SPECIES_AU_205
+#endif // SERIF_SPECIES_AU_205
+#ifndef SERIF_SPECIES_HG_205
+    #define SERIF_SPECIES_HG_205
+#endif // SERIF_SPECIES_HG_205
+#ifndef SERIF_SPECIES_TL_205
+    #define SERIF_SPECIES_TL_205
+#endif // SERIF_SPECIES_TL_205
+#ifndef SERIF_SPECIES_PB_205
+    #define SERIF_SPECIES_PB_205
+#endif // SERIF_SPECIES_PB_205
+#ifndef SERIF_SPECIES_BI_205
+    #define SERIF_SPECIES_BI_205
+#endif // SERIF_SPECIES_BI_205
+#ifndef SERIF_SPECIES_PO_205
+    #define SERIF_SPECIES_PO_205
+#endif // SERIF_SPECIES_PO_205
+#ifndef SERIF_SPECIES_AT_205
+    #define SERIF_SPECIES_AT_205
+#endif // SERIF_SPECIES_AT_205
+#ifndef SERIF_SPECIES_RN_205
+    #define SERIF_SPECIES_RN_205
+#endif // SERIF_SPECIES_RN_205
+#ifndef SERIF_SPECIES_FR_205
+    #define SERIF_SPECIES_FR_205
+#endif // SERIF_SPECIES_FR_205
+#ifndef SERIF_SPECIES_RA_205
+    #define SERIF_SPECIES_RA_205
+#endif // SERIF_SPECIES_RA_205
+#ifndef SERIF_SPECIES_AC_205
+    #define SERIF_SPECIES_AC_205
+#endif // SERIF_SPECIES_AC_205
+#ifndef SERIF_SPECIES_PT_206
+    #define SERIF_SPECIES_PT_206
+#endif // SERIF_SPECIES_PT_206
+#ifndef SERIF_SPECIES_AU_206
+    #define SERIF_SPECIES_AU_206
+#endif // SERIF_SPECIES_AU_206
+#ifndef SERIF_SPECIES_HG_206
+    #define SERIF_SPECIES_HG_206
+#endif // SERIF_SPECIES_HG_206
+#ifndef SERIF_SPECIES_TL_206
+    #define SERIF_SPECIES_TL_206
+#endif // SERIF_SPECIES_TL_206
+#ifndef SERIF_SPECIES_PB_206
+    #define SERIF_SPECIES_PB_206
+#endif // SERIF_SPECIES_PB_206
+#ifndef SERIF_SPECIES_BI_206
+    #define SERIF_SPECIES_BI_206
+#endif // SERIF_SPECIES_BI_206
+#ifndef SERIF_SPECIES_PO_206
+    #define SERIF_SPECIES_PO_206
+#endif // SERIF_SPECIES_PO_206
+#ifndef SERIF_SPECIES_AT_206
+    #define SERIF_SPECIES_AT_206
+#endif // SERIF_SPECIES_AT_206
+#ifndef SERIF_SPECIES_RN_206
+    #define SERIF_SPECIES_RN_206
+#endif // SERIF_SPECIES_RN_206
+#ifndef SERIF_SPECIES_FR_206
+    #define SERIF_SPECIES_FR_206
+#endif // SERIF_SPECIES_FR_206
+#ifndef SERIF_SPECIES_RA_206
+    #define SERIF_SPECIES_RA_206
+#endif // SERIF_SPECIES_RA_206
+#ifndef SERIF_SPECIES_AC_206
+    #define SERIF_SPECIES_AC_206
+#endif // SERIF_SPECIES_AC_206
+#ifndef SERIF_SPECIES_PT_207
+    #define SERIF_SPECIES_PT_207
+#endif // SERIF_SPECIES_PT_207
+#ifndef SERIF_SPECIES_AU_207
+    #define SERIF_SPECIES_AU_207
+#endif // SERIF_SPECIES_AU_207
+#ifndef SERIF_SPECIES_HG_207
+    #define SERIF_SPECIES_HG_207
+#endif // SERIF_SPECIES_HG_207
+#ifndef SERIF_SPECIES_TL_207
+    #define SERIF_SPECIES_TL_207
+#endif // SERIF_SPECIES_TL_207
+#ifndef SERIF_SPECIES_PB_207
+    #define SERIF_SPECIES_PB_207
+#endif // SERIF_SPECIES_PB_207
+#ifndef SERIF_SPECIES_BI_207
+    #define SERIF_SPECIES_BI_207
+#endif // SERIF_SPECIES_BI_207
+#ifndef SERIF_SPECIES_PO_207
+    #define SERIF_SPECIES_PO_207
+#endif // SERIF_SPECIES_PO_207
+#ifndef SERIF_SPECIES_AT_207
+    #define SERIF_SPECIES_AT_207
+#endif // SERIF_SPECIES_AT_207
+#ifndef SERIF_SPECIES_RN_207
+    #define SERIF_SPECIES_RN_207
+#endif // SERIF_SPECIES_RN_207
+#ifndef SERIF_SPECIES_FR_207
+    #define SERIF_SPECIES_FR_207
+#endif // SERIF_SPECIES_FR_207
+#ifndef SERIF_SPECIES_RA_207
+    #define SERIF_SPECIES_RA_207
+#endif // SERIF_SPECIES_RA_207
+#ifndef SERIF_SPECIES_AC_207
+    #define SERIF_SPECIES_AC_207
+#endif // SERIF_SPECIES_AC_207
+#ifndef SERIF_SPECIES_PT_208
+    #define SERIF_SPECIES_PT_208
+#endif // SERIF_SPECIES_PT_208
+#ifndef SERIF_SPECIES_AU_208
+    #define SERIF_SPECIES_AU_208
+#endif // SERIF_SPECIES_AU_208
+#ifndef SERIF_SPECIES_HG_208
+    #define SERIF_SPECIES_HG_208
+#endif // SERIF_SPECIES_HG_208
+#ifndef SERIF_SPECIES_TL_208
+    #define SERIF_SPECIES_TL_208
+#endif // SERIF_SPECIES_TL_208
+#ifndef SERIF_SPECIES_PB_208
+    #define SERIF_SPECIES_PB_208
+#endif // SERIF_SPECIES_PB_208
+#ifndef SERIF_SPECIES_BI_208
+    #define SERIF_SPECIES_BI_208
+#endif // SERIF_SPECIES_BI_208
+#ifndef SERIF_SPECIES_PO_208
+    #define SERIF_SPECIES_PO_208
+#endif // SERIF_SPECIES_PO_208
+#ifndef SERIF_SPECIES_AT_208
+    #define SERIF_SPECIES_AT_208
+#endif // SERIF_SPECIES_AT_208
+#ifndef SERIF_SPECIES_RN_208
+    #define SERIF_SPECIES_RN_208
+#endif // SERIF_SPECIES_RN_208
+#ifndef SERIF_SPECIES_FR_208
+    #define SERIF_SPECIES_FR_208
+#endif // SERIF_SPECIES_FR_208
+#ifndef SERIF_SPECIES_RA_208
+    #define SERIF_SPECIES_RA_208
+#endif // SERIF_SPECIES_RA_208
+#ifndef SERIF_SPECIES_AC_208
+    #define SERIF_SPECIES_AC_208
+#endif // SERIF_SPECIES_AC_208
+#ifndef SERIF_SPECIES_TH_208
+    #define SERIF_SPECIES_TH_208
+#endif // SERIF_SPECIES_TH_208
+#ifndef SERIF_SPECIES_AU_209
+    #define SERIF_SPECIES_AU_209
+#endif // SERIF_SPECIES_AU_209
+#ifndef SERIF_SPECIES_HG_209
+    #define SERIF_SPECIES_HG_209
+#endif // SERIF_SPECIES_HG_209
+#ifndef SERIF_SPECIES_TL_209
+    #define SERIF_SPECIES_TL_209
+#endif // SERIF_SPECIES_TL_209
+#ifndef SERIF_SPECIES_PB_209
+    #define SERIF_SPECIES_PB_209
+#endif // SERIF_SPECIES_PB_209
+#ifndef SERIF_SPECIES_BI_209
+    #define SERIF_SPECIES_BI_209
+#endif // SERIF_SPECIES_BI_209
+#ifndef SERIF_SPECIES_PO_209
+    #define SERIF_SPECIES_PO_209
+#endif // SERIF_SPECIES_PO_209
+#ifndef SERIF_SPECIES_AT_209
+    #define SERIF_SPECIES_AT_209
+#endif // SERIF_SPECIES_AT_209
+#ifndef SERIF_SPECIES_RN_209
+    #define SERIF_SPECIES_RN_209
+#endif // SERIF_SPECIES_RN_209
+#ifndef SERIF_SPECIES_FR_209
+    #define SERIF_SPECIES_FR_209
+#endif // SERIF_SPECIES_FR_209
+#ifndef SERIF_SPECIES_RA_209
+    #define SERIF_SPECIES_RA_209
+#endif // SERIF_SPECIES_RA_209
+#ifndef SERIF_SPECIES_AC_209
+    #define SERIF_SPECIES_AC_209
+#endif // SERIF_SPECIES_AC_209
+#ifndef SERIF_SPECIES_TH_209
+    #define SERIF_SPECIES_TH_209
+#endif // SERIF_SPECIES_TH_209
+#ifndef SERIF_SPECIES_AU_210
+    #define SERIF_SPECIES_AU_210
+#endif // SERIF_SPECIES_AU_210
+#ifndef SERIF_SPECIES_HG_210
+    #define SERIF_SPECIES_HG_210
+#endif // SERIF_SPECIES_HG_210
+#ifndef SERIF_SPECIES_TL_210
+    #define SERIF_SPECIES_TL_210
+#endif // SERIF_SPECIES_TL_210
+#ifndef SERIF_SPECIES_PB_210
+    #define SERIF_SPECIES_PB_210
+#endif // SERIF_SPECIES_PB_210
+#ifndef SERIF_SPECIES_BI_210
+    #define SERIF_SPECIES_BI_210
+#endif // SERIF_SPECIES_BI_210
+#ifndef SERIF_SPECIES_PO_210
+    #define SERIF_SPECIES_PO_210
+#endif // SERIF_SPECIES_PO_210
+#ifndef SERIF_SPECIES_AT_210
+    #define SERIF_SPECIES_AT_210
+#endif // SERIF_SPECIES_AT_210
+#ifndef SERIF_SPECIES_RN_210
+    #define SERIF_SPECIES_RN_210
+#endif // SERIF_SPECIES_RN_210
+#ifndef SERIF_SPECIES_FR_210
+    #define SERIF_SPECIES_FR_210
+#endif // SERIF_SPECIES_FR_210
+#ifndef SERIF_SPECIES_RA_210
+    #define SERIF_SPECIES_RA_210
+#endif // SERIF_SPECIES_RA_210
+#ifndef SERIF_SPECIES_AC_210
+    #define SERIF_SPECIES_AC_210
+#endif // SERIF_SPECIES_AC_210
+#ifndef SERIF_SPECIES_TH_210
+    #define SERIF_SPECIES_TH_210
+#endif // SERIF_SPECIES_TH_210
+#ifndef SERIF_SPECIES_HG_211
+    #define SERIF_SPECIES_HG_211
+#endif // SERIF_SPECIES_HG_211
+#ifndef SERIF_SPECIES_TL_211
+    #define SERIF_SPECIES_TL_211
+#endif // SERIF_SPECIES_TL_211
+#ifndef SERIF_SPECIES_PB_211
+    #define SERIF_SPECIES_PB_211
+#endif // SERIF_SPECIES_PB_211
+#ifndef SERIF_SPECIES_BI_211
+    #define SERIF_SPECIES_BI_211
+#endif // SERIF_SPECIES_BI_211
+#ifndef SERIF_SPECIES_PO_211
+    #define SERIF_SPECIES_PO_211
+#endif // SERIF_SPECIES_PO_211
+#ifndef SERIF_SPECIES_AT_211
+    #define SERIF_SPECIES_AT_211
+#endif // SERIF_SPECIES_AT_211
+#ifndef SERIF_SPECIES_RN_211
+    #define SERIF_SPECIES_RN_211
+#endif // SERIF_SPECIES_RN_211
+#ifndef SERIF_SPECIES_FR_211
+    #define SERIF_SPECIES_FR_211
+#endif // SERIF_SPECIES_FR_211
+#ifndef SERIF_SPECIES_RA_211
+    #define SERIF_SPECIES_RA_211
+#endif // SERIF_SPECIES_RA_211
+#ifndef SERIF_SPECIES_AC_211
+    #define SERIF_SPECIES_AC_211
+#endif // SERIF_SPECIES_AC_211
+#ifndef SERIF_SPECIES_TH_211
+    #define SERIF_SPECIES_TH_211
+#endif // SERIF_SPECIES_TH_211
+#ifndef SERIF_SPECIES_PA_211
+    #define SERIF_SPECIES_PA_211
+#endif // SERIF_SPECIES_PA_211
+#ifndef SERIF_SPECIES_HG_212
+    #define SERIF_SPECIES_HG_212
+#endif // SERIF_SPECIES_HG_212
+#ifndef SERIF_SPECIES_TL_212
+    #define SERIF_SPECIES_TL_212
+#endif // SERIF_SPECIES_TL_212
+#ifndef SERIF_SPECIES_PB_212
+    #define SERIF_SPECIES_PB_212
+#endif // SERIF_SPECIES_PB_212
+#ifndef SERIF_SPECIES_BI_212
+    #define SERIF_SPECIES_BI_212
+#endif // SERIF_SPECIES_BI_212
+#ifndef SERIF_SPECIES_PO_212
+    #define SERIF_SPECIES_PO_212
+#endif // SERIF_SPECIES_PO_212
+#ifndef SERIF_SPECIES_AT_212
+    #define SERIF_SPECIES_AT_212
+#endif // SERIF_SPECIES_AT_212
+#ifndef SERIF_SPECIES_RN_212
+    #define SERIF_SPECIES_RN_212
+#endif // SERIF_SPECIES_RN_212
+#ifndef SERIF_SPECIES_FR_212
+    #define SERIF_SPECIES_FR_212
+#endif // SERIF_SPECIES_FR_212
+#ifndef SERIF_SPECIES_RA_212
+    #define SERIF_SPECIES_RA_212
+#endif // SERIF_SPECIES_RA_212
+#ifndef SERIF_SPECIES_AC_212
+    #define SERIF_SPECIES_AC_212
+#endif // SERIF_SPECIES_AC_212
+#ifndef SERIF_SPECIES_TH_212
+    #define SERIF_SPECIES_TH_212
+#endif // SERIF_SPECIES_TH_212
+#ifndef SERIF_SPECIES_PA_212
+    #define SERIF_SPECIES_PA_212
+#endif // SERIF_SPECIES_PA_212
+#ifndef SERIF_SPECIES_HG_213
+    #define SERIF_SPECIES_HG_213
+#endif // SERIF_SPECIES_HG_213
+#ifndef SERIF_SPECIES_TL_213
+    #define SERIF_SPECIES_TL_213
+#endif // SERIF_SPECIES_TL_213
+#ifndef SERIF_SPECIES_PB_213
+    #define SERIF_SPECIES_PB_213
+#endif // SERIF_SPECIES_PB_213
+#ifndef SERIF_SPECIES_BI_213
+    #define SERIF_SPECIES_BI_213
+#endif // SERIF_SPECIES_BI_213
+#ifndef SERIF_SPECIES_PO_213
+    #define SERIF_SPECIES_PO_213
+#endif // SERIF_SPECIES_PO_213
+#ifndef SERIF_SPECIES_AT_213
+    #define SERIF_SPECIES_AT_213
+#endif // SERIF_SPECIES_AT_213
+#ifndef SERIF_SPECIES_RN_213
+    #define SERIF_SPECIES_RN_213
+#endif // SERIF_SPECIES_RN_213
+#ifndef SERIF_SPECIES_FR_213
+    #define SERIF_SPECIES_FR_213
+#endif // SERIF_SPECIES_FR_213
+#ifndef SERIF_SPECIES_RA_213
+    #define SERIF_SPECIES_RA_213
+#endif // SERIF_SPECIES_RA_213
+#ifndef SERIF_SPECIES_AC_213
+    #define SERIF_SPECIES_AC_213
+#endif // SERIF_SPECIES_AC_213
+#ifndef SERIF_SPECIES_TH_213
+    #define SERIF_SPECIES_TH_213
+#endif // SERIF_SPECIES_TH_213
+#ifndef SERIF_SPECIES_PA_213
+    #define SERIF_SPECIES_PA_213
+#endif // SERIF_SPECIES_PA_213
+#ifndef SERIF_SPECIES_HG_214
+    #define SERIF_SPECIES_HG_214
+#endif // SERIF_SPECIES_HG_214
+#ifndef SERIF_SPECIES_TL_214
+    #define SERIF_SPECIES_TL_214
+#endif // SERIF_SPECIES_TL_214
+#ifndef SERIF_SPECIES_PB_214
+    #define SERIF_SPECIES_PB_214
+#endif // SERIF_SPECIES_PB_214
+#ifndef SERIF_SPECIES_BI_214
+    #define SERIF_SPECIES_BI_214
+#endif // SERIF_SPECIES_BI_214
+#ifndef SERIF_SPECIES_PO_214
+    #define SERIF_SPECIES_PO_214
+#endif // SERIF_SPECIES_PO_214
+#ifndef SERIF_SPECIES_AT_214
+    #define SERIF_SPECIES_AT_214
+#endif // SERIF_SPECIES_AT_214
+#ifndef SERIF_SPECIES_RN_214
+    #define SERIF_SPECIES_RN_214
+#endif // SERIF_SPECIES_RN_214
+#ifndef SERIF_SPECIES_FR_214
+    #define SERIF_SPECIES_FR_214
+#endif // SERIF_SPECIES_FR_214
+#ifndef SERIF_SPECIES_RA_214
+    #define SERIF_SPECIES_RA_214
+#endif // SERIF_SPECIES_RA_214
+#ifndef SERIF_SPECIES_AC_214
+    #define SERIF_SPECIES_AC_214
+#endif // SERIF_SPECIES_AC_214
+#ifndef SERIF_SPECIES_TH_214
+    #define SERIF_SPECIES_TH_214
+#endif // SERIF_SPECIES_TH_214
+#ifndef SERIF_SPECIES_PA_214
+    #define SERIF_SPECIES_PA_214
+#endif // SERIF_SPECIES_PA_214
+#ifndef SERIF_SPECIES_HG_215
+    #define SERIF_SPECIES_HG_215
+#endif // SERIF_SPECIES_HG_215
+#ifndef SERIF_SPECIES_TL_215
+    #define SERIF_SPECIES_TL_215
+#endif // SERIF_SPECIES_TL_215
+#ifndef SERIF_SPECIES_PB_215
+    #define SERIF_SPECIES_PB_215
+#endif // SERIF_SPECIES_PB_215
+#ifndef SERIF_SPECIES_BI_215
+    #define SERIF_SPECIES_BI_215
+#endif // SERIF_SPECIES_BI_215
+#ifndef SERIF_SPECIES_PO_215
+    #define SERIF_SPECIES_PO_215
+#endif // SERIF_SPECIES_PO_215
+#ifndef SERIF_SPECIES_AT_215
+    #define SERIF_SPECIES_AT_215
+#endif // SERIF_SPECIES_AT_215
+#ifndef SERIF_SPECIES_RN_215
+    #define SERIF_SPECIES_RN_215
+#endif // SERIF_SPECIES_RN_215
+#ifndef SERIF_SPECIES_FR_215
+    #define SERIF_SPECIES_FR_215
+#endif // SERIF_SPECIES_FR_215
+#ifndef SERIF_SPECIES_RA_215
+    #define SERIF_SPECIES_RA_215
+#endif // SERIF_SPECIES_RA_215
+#ifndef SERIF_SPECIES_AC_215
+    #define SERIF_SPECIES_AC_215
+#endif // SERIF_SPECIES_AC_215
+#ifndef SERIF_SPECIES_TH_215
+    #define SERIF_SPECIES_TH_215
+#endif // SERIF_SPECIES_TH_215
+#ifndef SERIF_SPECIES_PA_215
+    #define SERIF_SPECIES_PA_215
+#endif // SERIF_SPECIES_PA_215
+#ifndef SERIF_SPECIES_U_215
+    #define SERIF_SPECIES_U_215
+#endif // SERIF_SPECIES_U_215
+#ifndef SERIF_SPECIES_HG_216
+    #define SERIF_SPECIES_HG_216
+#endif // SERIF_SPECIES_HG_216
+#ifndef SERIF_SPECIES_TL_216
+    #define SERIF_SPECIES_TL_216
+#endif // SERIF_SPECIES_TL_216
+#ifndef SERIF_SPECIES_PB_216
+    #define SERIF_SPECIES_PB_216
+#endif // SERIF_SPECIES_PB_216
+#ifndef SERIF_SPECIES_BI_216
+    #define SERIF_SPECIES_BI_216
+#endif // SERIF_SPECIES_BI_216
+#ifndef SERIF_SPECIES_PO_216
+    #define SERIF_SPECIES_PO_216
+#endif // SERIF_SPECIES_PO_216
+#ifndef SERIF_SPECIES_AT_216
+    #define SERIF_SPECIES_AT_216
+#endif // SERIF_SPECIES_AT_216
+#ifndef SERIF_SPECIES_RN_216
+    #define SERIF_SPECIES_RN_216
+#endif // SERIF_SPECIES_RN_216
+#ifndef SERIF_SPECIES_FR_216
+    #define SERIF_SPECIES_FR_216
+#endif // SERIF_SPECIES_FR_216
+#ifndef SERIF_SPECIES_RA_216
+    #define SERIF_SPECIES_RA_216
+#endif // SERIF_SPECIES_RA_216
+#ifndef SERIF_SPECIES_AC_216
+    #define SERIF_SPECIES_AC_216
+#endif // SERIF_SPECIES_AC_216
+#ifndef SERIF_SPECIES_TH_216
+    #define SERIF_SPECIES_TH_216
+#endif // SERIF_SPECIES_TH_216
+#ifndef SERIF_SPECIES_PA_216
+    #define SERIF_SPECIES_PA_216
+#endif // SERIF_SPECIES_PA_216
+#ifndef SERIF_SPECIES_U_216
+    #define SERIF_SPECIES_U_216
+#endif // SERIF_SPECIES_U_216
+#ifndef SERIF_SPECIES_TL_217
+    #define SERIF_SPECIES_TL_217
+#endif // SERIF_SPECIES_TL_217
+#ifndef SERIF_SPECIES_PB_217
+    #define SERIF_SPECIES_PB_217
+#endif // SERIF_SPECIES_PB_217
+#ifndef SERIF_SPECIES_BI_217
+    #define SERIF_SPECIES_BI_217
+#endif // SERIF_SPECIES_BI_217
+#ifndef SERIF_SPECIES_PO_217
+    #define SERIF_SPECIES_PO_217
+#endif // SERIF_SPECIES_PO_217
+#ifndef SERIF_SPECIES_AT_217
+    #define SERIF_SPECIES_AT_217
+#endif // SERIF_SPECIES_AT_217
+#ifndef SERIF_SPECIES_RN_217
+    #define SERIF_SPECIES_RN_217
+#endif // SERIF_SPECIES_RN_217
+#ifndef SERIF_SPECIES_FR_217
+    #define SERIF_SPECIES_FR_217
+#endif // SERIF_SPECIES_FR_217
+#ifndef SERIF_SPECIES_RA_217
+    #define SERIF_SPECIES_RA_217
+#endif // SERIF_SPECIES_RA_217
+#ifndef SERIF_SPECIES_AC_217
+    #define SERIF_SPECIES_AC_217
+#endif // SERIF_SPECIES_AC_217
+#ifndef SERIF_SPECIES_TH_217
+    #define SERIF_SPECIES_TH_217
+#endif // SERIF_SPECIES_TH_217
+#ifndef SERIF_SPECIES_PA_217
+    #define SERIF_SPECIES_PA_217
+#endif // SERIF_SPECIES_PA_217
+#ifndef SERIF_SPECIES_U_217
+    #define SERIF_SPECIES_U_217
+#endif // SERIF_SPECIES_U_217
+#ifndef SERIF_SPECIES_TL_218
+    #define SERIF_SPECIES_TL_218
+#endif // SERIF_SPECIES_TL_218
+#ifndef SERIF_SPECIES_PB_218
+    #define SERIF_SPECIES_PB_218
+#endif // SERIF_SPECIES_PB_218
+#ifndef SERIF_SPECIES_BI_218
+    #define SERIF_SPECIES_BI_218
+#endif // SERIF_SPECIES_BI_218
+#ifndef SERIF_SPECIES_PO_218
+    #define SERIF_SPECIES_PO_218
+#endif // SERIF_SPECIES_PO_218
+#ifndef SERIF_SPECIES_AT_218
+    #define SERIF_SPECIES_AT_218
+#endif // SERIF_SPECIES_AT_218
+#ifndef SERIF_SPECIES_RN_218
+    #define SERIF_SPECIES_RN_218
+#endif // SERIF_SPECIES_RN_218
+#ifndef SERIF_SPECIES_FR_218
+    #define SERIF_SPECIES_FR_218
+#endif // SERIF_SPECIES_FR_218
+#ifndef SERIF_SPECIES_RA_218
+    #define SERIF_SPECIES_RA_218
+#endif // SERIF_SPECIES_RA_218
+#ifndef SERIF_SPECIES_AC_218
+    #define SERIF_SPECIES_AC_218
+#endif // SERIF_SPECIES_AC_218
+#ifndef SERIF_SPECIES_TH_218
+    #define SERIF_SPECIES_TH_218
+#endif // SERIF_SPECIES_TH_218
+#ifndef SERIF_SPECIES_PA_218
+    #define SERIF_SPECIES_PA_218
+#endif // SERIF_SPECIES_PA_218
+#ifndef SERIF_SPECIES_U_218
+    #define SERIF_SPECIES_U_218
+#endif // SERIF_SPECIES_U_218
+#ifndef SERIF_SPECIES_PB_219
+    #define SERIF_SPECIES_PB_219
+#endif // SERIF_SPECIES_PB_219
+#ifndef SERIF_SPECIES_BI_219
+    #define SERIF_SPECIES_BI_219
+#endif // SERIF_SPECIES_BI_219
+#ifndef SERIF_SPECIES_PO_219
+    #define SERIF_SPECIES_PO_219
+#endif // SERIF_SPECIES_PO_219
+#ifndef SERIF_SPECIES_AT_219
+    #define SERIF_SPECIES_AT_219
+#endif // SERIF_SPECIES_AT_219
+#ifndef SERIF_SPECIES_RN_219
+    #define SERIF_SPECIES_RN_219
+#endif // SERIF_SPECIES_RN_219
+#ifndef SERIF_SPECIES_FR_219
+    #define SERIF_SPECIES_FR_219
+#endif // SERIF_SPECIES_FR_219
+#ifndef SERIF_SPECIES_RA_219
+    #define SERIF_SPECIES_RA_219
+#endif // SERIF_SPECIES_RA_219
+#ifndef SERIF_SPECIES_AC_219
+    #define SERIF_SPECIES_AC_219
+#endif // SERIF_SPECIES_AC_219
+#ifndef SERIF_SPECIES_TH_219
+    #define SERIF_SPECIES_TH_219
+#endif // SERIF_SPECIES_TH_219
+#ifndef SERIF_SPECIES_PA_219
+    #define SERIF_SPECIES_PA_219
+#endif // SERIF_SPECIES_PA_219
+#ifndef SERIF_SPECIES_U_219
+    #define SERIF_SPECIES_U_219
+#endif // SERIF_SPECIES_U_219
+#ifndef SERIF_SPECIES_NP_219
+    #define SERIF_SPECIES_NP_219
+#endif // SERIF_SPECIES_NP_219
+#ifndef SERIF_SPECIES_PB_220
+    #define SERIF_SPECIES_PB_220
+#endif // SERIF_SPECIES_PB_220
+#ifndef SERIF_SPECIES_BI_220
+    #define SERIF_SPECIES_BI_220
+#endif // SERIF_SPECIES_BI_220
+#ifndef SERIF_SPECIES_PO_220
+    #define SERIF_SPECIES_PO_220
+#endif // SERIF_SPECIES_PO_220
+#ifndef SERIF_SPECIES_AT_220
+    #define SERIF_SPECIES_AT_220
+#endif // SERIF_SPECIES_AT_220
+#ifndef SERIF_SPECIES_RN_220
+    #define SERIF_SPECIES_RN_220
+#endif // SERIF_SPECIES_RN_220
+#ifndef SERIF_SPECIES_FR_220
+    #define SERIF_SPECIES_FR_220
+#endif // SERIF_SPECIES_FR_220
+#ifndef SERIF_SPECIES_RA_220
+    #define SERIF_SPECIES_RA_220
+#endif // SERIF_SPECIES_RA_220
+#ifndef SERIF_SPECIES_AC_220
+    #define SERIF_SPECIES_AC_220
+#endif // SERIF_SPECIES_AC_220
+#ifndef SERIF_SPECIES_TH_220
+    #define SERIF_SPECIES_TH_220
+#endif // SERIF_SPECIES_TH_220
+#ifndef SERIF_SPECIES_PA_220
+    #define SERIF_SPECIES_PA_220
+#endif // SERIF_SPECIES_PA_220
+#ifndef SERIF_SPECIES_U_220
+    #define SERIF_SPECIES_U_220
+#endif // SERIF_SPECIES_U_220
+#ifndef SERIF_SPECIES_NP_220
+    #define SERIF_SPECIES_NP_220
+#endif // SERIF_SPECIES_NP_220
+#ifndef SERIF_SPECIES_BI_221
+    #define SERIF_SPECIES_BI_221
+#endif // SERIF_SPECIES_BI_221
+#ifndef SERIF_SPECIES_PO_221
+    #define SERIF_SPECIES_PO_221
+#endif // SERIF_SPECIES_PO_221
+#ifndef SERIF_SPECIES_AT_221
+    #define SERIF_SPECIES_AT_221
+#endif // SERIF_SPECIES_AT_221
+#ifndef SERIF_SPECIES_RN_221
+    #define SERIF_SPECIES_RN_221
+#endif // SERIF_SPECIES_RN_221
+#ifndef SERIF_SPECIES_FR_221
+    #define SERIF_SPECIES_FR_221
+#endif // SERIF_SPECIES_FR_221
+#ifndef SERIF_SPECIES_RA_221
+    #define SERIF_SPECIES_RA_221
+#endif // SERIF_SPECIES_RA_221
+#ifndef SERIF_SPECIES_AC_221
+    #define SERIF_SPECIES_AC_221
+#endif // SERIF_SPECIES_AC_221
+#ifndef SERIF_SPECIES_TH_221
+    #define SERIF_SPECIES_TH_221
+#endif // SERIF_SPECIES_TH_221
+#ifndef SERIF_SPECIES_PA_221
+    #define SERIF_SPECIES_PA_221
+#endif // SERIF_SPECIES_PA_221
+#ifndef SERIF_SPECIES_U_221
+    #define SERIF_SPECIES_U_221
+#endif // SERIF_SPECIES_U_221
+#ifndef SERIF_SPECIES_NP_221
+    #define SERIF_SPECIES_NP_221
+#endif // SERIF_SPECIES_NP_221
+#ifndef SERIF_SPECIES_PU_221
+    #define SERIF_SPECIES_PU_221
+#endif // SERIF_SPECIES_PU_221
+#ifndef SERIF_SPECIES_BI_222
+    #define SERIF_SPECIES_BI_222
+#endif // SERIF_SPECIES_BI_222
+#ifndef SERIF_SPECIES_PO_222
+    #define SERIF_SPECIES_PO_222
+#endif // SERIF_SPECIES_PO_222
+#ifndef SERIF_SPECIES_AT_222
+    #define SERIF_SPECIES_AT_222
+#endif // SERIF_SPECIES_AT_222
+#ifndef SERIF_SPECIES_RN_222
+    #define SERIF_SPECIES_RN_222
+#endif // SERIF_SPECIES_RN_222
+#ifndef SERIF_SPECIES_FR_222
+    #define SERIF_SPECIES_FR_222
+#endif // SERIF_SPECIES_FR_222
+#ifndef SERIF_SPECIES_RA_222
+    #define SERIF_SPECIES_RA_222
+#endif // SERIF_SPECIES_RA_222
+#ifndef SERIF_SPECIES_AC_222
+    #define SERIF_SPECIES_AC_222
+#endif // SERIF_SPECIES_AC_222
+#ifndef SERIF_SPECIES_TH_222
+    #define SERIF_SPECIES_TH_222
+#endif // SERIF_SPECIES_TH_222
+#ifndef SERIF_SPECIES_PA_222
+    #define SERIF_SPECIES_PA_222
+#endif // SERIF_SPECIES_PA_222
+#ifndef SERIF_SPECIES_U_222
+    #define SERIF_SPECIES_U_222
+#endif // SERIF_SPECIES_U_222
+#ifndef SERIF_SPECIES_NP_222
+    #define SERIF_SPECIES_NP_222
+#endif // SERIF_SPECIES_NP_222
+#ifndef SERIF_SPECIES_PU_222
+    #define SERIF_SPECIES_PU_222
+#endif // SERIF_SPECIES_PU_222
+#ifndef SERIF_SPECIES_BI_223
+    #define SERIF_SPECIES_BI_223
+#endif // SERIF_SPECIES_BI_223
+#ifndef SERIF_SPECIES_PO_223
+    #define SERIF_SPECIES_PO_223
+#endif // SERIF_SPECIES_PO_223
+#ifndef SERIF_SPECIES_AT_223
+    #define SERIF_SPECIES_AT_223
+#endif // SERIF_SPECIES_AT_223
+#ifndef SERIF_SPECIES_RN_223
+    #define SERIF_SPECIES_RN_223
+#endif // SERIF_SPECIES_RN_223
+#ifndef SERIF_SPECIES_FR_223
+    #define SERIF_SPECIES_FR_223
+#endif // SERIF_SPECIES_FR_223
+#ifndef SERIF_SPECIES_RA_223
+    #define SERIF_SPECIES_RA_223
+#endif // SERIF_SPECIES_RA_223
+#ifndef SERIF_SPECIES_AC_223
+    #define SERIF_SPECIES_AC_223
+#endif // SERIF_SPECIES_AC_223
+#ifndef SERIF_SPECIES_TH_223
+    #define SERIF_SPECIES_TH_223
+#endif // SERIF_SPECIES_TH_223
+#ifndef SERIF_SPECIES_PA_223
+    #define SERIF_SPECIES_PA_223
+#endif // SERIF_SPECIES_PA_223
+#ifndef SERIF_SPECIES_U_223
+    #define SERIF_SPECIES_U_223
+#endif // SERIF_SPECIES_U_223
+#ifndef SERIF_SPECIES_NP_223
+    #define SERIF_SPECIES_NP_223
+#endif // SERIF_SPECIES_NP_223
+#ifndef SERIF_SPECIES_PU_223
+    #define SERIF_SPECIES_PU_223
+#endif // SERIF_SPECIES_PU_223
+#ifndef SERIF_SPECIES_AM_223
+    #define SERIF_SPECIES_AM_223
+#endif // SERIF_SPECIES_AM_223
+#ifndef SERIF_SPECIES_BI_224
+    #define SERIF_SPECIES_BI_224
+#endif // SERIF_SPECIES_BI_224
+#ifndef SERIF_SPECIES_PO_224
+    #define SERIF_SPECIES_PO_224
+#endif // SERIF_SPECIES_PO_224
+#ifndef SERIF_SPECIES_AT_224
+    #define SERIF_SPECIES_AT_224
+#endif // SERIF_SPECIES_AT_224
+#ifndef SERIF_SPECIES_RN_224
+    #define SERIF_SPECIES_RN_224
+#endif // SERIF_SPECIES_RN_224
+#ifndef SERIF_SPECIES_FR_224
+    #define SERIF_SPECIES_FR_224
+#endif // SERIF_SPECIES_FR_224
+#ifndef SERIF_SPECIES_RA_224
+    #define SERIF_SPECIES_RA_224
+#endif // SERIF_SPECIES_RA_224
+#ifndef SERIF_SPECIES_AC_224
+    #define SERIF_SPECIES_AC_224
+#endif // SERIF_SPECIES_AC_224
+#ifndef SERIF_SPECIES_TH_224
+    #define SERIF_SPECIES_TH_224
+#endif // SERIF_SPECIES_TH_224
+#ifndef SERIF_SPECIES_PA_224
+    #define SERIF_SPECIES_PA_224
+#endif // SERIF_SPECIES_PA_224
+#ifndef SERIF_SPECIES_U_224
+    #define SERIF_SPECIES_U_224
+#endif // SERIF_SPECIES_U_224
+#ifndef SERIF_SPECIES_NP_224
+    #define SERIF_SPECIES_NP_224
+#endif // SERIF_SPECIES_NP_224
+#ifndef SERIF_SPECIES_PU_224
+    #define SERIF_SPECIES_PU_224
+#endif // SERIF_SPECIES_PU_224
+#ifndef SERIF_SPECIES_AM_224
+    #define SERIF_SPECIES_AM_224
+#endif // SERIF_SPECIES_AM_224
+#ifndef SERIF_SPECIES_PO_225
+    #define SERIF_SPECIES_PO_225
+#endif // SERIF_SPECIES_PO_225
+#ifndef SERIF_SPECIES_AT_225
+    #define SERIF_SPECIES_AT_225
+#endif // SERIF_SPECIES_AT_225
+#ifndef SERIF_SPECIES_RN_225
+    #define SERIF_SPECIES_RN_225
+#endif // SERIF_SPECIES_RN_225
+#ifndef SERIF_SPECIES_FR_225
+    #define SERIF_SPECIES_FR_225
+#endif // SERIF_SPECIES_FR_225
+#ifndef SERIF_SPECIES_RA_225
+    #define SERIF_SPECIES_RA_225
+#endif // SERIF_SPECIES_RA_225
+#ifndef SERIF_SPECIES_AC_225
+    #define SERIF_SPECIES_AC_225
+#endif // SERIF_SPECIES_AC_225
+#ifndef SERIF_SPECIES_TH_225
+    #define SERIF_SPECIES_TH_225
+#endif // SERIF_SPECIES_TH_225
+#ifndef SERIF_SPECIES_PA_225
+    #define SERIF_SPECIES_PA_225
+#endif // SERIF_SPECIES_PA_225
+#ifndef SERIF_SPECIES_U_225
+    #define SERIF_SPECIES_U_225
+#endif // SERIF_SPECIES_U_225
+#ifndef SERIF_SPECIES_NP_225
+    #define SERIF_SPECIES_NP_225
+#endif // SERIF_SPECIES_NP_225
+#ifndef SERIF_SPECIES_PU_225
+    #define SERIF_SPECIES_PU_225
+#endif // SERIF_SPECIES_PU_225
+#ifndef SERIF_SPECIES_AM_225
+    #define SERIF_SPECIES_AM_225
+#endif // SERIF_SPECIES_AM_225
+#ifndef SERIF_SPECIES_PO_226
+    #define SERIF_SPECIES_PO_226
+#endif // SERIF_SPECIES_PO_226
+#ifndef SERIF_SPECIES_AT_226
+    #define SERIF_SPECIES_AT_226
+#endif // SERIF_SPECIES_AT_226
+#ifndef SERIF_SPECIES_RN_226
+    #define SERIF_SPECIES_RN_226
+#endif // SERIF_SPECIES_RN_226
+#ifndef SERIF_SPECIES_FR_226
+    #define SERIF_SPECIES_FR_226
+#endif // SERIF_SPECIES_FR_226
+#ifndef SERIF_SPECIES_RA_226
+    #define SERIF_SPECIES_RA_226
+#endif // SERIF_SPECIES_RA_226
+#ifndef SERIF_SPECIES_AC_226
+    #define SERIF_SPECIES_AC_226
+#endif // SERIF_SPECIES_AC_226
+#ifndef SERIF_SPECIES_TH_226
+    #define SERIF_SPECIES_TH_226
+#endif // SERIF_SPECIES_TH_226
+#ifndef SERIF_SPECIES_PA_226
+    #define SERIF_SPECIES_PA_226
+#endif // SERIF_SPECIES_PA_226
+#ifndef SERIF_SPECIES_U_226
+    #define SERIF_SPECIES_U_226
+#endif // SERIF_SPECIES_U_226
+#ifndef SERIF_SPECIES_NP_226
+    #define SERIF_SPECIES_NP_226
+#endif // SERIF_SPECIES_NP_226
+#ifndef SERIF_SPECIES_PU_226
+    #define SERIF_SPECIES_PU_226
+#endif // SERIF_SPECIES_PU_226
+#ifndef SERIF_SPECIES_AM_226
+    #define SERIF_SPECIES_AM_226
+#endif // SERIF_SPECIES_AM_226
+#ifndef SERIF_SPECIES_PO_227
+    #define SERIF_SPECIES_PO_227
+#endif // SERIF_SPECIES_PO_227
+#ifndef SERIF_SPECIES_AT_227
+    #define SERIF_SPECIES_AT_227
+#endif // SERIF_SPECIES_AT_227
+#ifndef SERIF_SPECIES_RN_227
+    #define SERIF_SPECIES_RN_227
+#endif // SERIF_SPECIES_RN_227
+#ifndef SERIF_SPECIES_FR_227
+    #define SERIF_SPECIES_FR_227
+#endif // SERIF_SPECIES_FR_227
+#ifndef SERIF_SPECIES_RA_227
+    #define SERIF_SPECIES_RA_227
+#endif // SERIF_SPECIES_RA_227
+#ifndef SERIF_SPECIES_AC_227
+    #define SERIF_SPECIES_AC_227
+#endif // SERIF_SPECIES_AC_227
+#ifndef SERIF_SPECIES_TH_227
+    #define SERIF_SPECIES_TH_227
+#endif // SERIF_SPECIES_TH_227
+#ifndef SERIF_SPECIES_PA_227
+    #define SERIF_SPECIES_PA_227
+#endif // SERIF_SPECIES_PA_227
+#ifndef SERIF_SPECIES_U_227
+    #define SERIF_SPECIES_U_227
+#endif // SERIF_SPECIES_U_227
+#ifndef SERIF_SPECIES_NP_227
+    #define SERIF_SPECIES_NP_227
+#endif // SERIF_SPECIES_NP_227
+#ifndef SERIF_SPECIES_PU_227
+    #define SERIF_SPECIES_PU_227
+#endif // SERIF_SPECIES_PU_227
+#ifndef SERIF_SPECIES_AM_227
+    #define SERIF_SPECIES_AM_227
+#endif // SERIF_SPECIES_AM_227
+#ifndef SERIF_SPECIES_AT_228
+    #define SERIF_SPECIES_AT_228
+#endif // SERIF_SPECIES_AT_228
+#ifndef SERIF_SPECIES_RN_228
+    #define SERIF_SPECIES_RN_228
+#endif // SERIF_SPECIES_RN_228
+#ifndef SERIF_SPECIES_FR_228
+    #define SERIF_SPECIES_FR_228
+#endif // SERIF_SPECIES_FR_228
+#ifndef SERIF_SPECIES_RA_228
+    #define SERIF_SPECIES_RA_228
+#endif // SERIF_SPECIES_RA_228
+#ifndef SERIF_SPECIES_AC_228
+    #define SERIF_SPECIES_AC_228
+#endif // SERIF_SPECIES_AC_228
+#ifndef SERIF_SPECIES_TH_228
+    #define SERIF_SPECIES_TH_228
+#endif // SERIF_SPECIES_TH_228
+#ifndef SERIF_SPECIES_PA_228
+    #define SERIF_SPECIES_PA_228
+#endif // SERIF_SPECIES_PA_228
+#ifndef SERIF_SPECIES_U_228
+    #define SERIF_SPECIES_U_228
+#endif // SERIF_SPECIES_U_228
+#ifndef SERIF_SPECIES_NP_228
+    #define SERIF_SPECIES_NP_228
+#endif // SERIF_SPECIES_NP_228
+#ifndef SERIF_SPECIES_PU_228
+    #define SERIF_SPECIES_PU_228
+#endif // SERIF_SPECIES_PU_228
+#ifndef SERIF_SPECIES_AM_228
+    #define SERIF_SPECIES_AM_228
+#endif // SERIF_SPECIES_AM_228
+#ifndef SERIF_SPECIES_AT_229
+    #define SERIF_SPECIES_AT_229
+#endif // SERIF_SPECIES_AT_229
+#ifndef SERIF_SPECIES_RN_229
+    #define SERIF_SPECIES_RN_229
+#endif // SERIF_SPECIES_RN_229
+#ifndef SERIF_SPECIES_FR_229
+    #define SERIF_SPECIES_FR_229
+#endif // SERIF_SPECIES_FR_229
+#ifndef SERIF_SPECIES_RA_229
+    #define SERIF_SPECIES_RA_229
+#endif // SERIF_SPECIES_RA_229
+#ifndef SERIF_SPECIES_AC_229
+    #define SERIF_SPECIES_AC_229
+#endif // SERIF_SPECIES_AC_229
+#ifndef SERIF_SPECIES_TH_229
+    #define SERIF_SPECIES_TH_229
+#endif // SERIF_SPECIES_TH_229
+#ifndef SERIF_SPECIES_PA_229
+    #define SERIF_SPECIES_PA_229
+#endif // SERIF_SPECIES_PA_229
+#ifndef SERIF_SPECIES_U_229
+    #define SERIF_SPECIES_U_229
+#endif // SERIF_SPECIES_U_229
+#ifndef SERIF_SPECIES_NP_229
+    #define SERIF_SPECIES_NP_229
+#endif // SERIF_SPECIES_NP_229
+#ifndef SERIF_SPECIES_PU_229
+    #define SERIF_SPECIES_PU_229
+#endif // SERIF_SPECIES_PU_229
+#ifndef SERIF_SPECIES_AM_229
+    #define SERIF_SPECIES_AM_229
+#endif // SERIF_SPECIES_AM_229
+#ifndef SERIF_SPECIES_RN_230
+    #define SERIF_SPECIES_RN_230
+#endif // SERIF_SPECIES_RN_230
+#ifndef SERIF_SPECIES_FR_230
+    #define SERIF_SPECIES_FR_230
+#endif // SERIF_SPECIES_FR_230
+#ifndef SERIF_SPECIES_RA_230
+    #define SERIF_SPECIES_RA_230
+#endif // SERIF_SPECIES_RA_230
+#ifndef SERIF_SPECIES_AC_230
+    #define SERIF_SPECIES_AC_230
+#endif // SERIF_SPECIES_AC_230
+#ifndef SERIF_SPECIES_TH_230
+    #define SERIF_SPECIES_TH_230
+#endif // SERIF_SPECIES_TH_230
+#ifndef SERIF_SPECIES_PA_230
+    #define SERIF_SPECIES_PA_230
+#endif // SERIF_SPECIES_PA_230
+#ifndef SERIF_SPECIES_U_230
+    #define SERIF_SPECIES_U_230
+#endif // SERIF_SPECIES_U_230
+#ifndef SERIF_SPECIES_NP_230
+    #define SERIF_SPECIES_NP_230
+#endif // SERIF_SPECIES_NP_230
+#ifndef SERIF_SPECIES_PU_230
+    #define SERIF_SPECIES_PU_230
+#endif // SERIF_SPECIES_PU_230
+#ifndef SERIF_SPECIES_AM_230
+    #define SERIF_SPECIES_AM_230
+#endif // SERIF_SPECIES_AM_230
+#ifndef SERIF_SPECIES_RN_231
+    #define SERIF_SPECIES_RN_231
+#endif // SERIF_SPECIES_RN_231
+#ifndef SERIF_SPECIES_FR_231
+    #define SERIF_SPECIES_FR_231
+#endif // SERIF_SPECIES_FR_231
+#ifndef SERIF_SPECIES_RA_231
+    #define SERIF_SPECIES_RA_231
+#endif // SERIF_SPECIES_RA_231
+#ifndef SERIF_SPECIES_AC_231
+    #define SERIF_SPECIES_AC_231
+#endif // SERIF_SPECIES_AC_231
+#ifndef SERIF_SPECIES_TH_231
+    #define SERIF_SPECIES_TH_231
+#endif // SERIF_SPECIES_TH_231
+#ifndef SERIF_SPECIES_PA_231
+    #define SERIF_SPECIES_PA_231
+#endif // SERIF_SPECIES_PA_231
+#ifndef SERIF_SPECIES_U_231
+    #define SERIF_SPECIES_U_231
+#endif // SERIF_SPECIES_U_231
+#ifndef SERIF_SPECIES_NP_231
+    #define SERIF_SPECIES_NP_231
+#endif // SERIF_SPECIES_NP_231
+#ifndef SERIF_SPECIES_PU_231
+    #define SERIF_SPECIES_PU_231
+#endif // SERIF_SPECIES_PU_231
+#ifndef SERIF_SPECIES_AM_231
+    #define SERIF_SPECIES_AM_231
+#endif // SERIF_SPECIES_AM_231
+#ifndef SERIF_SPECIES_CM_231
+    #define SERIF_SPECIES_CM_231
+#endif // SERIF_SPECIES_CM_231
+#ifndef SERIF_SPECIES_FR_232
+    #define SERIF_SPECIES_FR_232
+#endif // SERIF_SPECIES_FR_232
+#ifndef SERIF_SPECIES_RA_232
+    #define SERIF_SPECIES_RA_232
+#endif // SERIF_SPECIES_RA_232
+#ifndef SERIF_SPECIES_AC_232
+    #define SERIF_SPECIES_AC_232
+#endif // SERIF_SPECIES_AC_232
+#ifndef SERIF_SPECIES_TH_232
+    #define SERIF_SPECIES_TH_232
+#endif // SERIF_SPECIES_TH_232
+#ifndef SERIF_SPECIES_PA_232
+    #define SERIF_SPECIES_PA_232
+#endif // SERIF_SPECIES_PA_232
+#ifndef SERIF_SPECIES_U_232
+    #define SERIF_SPECIES_U_232
+#endif // SERIF_SPECIES_U_232
+#ifndef SERIF_SPECIES_NP_232
+    #define SERIF_SPECIES_NP_232
+#endif // SERIF_SPECIES_NP_232
+#ifndef SERIF_SPECIES_PU_232
+    #define SERIF_SPECIES_PU_232
+#endif // SERIF_SPECIES_PU_232
+#ifndef SERIF_SPECIES_AM_232
+    #define SERIF_SPECIES_AM_232
+#endif // SERIF_SPECIES_AM_232
+#ifndef SERIF_SPECIES_CM_232
+    #define SERIF_SPECIES_CM_232
+#endif // SERIF_SPECIES_CM_232
+#ifndef SERIF_SPECIES_FR_233
+    #define SERIF_SPECIES_FR_233
+#endif // SERIF_SPECIES_FR_233
+#ifndef SERIF_SPECIES_RA_233
+    #define SERIF_SPECIES_RA_233
+#endif // SERIF_SPECIES_RA_233
+#ifndef SERIF_SPECIES_AC_233
+    #define SERIF_SPECIES_AC_233
+#endif // SERIF_SPECIES_AC_233
+#ifndef SERIF_SPECIES_TH_233
+    #define SERIF_SPECIES_TH_233
+#endif // SERIF_SPECIES_TH_233
+#ifndef SERIF_SPECIES_PA_233
+    #define SERIF_SPECIES_PA_233
+#endif // SERIF_SPECIES_PA_233
+#ifndef SERIF_SPECIES_U_233
+    #define SERIF_SPECIES_U_233
+#endif // SERIF_SPECIES_U_233
+#ifndef SERIF_SPECIES_NP_233
+    #define SERIF_SPECIES_NP_233
+#endif // SERIF_SPECIES_NP_233
+#ifndef SERIF_SPECIES_PU_233
+    #define SERIF_SPECIES_PU_233
+#endif // SERIF_SPECIES_PU_233
+#ifndef SERIF_SPECIES_AM_233
+    #define SERIF_SPECIES_AM_233
+#endif // SERIF_SPECIES_AM_233
+#ifndef SERIF_SPECIES_CM_233
+    #define SERIF_SPECIES_CM_233
+#endif // SERIF_SPECIES_CM_233
+#ifndef SERIF_SPECIES_BK_233
+    #define SERIF_SPECIES_BK_233
+#endif // SERIF_SPECIES_BK_233
+#ifndef SERIF_SPECIES_RA_234
+    #define SERIF_SPECIES_RA_234
+#endif // SERIF_SPECIES_RA_234
+#ifndef SERIF_SPECIES_AC_234
+    #define SERIF_SPECIES_AC_234
+#endif // SERIF_SPECIES_AC_234
+#ifndef SERIF_SPECIES_TH_234
+    #define SERIF_SPECIES_TH_234
+#endif // SERIF_SPECIES_TH_234
+#ifndef SERIF_SPECIES_PA_234
+    #define SERIF_SPECIES_PA_234
+#endif // SERIF_SPECIES_PA_234
+#ifndef SERIF_SPECIES_U_234
+    #define SERIF_SPECIES_U_234
+#endif // SERIF_SPECIES_U_234
+#ifndef SERIF_SPECIES_NP_234
+    #define SERIF_SPECIES_NP_234
+#endif // SERIF_SPECIES_NP_234
+#ifndef SERIF_SPECIES_PU_234
+    #define SERIF_SPECIES_PU_234
+#endif // SERIF_SPECIES_PU_234
+#ifndef SERIF_SPECIES_AM_234
+    #define SERIF_SPECIES_AM_234
+#endif // SERIF_SPECIES_AM_234
+#ifndef SERIF_SPECIES_CM_234
+    #define SERIF_SPECIES_CM_234
+#endif // SERIF_SPECIES_CM_234
+#ifndef SERIF_SPECIES_BK_234
+    #define SERIF_SPECIES_BK_234
+#endif // SERIF_SPECIES_BK_234
+#ifndef SERIF_SPECIES_RA_235
+    #define SERIF_SPECIES_RA_235
+#endif // SERIF_SPECIES_RA_235
+#ifndef SERIF_SPECIES_AC_235
+    #define SERIF_SPECIES_AC_235
+#endif // SERIF_SPECIES_AC_235
+#ifndef SERIF_SPECIES_TH_235
+    #define SERIF_SPECIES_TH_235
+#endif // SERIF_SPECIES_TH_235
+#ifndef SERIF_SPECIES_PA_235
+    #define SERIF_SPECIES_PA_235
+#endif // SERIF_SPECIES_PA_235
+#ifndef SERIF_SPECIES_U_235
+    #define SERIF_SPECIES_U_235
+#endif // SERIF_SPECIES_U_235
+#ifndef SERIF_SPECIES_NP_235
+    #define SERIF_SPECIES_NP_235
+#endif // SERIF_SPECIES_NP_235
+#ifndef SERIF_SPECIES_PU_235
+    #define SERIF_SPECIES_PU_235
+#endif // SERIF_SPECIES_PU_235
+#ifndef SERIF_SPECIES_AM_235
+    #define SERIF_SPECIES_AM_235
+#endif // SERIF_SPECIES_AM_235
+#ifndef SERIF_SPECIES_CM_235
+    #define SERIF_SPECIES_CM_235
+#endif // SERIF_SPECIES_CM_235
+#ifndef SERIF_SPECIES_BK_235
+    #define SERIF_SPECIES_BK_235
+#endif // SERIF_SPECIES_BK_235
+#ifndef SERIF_SPECIES_AC_236
+    #define SERIF_SPECIES_AC_236
+#endif // SERIF_SPECIES_AC_236
+#ifndef SERIF_SPECIES_TH_236
+    #define SERIF_SPECIES_TH_236
+#endif // SERIF_SPECIES_TH_236
+#ifndef SERIF_SPECIES_PA_236
+    #define SERIF_SPECIES_PA_236
+#endif // SERIF_SPECIES_PA_236
+#ifndef SERIF_SPECIES_U_236
+    #define SERIF_SPECIES_U_236
+#endif // SERIF_SPECIES_U_236
+#ifndef SERIF_SPECIES_NP_236
+    #define SERIF_SPECIES_NP_236
+#endif // SERIF_SPECIES_NP_236
+#ifndef SERIF_SPECIES_PU_236
+    #define SERIF_SPECIES_PU_236
+#endif // SERIF_SPECIES_PU_236
+#ifndef SERIF_SPECIES_AM_236
+    #define SERIF_SPECIES_AM_236
+#endif // SERIF_SPECIES_AM_236
+#ifndef SERIF_SPECIES_CM_236
+    #define SERIF_SPECIES_CM_236
+#endif // SERIF_SPECIES_CM_236
+#ifndef SERIF_SPECIES_BK_236
+    #define SERIF_SPECIES_BK_236
+#endif // SERIF_SPECIES_BK_236
+#ifndef SERIF_SPECIES_AC_237
+    #define SERIF_SPECIES_AC_237
+#endif // SERIF_SPECIES_AC_237
+#ifndef SERIF_SPECIES_TH_237
+    #define SERIF_SPECIES_TH_237
+#endif // SERIF_SPECIES_TH_237
+#ifndef SERIF_SPECIES_PA_237
+    #define SERIF_SPECIES_PA_237
+#endif // SERIF_SPECIES_PA_237
+#ifndef SERIF_SPECIES_U_237
+    #define SERIF_SPECIES_U_237
+#endif // SERIF_SPECIES_U_237
+#ifndef SERIF_SPECIES_NP_237
+    #define SERIF_SPECIES_NP_237
+#endif // SERIF_SPECIES_NP_237
+#ifndef SERIF_SPECIES_PU_237
+    #define SERIF_SPECIES_PU_237
+#endif // SERIF_SPECIES_PU_237
+#ifndef SERIF_SPECIES_AM_237
+    #define SERIF_SPECIES_AM_237
+#endif // SERIF_SPECIES_AM_237
+#ifndef SERIF_SPECIES_CM_237
+    #define SERIF_SPECIES_CM_237
+#endif // SERIF_SPECIES_CM_237
+#ifndef SERIF_SPECIES_BK_237
+    #define SERIF_SPECIES_BK_237
+#endif // SERIF_SPECIES_BK_237
+#ifndef SERIF_SPECIES_CF_237
+    #define SERIF_SPECIES_CF_237
+#endif // SERIF_SPECIES_CF_237
+#ifndef SERIF_SPECIES_TH_238
+    #define SERIF_SPECIES_TH_238
+#endif // SERIF_SPECIES_TH_238
+#ifndef SERIF_SPECIES_PA_238
+    #define SERIF_SPECIES_PA_238
+#endif // SERIF_SPECIES_PA_238
+#ifndef SERIF_SPECIES_U_238
+    #define SERIF_SPECIES_U_238
+#endif // SERIF_SPECIES_U_238
+#ifndef SERIF_SPECIES_NP_238
+    #define SERIF_SPECIES_NP_238
+#endif // SERIF_SPECIES_NP_238
+#ifndef SERIF_SPECIES_PU_238
+    #define SERIF_SPECIES_PU_238
+#endif // SERIF_SPECIES_PU_238
+#ifndef SERIF_SPECIES_AM_238
+    #define SERIF_SPECIES_AM_238
+#endif // SERIF_SPECIES_AM_238
+#ifndef SERIF_SPECIES_CM_238
+    #define SERIF_SPECIES_CM_238
+#endif // SERIF_SPECIES_CM_238
+#ifndef SERIF_SPECIES_BK_238
+    #define SERIF_SPECIES_BK_238
+#endif // SERIF_SPECIES_BK_238
+#ifndef SERIF_SPECIES_CF_238
+    #define SERIF_SPECIES_CF_238
+#endif // SERIF_SPECIES_CF_238
+#ifndef SERIF_SPECIES_TH_239
+    #define SERIF_SPECIES_TH_239
+#endif // SERIF_SPECIES_TH_239
+#ifndef SERIF_SPECIES_PA_239
+    #define SERIF_SPECIES_PA_239
+#endif // SERIF_SPECIES_PA_239
+#ifndef SERIF_SPECIES_U_239
+    #define SERIF_SPECIES_U_239
+#endif // SERIF_SPECIES_U_239
+#ifndef SERIF_SPECIES_NP_239
+    #define SERIF_SPECIES_NP_239
+#endif // SERIF_SPECIES_NP_239
+#ifndef SERIF_SPECIES_PU_239
+    #define SERIF_SPECIES_PU_239
+#endif // SERIF_SPECIES_PU_239
+#ifndef SERIF_SPECIES_AM_239
+    #define SERIF_SPECIES_AM_239
+#endif // SERIF_SPECIES_AM_239
+#ifndef SERIF_SPECIES_CM_239
+    #define SERIF_SPECIES_CM_239
+#endif // SERIF_SPECIES_CM_239
+#ifndef SERIF_SPECIES_BK_239
+    #define SERIF_SPECIES_BK_239
+#endif // SERIF_SPECIES_BK_239
+#ifndef SERIF_SPECIES_CF_239
+    #define SERIF_SPECIES_CF_239
+#endif // SERIF_SPECIES_CF_239
+#ifndef SERIF_SPECIES_ES_239
+    #define SERIF_SPECIES_ES_239
+#endif // SERIF_SPECIES_ES_239
+#ifndef SERIF_SPECIES_PA_240
+    #define SERIF_SPECIES_PA_240
+#endif // SERIF_SPECIES_PA_240
+#ifndef SERIF_SPECIES_U_240
+    #define SERIF_SPECIES_U_240
+#endif // SERIF_SPECIES_U_240
+#ifndef SERIF_SPECIES_NP_240
+    #define SERIF_SPECIES_NP_240
+#endif // SERIF_SPECIES_NP_240
+#ifndef SERIF_SPECIES_PU_240
+    #define SERIF_SPECIES_PU_240
+#endif // SERIF_SPECIES_PU_240
+#ifndef SERIF_SPECIES_AM_240
+    #define SERIF_SPECIES_AM_240
+#endif // SERIF_SPECIES_AM_240
+#ifndef SERIF_SPECIES_CM_240
+    #define SERIF_SPECIES_CM_240
+#endif // SERIF_SPECIES_CM_240
+#ifndef SERIF_SPECIES_BK_240
+    #define SERIF_SPECIES_BK_240
+#endif // SERIF_SPECIES_BK_240
+#ifndef SERIF_SPECIES_CF_240
+    #define SERIF_SPECIES_CF_240
+#endif // SERIF_SPECIES_CF_240
+#ifndef SERIF_SPECIES_ES_240
+    #define SERIF_SPECIES_ES_240
+#endif // SERIF_SPECIES_ES_240
+#ifndef SERIF_SPECIES_PA_241
+    #define SERIF_SPECIES_PA_241
+#endif // SERIF_SPECIES_PA_241
+#ifndef SERIF_SPECIES_U_241
+    #define SERIF_SPECIES_U_241
+#endif // SERIF_SPECIES_U_241
+#ifndef SERIF_SPECIES_NP_241
+    #define SERIF_SPECIES_NP_241
+#endif // SERIF_SPECIES_NP_241
+#ifndef SERIF_SPECIES_PU_241
+    #define SERIF_SPECIES_PU_241
+#endif // SERIF_SPECIES_PU_241
+#ifndef SERIF_SPECIES_AM_241
+    #define SERIF_SPECIES_AM_241
+#endif // SERIF_SPECIES_AM_241
+#ifndef SERIF_SPECIES_CM_241
+    #define SERIF_SPECIES_CM_241
+#endif // SERIF_SPECIES_CM_241
+#ifndef SERIF_SPECIES_BK_241
+    #define SERIF_SPECIES_BK_241
+#endif // SERIF_SPECIES_BK_241
+#ifndef SERIF_SPECIES_CF_241
+    #define SERIF_SPECIES_CF_241
+#endif // SERIF_SPECIES_CF_241
+#ifndef SERIF_SPECIES_ES_241
+    #define SERIF_SPECIES_ES_241
+#endif // SERIF_SPECIES_ES_241
+#ifndef SERIF_SPECIES_FM_241
+    #define SERIF_SPECIES_FM_241
+#endif // SERIF_SPECIES_FM_241
+#ifndef SERIF_SPECIES_U_242
+    #define SERIF_SPECIES_U_242
+#endif // SERIF_SPECIES_U_242
+#ifndef SERIF_SPECIES_NP_242
+    #define SERIF_SPECIES_NP_242
+#endif // SERIF_SPECIES_NP_242
+#ifndef SERIF_SPECIES_PU_242
+    #define SERIF_SPECIES_PU_242
+#endif // SERIF_SPECIES_PU_242
+#ifndef SERIF_SPECIES_AM_242
+    #define SERIF_SPECIES_AM_242
+#endif // SERIF_SPECIES_AM_242
+#ifndef SERIF_SPECIES_CM_242
+    #define SERIF_SPECIES_CM_242
+#endif // SERIF_SPECIES_CM_242
+#ifndef SERIF_SPECIES_BK_242
+    #define SERIF_SPECIES_BK_242
+#endif // SERIF_SPECIES_BK_242
+#ifndef SERIF_SPECIES_CF_242
+    #define SERIF_SPECIES_CF_242
+#endif // SERIF_SPECIES_CF_242
+#ifndef SERIF_SPECIES_ES_242
+    #define SERIF_SPECIES_ES_242
+#endif // SERIF_SPECIES_ES_242
+#ifndef SERIF_SPECIES_FM_242
+    #define SERIF_SPECIES_FM_242
+#endif // SERIF_SPECIES_FM_242
+#ifndef SERIF_SPECIES_U_243
+    #define SERIF_SPECIES_U_243
+#endif // SERIF_SPECIES_U_243
+#ifndef SERIF_SPECIES_NP_243
+    #define SERIF_SPECIES_NP_243
+#endif // SERIF_SPECIES_NP_243
+#ifndef SERIF_SPECIES_PU_243
+    #define SERIF_SPECIES_PU_243
+#endif // SERIF_SPECIES_PU_243
+#ifndef SERIF_SPECIES_AM_243
+    #define SERIF_SPECIES_AM_243
+#endif // SERIF_SPECIES_AM_243
+#ifndef SERIF_SPECIES_CM_243
+    #define SERIF_SPECIES_CM_243
+#endif // SERIF_SPECIES_CM_243
+#ifndef SERIF_SPECIES_BK_243
+    #define SERIF_SPECIES_BK_243
+#endif // SERIF_SPECIES_BK_243
+#ifndef SERIF_SPECIES_CF_243
+    #define SERIF_SPECIES_CF_243
+#endif // SERIF_SPECIES_CF_243
+#ifndef SERIF_SPECIES_ES_243
+    #define SERIF_SPECIES_ES_243
+#endif // SERIF_SPECIES_ES_243
+#ifndef SERIF_SPECIES_FM_243
+    #define SERIF_SPECIES_FM_243
+#endif // SERIF_SPECIES_FM_243
+#ifndef SERIF_SPECIES_NP_244
+    #define SERIF_SPECIES_NP_244
+#endif // SERIF_SPECIES_NP_244
+#ifndef SERIF_SPECIES_PU_244
+    #define SERIF_SPECIES_PU_244
+#endif // SERIF_SPECIES_PU_244
+#ifndef SERIF_SPECIES_AM_244
+    #define SERIF_SPECIES_AM_244
+#endif // SERIF_SPECIES_AM_244
+#ifndef SERIF_SPECIES_CM_244
+    #define SERIF_SPECIES_CM_244
+#endif // SERIF_SPECIES_CM_244
+#ifndef SERIF_SPECIES_BK_244
+    #define SERIF_SPECIES_BK_244
+#endif // SERIF_SPECIES_BK_244
+#ifndef SERIF_SPECIES_CF_244
+    #define SERIF_SPECIES_CF_244
+#endif // SERIF_SPECIES_CF_244
+#ifndef SERIF_SPECIES_ES_244
+    #define SERIF_SPECIES_ES_244
+#endif // SERIF_SPECIES_ES_244
+#ifndef SERIF_SPECIES_FM_244
+    #define SERIF_SPECIES_FM_244
+#endif // SERIF_SPECIES_FM_244
+#ifndef SERIF_SPECIES_MD_244
+    #define SERIF_SPECIES_MD_244
+#endif // SERIF_SPECIES_MD_244
+#ifndef SERIF_SPECIES_NP_245
+    #define SERIF_SPECIES_NP_245
+#endif // SERIF_SPECIES_NP_245
+#ifndef SERIF_SPECIES_PU_245
+    #define SERIF_SPECIES_PU_245
+#endif // SERIF_SPECIES_PU_245
+#ifndef SERIF_SPECIES_AM_245
+    #define SERIF_SPECIES_AM_245
+#endif // SERIF_SPECIES_AM_245
+#ifndef SERIF_SPECIES_CM_245
+    #define SERIF_SPECIES_CM_245
+#endif // SERIF_SPECIES_CM_245
+#ifndef SERIF_SPECIES_BK_245
+    #define SERIF_SPECIES_BK_245
+#endif // SERIF_SPECIES_BK_245
+#ifndef SERIF_SPECIES_CF_245
+    #define SERIF_SPECIES_CF_245
+#endif // SERIF_SPECIES_CF_245
+#ifndef SERIF_SPECIES_ES_245
+    #define SERIF_SPECIES_ES_245
+#endif // SERIF_SPECIES_ES_245
+#ifndef SERIF_SPECIES_FM_245
+    #define SERIF_SPECIES_FM_245
+#endif // SERIF_SPECIES_FM_245
+#ifndef SERIF_SPECIES_MD_245
+    #define SERIF_SPECIES_MD_245
+#endif // SERIF_SPECIES_MD_245
+#ifndef SERIF_SPECIES_PU_246
+    #define SERIF_SPECIES_PU_246
+#endif // SERIF_SPECIES_PU_246
+#ifndef SERIF_SPECIES_AM_246
+    #define SERIF_SPECIES_AM_246
+#endif // SERIF_SPECIES_AM_246
+#ifndef SERIF_SPECIES_CM_246
+    #define SERIF_SPECIES_CM_246
+#endif // SERIF_SPECIES_CM_246
+#ifndef SERIF_SPECIES_BK_246
+    #define SERIF_SPECIES_BK_246
+#endif // SERIF_SPECIES_BK_246
+#ifndef SERIF_SPECIES_CF_246
+    #define SERIF_SPECIES_CF_246
+#endif // SERIF_SPECIES_CF_246
+#ifndef SERIF_SPECIES_ES_246
+    #define SERIF_SPECIES_ES_246
+#endif // SERIF_SPECIES_ES_246
+#ifndef SERIF_SPECIES_FM_246
+    #define SERIF_SPECIES_FM_246
+#endif // SERIF_SPECIES_FM_246
+#ifndef SERIF_SPECIES_MD_246
+    #define SERIF_SPECIES_MD_246
+#endif // SERIF_SPECIES_MD_246
+#ifndef SERIF_SPECIES_PU_247
+    #define SERIF_SPECIES_PU_247
+#endif // SERIF_SPECIES_PU_247
+#ifndef SERIF_SPECIES_AM_247
+    #define SERIF_SPECIES_AM_247
+#endif // SERIF_SPECIES_AM_247
+#ifndef SERIF_SPECIES_CM_247
+    #define SERIF_SPECIES_CM_247
+#endif // SERIF_SPECIES_CM_247
+#ifndef SERIF_SPECIES_BK_247
+    #define SERIF_SPECIES_BK_247
+#endif // SERIF_SPECIES_BK_247
+#ifndef SERIF_SPECIES_CF_247
+    #define SERIF_SPECIES_CF_247
+#endif // SERIF_SPECIES_CF_247
+#ifndef SERIF_SPECIES_ES_247
+    #define SERIF_SPECIES_ES_247
+#endif // SERIF_SPECIES_ES_247
+#ifndef SERIF_SPECIES_FM_247
+    #define SERIF_SPECIES_FM_247
+#endif // SERIF_SPECIES_FM_247
+#ifndef SERIF_SPECIES_MD_247
+    #define SERIF_SPECIES_MD_247
+#endif // SERIF_SPECIES_MD_247
+#ifndef SERIF_SPECIES_AM_248
+    #define SERIF_SPECIES_AM_248
+#endif // SERIF_SPECIES_AM_248
+#ifndef SERIF_SPECIES_CM_248
+    #define SERIF_SPECIES_CM_248
+#endif // SERIF_SPECIES_CM_248
+#ifndef SERIF_SPECIES_BK_248
+    #define SERIF_SPECIES_BK_248
+#endif // SERIF_SPECIES_BK_248
+#ifndef SERIF_SPECIES_CF_248
+    #define SERIF_SPECIES_CF_248
+#endif // SERIF_SPECIES_CF_248
+#ifndef SERIF_SPECIES_ES_248
+    #define SERIF_SPECIES_ES_248
+#endif // SERIF_SPECIES_ES_248
+#ifndef SERIF_SPECIES_FM_248
+    #define SERIF_SPECIES_FM_248
+#endif // SERIF_SPECIES_FM_248
+#ifndef SERIF_SPECIES_MD_248
+    #define SERIF_SPECIES_MD_248
+#endif // SERIF_SPECIES_MD_248
+#ifndef SERIF_SPECIES_NO_248
+    #define SERIF_SPECIES_NO_248
+#endif // SERIF_SPECIES_NO_248
+#ifndef SERIF_SPECIES_AM_249
+    #define SERIF_SPECIES_AM_249
+#endif // SERIF_SPECIES_AM_249
+#ifndef SERIF_SPECIES_CM_249
+    #define SERIF_SPECIES_CM_249
+#endif // SERIF_SPECIES_CM_249
+#ifndef SERIF_SPECIES_BK_249
+    #define SERIF_SPECIES_BK_249
+#endif // SERIF_SPECIES_BK_249
+#ifndef SERIF_SPECIES_CF_249
+    #define SERIF_SPECIES_CF_249
+#endif // SERIF_SPECIES_CF_249
+#ifndef SERIF_SPECIES_ES_249
+    #define SERIF_SPECIES_ES_249
+#endif // SERIF_SPECIES_ES_249
+#ifndef SERIF_SPECIES_FM_249
+    #define SERIF_SPECIES_FM_249
+#endif // SERIF_SPECIES_FM_249
+#ifndef SERIF_SPECIES_MD_249
+    #define SERIF_SPECIES_MD_249
+#endif // SERIF_SPECIES_MD_249
+#ifndef SERIF_SPECIES_NO_249
+    #define SERIF_SPECIES_NO_249
+#endif // SERIF_SPECIES_NO_249
+#ifndef SERIF_SPECIES_CM_250
+    #define SERIF_SPECIES_CM_250
+#endif // SERIF_SPECIES_CM_250
+#ifndef SERIF_SPECIES_BK_250
+    #define SERIF_SPECIES_BK_250
+#endif // SERIF_SPECIES_BK_250
+#ifndef SERIF_SPECIES_CF_250
+    #define SERIF_SPECIES_CF_250
+#endif // SERIF_SPECIES_CF_250
+#ifndef SERIF_SPECIES_ES_250
+    #define SERIF_SPECIES_ES_250
+#endif // SERIF_SPECIES_ES_250
+#ifndef SERIF_SPECIES_FM_250
+    #define SERIF_SPECIES_FM_250
+#endif // SERIF_SPECIES_FM_250
+#ifndef SERIF_SPECIES_MD_250
+    #define SERIF_SPECIES_MD_250
+#endif // SERIF_SPECIES_MD_250
+#ifndef SERIF_SPECIES_NO_250
+    #define SERIF_SPECIES_NO_250
+#endif // SERIF_SPECIES_NO_250
+#ifndef SERIF_SPECIES_CM_251
+    #define SERIF_SPECIES_CM_251
+#endif // SERIF_SPECIES_CM_251
+#ifndef SERIF_SPECIES_BK_251
+    #define SERIF_SPECIES_BK_251
+#endif // SERIF_SPECIES_BK_251
+#ifndef SERIF_SPECIES_CF_251
+    #define SERIF_SPECIES_CF_251
+#endif // SERIF_SPECIES_CF_251
+#ifndef SERIF_SPECIES_ES_251
+    #define SERIF_SPECIES_ES_251
+#endif // SERIF_SPECIES_ES_251
+#ifndef SERIF_SPECIES_FM_251
+    #define SERIF_SPECIES_FM_251
+#endif // SERIF_SPECIES_FM_251
+#ifndef SERIF_SPECIES_MD_251
+    #define SERIF_SPECIES_MD_251
+#endif // SERIF_SPECIES_MD_251
+#ifndef SERIF_SPECIES_NO_251
+    #define SERIF_SPECIES_NO_251
+#endif // SERIF_SPECIES_NO_251
+#ifndef SERIF_SPECIES_LR_251
+    #define SERIF_SPECIES_LR_251
+#endif // SERIF_SPECIES_LR_251
+#ifndef SERIF_SPECIES_CM_252
+    #define SERIF_SPECIES_CM_252
+#endif // SERIF_SPECIES_CM_252
+#ifndef SERIF_SPECIES_BK_252
+    #define SERIF_SPECIES_BK_252
+#endif // SERIF_SPECIES_BK_252
+#ifndef SERIF_SPECIES_CF_252
+    #define SERIF_SPECIES_CF_252
+#endif // SERIF_SPECIES_CF_252
+#ifndef SERIF_SPECIES_ES_252
+    #define SERIF_SPECIES_ES_252
+#endif // SERIF_SPECIES_ES_252
+#ifndef SERIF_SPECIES_FM_252
+    #define SERIF_SPECIES_FM_252
+#endif // SERIF_SPECIES_FM_252
+#ifndef SERIF_SPECIES_MD_252
+    #define SERIF_SPECIES_MD_252
+#endif // SERIF_SPECIES_MD_252
+#ifndef SERIF_SPECIES_NO_252
+    #define SERIF_SPECIES_NO_252
+#endif // SERIF_SPECIES_NO_252
+#ifndef SERIF_SPECIES_LR_252
+    #define SERIF_SPECIES_LR_252
+#endif // SERIF_SPECIES_LR_252
+#ifndef SERIF_SPECIES_BK_253
+    #define SERIF_SPECIES_BK_253
+#endif // SERIF_SPECIES_BK_253
+#ifndef SERIF_SPECIES_CF_253
+    #define SERIF_SPECIES_CF_253
+#endif // SERIF_SPECIES_CF_253
+#ifndef SERIF_SPECIES_ES_253
+    #define SERIF_SPECIES_ES_253
+#endif // SERIF_SPECIES_ES_253
+#ifndef SERIF_SPECIES_FM_253
+    #define SERIF_SPECIES_FM_253
+#endif // SERIF_SPECIES_FM_253
+#ifndef SERIF_SPECIES_MD_253
+    #define SERIF_SPECIES_MD_253
+#endif // SERIF_SPECIES_MD_253
+#ifndef SERIF_SPECIES_NO_253
+    #define SERIF_SPECIES_NO_253
+#endif // SERIF_SPECIES_NO_253
+#ifndef SERIF_SPECIES_LR_253
+    #define SERIF_SPECIES_LR_253
+#endif // SERIF_SPECIES_LR_253
+#ifndef SERIF_SPECIES_RF_253
+    #define SERIF_SPECIES_RF_253
+#endif // SERIF_SPECIES_RF_253
+#ifndef SERIF_SPECIES_BK_254
+    #define SERIF_SPECIES_BK_254
+#endif // SERIF_SPECIES_BK_254
+#ifndef SERIF_SPECIES_CF_254
+    #define SERIF_SPECIES_CF_254
+#endif // SERIF_SPECIES_CF_254
+#ifndef SERIF_SPECIES_ES_254
+    #define SERIF_SPECIES_ES_254
+#endif // SERIF_SPECIES_ES_254
+#ifndef SERIF_SPECIES_FM_254
+    #define SERIF_SPECIES_FM_254
+#endif // SERIF_SPECIES_FM_254
+#ifndef SERIF_SPECIES_MD_254
+    #define SERIF_SPECIES_MD_254
+#endif // SERIF_SPECIES_MD_254
+#ifndef SERIF_SPECIES_NO_254
+    #define SERIF_SPECIES_NO_254
+#endif // SERIF_SPECIES_NO_254
+#ifndef SERIF_SPECIES_LR_254
+    #define SERIF_SPECIES_LR_254
+#endif // SERIF_SPECIES_LR_254
+#ifndef SERIF_SPECIES_RF_254
+    #define SERIF_SPECIES_RF_254
+#endif // SERIF_SPECIES_RF_254
+#ifndef SERIF_SPECIES_CF_255
+    #define SERIF_SPECIES_CF_255
+#endif // SERIF_SPECIES_CF_255
+#ifndef SERIF_SPECIES_ES_255
+    #define SERIF_SPECIES_ES_255
+#endif // SERIF_SPECIES_ES_255
+#ifndef SERIF_SPECIES_FM_255
+    #define SERIF_SPECIES_FM_255
+#endif // SERIF_SPECIES_FM_255
+#ifndef SERIF_SPECIES_MD_255
+    #define SERIF_SPECIES_MD_255
+#endif // SERIF_SPECIES_MD_255
+#ifndef SERIF_SPECIES_NO_255
+    #define SERIF_SPECIES_NO_255
+#endif // SERIF_SPECIES_NO_255
+#ifndef SERIF_SPECIES_LR_255
+    #define SERIF_SPECIES_LR_255
+#endif // SERIF_SPECIES_LR_255
+#ifndef SERIF_SPECIES_RF_255
+    #define SERIF_SPECIES_RF_255
+#endif // SERIF_SPECIES_RF_255
+#ifndef SERIF_SPECIES_DB_255
+    #define SERIF_SPECIES_DB_255
+#endif // SERIF_SPECIES_DB_255
+#ifndef SERIF_SPECIES_CF_256
+    #define SERIF_SPECIES_CF_256
+#endif // SERIF_SPECIES_CF_256
+#ifndef SERIF_SPECIES_ES_256
+    #define SERIF_SPECIES_ES_256
+#endif // SERIF_SPECIES_ES_256
+#ifndef SERIF_SPECIES_FM_256
+    #define SERIF_SPECIES_FM_256
+#endif // SERIF_SPECIES_FM_256
+#ifndef SERIF_SPECIES_MD_256
+    #define SERIF_SPECIES_MD_256
+#endif // SERIF_SPECIES_MD_256
+#ifndef SERIF_SPECIES_NO_256
+    #define SERIF_SPECIES_NO_256
+#endif // SERIF_SPECIES_NO_256
+#ifndef SERIF_SPECIES_LR_256
+    #define SERIF_SPECIES_LR_256
+#endif // SERIF_SPECIES_LR_256
+#ifndef SERIF_SPECIES_RF_256
+    #define SERIF_SPECIES_RF_256
+#endif // SERIF_SPECIES_RF_256
+#ifndef SERIF_SPECIES_DB_256
+    #define SERIF_SPECIES_DB_256
+#endif // SERIF_SPECIES_DB_256
+#ifndef SERIF_SPECIES_ES_257
+    #define SERIF_SPECIES_ES_257
+#endif // SERIF_SPECIES_ES_257
+#ifndef SERIF_SPECIES_FM_257
+    #define SERIF_SPECIES_FM_257
+#endif // SERIF_SPECIES_FM_257
+#ifndef SERIF_SPECIES_MD_257
+    #define SERIF_SPECIES_MD_257
+#endif // SERIF_SPECIES_MD_257
+#ifndef SERIF_SPECIES_NO_257
+    #define SERIF_SPECIES_NO_257
+#endif // SERIF_SPECIES_NO_257
+#ifndef SERIF_SPECIES_LR_257
+    #define SERIF_SPECIES_LR_257
+#endif // SERIF_SPECIES_LR_257
+#ifndef SERIF_SPECIES_RF_257
+    #define SERIF_SPECIES_RF_257
+#endif // SERIF_SPECIES_RF_257
+#ifndef SERIF_SPECIES_DB_257
+    #define SERIF_SPECIES_DB_257
+#endif // SERIF_SPECIES_DB_257
+#ifndef SERIF_SPECIES_ES_258
+    #define SERIF_SPECIES_ES_258
+#endif // SERIF_SPECIES_ES_258
+#ifndef SERIF_SPECIES_FM_258
+    #define SERIF_SPECIES_FM_258
+#endif // SERIF_SPECIES_FM_258
+#ifndef SERIF_SPECIES_MD_258
+    #define SERIF_SPECIES_MD_258
+#endif // SERIF_SPECIES_MD_258
+#ifndef SERIF_SPECIES_NO_258
+    #define SERIF_SPECIES_NO_258
+#endif // SERIF_SPECIES_NO_258
+#ifndef SERIF_SPECIES_LR_258
+    #define SERIF_SPECIES_LR_258
+#endif // SERIF_SPECIES_LR_258
+#ifndef SERIF_SPECIES_RF_258
+    #define SERIF_SPECIES_RF_258
+#endif // SERIF_SPECIES_RF_258
+#ifndef SERIF_SPECIES_DB_258
+    #define SERIF_SPECIES_DB_258
+#endif // SERIF_SPECIES_DB_258
+#ifndef SERIF_SPECIES_SG_258
+    #define SERIF_SPECIES_SG_258
+#endif // SERIF_SPECIES_SG_258
+#ifndef SERIF_SPECIES_FM_259
+    #define SERIF_SPECIES_FM_259
+#endif // SERIF_SPECIES_FM_259
+#ifndef SERIF_SPECIES_MD_259
+    #define SERIF_SPECIES_MD_259
+#endif // SERIF_SPECIES_MD_259
+#ifndef SERIF_SPECIES_NO_259
+    #define SERIF_SPECIES_NO_259
+#endif // SERIF_SPECIES_NO_259
+#ifndef SERIF_SPECIES_LR_259
+    #define SERIF_SPECIES_LR_259
+#endif // SERIF_SPECIES_LR_259
+#ifndef SERIF_SPECIES_RF_259
+    #define SERIF_SPECIES_RF_259
+#endif // SERIF_SPECIES_RF_259
+#ifndef SERIF_SPECIES_DB_259
+    #define SERIF_SPECIES_DB_259
+#endif // SERIF_SPECIES_DB_259
+#ifndef SERIF_SPECIES_SG_259
+    #define SERIF_SPECIES_SG_259
+#endif // SERIF_SPECIES_SG_259
+#ifndef SERIF_SPECIES_FM_260
+    #define SERIF_SPECIES_FM_260
+#endif // SERIF_SPECIES_FM_260
+#ifndef SERIF_SPECIES_MD_260
+    #define SERIF_SPECIES_MD_260
+#endif // SERIF_SPECIES_MD_260
+#ifndef SERIF_SPECIES_NO_260
+    #define SERIF_SPECIES_NO_260
+#endif // SERIF_SPECIES_NO_260
+#ifndef SERIF_SPECIES_LR_260
+    #define SERIF_SPECIES_LR_260
+#endif // SERIF_SPECIES_LR_260
+#ifndef SERIF_SPECIES_RF_260
+    #define SERIF_SPECIES_RF_260
+#endif // SERIF_SPECIES_RF_260
+#ifndef SERIF_SPECIES_DB_260
+    #define SERIF_SPECIES_DB_260
+#endif // SERIF_SPECIES_DB_260
+#ifndef SERIF_SPECIES_SG_260
+    #define SERIF_SPECIES_SG_260
+#endif // SERIF_SPECIES_SG_260
+#ifndef SERIF_SPECIES_BH_260
+    #define SERIF_SPECIES_BH_260
+#endif // SERIF_SPECIES_BH_260
+#ifndef SERIF_SPECIES_MD_261
+    #define SERIF_SPECIES_MD_261
+#endif // SERIF_SPECIES_MD_261
+#ifndef SERIF_SPECIES_NO_261
+    #define SERIF_SPECIES_NO_261
+#endif // SERIF_SPECIES_NO_261
+#ifndef SERIF_SPECIES_LR_261
+    #define SERIF_SPECIES_LR_261
+#endif // SERIF_SPECIES_LR_261
+#ifndef SERIF_SPECIES_RF_261
+    #define SERIF_SPECIES_RF_261
+#endif // SERIF_SPECIES_RF_261
+#ifndef SERIF_SPECIES_DB_261
+    #define SERIF_SPECIES_DB_261
+#endif // SERIF_SPECIES_DB_261
+#ifndef SERIF_SPECIES_SG_261
+    #define SERIF_SPECIES_SG_261
+#endif // SERIF_SPECIES_SG_261
+#ifndef SERIF_SPECIES_BH_261
+    #define SERIF_SPECIES_BH_261
+#endif // SERIF_SPECIES_BH_261
+#ifndef SERIF_SPECIES_MD_262
+    #define SERIF_SPECIES_MD_262
+#endif // SERIF_SPECIES_MD_262
+#ifndef SERIF_SPECIES_NO_262
+    #define SERIF_SPECIES_NO_262
+#endif // SERIF_SPECIES_NO_262
+#ifndef SERIF_SPECIES_LR_262
+    #define SERIF_SPECIES_LR_262
+#endif // SERIF_SPECIES_LR_262
+#ifndef SERIF_SPECIES_RF_262
+    #define SERIF_SPECIES_RF_262
+#endif // SERIF_SPECIES_RF_262
+#ifndef SERIF_SPECIES_DB_262
+    #define SERIF_SPECIES_DB_262
+#endif // SERIF_SPECIES_DB_262
+#ifndef SERIF_SPECIES_SG_262
+    #define SERIF_SPECIES_SG_262
+#endif // SERIF_SPECIES_SG_262
+#ifndef SERIF_SPECIES_BH_262
+    #define SERIF_SPECIES_BH_262
+#endif // SERIF_SPECIES_BH_262
+#ifndef SERIF_SPECIES_NO_263
+    #define SERIF_SPECIES_NO_263
+#endif // SERIF_SPECIES_NO_263
+#ifndef SERIF_SPECIES_LR_263
+    #define SERIF_SPECIES_LR_263
+#endif // SERIF_SPECIES_LR_263
+#ifndef SERIF_SPECIES_RF_263
+    #define SERIF_SPECIES_RF_263
+#endif // SERIF_SPECIES_RF_263
+#ifndef SERIF_SPECIES_DB_263
+    #define SERIF_SPECIES_DB_263
+#endif // SERIF_SPECIES_DB_263
+#ifndef SERIF_SPECIES_SG_263
+    #define SERIF_SPECIES_SG_263
+#endif // SERIF_SPECIES_SG_263
+#ifndef SERIF_SPECIES_BH_263
+    #define SERIF_SPECIES_BH_263
+#endif // SERIF_SPECIES_BH_263
+#ifndef SERIF_SPECIES_HS_263
+    #define SERIF_SPECIES_HS_263
+#endif // SERIF_SPECIES_HS_263
+#ifndef SERIF_SPECIES_NO_264
+    #define SERIF_SPECIES_NO_264
+#endif // SERIF_SPECIES_NO_264
+#ifndef SERIF_SPECIES_LR_264
+    #define SERIF_SPECIES_LR_264
+#endif // SERIF_SPECIES_LR_264
+#ifndef SERIF_SPECIES_RF_264
+    #define SERIF_SPECIES_RF_264
+#endif // SERIF_SPECIES_RF_264
+#ifndef SERIF_SPECIES_DB_264
+    #define SERIF_SPECIES_DB_264
+#endif // SERIF_SPECIES_DB_264
+#ifndef SERIF_SPECIES_SG_264
+    #define SERIF_SPECIES_SG_264
+#endif // SERIF_SPECIES_SG_264
+#ifndef SERIF_SPECIES_BH_264
+    #define SERIF_SPECIES_BH_264
+#endif // SERIF_SPECIES_BH_264
+#ifndef SERIF_SPECIES_HS_264
+    #define SERIF_SPECIES_HS_264
+#endif // SERIF_SPECIES_HS_264
+#ifndef SERIF_SPECIES_LR_265
+    #define SERIF_SPECIES_LR_265
+#endif // SERIF_SPECIES_LR_265
+#ifndef SERIF_SPECIES_RF_265
+    #define SERIF_SPECIES_RF_265
+#endif // SERIF_SPECIES_RF_265
+#ifndef SERIF_SPECIES_DB_265
+    #define SERIF_SPECIES_DB_265
+#endif // SERIF_SPECIES_DB_265
+#ifndef SERIF_SPECIES_SG_265
+    #define SERIF_SPECIES_SG_265
+#endif // SERIF_SPECIES_SG_265
+#ifndef SERIF_SPECIES_BH_265
+    #define SERIF_SPECIES_BH_265
+#endif // SERIF_SPECIES_BH_265
+#ifndef SERIF_SPECIES_HS_265
+    #define SERIF_SPECIES_HS_265
+#endif // SERIF_SPECIES_HS_265
+#ifndef SERIF_SPECIES_MT_265
+    #define SERIF_SPECIES_MT_265
+#endif // SERIF_SPECIES_MT_265
+#ifndef SERIF_SPECIES_LR_266
+    #define SERIF_SPECIES_LR_266
+#endif // SERIF_SPECIES_LR_266
+#ifndef SERIF_SPECIES_RF_266
+    #define SERIF_SPECIES_RF_266
+#endif // SERIF_SPECIES_RF_266
+#ifndef SERIF_SPECIES_DB_266
+    #define SERIF_SPECIES_DB_266
+#endif // SERIF_SPECIES_DB_266
+#ifndef SERIF_SPECIES_SG_266
+    #define SERIF_SPECIES_SG_266
+#endif // SERIF_SPECIES_SG_266
+#ifndef SERIF_SPECIES_BH_266
+    #define SERIF_SPECIES_BH_266
+#endif // SERIF_SPECIES_BH_266
+#ifndef SERIF_SPECIES_HS_266
+    #define SERIF_SPECIES_HS_266
+#endif // SERIF_SPECIES_HS_266
+#ifndef SERIF_SPECIES_MT_266
+    #define SERIF_SPECIES_MT_266
+#endif // SERIF_SPECIES_MT_266
+#ifndef SERIF_SPECIES_RF_267
+    #define SERIF_SPECIES_RF_267
+#endif // SERIF_SPECIES_RF_267
+#ifndef SERIF_SPECIES_DB_267
+    #define SERIF_SPECIES_DB_267
+#endif // SERIF_SPECIES_DB_267
+#ifndef SERIF_SPECIES_SG_267
+    #define SERIF_SPECIES_SG_267
+#endif // SERIF_SPECIES_SG_267
+#ifndef SERIF_SPECIES_BH_267
+    #define SERIF_SPECIES_BH_267
+#endif // SERIF_SPECIES_BH_267
+#ifndef SERIF_SPECIES_HS_267
+    #define SERIF_SPECIES_HS_267
+#endif // SERIF_SPECIES_HS_267
+#ifndef SERIF_SPECIES_MT_267
+    #define SERIF_SPECIES_MT_267
+#endif // SERIF_SPECIES_MT_267
+#ifndef SERIF_SPECIES_DS_267
+    #define SERIF_SPECIES_DS_267
+#endif // SERIF_SPECIES_DS_267
+#ifndef SERIF_SPECIES_RF_268
+    #define SERIF_SPECIES_RF_268
+#endif // SERIF_SPECIES_RF_268
+#ifndef SERIF_SPECIES_DB_268
+    #define SERIF_SPECIES_DB_268
+#endif // SERIF_SPECIES_DB_268
+#ifndef SERIF_SPECIES_SG_268
+    #define SERIF_SPECIES_SG_268
+#endif // SERIF_SPECIES_SG_268
+#ifndef SERIF_SPECIES_BH_268
+    #define SERIF_SPECIES_BH_268
+#endif // SERIF_SPECIES_BH_268
+#ifndef SERIF_SPECIES_HS_268
+    #define SERIF_SPECIES_HS_268
+#endif // SERIF_SPECIES_HS_268
+#ifndef SERIF_SPECIES_MT_268
+    #define SERIF_SPECIES_MT_268
+#endif // SERIF_SPECIES_MT_268
+#ifndef SERIF_SPECIES_DS_268
+    #define SERIF_SPECIES_DS_268
+#endif // SERIF_SPECIES_DS_268
+#ifndef SERIF_SPECIES_DB_269
+    #define SERIF_SPECIES_DB_269
+#endif // SERIF_SPECIES_DB_269
+#ifndef SERIF_SPECIES_SG_269
+    #define SERIF_SPECIES_SG_269
+#endif // SERIF_SPECIES_SG_269
+#ifndef SERIF_SPECIES_BH_269
+    #define SERIF_SPECIES_BH_269
+#endif // SERIF_SPECIES_BH_269
+#ifndef SERIF_SPECIES_HS_269
+    #define SERIF_SPECIES_HS_269
+#endif // SERIF_SPECIES_HS_269
+#ifndef SERIF_SPECIES_MT_269
+    #define SERIF_SPECIES_MT_269
+#endif // SERIF_SPECIES_MT_269
+#ifndef SERIF_SPECIES_DS_269
+    #define SERIF_SPECIES_DS_269
+#endif // SERIF_SPECIES_DS_269
+#ifndef SERIF_SPECIES_DB_270
+    #define SERIF_SPECIES_DB_270
+#endif // SERIF_SPECIES_DB_270
+#ifndef SERIF_SPECIES_SG_270
+    #define SERIF_SPECIES_SG_270
+#endif // SERIF_SPECIES_SG_270
+#ifndef SERIF_SPECIES_BH_270
+    #define SERIF_SPECIES_BH_270
+#endif // SERIF_SPECIES_BH_270
+#ifndef SERIF_SPECIES_HS_270
+    #define SERIF_SPECIES_HS_270
+#endif // SERIF_SPECIES_HS_270
+#ifndef SERIF_SPECIES_MT_270
+    #define SERIF_SPECIES_MT_270
+#endif // SERIF_SPECIES_MT_270
+#ifndef SERIF_SPECIES_DS_270
+    #define SERIF_SPECIES_DS_270
+#endif // SERIF_SPECIES_DS_270
+#ifndef SERIF_SPECIES_SG_271
+    #define SERIF_SPECIES_SG_271
+#endif // SERIF_SPECIES_SG_271
+#ifndef SERIF_SPECIES_BH_271
+    #define SERIF_SPECIES_BH_271
+#endif // SERIF_SPECIES_BH_271
+#ifndef SERIF_SPECIES_HS_271
+    #define SERIF_SPECIES_HS_271
+#endif // SERIF_SPECIES_HS_271
+#ifndef SERIF_SPECIES_MT_271
+    #define SERIF_SPECIES_MT_271
+#endif // SERIF_SPECIES_MT_271
+#ifndef SERIF_SPECIES_DS_271
+    #define SERIF_SPECIES_DS_271
+#endif // SERIF_SPECIES_DS_271
+#ifndef SERIF_SPECIES_SG_272
+    #define SERIF_SPECIES_SG_272
+#endif // SERIF_SPECIES_SG_272
+#ifndef SERIF_SPECIES_BH_272
+    #define SERIF_SPECIES_BH_272
+#endif // SERIF_SPECIES_BH_272
+#ifndef SERIF_SPECIES_HS_272
+    #define SERIF_SPECIES_HS_272
+#endif // SERIF_SPECIES_HS_272
+#ifndef SERIF_SPECIES_MT_272
+    #define SERIF_SPECIES_MT_272
+#endif // SERIF_SPECIES_MT_272
+#ifndef SERIF_SPECIES_DS_272
+    #define SERIF_SPECIES_DS_272
+#endif // SERIF_SPECIES_DS_272
+#ifndef SERIF_SPECIES_RG_272
+    #define SERIF_SPECIES_RG_272
+#endif // SERIF_SPECIES_RG_272
+#ifndef SERIF_SPECIES_SG_273
+    #define SERIF_SPECIES_SG_273
+#endif // SERIF_SPECIES_SG_273
+#ifndef SERIF_SPECIES_BH_273
+    #define SERIF_SPECIES_BH_273
+#endif // SERIF_SPECIES_BH_273
+#ifndef SERIF_SPECIES_HS_273
+    #define SERIF_SPECIES_HS_273
+#endif // SERIF_SPECIES_HS_273
+#ifndef SERIF_SPECIES_MT_273
+    #define SERIF_SPECIES_MT_273
+#endif // SERIF_SPECIES_MT_273
+#ifndef SERIF_SPECIES_DS_273
+    #define SERIF_SPECIES_DS_273
+#endif // SERIF_SPECIES_DS_273
+#ifndef SERIF_SPECIES_RG_273
+    #define SERIF_SPECIES_RG_273
+#endif // SERIF_SPECIES_RG_273
+#ifndef SERIF_SPECIES_BH_274
+    #define SERIF_SPECIES_BH_274
+#endif // SERIF_SPECIES_BH_274
+#ifndef SERIF_SPECIES_HS_274
+    #define SERIF_SPECIES_HS_274
+#endif // SERIF_SPECIES_HS_274
+#ifndef SERIF_SPECIES_MT_274
+    #define SERIF_SPECIES_MT_274
+#endif // SERIF_SPECIES_MT_274
+#ifndef SERIF_SPECIES_DS_274
+    #define SERIF_SPECIES_DS_274
+#endif // SERIF_SPECIES_DS_274
+#ifndef SERIF_SPECIES_RG_274
+    #define SERIF_SPECIES_RG_274
+#endif // SERIF_SPECIES_RG_274
+#ifndef SERIF_SPECIES_BH_275
+    #define SERIF_SPECIES_BH_275
+#endif // SERIF_SPECIES_BH_275
+#ifndef SERIF_SPECIES_HS_275
+    #define SERIF_SPECIES_HS_275
+#endif // SERIF_SPECIES_HS_275
+#ifndef SERIF_SPECIES_MT_275
+    #define SERIF_SPECIES_MT_275
+#endif // SERIF_SPECIES_MT_275
+#ifndef SERIF_SPECIES_DS_275
+    #define SERIF_SPECIES_DS_275
+#endif // SERIF_SPECIES_DS_275
+#ifndef SERIF_SPECIES_RG_275
+    #define SERIF_SPECIES_RG_275
+#endif // SERIF_SPECIES_RG_275
+#ifndef SERIF_SPECIES_BH_276
+    #define SERIF_SPECIES_BH_276
+#endif // SERIF_SPECIES_BH_276
+#ifndef SERIF_SPECIES_HS_276
+    #define SERIF_SPECIES_HS_276
+#endif // SERIF_SPECIES_HS_276
+#ifndef SERIF_SPECIES_MT_276
+    #define SERIF_SPECIES_MT_276
+#endif // SERIF_SPECIES_MT_276
+#ifndef SERIF_SPECIES_DS_276
+    #define SERIF_SPECIES_DS_276
+#endif // SERIF_SPECIES_DS_276
+#ifndef SERIF_SPECIES_RG_276
+    #define SERIF_SPECIES_RG_276
+#endif // SERIF_SPECIES_RG_276
+#ifndef SERIF_SPECIES_CN_276
+    #define SERIF_SPECIES_CN_276
+#endif // SERIF_SPECIES_CN_276
+#ifndef SERIF_SPECIES_BH_277
+    #define SERIF_SPECIES_BH_277
+#endif // SERIF_SPECIES_BH_277
+#ifndef SERIF_SPECIES_HS_277
+    #define SERIF_SPECIES_HS_277
+#endif // SERIF_SPECIES_HS_277
+#ifndef SERIF_SPECIES_MT_277
+    #define SERIF_SPECIES_MT_277
+#endif // SERIF_SPECIES_MT_277
+#ifndef SERIF_SPECIES_DS_277
+    #define SERIF_SPECIES_DS_277
+#endif // SERIF_SPECIES_DS_277
+#ifndef SERIF_SPECIES_RG_277
+    #define SERIF_SPECIES_RG_277
+#endif // SERIF_SPECIES_RG_277
+#ifndef SERIF_SPECIES_CN_277
+    #define SERIF_SPECIES_CN_277
+#endif // SERIF_SPECIES_CN_277
+#ifndef SERIF_SPECIES_BH_278
+    #define SERIF_SPECIES_BH_278
+#endif // SERIF_SPECIES_BH_278
+#ifndef SERIF_SPECIES_HS_278
+    #define SERIF_SPECIES_HS_278
+#endif // SERIF_SPECIES_HS_278
+#ifndef SERIF_SPECIES_MT_278
+    #define SERIF_SPECIES_MT_278
+#endif // SERIF_SPECIES_MT_278
+#ifndef SERIF_SPECIES_DS_278
+    #define SERIF_SPECIES_DS_278
+#endif // SERIF_SPECIES_DS_278
+#ifndef SERIF_SPECIES_RG_278
+    #define SERIF_SPECIES_RG_278
+#endif // SERIF_SPECIES_RG_278
+#ifndef SERIF_SPECIES_CN_278
+    #define SERIF_SPECIES_CN_278
+#endif // SERIF_SPECIES_CN_278
+#ifndef SERIF_SPECIES_NH_278
+    #define SERIF_SPECIES_NH_278
+#endif // SERIF_SPECIES_NH_278
+#ifndef SERIF_SPECIES_HS_279
+    #define SERIF_SPECIES_HS_279
+#endif // SERIF_SPECIES_HS_279
+#ifndef SERIF_SPECIES_MT_279
+    #define SERIF_SPECIES_MT_279
+#endif // SERIF_SPECIES_MT_279
+#ifndef SERIF_SPECIES_DS_279
+    #define SERIF_SPECIES_DS_279
+#endif // SERIF_SPECIES_DS_279
+#ifndef SERIF_SPECIES_RG_279
+    #define SERIF_SPECIES_RG_279
+#endif // SERIF_SPECIES_RG_279
+#ifndef SERIF_SPECIES_CN_279
+    #define SERIF_SPECIES_CN_279
+#endif // SERIF_SPECIES_CN_279
+#ifndef SERIF_SPECIES_NH_279
+    #define SERIF_SPECIES_NH_279
+#endif // SERIF_SPECIES_NH_279
+#ifndef SERIF_SPECIES_HS_280
+    #define SERIF_SPECIES_HS_280
+#endif // SERIF_SPECIES_HS_280
+#ifndef SERIF_SPECIES_MT_280
+    #define SERIF_SPECIES_MT_280
+#endif // SERIF_SPECIES_MT_280
+#ifndef SERIF_SPECIES_DS_280
+    #define SERIF_SPECIES_DS_280
+#endif // SERIF_SPECIES_DS_280
+#ifndef SERIF_SPECIES_RG_280
+    #define SERIF_SPECIES_RG_280
+#endif // SERIF_SPECIES_RG_280
+#ifndef SERIF_SPECIES_CN_280
+    #define SERIF_SPECIES_CN_280
+#endif // SERIF_SPECIES_CN_280
+#ifndef SERIF_SPECIES_NH_280
+    #define SERIF_SPECIES_NH_280
+#endif // SERIF_SPECIES_NH_280
+#ifndef SERIF_SPECIES_MT_281
+    #define SERIF_SPECIES_MT_281
+#endif // SERIF_SPECIES_MT_281
+#ifndef SERIF_SPECIES_DS_281
+    #define SERIF_SPECIES_DS_281
+#endif // SERIF_SPECIES_DS_281
+#ifndef SERIF_SPECIES_RG_281
+    #define SERIF_SPECIES_RG_281
+#endif // SERIF_SPECIES_RG_281
+#ifndef SERIF_SPECIES_CN_281
+    #define SERIF_SPECIES_CN_281
+#endif // SERIF_SPECIES_CN_281
+#ifndef SERIF_SPECIES_NH_281
+    #define SERIF_SPECIES_NH_281
+#endif // SERIF_SPECIES_NH_281
+#ifndef SERIF_SPECIES_MT_282
+    #define SERIF_SPECIES_MT_282
+#endif // SERIF_SPECIES_MT_282
+#ifndef SERIF_SPECIES_DS_282
+    #define SERIF_SPECIES_DS_282
+#endif // SERIF_SPECIES_DS_282
+#ifndef SERIF_SPECIES_RG_282
+    #define SERIF_SPECIES_RG_282
+#endif // SERIF_SPECIES_RG_282
+#ifndef SERIF_SPECIES_CN_282
+    #define SERIF_SPECIES_CN_282
+#endif // SERIF_SPECIES_CN_282
+#ifndef SERIF_SPECIES_NH_282
+    #define SERIF_SPECIES_NH_282
+#endif // SERIF_SPECIES_NH_282
+#ifndef SERIF_SPECIES_DS_283
+    #define SERIF_SPECIES_DS_283
+#endif // SERIF_SPECIES_DS_283
+#ifndef SERIF_SPECIES_RG_283
+    #define SERIF_SPECIES_RG_283
+#endif // SERIF_SPECIES_RG_283
+#ifndef SERIF_SPECIES_CN_283
+    #define SERIF_SPECIES_CN_283
+#endif // SERIF_SPECIES_CN_283
+#ifndef SERIF_SPECIES_NH_283
+    #define SERIF_SPECIES_NH_283
+#endif // SERIF_SPECIES_NH_283
+#ifndef SERIF_SPECIES_DS_284
+    #define SERIF_SPECIES_DS_284
+#endif // SERIF_SPECIES_DS_284
+#ifndef SERIF_SPECIES_RG_284
+    #define SERIF_SPECIES_RG_284
+#endif // SERIF_SPECIES_RG_284
+#ifndef SERIF_SPECIES_CN_284
+    #define SERIF_SPECIES_CN_284
+#endif // SERIF_SPECIES_CN_284
+#ifndef SERIF_SPECIES_NH_284
+    #define SERIF_SPECIES_NH_284
+#endif // SERIF_SPECIES_NH_284
+#ifndef SERIF_SPECIES_FL_284
+    #define SERIF_SPECIES_FL_284
+#endif // SERIF_SPECIES_FL_284
+#ifndef SERIF_SPECIES_RG_285
+    #define SERIF_SPECIES_RG_285
+#endif // SERIF_SPECIES_RG_285
+#ifndef SERIF_SPECIES_CN_285
+    #define SERIF_SPECIES_CN_285
+#endif // SERIF_SPECIES_CN_285
+#ifndef SERIF_SPECIES_NH_285
+    #define SERIF_SPECIES_NH_285
+#endif // SERIF_SPECIES_NH_285
+#ifndef SERIF_SPECIES_FL_285
+    #define SERIF_SPECIES_FL_285
+#endif // SERIF_SPECIES_FL_285
+#ifndef SERIF_SPECIES_RG_286
+    #define SERIF_SPECIES_RG_286
+#endif // SERIF_SPECIES_RG_286
+#ifndef SERIF_SPECIES_CN_286
+    #define SERIF_SPECIES_CN_286
+#endif // SERIF_SPECIES_CN_286
+#ifndef SERIF_SPECIES_NH_286
+    #define SERIF_SPECIES_NH_286
+#endif // SERIF_SPECIES_NH_286
+#ifndef SERIF_SPECIES_FL_286
+    #define SERIF_SPECIES_FL_286
+#endif // SERIF_SPECIES_FL_286
+#ifndef SERIF_SPECIES_CN_287
+    #define SERIF_SPECIES_CN_287
+#endif // SERIF_SPECIES_CN_287
+#ifndef SERIF_SPECIES_NH_287
+    #define SERIF_SPECIES_NH_287
+#endif // SERIF_SPECIES_NH_287
+#ifndef SERIF_SPECIES_FL_287
+    #define SERIF_SPECIES_FL_287
+#endif // SERIF_SPECIES_FL_287
+#ifndef SERIF_SPECIES_MC_287
+    #define SERIF_SPECIES_MC_287
+#endif // SERIF_SPECIES_MC_287
+#ifndef SERIF_SPECIES_CN_288
+    #define SERIF_SPECIES_CN_288
+#endif // SERIF_SPECIES_CN_288
+#ifndef SERIF_SPECIES_NH_288
+    #define SERIF_SPECIES_NH_288
+#endif // SERIF_SPECIES_NH_288
+#ifndef SERIF_SPECIES_FL_288
+    #define SERIF_SPECIES_FL_288
+#endif // SERIF_SPECIES_FL_288
+#ifndef SERIF_SPECIES_MC_288
+    #define SERIF_SPECIES_MC_288
+#endif // SERIF_SPECIES_MC_288
+#ifndef SERIF_SPECIES_NH_289
+    #define SERIF_SPECIES_NH_289
+#endif // SERIF_SPECIES_NH_289
+#ifndef SERIF_SPECIES_FL_289
+    #define SERIF_SPECIES_FL_289
+#endif // SERIF_SPECIES_FL_289
+#ifndef SERIF_SPECIES_MC_289
+    #define SERIF_SPECIES_MC_289
+#endif // SERIF_SPECIES_MC_289
+#ifndef SERIF_SPECIES_LV_289
+    #define SERIF_SPECIES_LV_289
+#endif // SERIF_SPECIES_LV_289
+#ifndef SERIF_SPECIES_NH_290
+    #define SERIF_SPECIES_NH_290
+#endif // SERIF_SPECIES_NH_290
+#ifndef SERIF_SPECIES_FL_290
+    #define SERIF_SPECIES_FL_290
+#endif // SERIF_SPECIES_FL_290
+#ifndef SERIF_SPECIES_MC_290
+    #define SERIF_SPECIES_MC_290
+#endif // SERIF_SPECIES_MC_290
+#ifndef SERIF_SPECIES_LV_290
+    #define SERIF_SPECIES_LV_290
+#endif // SERIF_SPECIES_LV_290
+#ifndef SERIF_SPECIES_FL_291
+    #define SERIF_SPECIES_FL_291
+#endif // SERIF_SPECIES_FL_291
+#ifndef SERIF_SPECIES_MC_291
+    #define SERIF_SPECIES_MC_291
+#endif // SERIF_SPECIES_MC_291
+#ifndef SERIF_SPECIES_LV_291
+    #define SERIF_SPECIES_LV_291
+#endif // SERIF_SPECIES_LV_291
+#ifndef SERIF_SPECIES_TS_291
+    #define SERIF_SPECIES_TS_291
+#endif // SERIF_SPECIES_TS_291
+#ifndef SERIF_SPECIES_MC_292
+    #define SERIF_SPECIES_MC_292
+#endif // SERIF_SPECIES_MC_292
+#ifndef SERIF_SPECIES_LV_292
+    #define SERIF_SPECIES_LV_292
+#endif // SERIF_SPECIES_LV_292
+#ifndef SERIF_SPECIES_TS_292
+    #define SERIF_SPECIES_TS_292
+#endif // SERIF_SPECIES_TS_292
+#ifndef SERIF_SPECIES_LV_293
+    #define SERIF_SPECIES_LV_293
+#endif // SERIF_SPECIES_LV_293
+#ifndef SERIF_SPECIES_TS_293
+    #define SERIF_SPECIES_TS_293
+#endif // SERIF_SPECIES_TS_293
+#ifndef SERIF_SPECIES_OG_293
+    #define SERIF_SPECIES_OG_293
+#endif // SERIF_SPECIES_OG_293
+#ifndef SERIF_SPECIES_TS_294
+    #define SERIF_SPECIES_TS_294
+#endif // SERIF_SPECIES_TS_294
+#ifndef SERIF_SPECIES_OG_294
+    #define SERIF_SPECIES_OG_294
+#endif // SERIF_SPECIES_OG_294
+#ifndef SERIF_SPECIES_OG_295
+    #define SERIF_SPECIES_OG_295
+#endif // SERIF_SPECIES_OG_295

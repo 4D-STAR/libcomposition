@@ -63,7 +63,7 @@ namespace serif::composition {
      */
     struct CompositionEntry {
         std::string m_symbol; ///< The chemical symbol of the species.
-        chemSpecies::Species m_isotope; ///< The isotope of the species.
+        serif::atomic::Species m_isotope; ///< The isotope of the species.
         bool m_massFracMode = true; ///< The mode of the composition entry. True if mass fraction, false if number fraction.   
 
         double m_massFraction = 0.0; ///< The mass fraction of the species.
@@ -142,7 +142,7 @@ namespace serif::composition {
          * @brief Gets the isotope of the species.
          * @return The isotope of the species.
          */
-        chemSpecies::Species isotope() const;
+        serif::atomic::Species isotope() const;
 
         /**
          * @brief Gets the mode of the composition entry.
