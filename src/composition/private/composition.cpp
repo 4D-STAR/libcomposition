@@ -19,6 +19,7 @@
 //
 // *********************************************************************** */
 #include "composition.h"
+#include "const.h"
 #include "quill/LogMacros.h"
 
 #include <stdexcept>
