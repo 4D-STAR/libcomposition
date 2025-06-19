@@ -4,6 +4,7 @@
 #include <algorithm>
 
 #include "atomicSpecies.h"
+#include "species.h"
 #include "composition.h"
 #include "config.h"
 
