@@ -1,5 +1,6 @@
 required_headers = [
     'atomicSpecies.h',
+    'species.h'
 ]
 
 foreach h : required_headers
