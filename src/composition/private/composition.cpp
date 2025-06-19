@@ -30,6 +30,7 @@
 #include <utility>
 
 #include "atomicSpecies.h"
+#include "species.h"
 
 namespace serif::composition {
 
