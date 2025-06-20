@@ -673,10 +673,15 @@ namespace serif::composition {
     }
 
     std::ostream& operator<<(std::ostream& os, const Composition& composition) {
-        os << "Composition: \n";
+        os << "Composition(finalized: " << (composition.m_finalized ? "true" : "false") << ", " ;
+        int count = 0;
         for (const auto& [symbol, entry] : composition.m_compositions) {
-            os << entry << "\n";
+            os << entry;
+            if (count < composition.m_compositions.size() - 1) {
+                os << ", ";
+            }
         }
+        os << ")";
         return os;
     }
 
