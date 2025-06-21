@@ -453,7 +453,18 @@ namespace serif::composition {
         }
         if (!m_compositions.contains(symbol)) {
             LOG_ERROR(m_logger, "Symbol {} is not in the composition.", symbol);
-            throw std::runtime_error("Symbol is not in the composition.");
+            std::string currentSymbols = "";
+            int count = 0;
+            for (const auto& sym : m_compositions | std::views::keys) {
+                currentSymbols += sym;
+                if (count < m_compositions.size() - 2) {
+                    currentSymbols += ", ";
+                } else if (count == m_compositions.size() - 2) {
+                    currentSymbols += ", and ";
+                }
+                count++;
+            }
+            throw std::runtime_error("Symbol(" + symbol + ") is not in the current composition. Current composition has symbols: " + currentSymbols + ".");
         }
         if (m_massFracMode) {
             return m_compositions.at(symbol).mass_fraction();
