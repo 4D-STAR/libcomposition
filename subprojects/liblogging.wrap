@@ -1,6 +1,6 @@
 [wrap-git]
 url = https://github.com/4D-STAR/liblogging.git
-revision = v1.0.1
+revision = v1.0.5
 depth = 1
 
 [provide]
