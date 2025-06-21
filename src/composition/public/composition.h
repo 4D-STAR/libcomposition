@@ -27,10 +27,11 @@
 
 #include <utility>
 
-#include "probe.h"
 #include "config.h"
 
 #include "atomicSpecies.h"
+
+#include "logging.h"
 
 namespace serif::composition {
     struct CanonicalComposition {
@@ -216,7 +217,7 @@ namespace serif::composition {
     class Composition {
     private:
         serif::config::Config& m_config = serif::config::Config::getInstance();
-        serif::probe::LogManager& m_logManager = serif::probe::LogManager::getInstance();
+        fourdst::logging::LogManager& m_logManager = fourdst::logging::LogManager::getInstance();
         quill::Logger* m_logger = m_logManager.getLogger("log");
 
         bool m_finalized = false; ///< True if the composition is finalized.
