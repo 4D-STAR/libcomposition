@@ -30,4 +30,4 @@ composition_dep = declare_dependency(
 )
 
 # Make headers accessible
-install_headers(composition_headers, subdir : 'libcomposition/composition')
+install_headers(composition_headers, subdir : 'fourdst/composition')
