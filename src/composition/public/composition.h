@@ -28,12 +28,11 @@
 #include <utility>
 
 #include "config.h"
+#include "logging.h"
 
 #include "atomicSpecies.h"
 
-#include "logging.h"
-
-namespace serif::composition {
+namespace fourdst::composition {
     struct CanonicalComposition {
         double X = 0.0; ///< Mass fraction of Hydrogen.
         double Y = 0.0; ///< Mass fraction of Helium.
@@ -64,7 +63,7 @@ namespace serif::composition {
      */
     struct CompositionEntry {
         std::string m_symbol; ///< The chemical symbol of the species.
-        chemSpecies::Species m_isotope; ///< The isotope of the species.
+        fourdst::atomic::Species m_isotope; ///< The isotope of the species.
         bool m_massFracMode = true; ///< The mode of the composition entry. True if mass fraction, false if number fraction.   
 
         double m_massFraction = 0.0; ///< The mass fraction of the species.
@@ -143,7 +142,7 @@ namespace serif::composition {
          * @brief Gets the isotope of the species.
          * @return The isotope of the species.
          */
-        chemSpecies::Species isotope() const;
+        fourdst::atomic::Species isotope() const;
 
         /**
          * @brief Gets the mode of the composition entry.
@@ -474,6 +473,8 @@ namespace serif::composition {
         */
         bool hasSymbol(const std::string& symbol) const;
 
+        bool contains(const fourdst::atomic::Species& isotope) const;
+
         /**
         * @brief Sets the composition mode.
         * @param massFracMode True if mass fraction mode, false if number fraction mode.
@@ -507,4 +508,4 @@ namespace serif::composition {
         Composition operator+(const Composition& other) const;
 
     };
-}; // namespace serif::composition
+}; // namespace fourdst::composition

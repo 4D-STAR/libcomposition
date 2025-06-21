@@ -1,0 +1,7 @@
+[wrap-git]
+url = https://github.com/4D-STAR/libconstants.git
+revision = v1.1
+depth = 1
+
+[provide]
+libconstants = const_dep
