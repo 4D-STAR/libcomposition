@@ -1,5 +1,7 @@
 cmake = import('cmake')
 
+subdir('fourdst')
+
 subdir('mfem')
 subdir('yaml-cpp')
 subdir('quill')
