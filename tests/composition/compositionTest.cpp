@@ -25,12 +25,12 @@ TEST_F(compositionTest, isotopeMasses) {
 }
 
 TEST_F(compositionTest, constructor) {
-    serif::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     EXPECT_NO_THROW(serif::composition::Composition comp);
 }
 
 TEST_F(compositionTest, registerSymbol) {
-    serif::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     serif::composition::Composition comp;
     EXPECT_NO_THROW(comp.registerSymbol("H-1"));
     EXPECT_NO_THROW(comp.registerSymbol("He-4"));
@@ -45,7 +45,7 @@ TEST_F(compositionTest, registerSymbol) {
 }
 
 TEST_F(compositionTest, setGetComposition) {
-    serif::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     serif::composition::Composition comp;
     comp.registerSymbol("H-1");
     comp.registerSymbol("He-4");
@@ -71,7 +71,7 @@ TEST_F(compositionTest, setGetComposition) {
 }
 
 TEST_F(compositionTest, setGetNumberFraction) {
-    serif::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     serif::composition::Composition comp;
     comp.registerSymbol("H-1", false);
     comp.registerSymbol("He-4", false);
@@ -88,7 +88,7 @@ TEST_F(compositionTest, setGetNumberFraction) {
 }
 
 TEST_F(compositionTest, subset) {
-    serif::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     serif::composition::Composition comp;
     comp.registerSymbol("H-1");
     comp.registerSymbol("He-4");
@@ -103,7 +103,7 @@ TEST_F(compositionTest, subset) {
 }
 
 TEST_F(compositionTest, finalizeWithNormalization) {
-    serif::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     serif::composition::Composition comp;
     comp.registerSymbol("H-1");
     comp.registerSymbol("He-4");
@@ -115,7 +115,7 @@ TEST_F(compositionTest, finalizeWithNormalization) {
 }
 
 TEST_F(compositionTest, finalizeWithoutNormalization) {
-    serif::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     serif::composition::Composition comp;
     comp.registerSymbol("H-1");
     comp.registerSymbol("He-4");
@@ -127,7 +127,7 @@ TEST_F(compositionTest, finalizeWithoutNormalization) {
 }
 
 TEST_F(compositionTest, getComposition) {
-    serif::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     serif::composition::Composition comp;
     comp.registerSymbol("H-1");
     comp.registerSymbol("He-4");
@@ -142,7 +142,7 @@ TEST_F(compositionTest, getComposition) {
 }
 
 TEST_F(compositionTest, setCompositionMode) {
-    serif::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     serif::composition::Composition comp;
     comp.registerSymbol("H-1");
     comp.registerSymbol("He-4");
@@ -164,7 +164,7 @@ TEST_F(compositionTest, setCompositionMode) {
 }
 
 TEST_F(compositionTest, hasSymbol) {
-    serif::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     serif::composition::Composition comp;
     comp.registerSymbol("H-1");
     comp.registerSymbol("He-4");
@@ -179,7 +179,7 @@ TEST_F(compositionTest, hasSymbol) {
 }
 
 TEST_F(compositionTest, mix) {
-    serif::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     serif::composition::Composition comp1;
     comp1.registerSymbol("H-1");
     comp1.registerSymbol("He-4");

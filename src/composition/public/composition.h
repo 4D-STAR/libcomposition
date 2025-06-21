@@ -216,7 +216,7 @@ namespace serif::composition {
      */
     class Composition {
     private:
-        serif::config::Config& m_config = serif::config::Config::getInstance();
+        fourdst::config::Config& m_config = fourdst::config::Config::getInstance();
         fourdst::logging::LogManager& m_logManager = fourdst::logging::LogManager::getInstance();
         quill::Logger* m_logger = m_logManager.getLogger("log");
 
