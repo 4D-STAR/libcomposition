@@ -74,6 +74,8 @@ subprojects/libconstants/
 subprojects/liblogging/
 
 qhull.wrap
+quill.wrap
+yaml-cpp.wrap
 
 .vscode/
 
