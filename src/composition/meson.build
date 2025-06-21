@@ -8,10 +8,10 @@ composition_headers = files(
 )
 
 dependencies = [
-    probe_dep,
-    quill_dep,
     species_weight_dep,
     const_dep,
+    config_dep,
+    log_dep
 ]
 
 # Define the libcomposition library so it can be linked against by other parts of the build system
@@ -30,4 +30,4 @@ composition_dep = declare_dependency(
 )
 
 # Make headers accessible
-install_headers(composition_headers, subdir : 'SERiF/composition')
+install_headers(composition_headers, subdir : 'libcomposition/composition')

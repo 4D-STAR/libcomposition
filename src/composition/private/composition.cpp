@@ -33,13 +33,13 @@
 #include "atomicSpecies.h"
 #include "species.h"
 
-namespace serif::composition {
+namespace fourdst::composition {
 
-    CompositionEntry::CompositionEntry() : m_symbol("H-1"), m_isotope(serif::atomic::species.at("H-1")),
+    CompositionEntry::CompositionEntry() : m_symbol("H-1"), m_isotope(fourdst::atomic::species.at("H-1")),
                                            m_initialized(false) {
     }
 
-    CompositionEntry::CompositionEntry(const std::string& symbol, const bool massFracMode) : m_symbol(symbol), m_isotope(serif::atomic::species.at(symbol)), m_massFracMode(massFracMode) {
+    CompositionEntry::CompositionEntry(const std::string& symbol, const bool massFracMode) : m_symbol(symbol), m_isotope(fourdst::atomic::species.at(symbol)), m_massFracMode(massFracMode) {
         setSpecies(symbol);
     }
 
@@ -56,11 +56,11 @@ namespace serif::composition {
         if (m_initialized) {
             throw std::runtime_error("Composition entry is already initialized.");
         }
-        if (serif::atomic::species.count(symbol) == 0) {
+        if (fourdst::atomic::species.count(symbol) == 0) {
             throw std::runtime_error("Invalid symbol.");
         }
         m_symbol = symbol;
-        m_isotope = serif::atomic::species.at(symbol);
+        m_isotope = fourdst::atomic::species.at(symbol);
         m_initialized = true;
     }
 
@@ -101,7 +101,7 @@ namespace serif::composition {
         return m_relAbundance;
     }
 
-    serif::atomic::Species CompositionEntry::isotope() const {
+    fourdst::atomic::Species CompositionEntry::isotope() const {
         return m_isotope;
     }
 
@@ -258,7 +258,7 @@ namespace serif::composition {
     }
 
     bool Composition::isValidSymbol(const std::string& symbol) {
-        return serif::atomic::species.contains(symbol);
+        return fourdst::atomic::species.contains(symbol);
     }
 
     double Composition::setMassFraction(const std::string& symbol, const double& mass_fraction) {
@@ -652,7 +652,7 @@ namespace serif::composition {
         return m_compositions.count(symbol) > 0;
     }
 
-    bool Composition::contains(const serif::atomic::Species &isotope) const {
+    bool Composition::contains(const fourdst::atomic::Species &isotope) const {
         // Check if the isotope's symbol is in the composition
         if (!m_finalized) {
             LOG_ERROR(m_logger, "Composition has not been finalized.");
@@ -696,4 +696,4 @@ namespace serif::composition {
         return os;
     }
 
-} // namespace serif::composition
+} // namespace fourdst::composition

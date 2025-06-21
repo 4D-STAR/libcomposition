@@ -19,20 +19,20 @@ class compositionTest : public ::testing::Test {};
  * @brief Test the constructor of the composition class.
  */
 TEST_F(compositionTest, isotopeMasses) {
-    EXPECT_NO_THROW(serif::atomic::species.at("H-1"));
-    EXPECT_DOUBLE_EQ(serif::atomic::species.at("H-1").mass(), 1.007825031898);
-    EXPECT_DOUBLE_EQ(serif::atomic::species.at("He-3").mass(), 3.0160293219700001);
-    EXPECT_DOUBLE_EQ(serif::atomic::species.at("He-4").mass(),4.0026032541300003);
+    EXPECT_NO_THROW(fourdst::atomic::species.at("H-1"));
+    EXPECT_DOUBLE_EQ(fourdst::atomic::species.at("H-1").mass(), 1.007825031898);
+    EXPECT_DOUBLE_EQ(fourdst::atomic::species.at("He-3").mass(), 3.0160293219700001);
+    EXPECT_DOUBLE_EQ(fourdst::atomic::species.at("He-4").mass(),4.0026032541300003);
 }
 
 TEST_F(compositionTest, constructor) {
-    serif::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
-    EXPECT_NO_THROW(serif::composition::Composition comp);
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    EXPECT_NO_THROW(fourdst::composition::Composition comp);
 }
 
 TEST_F(compositionTest, registerSymbol) {
-    serif::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
-    serif::composition::Composition comp;
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    fourdst::composition::Composition comp;
     EXPECT_NO_THROW(comp.registerSymbol("H-1"));
     EXPECT_NO_THROW(comp.registerSymbol("He-4"));
     EXPECT_THROW(comp.registerSymbol("H-19"), std::runtime_error);
@@ -46,8 +46,8 @@ TEST_F(compositionTest, registerSymbol) {
 }
 
 TEST_F(compositionTest, setGetComposition) {
-    serif::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
-    serif::composition::Composition comp;
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    fourdst::composition::Composition comp;
     comp.registerSymbol("H-1");
     comp.registerSymbol("He-4");
 
@@ -72,8 +72,8 @@ TEST_F(compositionTest, setGetComposition) {
 }
 
 TEST_F(compositionTest, setGetNumberFraction) {
-    serif::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
-    serif::composition::Composition comp;
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    fourdst::composition::Composition comp;
     comp.registerSymbol("H-1", false);
     comp.registerSymbol("He-4", false);
 
@@ -89,8 +89,8 @@ TEST_F(compositionTest, setGetNumberFraction) {
 }
 
 TEST_F(compositionTest, subset) {
-    serif::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
-    serif::composition::Composition comp;
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    fourdst::composition::Composition comp;
     comp.registerSymbol("H-1");
     comp.registerSymbol("He-4");
     comp.setMassFraction("H-1", 0.6);
@@ -98,14 +98,14 @@ TEST_F(compositionTest, subset) {
     EXPECT_NO_THROW(comp.finalize());
 
     std::vector<std::string> symbols = {"H-1"};
-    serif::composition::Composition subsetComp = comp.subset(symbols, "norm");
+    fourdst::composition::Composition subsetComp = comp.subset(symbols, "norm");
     EXPECT_TRUE(subsetComp.finalize());
     EXPECT_DOUBLE_EQ(subsetComp.getMassFraction("H-1"), 1.0);
 }
 
 TEST_F(compositionTest, finalizeWithNormalization) {
-    serif::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
-    serif::composition::Composition comp;
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    fourdst::composition::Composition comp;
     comp.registerSymbol("H-1");
     comp.registerSymbol("He-4");
     comp.setMassFraction("H-1", 0.3);
@@ -116,8 +116,8 @@ TEST_F(compositionTest, finalizeWithNormalization) {
 }
 
 TEST_F(compositionTest, finalizeWithoutNormalization) {
-    serif::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
-    serif::composition::Composition comp;
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    fourdst::composition::Composition comp;
     comp.registerSymbol("H-1");
     comp.registerSymbol("He-4");
     comp.setMassFraction("H-1", 0.5);
@@ -128,8 +128,8 @@ TEST_F(compositionTest, finalizeWithoutNormalization) {
 }
 
 TEST_F(compositionTest, getComposition) {
-    serif::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
-    serif::composition::Composition comp;
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    fourdst::composition::Composition comp;
     comp.registerSymbol("H-1");
     comp.registerSymbol("He-4");
     comp.setMassFraction("H-1", 0.6);
@@ -143,8 +143,8 @@ TEST_F(compositionTest, getComposition) {
 }
 
 TEST_F(compositionTest, setCompositionMode) {
-    serif::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
-    serif::composition::Composition comp;
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    fourdst::composition::Composition comp;
     comp.registerSymbol("H-1");
     comp.registerSymbol("He-4");
     comp.setMassFraction("H-1", 0.6);
@@ -165,8 +165,8 @@ TEST_F(compositionTest, setCompositionMode) {
 }
 
 TEST_F(compositionTest, hasSymbol) {
-    serif::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
-    serif::composition::Composition comp;
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    fourdst::composition::Composition comp;
     comp.registerSymbol("H-1");
     comp.registerSymbol("He-4");
     comp.setMassFraction("H-1", 0.6);
@@ -180,27 +180,27 @@ TEST_F(compositionTest, hasSymbol) {
 }
 
 TEST_F(compositionTest, mix) {
-    serif::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
-    serif::composition::Composition comp1;
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    fourdst::composition::Composition comp1;
     comp1.registerSymbol("H-1");
     comp1.registerSymbol("He-4");
     comp1.setMassFraction("H-1", 0.6);
     comp1.setMassFraction("He-4", 0.4);
     EXPECT_NO_THROW(comp1.finalize());
 
-    serif::composition::Composition comp2;
+    fourdst::composition::Composition comp2;
     comp2.registerSymbol("H-1");
     comp2.registerSymbol("He-4");
     comp2.setMassFraction("H-1", 0.4);
     comp2.setMassFraction("He-4", 0.6);
     EXPECT_NO_THROW(comp2.finalize());
 
-    serif::composition::Composition mixedComp = comp1 + comp2;
+    fourdst::composition::Composition mixedComp = comp1 + comp2;
     EXPECT_TRUE(mixedComp.finalize());
     EXPECT_DOUBLE_EQ(mixedComp.getMassFraction("H-1"), 0.5);
     EXPECT_DOUBLE_EQ(mixedComp.getMassFraction("He-4"), 0.5);
 
-    serif::composition::Composition mixedComp2 = comp1.mix(comp2, 0.25);
+    fourdst::composition::Composition mixedComp2 = comp1.mix(comp2, 0.25);
     EXPECT_TRUE(mixedComp2.finalize());
     EXPECT_DOUBLE_EQ(mixedComp2.getMassFraction("H-1"), 0.45);
     EXPECT_DOUBLE_EQ(mixedComp2.getMassFraction("He-4"), 0.55);

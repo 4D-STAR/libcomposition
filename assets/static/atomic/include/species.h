@@ -4,7 +4,7 @@
 #include <string>
 #include "atomicSpecies.h"
 
-namespace serif::atomic {
+namespace fourdst::atomic {
     static const Species n_1("n-1", "n", 1, 1, 0, 1, 0.0, "B-", 782.347, 1.0086649159, 0.00047);
     static const Species H_1("H-1", "H", -1, 0, 1, 1, 0.0, "B-", std::numeric_limits<double>::quiet_NaN(), 1.007825031898, 1.4e-05);
     static const Species H_2("H-2", "H", 0, 1, 1, 2, 1112.2831, "B-", std::numeric_limits<double>::quiet_NaN(), 2.014101777844, 1.5e-05);

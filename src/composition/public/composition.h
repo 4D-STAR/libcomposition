@@ -27,12 +27,12 @@
 
 #include <utility>
 
-#include "probe.h"
 #include "config.h"
+#include "logging.h"
 
 #include "atomicSpecies.h"
 
-namespace serif::composition {
+namespace fourdst::composition {
     struct CanonicalComposition {
         double X = 0.0; ///< Mass fraction of Hydrogen.
         double Y = 0.0; ///< Mass fraction of Helium.
@@ -63,7 +63,7 @@ namespace serif::composition {
      */
     struct CompositionEntry {
         std::string m_symbol; ///< The chemical symbol of the species.
-        serif::atomic::Species m_isotope; ///< The isotope of the species.
+        fourdst::atomic::Species m_isotope; ///< The isotope of the species.
         bool m_massFracMode = true; ///< The mode of the composition entry. True if mass fraction, false if number fraction.   
 
         double m_massFraction = 0.0; ///< The mass fraction of the species.
@@ -142,7 +142,7 @@ namespace serif::composition {
          * @brief Gets the isotope of the species.
          * @return The isotope of the species.
          */
-        serif::atomic::Species isotope() const;
+        fourdst::atomic::Species isotope() const;
 
         /**
          * @brief Gets the mode of the composition entry.
@@ -215,8 +215,8 @@ namespace serif::composition {
      */
     class Composition {
     private:
-        serif::config::Config& m_config = serif::config::Config::getInstance();
-        serif::probe::LogManager& m_logManager = serif::probe::LogManager::getInstance();
+        fourdst::config::Config& m_config = fourdst::config::Config::getInstance();
+        fourdst::logging::LogManager& m_logManager = fourdst::logging::LogManager::getInstance();
         quill::Logger* m_logger = m_logManager.getLogger("log");
 
         bool m_finalized = false; ///< True if the composition is finalized.
@@ -473,7 +473,7 @@ namespace serif::composition {
         */
         bool hasSymbol(const std::string& symbol) const;
 
-        bool contains(const serif::atomic::Species& isotope) const;
+        bool contains(const fourdst::atomic::Species& isotope) const;
 
         /**
         * @brief Sets the composition mode.
@@ -508,4 +508,4 @@ namespace serif::composition {
         Composition operator+(const Composition& other) const;
 
     };
-}; // namespace serif::composition
+}; // namespace fourdst::composition

@@ -5,7 +5,7 @@
 #include <iostream>
 #include "atomicSpecies.h"
 
-namespace serif::atomic {
+namespace fourdst::atomic {
     struct Species {
         std::string m_name; //< Name of the species
         std::string m_el; //< Element symbol
@@ -101,8 +101,8 @@ namespace serif::atomic {
 
 namespace std {
     template<>
-    struct hash<serif::atomic::Species> {
-        size_t operator()(const serif::atomic::Species& s) const noexcept {
+    struct hash<fourdst::atomic::Species> {
+        size_t operator()(const fourdst::atomic::Species& s) const noexcept {
             return std::hash<std::string>()(s.m_name);
         }
     };
