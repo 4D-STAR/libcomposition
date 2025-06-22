@@ -3,7 +3,6 @@
 #include <string_view>
 #include <string>
 #include <iostream>
-#include "atomicSpecies.h"
 
 namespace fourdst::atomic {
     struct Species {

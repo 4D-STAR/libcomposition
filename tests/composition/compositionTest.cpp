@@ -3,10 +3,11 @@
 #include <string>
 #include <algorithm>
 
-#include "atomicSpecies.h"
-#include "species.h"
-#include "composition.h"
-#include "config.h"
+#include "fourdst/composition/atomicSpecies.h"
+#include "fourdst/composition/species.h"
+#include "fourdst/composition/composition.h"
+
+#include "fourdst/config/config.h"
 
 std::string EXAMPLE_FILENAME = std::string(getenv("MESON_SOURCE_ROOT")) + "/tests/config/example.yaml";
 

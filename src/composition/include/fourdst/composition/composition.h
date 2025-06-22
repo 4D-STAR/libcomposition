@@ -27,10 +27,9 @@
 
 #include <utility>
 
-#include "config.h"
-#include "logging.h"
-
-#include "atomicSpecies.h"
+#include "fourdst/config/config.h"
+#include "fourdst/logging/logging.h"
+#include "fourdst/composition/atomicSpecies.h"
 
 namespace fourdst::composition {
     struct CanonicalComposition {

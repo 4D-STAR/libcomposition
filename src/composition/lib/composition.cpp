@@ -18,8 +18,6 @@
 //   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 //
 // *********************************************************************** */
-#include "composition.h"
-#include "const.h"
 #include "quill/LogMacros.h"
 
 #include <stdexcept>
@@ -30,8 +28,10 @@
 
 #include <utility>
 
-#include "atomicSpecies.h"
-#include "species.h"
+#include "fourdst/composition/atomicSpecies.h"
+#include "fourdst/composition/species.h"
+#include "fourdst/composition/composition.h"
+#include "fourdst/constants/const.h"
 
 namespace fourdst::composition {
 

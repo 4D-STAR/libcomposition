@@ -2,7 +2,8 @@
 #include <unordered_map>
 #include <string_view>
 #include <string>
-#include "atomicSpecies.h"
+
+#include "fourdst/composition/atomicSpecies.h"
 
 namespace fourdst::atomic {
     static const Species n_1("n-1", "n", 1, 1, 0, 1, 0.0, "B-", 782.347, 1.0086649159, 0.00047);
