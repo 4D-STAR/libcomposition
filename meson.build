@@ -18,10 +18,12 @@
 #   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 #
 # *********************************************************************** #
-project('libcomposition', 'cpp', version: 'v1.0.7', default_options: ['cpp_std=c++23'], meson_version: '>=1.5.0')
+project('libcomposition', 'cpp', version: 'v1.0.8', default_options: ['cpp_std=c++23'], meson_version: '>=1.5.0')
 
 # Add default visibility for all C++ targets
 add_project_arguments('-fvisibility=default', language: 'cpp')
+# Disable shadow warnings
+add_project_arguments('-Wno-shadow', language: 'cpp')
 
 cpp = meson.get_compiler('cpp')
 subdir('build-config')

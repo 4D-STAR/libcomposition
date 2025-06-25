@@ -56,7 +56,7 @@ namespace fourdst::composition {
         if (m_initialized) {
             throw std::runtime_error("Composition entry is already initialized.");
         }
-        if (fourdst::atomic::species.count(symbol) == 0) {
+        if (!fourdst::atomic::species.contains(symbol)) {
             throw std::runtime_error("Invalid symbol.");
         }
         m_symbol = symbol;
@@ -207,7 +207,7 @@ namespace fourdst::composition {
         }
 
         // If no symbols have been registered allow mode to be set
-        if (m_registeredSymbols.size() == 0) {
+        if (m_registeredSymbols.empty()) {
             m_massFracMode = massFracMode;
         } else {
             if (m_massFracMode != massFracMode) {
@@ -216,13 +216,13 @@ namespace fourdst::composition {
             }
         }
 
-        if (m_registeredSymbols.find(symbol) != m_registeredSymbols.end()) {
+        if (m_registeredSymbols.contains(symbol)) {
             LOG_WARNING(m_logger, "Symbol {} is already registered.", symbol);
             return;
         }
 
         m_registeredSymbols.insert(symbol);
-        CompositionEntry entry(symbol, m_massFracMode);
+        const CompositionEntry entry(symbol, m_massFracMode);
         m_compositions[symbol] = entry;
         LOG_INFO(m_logger, "Registered symbol: {}", symbol);
     }
@@ -299,7 +299,7 @@ namespace fourdst::composition {
     }
 
     double Composition::setNumberFraction(const std::string& symbol, const double& number_fraction) {
-        if (m_registeredSymbols.find(symbol) == m_registeredSymbols.end()) {
+        if (!m_registeredSymbols.contains(symbol)) {
             LOG_ERROR(m_logger, "Symbol {} is not registered.", symbol);
             throw std::runtime_error("Symbol is not registered.");
         }
@@ -351,7 +351,7 @@ namespace fourdst::composition {
     bool Composition::finalizeMassFracMode(bool norm) {
         std::vector<double> mass_fractions;
         mass_fractions.reserve(m_compositions.size());
-        for (const auto& [_, entry] : m_compositions) {
+        for (const auto &entry: m_compositions | std::views::values) {
             mass_fractions.push_back(entry.mass_fraction());
         }
         if (norm) {
@@ -359,8 +359,8 @@ namespace fourdst::composition {
             for (const auto& mass_fraction : mass_fractions) {
                 sum += mass_fraction;
             }
-            for (int i = 0; i < static_cast<int>(mass_fractions.size()); ++i) {
-                mass_fractions[i] /= sum;
+            for (double & mass_fraction : mass_fractions) {
+                mass_fraction /= sum;
             }
             for (auto& [symbol, entry] : m_compositions) {
                 setMassFraction(symbol, entry.mass_fraction() / sum);
@@ -368,16 +368,16 @@ namespace fourdst::composition {
         }
         try {
             validateComposition(mass_fractions);
-        } catch (const std::runtime_error& e) {
+        } catch ([[maybe_unused]] const std::runtime_error& e) {
             double massSum = 0.0;
-            for (const auto& [_, entry] : m_compositions) {
+            for (const auto &entry: m_compositions | std::views::values) {
                 massSum += entry.mass_fraction();
             }
             LOG_ERROR(m_logger, "Composition is invalid (Total mass {}).", massSum);
             m_finalized = false;
             return false;
         }
-        for (const auto& [_, entry] : m_compositions) {
+        for (const auto &entry: m_compositions | std::views::values) {
             m_specificNumberDensity += entry.rel_abundance();
         }
         m_meanParticleMass = 1.0/m_specificNumberDensity;
@@ -387,7 +387,7 @@ namespace fourdst::composition {
     bool Composition::finalizeNumberFracMode(bool norm) {
         std::vector<double> number_fractions;
         number_fractions.reserve(m_compositions.size());
-        for (const auto& [_, entry] : m_compositions) {
+        for (const auto &entry: m_compositions | std::views::values) {
             number_fractions.push_back(entry.number_fraction());
         }
         if (norm) {
@@ -401,16 +401,16 @@ namespace fourdst::composition {
         }
         try {
             validateComposition(number_fractions);
-        } catch (const std::runtime_error& e) {
+        } catch ([[maybe_unused]] const std::runtime_error& e) {
             double numberSum = 0.0;
-            for (const auto& [_, entry] : m_compositions) {
+            for (const auto &entry: m_compositions | std::views::values) {
                 numberSum += entry.number_fraction();
             }
             LOG_ERROR(m_logger, "Composition is invalid (Total number {}).", numberSum);
             m_finalized = false;
             return false;
         }
-        for (const auto& [_, entry] : m_compositions) {
+        for (const auto &entry: m_compositions | std::views::values) {
             m_meanParticleMass += entry.rel_abundance();
         }
         m_specificNumberDensity = 1.0/m_meanParticleMass;
@@ -453,7 +453,7 @@ namespace fourdst::composition {
         }
         if (!m_compositions.contains(symbol)) {
             LOG_ERROR(m_logger, "Symbol {} is not in the composition.", symbol);
-            std::string currentSymbols = "";
+            std::string currentSymbols;
             int count = 0;
             for (const auto& sym : m_compositions | std::views::keys) {
                 currentSymbols += sym;
@@ -506,6 +506,19 @@ namespace fourdst::composition {
         return number_fractions;
     }
 
+    double Composition::getMolarAbundance(const std::string &symbol) const {
+        if (!m_finalized) {
+            LOG_ERROR(m_logger, "Composition has not been finalized.");
+            throw std::runtime_error("Composition has not been finalized (Consider running .finalize()).");
+        }
+        if (!m_compositions.contains(symbol)) {
+            LOG_ERROR(m_logger, "Symbol {} is not in the composition.", symbol);
+            throw std::runtime_error("Symbol is not in the composition.");
+        }
+        return getMassFraction(symbol) / m_compositions.at(symbol).isotope().mass();
+
+    }
+
     std::pair<CompositionEntry, GlobalComposition> Composition::getComposition(const std::string& symbol) const {
         if (!m_finalized) {
             LOG_ERROR(m_logger, "Composition has not been finalized.");
@@ -551,7 +564,7 @@ namespace fourdst::composition {
         return mean_A;
     }
 
-    Composition Composition::subset(const std::vector<std::string>& symbols, std::string method) const {
+    Composition Composition::subset(const std::vector<std::string>& symbols, const std::string& method) const {
         const std::array<std::string, 2> methods = {"norm", "none"};
 
         if (std::ranges::find(methods, method) == methods.end()) {
@@ -649,7 +662,7 @@ namespace fourdst::composition {
     }
 
     bool Composition::hasSymbol(const std::string& symbol) const {
-        return m_compositions.count(symbol) > 0;
+        return m_compositions.contains(symbol);
     }
 
     bool Composition::contains(const fourdst::atomic::Species &isotope) const {
@@ -686,7 +699,7 @@ namespace fourdst::composition {
     std::ostream& operator<<(std::ostream& os, const Composition& composition) {
         os << "Composition(finalized: " << (composition.m_finalized ? "true" : "false") << ", " ;
         int count = 0;
-        for (const auto& [symbol, entry] : composition.m_compositions) {
+        for (const auto &entry: composition.m_compositions | std::views::values) {
             os << entry;
             if (count < composition.m_compositions.size() - 1) {
                 os << ", ";

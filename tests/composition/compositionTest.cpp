@@ -206,3 +206,15 @@ TEST_F(compositionTest, mix) {
     EXPECT_DOUBLE_EQ(mixedComp2.getMassFraction("H-1"), 0.45);
     EXPECT_DOUBLE_EQ(mixedComp2.getMassFraction("He-4"), 0.55);
 }
+
+TEST_F(compositionTest, molarAbundance) {
+    fourdst::composition::Composition comp1;
+    comp1.registerSymbol("H-1");
+    comp1.registerSymbol("He-4");
+    comp1.setMassFraction("H-1", 0.5);
+    comp1.setMassFraction("He-4", 0.5);
+    comp1.finalize();
+
+    EXPECT_DOUBLE_EQ(comp1.getMolarAbundance("H-1"), 0.5/fourdst::atomic::H_1.mass());
+    EXPECT_DOUBLE_EQ(comp1.getMolarAbundance("He-4"), 0.5/fourdst::atomic::He_4.mass());
+}

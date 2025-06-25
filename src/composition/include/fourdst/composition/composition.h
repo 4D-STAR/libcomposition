@@ -20,7 +20,6 @@
 // *********************************************************************** */
 #pragma once
 
-#include <iostream>
 #include <string>
 #include <unordered_map>
 #include <set>
@@ -85,7 +84,7 @@ namespace fourdst::composition {
          * CompositionEntry entry("H", true);
          * @endcode
          */
-        CompositionEntry(const std::string& symbol, bool massFracMode=true);
+        explicit CompositionEntry(const std::string& symbol, bool massFracMode=true);
 
         /**
          * @brief Copy constructor.
@@ -103,51 +102,51 @@ namespace fourdst::composition {
          * @brief Gets the chemical symbol of the species.
          * @return The chemical symbol of the species.
          */
-        std::string symbol() const;
+        [[nodiscard]] std::string symbol() const;
 
         /**
          * @brief Gets the mass fraction of the species.
          * @return The mass fraction of the species.
          */
-        double mass_fraction() const;
+        [[nodiscard]] double mass_fraction() const;
 
         /**
          * @brief Gets the mass fraction of the species given the mean molar mass.
          * @param meanMolarMass The mean molar mass.
          * @return The mass fraction of the species.
          */
-        double mass_fraction(double meanMolarMass) const;
+        [[nodiscard]] double mass_fraction(double meanMolarMass) const;
 
         /**
          * @brief Gets the number fraction of the species.
          * @return The number fraction of the species.
          */
-        double number_fraction() const;
+        [[nodiscard]] double number_fraction() const;
 
         /**
          * @brief Gets the number fraction of the species given the total moles.
          * @param totalMoles The total moles.
          * @return The number fraction of the species.
          */
-        double number_fraction(double totalMoles) const;
+        [[nodiscard]] double number_fraction(double totalMoles) const;
 
         /**
          * @brief Gets the relative abundance of the species.
          * @return The relative abundance of the species.
          */
-        double rel_abundance() const;
+        [[nodiscard]] double rel_abundance() const;
 
         /**
          * @brief Gets the isotope of the species.
          * @return The isotope of the species.
          */
-        fourdst::atomic::Species isotope() const;
+        [[nodiscard]] atomic::Species isotope() const;
 
         /**
          * @brief Gets the mode of the composition entry.
          * @return True if mass fraction mode, false if number fraction mode.
          */
-        bool getMassFracMode() const;
+        [[nodiscard]] bool getMassFracMode() const;
 
         /**
          * @brief Sets the mass fraction of the species.
@@ -191,10 +190,10 @@ namespace fourdst::composition {
      * any part of 4DSSE. There are a few rules when using this class.
      * - Only species in the atomicSpecies.h database can be used. There are 1000s (All species from AME2020) in there so it should not be a problem.
      * - Before a mass fraction can be set with a particular instance of Composition, the symbol must be registered. (i.e. register He-3 before setting its mass fraction)
-     * - Before any composition information can be retrived (e.g. getComposition), the composition must be finalized (call to .finalize()). This checks if the total mass fraction sums to approximatly 1 (within 1 part in 10^8)
-     * - Any changes made to the composition after finalization will "unfinalize" the composition. This means that the composition must be finalized again before any information can be retrived.
+     * - Before any composition information can be retrieved (e.g. getComposition), the composition must be finalized (call to .finalize()). This checks if the total mass fraction sums to approximately 1 (within 1 part in 10^8)
+     * - Any changes made to the composition after finalization will "un-finalize" the composition. This means that the composition must be finalized again before any information can be retrieved.
      * - The mass fraction of any individual species must be no more than 1 and no less than 0.
-     * - The only exception to the finalize rule is if the compositon was constructed with symbols and mass fractions at instantiation time. In this case, the composition is automatically finalized.  
+     * - The only exception to the finalize rule is if the composition was constructed with symbols and mass fractions at instantiation time. In this case, the composition is automatically finalized.
      * however, this means that the composition passed to the constructor must be valid.
      * 
      * *Example Usage:* Constructing a finalized composition with symbols and mass fractions:
@@ -236,14 +235,14 @@ namespace fourdst::composition {
 
         /**
          * @brief Checks if the given mass fractions are valid.
-         * @param mass_fractions The mass fractions to check.
+         * @param fractions The mass fractions to check.
          * @return True if the mass fractions are valid, false otherwise.
          */
-        bool isValidComposition(const std::vector<double>& fractions) const;
+        [[nodiscard]] bool isValidComposition(const std::vector<double>& fractions) const;
 
         /**
          * @brief Validates the given mass fractions.
-         * @param mass_fractions The mass fractions to validate.
+         * @param fractions The mass fractions to validate.
          * @throws std::invalid_argument if the mass fractions are invalid.
          */
         void validateComposition(const std::vector<double>& fractions) const;
@@ -402,9 +401,9 @@ namespace fourdst::composition {
         /** 
         * @brief Mix two compositions together with a given fraction.
         * @param other The other composition to mix with.
-        * @param fraction The fraction of the other composition to mix with. This is the fraction of the other composition wrt. to the current. i.e. fraction=1 would mean that 50% of the new composition is from the other and 50% from the current). 
+        * @param fraction The fraction of the other composition to mix with. This is the fraction of the other composition wrt. to the current. i.e. fraction=1 would mean that 50% of the new composition is from the other and 50% from the current.
         */
-        Composition mix(const Composition& other, double fraction) const;
+        [[nodiscard]] Composition mix(const Composition& other, double fraction) const;
 
         /**
          * @brief Gets the mass fractions of all compositions.
@@ -431,6 +430,13 @@ namespace fourdst::composition {
          * @return An unordered map of compositions with their number fractions.
          */
         [[nodiscard]] std::unordered_map<std::string, double> getNumberFraction() const;
+
+        /**
+        * @brief Gets the molar abundance for a given symbol.
+        * @param symbol The symbol to get the molar abundance for.
+        * @return The molar abundance for the given symbol.
+        */
+        [[nodiscard]] double getMolarAbundance(const std::string& symbol) const;
 
         /**
          * @brief Gets the composition entry and global composition for a given symbol.
@@ -463,16 +469,16 @@ namespace fourdst::composition {
          * @param method The method to use for the subset (default is "norm").
          * @return A Composition object containing the subset.
          */
-        Composition subset(const std::vector<std::string>& symbols, std::string method="norm") const;
+        [[nodiscard]] Composition subset(const std::vector<std::string>& symbols, const std::string& method="norm") const;
 
         /** 
         * @brief Check if a symbol is registered.
         * @param symbol The symbol to check.
         * @return True if the symbol is registered, false otherwise.
         */
-        bool hasSymbol(const std::string& symbol) const;
+        [[nodiscard]] bool hasSymbol(const std::string& symbol) const;
 
-        bool contains(const fourdst::atomic::Species& isotope) const;
+        [[nodiscard]] bool contains(const fourdst::atomic::Species& isotope) const;
 
         /**
         * @brief Sets the composition mode.
