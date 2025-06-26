@@ -224,7 +224,7 @@ namespace fourdst::composition {
         m_registeredSymbols.insert(symbol);
         const CompositionEntry entry(symbol, m_massFracMode);
         m_compositions[symbol] = entry;
-        LOG_INFO(m_logger, "Registered symbol: {}", symbol);
+        LOG_TRACE_L3(m_logger, "Registered symbol: {}", symbol);
     }
 
     void Composition::registerSymbol(const std::vector<std::string>& symbols, bool massFracMode) {
