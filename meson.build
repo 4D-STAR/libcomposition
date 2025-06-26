@@ -18,7 +18,7 @@
 #   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 #
 # *********************************************************************** #
-project('libcomposition', 'cpp', version: 'v1.0.8', default_options: ['cpp_std=c++23'], meson_version: '>=1.5.0')
+project('libcomposition', 'cpp', version: 'v1.0.9', default_options: ['cpp_std=c++23'], meson_version: '>=1.5.0')
 
 # Add default visibility for all C++ targets
 add_project_arguments('-fvisibility=default', language: 'cpp')
