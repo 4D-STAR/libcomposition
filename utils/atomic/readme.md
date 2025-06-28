@@ -9,5 +9,5 @@ In order to use this utility you will need
 
 ## Usage
 ```bash
-python convertWeightsToHeader.py <path/to/weights.dat> -o atomicWeights.h
+python format.py <path/to/AME.txt> <path/to/nubase.asc> -o speciesData.h
 ```

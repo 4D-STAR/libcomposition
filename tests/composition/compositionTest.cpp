@@ -26,6 +26,12 @@ TEST_F(compositionTest, isotopeMasses) {
     EXPECT_DOUBLE_EQ(fourdst::atomic::species.at("He-4").mass(),4.0026032541300003);
 }
 
+TEST_F(compositionTest, isotopeHalfLives) {
+    EXPECT_DOUBLE_EQ(fourdst::atomic::H_1.halfLife(), std::numeric_limits<double>::infinity());
+    EXPECT_DOUBLE_EQ(fourdst::atomic::F_18.halfLife(), 6584.04);
+    EXPECT_DOUBLE_EQ(fourdst::atomic::B_20.halfLife(), 0.0);
+}
+
 TEST_F(compositionTest, constructor) {
     fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     EXPECT_NO_THROW(fourdst::composition::Composition comp);
@@ -218,3 +224,4 @@ TEST_F(compositionTest, molarAbundance) {
     EXPECT_DOUBLE_EQ(comp1.getMolarAbundance("H-1"), 0.5/fourdst::atomic::H_1.mass());
     EXPECT_DOUBLE_EQ(comp1.getMolarAbundance("He-4"), 0.5/fourdst::atomic::He_4.mass());
 }
+

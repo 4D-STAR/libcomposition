@@ -15,11 +15,42 @@ namespace fourdst::atomic {
         double m_bindingEnergy; //< Binding energy
         std::string m_betaCode; //< Beta decay code
         double m_betaDecayEnergy; //< Beta decay energy
+        double m_halfLife_s; //< Half-life in seconds
+        std::string m_spinParity; //< Spin and parity
+        std::string m_decayModes; //< Decay modes
         double m_atomicMass; //< Atomic mass
         double m_atomicMassUnc; //< Atomic mass uncertainty
 
-        Species(const std::string_view name, const std::string_view el, const int nz, const int n, const int z, const int a, const double bindingEnergy, const std::string_view betaCode, const double betaDecayEnergy, const double atomicMass, const double atomicMassUnc)
-            : m_name(name), m_el(el), m_nz(nz), m_n(n), m_z(z), m_a(a), m_bindingEnergy(bindingEnergy), m_betaCode(betaCode), m_betaDecayEnergy(betaDecayEnergy), m_atomicMass(atomicMass), m_atomicMassUnc(atomicMassUnc) {};
+        Species(
+            const std::string_view name,
+            const std::string_view el,
+            const int nz,
+            const int n,
+            const int z,
+            const int a,
+            const double bindingEnergy,
+            const std::string_view betaCode,
+            const double betaDecayEnergy,
+            const double halfLife_s,
+            const std::string_view spinParity,
+            const std::string_view decayModes,
+            const double atomicMass,
+            const double atomicMassUnc
+        ) :
+        m_name(name),
+        m_el(el),
+        m_nz(nz),
+        m_n(n),
+        m_z(z),
+        m_a(a),
+        m_bindingEnergy(bindingEnergy),
+        m_betaCode(betaCode),
+        m_betaDecayEnergy(betaDecayEnergy),
+        m_halfLife_s(halfLife_s),
+        m_spinParity(spinParity),
+        m_decayModes(decayModes),
+        m_atomicMass(atomicMass),
+        m_atomicMassUnc(atomicMassUnc) {};
 
         //Copy constructor
         Species(const Species& species) {
@@ -32,6 +63,9 @@ namespace fourdst::atomic {
             m_bindingEnergy = species.m_bindingEnergy;
             m_betaCode = species.m_betaCode;
             m_betaDecayEnergy = species.m_betaDecayEnergy;
+            m_halfLife_s = species.m_halfLife_s;
+            m_spinParity = species.m_spinParity;
+            m_decayModes = species.m_decayModes;
             m_atomicMass = species.m_atomicMass;
             m_atomicMassUnc = species.m_atomicMassUnc;
         }
@@ -43,6 +77,18 @@ namespace fourdst::atomic {
 
         double massUnc() const {
             return m_atomicMassUnc;
+        }
+
+        double halfLife() const {
+            return m_halfLife_s;
+        }
+
+        std::string_view spinParity() const {
+            return m_spinParity;
+        }
+
+        std::string_view decayModes() const {
+            return m_decayModes;
         }
 
         double bindingEnergy() const {
@@ -82,7 +128,7 @@ namespace fourdst::atomic {
         }
 
         friend std::ostream& operator<<(std::ostream& os, const Species& species) {
-            os << species.m_name << " (" << species.m_atomicMass << " u)";
+            os << species.m_name;
             return os;
         }
 

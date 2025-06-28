@@ -11,7 +11,13 @@ foreach test_file : test_sources
   test_exe = executable(
       exe_name,
       test_file,
-      dependencies: [gtest_dep, species_weight_dep, gtest_main, composition_dep],
+      dependencies: [
+          gtest_dep,
+          species_weight_dep,
+          gtest_main,
+          composition_dep,
+          config_dep,
+      ],
       install_rpath: '@loader_path/../../src'  # Ensure runtime library path resolves correctly
   )
 

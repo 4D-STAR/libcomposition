@@ -35,9 +35,10 @@
 
 namespace fourdst::composition {
 
-    CompositionEntry::CompositionEntry() : m_symbol("H-1"), m_isotope(fourdst::atomic::species.at("H-1")),
-                                           m_initialized(false) {
-    }
+    CompositionEntry::CompositionEntry() :
+    m_symbol("H-1"),
+    m_isotope(fourdst::atomic::species.at("H-1")),
+    m_initialized(false) {}
 
     CompositionEntry::CompositionEntry(const std::string& symbol, const bool massFracMode) : m_symbol(symbol), m_isotope(fourdst::atomic::species.at(symbol)), m_massFracMode(massFracMode) {
         setSpecies(symbol);

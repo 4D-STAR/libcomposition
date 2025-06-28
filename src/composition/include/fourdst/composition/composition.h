@@ -61,7 +61,7 @@ namespace fourdst::composition {
      */
     struct CompositionEntry {
         std::string m_symbol; ///< The chemical symbol of the species.
-        fourdst::atomic::Species m_isotope; ///< The isotope of the species.
+        atomic::Species m_isotope; ///< The isotope of the species.
         bool m_massFracMode = true; ///< The mode of the composition entry. True if mass fraction, false if number fraction.   
 
         double m_massFraction = 0.0; ///< The mass fraction of the species.
