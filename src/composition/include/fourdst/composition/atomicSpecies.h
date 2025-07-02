@@ -5,6 +5,8 @@
 #include <iostream>
 
 namespace fourdst::atomic {
+    inline double convert_jpi_to_double(const std::string& jpi_string);
+
     struct Species {
         std::string m_name; //< Name of the species
         std::string m_el; //< Element symbol
@@ -20,6 +22,7 @@ namespace fourdst::atomic {
         std::string m_decayModes; //< Decay modes
         double m_atomicMass; //< Atomic mass
         double m_atomicMassUnc; //< Atomic mass uncertainty
+        double m_spin = 0.0; //< Spin of the species, default is 0.0
 
         Species(
             const std::string_view name,
@@ -50,7 +53,9 @@ namespace fourdst::atomic {
         m_spinParity(spinParity),
         m_decayModes(decayModes),
         m_atomicMass(atomicMass),
-        m_atomicMassUnc(atomicMassUnc) {};
+        m_atomicMassUnc(atomicMassUnc) {
+            m_spin = convert_jpi_to_double(m_spinParity);
+        };
 
         //Copy constructor
         Species(const Species& species) {
@@ -68,63 +73,68 @@ namespace fourdst::atomic {
             m_decayModes = species.m_decayModes;
             m_atomicMass = species.m_atomicMass;
             m_atomicMassUnc = species.m_atomicMassUnc;
+            m_spin = convert_jpi_to_double(m_spinParity);
         }
 
 
-        double mass() const {
+        [[nodiscard]] double mass() const {
             return m_atomicMass;
         }
 
-        double massUnc() const {
+        [[nodiscard]] double massUnc() const {
             return m_atomicMassUnc;
         }
 
-        double halfLife() const {
+        [[nodiscard]] double halfLife() const {
             return m_halfLife_s;
         }
 
-        std::string_view spinParity() const {
+        [[nodiscard]] std::string_view spinParity() const {
             return m_spinParity;
         }
 
-        std::string_view decayModes() const {
+        [[nodiscard]] std::string_view decayModes() const {
             return m_decayModes;
         }
 
-        double bindingEnergy() const {
+        [[nodiscard]] double bindingEnergy() const {
             return m_bindingEnergy;
         }
 
-        double betaDecayEnergy() const {
+        [[nodiscard]] double betaDecayEnergy() const {
             return m_betaDecayEnergy;
         }
 
-        std::string_view betaCode() const {
+        [[nodiscard]] std::string_view betaCode() const {
             return m_betaCode;
         }
 
-        std::string_view name() const {
+        [[nodiscard]] std::string_view name() const {
             return m_name;
         }
 
-        std::string_view el() const {
+        [[nodiscard]] std::string_view el() const {
             return m_el;
         }
 
-        int nz() const {
+        [[nodiscard]] int nz() const {
             return m_nz;
         }
 
-        int n() const {
+        [[nodiscard]] int n() const {
             return m_n;
         }
 
-        int z() const {
+        [[nodiscard]] int z() const {
             return m_z;
         }
 
-        int a() const {
+        [[nodiscard]] int a() const {
             return m_a;
+        }
+
+        [[nodiscard]] double spin() const {
+            return m_spin;
         }
 
         friend std::ostream& operator<<(std::ostream& os, const Species& species) {
@@ -142,13 +152,65 @@ namespace fourdst::atomic {
         return (lhs.m_name != rhs.m_name);
     }
 
+    inline double convert_jpi_to_double(const std::string& jpi_string) {
+        std::string s = jpi_string;
+
+        if (s.empty()) {
+            return std::numeric_limits<double>::quiet_NaN();
+        }
+
+        std::erase_if(s, [](const char c) {
+            return c == '(' || c == ')' || c == '*' || c == '#';
+        });
+
+        if (s == "+" || s == "-") {
+            return 0.0;
+        }
+
+        if (const size_t comma_pos = s.find(','); comma_pos != std::string::npos) {
+            s = s.substr(0, comma_pos);
+        }
+
+        if (!s.empty() && (s.back() == '+' || s.back() == '-')) {
+            s.pop_back();
+        }
+
+        if (s.empty()) {
+            return std::numeric_limits<double>::quiet_NaN();
+        }
+
+        try {
+            if (size_t slash_pos = s.find('/'); slash_pos != std::string::npos) {
+                if (slash_pos == 0) {
+                    s = "1" + s;
+                    slash_pos = 1;
+                }
+                const std::string numerator_str = s.substr(0, slash_pos);
+                const std::string denominator_str = s.substr(slash_pos + 1);
+                if (denominator_str.empty()) {
+                    return std::numeric_limits<double>::quiet_NaN();
+                }
+                const double numerator = std::stod(numerator_str);
+                const double denominator = std::stod(denominator_str);
+                if (denominator == 0.0) {
+                    return std::numeric_limits<double>::quiet_NaN();
+                }
+                return numerator / denominator;
+            } else {
+                return std::stod(s);
+            }
+        } catch (const std::invalid_argument&) {
+            return std::numeric_limits<double>::quiet_NaN();
+        } catch (const std::out_of_range&) {
+            return std::numeric_limits<double>::quiet_NaN();
+        }
+    }
+
 }
 
-namespace std {
-    template<>
-    struct hash<fourdst::atomic::Species> {
-        size_t operator()(const fourdst::atomic::Species& s) const noexcept {
-            return std::hash<std::string>()(s.m_name);
-        }
-    };
-} // namespace std
+template<>
+struct std::hash<fourdst::atomic::Species> {
+    size_t operator()(const fourdst::atomic::Species& s) const noexcept {
+        return std::hash<std::string>()(s.m_name);
+    }
+}; // namespace std

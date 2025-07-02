@@ -151,11 +151,10 @@ def formatHeader(dataFrame):
 namespace fourdst::atomic {{
     {'\n    '.join([formatSpecies(row)[0] for index, row in dataFrame.iterrows()])}
     
-    static const std::unordered_map<std::string, const Species&> species = {{
+    static const std::unordered_map<std::string, const Species*> species = {{
         {'\n        '.join([f'{{"{row["el"].strip()}-{row["a"]}", {mkInstanceName(row)}}},' for index, row in dataFrame.iterrows()])}
     }};
 }}; // namespace fourdst::atomic
-{'\n'.join([formatSpeciesDefines(row) for index, row in dataFrame.iterrows()])}
 """
     return header
 

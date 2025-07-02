@@ -32,6 +32,22 @@ TEST_F(compositionTest, isotopeHalfLives) {
     EXPECT_DOUBLE_EQ(fourdst::atomic::B_20.halfLife(), 0.0);
 }
 
+TEST_F(compositionTest, isotopeSpin) {
+    using namespace fourdst::atomic;
+    EXPECT_DOUBLE_EQ(H_1.spin(), 0.5);
+    EXPECT_DOUBLE_EQ(He_4.spin(), 0.0);
+    EXPECT_DOUBLE_EQ(Pm_164.spin(), 0.0);
+    EXPECT_DOUBLE_EQ(Tb_164.spin(), 5.0);
+    EXPECT_DOUBLE_EQ(Ta_163.spin(), 0.5);
+    EXPECT_DOUBLE_EQ(Hf_165.spin(), 2.5);
+    EXPECT_DOUBLE_EQ(Ta_165.spin(), 0.5);
+    EXPECT_DOUBLE_EQ(Li_10.spin(), 1.0);
+    EXPECT_DOUBLE_EQ(He_9.spin(), 0.5);
+    EXPECT_DOUBLE_EQ(F_18.spin(), 0.0);
+    EXPECT_DOUBLE_EQ(B_20.spin(), 1.0);
+    EXPECT_TRUE(std::isnan(Bh_270.spin()));
+}
+
 TEST_F(compositionTest, constructor) {
     fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     EXPECT_NO_THROW(fourdst::composition::Composition comp);

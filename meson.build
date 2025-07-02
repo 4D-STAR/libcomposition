@@ -27,6 +27,8 @@ add_project_arguments('-Wno-shadow', language: 'cpp')
 
 cpp = meson.get_compiler('cpp')
 subdir('build-config')
+
+
 subdir('src')
 subdir('tests')
 
