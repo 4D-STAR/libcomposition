@@ -512,5 +512,21 @@ namespace fourdst::composition {
         */
         Composition operator+(const Composition& other) const;
 
+        auto begin() {
+            return m_compositions.begin();
+        }
+
+        auto begin() const {
+            return m_compositions.cbegin();
+        }
+
+        auto end() {
+            return m_compositions.end();
+        }
+
+        auto end() const {
+            return m_compositions.cend();
+        }
+
     };
 }; // namespace fourdst::composition
