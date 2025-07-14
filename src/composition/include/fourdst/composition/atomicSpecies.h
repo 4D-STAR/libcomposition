@@ -144,12 +144,20 @@ namespace fourdst::atomic {
 
         friend bool operator==(const Species& lhs, const Species& rhs);
         friend bool operator!=(const Species& lhs, const Species& rhs);
+        friend bool operator<(const Species& lhs, const Species& rhs);
+        friend bool operator>(const Species& lhs, const Species& rhs);
     };
     inline bool operator==(const Species& lhs, const Species& rhs) {
         return (lhs.m_name == rhs.m_name);
     }
     inline bool operator!=(const Species& lhs, const Species& rhs) {
         return (lhs.m_name != rhs.m_name);
+    }
+    inline bool operator<(const Species& lhs, const Species& rhs) {
+        return (lhs.m_atomicMass < rhs.m_atomicMass);
+    }
+    inline bool operator>(const Species& lhs, const Species& rhs) {
+        return (lhs.m_atomicMass > rhs.m_atomicMass);
     }
 
     inline double convert_jpi_to_double(const std::string& jpi_string) {

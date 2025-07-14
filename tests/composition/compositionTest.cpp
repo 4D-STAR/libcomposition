@@ -241,3 +241,14 @@ TEST_F(compositionTest, molarAbundance) {
     EXPECT_DOUBLE_EQ(comp1.getMolarAbundance("He-4"), 0.5/fourdst::atomic::He_4.mass());
 }
 
+TEST_F(compositionTest, getRegisteredSpecies) {
+    fourdst::composition::Composition comp;
+    comp.registerSpecies({fourdst::atomic::Be_7, fourdst::atomic::H_1, fourdst::atomic::He_4}, true);
+    auto registeredSpecies = comp.getRegisteredSpecies();
+    EXPECT_TRUE(registeredSpecies.contains(fourdst::atomic::H_1));
+    EXPECT_TRUE(registeredSpecies.contains(fourdst::atomic::He_4));
+    EXPECT_FALSE(registeredSpecies.contains(fourdst::atomic::Li_6));
+    auto it1 = registeredSpecies.begin();
+    EXPECT_EQ(*it1, fourdst::atomic::H_1);
+}
+

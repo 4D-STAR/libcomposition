@@ -349,10 +349,48 @@ namespace fourdst::composition {
         void registerSymbol(const std::vector<std::string>& symbols, bool massFracMode=true);
 
         /**
+         * @brief Register a new species (will extract the symbol from the species).
+         * @param species The species to register.
+         * @param massFracMode True if mass fraction mode, false if number fraction mode.
+         * *Example Usage:*
+         * @code
+         * #include "fourdst/atomic/species.h"
+         *
+         * Composition comp;
+         * comp.registerSpecies(H_1);
+         *
+         * #@endcode
+         */
+        void registerSpecies(const fourdst::atomic::Species& species, bool massFracMode=true);
+
+
+        /**
+         * @brief Register a vector of new species (will extract the symbol from the species).
+         * @param species The vector of species to register.
+         * @param massFracMode True if mass fraction mode, false if number fraction mode.
+         * *Example Usage:*
+         * @code
+         * #include "fourdst/atomic/species.h"
+         *
+         * Composition comp;
+         * comp.registerSpecies({H_1, He_4, O_16}, false); // Will now be in number fraction mode.
+         *
+         * #@endcode
+         */
+        void registerSpecies(const std::vector<fourdst::atomic::Species>& species, bool massFracMode=true);
+
+
+        /**
          * @brief Gets the registered symbols.
          * @return A set of registered symbols.
          */
         [[nodiscard]] std::set<std::string> getRegisteredSymbols() const;
+
+        /**
+         * @brief Get a set of all species that are registered in the composition.
+         * @return species that are registered in the composition.
+         */
+        [[nodiscard]] std::set<fourdst::atomic::Species> getRegisteredSpecies() const;
 
         /**
          * @brief Sets the mass fraction for a given symbol.
@@ -383,6 +421,28 @@ namespace fourdst::composition {
         std::vector<double> setMassFraction(const std::vector<std::string>& symbols, const std::vector<double>& mass_fractions);
 
         /**
+         * @brief Sets the mass fraction for a given species.
+         * @param species Species to set the mass fraction for.
+         * @param mass_fraction Mass fraction to set for the species.
+         * @return The previous mass fraction that was set for the species.
+         *
+         * @throws std::runtime_error if the species is not registered or if the composition is in number fraction mode.
+         * @throws std::logic_error if the mass fraction is not between 0 and 1.
+         */
+        double setMassFraction(const fourdst::atomic::Species& species, const double& mass_fraction);
+
+        /**
+         * @brief Sets the mass fraction for multiple species.
+         * @param species The vector of species to set the mass fractions for.
+         * @param mass_fractions The vector of mass fractions corresponding to the species.
+         * @return A vector of mass fractions that were set.
+         *
+         * @throws std::runtime_error if the species are not registered or if the composition is in number fraction mode.
+         * @throws std::logic_error if any mass fraction is not between 0 and 1.
+         */
+        std::vector<double> setMassFraction(const std::vector<fourdst::atomic::Species>& species, const std::vector<double>& mass_fractions);
+
+        /**
          * @brief Sets the number fraction for a given symbol.
          * @param symbol The symbol to set the number fraction for.
          * @param number_fraction The number fraction to set.
@@ -397,6 +457,28 @@ namespace fourdst::composition {
          * @return A vector of number fractions that were set.
          */
         std::vector<double> setNumberFraction(const std::vector<std::string>& symbols, const std::vector<double>& number_fractions);
+
+        /**
+         * @brief Sets the number fraction for a given species.
+         * @param species The species to set the number fraction for.
+         * @param number_fraction The number fraction to set for the species.
+         * @return The previous number fraction that was set for the species.
+         *
+         * @throws std::runtime_error if the species is not registered or if the composition is in mass fraction mode.
+         * @throws std::logic_error if the number fraction is not between 0 and 1.
+         */
+        double setNumberFraction(const fourdst::atomic::Species& species, const double& number_fraction);
+
+        /**
+         * @brief Sets the number fraction for multiple species.
+         * @param species The vector of species to set the number fractions for.
+         * @param number_fractions The vector of number fractions corresponding to the species.
+         * @return The vector of number fractions that were set.
+         *
+         * @throws std::runtime_error if the species are not registered or if the composition is in mass fraction mode.
+         * @throws std::logic_error if any number fraction is not between 0 and 1.
+         */
+        std::vector<double> setNumberFraction(const std::vector<fourdst::atomic::Species>& species, const std::vector<double>& number_fractions);
 
         /** 
         * @brief Mix two compositions together with a given fraction.
@@ -419,11 +501,29 @@ namespace fourdst::composition {
         [[nodiscard]] double getMassFraction(const std::string& symbol) const;
 
         /**
+         * @brief Gets the mass fraction for a given isotope.
+         * @param species The isotope to get the mass fraction for.
+         * @return The mass fraction for the given isotope.
+         *
+         * @throws std::runtime_error if the isotope is not registered in the composition.
+         */
+        [[nodiscard]] double getMassFraction(const fourdst::atomic::Species& species) const;
+
+        /**
          * @brief Gets the number fraction for a given symbol.
          * @param symbol The symbol to get the number fraction for.
          * @return The number fraction for the given symbol.
          */
         [[nodiscard]] double getNumberFraction(const std::string& symbol) const;
+
+        /**
+         * @brief Gets the number fraction for a given isotope.
+         * @param species The isotope to get the number fraction for.
+         * @return The number fraction for the given isotope.
+         *
+         * @throws std::runtime_error if the isotope is not registered in the composition.
+         */
+        [[nodiscard]] double getNumberFraction(const fourdst::atomic::Species& species) const;
 
         /**
          * @brief Gets the number fractions of all compositions.
@@ -439,11 +539,22 @@ namespace fourdst::composition {
         [[nodiscard]] double getMolarAbundance(const std::string& symbol) const;
 
         /**
+         * @brief Gets the molar abundance for a given isotope.
+         * @param species The isotope to get the molar abundance for.
+         * @return The molar abundance for the given isotope.
+         *
+         * @throws std::runtime_error if the isotope is not registered in the composition.
+         */
+        [[nodiscard]] double getMolarAbundance(const fourdst::atomic::Species& species) const;
+
+        /**
          * @brief Gets the composition entry and global composition for a given symbol.
          * @param symbol The symbol to get the composition for.
          * @return A pair containing the CompositionEntry and GlobalComposition for the given symbol.
          */
         [[nodiscard]] std::pair<CompositionEntry, GlobalComposition> getComposition(const std::string& symbol) const;
+
+        [[nodiscard]] std::pair<CompositionEntry, GlobalComposition> getComposition(const fourdst::atomic::Species& species) const;
 
         /**
          * @brief Gets all composition entries and the global composition.

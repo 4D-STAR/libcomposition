@@ -234,8 +234,26 @@ namespace fourdst::composition {
         }
     }
 
+    void Composition::registerSpecies(const fourdst::atomic::Species &species, bool massFracMode) {
+        registerSymbol(std::string(species.name()));
+    }
+
+    void Composition::registerSpecies(const std::vector<fourdst::atomic::Species> &species, bool massFracMode) {
+        for (const auto& s : species) {
+            registerSpecies(s, massFracMode);
+        }
+    }
+
     std::set<std::string> Composition::getRegisteredSymbols() const {
         return m_registeredSymbols;
+    }
+
+    std::set<fourdst::atomic::Species> Composition::getRegisteredSpecies() const {
+        std::set<fourdst::atomic::Species> result;
+        for (const auto& entry : m_compositions | std::views::values) {
+            result.insert(entry.isotope());
+        }
+        return result;
     }
 
     void Composition::validateComposition(const std::vector<double>& fractions) const {
@@ -299,6 +317,20 @@ namespace fourdst::composition {
         return old_mass_fractions;
     }
 
+    double Composition::setMassFraction(const fourdst::atomic::Species &species, const double &mass_fraction) {
+        return setMassFraction(std::string(species.name()), mass_fraction);
+    }
+
+    std::vector<double> Composition::setMassFraction(const std::vector<fourdst::atomic::Species> &species,
+        const std::vector<double> &mass_fractions) {
+        std::vector<double> old_mass_fractions;
+        old_mass_fractions.reserve(species.size());
+        for (const auto& spec : species) {
+            old_mass_fractions.push_back(setMassFraction(spec, mass_fractions[&spec - &species[0]]));
+        }
+        return old_mass_fractions;
+    }
+
     double Composition::setNumberFraction(const std::string& symbol, const double& number_fraction) {
         if (!m_registeredSymbols.contains(symbol)) {
             LOG_ERROR(m_logger, "Symbol {} is not registered.", symbol);
@@ -332,6 +364,20 @@ namespace fourdst::composition {
         old_number_fractions.reserve(symbols.size());
         for (size_t i = 0; i < symbols.size(); ++i) {
             old_number_fractions.push_back(setNumberFraction(symbols[i], number_fractions[i]));
+        }
+        return old_number_fractions;
+    }
+
+    double Composition::setNumberFraction(const fourdst::atomic::Species &species, const double &number_fraction) {
+        return setNumberFraction(std::string(species.name()), number_fraction);
+    }
+
+    std::vector<double> Composition::setNumberFraction(const std::vector<fourdst::atomic::Species> &species,
+        const std::vector<double> &number_fractions) {
+        std::vector<double> old_number_fractions;
+        old_number_fractions.reserve(species.size());
+        for (const auto& spec : species) {
+            old_number_fractions.push_back(setNumberFraction(spec, number_fractions[&spec - &species[0]]));
         }
         return old_number_fractions;
     }
@@ -474,6 +520,10 @@ namespace fourdst::composition {
         }
     }
 
+    double Composition::getMassFraction(const fourdst::atomic::Species &species) const {
+        return getMassFraction(std::string(species.name()));
+    }
+
     std::unordered_map<std::string, double> Composition::getMassFraction() const {
         std::unordered_map<std::string, double> mass_fractions;
         for (const auto &symbol: m_compositions | std::views::keys) {
@@ -499,6 +549,10 @@ namespace fourdst::composition {
         }
     }
 
+    double Composition::getNumberFraction(const fourdst::atomic::Species &species) const {
+        return getNumberFraction(std::string(species.name()));
+    }
+
     std::unordered_map<std::string, double> Composition::getNumberFraction() const {
         std::unordered_map<std::string, double> number_fractions;
         for (const auto &symbol: m_compositions | std::views::keys) {
@@ -520,6 +574,10 @@ namespace fourdst::composition {
 
     }
 
+    double Composition::getMolarAbundance(const fourdst::atomic::Species &species) const {
+        return getMolarAbundance(std::string(species.name()));
+    }
+
     std::pair<CompositionEntry, GlobalComposition> Composition::getComposition(const std::string& symbol) const {
         if (!m_finalized) {
             LOG_ERROR(m_logger, "Composition has not been finalized.");
@@ -530,6 +588,11 @@ namespace fourdst::composition {
             throw std::runtime_error("Symbol is not in the composition.");
         }
         return {m_compositions.at(symbol), {m_specificNumberDensity, m_meanParticleMass}};
+    }
+
+    std::pair<CompositionEntry, GlobalComposition> Composition::getComposition(
+        const fourdst::atomic::Species &species) const {
+        return getComposition(std::string(species.name()));
     }
 
     std::pair<std::unordered_map<std::string, CompositionEntry>, GlobalComposition> Composition::getComposition() const {
