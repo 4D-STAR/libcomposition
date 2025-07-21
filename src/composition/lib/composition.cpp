@@ -32,6 +32,7 @@
 #include "fourdst/composition/species.h"
 #include "fourdst/composition/composition.h"
 #include "fourdst/constants/const.h"
+#include "fourdst/composition/exceptions/exceptions_composition.h"
 
 namespace fourdst::composition {
 
@@ -55,10 +56,10 @@ namespace fourdst::composition {
 
     void CompositionEntry::setSpecies(const std::string& symbol) {
         if (m_initialized) {
-            throw std::runtime_error("Composition entry is already initialized.");
+            throw exceptions::EntryAlreadyInitializedError("Composition entry is already initialized.");
         }
         if (!fourdst::atomic::species.contains(symbol)) {
-            throw std::runtime_error("Invalid symbol.");
+            throw exceptions::InvalidSpeciesSymbolError("Invalid symbol.");
         }
         m_symbol = symbol;
         m_isotope = fourdst::atomic::species.at(symbol);
@@ -71,12 +72,12 @@ namespace fourdst::composition {
 
     double CompositionEntry::mass_fraction() const {
         if (!m_massFracMode) {
-            throw std::runtime_error("Composition entry is in number fraction mode.");
+            throw exceptions::CompositionModeError("Composition entry is in number fraction mode.");
         }
         return m_massFraction;
     }
 
-    double CompositionEntry::mass_fraction(double meanMolarMass) const {
+    double CompositionEntry::mass_fraction(const double meanMolarMass) const {
         if (m_massFracMode) {
             return m_massFraction;
         }
@@ -86,12 +87,12 @@ namespace fourdst::composition {
 
     double CompositionEntry::number_fraction() const {
         if (m_massFracMode) {
-            throw std::runtime_error("Composition entry is in mass fraction mode.");
+            throw exceptions::CompositionModeError("Composition entry is in mass fraction mode.");
         }
         return m_numberFraction;
     }
 
-    double CompositionEntry::number_fraction(double totalMoles) const {
+    double CompositionEntry::number_fraction(const double totalMoles) const {
         if (m_massFracMode) {
             return m_relAbundance / totalMoles;
         }
@@ -106,23 +107,23 @@ namespace fourdst::composition {
         return m_isotope;
     }
 
-    void CompositionEntry::setMassFraction(double mass_fraction) {
+    void CompositionEntry::setMassFraction(const double mass_fraction) {
         if (!m_massFracMode) {
-            throw std::runtime_error("Composition entry is in number fraction mode.");
+            throw exceptions::CompositionModeError("Composition entry is in number fraction mode.");
         }
         m_massFraction = mass_fraction;
         m_relAbundance = m_massFraction / m_isotope.mass();
     }
 
-    void CompositionEntry::setNumberFraction(double number_fraction) {
+    void CompositionEntry::setNumberFraction(const double number_fraction) {
         if (m_massFracMode) {
-            throw std::runtime_error("Composition entry is in mass fraction mode.");
+            throw exceptions::CompositionModeError("Composition entry is in mass fraction mode.");
         }
         m_numberFraction = number_fraction;
         m_relAbundance = m_numberFraction * m_isotope.mass();
     }
 
-    bool CompositionEntry::setMassFracMode(double meanParticleMass) {
+    bool CompositionEntry::setMassFracMode(const double meanParticleMass) {
         if (m_massFracMode) {
             return false;
         }
@@ -131,7 +132,7 @@ namespace fourdst::composition {
         return true;
     }
 
-    bool CompositionEntry::setNumberFracMode(double specificNumberDensity) {
+    bool CompositionEntry::setNumberFracMode(const double specificNumberDensity) {
         if (!m_massFracMode) {
             return false;
         }
@@ -156,10 +157,10 @@ namespace fourdst::composition {
         }
     }
 
-    Composition::Composition(const std::vector<std::string>& symbols, const std::vector<double>& fractions, bool massFracMode) : m_massFracMode(massFracMode) {
+    Composition::Composition(const std::vector<std::string>& symbols, const std::vector<double>& fractions, const bool massFracMode) : m_massFracMode(massFracMode) {
         if (symbols.size() != fractions.size()) {
-            LOG_ERROR(m_logger, "The number of symbols and fractions must be equal.");
-            throw std::runtime_error("The number of symbols and fractions must be equal.");
+            LOG_CRITICAL(m_logger, "The number of symbols and fractions must be equal (got {} symbols and {} fractions).", symbols.size(), fractions.size());
+            throw exceptions::InvalidCompositionError("The number of symbols and fractions must be equal. Got " + std::to_string(symbols.size()) + " symbols and " + std::to_string(fractions.size()) + " fractions.");
         }
 
         validateComposition(fractions);
@@ -204,7 +205,7 @@ namespace fourdst::composition {
     void Composition::registerSymbol(const std::string& symbol, bool massFracMode) {
         if (!isValidSymbol(symbol)) {
             LOG_ERROR(m_logger, "Invalid symbol: {}", symbol);
-            throw std::runtime_error("Invalid symbol.");
+            throw exceptions::InvalidSymbolError("Invalid symbol: " + symbol);
         }
 
         // If no symbols have been registered allow mode to be set
@@ -212,8 +213,8 @@ namespace fourdst::composition {
             m_massFracMode = massFracMode;
         } else {
             if (m_massFracMode != massFracMode) {
-                LOG_ERROR(m_logger, "Composition is in mass fraction mode. Cannot register symbol in number fraction mode.");
-                throw std::runtime_error("Composition is in mass fraction mode. Cannot register symbol in number fraction mode.");
+                LOG_ERROR(m_logger, "Composition is in mass fraction mode. Cannot register symbol ({}) in number fraction mode.", symbol);
+                throw exceptions::CompositionModeError("Composition is in mass fraction mode. Cannot register symbol (" + symbol + ") in number fraction mode.");
             }
         }
 
@@ -259,7 +260,7 @@ namespace fourdst::composition {
     void Composition::validateComposition(const std::vector<double>& fractions) const {
         if (!isValidComposition(fractions)) {
             LOG_ERROR(m_logger, "Invalid composition.");
-            throw std::runtime_error("Invalid composition.");
+            throw exceptions::InvalidCompositionError("Invalid composition.");
         }
     }
 
@@ -269,7 +270,7 @@ namespace fourdst::composition {
             sum += fraction;
         }
         if (sum < 0.999999 || sum > 1.000001) {
-            LOG_ERROR(m_logger, "The sum of fractions must be equal to 1.");
+            LOG_ERROR(m_logger, "The sum of fractions must be equal to 1 (expected 1, got {}).", sum);
             return false;
         }
 
@@ -283,17 +284,17 @@ namespace fourdst::composition {
     double Composition::setMassFraction(const std::string& symbol, const double& mass_fraction) {
         if (!m_registeredSymbols.contains(symbol)) {
             LOG_ERROR(m_logger, "Symbol {} is not registered.", symbol);
-            throw std::runtime_error("Symbol is not registered.");
+            throw exceptions::UnregisteredSymbolError("Symbol (" + symbol + ") is not registered.");
         }
 
         if (!m_massFracMode) {
             LOG_ERROR(m_logger, "Composition is in number fraction mode.");
-            throw std::runtime_error("Composition is in number fraction mode.");
+            throw exceptions::CompositionModeError("Composition is in number fraction mode.");
         }
 
         if (mass_fraction < 0.0 || mass_fraction > 1.0) {
             LOG_ERROR(m_logger, "Mass fraction must be between 0 and 1 for symbol {}. Currently it is {}.", symbol, mass_fraction);
-            throw std::runtime_error("Mass fraction must be between 0 and 1.");
+            throw exceptions::InvalidCompositionError("Mass fraction must be between 0 and 1 for symbol " + symbol + ". Currently it is " + std::to_string(mass_fraction) + ".");
         }
 
         m_finalized = false;
@@ -305,8 +306,8 @@ namespace fourdst::composition {
 
     std::vector<double> Composition::setMassFraction(const std::vector<std::string>& symbols, const std::vector<double>& mass_fractions) {
         if (symbols.size() != mass_fractions.size()) {
-            LOG_ERROR(m_logger, "The number of symbols and mass fractions must be equal.");
-            throw std::runtime_error("The number of symbols and mass fractions must be equal.");
+            LOG_ERROR(m_logger, "The number of symbols and mass fractions must be equal (currently {} symbols and {} mass fractions).", symbols.size(), mass_fractions.size());
+            throw exceptions::InvalidCompositionError("The number of symbols and mass fractions must be equal (currently " + std::to_string(symbols.size()) + " symbols and " + std::to_string(mass_fractions.size()) + " mass fractions).");
         }
 
         std::vector<double> old_mass_fractions;
@@ -334,21 +335,21 @@ namespace fourdst::composition {
     double Composition::setNumberFraction(const std::string& symbol, const double& number_fraction) {
         if (!m_registeredSymbols.contains(symbol)) {
             LOG_ERROR(m_logger, "Symbol {} is not registered.", symbol);
-            throw std::runtime_error("Symbol is not registered.");
+            throw exceptions::UnregisteredSymbolError("Symbol (" + symbol + ") is not registered.");
         }
 
         if (m_massFracMode) {
-            LOG_ERROR(m_logger, "Composition is in mass fraction mode.");
-            throw std::runtime_error("Composition is in mass fraction mode.");
+            LOG_ERROR(m_logger, "Composition is in mass fraction mode, should be in number fraction mode to call setNumberFraction. Hint: The mode can be switched by first finalizing and then calling setCompositionMode(false).");
+            throw exceptions::CompositionModeError("Composition is in mass fraction mode, should be in number fraction mode to call setNumberFraction. Hint: The mode can be switched by first finalizing and then calling setCompositionMode(false).");
         }
 
         if (number_fraction < 0.0 || number_fraction > 1.0) {
             LOG_ERROR(m_logger, "Number fraction must be between 0 and 1 for symbol {}. Currently it is {}.", symbol, number_fraction);
-            throw std::runtime_error("Number fraction must be between 0 and 1.");
+            throw exceptions::InvalidCompositionError("Number fraction must be between 0 and 1 for symbol " + symbol + ". Currently it is " + std::to_string(number_fraction) + ".");
         }
 
         m_finalized = false;
-        double old_number_fraction = m_compositions.at(symbol).number_fraction();
+        const double old_number_fraction = m_compositions.at(symbol).number_fraction();
         m_compositions.at(symbol).setNumberFraction(number_fraction);
 
         return old_number_fraction;
@@ -356,8 +357,8 @@ namespace fourdst::composition {
 
     std::vector<double> Composition::setNumberFraction(const std::vector<std::string>& symbols, const std::vector<double>& number_fractions) {
         if (symbols.size() != number_fractions.size()) {
-            LOG_ERROR(m_logger, "The number of symbols and number fractions must be equal.");
-            throw std::runtime_error("The number of symbols and number fractions must be equal.");
+            LOG_ERROR(m_logger, "The number of symbols and number fractions must be equal. (Currently {} symbols and {} number fractions).", symbols.size(), number_fractions.size());
+            throw exceptions::InvalidCompositionError("The number of symbols and number fractions must be equal. (Currently " + std::to_string(symbols.size()) + " symbols and " + std::to_string(number_fractions.size()) + " number fractions).");
         }
 
         std::vector<double> old_number_fractions;
@@ -415,7 +416,7 @@ namespace fourdst::composition {
         }
         try {
             validateComposition(mass_fractions);
-        } catch ([[maybe_unused]] const std::runtime_error& e) {
+        } catch ([[maybe_unused]] const exceptions::InvalidCompositionError& e) {
             double massSum = 0.0;
             for (const auto &entry: m_compositions | std::views::values) {
                 massSum += entry.mass_fraction();
@@ -464,15 +465,15 @@ namespace fourdst::composition {
         return true;
     }
 
-    Composition Composition::mix(const Composition& other, double fraction) const {
+    Composition Composition::mix(const Composition& other, const double fraction) const {
         if (!m_finalized || !other.m_finalized) {
-            LOG_ERROR(m_logger, "Compositions have not both been finalized.");
-            throw std::runtime_error("Compositions have not been finalized (Consider running .finalize()).");
+            LOG_ERROR(m_logger, "Compositions have not both been finalized. Hint: Consider running .finalize() on both compositions before mixing.");
+            throw exceptions::CompositionNotFinalizedError("Compositions have not been finalized (Hint: Consider running .finalize() on both compositions before mixing).");
         }
 
         if (fraction < 0.0 || fraction > 1.0) {
-            LOG_ERROR(m_logger, "Fraction must be between 0 and 1.");
-            throw std::runtime_error("Fraction must be between 0 and 1.");
+            LOG_ERROR(m_logger, "Mixing fraction must be between 0 and 1. Currently it is {}.", fraction);
+            throw exceptions::InvalidCompositionError("Mixing fraction must be between 0 and 1. Currently it is " + std::to_string(fraction) + ".");
         }
 
         std::set<std::string> mixedSymbols = other.getRegisteredSymbols();
@@ -495,8 +496,8 @@ namespace fourdst::composition {
 
     double Composition::getMassFraction(const std::string& symbol) const {
         if (!m_finalized) {
-            LOG_ERROR(m_logger, "Composition has not been finalized.");
-            throw std::runtime_error("Composition has not been finalized (Consider running .finalize()).");
+            LOG_ERROR(m_logger, "Composition has not been finalized. Hint: Consider running .finalize().");
+            throw exceptions::CompositionNotFinalizedError("Composition has not been finalized. Hint: Consider running .finalize().");
         }
         if (!m_compositions.contains(symbol)) {
             LOG_ERROR(m_logger, "Symbol {} is not in the composition.", symbol);
@@ -511,7 +512,7 @@ namespace fourdst::composition {
                 }
                 count++;
             }
-            throw std::runtime_error("Symbol(" + symbol + ") is not in the current composition. Current composition has symbols: " + currentSymbols + ".");
+            throw exceptions::UnregisteredSymbolError("Symbol(" + symbol + ") is not in the current composition. Current composition has symbols: " + currentSymbols + ".");
         }
         if (m_massFracMode) {
             return m_compositions.at(symbol).mass_fraction();
@@ -535,12 +536,12 @@ namespace fourdst::composition {
 
     double Composition::getNumberFraction(const std::string& symbol) const {
         if (!m_finalized) {
-            LOG_ERROR(m_logger, "Composition has not been finalized.");
-            throw std::runtime_error("Composition has not been finalized (Consider running .finalize()).");
+            LOG_ERROR(m_logger, "Composition has not been finalized. Hint: Consider running .finalize().");
+            throw exceptions::CompositionNotFinalizedError("Composition has not been finalized. Hint: Consider running .finalize().");
         }
         if (!m_compositions.contains(symbol)) {
             LOG_ERROR(m_logger, "Symbol {} is not in the composition.", symbol);
-            throw std::runtime_error("Symbol is not in the composition.");
+            throw exceptions::CompositionNotFinalizedError("Symbol " + symbol + " is not in the composition.");
         }
         if (!m_massFracMode) {
             return m_compositions.at(symbol).number_fraction();
@@ -563,12 +564,12 @@ namespace fourdst::composition {
 
     double Composition::getMolarAbundance(const std::string &symbol) const {
         if (!m_finalized) {
-            LOG_ERROR(m_logger, "Composition has not been finalized.");
-            throw std::runtime_error("Composition has not been finalized (Consider running .finalize()).");
+            LOG_ERROR(m_logger, "Composition has not been finalized. Hint: Consider running .finalize().");
+            throw exceptions::CompositionNotFinalizedError("Composition has not been finalized. Hint: Consider running .finalize().");
         }
         if (!m_compositions.contains(symbol)) {
             LOG_ERROR(m_logger, "Symbol {} is not in the composition.", symbol);
-            throw std::runtime_error("Symbol is not in the composition.");
+            throw exceptions::UnregisteredSymbolError("Symbol " + symbol + " is not in the composition.");
         }
         return getMassFraction(symbol) / m_compositions.at(symbol).isotope().mass();
 
@@ -580,12 +581,12 @@ namespace fourdst::composition {
 
     std::pair<CompositionEntry, GlobalComposition> Composition::getComposition(const std::string& symbol) const {
         if (!m_finalized) {
-            LOG_ERROR(m_logger, "Composition has not been finalized.");
-            throw std::runtime_error("Composition has not been finalized (Consider running .finalize()).");
+            LOG_ERROR(m_logger, "Composition has not been finalized. Hint: Consider running .finalize().");
+            throw exceptions::CompositionNotFinalizedError("Composition has not been finalized. Hint: Consider running .finalize().");
         }
         if (!m_compositions.contains(symbol)) {
             LOG_ERROR(m_logger, "Symbol {} is not in the composition.", symbol);
-            throw std::runtime_error("Symbol is not in the composition.");
+            throw exceptions::UnregisteredSymbolError("Symbol " + symbol + " is not in the composition.");
         }
         return {m_compositions.at(symbol), {m_specificNumberDensity, m_meanParticleMass}};
     }
@@ -597,24 +598,24 @@ namespace fourdst::composition {
 
     std::pair<std::unordered_map<std::string, CompositionEntry>, GlobalComposition> Composition::getComposition() const {
         if (!m_finalized) {
-            LOG_ERROR(m_logger, "Composition has not been finalized.");
-            throw std::runtime_error("Composition has not been finalized (Consider running .finalize()).");
+            LOG_ERROR(m_logger, "Composition has not been finalized. Hint: Consider running .finalize().");
+            throw exceptions::CompositionNotFinalizedError("Composition has not been finalized. Hint: Consider running .finalize().");
         }
         return {m_compositions, {m_specificNumberDensity, m_meanParticleMass}};
     }
 
     double Composition::getMeanParticleMass() const {
         if (!m_finalized) {
-            LOG_ERROR(m_logger, "Composition has not been finalized.");
-            throw std::runtime_error("Composition has not been finalized (Consider running .finalize()).");
+            LOG_ERROR(m_logger, "Composition has not been finalized. Hint: Consider running .finalize().");
+            throw exceptions::CompositionNotFinalizedError("Composition has not been finalized. Hint: Consider running .finalize().");
         }
         return m_meanParticleMass;
     }
 
     double Composition::getMeanAtomicNumber() const {
         if (!m_finalized) {
-            LOG_ERROR(m_logger, "Composition must be finalized before getting the mean atomic mass number.");
-            throw std::runtime_error("Composition not finalized. Cannot retrieve mean atomic mass number.");
+            LOG_ERROR(m_logger, "Composition must be finalized before getting the mean atomic mass number. Hint: Consider running .finalize().");
+            throw exceptions::CompositionNotFinalizedError("Composition not finalized. Cannot retrieve mean atomic mass number. Hint: Consider running .finalize().");
         }
 
         double zSum = 0.0;
@@ -634,14 +635,14 @@ namespace fourdst::composition {
         if (std::ranges::find(methods, method) == methods.end()) {
             const std::string errorMessage = "Invalid method: " + method + ". Valid methods are 'norm' and 'none'.";
             LOG_ERROR(m_logger, "Invalid method: {}. Valid methods are norm and none.", method);
-            throw std::runtime_error(errorMessage);
+            throw exceptions::InvalidMixingMode(errorMessage);
         }
 
         Composition subsetComposition;
         for (const auto& symbol : symbols) {
             if (!m_compositions.contains(symbol)) {
                 LOG_ERROR(m_logger, "Symbol {} is not in the composition.", symbol);
-                throw std::runtime_error("Symbol is not in the composition.");
+                throw exceptions::UnregisteredSymbolError("Symbol " + symbol + " is not in the composition.");
             } else {
                 subsetComposition.registerSymbol(symbol);
             }
@@ -650,8 +651,8 @@ namespace fourdst::composition {
         if (method == "norm") {
             const bool isNorm = subsetComposition.finalize(true);
             if (!isNorm) {
-                LOG_ERROR(m_logger, "Subset composition is invalid.");
-                throw std::runtime_error("Subset composition is invalid.");
+                LOG_ERROR(m_logger, "Subset composition is invalid. (Unable to finalize with normalization).");
+                throw exceptions::FailedToFinalizeCompositionError("Subset composition is invalid. (Unable to finalize with normalization).");
             }
         }
         return subsetComposition;
@@ -659,8 +660,8 @@ namespace fourdst::composition {
 
     void Composition::setCompositionMode(const bool massFracMode) {
         if (!m_finalized) {
-            LOG_ERROR(m_logger, "Composition has not been finalized. Mode cannot be set unless composition is finalized.");
-            throw std::runtime_error("Composition has not been finalized (Consider running .finalize()). The mode cannot be set unless the composition is finalized.");
+            LOG_ERROR(m_logger, "Composition has not been finalized. Mode cannot be set unless composition is finalized. Hint: Consider running .finalize().");
+            throw exceptions::CompositionNotFinalizedError("Composition has not been finalized. Mode cannot be set unless composition is finalized. Hint: Consider running .finalize().");
         }
 
         bool okay = true;
@@ -671,7 +672,7 @@ namespace fourdst::composition {
                 okay = entry.setNumberFracMode(m_specificNumberDensity);
             }
             if (!okay) {
-                LOG_ERROR(m_logger, "Composition mode could not be set.");
+                LOG_ERROR(m_logger, "Composition mode could not be set due to some unknown error.");
                 throw std::runtime_error("Composition mode could not be set due to an unknown error.");
             }
         }
@@ -680,8 +681,8 @@ namespace fourdst::composition {
 
     CanonicalComposition Composition::getCanonicalComposition(bool harsh) const {
         if (!m_finalized) {
-            LOG_ERROR(m_logger, "Composition has not been finalized.");
-            throw std::runtime_error("Composition has not been finalized (Consider running .finalize()).");
+            LOG_ERROR(m_logger, "Composition has not been finalized. Hint: Consider running .finalize().");
+            throw exceptions::CompositionNotFinalizedError("Composition has not been finalized. Hint: Consider running .finalize().");
         }
         CanonicalComposition canonicalComposition;
         const std::array<std::string, 7> canonicalH = {
@@ -732,8 +733,8 @@ namespace fourdst::composition {
     bool Composition::contains(const fourdst::atomic::Species &isotope) const {
         // Check if the isotope's symbol is in the composition
         if (!m_finalized) {
-            LOG_ERROR(m_logger, "Composition has not been finalized.");
-            throw std::runtime_error("Composition has not been finalized (Consider running .finalize()).");
+            LOG_ERROR(m_logger, "Composition has not been finalized. Hint: Consider running .finalize().");
+            throw exceptions::CompositionNotFinalizedError("Composition has not been finalized. Hint: Consider running .finalize().");
         }
         const auto symbol = static_cast<std::string>(isotope.name());
         if (m_compositions.contains(symbol)) {

@@ -304,7 +304,7 @@ namespace fourdst::composition {
         /**
          * @brief Constructs a Composition with the given symbols and mass fractions.
          * @param symbols The symbols to initialize the composition with.
-         * @param mass_fractions The mass fractions corresponding to the symbols.
+         * @param fractions The mass fractions corresponding to the symbols.
          * @param massFracMode True if mass fraction mode, false if number fraction mode.
          * *Example Usage:*
          * @code
@@ -312,8 +312,10 @@ namespace fourdst::composition {
          * std::vector<double> mass_fractions = {0.1, 0.9};
          * Composition comp(symbols, mass_fractions);
          * @endcode
+         *
+         * @note The mass fractions must be pre normalized (i.e. by the caller) otherwise this constructor will fail.
          */
-        Composition(const std::vector<std::string>& symbols, const std::vector<double>& mass_fractions, bool massFracMode=true);
+        Composition(const std::vector<std::string>& symbols, const std::vector<double>& fractions, bool massFracMode=true);
 
         /**
          * @brief Constructs a Composition from another Composition.

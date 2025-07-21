@@ -6,6 +6,7 @@
 #include "fourdst/composition/atomicSpecies.h"
 #include "fourdst/composition/species.h"
 #include "fourdst/composition/composition.h"
+#include "fourdst/composition/exceptions/exceptions_composition.h"
 
 #include "fourdst/config/config.h"
 
@@ -58,8 +59,8 @@ TEST_F(compositionTest, registerSymbol) {
     fourdst::composition::Composition comp;
     EXPECT_NO_THROW(comp.registerSymbol("H-1"));
     EXPECT_NO_THROW(comp.registerSymbol("He-4"));
-    EXPECT_THROW(comp.registerSymbol("H-19"), std::runtime_error);
-    EXPECT_THROW(comp.registerSymbol("He-21"), std::runtime_error);
+    EXPECT_THROW(comp.registerSymbol("H-19"), fourdst::composition::exceptions::InvalidSymbolError);
+    EXPECT_THROW(comp.registerSymbol("He-21"), fourdst::composition::exceptions::InvalidSymbolError);
 
     std::set<std::string> registeredSymbols = comp.getRegisteredSymbols();
     EXPECT_TRUE(registeredSymbols.find("H-1") != registeredSymbols.end());
@@ -82,16 +83,16 @@ TEST_F(compositionTest, setGetComposition) {
     EXPECT_NO_THROW(comp.finalize());
     EXPECT_DOUBLE_EQ(comp.getMassFraction("H-1"), 0.6);
 
-    EXPECT_THROW(comp.setMassFraction("He-3", 0.3), std::runtime_error);
+    EXPECT_THROW(comp.setMassFraction("He-3", 0.3), fourdst::composition::exceptions::UnregisteredSymbolError);
 
     EXPECT_NO_THROW(comp.setMassFraction({"H-1", "He-4"}, {0.5, 0.5}));
-    EXPECT_THROW(auto r = comp.getComposition("H-1"), std::runtime_error);
+    EXPECT_THROW(auto r = comp.getComposition("H-1"), fourdst::composition::exceptions::CompositionNotFinalizedError);
     EXPECT_TRUE(comp.finalize());
     EXPECT_DOUBLE_EQ(comp.getComposition("H-1").first.mass_fraction(), 0.5);
 
     EXPECT_NO_THROW(comp.setMassFraction({"H-1", "He-4"}, {0.6, 0.6}));
     EXPECT_FALSE(comp.finalize());
-    EXPECT_THROW(auto r = comp.getComposition("H-1"), std::runtime_error);
+    EXPECT_THROW(auto r = comp.getComposition("H-1"), fourdst::composition::exceptions::CompositionNotFinalizedError);
 }
 
 TEST_F(compositionTest, setGetNumberFraction) {
@@ -108,7 +109,7 @@ TEST_F(compositionTest, setGetNumberFraction) {
     EXPECT_NO_THROW(comp.finalize());
     EXPECT_DOUBLE_EQ(comp.getNumberFraction("H-1"), 0.6);
 
-    EXPECT_THROW(comp.setNumberFraction("He-3", 0.3), std::runtime_error);
+    EXPECT_THROW(comp.setNumberFraction("He-3", 0.3), fourdst::composition::exceptions::UnregisteredSymbolError);
 }
 
 TEST_F(compositionTest, subset) {
@@ -182,7 +183,7 @@ TEST_F(compositionTest, setCompositionMode) {
     EXPECT_NO_THROW(comp.setNumberFraction("H-1", 0.9));
     EXPECT_NO_THROW(comp.setNumberFraction("He-4", 0.1));
 
-    EXPECT_THROW(comp.setCompositionMode(true), std::runtime_error);
+    EXPECT_THROW(comp.setCompositionMode(true), fourdst::composition::exceptions::CompositionNotFinalizedError);
     EXPECT_NO_THROW(comp.finalize());
     EXPECT_NO_THROW(comp.setCompositionMode(true));
 }
