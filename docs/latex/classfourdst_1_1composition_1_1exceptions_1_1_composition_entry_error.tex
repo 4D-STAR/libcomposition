@@ -1,0 +1,102 @@
+\doxysection{fourdst\+::composition\+::exceptions\+::Composition\+Entry\+Error Class Reference}
+\hypertarget{classfourdst_1_1composition_1_1exceptions_1_1_composition_entry_error}{}\label{classfourdst_1_1composition_1_1exceptions_1_1_composition_entry_error}\index{fourdst::composition::exceptions::CompositionEntryError@{fourdst::composition::exceptions::CompositionEntryError}}
+
+
+Base class for exceptions related to individual entries within a composition.  
+
+
+
+
+{\ttfamily \#include $<$exceptions\+\_\+composition.\+h$>$}
+
+Inheritance diagram for fourdst\+::composition\+::exceptions\+::Composition\+Entry\+Error\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.555556cm]{classfourdst_1_1composition_1_1exceptions_1_1_composition_entry_error}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1_composition_entry_error_af5ea3395201839d670bdcfc61b19abb1}{Composition\+Entry\+Error}} (const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classfourdst_1_1composition_1_1exceptions_1_1_composition_entry_error}{Composition\+Entry\+Error} with an error message. \end{DoxyCompactList}\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1_composition_entry_error_aeba45905c6dc1a47ec1ad3f978f94e57}{what}} () const noexcept override
+\begin{DoxyCompactList}\small\item\em Returns the error message. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1_composition_entry_error_a41208f0821385ed6f168c66f5863a79d}{m\+\_\+message}}
+\begin{DoxyCompactList}\small\item\em The error message. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class for exceptions related to individual entries within a composition. 
+
+This exception is thrown for errors specific to a single component or entry in a composition, such as an invalid species symbol or duplicate initialization. 
+
+Definition at line \mbox{\hyperlink{exceptions__composition_8h_source_l00044}{44}} of file \mbox{\hyperlink{exceptions__composition_8h_source}{exceptions\+\_\+composition.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classfourdst_1_1composition_1_1exceptions_1_1_composition_entry_error_af5ea3395201839d670bdcfc61b19abb1}\index{fourdst::composition::exceptions::CompositionEntryError@{fourdst::composition::exceptions::CompositionEntryError}!CompositionEntryError@{CompositionEntryError}}
+\index{CompositionEntryError@{CompositionEntryError}!fourdst::composition::exceptions::CompositionEntryError@{fourdst::composition::exceptions::CompositionEntryError}}
+\doxysubsubsection{\texorpdfstring{CompositionEntryError()}{CompositionEntryError()}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1exceptions_1_1_composition_entry_error_af5ea3395201839d670bdcfc61b19abb1} 
+fourdst\+::composition\+::exceptions\+::\+Composition\+Entry\+Error\+::\+Composition\+Entry\+Error (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructs a \doxylink{classfourdst_1_1composition_1_1exceptions_1_1_composition_entry_error}{Composition\+Entry\+Error} with an error message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The error message. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{exceptions__composition_8h_source_l00055}{55}} of file \mbox{\hyperlink{exceptions__composition_8h_source}{exceptions\+\_\+composition.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classfourdst_1_1composition_1_1exceptions_1_1_composition_entry_error_aeba45905c6dc1a47ec1ad3f978f94e57}\index{fourdst::composition::exceptions::CompositionEntryError@{fourdst::composition::exceptions::CompositionEntryError}!what@{what}}
+\index{what@{what}!fourdst::composition::exceptions::CompositionEntryError@{fourdst::composition::exceptions::CompositionEntryError}}
+\doxysubsubsection{\texorpdfstring{what()}{what()}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1exceptions_1_1_composition_entry_error_aeba45905c6dc1a47ec1ad3f978f94e57} 
+const char \texorpdfstring{$\ast$}{*} fourdst\+::composition\+::exceptions\+::\+Composition\+Entry\+Error\+::what (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [noexcept]}}
+
+
+
+Returns the error message. 
+
+\begin{DoxyReturn}{Returns}
+A C-\/style string containing the error message. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{exceptions__composition_8h_source_l00062}{62}} of file \mbox{\hyperlink{exceptions__composition_8h_source}{exceptions\+\_\+composition.\+h}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classfourdst_1_1composition_1_1exceptions_1_1_composition_entry_error_a41208f0821385ed6f168c66f5863a79d}\index{fourdst::composition::exceptions::CompositionEntryError@{fourdst::composition::exceptions::CompositionEntryError}!m\_message@{m\_message}}
+\index{m\_message@{m\_message}!fourdst::composition::exceptions::CompositionEntryError@{fourdst::composition::exceptions::CompositionEntryError}}
+\doxysubsubsection{\texorpdfstring{m\_message}{m\_message}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1exceptions_1_1_composition_entry_error_a41208f0821385ed6f168c66f5863a79d} 
+std\+::string fourdst\+::composition\+::exceptions\+::\+Composition\+Entry\+Error\+::m\+\_\+message\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The error message. 
+
+
+
+Definition at line \mbox{\hyperlink{exceptions__composition_8h_source_l00049}{49}} of file \mbox{\hyperlink{exceptions__composition_8h_source}{exceptions\+\_\+composition.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/composition/include/fourdst/composition/exceptions/\mbox{\hyperlink{exceptions__composition_8h}{exceptions\+\_\+composition.\+h}}\end{DoxyCompactItemize}

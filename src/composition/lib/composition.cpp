@@ -31,7 +31,6 @@
 #include "fourdst/composition/atomicSpecies.h"
 #include "fourdst/composition/species.h"
 #include "fourdst/composition/composition.h"
-#include "fourdst/constants/const.h"
 #include "fourdst/composition/exceptions/exceptions_composition.h"
 
 namespace fourdst::composition {
@@ -39,7 +38,7 @@ namespace fourdst::composition {
     CompositionEntry::CompositionEntry() :
     m_symbol("H-1"),
     m_isotope(fourdst::atomic::species.at("H-1")),
-    m_initialized(false) {}
+    m_initialized(false) {} // Note: Default entry is uninitialized, must be explicitly set.
 
     CompositionEntry::CompositionEntry(const std::string& symbol, const bool massFracMode) : m_symbol(symbol), m_isotope(fourdst::atomic::species.at(symbol)), m_massFracMode(massFracMode) {
         setSpecies(symbol);
@@ -81,6 +80,8 @@ namespace fourdst::composition {
         if (m_massFracMode) {
             return m_massFraction;
         }
+        // Convert from number fraction to mass fraction using: X_i = n_i * A_i / <A>
+        // where m_relAbundance is n_i * A_i and meanMolarMass is <A>.
         return m_relAbundance / meanMolarMass;
     }
 
@@ -94,6 +95,8 @@ namespace fourdst::composition {
 
     double CompositionEntry::number_fraction(const double totalMoles) const {
         if (m_massFracMode) {
+            // Convert from mass fraction to number fraction using: n_i = (X_i / A_i) / sum(X_j / A_j)
+            // where m_relAbundance is X_i / A_i and totalMoles is sum(X_j / A_j).
             return m_relAbundance / totalMoles;
         }
         return m_numberFraction;
@@ -425,6 +428,7 @@ namespace fourdst::composition {
             m_finalized = false;
             return false;
         }
+        // After validation, calculate the specific number density (total moles per unit mass).
         for (const auto &entry: m_compositions | std::views::values) {
             m_specificNumberDensity += entry.rel_abundance();
         }
@@ -458,6 +462,7 @@ namespace fourdst::composition {
             m_finalized = false;
             return false;
         }
+        // After validation, calculate the mean particle mass.
         for (const auto &entry: m_compositions | std::views::values) {
             m_meanParticleMass += entry.rel_abundance();
         }
@@ -477,7 +482,7 @@ namespace fourdst::composition {
         }
 
         std::set<std::string> mixedSymbols = other.getRegisteredSymbols();
-        // Get the union of the two sets
+        // Get the union of the two sets of symbols to ensure all species are included in the new composition.
         mixedSymbols.insert(m_registeredSymbols.begin(), m_registeredSymbols.end());
 
         Composition mixedComposition(mixedSymbols);
@@ -487,6 +492,7 @@ namespace fourdst::composition {
             const double thisMassFrac = hasSymbol(symbol) ? getMassFraction(symbol) : 0.0;
             otherMassFrac = other.hasSymbol(symbol) ? other.getMassFraction(symbol) : 0.0;
 
+            // The mixing formula is a linear interpolation of mass fractions.
             double massFraction = fraction * thisMassFrac + otherMassFrac * (1-fraction);
             mixedComposition.setMassFraction(symbol, massFraction);
         }
@@ -502,7 +508,7 @@ namespace fourdst::composition {
         if (!m_compositions.contains(symbol)) {
             LOG_ERROR(m_logger, "Symbol {} is not in the composition.", symbol);
             std::string currentSymbols;
-            int count = 0;
+            size_t count = 0;
             for (const auto& sym : m_compositions | std::views::keys) {
                 currentSymbols += sym;
                 if (count < m_compositions.size() - 2) {
@@ -622,9 +628,11 @@ namespace fourdst::composition {
 
         // Loop through all registered species in the composition.
         for (const auto &val: m_compositions | std::views::values) {
+            // Sum of (X_i * Z_i / A_i)
             zSum += (val.mass_fraction() * val.m_isotope.z())/val.m_isotope.a();
         }
 
+        // Calculate mean atomic number <Z> = <A> * sum(X_i * Z_i / A_i)
         const double mean_A = m_meanParticleMass * zSum;
         return mean_A;
     }
@@ -763,7 +771,7 @@ namespace fourdst::composition {
 
     std::ostream& operator<<(std::ostream& os, const Composition& composition) {
         os << "Composition(finalized: " << (composition.m_finalized ? "true" : "false") << ", " ;
-        int count = 0;
+        size_t count = 0;
         for (const auto &entry: composition.m_compositions | std::views::values) {
             os << entry;
             if (count < composition.m_compositions.size() - 1) {

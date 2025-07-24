@@ -1,0 +1,572 @@
+\doxysection{fourdst\+::composition\+::Composition\+Entry Struct Reference}
+\hypertarget{structfourdst_1_1composition_1_1_composition_entry}{}\label{structfourdst_1_1composition_1_1_composition_entry}\index{fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}}
+
+
+Represents a single entry (an isotope) within a composition.  
+
+
+
+
+{\ttfamily \#include $<$composition.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_a1cccb94c150dd1dcde860f55fbeaf2bd}{Composition\+Entry}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. Initializes a default entry (H-\/1), but in an uninitialized state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_af27b09bb4e1ee357bb657146feb6039e}{Composition\+Entry}} (const std\+::string \&\mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_a50d18b4c27611fa9314dd756af54c2f0}{symbol}}, bool mass\+Frac\+Mode=true)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{structfourdst_1_1composition_1_1_composition_entry}{Composition\+Entry} for a given symbol and abundance mode. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_a38f3e109b2952c1f0e7444d7fb9e93a0}{Composition\+Entry}} (const \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry}{Composition\+Entry}} \&entry)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_a5885a0e33687bceb15b225a00163e9d3}{set\+Species}} (const std\+::string \&\mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_a50d18b4c27611fa9314dd756af54c2f0}{symbol}})
+\begin{DoxyCompactList}\small\item\em Sets the species for the composition entry. This can only be done once. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_a50d18b4c27611fa9314dd756af54c2f0}{symbol}} () const
+\begin{DoxyCompactList}\small\item\em Gets the chemical symbol of the species. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_a66cb086719d7f654869bd7b0cee87ffc}{mass\+\_\+fraction}} () const
+\begin{DoxyCompactList}\small\item\em Gets the mass fraction of the species. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_a27b0ae0f7ef9469d515c4c7b6ec8dc22}{mass\+\_\+fraction}} (double mean\+Molar\+Mass) const
+\begin{DoxyCompactList}\small\item\em Gets the mass fraction, converting from number fraction if necessary. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_a2d55492d285068d4a64db5602dfb1c78}{number\+\_\+fraction}} () const
+\begin{DoxyCompactList}\small\item\em Gets the number fraction of the species. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_ab96d976b53f3828237525005b904a39c}{number\+\_\+fraction}} (double total\+Moles) const
+\begin{DoxyCompactList}\small\item\em Gets the number fraction, converting from mass fraction if necessary. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_ab6619d23e111905d1e3ab16ee822d96c}{rel\+\_\+abundance}} () const
+\begin{DoxyCompactList}\small\item\em Gets the relative abundance of the species. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_af4f8d292d18755670a914072e2260dfb}{isotope}} () const
+\begin{DoxyCompactList}\small\item\em Gets the isotope data for the species. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_a14f12b8b0178df2e32e2023bd4564ddc}{get\+Mass\+Frac\+Mode}} () const
+\begin{DoxyCompactList}\small\item\em Gets the mode of the composition entry. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_a4d6df43e098e7e2e2d94ff7fb76cb4c2}{set\+Mass\+Fraction}} (double \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_a66cb086719d7f654869bd7b0cee87ffc}{mass\+\_\+fraction}})
+\begin{DoxyCompactList}\small\item\em Sets the mass fraction of the species. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_a9ec47cf4b3399128d3836c1b24b031b0}{set\+Number\+Fraction}} (double \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_a2d55492d285068d4a64db5602dfb1c78}{number\+\_\+fraction}})
+\begin{DoxyCompactList}\small\item\em Sets the number fraction of the species. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_a3fb3f63a4e5675c6fefb662a8e3e7aa3}{set\+Mass\+Frac\+Mode}} (double mean\+Molar\+Mass)
+\begin{DoxyCompactList}\small\item\em Switches the mode to mass fraction mode. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_a743042d1998875851150d789817f5473}{set\+Number\+Frac\+Mode}} (double total\+Moles)
+\begin{DoxyCompactList}\small\item\em Switches the mode to number fraction mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_ac273debdba6a1b3ac0f11698c399d38e}{m\+\_\+symbol}}
+\begin{DoxyCompactList}\small\item\em The chemical symbol of the species (e.\+g., "{}\+H-\/1"{}, "{}\+Fe-\/56"{}). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_a79039cbdc76b4401eb2ce44b85467503}{m\+\_\+isotope}}
+\begin{DoxyCompactList}\small\item\em The {\ttfamily \doxylink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} object containing detailed isotope data. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_a1e860519bea86793413ed67c76d18c8b}{m\+\_\+mass\+Frac\+Mode}} = true
+\begin{DoxyCompactList}\small\item\em The mode of the composition entry. True if mass fraction, false if number fraction. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_adc20165bf94e18eea3458003025579ac}{m\+\_\+mass\+Fraction}} = 0.\+0
+\begin{DoxyCompactList}\small\item\em The mass fraction of the species. Valid only if {\ttfamily m\+\_\+mass\+Frac\+Mode} is true. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_a2b5e245f7dabb11076efdbe1ed516d9f}{m\+\_\+number\+Fraction}} = 0.\+0
+\begin{DoxyCompactList}\small\item\em The number fraction (mole fraction) of the species. Valid only if {\ttfamily m\+\_\+mass\+Frac\+Mode} is false. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_a0498d707d8ea78be39283786c10657ef}{m\+\_\+rel\+Abundance}} = 0.\+0
+\begin{DoxyCompactList}\small\item\em The relative abundance, used internally for conversions. For mass fraction mode, this is X\+\_\+i / A\+\_\+i; for number fraction mode, it\textquotesingle{}s n\+\_\+i \texorpdfstring{$\ast$}{*} A\+\_\+i. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_a391e899874cd7ef299a3ae1f64c016d2}{m\+\_\+initialized}} = false
+\begin{DoxyCompactList}\small\item\em True if the composition entry has been initialized with a valid species. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_ae7a6a113fc5914248eff5629716d6eb2}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry}{Composition\+Entry}} \&entry)
+\begin{DoxyCompactList}\small\item\em Overloaded output stream operator for \doxylink{structfourdst_1_1composition_1_1_composition_entry}{Composition\+Entry}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a single entry (an isotope) within a composition. 
+
+This struct holds the properties of one component, including its symbol, the corresponding {\ttfamily \doxylink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} object, and its abundance (either as a mass fraction or number fraction). It manages the state and conversions for that single entry. 
+
+Definition at line \mbox{\hyperlink{composition_8h_source_l00083}{83}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{structfourdst_1_1composition_1_1_composition_entry_a1cccb94c150dd1dcde860f55fbeaf2bd}\index{fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}!CompositionEntry@{CompositionEntry}}
+\index{CompositionEntry@{CompositionEntry}!fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}}
+\doxysubsubsection{\texorpdfstring{CompositionEntry()}{CompositionEntry()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1_composition_entry_a1cccb94c150dd1dcde860f55fbeaf2bd} 
+fourdst\+::composition\+::\+Composition\+Entry\+::\+Composition\+Entry (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Default constructor. Initializes a default entry (H-\/1), but in an uninitialized state. 
+
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00038}{38}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{structfourdst_1_1composition_1_1_composition_entry_af27b09bb4e1ee357bb657146feb6039e}\index{fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}!CompositionEntry@{CompositionEntry}}
+\index{CompositionEntry@{CompositionEntry}!fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}}
+\doxysubsubsection{\texorpdfstring{CompositionEntry()}{CompositionEntry()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1_composition_entry_af27b09bb4e1ee357bb657146feb6039e} 
+fourdst\+::composition\+::\+Composition\+Entry\+::\+Composition\+Entry (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{symbol}{, }\item[{bool}]{mass\+Frac\+Mode}{ = {\ttfamily true}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructs a \doxylink{structfourdst_1_1composition_1_1_composition_entry}{Composition\+Entry} for a given symbol and abundance mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol} & The chemical symbol of the species (e.\+g., "{}\+He-\/4"{}). \\
+\hline
+{\em mass\+Frac\+Mode} & True to operate in mass fraction mode, false for number fraction mode. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classfourdst_1_1composition_1_1exceptions_1_1_invalid_species_symbol_error}{exceptions\+::\+Invalid\+Species\+Symbol\+Error}} & if the symbol does not exist in the atomic species database. \\
+\hline
+{\em \doxylink{classfourdst_1_1composition_1_1exceptions_1_1_entry_already_initialized_error}{exceptions\+::\+Entry\+Already\+Initialized\+Error}} & if set\+Species is called on an already initialized entry. \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyParagraph}{Usage Example\+:}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry_a1cccb94c150dd1dcde860f55fbeaf2bd}{CompositionEntry}}\ entry(\textcolor{stringliteral}{"{}H-\/1"{}},\ \textcolor{keyword}{true});\ \textcolor{comment}{//\ Entry\ for\ H-\/1\ in\ mass\ fraction\ mode.}}
+
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00043}{43}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{structfourdst_1_1composition_1_1_composition_entry_a38f3e109b2952c1f0e7444d7fb9e93a0}\index{fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}!CompositionEntry@{CompositionEntry}}
+\index{CompositionEntry@{CompositionEntry}!fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}}
+\doxysubsubsection{\texorpdfstring{CompositionEntry()}{CompositionEntry()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1_composition_entry_a38f3e109b2952c1f0e7444d7fb9e93a0} 
+fourdst\+::composition\+::\+Composition\+Entry\+::\+Composition\+Entry (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry}{Composition\+Entry}} \&}]{entry}{}\end{DoxyParamCaption})}
+
+
+
+Copy constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entry} & The \doxylink{structfourdst_1_1composition_1_1_composition_entry}{Composition\+Entry} to copy. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00047}{47}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structfourdst_1_1composition_1_1_composition_entry_a14f12b8b0178df2e32e2023bd4564ddc}\index{fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}!getMassFracMode@{getMassFracMode}}
+\index{getMassFracMode@{getMassFracMode}!fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}}
+\doxysubsubsection{\texorpdfstring{getMassFracMode()}{getMassFracMode()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1_composition_entry_a14f12b8b0178df2e32e2023bd4564ddc} 
+bool fourdst\+::composition\+::\+Composition\+Entry\+::get\+Mass\+Frac\+Mode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Gets the mode of the composition entry. 
+
+\begin{DoxyReturn}{Returns}
+True if in mass fraction mode, false if in number fraction mode. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00147}{147}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{structfourdst_1_1composition_1_1_composition_entry_af4f8d292d18755670a914072e2260dfb}\index{fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}!isotope@{isotope}}
+\index{isotope@{isotope}!fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}}
+\doxysubsubsection{\texorpdfstring{isotope()}{isotope()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1_composition_entry_af4f8d292d18755670a914072e2260dfb} 
+\mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}} fourdst\+::composition\+::\+Composition\+Entry\+::isotope (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Gets the isotope data for the species. 
+
+\begin{DoxyReturn}{Returns}
+A const reference to the {\ttfamily \doxylink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} object. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00109}{109}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{structfourdst_1_1composition_1_1_composition_entry_a66cb086719d7f654869bd7b0cee87ffc}\index{fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}!mass\_fraction@{mass\_fraction}}
+\index{mass\_fraction@{mass\_fraction}!fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}}
+\doxysubsubsection{\texorpdfstring{mass\_fraction()}{mass\_fraction()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1_composition_entry_a66cb086719d7f654869bd7b0cee87ffc} 
+double fourdst\+::composition\+::\+Composition\+Entry\+::mass\+\_\+fraction (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Gets the mass fraction of the species. 
+
+\begin{DoxyPrecond}{Precondition}
+The entry must be in mass fraction mode. 
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+The mass fraction of the species. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classfourdst_1_1composition_1_1exceptions_1_1_composition_mode_error}{exceptions\+::\+Composition\+Mode\+Error}} & if the entry is in number fraction mode. \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00072}{72}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{structfourdst_1_1composition_1_1_composition_entry_a27b0ae0f7ef9469d515c4c7b6ec8dc22}\index{fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}!mass\_fraction@{mass\_fraction}}
+\index{mass\_fraction@{mass\_fraction}!fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}}
+\doxysubsubsection{\texorpdfstring{mass\_fraction()}{mass\_fraction()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1_composition_entry_a27b0ae0f7ef9469d515c4c7b6ec8dc22} 
+double fourdst\+::composition\+::\+Composition\+Entry\+::mass\+\_\+fraction (\begin{DoxyParamCaption}\item[{double}]{mean\+Molar\+Mass}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Gets the mass fraction, converting from number fraction if necessary. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mean\+Molar\+Mass} & The mean molar mass of the entire composition, required for conversion. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The mass fraction of the species. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00079}{79}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{structfourdst_1_1composition_1_1_composition_entry_a2d55492d285068d4a64db5602dfb1c78}\index{fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}!number\_fraction@{number\_fraction}}
+\index{number\_fraction@{number\_fraction}!fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}}
+\doxysubsubsection{\texorpdfstring{number\_fraction()}{number\_fraction()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1_composition_entry_a2d55492d285068d4a64db5602dfb1c78} 
+double fourdst\+::composition\+::\+Composition\+Entry\+::number\+\_\+fraction (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Gets the number fraction of the species. 
+
+\begin{DoxyPrecond}{Precondition}
+The entry must be in number fraction mode. 
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+The number fraction of the species. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classfourdst_1_1composition_1_1exceptions_1_1_composition_mode_error}{exceptions\+::\+Composition\+Mode\+Error}} & if the entry is in mass fraction mode. \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00089}{89}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{structfourdst_1_1composition_1_1_composition_entry_ab96d976b53f3828237525005b904a39c}\index{fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}!number\_fraction@{number\_fraction}}
+\index{number\_fraction@{number\_fraction}!fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}}
+\doxysubsubsection{\texorpdfstring{number\_fraction()}{number\_fraction()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1_composition_entry_ab96d976b53f3828237525005b904a39c} 
+double fourdst\+::composition\+::\+Composition\+Entry\+::number\+\_\+fraction (\begin{DoxyParamCaption}\item[{double}]{total\+Moles}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Gets the number fraction, converting from mass fraction if necessary. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em total\+Moles} & The total moles per unit mass (specific number density) of the entire composition. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number fraction of the species. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00096}{96}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{structfourdst_1_1composition_1_1_composition_entry_ab6619d23e111905d1e3ab16ee822d96c}\index{fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}!rel\_abundance@{rel\_abundance}}
+\index{rel\_abundance@{rel\_abundance}!fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}}
+\doxysubsubsection{\texorpdfstring{rel\_abundance()}{rel\_abundance()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1_composition_entry_ab6619d23e111905d1e3ab16ee822d96c} 
+double fourdst\+::composition\+::\+Composition\+Entry\+::rel\+\_\+abundance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Gets the relative abundance of the species. 
+
+\begin{DoxyReturn}{Returns}
+The relative abundance. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00105}{105}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{structfourdst_1_1composition_1_1_composition_entry_a3fb3f63a4e5675c6fefb662a8e3e7aa3}\index{fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}!setMassFracMode@{setMassFracMode}}
+\index{setMassFracMode@{setMassFracMode}!fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}}
+\doxysubsubsection{\texorpdfstring{setMassFracMode()}{setMassFracMode()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1_composition_entry_a3fb3f63a4e5675c6fefb662a8e3e7aa3} 
+bool fourdst\+::composition\+::\+Composition\+Entry\+::set\+Mass\+Frac\+Mode (\begin{DoxyParamCaption}\item[{double}]{mean\+Molar\+Mass}{}\end{DoxyParamCaption})}
+
+
+
+Switches the mode to mass fraction mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mean\+Molar\+Mass} & The mean molar mass of the composition, required for conversion. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the mode was successfully set, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00129}{129}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{structfourdst_1_1composition_1_1_composition_entry_a4d6df43e098e7e2e2d94ff7fb76cb4c2}\index{fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}!setMassFraction@{setMassFraction}}
+\index{setMassFraction@{setMassFraction}!fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}}
+\doxysubsubsection{\texorpdfstring{setMassFraction()}{setMassFraction()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1_composition_entry_a4d6df43e098e7e2e2d94ff7fb76cb4c2} 
+void fourdst\+::composition\+::\+Composition\+Entry\+::set\+Mass\+Fraction (\begin{DoxyParamCaption}\item[{double}]{mass\+\_\+fraction}{}\end{DoxyParamCaption})}
+
+
+
+Sets the mass fraction of the species. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mass\+\_\+fraction} & The mass fraction to set. Must be in \mbox{[}0, 1\mbox{]}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+The entry must be in mass fraction mode. 
+\end{DoxyPrecond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classfourdst_1_1composition_1_1exceptions_1_1_composition_mode_error}{exceptions\+::\+Composition\+Mode\+Error}} & if the entry is in number fraction mode. \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00113}{113}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{structfourdst_1_1composition_1_1_composition_entry_a743042d1998875851150d789817f5473}\index{fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}!setNumberFracMode@{setNumberFracMode}}
+\index{setNumberFracMode@{setNumberFracMode}!fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}}
+\doxysubsubsection{\texorpdfstring{setNumberFracMode()}{setNumberFracMode()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1_composition_entry_a743042d1998875851150d789817f5473} 
+bool fourdst\+::composition\+::\+Composition\+Entry\+::set\+Number\+Frac\+Mode (\begin{DoxyParamCaption}\item[{double}]{total\+Moles}{}\end{DoxyParamCaption})}
+
+
+
+Switches the mode to number fraction mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em total\+Moles} & The total moles per unit mass (specific number density) of the composition. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the mode was successfully set, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00138}{138}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{structfourdst_1_1composition_1_1_composition_entry_a9ec47cf4b3399128d3836c1b24b031b0}\index{fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}!setNumberFraction@{setNumberFraction}}
+\index{setNumberFraction@{setNumberFraction}!fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}}
+\doxysubsubsection{\texorpdfstring{setNumberFraction()}{setNumberFraction()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1_composition_entry_a9ec47cf4b3399128d3836c1b24b031b0} 
+void fourdst\+::composition\+::\+Composition\+Entry\+::set\+Number\+Fraction (\begin{DoxyParamCaption}\item[{double}]{number\+\_\+fraction}{}\end{DoxyParamCaption})}
+
+
+
+Sets the number fraction of the species. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em number\+\_\+fraction} & The number fraction to set. Must be in \mbox{[}0, 1\mbox{]}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+The entry must be in number fraction mode. 
+\end{DoxyPrecond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classfourdst_1_1composition_1_1exceptions_1_1_composition_mode_error}{exceptions\+::\+Composition\+Mode\+Error}} & if the entry is in mass fraction mode. \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00121}{121}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{structfourdst_1_1composition_1_1_composition_entry_a5885a0e33687bceb15b225a00163e9d3}\index{fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}!setSpecies@{setSpecies}}
+\index{setSpecies@{setSpecies}!fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}}
+\doxysubsubsection{\texorpdfstring{setSpecies()}{setSpecies()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1_composition_entry_a5885a0e33687bceb15b225a00163e9d3} 
+void fourdst\+::composition\+::\+Composition\+Entry\+::set\+Species (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{symbol}{}\end{DoxyParamCaption})}
+
+
+
+Sets the species for the composition entry. This can only be done once. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol} & The chemical symbol of the species. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classfourdst_1_1composition_1_1exceptions_1_1_entry_already_initialized_error}{exceptions\+::\+Entry\+Already\+Initialized\+Error}} & if the entry has already been initialized. \\
+\hline
+{\em \doxylink{classfourdst_1_1composition_1_1exceptions_1_1_invalid_species_symbol_error}{exceptions\+::\+Invalid\+Species\+Symbol\+Error}} & if the symbol is not found in the atomic species database. \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00056}{56}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{structfourdst_1_1composition_1_1_composition_entry_a50d18b4c27611fa9314dd756af54c2f0}\index{fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}!symbol@{symbol}}
+\index{symbol@{symbol}!fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}}
+\doxysubsubsection{\texorpdfstring{symbol()}{symbol()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1_composition_entry_a50d18b4c27611fa9314dd756af54c2f0} 
+std\+::string fourdst\+::composition\+::\+Composition\+Entry\+::symbol (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Gets the chemical symbol of the species. 
+
+\begin{DoxyReturn}{Returns}
+The chemical symbol. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00068}{68}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{structfourdst_1_1composition_1_1_composition_entry_ae7a6a113fc5914248eff5629716d6eb2}\index{fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1_composition_entry_ae7a6a113fc5914248eff5629716d6eb2} 
+std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os}{, }\item[{const \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry}{Composition\+Entry}} \&}]{entry}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Overloaded output stream operator for \doxylink{structfourdst_1_1composition_1_1_composition_entry}{Composition\+Entry}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream. \\
+\hline
+{\em entry} & The \doxylink{structfourdst_1_1composition_1_1_composition_entry}{Composition\+Entry} to output. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The output stream. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00767}{767}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structfourdst_1_1composition_1_1_composition_entry_a391e899874cd7ef299a3ae1f64c016d2}\index{fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}!m\_initialized@{m\_initialized}}
+\index{m\_initialized@{m\_initialized}!fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}}
+\doxysubsubsection{\texorpdfstring{m\_initialized}{m\_initialized}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1_composition_entry_a391e899874cd7ef299a3ae1f64c016d2} 
+bool fourdst\+::composition\+::\+Composition\+Entry\+::m\+\_\+initialized = false}
+
+
+
+True if the composition entry has been initialized with a valid species. 
+
+
+
+Definition at line \mbox{\hyperlink{composition_8h_source_l00092}{92}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+
+\Hypertarget{structfourdst_1_1composition_1_1_composition_entry_a79039cbdc76b4401eb2ce44b85467503}\index{fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}!m\_isotope@{m\_isotope}}
+\index{m\_isotope@{m\_isotope}!fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}}
+\doxysubsubsection{\texorpdfstring{m\_isotope}{m\_isotope}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1_composition_entry_a79039cbdc76b4401eb2ce44b85467503} 
+\mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} fourdst\+::composition\+::\+Composition\+Entry\+::m\+\_\+isotope}
+
+
+
+The {\ttfamily \doxylink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} object containing detailed isotope data. 
+
+
+
+Definition at line \mbox{\hyperlink{composition_8h_source_l00085}{85}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+
+\Hypertarget{structfourdst_1_1composition_1_1_composition_entry_a1e860519bea86793413ed67c76d18c8b}\index{fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}!m\_massFracMode@{m\_massFracMode}}
+\index{m\_massFracMode@{m\_massFracMode}!fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}}
+\doxysubsubsection{\texorpdfstring{m\_massFracMode}{m\_massFracMode}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1_composition_entry_a1e860519bea86793413ed67c76d18c8b} 
+bool fourdst\+::composition\+::\+Composition\+Entry\+::m\+\_\+mass\+Frac\+Mode = true}
+
+
+
+The mode of the composition entry. True if mass fraction, false if number fraction. 
+
+
+
+Definition at line \mbox{\hyperlink{composition_8h_source_l00086}{86}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+
+\Hypertarget{structfourdst_1_1composition_1_1_composition_entry_adc20165bf94e18eea3458003025579ac}\index{fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}!m\_massFraction@{m\_massFraction}}
+\index{m\_massFraction@{m\_massFraction}!fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}}
+\doxysubsubsection{\texorpdfstring{m\_massFraction}{m\_massFraction}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1_composition_entry_adc20165bf94e18eea3458003025579ac} 
+double fourdst\+::composition\+::\+Composition\+Entry\+::m\+\_\+mass\+Fraction = 0.\+0}
+
+
+
+The mass fraction of the species. Valid only if {\ttfamily m\+\_\+mass\+Frac\+Mode} is true. 
+
+
+
+Definition at line \mbox{\hyperlink{composition_8h_source_l00088}{88}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+
+\Hypertarget{structfourdst_1_1composition_1_1_composition_entry_a2b5e245f7dabb11076efdbe1ed516d9f}\index{fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}!m\_numberFraction@{m\_numberFraction}}
+\index{m\_numberFraction@{m\_numberFraction}!fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}}
+\doxysubsubsection{\texorpdfstring{m\_numberFraction}{m\_numberFraction}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1_composition_entry_a2b5e245f7dabb11076efdbe1ed516d9f} 
+double fourdst\+::composition\+::\+Composition\+Entry\+::m\+\_\+number\+Fraction = 0.\+0}
+
+
+
+The number fraction (mole fraction) of the species. Valid only if {\ttfamily m\+\_\+mass\+Frac\+Mode} is false. 
+
+
+
+Definition at line \mbox{\hyperlink{composition_8h_source_l00089}{89}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+
+\Hypertarget{structfourdst_1_1composition_1_1_composition_entry_a0498d707d8ea78be39283786c10657ef}\index{fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}!m\_relAbundance@{m\_relAbundance}}
+\index{m\_relAbundance@{m\_relAbundance}!fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}}
+\doxysubsubsection{\texorpdfstring{m\_relAbundance}{m\_relAbundance}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1_composition_entry_a0498d707d8ea78be39283786c10657ef} 
+double fourdst\+::composition\+::\+Composition\+Entry\+::m\+\_\+rel\+Abundance = 0.\+0}
+
+
+
+The relative abundance, used internally for conversions. For mass fraction mode, this is X\+\_\+i / A\+\_\+i; for number fraction mode, it\textquotesingle{}s n\+\_\+i \texorpdfstring{$\ast$}{*} A\+\_\+i. 
+
+
+
+Definition at line \mbox{\hyperlink{composition_8h_source_l00090}{90}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+
+\Hypertarget{structfourdst_1_1composition_1_1_composition_entry_ac273debdba6a1b3ac0f11698c399d38e}\index{fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}!m\_symbol@{m\_symbol}}
+\index{m\_symbol@{m\_symbol}!fourdst::composition::CompositionEntry@{fourdst::composition::CompositionEntry}}
+\doxysubsubsection{\texorpdfstring{m\_symbol}{m\_symbol}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1_composition_entry_ac273debdba6a1b3ac0f11698c399d38e} 
+std\+::string fourdst\+::composition\+::\+Composition\+Entry\+::m\+\_\+symbol}
+
+
+
+The chemical symbol of the species (e.\+g., "{}\+H-\/1"{}, "{}\+Fe-\/56"{}). 
+
+
+
+Definition at line \mbox{\hyperlink{composition_8h_source_l00084}{84}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/composition/include/fourdst/composition/\mbox{\hyperlink{composition_8h}{composition.\+h}}\item 
+src/composition/lib/\mbox{\hyperlink{composition_8cpp}{composition.\+cpp}}\end{DoxyCompactItemize}

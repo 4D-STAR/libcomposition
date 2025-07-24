@@ -1,0 +1,74 @@
+\doxysection{std\+::hash\texorpdfstring{$<$}{<} fourdst\+::atomic\+::Species \texorpdfstring{$>$}{>} Struct Reference}
+\hypertarget{structstd_1_1hash_3_01fourdst_1_1atomic_1_1_species_01_4}{}\label{structstd_1_1hash_3_01fourdst_1_1atomic_1_1_species_01_4}\index{std::hash$<$ fourdst::atomic::Species $>$@{std::hash$<$ fourdst::atomic::Species $>$}}
+
+
+Specialization of {\ttfamily std\+::hash} for {\ttfamily \doxylink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}}.  
+
+
+
+
+{\ttfamily \#include $<$atomic\+Species.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{structstd_1_1hash_3_01fourdst_1_1atomic_1_1_species_01_4_afa44fa4cf54e7f6283d6e2ce93c63b6a}{operator()}} (const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}} \&s) const noexcept
+\begin{DoxyCompactList}\small\item\em Computes the hash for a Species object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Specialization of {\ttfamily std\+::hash} for {\ttfamily \doxylink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}}. 
+
+This allows {\ttfamily \doxylink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}} objects to be used as keys in unordered associative containers like {\ttfamily std\+::unordered\+\_\+map} and {\ttfamily std\+::unordered\+\_\+set}. The hash is computed based on the species\textquotesingle{} name ({\ttfamily m\+\_\+name}), as it is expected to be a unique identifier for each species.
+
+\begin{DoxyParagraph}{Usage Example}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{atomic_species_8h}{fourdst/composition/atomicSpecies.h}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main()\ \{}
+\DoxyCodeLine{\ \ \ \ std::unordered\_map<fourdst::atomic::Species,\ double>\ abundance;}
+\DoxyCodeLine{\ \ \ \ fourdst::atomic::Species\ h1(\textcolor{stringliteral}{"{}H1"{}},\ ...);}
+\DoxyCodeLine{\ \ \ \ abundance[h1]\ =\ 0.999;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00425}{425}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structstd_1_1hash_3_01fourdst_1_1atomic_1_1_species_01_4_afa44fa4cf54e7f6283d6e2ce93c63b6a}\index{std::hash$<$ fourdst::atomic::Species $>$@{std::hash$<$ fourdst::atomic::Species $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!std::hash$<$ fourdst::atomic::Species $>$@{std::hash$<$ fourdst::atomic::Species $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily \label{structstd_1_1hash_3_01fourdst_1_1atomic_1_1_species_01_4_afa44fa4cf54e7f6283d6e2ce93c63b6a} 
+size\+\_\+t std\+::hash$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}} $>$\+::operator() (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}} \&}]{s}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Computes the hash for a Species object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & The Species object to hash. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The hash value of the species\textquotesingle{} name. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00431}{431}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/composition/include/fourdst/composition/\mbox{\hyperlink{atomic_species_8h}{atomic\+Species.\+h}}\end{DoxyCompactItemize}

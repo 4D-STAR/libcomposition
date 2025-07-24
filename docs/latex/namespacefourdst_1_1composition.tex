@@ -1,0 +1,80 @@
+\doxysection{fourdst\+::composition Namespace Reference}
+\hypertarget{namespacefourdst_1_1composition}{}\label{namespacefourdst_1_1composition}\index{fourdst::composition@{fourdst::composition}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacefourdst_1_1composition_1_1exceptions}{exceptions}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structfourdst_1_1composition_1_1_canonical_composition}{Canonical\+Composition}}
+\begin{DoxyCompactList}\small\item\em Represents the canonical (X, Y, Z) composition of stellar material. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}}
+\begin{DoxyCompactList}\small\item\em Manages a collection of chemical species and their abundances. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry}{Composition\+Entry}}
+\begin{DoxyCompactList}\small\item\em Represents a single entry (an isotope) within a composition. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structfourdst_1_1composition_1_1_global_composition}{Global\+Composition}}
+\begin{DoxyCompactList}\small\item\em Represents global properties of a finalized composition. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{namespacefourdst_1_1composition_a8468dde1b148c0583b8a9f85b8d0ce9a}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{structfourdst_1_1composition_1_1_global_composition}{Global\+Composition}} \&comp)
+\item 
+std\+::ostream \& \mbox{\hyperlink{namespacefourdst_1_1composition_a676f771864958c4db4ed2a82cc0e85dd}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry}{Composition\+Entry}} \&entry)
+\item 
+std\+::ostream \& \mbox{\hyperlink{namespacefourdst_1_1composition_a5e8ccc2bd9e91eebcd3ef5fe470163a1}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} \&composition)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacefourdst_1_1composition_a5e8ccc2bd9e91eebcd3ef5fe470163a1}\index{fourdst::composition@{fourdst::composition}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!fourdst::composition@{fourdst::composition}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{namespacefourdst_1_1composition_a5e8ccc2bd9e91eebcd3ef5fe470163a1} 
+std\+::ostream \& fourdst\+::composition\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os}{, }\item[{const \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} \&}]{composition}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream. \\
+\hline
+{\em composition} & The \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} to output. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The output stream. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00772}{772}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{namespacefourdst_1_1composition_a676f771864958c4db4ed2a82cc0e85dd}\index{fourdst::composition@{fourdst::composition}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!fourdst::composition@{fourdst::composition}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{namespacefourdst_1_1composition_a676f771864958c4db4ed2a82cc0e85dd} 
+std\+::ostream \& fourdst\+::composition\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os}{, }\item[{const \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry}{Composition\+Entry}} \&}]{entry}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream. \\
+\hline
+{\em entry} & The \doxylink{structfourdst_1_1composition_1_1_composition_entry}{Composition\+Entry} to output. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The output stream. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00767}{767}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{namespacefourdst_1_1composition_a8468dde1b148c0583b8a9f85b8d0ce9a}\index{fourdst::composition@{fourdst::composition}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!fourdst::composition@{fourdst::composition}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{namespacefourdst_1_1composition_a8468dde1b148c0583b8a9f85b8d0ce9a} 
+std\+::ostream \& fourdst\+::composition\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os}{, }\item[{const \mbox{\hyperlink{structfourdst_1_1composition_1_1_global_composition}{Global\+Composition}} \&}]{comp}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00760}{760}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+

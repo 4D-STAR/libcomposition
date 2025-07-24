@@ -1,0 +1,238 @@
+\chapter{libcomposition\+: A Modern C++ Library for Chemical Compositions}
+\hypertarget{index}{}\label{index}\index{libcomposition: A Modern C++ Library for Chemical Compositions@{libcomposition: A Modern C++ Library for Chemical Compositions}}
+\hypertarget{index_intro_sec}{}\doxysection{\texorpdfstring{Introduction}{Introduction}}\label{index_intro_sec}
+{\ttfamily libcomposition} is a modern C++23 library designed for the creation, manipulation, and analysis of chemical compositions, with a focus on astrophysical applications. It provides a robust and user-\/friendly interface for handling material compositions defined by mass or number fractions.\hypertarget{index_autotoc_md0}{}\doxysubsubsection{\texorpdfstring{Key Features}{Key Features}}\label{index_autotoc_md0}
+
+\begin{DoxyItemize}
+\item {\bfseries{Dual-\/\+Mode Operation}}\+: Natively supports compositions defined by {\bfseries{mass fraction}} or {\bfseries{number fraction}}.
+\item {\bfseries{Rich Atomic Database}}\+: Includes a comprehensive, header-\/only database of isotopic properties (mass, half-\/life, spin, etc.) generated from the AME2020 and NUBASE2020 evaluations.
+\item {\bfseries{Type Safety and Error Handling}}\+: Utilizes a clear exception hierarchy to report errors, such as using an unregistered isotope or accessing data from a non-\/validated composition.
+\item {\bfseries{Powerful Functionality}}\+: Core features include mixing, subsetting, and on-\/the-\/fly conversion between mass and number fractions.
+\item {\bfseries{Easy Integration}}\+: Designed for seamless integration with other projects using the Meson build system and {\ttfamily pkg-\/config}.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{index_install_sec}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{index_install_sec}
+{\ttfamily libcomposition} uses the Meson build system. A C++23 compatible compiler is required.\hypertarget{index_autotoc_md2}{}\doxysubsubsection{\texorpdfstring{Build Steps}{Build Steps}}\label{index_autotoc_md2}
+{\bfseries{Setup the build directory\+:}}
+
+The first step is to use meson to set up an out of source build. Note that this means that you can have multiple builds configured and cleanly seperated!
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{meson\ setup\ builddir}
+
+\end{DoxyCode}
+
+
+{\bfseries{Compile the library\+:}}
+
+meson by default uses ninja to compile so it should be very fast; however, gcc is very slow when compiling the species database so that migth take some time (clang tends to be very fast for this).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{meson\ compile\ -\/C\ builddir}
+
+\end{DoxyCode}
+
+
+{\bfseries{Install the library\+:}}
+
+This will also install a pkg-\/config file!
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sudo\ meson\ install\ -\/C\ builddir}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md3}{}\doxysubsubsection{\texorpdfstring{Build Options}{Build Options}}\label{index_autotoc_md3}
+You can enable the generation of a {\ttfamily pkg-\/config} file during the setup step, which simplifies linking the library in other projects. by default this is true; it can be useful to disable this when using some build system orgestrator (such as meson-\/python).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ Enable\ pkg-\/config\ file\ generation}
+\DoxyCodeLine{meson\ setup\ builddir\ -\/Dpkg-\/config=true}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{index_usage_sec}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{index_usage_sec}
+\hypertarget{index_autotoc_md5}{}\doxysubsubsection{\texorpdfstring{Linking with pkg-\/config}{Linking with pkg-\/config}}\label{index_autotoc_md5}
+If you installed {\ttfamily libcomposition} with the {\ttfamily pkg-\/config} option enabled, you can get the necessary compiler and linker flags easily\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ Get\ compiler\ flags\ (include\ paths)}
+\DoxyCodeLine{pkg-\/config\ -\/-\/cflags\ fourdst\_composition}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Get\ linker\ flags\ (library\ paths\ and\ names)}
+\DoxyCodeLine{pkg-\/config\ -\/-\/libs\ fourdst\_composition}
+
+\end{DoxyCode}
+
+
+{\bfseries{Example compilation command\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{g++\ my\_app.cpp\ \$(pkg-\/config\ -\/-\/cflags\ -\/-\/libs\ fourdst\_composition)\ -\/o\ my\_app}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md6}{}\doxysubsubsection{\texorpdfstring{C++ Usage Examples}{C++ Usage Examples}}\label{index_autotoc_md6}
+\hypertarget{index_autotoc_md7}{}\doxysubsubsubsection{\texorpdfstring{1. Basic Mass Fraction Composition}{1. Basic Mass Fraction Composition}}\label{index_autotoc_md7}
+The most common use case is defining a composition by mass fractions (X, Y, Z).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{composition_8h}{fourdst/composition/composition.h}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main()\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ 1.\ Create\ a\ composition\ object}}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{fourdst::composition::Composition}}\ comp;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ 2.\ Register\ the\ symbols\ you\ want\ to\ use}}
+\DoxyCodeLine{\ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a1bc2e64f87c12befdc2bc767e7405661}{registerSymbol}}(\textcolor{stringliteral}{"{}H-\/1"{}});}
+\DoxyCodeLine{\ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a1bc2e64f87c12befdc2bc767e7405661}{registerSymbol}}(\textcolor{stringliteral}{"{}He-\/4"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ 3.\ Set\ their\ mass\ fractions}}
+\DoxyCodeLine{\ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a493224656aa3ade68389250720ef09af}{setMassFraction}}(\textcolor{stringliteral}{"{}H-\/1"{}},\ 0.75);}
+\DoxyCodeLine{\ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a493224656aa3ade68389250720ef09af}{setMassFraction}}(\textcolor{stringliteral}{"{}He-\/4"{}},\ 0.25);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ 4.\ Finalize\ the\ composition\ to\ validate\ it\ and\ compute\ global\ properties}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a72d063a74a9d2197065884a2cea57a14}{finalize}}())\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Composition\ finalized\ successfully!"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}H-\/1\ Mass\ Fraction:\ "{}}\ <<\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ad20bd541dd7c45274a2e586e6a0519a7}{getMassFraction}}(\textcolor{stringliteral}{"{}H-\/1"{}})\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Mean\ Particle\ Mass:\ "{}}\ <<\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a66401fed7054172e9b1a2687e5cc8eff}{getMeanParticleMass}}()\ <<\ \textcolor{stringliteral}{"{}\ g/mol"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ finalize\ composition."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md8}{}\doxysubsubsubsection{\texorpdfstring{2. Number Fraction Composition and Mode Switching}{2. Number Fraction Composition and Mode Switching}}\label{index_autotoc_md8}
+The library can also work with number (mole) fractions and switch between modes.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{composition_8h}{fourdst/composition/composition.h}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{exceptions__composition_8h}{fourdst/composition/exceptions/exceptions\_composition.h}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ number\_fraction\_example()\ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{fourdst::composition::Composition}}\ comp;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Register\ symbols\ in\ number\ fraction\ mode}}
+\DoxyCodeLine{\ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a1bc2e64f87c12befdc2bc767e7405661}{registerSymbol}}(\textcolor{stringliteral}{"{}H-\/1"{}},\ \textcolor{keyword}{false});\ \textcolor{comment}{//\ massFracMode\ =\ false}}
+\DoxyCodeLine{\ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a1bc2e64f87c12befdc2bc767e7405661}{registerSymbol}}(\textcolor{stringliteral}{"{}He-\/4"{}},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a7d4d748f3ee25e68751fb143717ed080}{setNumberFraction}}(\textcolor{stringliteral}{"{}H-\/1"{}},\ 0.9);}
+\DoxyCodeLine{\ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a7d4d748f3ee25e68751fb143717ed080}{setNumberFraction}}(\textcolor{stringliteral}{"{}He-\/4"{}},\ 0.1);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a72d063a74a9d2197065884a2cea57a14}{finalize}}())\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ We\ can\ get\ number\ fractions\ directly}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}He-\/4\ Number\ Fraction:\ "{}}\ <<\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a84fea38bc1c005e483910285f6800e15}{getNumberFraction}}(\textcolor{stringliteral}{"{}He-\/4"{}})\ <<\ std::endl;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Or\ get\ the\ equivalent\ mass\ fraction}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}He-\/4\ Mass\ Fraction:\ "{}}\ <<\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ad20bd541dd7c45274a2e586e6a0519a7}{getMassFraction}}(\textcolor{stringliteral}{"{}He-\/4"{}})\ <<\ std::endl;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Switch\ the\ entire\ composition\ to\ mass\ fraction\ mode}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a0af981ed1074b26c237cf6cf35f82c9e}{setCompositionMode}}(\textcolor{keyword}{true});\ \textcolor{comment}{//\ true\ for\ mass\ fraction\ mode}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Now,\ getting\ the\ mass\ fraction\ is\ a\ direct\ lookup}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}He-\/4\ Mass\ Fraction\ (after\ mode\ switch):\ "{}}\ <<\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ad20bd541dd7c45274a2e586e6a0519a7}{getMassFraction}}(\textcolor{stringliteral}{"{}He-\/4"{}})\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md9}{}\doxysubsubsubsection{\texorpdfstring{3. Mixing Two Compositions}{3. Mixing Two Compositions}}\label{index_autotoc_md9}
+You can easily mix two compositions. The library handles the union of all species.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{composition_8h}{fourdst/composition/composition.h}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ mixing\_example()\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Composition\ 1:\ Pure\ Hydrogen}}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{fourdst::composition::Composition}}\ comp1(\{\textcolor{stringliteral}{"{}H-\/1"{}}\},\ \{1.0\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Composition\ 2:\ Pure\ Helium}}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{fourdst::composition::Composition}}\ comp2(\{\textcolor{stringliteral}{"{}He-\/4"{}}\},\ \{1.0\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Mix\ them\ with\ a\ 50/50\ ratio\ using\ the\ '+'\ operator}}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{fourdst::composition::Composition}}\ mixed\ =\ comp1\ +\ comp2;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Mix\ them\ with\ a\ 75/25\ ratio\ using\ the\ mix()\ method}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ 0.75\ of\ comp1,\ 0.25\ of\ comp2}}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{fourdst::composition::Composition}}\ mixed2\ =\ comp1.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a3aead72892606725a4149a5f65bd31ec}{mix}}(comp2,\ 0.75);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}50/50\ Mix\ H-\/1:\ "{}}\ <<\ mixed.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ad20bd541dd7c45274a2e586e6a0519a7}{getMassFraction}}(\textcolor{stringliteral}{"{}H-\/1"{}})\ <<\ std::endl;\ \ \ \textcolor{comment}{//\ -\/>\ 0.5}}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}75/25\ Mix\ H-\/1:\ "{}}\ <<\ mixed2.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ad20bd541dd7c45274a2e586e6a0519a7}{getMassFraction}}(\textcolor{stringliteral}{"{}H-\/1"{}})\ <<\ std::endl;\ \ \textcolor{comment}{//\ -\/>\ 0.75}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md10}{}\doxysubsubsubsection{\texorpdfstring{4. Error Handling}{4. Error Handling}}\label{index_autotoc_md10}
+The library uses exceptions to report errors. Always wrap calls in a {\ttfamily try-\/catch} block for robust code.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{composition_8h}{fourdst/composition/composition.h}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{exceptions__composition_8h}{fourdst/composition/exceptions/exceptions\_composition.h}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ error\_example()\ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{fourdst::composition::Composition}}\ comp;}
+\DoxyCodeLine{\ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a1bc2e64f87c12befdc2bc767e7405661}{registerSymbol}}(\textcolor{stringliteral}{"{}H-\/1"{}});}
+\DoxyCodeLine{\ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a493224656aa3ade68389250720ef09af}{setMassFraction}}(\textcolor{stringliteral}{"{}H-\/1"{}},\ 1.0);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ will\ throw,\ because\ the\ composition\ is\ not\ finalized\ yet.}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ mass\ =\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ad20bd541dd7c45274a2e586e6a0519a7}{getMassFraction}}(\textcolor{stringliteral}{"{}H-\/1"{}});}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1_composition_not_finalized_error}{fourdst::composition::exceptions::CompositionNotFinalizedError}}\&\ e)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Caught\ expected\ error:\ "{}}\ <<\ e.\mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1_composition_error_ae44ceddb19da8a8cda7ee150b6826d08}{what}}()\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ will\ throw,\ because\ "{}Li-\/6"{}\ was\ never\ registered.}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a493224656aa3ade68389250720ef09af}{setMassFraction}}(\textcolor{stringliteral}{"{}Li-\/6"{}},\ 0.1);}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1_unregistered_symbol_error}{fourdst::composition::exceptions::UnregisteredSymbolError}}\&\ e)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Caught\ expected\ error:\ "{}}\ <<\ e.\mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1_composition_error_ae44ceddb19da8a8cda7ee150b6826d08}{what}}()\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md11}{}\doxysubsubsubsection{\texorpdfstring{5. Accessing Atomic Data}{5. Accessing Atomic Data}}\label{index_autotoc_md11}
+You can directly access the static database of all known species.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{species_8h}{fourdst/composition/species.h}}"{}}\ \textcolor{comment}{//\ Provides\ static\ instances\ like\ H\_1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{atomic_species_8h}{fourdst/composition/atomicSpecies.h}}"{}}\ \textcolor{comment}{//\ Provides\ the\ main\ 'species'\ map}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ data\_example()\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Access\ via\ the\ map}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ fe56\ =\ \mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{fourdst::atomic::species}}.at(\textcolor{stringliteral}{"{}Fe-\/56"{}});}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Fe-\/56\ mass:\ "{}}\ <<\ fe56-\/>mass()\ <<\ std::endl;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Access\ via\ the\ static\ instance}}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}H-\/1\ spin:\ "{}}\ <<\ \mbox{\hyperlink{namespacefourdst_1_1atomic_a6766bc834fd656df51bdcf22f7d97877}{fourdst::atomic::H\_1}}.spin()\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}F-\/18\ half-\/life:\ "{}}\ <<\ \mbox{\hyperlink{namespacefourdst_1_1atomic_a3c09ded079905f8c355f9ea87b6b191f}{fourdst::atomic::F\_18}}.halfLife()\ <<\ \textcolor{stringliteral}{"{}\ s"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{index_test_sec}{}\doxysection{\texorpdfstring{Testing}{Testing}}\label{index_test_sec}
+{\ttfamily libcomposition} is tested using the Google\+Test framework. The test suite provides high coverage of the library\textquotesingle{}s functionality.\hypertarget{index_autotoc_md13}{}\doxysubsubsection{\texorpdfstring{Test Coverage Includes\+:}{Test Coverage Includes\+:}}\label{index_autotoc_md13}
+
+\begin{DoxyItemize}
+\item {\bfseries{Atomic Data Validation}}\+: Spot checks on isotopic properties (mass, half-\/life, spin) for a wide range of elements to ensure the underlying data files are parsed and represented correctly.
+\item {\bfseries{Core {\ttfamily Composition} Workflow}}\+: Verification of object construction, symbol registration (for both valid and invalid symbols), and the complete workflow of setting and getting both mass and number fractions.
+\item {\bfseries{Finalization Logic}}\+: Ensures that {\ttfamily finalize()} is a required step before querying data. Tests the validation logic for compositions that sum to 1.\+0 and the auto-\/normalization feature ({\ttfamily finalize(true)}).
+\item {\bfseries{Advanced Features}}\+: Dedicated tests for {\ttfamily mix()}, {\ttfamily subset()}, {\ttfamily set\+Composition\+Mode()}, and the calculation of derived quantities like {\ttfamily get\+Molar\+Abundance()} and {\ttfamily get\+Mean\+Atomic\+Number()}.
+\item {\bfseries{Exception Handling}}\+: Confirms that invalid operations (e.\+g., using an unregistered symbol, mixing un-\/finalized compositions) correctly throw exceptions from the {\ttfamily \doxylink{namespacefourdst_1_1composition_1_1exceptions}{fourdst\+::composition\+::exceptions}} hierarchy.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{index_api_sec}{}\doxysection{\texorpdfstring{API Reference}{API Reference}}\label{index_api_sec}
+For a complete list of all classes, methods, and functions, please see the \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\href{namespaces.html}{\texttt{ Namespaces}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} and \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\href{annotated.html}{\texttt{ Classes}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} sections of this documentation. 

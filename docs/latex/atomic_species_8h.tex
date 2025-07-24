@@ -1,0 +1,33 @@
+\doxysection{src/composition/include/fourdst/composition/atomic\+Species.h File Reference}
+\hypertarget{atomic_species_8h}{}\label{atomic_species_8h}\index{src/composition/include/fourdst/composition/atomicSpecies.h@{src/composition/include/fourdst/composition/atomicSpecies.h}}
+{\ttfamily \#include $<$string\+\_\+view$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$limits$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}}
+\begin{DoxyCompactList}\small\item\em Represents an atomic species (isotope) with its fundamental physical properties. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structstd_1_1hash_3_01fourdst_1_1atomic_1_1_species_01_4}{std\+::hash$<$ fourdst\+::atomic\+::\+Species $>$}}
+\begin{DoxyCompactList}\small\item\em Specialization of {\ttfamily std\+::hash} for {\ttfamily \doxylink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacefourdst_1_1atomic}{fourdst\+::atomic}}
+\begin{DoxyCompactList}\small\item\em Contains classes and functions related to atomic data, such as properties of atomic species. \end{DoxyCompactList}\item 
+namespace \mbox{\hyperlink{namespacefourdst}{fourdst}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{namespacefourdst_1_1atomic_ada037e2130ddb6174ff7934cda49c2ba}{fourdst\+::atomic\+::convert\+\_\+jpi\+\_\+to\+\_\+double}} (const std\+::string \&jpi\+\_\+string)
+\begin{DoxyCompactList}\small\item\em Converts a spin-\/parity string (JPI string) to a double-\/precision floating-\/point number. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacefourdst_1_1atomic_a277fa6e5107f1358e204c807146deeb4}{fourdst\+::atomic\+::operator==}} (const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&lhs, const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&rhs)
+\begin{DoxyCompactList}\small\item\em Equality operator for \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. Compares based on name. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacefourdst_1_1atomic_a2b6c699988f0748a0627f447863240ad}{fourdst\+::atomic\+::operator!=}} (const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&lhs, const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&rhs)
+\begin{DoxyCompactList}\small\item\em Inequality operator for \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. Compares based on name. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacefourdst_1_1atomic_a34d001fa83e2bac9f8ebd96285d8821a}{fourdst\+::atomic\+::operator$<$}} (const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&lhs, const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&rhs)
+\begin{DoxyCompactList}\small\item\em Less-\/than operator for \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. Compares based on atomic mass. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacefourdst_1_1atomic_a289c90cf53fd83e6808768b0befa2c00}{fourdst\+::atomic\+::operator$>$}} (const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&lhs, const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&rhs)
+\begin{DoxyCompactList}\small\item\em Greater-\/than operator for \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. Compares based on atomic mass. \end{DoxyCompactList}\end{DoxyCompactItemize}

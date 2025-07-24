@@ -1,0 +1,802 @@
+\doxysection{fourdst\+::atomic\+::Species Struct Reference}
+\hypertarget{structfourdst_1_1atomic_1_1_species}{}\label{structfourdst_1_1atomic_1_1_species}\index{fourdst::atomic::Species@{fourdst::atomic::Species}}
+
+
+Represents an atomic species (isotope) with its fundamental physical properties.  
+
+
+
+
+{\ttfamily \#include $<$atomic\+Species.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a3756508a18b57a60f68f1b0cf58d303c}{Species}} (const std\+::string\+\_\+view \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a1fcc01fc978b34ba2531117f10be6741}{name}}, const std\+::string\+\_\+view \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a326c260a1b53deafcd04c21b2787f6c4}{el}}, const int \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_aa5e452accca3a9b4937867044617a032}{nz}}, const int \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a957734e413f07adf1d570885c480768d}{n}}, const int \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a1d50917a60a1adb2c9912193f214fab0}{z}}, const int \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_adc960c98d6e6051940d0a5c0d9a1183d}{a}}, const double \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_abeef75170cabef39fdaa6362780ddfc8}{binding\+Energy}}, const std\+::string\+\_\+view \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a57391049d534ffd1a4b4d6ed63d65ffc}{beta\+Code}}, const double \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a7d0e8a3b3d30fa56bdcc59577fa9ff73}{beta\+Decay\+Energy}}, const double half\+Life\+\_\+s, const std\+::string\+\_\+view \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_afcdd2f750d8cf206e3bcc507d57dabb1}{spin\+Parity}}, const std\+::string\+\_\+view \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_aad5094dfc8317db36468356bbc4a3e2f}{decay\+Modes}}, const double atomic\+Mass, const double atomic\+Mass\+Unc)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{structfourdst_1_1atomic_1_1_species}{Species} object with detailed properties. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a873551c1ffbdcd6867ab0d1ed34ead0b}{Species}} (const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}})
+\begin{DoxyCompactList}\small\item\em Copy constructor for \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_af5bdcc90ddafddfc027f94a98972eca3}{mass}} () const
+\begin{DoxyCompactList}\small\item\em Gets the atomic mass of the species. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_ac041c089469dc8d36548805c81492aca}{mass\+Unc}} () const
+\begin{DoxyCompactList}\small\item\em Gets the uncertainty in the atomic mass. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a34c4bb95e3c3e29087bc242d83aeefa1}{half\+Life}} () const
+\begin{DoxyCompactList}\small\item\em Gets the half-\/life of the species. \end{DoxyCompactList}\item 
+std\+::string\+\_\+view \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_afcdd2f750d8cf206e3bcc507d57dabb1}{spin\+Parity}} () const
+\begin{DoxyCompactList}\small\item\em Gets the spin and parity as a string. \end{DoxyCompactList}\item 
+std\+::string\+\_\+view \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_aad5094dfc8317db36468356bbc4a3e2f}{decay\+Modes}} () const
+\begin{DoxyCompactList}\small\item\em Gets the decay modes as a string. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_abeef75170cabef39fdaa6362780ddfc8}{binding\+Energy}} () const
+\begin{DoxyCompactList}\small\item\em Gets the binding energy of the species. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a7d0e8a3b3d30fa56bdcc59577fa9ff73}{beta\+Decay\+Energy}} () const
+\begin{DoxyCompactList}\small\item\em Gets the beta decay energy of the species. \end{DoxyCompactList}\item 
+std\+::string\+\_\+view \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a57391049d534ffd1a4b4d6ed63d65ffc}{beta\+Code}} () const
+\begin{DoxyCompactList}\small\item\em Gets the beta decay code. \end{DoxyCompactList}\item 
+std\+::string\+\_\+view \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a1fcc01fc978b34ba2531117f10be6741}{name}} () const
+\begin{DoxyCompactList}\small\item\em Gets the name of the species. \end{DoxyCompactList}\item 
+std\+::string\+\_\+view \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a326c260a1b53deafcd04c21b2787f6c4}{el}} () const
+\begin{DoxyCompactList}\small\item\em Gets the element symbol of the species. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_aa5e452accca3a9b4937867044617a032}{nz}} () const
+\begin{DoxyCompactList}\small\item\em Gets the NZ identifier of the species. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a957734e413f07adf1d570885c480768d}{n}} () const
+\begin{DoxyCompactList}\small\item\em Gets the number of neutrons. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a1d50917a60a1adb2c9912193f214fab0}{z}} () const
+\begin{DoxyCompactList}\small\item\em Gets the atomic number (number of protons). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_adc960c98d6e6051940d0a5c0d9a1183d}{a}} () const
+\begin{DoxyCompactList}\small\item\em Gets the mass number. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a0e5d73c7c629cb08f254f2bc41f6ac4b}{spin}} () const
+\begin{DoxyCompactList}\small\item\em Gets the nuclear spin as a numeric value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a4f782752e18e8972c66ee7168a06279d}{m\+\_\+name}}
+\begin{DoxyCompactList}\small\item\em Name of the species (e.\+g., "{}\+Fe56"{}). \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a704e9d164033a89d610685c494fd53eb}{m\+\_\+el}}
+\begin{DoxyCompactList}\small\item\em Element symbol (e.\+g., "{}\+Fe"{}). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a50d5e1c96be4884ccfebde1eec79b6e8}{m\+\_\+nz}}
+\begin{DoxyCompactList}\small\item\em NZ identifier, typically 1000\texorpdfstring{$\ast$}{*}Z + A. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a8f0a4eb006c924bc006bb9eb6d3907ac}{m\+\_\+n}}
+\begin{DoxyCompactList}\small\item\em Number of neutrons. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_aae24c637c169f9f5eca03b6dcf8329e0}{m\+\_\+z}}
+\begin{DoxyCompactList}\small\item\em Atomic number (number of protons). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a6e7c5ab92da7ab867018da87a14ef3ef}{m\+\_\+a}}
+\begin{DoxyCompactList}\small\item\em Mass number (N + Z). \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_acbb5b36d6892ee09e95d774eda235d3c}{m\+\_\+binding\+Energy}}
+\begin{DoxyCompactList}\small\item\em Binding energy in keV. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_abe9c5f69d657383e17dd49b41b7e4e15}{m\+\_\+beta\+Code}}
+\begin{DoxyCompactList}\small\item\em Beta decay code. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a0fc7e4b41662fe0a726dd962e9dbae9e}{m\+\_\+beta\+Decay\+Energy}}
+\begin{DoxyCompactList}\small\item\em Beta decay energy in keV. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_af76d148ab7be629601a389f5758238ee}{m\+\_\+half\+Life\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em Half-\/life in seconds. A value of -\/1.\+0 typically indicates stability. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a874bc48272e4f091817bc25a72eebc2d}{m\+\_\+spin\+Parity}}
+\begin{DoxyCompactList}\small\item\em Spin and parity as a string (e.\+g., "{}1/2-\/"{}). \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a545093f4fd3d9ad490a5bea84e950d35}{m\+\_\+decay\+Modes}}
+\begin{DoxyCompactList}\small\item\em Decay modes as a string. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_ab3e057d426e0d8dbf0134f92fda1c322}{m\+\_\+atomic\+Mass}}
+\begin{DoxyCompactList}\small\item\em Atomic mass in atomic mass units (u). \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a4c6aa98435227f8257b93311a19c4adf}{m\+\_\+atomic\+Mass\+Unc}}
+\begin{DoxyCompactList}\small\item\em Uncertainty in the atomic mass. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_af1d73b936b428aaa29b37c119e3426e7}{m\+\_\+spin}} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Nuclear spin as a double, derived from m\+\_\+spin\+Parity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_ad431f09aba3c2d8bafde06a459636965}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}})
+\begin{DoxyCompactList}\small\item\em Overloads the stream insertion operator for easy printing of a \doxylink{structfourdst_1_1atomic_1_1_species}{Species} object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a7864aa6e0ab9a953d657faf56cc921a1}{operator==}} (const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&lhs, const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&rhs)
+\begin{DoxyCompactList}\small\item\em Equality operator for \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. Compares based on name. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_ae1cc99d92a460877ec5bc28f13424c04}{operator!=}} (const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&lhs, const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&rhs)
+\begin{DoxyCompactList}\small\item\em Inequality operator for \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. Compares based on name. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_afc74eacd01f350dc20e2c7ec6a35c49b}{operator$<$}} (const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&lhs, const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&rhs)
+\begin{DoxyCompactList}\small\item\em Less-\/than operator for \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. Compares based on atomic mass. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_ab9503c9331c5746c283faa68a6ef3ef9}{operator$>$}} (const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&lhs, const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&rhs)
+\begin{DoxyCompactList}\small\item\em Greater-\/than operator for \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. Compares based on atomic mass. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents an atomic species (isotope) with its fundamental physical properties. 
+
+This struct holds data parsed from nuclear data libraries, such as atomic mass, half-\/life, and spin. It is a fundamental data structure for representing the components of a material composition.
+
+\begin{DoxyNote}{Note}
+This struct is designed to be lightweight and is primarily a data container.
+\end{DoxyNote}
+\begin{DoxyParagraph}{Usage Example}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{atomic_species_8h}{fourdst/composition/atomicSpecies.h}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main()\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Create\ a\ species\ for\ Deuterium\ (H-\/2)}}
+\DoxyCodeLine{\ \ \ \ fourdst::atomic::Species\ deuterium(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}H2"{}},\ \textcolor{stringliteral}{"{}H"{}},\ 1002,\ 1,\ 1,\ 2,\ 2224.52,\ \textcolor{stringliteral}{"{}"{}},\ 0.0,\ -\/1.0,\ \textcolor{stringliteral}{"{}1+"{}},\ \textcolor{stringliteral}{"{}"{}},\ 2.0141017781,\ 4.0e-\/11}
+\DoxyCodeLine{\ \ \ \ );}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Species:\ "{}}\ <<\ deuterium.name()\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Atomic\ Mass:\ "{}}\ <<\ deuterium.mass()\ <<\ \textcolor{stringliteral}{"{}\ u"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Spin:\ "{}}\ <<\ deuterium.spin()\ <<\ std::endl;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00048}{48}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{structfourdst_1_1atomic_1_1_species_a3756508a18b57a60f68f1b0cf58d303c}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!Species@{Species}}
+\index{Species@{Species}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{Species()}{Species()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_a3756508a18b57a60f68f1b0cf58d303c} 
+fourdst\+::atomic\+::\+Species\+::\+Species (\begin{DoxyParamCaption}\item[{const std\+::string\+\_\+view}]{name}{, }\item[{const std\+::string\+\_\+view}]{el}{, }\item[{const int}]{nz}{, }\item[{const int}]{n}{, }\item[{const int}]{z}{, }\item[{const int}]{a}{, }\item[{const double}]{binding\+Energy}{, }\item[{const std\+::string\+\_\+view}]{beta\+Code}{, }\item[{const double}]{beta\+Decay\+Energy}{, }\item[{const double}]{half\+Life\+\_\+s}{, }\item[{const std\+::string\+\_\+view}]{spin\+Parity}{, }\item[{const std\+::string\+\_\+view}]{decay\+Modes}{, }\item[{const double}]{atomic\+Mass}{, }\item[{const double}]{atomic\+Mass\+Unc}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \doxylink{structfourdst_1_1atomic_1_1_species}{Species} object with detailed properties. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the species. \\
+\hline
+{\em el} & Element symbol. \\
+\hline
+{\em nz} & NZ identifier. \\
+\hline
+{\em n} & Number of neutrons. \\
+\hline
+{\em z} & Atomic number. \\
+\hline
+{\em a} & Mass number. \\
+\hline
+{\em binding\+Energy} & Binding energy. \\
+\hline
+{\em beta\+Code} & Beta decay code. \\
+\hline
+{\em beta\+Decay\+Energy} & Beta decay energy. \\
+\hline
+{\em half\+Life\+\_\+s} & Half-\/life in seconds. \\
+\hline
+{\em spin\+Parity} & Spin and parity string. \\
+\hline
+{\em decay\+Modes} & Decay modes string. \\
+\hline
+{\em atomic\+Mass} & Atomic mass. \\
+\hline
+{\em atomic\+Mass\+Unc} & Atomic mass uncertainty.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The {\ttfamily m\+\_\+spin} member is initialized by parsing {\ttfamily m\+\_\+spin\+Parity} using {\ttfamily convert\+\_\+jpi\+\_\+to\+\_\+double}. 
+\end{DoxyPostcond}
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00085}{85}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_a873551c1ffbdcd6867ab0d1ed34ead0b}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!Species@{Species}}
+\index{Species@{Species}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{Species()}{Species()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_a873551c1ffbdcd6867ab0d1ed34ead0b} 
+fourdst\+::atomic\+::\+Species\+::\+Species (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&}]{species}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Copy constructor for \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em species} & The \doxylink{structfourdst_1_1atomic_1_1_species}{Species} object to copy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+A new \doxylink{structfourdst_1_1atomic_1_1_species}{Species} object is created as a deep copy of {\ttfamily species}. The {\ttfamily m\+\_\+spin} member is re-\/calculated. 
+\end{DoxyPostcond}
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00123}{123}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structfourdst_1_1atomic_1_1_species_adc960c98d6e6051940d0a5c0d9a1183d}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!a@{a}}
+\index{a@{a}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{a()}{a()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_adc960c98d6e6051940d0a5c0d9a1183d} 
+int fourdst\+::atomic\+::\+Species\+::a (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Gets the mass number. 
+
+\begin{DoxyReturn}{Returns}
+The mass number (A = N + Z). 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00250}{250}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_a57391049d534ffd1a4b4d6ed63d65ffc}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!betaCode@{betaCode}}
+\index{betaCode@{betaCode}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{betaCode()}{betaCode()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_a57391049d534ffd1a4b4d6ed63d65ffc} 
+std\+::string\+\_\+view fourdst\+::atomic\+::\+Species\+::beta\+Code (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Gets the beta decay code. 
+
+\begin{DoxyReturn}{Returns}
+A string\+\_\+view of the beta decay code. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00202}{202}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_a7d0e8a3b3d30fa56bdcc59577fa9ff73}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!betaDecayEnergy@{betaDecayEnergy}}
+\index{betaDecayEnergy@{betaDecayEnergy}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{betaDecayEnergy()}{betaDecayEnergy()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_a7d0e8a3b3d30fa56bdcc59577fa9ff73} 
+double fourdst\+::atomic\+::\+Species\+::beta\+Decay\+Energy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Gets the beta decay energy of the species. 
+
+\begin{DoxyReturn}{Returns}
+The beta decay energy in keV. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00194}{194}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_abeef75170cabef39fdaa6362780ddfc8}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!bindingEnergy@{bindingEnergy}}
+\index{bindingEnergy@{bindingEnergy}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{bindingEnergy()}{bindingEnergy()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_abeef75170cabef39fdaa6362780ddfc8} 
+double fourdst\+::atomic\+::\+Species\+::binding\+Energy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Gets the binding energy of the species. 
+
+\begin{DoxyReturn}{Returns}
+The binding energy in keV. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00186}{186}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_aad5094dfc8317db36468356bbc4a3e2f}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!decayModes@{decayModes}}
+\index{decayModes@{decayModes}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{decayModes()}{decayModes()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_aad5094dfc8317db36468356bbc4a3e2f} 
+std\+::string\+\_\+view fourdst\+::atomic\+::\+Species\+::decay\+Modes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Gets the decay modes as a string. 
+
+\begin{DoxyReturn}{Returns}
+A string\+\_\+view of the decay modes. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00178}{178}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_a326c260a1b53deafcd04c21b2787f6c4}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!el@{el}}
+\index{el@{el}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{el()}{el()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_a326c260a1b53deafcd04c21b2787f6c4} 
+std\+::string\+\_\+view fourdst\+::atomic\+::\+Species\+::el (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Gets the element symbol of the species. 
+
+\begin{DoxyReturn}{Returns}
+A string\+\_\+view of the element symbol (e.\+g., "{}\+Fe"{}). 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00218}{218}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_a34c4bb95e3c3e29087bc242d83aeefa1}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!halfLife@{halfLife}}
+\index{halfLife@{halfLife}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{halfLife()}{halfLife()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_a34c4bb95e3c3e29087bc242d83aeefa1} 
+double fourdst\+::atomic\+::\+Species\+::half\+Life (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Gets the half-\/life of the species. 
+
+\begin{DoxyReturn}{Returns}
+The half-\/life in seconds. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00162}{162}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_af5bdcc90ddafddfc027f94a98972eca3}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!mass@{mass}}
+\index{mass@{mass}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{mass()}{mass()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_af5bdcc90ddafddfc027f94a98972eca3} 
+double fourdst\+::atomic\+::\+Species\+::mass (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Gets the atomic mass of the species. 
+
+\begin{DoxyReturn}{Returns}
+The atomic mass in atomic mass units (u). 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00146}{146}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_ac041c089469dc8d36548805c81492aca}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!massUnc@{massUnc}}
+\index{massUnc@{massUnc}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{massUnc()}{massUnc()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_ac041c089469dc8d36548805c81492aca} 
+double fourdst\+::atomic\+::\+Species\+::mass\+Unc (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Gets the uncertainty in the atomic mass. 
+
+\begin{DoxyReturn}{Returns}
+The atomic mass uncertainty. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00154}{154}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_a957734e413f07adf1d570885c480768d}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!n@{n}}
+\index{n@{n}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{n()}{n()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_a957734e413f07adf1d570885c480768d} 
+int fourdst\+::atomic\+::\+Species\+::n (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Gets the number of neutrons. 
+
+\begin{DoxyReturn}{Returns}
+The number of neutrons (N). 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00234}{234}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_a1fcc01fc978b34ba2531117f10be6741}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!name@{name}}
+\index{name@{name}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{name()}{name()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_a1fcc01fc978b34ba2531117f10be6741} 
+std\+::string\+\_\+view fourdst\+::atomic\+::\+Species\+::name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Gets the name of the species. 
+
+\begin{DoxyReturn}{Returns}
+A string\+\_\+view of the species name (e.\+g., "{}\+Fe56"{}). 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00210}{210}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_aa5e452accca3a9b4937867044617a032}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!nz@{nz}}
+\index{nz@{nz}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{nz()}{nz()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_aa5e452accca3a9b4937867044617a032} 
+int fourdst\+::atomic\+::\+Species\+::nz (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Gets the NZ identifier of the species. 
+
+\begin{DoxyReturn}{Returns}
+The NZ identifier (1000\texorpdfstring{$\ast$}{*}Z + A). 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00226}{226}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_a0e5d73c7c629cb08f254f2bc41f6ac4b}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!spin@{spin}}
+\index{spin@{spin}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{spin()}{spin()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_a0e5d73c7c629cb08f254f2bc41f6ac4b} 
+double fourdst\+::atomic\+::\+Species\+::spin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Gets the nuclear spin as a numeric value. 
+
+\begin{DoxyReturn}{Returns}
+The spin as a double. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00258}{258}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_afcdd2f750d8cf206e3bcc507d57dabb1}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!spinParity@{spinParity}}
+\index{spinParity@{spinParity}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{spinParity()}{spinParity()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_afcdd2f750d8cf206e3bcc507d57dabb1} 
+std\+::string\+\_\+view fourdst\+::atomic\+::\+Species\+::spin\+Parity (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Gets the spin and parity as a string. 
+
+\begin{DoxyReturn}{Returns}
+A string\+\_\+view of the spin and parity (e.\+g., "{}1/2+"{}). 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00170}{170}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_a1d50917a60a1adb2c9912193f214fab0}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!z@{z}}
+\index{z@{z}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{z()}{z()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_a1d50917a60a1adb2c9912193f214fab0} 
+int fourdst\+::atomic\+::\+Species\+::z (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Gets the atomic number (number of protons). 
+
+\begin{DoxyReturn}{Returns}
+The atomic number (Z). 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00242}{242}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{structfourdst_1_1atomic_1_1_species_ae1cc99d92a460877ec5bc28f13424c04}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{operator"!=}{operator!=}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_ae1cc99d92a460877ec5bc28f13424c04} 
+bool operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&}]{lhs}{, }\item[{const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Inequality operator for \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. Compares based on name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lhs} & The left-\/hand side \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. \\
+\hline
+{\em rhs} & The right-\/hand side \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the names are different, {\ttfamily false} otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00293}{293}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_afc74eacd01f350dc20e2c7ec6a35c49b}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{operator$<$}{operator<}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_afc74eacd01f350dc20e2c7ec6a35c49b} 
+bool operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&}]{lhs}{, }\item[{const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Less-\/than operator for \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. Compares based on atomic mass. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lhs} & The left-\/hand side \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. \\
+\hline
+{\em rhs} & The right-\/hand side \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if lhs atomic mass is less than rhs atomic mass, {\ttfamily false} otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00302}{302}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_ad431f09aba3c2d8bafde06a459636965}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_ad431f09aba3c2d8bafde06a459636965} 
+std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os}{, }\item[{const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&}]{species}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Overloads the stream insertion operator for easy printing of a \doxylink{structfourdst_1_1atomic_1_1_species}{Species} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream. \\
+\hline
+{\em species} & The \doxylink{structfourdst_1_1atomic_1_1_species}{Species} object to print. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The output stream with the species name. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00268}{268}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_a7864aa6e0ab9a953d657faf56cc921a1}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!operator==@{operator==}}
+\index{operator==@{operator==}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{operator==}{operator==}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_a7864aa6e0ab9a953d657faf56cc921a1} 
+bool operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&}]{lhs}{, }\item[{const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Equality operator for \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. Compares based on name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lhs} & The left-\/hand side \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. \\
+\hline
+{\em rhs} & The right-\/hand side \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the names are identical, {\ttfamily false} otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00284}{284}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_ab9503c9331c5746c283faa68a6ef3ef9}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{operator$>$}{operator>}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_ab9503c9331c5746c283faa68a6ef3ef9} 
+bool operator$>$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&}]{lhs}{, }\item[{const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Greater-\/than operator for \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. Compares based on atomic mass. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lhs} & The left-\/hand side \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. \\
+\hline
+{\em rhs} & The right-\/hand side \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if lhs atomic mass is greater than rhs atomic mass, {\ttfamily false} otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00311}{311}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structfourdst_1_1atomic_1_1_species_a6e7c5ab92da7ab867018da87a14ef3ef}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!m\_a@{m\_a}}
+\index{m\_a@{m\_a}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{m\_a}{m\_a}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_a6e7c5ab92da7ab867018da87a14ef3ef} 
+int fourdst\+::atomic\+::\+Species\+::m\+\_\+a}
+
+
+
+Mass number (N + Z). 
+
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00054}{54}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_ab3e057d426e0d8dbf0134f92fda1c322}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!m\_atomicMass@{m\_atomicMass}}
+\index{m\_atomicMass@{m\_atomicMass}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{m\_atomicMass}{m\_atomicMass}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_ab3e057d426e0d8dbf0134f92fda1c322} 
+double fourdst\+::atomic\+::\+Species\+::m\+\_\+atomic\+Mass}
+
+
+
+Atomic mass in atomic mass units (u). 
+
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00061}{61}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_a4c6aa98435227f8257b93311a19c4adf}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!m\_atomicMassUnc@{m\_atomicMassUnc}}
+\index{m\_atomicMassUnc@{m\_atomicMassUnc}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{m\_atomicMassUnc}{m\_atomicMassUnc}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_a4c6aa98435227f8257b93311a19c4adf} 
+double fourdst\+::atomic\+::\+Species\+::m\+\_\+atomic\+Mass\+Unc}
+
+
+
+Uncertainty in the atomic mass. 
+
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00062}{62}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_abe9c5f69d657383e17dd49b41b7e4e15}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!m\_betaCode@{m\_betaCode}}
+\index{m\_betaCode@{m\_betaCode}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{m\_betaCode}{m\_betaCode}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_abe9c5f69d657383e17dd49b41b7e4e15} 
+std\+::string fourdst\+::atomic\+::\+Species\+::m\+\_\+beta\+Code}
+
+
+
+Beta decay code. 
+
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00056}{56}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_a0fc7e4b41662fe0a726dd962e9dbae9e}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!m\_betaDecayEnergy@{m\_betaDecayEnergy}}
+\index{m\_betaDecayEnergy@{m\_betaDecayEnergy}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{m\_betaDecayEnergy}{m\_betaDecayEnergy}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_a0fc7e4b41662fe0a726dd962e9dbae9e} 
+double fourdst\+::atomic\+::\+Species\+::m\+\_\+beta\+Decay\+Energy}
+
+
+
+Beta decay energy in keV. 
+
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00057}{57}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_acbb5b36d6892ee09e95d774eda235d3c}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!m\_bindingEnergy@{m\_bindingEnergy}}
+\index{m\_bindingEnergy@{m\_bindingEnergy}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{m\_bindingEnergy}{m\_bindingEnergy}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_acbb5b36d6892ee09e95d774eda235d3c} 
+double fourdst\+::atomic\+::\+Species\+::m\+\_\+binding\+Energy}
+
+
+
+Binding energy in keV. 
+
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00055}{55}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_a545093f4fd3d9ad490a5bea84e950d35}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!m\_decayModes@{m\_decayModes}}
+\index{m\_decayModes@{m\_decayModes}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{m\_decayModes}{m\_decayModes}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_a545093f4fd3d9ad490a5bea84e950d35} 
+std\+::string fourdst\+::atomic\+::\+Species\+::m\+\_\+decay\+Modes}
+
+
+
+Decay modes as a string. 
+
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00060}{60}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_a704e9d164033a89d610685c494fd53eb}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!m\_el@{m\_el}}
+\index{m\_el@{m\_el}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{m\_el}{m\_el}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_a704e9d164033a89d610685c494fd53eb} 
+std\+::string fourdst\+::atomic\+::\+Species\+::m\+\_\+el}
+
+
+
+Element symbol (e.\+g., "{}\+Fe"{}). 
+
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00050}{50}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_af76d148ab7be629601a389f5758238ee}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!m\_halfLife\_s@{m\_halfLife\_s}}
+\index{m\_halfLife\_s@{m\_halfLife\_s}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{m\_halfLife\_s}{m\_halfLife\_s}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_af76d148ab7be629601a389f5758238ee} 
+double fourdst\+::atomic\+::\+Species\+::m\+\_\+half\+Life\+\_\+s}
+
+
+
+Half-\/life in seconds. A value of -\/1.\+0 typically indicates stability. 
+
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00058}{58}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_a8f0a4eb006c924bc006bb9eb6d3907ac}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!m\_n@{m\_n}}
+\index{m\_n@{m\_n}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{m\_n}{m\_n}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_a8f0a4eb006c924bc006bb9eb6d3907ac} 
+int fourdst\+::atomic\+::\+Species\+::m\+\_\+n}
+
+
+
+Number of neutrons. 
+
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00052}{52}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_a4f782752e18e8972c66ee7168a06279d}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!m\_name@{m\_name}}
+\index{m\_name@{m\_name}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{m\_name}{m\_name}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_a4f782752e18e8972c66ee7168a06279d} 
+std\+::string fourdst\+::atomic\+::\+Species\+::m\+\_\+name}
+
+
+
+Name of the species (e.\+g., "{}\+Fe56"{}). 
+
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00049}{49}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_a50d5e1c96be4884ccfebde1eec79b6e8}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!m\_nz@{m\_nz}}
+\index{m\_nz@{m\_nz}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{m\_nz}{m\_nz}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_a50d5e1c96be4884ccfebde1eec79b6e8} 
+int fourdst\+::atomic\+::\+Species\+::m\+\_\+nz}
+
+
+
+NZ identifier, typically 1000\texorpdfstring{$\ast$}{*}Z + A. 
+
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00051}{51}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_af1d73b936b428aaa29b37c119e3426e7}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!m\_spin@{m\_spin}}
+\index{m\_spin@{m\_spin}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{m\_spin}{m\_spin}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_af1d73b936b428aaa29b37c119e3426e7} 
+double fourdst\+::atomic\+::\+Species\+::m\+\_\+spin = 0.\+0}
+
+
+
+Nuclear spin as a double, derived from m\+\_\+spin\+Parity. 
+
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00063}{63}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_a874bc48272e4f091817bc25a72eebc2d}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!m\_spinParity@{m\_spinParity}}
+\index{m\_spinParity@{m\_spinParity}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{m\_spinParity}{m\_spinParity}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_a874bc48272e4f091817bc25a72eebc2d} 
+std\+::string fourdst\+::atomic\+::\+Species\+::m\+\_\+spin\+Parity}
+
+
+
+Spin and parity as a string (e.\+g., "{}1/2-\/"{}). 
+
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00059}{59}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+\Hypertarget{structfourdst_1_1atomic_1_1_species_aae24c637c169f9f5eca03b6dcf8329e0}\index{fourdst::atomic::Species@{fourdst::atomic::Species}!m\_z@{m\_z}}
+\index{m\_z@{m\_z}!fourdst::atomic::Species@{fourdst::atomic::Species}}
+\doxysubsubsection{\texorpdfstring{m\_z}{m\_z}}
+{\footnotesize\ttfamily \label{structfourdst_1_1atomic_1_1_species_aae24c637c169f9f5eca03b6dcf8329e0} 
+int fourdst\+::atomic\+::\+Species\+::m\+\_\+z}
+
+
+
+Atomic number (number of protons). 
+
+
+
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00053}{53}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/composition/include/fourdst/composition/\mbox{\hyperlink{atomic_species_8h}{atomic\+Species.\+h}}\end{DoxyCompactItemize}

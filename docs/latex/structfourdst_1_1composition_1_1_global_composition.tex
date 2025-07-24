@@ -1,0 +1,81 @@
+\doxysection{fourdst\+::composition\+::Global\+Composition Struct Reference}
+\hypertarget{structfourdst_1_1composition_1_1_global_composition}{}\label{structfourdst_1_1composition_1_1_global_composition}\index{fourdst::composition::GlobalComposition@{fourdst::composition::GlobalComposition}}
+
+
+Represents global properties of a finalized composition.  
+
+
+
+
+{\ttfamily \#include $<$composition.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{structfourdst_1_1composition_1_1_global_composition_a0df6ecfe28d13cbffd0abcbfec9aee41}{specific\+Number\+Density}}
+\begin{DoxyCompactList}\small\item\em The specific number density (moles per unit mass, sum of X\+\_\+i/\+M\+\_\+i), where X\+\_\+i is mass fraction and M\+\_\+i is molar mass. Units\+: mol/g. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{structfourdst_1_1composition_1_1_global_composition_a9c35810d965841a755da9ce4644a2f1b}{mean\+Particle\+Mass}}
+\begin{DoxyCompactList}\small\item\em The mean mass per particle (inverse of specific number density). Units\+: g/mol. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{structfourdst_1_1composition_1_1_global_composition_a3c072a749c3648607771ac9105181f26}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{structfourdst_1_1composition_1_1_global_composition}{Global\+Composition}} \&comp)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents global properties of a finalized composition. 
+
+This struct holds derived quantities that describe the entire composition, such as mean particle mass. It is typically returned by {\ttfamily \doxylink{classfourdst_1_1composition_1_1_composition}{Composition}} methods after the composition has been finalized and is intended for internal or advanced use. 
+
+Definition at line \mbox{\hyperlink{composition_8h_source_l00069}{69}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{structfourdst_1_1composition_1_1_global_composition_a3c072a749c3648607771ac9105181f26}\index{fourdst::composition::GlobalComposition@{fourdst::composition::GlobalComposition}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!fourdst::composition::GlobalComposition@{fourdst::composition::GlobalComposition}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1_global_composition_a3c072a749c3648607771ac9105181f26} 
+std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os}{, }\item[{const \mbox{\hyperlink{structfourdst_1_1composition_1_1_global_composition}{Global\+Composition}} \&}]{comp}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00760}{760}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structfourdst_1_1composition_1_1_global_composition_a9c35810d965841a755da9ce4644a2f1b}\index{fourdst::composition::GlobalComposition@{fourdst::composition::GlobalComposition}!meanParticleMass@{meanParticleMass}}
+\index{meanParticleMass@{meanParticleMass}!fourdst::composition::GlobalComposition@{fourdst::composition::GlobalComposition}}
+\doxysubsubsection{\texorpdfstring{meanParticleMass}{meanParticleMass}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1_global_composition_a9c35810d965841a755da9ce4644a2f1b} 
+double fourdst\+::composition\+::\+Global\+Composition\+::mean\+Particle\+Mass}
+
+
+
+The mean mass per particle (inverse of specific number density). Units\+: g/mol. 
+
+
+
+Definition at line \mbox{\hyperlink{composition_8h_source_l00071}{71}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+
+\Hypertarget{structfourdst_1_1composition_1_1_global_composition_a0df6ecfe28d13cbffd0abcbfec9aee41}\index{fourdst::composition::GlobalComposition@{fourdst::composition::GlobalComposition}!specificNumberDensity@{specificNumberDensity}}
+\index{specificNumberDensity@{specificNumberDensity}!fourdst::composition::GlobalComposition@{fourdst::composition::GlobalComposition}}
+\doxysubsubsection{\texorpdfstring{specificNumberDensity}{specificNumberDensity}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1_global_composition_a0df6ecfe28d13cbffd0abcbfec9aee41} 
+double fourdst\+::composition\+::\+Global\+Composition\+::specific\+Number\+Density}
+
+
+
+The specific number density (moles per unit mass, sum of X\+\_\+i/\+M\+\_\+i), where X\+\_\+i is mass fraction and M\+\_\+i is molar mass. Units\+: mol/g. 
+
+
+
+Definition at line \mbox{\hyperlink{composition_8h_source_l00070}{70}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/composition/include/fourdst/composition/\mbox{\hyperlink{composition_8h}{composition.\+h}}\end{DoxyCompactItemize}
