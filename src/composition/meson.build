@@ -45,6 +45,12 @@ composition_dep = declare_dependency(
 composition_headers = files(
   'include/fourdst/composition/composition.h',
   'include/fourdst/composition/atomicSpecies.h',
-  'include/fourdst/composition/species.h'
+  'include/fourdst/composition/species.h',
+  'include/fourdst/composition/elements.h'
 )
 install_headers(composition_headers, subdir : 'fourdst/fourdst/composition')
+
+composition_exception_headers = files(
+    'include/fourdst/composition/exceptions/exceptions_composition.h',
+)
+install_headers(composition_exception_headers, subdir : 'fourdst/fourdst/composition/exceptions')

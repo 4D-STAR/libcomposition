@@ -429,3 +429,7 @@ TEST_F(compositionTest, getRegisteredSpecies) {
     EXPECT_EQ(*it1, fourdst::atomic::H_1);
 }
 
+TEST_F(compositionTest, getSpeciesFromAZ) {
+    EXPECT_EQ(fourdst::atomic::O_12, fourdst::atomic::az_to_species(12, 8));
+}
+

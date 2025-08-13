@@ -222,6 +222,7 @@ def formatHeader(dataFrame):
 #include <string>
 #include <limits> // Required for std::numeric_limits
 #include "fourdst/composition/atomicSpecies.h"
+#include "fourdst/composition/elements.h"
 
 namespace fourdst::atomic {{
     // Instantiate all species as static const objects.
@@ -231,6 +232,12 @@ namespace fourdst::atomic {{
     static const std::unordered_map<std::string, const Species*> species = {{
         {'\n        '.join([f'{{"{row["el"].strip()}-{row["a"]}", {mkInstanceName(row)}}},' for index, row in dataFrame.iterrows()])}
     }};
+    Species az_to_species(const int a, const int z) {{
+    const std::string element_symbol = element_symbol_map.at(static_cast<uint8_t>(z));
+        const std::string species_symbol = element_symbol + "-" + std::to_string(a);
+        return species.at(species_symbol);
+    }};
+
 }}; // namespace fourdst::atomic
 """
     return header

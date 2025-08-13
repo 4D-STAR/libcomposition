@@ -16,6 +16,7 @@
 #include <string>
 #include <limits> // Required for std::numeric_limits
 #include "fourdst/composition/atomicSpecies.h"
+#include "fourdst/composition/elements.h"
 
 namespace fourdst::atomic {
     static const Species n_1("n-1", "n", 1, 1, 0, 1, 0.0, "B-", 782.347, 609.8, "/2+*", "-=100", 1.0086649159, 0.00047);
@@ -7136,6 +7137,12 @@ namespace fourdst::atomic {
         {"Ts-294", Ts_294},
         {"Og-294", Og_294},
         {"Og-295", Og_295},
+    };
+
+    inline Species az_to_species(const int a, const int z) {
+        const std::string element_symbol = element_symbol_map.at(static_cast<uint8_t>(z));
+        const std::string species_symbol = element_symbol + "-" + std::to_string(a);
+        return species.at(species_symbol);
     };
 }; // namespace fourdst::atomic
 #ifndef SERIF_SPECIES_N_1
