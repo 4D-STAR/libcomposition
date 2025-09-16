@@ -240,6 +240,24 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac75dbc8377556c835455991c7c7fe206" id="r_ac75dbc8377556c835455991c7c7fe206"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structfourdst_1_1composition_1_1_canonical_composition.html">CanonicalComposition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac75dbc8377556c835455991c7c7fe206">getCanonicalComposition</a> (bool harsh=false) const</td></tr>
 <tr class="memdesc:ac75dbc8377556c835455991c7c7fe206"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current canonical composition (X, Y, Z).  <br /></td></tr>
 <tr class="separator:ac75dbc8377556c835455991c7c7fe206"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdbdf980297580e885ce3f124164315f" id="r_acdbdf980297580e885ce3f124164315f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acdbdf980297580e885ce3f124164315f">getMassFractionVector</a> () const</td></tr>
+<tr class="memdesc:acdbdf980297580e885ce3f124164315f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a uniform vector representation of the mass fraction stored in the composition object sorted such that the lightest species is at index 0 and the heaviest is at the last index.  <br /></td></tr>
+<tr class="separator:acdbdf980297580e885ce3f124164315f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a41242de5d49b005e0b608e79e2f2d9" id="r_a2a41242de5d49b005e0b608e79e2f2d9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a41242de5d49b005e0b608e79e2f2d9">getNumberFractionVector</a> () const</td></tr>
+<tr class="memdesc:a2a41242de5d49b005e0b608e79e2f2d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a uniform vector representation of the number fractions stored in the composition object sorted such that the lightest species is at index 0 and the heaviest is at the last index.  <br /></td></tr>
+<tr class="separator:a2a41242de5d49b005e0b608e79e2f2d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84d62b971bee83d944d2792c6850bc0b" id="r_a84d62b971bee83d944d2792c6850bc0b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84d62b971bee83d944d2792c6850bc0b">getMolarAbundanceVector</a> () const</td></tr>
+<tr class="memdesc:a84d62b971bee83d944d2792c6850bc0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a uniform vector representation of the molar abundances stored in the composition object sorted such that the lightest species is at index 0 and the heaviest is at the last index.  <br /></td></tr>
+<tr class="separator:a84d62b971bee83d944d2792c6850bc0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1204a6421205feaaed13937aefa158ba" id="r_a1204a6421205feaaed13937aefa158ba"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1204a6421205feaaed13937aefa158ba">getSpeciesIndex</a> (const std::string &amp;symbol) const</td></tr>
+<tr class="memdesc:a1204a6421205feaaed13937aefa158ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the index in the sorted vector representation for a given symbol  <br /></td></tr>
+<tr class="separator:a1204a6421205feaaed13937aefa158ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad49012cd6d78558d80198cc06ec164b1" id="r_ad49012cd6d78558d80198cc06ec164b1"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad49012cd6d78558d80198cc06ec164b1">getSpeciesIndex</a> (const <a class="el" href="structfourdst_1_1atomic_1_1_species.html">atomic::Species</a> &amp;species) const</td></tr>
+<tr class="memdesc:ad49012cd6d78558d80198cc06ec164b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the index in the sorted vector representation for a given symbol  <br /></td></tr>
+<tr class="separator:ad49012cd6d78558d80198cc06ec164b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa534a01f24074cc9edd7f41df228eb50" id="r_aa534a01f24074cc9edd7f41df228eb50"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structfourdst_1_1atomic_1_1_species.html">atomic::Species</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa534a01f24074cc9edd7f41df228eb50">getSpeciesAtIndex</a> (size_t index) const</td></tr>
+<tr class="memdesc:aa534a01f24074cc9edd7f41df228eb50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the species at a given index in the sorted vector representation.  <br /></td></tr>
+<tr class="separator:aa534a01f24074cc9edd7f41df228eb50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24a3bdeb8e8e55b54ecdee6dcb0d9561" id="r_a24a3bdeb8e8e55b54ecdee6dcb0d9561"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfourdst_1_1composition_1_1_composition.html">Composition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24a3bdeb8e8e55b54ecdee6dcb0d9561">operator+</a> (const <a class="el" href="classfourdst_1_1composition_1_1_composition.html">Composition</a> &amp;other) const</td></tr>
 <tr class="memdesc:a24a3bdeb8e8e55b54ecdee6dcb0d9561"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overloads the + operator to mix two compositions with a 50/50 fraction.  <br /></td></tr>
 <tr class="separator:a24a3bdeb8e8e55b54ecdee6dcb0d9561"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -334,11 +352,11 @@ Friends</h2></td></tr>
 <div class="line"><span class="keywordflow">if</span> (comp.<a class="code hl_function" href="#a72d063a74a9d2197065884a2cea57a14">finalize</a>()) {</div>
 <div class="line">    <span class="keywordtype">double</span> he_mass_frac = comp.<a class="code hl_function" href="#ad20bd541dd7c45274a2e586e6a0519a7">getMassFraction</a>(<span class="stringliteral">&quot;He-4&quot;</span>); <span class="comment">// Returns 0.25</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a1bc2e64f87c12befdc2bc767e7405661"><div class="ttname"><a href="#a1bc2e64f87c12befdc2bc767e7405661">fourdst::composition::Composition::registerSymbol</a></div><div class="ttdeci">void registerSymbol(const std::string &amp;symbol, bool massFracMode=true)</div><div class="ttdoc">Registers a new symbol for inclusion in the composition.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00208">composition.cpp:208</a></div></div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a1bc2e64f87c12befdc2bc767e7405661"><div class="ttname"><a href="#a1bc2e64f87c12befdc2bc767e7405661">fourdst::composition::Composition::registerSymbol</a></div><div class="ttdeci">void registerSymbol(const std::string &amp;symbol, bool massFracMode=true)</div><div class="ttdoc">Registers a new symbol for inclusion in the composition.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00233">composition.cpp:233</a></div></div>
 <div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a23b83b76ee025f6fc009184ee19bba88"><div class="ttname"><a href="#a23b83b76ee025f6fc009184ee19bba88">fourdst::composition::Composition::Composition</a></div><div class="ttdeci">Composition()=default</div><div class="ttdoc">Default constructor.</div></div>
-<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a493224656aa3ade68389250720ef09af"><div class="ttname"><a href="#a493224656aa3ade68389250720ef09af">fourdst::composition::Composition::setMassFraction</a></div><div class="ttdeci">double setMassFraction(const std::string &amp;symbol, const double &amp;mass_fraction)</div><div class="ttdoc">Sets the mass fraction for a given symbol.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00287">composition.cpp:287</a></div></div>
-<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a72d063a74a9d2197065884a2cea57a14"><div class="ttname"><a href="#a72d063a74a9d2197065884a2cea57a14">fourdst::composition::Composition::finalize</a></div><div class="ttdeci">bool finalize(bool norm=false)</div><div class="ttdoc">Finalizes the composition, making it ready for querying.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00389">composition.cpp:389</a></div></div>
-<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_ad20bd541dd7c45274a2e586e6a0519a7"><div class="ttname"><a href="#ad20bd541dd7c45274a2e586e6a0519a7">fourdst::composition::Composition::getMassFraction</a></div><div class="ttdeci">std::unordered_map&lt; std::string, double &gt; getMassFraction() const</div><div class="ttdoc">Gets the mass fractions of all species in the composition.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00534">composition.cpp:534</a></div></div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a493224656aa3ade68389250720ef09af"><div class="ttname"><a href="#a493224656aa3ade68389250720ef09af">fourdst::composition::Composition::setMassFraction</a></div><div class="ttdeci">double setMassFraction(const std::string &amp;symbol, const double &amp;mass_fraction)</div><div class="ttdoc">Sets the mass fraction for a given symbol.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00312">composition.cpp:312</a></div></div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a72d063a74a9d2197065884a2cea57a14"><div class="ttname"><a href="#a72d063a74a9d2197065884a2cea57a14">fourdst::composition::Composition::finalize</a></div><div class="ttdeci">bool finalize(bool norm=false)</div><div class="ttdoc">Finalizes the composition, making it ready for querying.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00414">composition.cpp:414</a></div></div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_ad20bd541dd7c45274a2e586e6a0519a7"><div class="ttname"><a href="#ad20bd541dd7c45274a2e586e6a0519a7">fourdst::composition::Composition::getMassFraction</a></div><div class="ttdeci">std::unordered_map&lt; std::string, double &gt; getMassFraction() const</div><div class="ttdoc">Gets the mass fractions of all species in the composition.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00559">composition.cpp:559</a></div></div>
 </div><!-- fragment --></dd></dl>
 <dl class="section user"><dt>Number Fraction Example:</dt><dd><div class="fragment"><div class="line"><a class="code hl_function" href="#a23b83b76ee025f6fc009184ee19bba88">Composition</a> comp;</div>
 <div class="line">comp.<a class="code hl_function" href="#a1bc2e64f87c12befdc2bc767e7405661">registerSymbol</a>(<span class="stringliteral">&quot;H-1&quot;</span>, <span class="keyword">false</span>); <span class="comment">// Register in number fraction mode</span></div>
@@ -348,8 +366,8 @@ Friends</h2></td></tr>
 <div class="line"><span class="keywordflow">if</span> (comp.<a class="code hl_function" href="#a72d063a74a9d2197065884a2cea57a14">finalize</a>()) {</div>
 <div class="line">    <span class="keywordtype">double</span> he_num_frac = comp.<a class="code hl_function" href="#a84fea38bc1c005e483910285f6800e15">getNumberFraction</a>(<span class="stringliteral">&quot;He-4&quot;</span>); <span class="comment">// Returns 0.1</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a7d4d748f3ee25e68751fb143717ed080"><div class="ttname"><a href="#a7d4d748f3ee25e68751fb143717ed080">fourdst::composition::Composition::setNumberFraction</a></div><div class="ttdeci">double setNumberFraction(const std::string &amp;symbol, const double &amp;number_fraction)</div><div class="ttdoc">Sets the number fraction for a given symbol.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00338">composition.cpp:338</a></div></div>
-<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a84fea38bc1c005e483910285f6800e15"><div class="ttname"><a href="#a84fea38bc1c005e483910285f6800e15">fourdst::composition::Composition::getNumberFraction</a></div><div class="ttdeci">double getNumberFraction(const std::string &amp;symbol) const</div><div class="ttdoc">Gets the number fraction for a given symbol.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00543">composition.cpp:543</a></div></div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a7d4d748f3ee25e68751fb143717ed080"><div class="ttname"><a href="#a7d4d748f3ee25e68751fb143717ed080">fourdst::composition::Composition::setNumberFraction</a></div><div class="ttdeci">double setNumberFraction(const std::string &amp;symbol, const double &amp;number_fraction)</div><div class="ttdoc">Sets the number fraction for a given symbol.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00363">composition.cpp:363</a></div></div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a84fea38bc1c005e483910285f6800e15"><div class="ttname"><a href="#a84fea38bc1c005e483910285f6800e15">fourdst::composition::Composition::getNumberFraction</a></div><div class="ttdeci">double getNumberFraction(const std::string &amp;symbol) const</div><div class="ttdoc">Gets the number fraction for a given symbol.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00568">composition.cpp:568</a></div></div>
 </div><!-- fragment --> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00258">258</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
@@ -452,7 +470,7 @@ Friends</h2></td></tr>
 <div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html"><div class="ttname"><a href="classfourdst_1_1composition_1_1_composition.html">fourdst::composition::Composition</a></div><div class="ttdoc">Manages a collection of chemical species and their abundances.</div><div class="ttdef"><b>Definition</b> <a href="composition_8h_source.html#l00258">composition.h:258</a></div></div>
 </div><!-- fragment --> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00151">151</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00176">176</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -496,7 +514,7 @@ Friends</h2></td></tr>
 <div class="line"><a class="code hl_class" href="classfourdst_1_1composition_1_1_composition.html">Composition</a> comp(symbols);</div>
 </div><!-- fragment --> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00157">157</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00182">182</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -546,7 +564,7 @@ Friends</h2></td></tr>
 <div class="line"><a class="code hl_function" href="#a23b83b76ee025f6fc009184ee19bba88">Composition</a> comp(symbols, mass_fractions); <span class="comment">// Finalized on construction</span></div>
 </div><!-- fragment --> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00163">163</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00188">188</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -573,7 +591,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00185">185</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00210">210</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -604,7 +622,7 @@ Friends</h2></td></tr>
 <p>Returns an iterator to the beginning of the composition map. </p>
 <dl class="section return"><dt>Returns</dt><dd>An iterator to the beginning. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00759">759</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00821">821</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
 
 </div>
 </div>
@@ -626,7 +644,7 @@ Friends</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel nodiscard">nodiscard</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -634,7 +652,7 @@ Friends</h2></td></tr>
 <p>Returns a const iterator to the beginning of the composition map. </p>
 <dl class="section return"><dt>Returns</dt><dd>A const iterator to the beginning. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00767">767</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00829">829</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
 
 </div>
 </div>
@@ -677,7 +695,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00741">741</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00906">906</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -707,7 +725,7 @@ Friends</h2></td></tr>
 <p>Returns an iterator to the end of the composition map. </p>
 <dl class="section return"><dt>Returns</dt><dd>An iterator to the end. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00775">775</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00837">837</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
 
 </div>
 </div>
@@ -729,7 +747,7 @@ Friends</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel nodiscard">nodiscard</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -737,7 +755,7 @@ Friends</h2></td></tr>
 <p>Returns a const iterator to the end of the composition map. </p>
 <dl class="section return"><dt>Returns</dt><dd>A const iterator to the end. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00783">783</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00845">845</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
 
 </div>
 </div>
@@ -766,7 +784,7 @@ Friends</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>True if the composition is valid and successfully finalized, false otherwise. </dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>If successful, <code>m_finalized</code> is true and global properties are computed. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00389">389</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00414">414</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -802,7 +820,7 @@ Friends</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the composition is successfully finalized, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00402">402</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00427">427</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -838,7 +856,7 @@ Friends</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the composition is successfully finalized, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00439">439</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00464">464</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -882,7 +900,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00690">690</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00715">715</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -919,7 +937,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00605">605</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00630">630</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -963,7 +981,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00600">600</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00625">625</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1007,7 +1025,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00588">588</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00613">613</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1044,7 +1062,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00534">534</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00559">559</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1088,7 +1106,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00530">530</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00555">555</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1132,7 +1150,44 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00503">503</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00528">528</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+
+</div>
+</div>
+<a id="acdbdf980297580e885ce3f124164315f" name="acdbdf980297580e885ce3f124164315f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdbdf980297580e885ce3f124164315f">&#9670;&#160;</a></span>getMassFractionVector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; double &gt; fourdst::composition::Composition::getMassFractionVector </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get a uniform vector representation of the mass fraction stored in the composition object sorted such that the lightest species is at index 0 and the heaviest is at the last index. </p>
+<p>This is primarily useful for external libraries which need to ensure that vector representation uniformity is maintained </p><dl class="section return"><dt>Returns</dt><dd>the vector of mass fractions sorted by species mass (lightest to heaviest). </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>The composition must be finalized. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classfourdst_1_1composition_1_1exceptions_1_1_composition_not_finalized_error.html" title="Exception thrown when an operation is attempted on a composition that has not been finalized.">exceptions::CompositionNotFinalizedError</a></td><td>if the composition is not finalized. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00762">762</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1169,7 +1224,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00621">621</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00646">646</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1206,7 +1261,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00613">613</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00638">638</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1250,7 +1305,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00584">584</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00609">609</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1294,7 +1349,44 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00571">571</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00596">596</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a84d62b971bee83d944d2792c6850bc0b" name="a84d62b971bee83d944d2792c6850bc0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84d62b971bee83d944d2792c6850bc0b">&#9670;&#160;</a></span>getMolarAbundanceVector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; double &gt; fourdst::composition::Composition::getMolarAbundanceVector </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get a uniform vector representation of the molar abundances stored in the composition object sorted such that the lightest species is at index 0 and the heaviest is at the last index. </p>
+<p>This is primarily useful for external libraries which need to ensure that vector representation uniformity is maintained </p><dl class="section return"><dt>Returns</dt><dd>the vector of molar abundances sorted by species mass (lightest to heaviest). </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>The composition must be finalized. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classfourdst_1_1composition_1_1exceptions_1_1_composition_not_finalized_error.html" title="Exception thrown when an operation is attempted on a composition that has not been finalized.">exceptions::CompositionNotFinalizedError</a></td><td>if the composition is not finalized. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00803">803</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1331,7 +1423,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00563">563</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00588">588</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1375,7 +1467,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00559">559</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00584">584</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1419,7 +1511,44 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00543">543</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00568">568</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a2a41242de5d49b005e0b608e79e2f2d9" name="a2a41242de5d49b005e0b608e79e2f2d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a41242de5d49b005e0b608e79e2f2d9">&#9670;&#160;</a></span>getNumberFractionVector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; double &gt; fourdst::composition::Composition::getNumberFractionVector </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get a uniform vector representation of the number fractions stored in the composition object sorted such that the lightest species is at index 0 and the heaviest is at the last index. </p>
+<p>This is primarily useful for external libraries which need to ensure that vector representation uniformity is maintained </p><dl class="section return"><dt>Returns</dt><dd>the vector of number fractions sorted by species mass (lightest to heaviest). </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>The composition must be finalized. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classfourdst_1_1composition_1_1exceptions_1_1_composition_not_finalized_error.html" title="Exception thrown when an operation is attempted on a composition that has not been finalized.">exceptions::CompositionNotFinalizedError</a></td><td>if the composition is not finalized. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00783">783</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1449,7 +1578,7 @@ Friends</h2></td></tr>
 <p>Get a set of all species that are registered in the composition. </p>
 <dl class="section return"><dt>Returns</dt><dd>A set of <code><a class="el" href="structfourdst_1_1atomic_1_1_species.html" title="Represents an atomic species (isotope) with its fundamental physical properties.">atomic::Species</a></code> objects registered in the composition. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00255">255</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00280">280</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1479,7 +1608,143 @@ Friends</h2></td></tr>
 <p>Gets the registered symbols. </p>
 <dl class="section return"><dt>Returns</dt><dd>A set of registered symbols. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00251">251</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00276">276</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aa534a01f24074cc9edd7f41df228eb50" name="aa534a01f24074cc9edd7f41df228eb50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa534a01f24074cc9edd7f41df228eb50">&#9670;&#160;</a></span>getSpeciesAtIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structfourdst_1_1atomic_1_1_species.html">atomic::Species</a> fourdst::composition::Composition::getSpeciesAtIndex </td>
+          <td>(</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the species at a given index in the sorted vector representation. </p>
+<p>This is primarily useful for external libraries which need to ensure that vector representation uniformity is maintained </p><dl class="section pre"><dt>Precondition</dt><dd>The composition must be finalized. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>The index in the sorted vector representation for which to return the species. Must be in [0, N-1] where N is the number of registered species. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classfourdst_1_1composition_1_1exceptions_1_1_composition_not_finalized_error.html" title="Exception thrown when an operation is attempted on a composition that has not been finalized.">exceptions::CompositionNotFinalizedError</a></td><td>if the composition is not finalized. </td></tr>
+    <tr><td class="paramname">std::out_of_range</td><td>if the index is out of range. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The species at the given index in the sorted vector representation. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00873">873</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ad49012cd6d78558d80198cc06ec164b1" name="ad49012cd6d78558d80198cc06ec164b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad49012cd6d78558d80198cc06ec164b1">&#9670;&#160;</a></span>getSpeciesIndex() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t fourdst::composition::Composition::getSpeciesIndex </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structfourdst_1_1atomic_1_1_species.html">atomic::Species</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>species</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>get the index in the sorted vector representation for a given symbol </p>
+<p>This is primarily useful for external libraries which need to ensure that vector representation uniformity is maintained </p><dl class="section pre"><dt>Precondition</dt><dd>The composition must be finalized. </dd>
+<dd>
+symbol must be registered in the composition </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">species</td><td>the species to look up the index for. Note that this is the index species data will be at if you were to call <a class="el" href="#a84d62b971bee83d944d2792c6850bc0b" title="Get a uniform vector representation of the molar abundances stored in the composition object sorted s...">getMolarAbundanceVector()</a>, <a class="el" href="#acdbdf980297580e885ce3f124164315f" title="Get a uniform vector representation of the mass fraction stored in the composition object sorted such...">getMassFractionVector()</a>, or <a class="el" href="#a2a41242de5d49b005e0b608e79e2f2d9" title="Get a uniform vector representation of the number fractions stored in the composition object sorted s...">getNumberFractionVector()</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classfourdst_1_1composition_1_1exceptions_1_1_composition_not_finalized_error.html" title="Exception thrown when an operation is attempted on a composition that has not been finalized.">exceptions::CompositionNotFinalizedError</a></td><td>if the composition is not finalized. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classfourdst_1_1composition_1_1exceptions_1_1_unregistered_symbol_error.html" title="Exception thrown when a symbol is used that has not been registered.">exceptions::UnregisteredSymbolError</a></td><td>if the symbol is not registered in the composition </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The index of the symbol in the sorted vector representation. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00848">848</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a1204a6421205feaaed13937aefa158ba" name="a1204a6421205feaaed13937aefa158ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1204a6421205feaaed13937aefa158ba">&#9670;&#160;</a></span>getSpeciesIndex() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t fourdst::composition::Composition::getSpeciesIndex </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>symbol</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>get the index in the sorted vector representation for a given symbol </p>
+<p>This is primarily useful for external libraries which need to ensure that vector representation uniformity is maintained </p><dl class="section pre"><dt>Precondition</dt><dd>The composition must be finalized. </dd>
+<dd>
+symbol must be registered in the composition </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">symbol</td><td>the symbol to look up the index for. Note that this is the index species data will be at if you were to call <a class="el" href="#a84d62b971bee83d944d2792c6850bc0b" title="Get a uniform vector representation of the molar abundances stored in the composition object sorted s...">getMolarAbundanceVector()</a>, <a class="el" href="#acdbdf980297580e885ce3f124164315f" title="Get a uniform vector representation of the mass fraction stored in the composition object sorted such...">getMassFractionVector()</a>, or <a class="el" href="#a2a41242de5d49b005e0b608e79e2f2d9" title="Get a uniform vector representation of the number fractions stored in the composition object sorted s...">getNumberFractionVector()</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classfourdst_1_1composition_1_1exceptions_1_1_composition_not_finalized_error.html" title="Exception thrown when an operation is attempted on a composition that has not been finalized.">exceptions::CompositionNotFinalizedError</a></td><td>if the composition is not finalized. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classfourdst_1_1composition_1_1exceptions_1_1_unregistered_symbol_error.html" title="Exception thrown when a symbol is used that has not been registered.">exceptions::UnregisteredSymbolError</a></td><td>if the symbol is not registered in the composition </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The index of the symbol in the sorted vector representation. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00823">823</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1515,7 +1780,7 @@ Friends</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the symbol is registered, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00737">737</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00902">902</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1551,7 +1816,7 @@ Friends</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the fractions are valid, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00270">270</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00295">295</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1587,7 +1852,7 @@ Friends</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the symbol is valid, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00283">283</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00308">308</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1636,7 +1901,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00473">473</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00498">498</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1672,7 +1937,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00756">756</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00921">921</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1700,7 +1965,7 @@ Friends</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00194">194</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00219">219</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1741,12 +2006,12 @@ Friends</h2></td></tr>
 <dl class="section user"><dt>Usage Example:</dt><dd><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="species_8h.html">fourdst/composition/species.h</a>&quot;</span> <span class="comment">// Assuming species like H1 are defined here</span></div>
 <div class="line"><a class="code hl_function" href="#a23b83b76ee025f6fc009184ee19bba88">Composition</a> comp;</div>
 <div class="line">comp.<a class="code hl_function" href="#a4ce00f73cc133bb1bac2b030b93ab480">registerSpecies</a>(<a class="code hl_variable" href="namespacefourdst_1_1atomic.html#a3f619cc8f8b2cd718a4082c6adb0de90">fourdst::atomic::species</a>.at(<span class="stringliteral">&quot;H-1&quot;</span>));</div>
-<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a4ce00f73cc133bb1bac2b030b93ab480"><div class="ttname"><a href="#a4ce00f73cc133bb1bac2b030b93ab480">fourdst::composition::Composition::registerSpecies</a></div><div class="ttdeci">void registerSpecies(const fourdst::atomic::Species &amp;species, bool massFracMode=true)</div><div class="ttdoc">Registers a new species by extracting its symbol.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00241">composition.cpp:241</a></div></div>
-<div class="ttc" id="anamespacefourdst_1_1atomic_html_a3f619cc8f8b2cd718a4082c6adb0de90"><div class="ttname"><a href="namespacefourdst_1_1atomic.html#a3f619cc8f8b2cd718a4082c6adb0de90">fourdst::atomic::species</a></div><div class="ttdeci">static const std::unordered_map&lt; std::string, const Species &amp; &gt; species</div><div class="ttdef"><b>Definition</b> <a href="species_8h_source.html#l03580">species.h:3580</a></div></div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a4ce00f73cc133bb1bac2b030b93ab480"><div class="ttname"><a href="#a4ce00f73cc133bb1bac2b030b93ab480">fourdst::composition::Composition::registerSpecies</a></div><div class="ttdeci">void registerSpecies(const fourdst::atomic::Species &amp;species, bool massFracMode=true)</div><div class="ttdoc">Registers a new species by extracting its symbol.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00266">composition.cpp:266</a></div></div>
+<div class="ttc" id="anamespacefourdst_1_1atomic_html_a3f619cc8f8b2cd718a4082c6adb0de90"><div class="ttname"><a href="namespacefourdst_1_1atomic.html#a3f619cc8f8b2cd718a4082c6adb0de90">fourdst::atomic::species</a></div><div class="ttdeci">static const std::unordered_map&lt; std::string, const Species &amp; &gt; species</div><div class="ttdef"><b>Definition</b> <a href="species_8h_source.html#l03581">species.h:3581</a></div></div>
 <div class="ttc" id="aspecies_8h_html"><div class="ttname"><a href="species_8h.html">species.h</a></div></div>
 </div><!-- fragment --> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00241">241</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00266">266</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1790,7 +2055,7 @@ Friends</h2></td></tr>
 <div class="line">comp.<a class="code hl_function" href="#a4ce00f73cc133bb1bac2b030b93ab480">registerSpecies</a>(my_species, <span class="keyword">false</span>); <span class="comment">// Number fraction mode</span></div>
 </div><!-- fragment --> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00245">245</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00270">270</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1833,7 +2098,7 @@ Friends</h2></td></tr>
 <div class="line">comp.<a class="code hl_function" href="#a1bc2e64f87c12befdc2bc767e7405661">registerSymbol</a>(<span class="stringliteral">&quot;He-4&quot;</span>); <span class="comment">// Must also be mass fraction mode</span></div>
 </div><!-- fragment --> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00208">208</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00233">233</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1876,7 +2141,7 @@ Friends</h2></td></tr>
 <div class="line">comp.<a class="code hl_function" href="#a1bc2e64f87c12befdc2bc767e7405661">registerSymbol</a>(symbols);</div>
 </div><!-- fragment --> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00235">235</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00260">260</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1911,7 +2176,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00669">669</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00694">694</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1952,7 +2217,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00324">324</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00349">349</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1998,7 +2263,7 @@ Friends</h2></td></tr>
 <div class="line">comp.<a class="code hl_function" href="#a493224656aa3ade68389250720ef09af">setMassFraction</a>(<span class="stringliteral">&quot;H-1&quot;</span>, 0.7);</div>
 </div><!-- fragment --> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00287">287</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00312">312</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -2037,7 +2302,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00328">328</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00353">353</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -2078,7 +2343,7 @@ Friends</h2></td></tr>
 </dl>
 <dl class="section post"><dt>Postcondition</dt><dd>The composition is marked as not finalized. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00310">310</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00335">335</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -2119,7 +2384,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00375">375</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00400">400</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -2161,7 +2426,7 @@ Friends</h2></td></tr>
 </dl>
 <dl class="section post"><dt>Postcondition</dt><dd>The composition is marked as not finalized. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00338">338</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00363">363</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -2200,7 +2465,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00379">379</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00404">404</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -2240,7 +2505,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00361">361</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00386">386</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -2289,7 +2554,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00640">640</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00665">665</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -2330,7 +2595,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00263">263</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00288">288</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -2372,7 +2637,7 @@ Friends</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The output stream. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00772">772</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00937">937</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>

@@ -3858,5 +3858,6 @@ var searchData=
   ['steps_3855',['Build Steps',['../index.html#autotoc_md2',1,'']]],
   ['subset_3856',['subset',['../classfourdst_1_1composition_1_1_composition.html#a17635cd21744c7cf86cb1eb75152c816',1,'fourdst::composition::Composition']]],
   ['switching_3857',['2. Number Fraction Composition and Mode Switching',['../index.html#autotoc_md8',1,'']]],
-  ['symbol_3858',['symbol',['../structfourdst_1_1composition_1_1_composition_entry.html#a50d18b4c27611fa9314dd756af54c2f0',1,'fourdst::composition::CompositionEntry']]]
+  ['symbol_3858',['symbol',['../structfourdst_1_1composition_1_1_composition_entry.html#a50d18b4c27611fa9314dd756af54c2f0',1,'fourdst::composition::CompositionEntry']]],
+  ['symbol_5felement_5fmap_3859',['symbol_element_map',['../namespacefourdst_1_1atomic.html#ac39cc5fb90b416556e93bdc93f627203',1,'fourdst::atomic']]]
 ];

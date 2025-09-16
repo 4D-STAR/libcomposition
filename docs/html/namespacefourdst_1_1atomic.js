@@ -267,6 +267,7 @@ var namespacefourdst_1_1atomic =
     [ "Au_208", "namespacefourdst_1_1atomic.html#a0bd121d3b47fc0e2675adca750751a4b", null ],
     [ "Au_209", "namespacefourdst_1_1atomic.html#a44faf7f0ec7dfec4cac5ee0eb9e9f254", null ],
     [ "Au_210", "namespacefourdst_1_1atomic.html#afff955be16cbe4538218312291b8afe4", null ],
+    [ "az_to_species", "namespacefourdst_1_1atomic.html#a29fe92b293db689c5da78599b8958c70", null ],
     [ "B_10", "namespacefourdst_1_1atomic.html#ac5cd3b25b3beb7010ce868e475e3ab74", null ],
     [ "B_11", "namespacefourdst_1_1atomic.html#afab1780e9187ea28b0f847f816e35f15", null ],
     [ "B_12", "namespacefourdst_1_1atomic.html#a8a04db3a85c4949266d0b81cbee5b797", null ],
@@ -3564,5 +3565,7 @@ var namespacefourdst_1_1atomic =
     [ "Zr_97", "namespacefourdst_1_1atomic.html#a3ab0772e3ab0eb92a22a708a5f30f56c", null ],
     [ "Zr_98", "namespacefourdst_1_1atomic.html#a794c1722fbda32caddf625291864a1a5", null ],
     [ "Zr_99", "namespacefourdst_1_1atomic.html#a62b790c25aa06247822b0273e8da0cd1", null ],
-    [ "species", "namespacefourdst_1_1atomic.html#a3f619cc8f8b2cd718a4082c6adb0de90", null ]
+    [ "element_symbol_map", "namespacefourdst_1_1atomic.html#a82a2234f3c538636cc10293abd30e4a8", null ],
+    [ "species", "namespacefourdst_1_1atomic.html#a3f619cc8f8b2cd718a4082c6adb0de90", null ],
+    [ "symbol_element_map", "namespacefourdst_1_1atomic.html#ac39cc5fb90b416556e93bdc93f627203", null ]
 ];
