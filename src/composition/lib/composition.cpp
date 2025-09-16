@@ -25,6 +25,8 @@
 #include <vector>
 #include <array>
 #include <ranges>
+#include <algorithm>
+
 
 #include <utility>
 
@@ -32,6 +34,29 @@
 #include "fourdst/composition/species.h"
 #include "fourdst/composition/composition.h"
 #include "fourdst/composition/exceptions/exceptions_composition.h"
+
+namespace {
+    template<typename A, typename B>
+    std::vector<A> sortVectorBy(std::vector<A> toSort, const std::vector<B>& by) {
+        std::vector<std::size_t> indices(by.size());
+        for (size_t i = 0; i < indices.size(); i++) {
+            indices[i] = i;
+        }
+
+        std::ranges::sort(indices, [&](size_t a, size_t b) {
+            return by[a] < by[b];
+        });
+
+        std::vector<A> sorted;
+        sorted.reserve(indices.size());
+
+        for (const auto idx: indices) {
+            sorted.push_back(toSort[idx]);
+        }
+
+        return sorted;
+    }
+}
 
 namespace fourdst::composition {
 
@@ -732,6 +757,146 @@ namespace fourdst::composition {
             }
         }
         return canonicalComposition;
+    }
+
+    std::vector<double> Composition::getMassFractionVector() const {
+        if (!m_finalized) {
+            LOG_ERROR(m_logger, "Composition has not been finalized. Hint: Consider running .finalize().");
+            throw exceptions::CompositionNotFinalizedError("Composition has not been finalized. Hint: Consider running .finalize().");
+        }
+
+        std::vector<double> massFractionVector;
+        std::vector<double> speciesMass;
+
+        massFractionVector.reserve(m_compositions.size());
+        speciesMass.reserve(m_compositions.size());
+
+        for (const auto &entry: m_compositions | std::views::values) {
+            massFractionVector.push_back(entry.mass_fraction());
+            speciesMass.push_back(entry.isotope().mass());
+        }
+
+        return sortVectorBy(massFractionVector, speciesMass);
+
+    }
+
+    std::vector<double> Composition::getNumberFractionVector() const {
+        if (!m_finalized) {
+            LOG_ERROR(m_logger, "Composition has not been finalized. Hint: Consider running .finalize().");
+            throw exceptions::CompositionNotFinalizedError("Composition has not been finalized. Hint: Consider running .finalize().");
+        }
+
+        std::vector<double> numberFractionVector;
+        std::vector<double> speciesMass;
+
+        numberFractionVector.reserve(m_compositions.size());
+        speciesMass.reserve(m_compositions.size());
+
+        for (const auto &entry: m_compositions | std::views::values) {
+            numberFractionVector.push_back(entry.number_fraction());
+            speciesMass.push_back(entry.isotope().mass());
+        }
+
+        return sortVectorBy(numberFractionVector, speciesMass);
+    }
+
+    std::vector<double> Composition::getMolarAbundanceVector() const {
+        if (!m_finalized) {
+            LOG_ERROR(m_logger, "Composition has not been finalized. Hint: Consider running .finalize().");
+            throw exceptions::CompositionNotFinalizedError("Composition has not been finalized. Hint: Consider running .finalize().");
+        }
+
+        std::vector<double> molarAbundanceVector;
+        std::vector<double> speciesMass;
+
+        molarAbundanceVector.reserve(m_compositions.size());
+        speciesMass.reserve(m_compositions.size());
+
+        for (const auto &entry: m_compositions | std::views::values) {
+            molarAbundanceVector.push_back(getMolarAbundance(entry.isotope()));
+            speciesMass.push_back(entry.isotope().mass());
+        }
+
+        return sortVectorBy(molarAbundanceVector, speciesMass);
+    }
+
+    size_t Composition::getSpeciesIndex(const std::string &symbol) const {
+        if (!m_finalized) {
+            LOG_ERROR(m_logger, "Composition has not been finalized. Hint: Consider running .finalize().");
+            throw exceptions::CompositionNotFinalizedError("Composition has not been finalized. Hint: Consider running .finalize().");
+        }
+        if (!m_compositions.contains(symbol)) {
+            LOG_ERROR(m_logger, "Symbol {} is not in the composition.", symbol);
+            throw exceptions::UnregisteredSymbolError("Symbol " + symbol + " is not in the composition.");
+        }
+
+        std::vector<std::string> symbols;
+        std::vector<double> speciesMass;
+
+        symbols.reserve(m_compositions.size());
+        speciesMass.reserve(m_compositions.size());
+
+        for (const auto &entry: m_compositions | std::views::values) {
+            symbols.emplace_back(entry.isotope().name());
+            speciesMass.push_back(entry.isotope().mass());
+        }
+
+        std::vector<std::string> sortedSymbols = sortVectorBy(symbols, speciesMass);
+        return std::distance(sortedSymbols.begin(), std::ranges::find(sortedSymbols, symbol));
+    }
+
+    size_t Composition::getSpeciesIndex(const atomic::Species &species) const {
+        if (!m_finalized) {
+            LOG_ERROR(m_logger, "Composition has not been finalized. Hint: Consider running .finalize().");
+            throw exceptions::CompositionNotFinalizedError("Composition has not been finalized. Hint: Consider running .finalize().");
+        }
+        if (!m_compositions.contains(static_cast<std::string>(species.name()))) {
+            LOG_ERROR(m_logger, "Species {} is not in the composition.", species.name());
+            throw exceptions::UnregisteredSymbolError("Species " + std::string(species.name()) + " is not in the composition.");
+        }
+
+        std::vector<atomic::Species> speciesVector;
+        std::vector<double> speciesMass;
+
+        speciesVector.reserve(m_compositions.size());
+        speciesMass.reserve(m_compositions.size());
+
+        for (const auto &entry: m_compositions | std::views::values) {
+            speciesVector.emplace_back(entry.isotope());
+            speciesMass.push_back(entry.isotope().mass());
+        }
+
+        std::vector<atomic::Species> sortedSpecies = sortVectorBy(speciesVector, speciesMass);
+        return std::distance(sortedSpecies.begin(), std::ranges::find(sortedSpecies, species));
+    }
+
+    atomic::Species Composition::getSpeciesAtIndex(size_t index) const {
+        if (!m_finalized) {
+            LOG_ERROR(m_logger, "Composition has not been finalized. Hint: Consider running .finalize().");
+            throw exceptions::CompositionNotFinalizedError("Composition has not been finalized. Hint: Consider running .finalize().");
+        }
+        if (index >= m_compositions.size()) {
+            LOG_ERROR(m_logger, "Index {} is out of bounds for composition of size {}.", index, m_compositions.size());
+            throw std::out_of_range("Index " + std::to_string(index) + " is out of bounds for composition of size " + std::to_string(m_compositions.size()) + ".");
+        }
+        if (index < 0) {
+            LOG_ERROR(m_logger, "Index {} is negative. Cannot get species at negative index.", index);
+            throw std::out_of_range("Index " + std::to_string(index) + " is negative. Cannot get species at negative index.");
+        }
+
+        std::vector<atomic::Species> speciesVector;
+        std::vector<double> speciesMass;
+
+        speciesVector.reserve(m_compositions.size());
+        speciesMass.reserve(m_compositions.size());
+
+        for (const auto &entry: m_compositions | std::views::values) {
+            speciesVector.emplace_back(entry.isotope());
+            speciesMass.push_back(entry.isotope().mass());
+        }
+
+        std::vector<atomic::Species> sortedSymbols = sortVectorBy(speciesVector, speciesMass);
+        return sortedSymbols.at(index);
     }
 
     bool Composition::hasSymbol(const std::string& symbol) const {

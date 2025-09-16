@@ -735,6 +735,68 @@ namespace fourdst::composition {
         [[nodiscard]] CanonicalComposition getCanonicalComposition(bool harsh=false) const;
 
         /**
+         * @brief Get a uniform vector representation of the mass fraction stored in the composition object sorted such that the lightest species is at index 0 and the heaviest is at the last index.
+         * @details This is primarily useful for external libraries which need to ensure that vector representation uniformity is maintained
+         * @return the vector of mass fractions sorted by species mass (lightest to heaviest).
+         * @pre The composition must be finalized.
+         * @throws exceptions::CompositionNotFinalizedError if the composition is not finalized.
+         */
+        [[nodiscard]] std::vector<double> getMassFractionVector() const;
+
+        /**
+         * @brief Get a uniform vector representation of the number fractions stored in the composition object sorted such that the lightest species is at index 0 and the heaviest is at the last index.
+         * @details This is primarily useful for external libraries which need to ensure that vector representation uniformity is maintained
+         * @return the vector of number fractions sorted by species mass (lightest to heaviest).
+         * @pre The composition must be finalized.
+         * @throws exceptions::CompositionNotFinalizedError if the composition is not finalized.
+         */
+        [[nodiscard]] std::vector<double> getNumberFractionVector() const;
+
+        /**
+         * @brief Get a uniform vector representation of the molar abundances stored in the composition object sorted such that the lightest species is at index 0 and the heaviest is at the last index.
+         * @details This is primarily useful for external libraries which need to ensure that vector representation uniformity is maintained
+         * @return the vector of molar abundances sorted by species mass (lightest to heaviest).
+         * @pre The composition must be finalized.
+         * @throws exceptions::CompositionNotFinalizedError if the composition is not finalized.
+         */
+        [[nodiscard]] std::vector<double> getMolarAbundanceVector() const;
+
+        /**
+         * @brief get the index in the sorted vector representation for a given symbol
+         * @details This is primarily useful for external libraries which need to ensure that vector representation uniformity is maintained
+         * @pre The composition must be finalized.
+         * @pre symbol must be registered in the composition
+         * @param symbol the symbol to look up the index for. Note that this is the index species data will be at if you were to call getMolarAbundanceVector(), getMassFractionVector(), or getNumberFractionVector()
+         * @throws exceptions::CompositionNotFinalizedError if the composition is not finalized.
+         * @throws exceptions::UnregisteredSymbolError if the symbol is not registered in the composition
+         * @return The index of the symbol in the sorted vector representation.
+         */
+        [[nodiscard]] size_t getSpeciesIndex(const std::string& symbol) const;
+
+        /**
+         * @brief get the index in the sorted vector representation for a given symbol
+         * @details This is primarily useful for external libraries which need to ensure that vector representation uniformity is maintained
+         * @pre The composition must be finalized.
+         * @pre symbol must be registered in the composition
+         * @param species the species to look up the index for. Note that this is the index species data will be at if you were to call getMolarAbundanceVector(), getMassFractionVector(), or getNumberFractionVector()
+         * @throws exceptions::CompositionNotFinalizedError if the composition is not finalized.
+         * @throws exceptions::UnregisteredSymbolError if the symbol is not registered in the composition
+         * @return The index of the symbol in the sorted vector representation.
+         */
+        [[nodiscard]] size_t getSpeciesIndex(const atomic::Species& species) const;
+
+        /**
+         * @brief Get the species at a given index in the sorted vector representation.
+         * @details This is primarily useful for external libraries which need to ensure that vector representation uniformity is maintained
+         * @pre The composition must be finalized.
+         * @param index The index in the sorted vector representation for which to return the species. Must be in [0, N-1] where N is the number of registered species.
+         * @throws exceptions::CompositionNotFinalizedError if the composition is not finalized.
+         * @throws std::out_of_range if the index is out of range.
+         * @return The species at the given index in the sorted vector representation.
+         */
+        [[nodiscard]] atomic::Species getSpeciesAtIndex(size_t index) const;
+
+        /**
          * @brief Overloaded output stream operator for Composition.
          * @param os The output stream.
          * @param composition The Composition to output.
@@ -764,7 +826,7 @@ namespace fourdst::composition {
          * @brief Returns a const iterator to the beginning of the composition map.
          * @return A const iterator to the beginning.
          */
-        auto begin() const {
+        [[nodiscard]] auto begin() const {
             return m_compositions.cbegin();
         }
 
@@ -780,7 +842,7 @@ namespace fourdst::composition {
          * @brief Returns a const iterator to the end of the composition map.
          * @return A const iterator to the end.
          */
-        auto end() const {
+        [[nodiscard]] auto end() const {
             return m_compositions.cend();
         }
 
