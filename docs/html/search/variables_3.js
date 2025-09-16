@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['y_0',['Y',['../structfourdst_1_1composition_1_1_canonical_composition.html#a93927bfccc5d2b3906565d092ed4f7f4',1,'fourdst::composition::CanonicalComposition']]]
+  ['x_0',['X',['../structfourdst_1_1composition_1_1_canonical_composition.html#abe5b01574242f8eaabd00c3d653291f7',1,'fourdst::composition::CanonicalComposition']]]
 ];

@@ -7138,9 +7138,15 @@ static const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \mb
 static const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \mbox{\hyperlink{namespacefourdst_1_1atomic_ad34259c587ac92df0678beea6fde37bc}{Og\+\_\+294}} ("{}Og-\/294"{}, "{}Og"{}, 58, 176, 118, 294, 7079.\+0, "{}B-\/"{}, std\+::numeric\+\_\+limits$<$ double $>$\+::quiet\+\_\+\+NaN(), 0.\+7, "{}+"{}, "{}\texorpdfstring{$\sim$}{\string~}100; SF ?"{}, 294.\+213979, 594.\+0)
 \item 
 static const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \mbox{\hyperlink{namespacefourdst_1_1atomic_a65016df026582f5d1718fd741c25b675}{Og\+\_\+295}} ("{}Og-\/295"{}, "{}Og"{}, 59, 177, 118, 295, 7076.\+0, "{}B-\/"{}, std\+::numeric\+\_\+limits$<$ double $>$\+::quiet\+\_\+\+NaN(), 680.\+0, "{}"{}, "{}\texorpdfstring{$\sim$}{\string~}100"{}, 295.\+216178, 703.\+0)
+\item 
+\mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \mbox{\hyperlink{namespacefourdst_1_1atomic_a29fe92b293db689c5da78599b8958c70}{az\+\_\+to\+\_\+species}} (const int a, const int z)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
+\item 
+static const std\+::unordered\+\_\+map$<$ uint8\+\_\+t, std\+::string $>$ \mbox{\hyperlink{namespacefourdst_1_1atomic_a82a2234f3c538636cc10293abd30e4a8}{element\+\_\+symbol\+\_\+map}}
+\item 
+static const std\+::unordered\+\_\+map$<$ std\+::string, uint8\+\_\+t $>$ \mbox{\hyperlink{namespacefourdst_1_1atomic_ac39cc5fb90b416556e93bdc93f627203}{symbol\+\_\+element\+\_\+map}}
 \item 
 static const std\+::unordered\+\_\+map$<$ std\+::string, const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \& $>$ \mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}
 \end{DoxyCompactItemize}
@@ -8745,6 +8751,16 @@ static const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} fou
 \doxysubsubsection{\texorpdfstring{Au\_210()}{Au\_210()}}
 {\footnotesize\ttfamily \label{namespacefourdst_1_1atomic_afff955be16cbe4538218312291b8afe4} 
 static const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} fourdst\+::atomic\+::\+Au\+\_\+210 (\begin{DoxyParamCaption}\item[{"{}Au-\/210"{}}]{}{, }\item[{"{}Au"{}}]{}{, }\item[{52}]{}{, }\item[{131}]{}{, }\item[{79}]{}{, }\item[{210}]{}{, }\item[{7764.}]{0}{, }\item[{"{}B-\/"{}}]{}{, }\item[{7980.}]{0}{, }\item[{10.}]{0}{, }\item[{"{}+\#"{}}]{}{, }\item[{"{}-\/ ?;B-\/n ?"{}}]{}{, }\item[{210.}]{002877}{, }\item[{429.}]{0}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{namespacefourdst_1_1atomic_a29fe92b293db689c5da78599b8958c70}\index{fourdst::atomic@{fourdst::atomic}!az\_to\_species@{az\_to\_species}}
+\index{az\_to\_species@{az\_to\_species}!fourdst::atomic@{fourdst::atomic}}
+\doxysubsubsection{\texorpdfstring{az\_to\_species()}{az\_to\_species()}}
+{\footnotesize\ttfamily \label{namespacefourdst_1_1atomic_a29fe92b293db689c5da78599b8958c70} 
+\mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} fourdst\+::atomic\+::az\+\_\+to\+\_\+species (\begin{DoxyParamCaption}\item[{const int}]{a}{, }\item[{const int}]{z}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{species_8h_source_l07142}{7142}} of file \mbox{\hyperlink{species_8h_source}{species.\+h}}.
 
 \Hypertarget{namespacefourdst_1_1atomic_ac5cd3b25b3beb7010ce868e475e3ab74}\index{fourdst::atomic@{fourdst::atomic}!B\_10@{B\_10}}
 \index{B\_10@{B\_10}!fourdst::atomic@{fourdst::atomic}}
@@ -11354,7 +11370,7 @@ The spin value as a {\ttfamily double}. Returns {\ttfamily NaN} for invalid or u
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00345}{345}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00348}{348}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
 
 \Hypertarget{namespacefourdst_1_1atomic_a13193b662eaa33853d6bd4afff1eb794}\index{fourdst::atomic@{fourdst::atomic}!Cr\_41@{Cr\_41}}
 \index{Cr\_41@{Cr\_41}!fourdst::atomic@{fourdst::atomic}}
@@ -19466,7 +19482,7 @@ Inequality operator for \doxylink{structfourdst_1_1atomic_1_1_species}{Species}.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00293}{293}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00296}{296}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
 
 \Hypertarget{namespacefourdst_1_1atomic_a34d001fa83e2bac9f8ebd96285d8821a}\index{fourdst::atomic@{fourdst::atomic}!operator$<$@{operator$<$}}
 \index{operator$<$@{operator$<$}!fourdst::atomic@{fourdst::atomic}}
@@ -19490,7 +19506,7 @@ Less-\/than operator for \doxylink{structfourdst_1_1atomic_1_1_species}{Species}
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00302}{302}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00305}{305}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
 
 \Hypertarget{namespacefourdst_1_1atomic_a277fa6e5107f1358e204c807146deeb4}\index{fourdst::atomic@{fourdst::atomic}!operator==@{operator==}}
 \index{operator==@{operator==}!fourdst::atomic@{fourdst::atomic}}
@@ -19514,7 +19530,7 @@ Equality operator for \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. C
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00284}{284}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00287}{287}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
 
 \Hypertarget{namespacefourdst_1_1atomic_a289c90cf53fd83e6808768b0befa2c00}\index{fourdst::atomic@{fourdst::atomic}!operator$>$@{operator$>$}}
 \index{operator$>$@{operator$>$}!fourdst::atomic@{fourdst::atomic}}
@@ -19538,7 +19554,7 @@ Greater-\/than operator for \doxylink{structfourdst_1_1atomic_1_1_species}{Speci
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00311}{311}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
+Definition at line \mbox{\hyperlink{atomic_species_8h_source_l00314}{314}} of file \mbox{\hyperlink{atomic_species_8h_source}{atomic\+Species.\+h}}.
 
 \Hypertarget{namespacefourdst_1_1atomic_a7d0b9b726da85668c21671df0da21200}\index{fourdst::atomic@{fourdst::atomic}!Os\_161@{Os\_161}}
 \index{Os\_161@{Os\_161}!fourdst::atomic@{fourdst::atomic}}
@@ -28651,6 +28667,16 @@ static const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} fou
 
 
 \doxysubsection{Variable Documentation}
+\Hypertarget{namespacefourdst_1_1atomic_a82a2234f3c538636cc10293abd30e4a8}\index{fourdst::atomic@{fourdst::atomic}!element\_symbol\_map@{element\_symbol\_map}}
+\index{element\_symbol\_map@{element\_symbol\_map}!fourdst::atomic@{fourdst::atomic}}
+\doxysubsubsection{\texorpdfstring{element\_symbol\_map}{element\_symbol\_map}}
+{\footnotesize\ttfamily \label{namespacefourdst_1_1atomic_a82a2234f3c538636cc10293abd30e4a8} 
+const std\+::unordered\+\_\+map$<$uint8\+\_\+t, std\+::string$>$ fourdst\+::atomic\+::element\+\_\+symbol\+\_\+map\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{elements_8h_source_l00008}{8}} of file \mbox{\hyperlink{elements_8h_source}{elements.\+h}}.
+
 \Hypertarget{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}\index{fourdst::atomic@{fourdst::atomic}!species@{species}}
 \index{species@{species}!fourdst::atomic@{fourdst::atomic}}
 \doxysubsubsection{\texorpdfstring{species}{species}}
@@ -28659,5 +28685,15 @@ const std\+::unordered\+\_\+map$<$std\+::string, const \mbox{\hyperlink{structfo
 
 
 
-Definition at line \mbox{\hyperlink{species_8h_source_l03580}{3580}} of file \mbox{\hyperlink{species_8h_source}{species.\+h}}.
+Definition at line \mbox{\hyperlink{species_8h_source_l03581}{3581}} of file \mbox{\hyperlink{species_8h_source}{species.\+h}}.
+
+\Hypertarget{namespacefourdst_1_1atomic_ac39cc5fb90b416556e93bdc93f627203}\index{fourdst::atomic@{fourdst::atomic}!symbol\_element\_map@{symbol\_element\_map}}
+\index{symbol\_element\_map@{symbol\_element\_map}!fourdst::atomic@{fourdst::atomic}}
+\doxysubsubsection{\texorpdfstring{symbol\_element\_map}{symbol\_element\_map}}
+{\footnotesize\ttfamily \label{namespacefourdst_1_1atomic_ac39cc5fb90b416556e93bdc93f627203} 
+const std\+::unordered\+\_\+map$<$std\+::string, uint8\+\_\+t$>$ fourdst\+::atomic\+::symbol\+\_\+element\+\_\+map\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{elements_8h_source_l00128}{128}} of file \mbox{\hyperlink{elements_8h_source}{elements.\+h}}.
 

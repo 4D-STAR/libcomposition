@@ -94,6 +94,18 @@ void \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a0af981ed1074b
 \begin{DoxyCompactList}\small\item\em Sets the composition mode (mass fraction vs. number fraction). \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structfourdst_1_1composition_1_1_canonical_composition}{Canonical\+Composition}} \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ac75dbc8377556c835455991c7c7fe206}{get\+Canonical\+Composition}} (bool harsh=false) const
 \begin{DoxyCompactList}\small\item\em Gets the current canonical composition (X, Y, Z). \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_acdbdf980297580e885ce3f124164315f}{get\+Mass\+Fraction\+Vector}} () const
+\begin{DoxyCompactList}\small\item\em Get a uniform vector representation of the mass fraction stored in the composition object sorted such that the lightest species is at index 0 and the heaviest is at the last index. \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a2a41242de5d49b005e0b608e79e2f2d9}{get\+Number\+Fraction\+Vector}} () const
+\begin{DoxyCompactList}\small\item\em Get a uniform vector representation of the number fractions stored in the composition object sorted such that the lightest species is at index 0 and the heaviest is at the last index. \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a84d62b971bee83d944d2792c6850bc0b}{get\+Molar\+Abundance\+Vector}} () const
+\begin{DoxyCompactList}\small\item\em Get a uniform vector representation of the molar abundances stored in the composition object sorted such that the lightest species is at index 0 and the heaviest is at the last index. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a1204a6421205feaaed13937aefa158ba}{get\+Species\+Index}} (const std\+::string \&symbol) const
+\begin{DoxyCompactList}\small\item\em get the index in the sorted vector representation for a given symbol \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ad49012cd6d78558d80198cc06ec164b1}{get\+Species\+Index}} (const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} \&species) const
+\begin{DoxyCompactList}\small\item\em get the index in the sorted vector representation for a given symbol \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa534a01f24074cc9edd7f41df228eb50}{get\+Species\+At\+Index}} (size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em Get the species at a given index in the sorted vector representation. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a24a3bdeb8e8e55b54ecdee6dcb0d9561}{operator+}} (const \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} \&other) const
 \begin{DoxyCompactList}\small\item\em Overloads the + operator to mix two compositions with a 50/50 fraction. \end{DoxyCompactList}\item 
 auto \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ab1701644ff1c83c220dc04eb58d1621b}{begin}} ()
@@ -258,7 +270,7 @@ Constructs a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition}
 \end{DoxyParagraph}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00151}{151}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00176}{176}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a2d6fbe5c8142b358641bbe7ffde51053}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!Composition@{Composition}}
 \index{Composition@{Composition}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -291,7 +303,7 @@ Constructs a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition}
 \end{DoxyParagraph}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00157}{157}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00182}{182}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_af4d4cc5875cba931a91faee13f55594e}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!Composition@{Composition}}
 \index{Composition@{Composition}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -334,7 +346,7 @@ The composition is immediately finalized.
 \end{DoxyParagraph}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00163}{163}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00188}{188}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a21369a80378d4c90438a34f0e4a275ca}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!Composition@{Composition}}
 \index{Composition@{Composition}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -353,7 +365,7 @@ Constructs a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition}
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00185}{185}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00210}{210}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 
 
@@ -373,13 +385,13 @@ An iterator to the beginning.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{composition_8h_source_l00759}{759}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+Definition at line \mbox{\hyperlink{composition_8h_source_l00821}{821}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_adf41a833e8b704daf4f581fca5c8cb9b}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!begin@{begin}}
 \index{begin@{begin}!fourdst::composition::Composition@{fourdst::composition::Composition}}
 \doxysubsubsection{\texorpdfstring{begin()}{begin()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_adf41a833e8b704daf4f581fca5c8cb9b} 
-auto fourdst\+::composition\+::\+Composition\+::begin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+auto fourdst\+::composition\+::\+Composition\+::begin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
 
 
 
@@ -390,7 +402,7 @@ A const iterator to the beginning.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{composition_8h_source_l00767}{767}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+Definition at line \mbox{\hyperlink{composition_8h_source_l00829}{829}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_acb08478f7032ecc13cb02283a18187e9}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!contains@{contains}}
 \index{contains@{contains}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -420,7 +432,7 @@ True if the isotope is in the composition, false otherwise.
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00741}{741}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00906}{906}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_adeaf6f1213e78cb1fe8a8317f0a8adc2}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!end@{end}}
 \index{end@{end}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -437,13 +449,13 @@ An iterator to the end.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{composition_8h_source_l00775}{775}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+Definition at line \mbox{\hyperlink{composition_8h_source_l00837}{837}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_aed2f5676f8f742199f01e4d1e9664bdd}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!end@{end}}
 \index{end@{end}!fourdst::composition::Composition@{fourdst::composition::Composition}}
 \doxysubsubsection{\texorpdfstring{end()}{end()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_aed2f5676f8f742199f01e4d1e9664bdd} 
-auto fourdst\+::composition\+::\+Composition\+::end (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+auto fourdst\+::composition\+::\+Composition\+::end (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
 
 
 
@@ -454,7 +466,7 @@ A const iterator to the end.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{composition_8h_source_l00783}{783}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+Definition at line \mbox{\hyperlink{composition_8h_source_l00845}{845}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a72d063a74a9d2197065884a2cea57a14}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!finalize@{finalize}}
 \index{finalize@{finalize}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -479,7 +491,7 @@ If successful, {\ttfamily m\+\_\+finalized} is true and global properties are co
 \end{DoxyPostcond}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00389}{389}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00414}{414}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a869dbae3db9d09c57b2df56a813a55fb}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!finalizeMassFracMode@{finalizeMassFracMode}}
 \index{finalizeMassFracMode@{finalizeMassFracMode}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -501,7 +513,7 @@ True if the composition is successfully finalized, false otherwise.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00402}{402}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00427}{427}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a461ab4e9cb5975cf865db5f16f03ddfe}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!finalizeNumberFracMode@{finalizeNumberFracMode}}
 \index{finalizeNumberFracMode@{finalizeNumberFracMode}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -523,7 +535,7 @@ True if the composition is successfully finalized, false otherwise.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00439}{439}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00464}{464}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_ac75dbc8377556c835455991c7c7fe206}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getCanonicalComposition@{getCanonicalComposition}}
 \index{getCanonicalComposition@{getCanonicalComposition}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -555,7 +567,7 @@ The {\ttfamily \doxylink{structfourdst_1_1composition_1_1_canonical_composition}
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00690}{690}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00715}{715}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a1138c86f7ccd39594601c2ec63ad89e9}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getComposition@{getComposition}}
 \index{getComposition@{getComposition}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -580,7 +592,7 @@ A pair containing an unordered map of all Composition\+Entries and the \doxylink
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00605}{605}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00630}{630}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_afe5f1086027044c84ff35a366b2e8e2d}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getComposition@{getComposition}}
 \index{getComposition@{getComposition}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -612,7 +624,7 @@ A pair containing the \doxylink{structfourdst_1_1composition_1_1_composition_ent
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00600}{600}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00625}{625}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a092d3536b04167ea2e6e3a3b1446c377}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getComposition@{getComposition}}
 \index{getComposition@{getComposition}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -644,7 +656,7 @@ A pair containing the \doxylink{structfourdst_1_1composition_1_1_composition_ent
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00588}{588}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00613}{613}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_ad20bd541dd7c45274a2e586e6a0519a7}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getMassFraction@{getMassFraction}}
 \index{getMassFraction@{getMassFraction}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -669,7 +681,7 @@ An unordered map of symbols to their mass fractions.
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00534}{534}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00559}{559}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_aa3ba0c742872384cff3ed03789c0a17d}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getMassFraction@{getMassFraction}}
 \index{getMassFraction@{getMassFraction}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -701,7 +713,7 @@ The mass fraction for the given isotope.
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00530}{530}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00555}{555}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a7f6a6edf02b55eeecf147c3f1f7f55e7}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getMassFraction@{getMassFraction}}
 \index{getMassFraction@{getMassFraction}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -733,7 +745,32 @@ The mass fraction for the given symbol.
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00503}{503}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00528}{528}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1_composition_acdbdf980297580e885ce3f124164315f}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getMassFractionVector@{getMassFractionVector}}
+\index{getMassFractionVector@{getMassFractionVector}!fourdst::composition::Composition@{fourdst::composition::Composition}}
+\doxysubsubsection{\texorpdfstring{getMassFractionVector()}{getMassFractionVector()}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_acdbdf980297580e885ce3f124164315f} 
+std\+::vector$<$ double $>$ fourdst\+::composition\+::\+Composition\+::get\+Mass\+Fraction\+Vector (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Get a uniform vector representation of the mass fraction stored in the composition object sorted such that the lightest species is at index 0 and the heaviest is at the last index. 
+
+This is primarily useful for external libraries which need to ensure that vector representation uniformity is maintained \begin{DoxyReturn}{Returns}
+the vector of mass fractions sorted by species mass (lightest to heaviest). 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+The composition must be finalized. 
+\end{DoxyPrecond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classfourdst_1_1composition_1_1exceptions_1_1_composition_not_finalized_error}{exceptions\+::\+Composition\+Not\+Finalized\+Error}} & if the composition is not finalized. \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00762}{762}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a98199f435cb553f5cf4f8e520fdb8a7a}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getMeanAtomicNumber@{getMeanAtomicNumber}}
 \index{getMeanAtomicNumber@{getMeanAtomicNumber}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -758,7 +795,7 @@ Mean atomic number $<$\+Z$>$.
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00621}{621}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00646}{646}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a66401fed7054172e9b1a2687e5cc8eff}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getMeanParticleMass@{getMeanParticleMass}}
 \index{getMeanParticleMass@{getMeanParticleMass}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -783,7 +820,7 @@ Mean particle mass in atomic mass units (g/mol).
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00613}{613}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00638}{638}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a84d6552e2b762fabb7bddf68b05c4022}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getMolarAbundance@{getMolarAbundance}}
 \index{getMolarAbundance@{getMolarAbundance}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -815,7 +852,7 @@ The molar abundance for the given isotope.
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00584}{584}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00609}{609}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a67a2ed844f3aee3d9cc1a3cb996eb56f}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getMolarAbundance@{getMolarAbundance}}
 \index{getMolarAbundance@{getMolarAbundance}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -847,7 +884,32 @@ The molar abundance for the given symbol.
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00571}{571}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00596}{596}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1_composition_a84d62b971bee83d944d2792c6850bc0b}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getMolarAbundanceVector@{getMolarAbundanceVector}}
+\index{getMolarAbundanceVector@{getMolarAbundanceVector}!fourdst::composition::Composition@{fourdst::composition::Composition}}
+\doxysubsubsection{\texorpdfstring{getMolarAbundanceVector()}{getMolarAbundanceVector()}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_a84d62b971bee83d944d2792c6850bc0b} 
+std\+::vector$<$ double $>$ fourdst\+::composition\+::\+Composition\+::get\+Molar\+Abundance\+Vector (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Get a uniform vector representation of the molar abundances stored in the composition object sorted such that the lightest species is at index 0 and the heaviest is at the last index. 
+
+This is primarily useful for external libraries which need to ensure that vector representation uniformity is maintained \begin{DoxyReturn}{Returns}
+the vector of molar abundances sorted by species mass (lightest to heaviest). 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+The composition must be finalized. 
+\end{DoxyPrecond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classfourdst_1_1composition_1_1exceptions_1_1_composition_not_finalized_error}{exceptions\+::\+Composition\+Not\+Finalized\+Error}} & if the composition is not finalized. \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00803}{803}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a7731df9b30f8c8f13231f7e1a17b105c}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getNumberFraction@{getNumberFraction}}
 \index{getNumberFraction@{getNumberFraction}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -872,7 +934,7 @@ An unordered map of symbols to their number fractions.
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00563}{563}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00588}{588}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_aa0ce4143a267e96ab7967538c76acdc3}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getNumberFraction@{getNumberFraction}}
 \index{getNumberFraction@{getNumberFraction}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -904,7 +966,7 @@ The number fraction for the given isotope.
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00559}{559}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00584}{584}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a84fea38bc1c005e483910285f6800e15}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getNumberFraction@{getNumberFraction}}
 \index{getNumberFraction@{getNumberFraction}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -936,7 +998,32 @@ The number fraction for the given symbol.
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00543}{543}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00568}{568}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1_composition_a2a41242de5d49b005e0b608e79e2f2d9}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getNumberFractionVector@{getNumberFractionVector}}
+\index{getNumberFractionVector@{getNumberFractionVector}!fourdst::composition::Composition@{fourdst::composition::Composition}}
+\doxysubsubsection{\texorpdfstring{getNumberFractionVector()}{getNumberFractionVector()}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_a2a41242de5d49b005e0b608e79e2f2d9} 
+std\+::vector$<$ double $>$ fourdst\+::composition\+::\+Composition\+::get\+Number\+Fraction\+Vector (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Get a uniform vector representation of the number fractions stored in the composition object sorted such that the lightest species is at index 0 and the heaviest is at the last index. 
+
+This is primarily useful for external libraries which need to ensure that vector representation uniformity is maintained \begin{DoxyReturn}{Returns}
+the vector of number fractions sorted by species mass (lightest to heaviest). 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+The composition must be finalized. 
+\end{DoxyPrecond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classfourdst_1_1composition_1_1exceptions_1_1_composition_not_finalized_error}{exceptions\+::\+Composition\+Not\+Finalized\+Error}} & if the composition is not finalized. \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00783}{783}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a3dee7b5e1f54920de9eab99f95a516ec}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getRegisteredSpecies@{getRegisteredSpecies}}
 \index{getRegisteredSpecies@{getRegisteredSpecies}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -953,7 +1040,7 @@ A set of {\ttfamily \doxylink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+S
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00255}{255}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00280}{280}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a84c7b72c2aee46b94492d404855dd3e0}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getRegisteredSymbols@{getRegisteredSymbols}}
 \index{getRegisteredSymbols@{getRegisteredSymbols}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -970,7 +1057,107 @@ A set of registered symbols.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00251}{251}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00276}{276}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1_composition_aa534a01f24074cc9edd7f41df228eb50}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getSpeciesAtIndex@{getSpeciesAtIndex}}
+\index{getSpeciesAtIndex@{getSpeciesAtIndex}!fourdst::composition::Composition@{fourdst::composition::Composition}}
+\doxysubsubsection{\texorpdfstring{getSpeciesAtIndex()}{getSpeciesAtIndex()}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_aa534a01f24074cc9edd7f41df228eb50} 
+\mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} fourdst\+::composition\+::\+Composition\+::get\+Species\+At\+Index (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Get the species at a given index in the sorted vector representation. 
+
+This is primarily useful for external libraries which need to ensure that vector representation uniformity is maintained \begin{DoxyPrecond}{Precondition}
+The composition must be finalized. 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index in the sorted vector representation for which to return the species. Must be in \mbox{[}0, N-\/1\mbox{]} where N is the number of registered species. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classfourdst_1_1composition_1_1exceptions_1_1_composition_not_finalized_error}{exceptions\+::\+Composition\+Not\+Finalized\+Error}} & if the composition is not finalized. \\
+\hline
+{\em std\+::out\+\_\+of\+\_\+range} & if the index is out of range. \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+The species at the given index in the sorted vector representation. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00873}{873}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1_composition_ad49012cd6d78558d80198cc06ec164b1}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getSpeciesIndex@{getSpeciesIndex}}
+\index{getSpeciesIndex@{getSpeciesIndex}!fourdst::composition::Composition@{fourdst::composition::Composition}}
+\doxysubsubsection{\texorpdfstring{getSpeciesIndex()}{getSpeciesIndex()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_ad49012cd6d78558d80198cc06ec164b1} 
+size\+\_\+t fourdst\+::composition\+::\+Composition\+::get\+Species\+Index (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} \&}]{species}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+get the index in the sorted vector representation for a given symbol 
+
+This is primarily useful for external libraries which need to ensure that vector representation uniformity is maintained \begin{DoxyPrecond}{Precondition}
+The composition must be finalized. 
+
+symbol must be registered in the composition 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em species} & the species to look up the index for. Note that this is the index species data will be at if you were to call \doxylink{classfourdst_1_1composition_1_1_composition_a84d62b971bee83d944d2792c6850bc0b}{get\+Molar\+Abundance\+Vector()}, \doxylink{classfourdst_1_1composition_1_1_composition_acdbdf980297580e885ce3f124164315f}{get\+Mass\+Fraction\+Vector()}, or \doxylink{classfourdst_1_1composition_1_1_composition_a2a41242de5d49b005e0b608e79e2f2d9}{get\+Number\+Fraction\+Vector()} \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classfourdst_1_1composition_1_1exceptions_1_1_composition_not_finalized_error}{exceptions\+::\+Composition\+Not\+Finalized\+Error}} & if the composition is not finalized. \\
+\hline
+{\em \doxylink{classfourdst_1_1composition_1_1exceptions_1_1_unregistered_symbol_error}{exceptions\+::\+Unregistered\+Symbol\+Error}} & if the symbol is not registered in the composition \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+The index of the symbol in the sorted vector representation. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00848}{848}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1_composition_a1204a6421205feaaed13937aefa158ba}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getSpeciesIndex@{getSpeciesIndex}}
+\index{getSpeciesIndex@{getSpeciesIndex}!fourdst::composition::Composition@{fourdst::composition::Composition}}
+\doxysubsubsection{\texorpdfstring{getSpeciesIndex()}{getSpeciesIndex()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_a1204a6421205feaaed13937aefa158ba} 
+size\+\_\+t fourdst\+::composition\+::\+Composition\+::get\+Species\+Index (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{symbol}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+get the index in the sorted vector representation for a given symbol 
+
+This is primarily useful for external libraries which need to ensure that vector representation uniformity is maintained \begin{DoxyPrecond}{Precondition}
+The composition must be finalized. 
+
+symbol must be registered in the composition 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em symbol} & the symbol to look up the index for. Note that this is the index species data will be at if you were to call \doxylink{classfourdst_1_1composition_1_1_composition_a84d62b971bee83d944d2792c6850bc0b}{get\+Molar\+Abundance\+Vector()}, \doxylink{classfourdst_1_1composition_1_1_composition_acdbdf980297580e885ce3f124164315f}{get\+Mass\+Fraction\+Vector()}, or \doxylink{classfourdst_1_1composition_1_1_composition_a2a41242de5d49b005e0b608e79e2f2d9}{get\+Number\+Fraction\+Vector()} \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classfourdst_1_1composition_1_1exceptions_1_1_composition_not_finalized_error}{exceptions\+::\+Composition\+Not\+Finalized\+Error}} & if the composition is not finalized. \\
+\hline
+{\em \doxylink{classfourdst_1_1composition_1_1exceptions_1_1_unregistered_symbol_error}{exceptions\+::\+Unregistered\+Symbol\+Error}} & if the symbol is not registered in the composition \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+The index of the symbol in the sorted vector representation. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00823}{823}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a72a368f27094b03fdd9896844e075c94}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!hasSymbol@{hasSymbol}}
 \index{hasSymbol@{hasSymbol}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -992,7 +1179,7 @@ True if the symbol is registered, false otherwise.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00737}{737}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00902}{902}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_addf03ba8b988970d341884d487aa94d5}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!isValidComposition@{isValidComposition}}
 \index{isValidComposition@{isValidComposition}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1014,7 +1201,7 @@ True if the fractions are valid, false otherwise.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00270}{270}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00295}{295}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a8fdac26e6298008aaeaa5b15f7fe244f}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!isValidSymbol@{isValidSymbol}}
 \index{isValidSymbol@{isValidSymbol}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1036,7 +1223,7 @@ True if the symbol is valid, false otherwise.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00283}{283}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00308}{308}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a3aead72892606725a4149a5f65bd31ec}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!mix@{mix}}
 \index{mix@{mix}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1070,7 +1257,7 @@ Both {\ttfamily this} and {\ttfamily other} compositions must be finalized.
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00473}{473}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00498}{498}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a24a3bdeb8e8e55b54ecdee6dcb0d9561}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!operator+@{operator+}}
 \index{operator+@{operator+}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1102,7 +1289,7 @@ Both compositions must be finalized.
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00756}{756}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00921}{921}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a4ec1e23cfecef764cb831171fed62fc2}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!operator=@{operator=}}
 \index{operator=@{operator=}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1124,7 +1311,7 @@ A reference to this \doxylink{classfourdst_1_1composition_1_1_composition}{Compo
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00194}{194}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00219}{219}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a4ce00f73cc133bb1bac2b030b93ab480}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!registerSpecies@{registerSpecies}}
 \index{registerSpecies@{registerSpecies}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1162,7 +1349,7 @@ Registers a new species by extracting its symbol.
 \end{DoxyParagraph}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00241}{241}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00266}{266}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a057f2bf2e86bcc3c649c0ddf18cf3826}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!registerSpecies@{registerSpecies}}
 \index{registerSpecies@{registerSpecies}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1201,7 +1388,7 @@ Registers a vector of new species.
 \end{DoxyParagraph}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00245}{245}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00270}{270}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a1bc2e64f87c12befdc2bc767e7405661}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!registerSymbol@{registerSymbol}}
 \index{registerSymbol@{registerSymbol}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1239,7 +1426,7 @@ A symbol must be registered before its abundance can be set. The first registrat
 \end{DoxyParagraph}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00208}{208}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00233}{233}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a9b422156600823276a9606bfa07ad4db}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!registerSymbol@{registerSymbol}}
 \index{registerSymbol@{registerSymbol}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1277,7 +1464,7 @@ Registers multiple new symbols.
 \end{DoxyParagraph}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00235}{235}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00260}{260}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a0af981ed1074b26c237cf6cf35f82c9e}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!setCompositionMode@{setCompositionMode}}
 \index{setCompositionMode@{setCompositionMode}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1306,7 +1493,7 @@ The composition must be finalized before the mode can be switched.
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00669}{669}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00694}{694}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_aa6c94269a5d16349c98860f3015b734a}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!setMassFraction@{setMassFraction}}
 \index{setMassFraction@{setMassFraction}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1339,7 +1526,7 @@ The previous mass fraction that was set for the species.
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00324}{324}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00349}{349}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a493224656aa3ade68389250720ef09af}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!setMassFraction@{setMassFraction}}
 \index{setMassFraction@{setMassFraction}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1385,7 +1572,7 @@ The composition is marked as not finalized.
 \end{DoxyParagraph}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00287}{287}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00312}{312}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_abbae020d46c74708a7974c1ca755bb62}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!setMassFraction@{setMassFraction}}
 \index{setMassFraction@{setMassFraction}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1414,7 +1601,7 @@ A vector of the previous mass fractions that were set.
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00328}{328}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00353}{353}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a66ce1012c12b0a83629eb09d451b68e3}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!setMassFraction@{setMassFraction}}
 \index{setMassFraction@{setMassFraction}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1448,7 +1635,7 @@ The composition is marked as not finalized.
 \end{DoxyPostcond}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00310}{310}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00335}{335}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_aaa822bb48a948d101fef759ffbefe31b}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!setNumberFraction@{setNumberFraction}}
 \index{setNumberFraction@{setNumberFraction}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1481,7 +1668,7 @@ The previous number fraction that was set for the species.
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00375}{375}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00400}{400}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a7d4d748f3ee25e68751fb143717ed080}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!setNumberFraction@{setNumberFraction}}
 \index{setNumberFraction@{setNumberFraction}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1517,7 +1704,7 @@ The composition is marked as not finalized.
 \end{DoxyPostcond}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00338}{338}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00363}{363}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_adc068778a1ef33cad67f5ca028b49bb8}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!setNumberFraction@{setNumberFraction}}
 \index{setNumberFraction@{setNumberFraction}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1546,7 +1733,7 @@ The vector of the previous number fractions that were set.
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00379}{379}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00404}{404}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a48014a0a725ebd91ad1193c063b5b26f}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!setNumberFraction@{setNumberFraction}}
 \index{setNumberFraction@{setNumberFraction}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1577,7 +1764,7 @@ A vector of the previous number fractions that were set.
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00361}{361}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00386}{386}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a17635cd21744c7cf86cb1eb75152c816}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!subset@{subset}}
 \index{subset@{subset}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1610,7 +1797,7 @@ A new {\ttfamily \doxylink{classfourdst_1_1composition_1_1_composition}{Composit
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00640}{640}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00665}{665}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a86982685c34db4a8f079ddafc25c594e}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!validateComposition@{validateComposition}}
 \index{validateComposition@{validateComposition}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1634,7 +1821,7 @@ Validates the given fractions, throwing an exception on failure.
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00263}{263}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00288}{288}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 
 
@@ -1661,7 +1848,7 @@ The output stream.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00772}{772}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00937}{937}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 
 

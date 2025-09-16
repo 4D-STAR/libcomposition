@@ -3824,6 +3824,7 @@ var species_8h =
     [ "fourdst::atomic::Au_208", "namespacefourdst_1_1atomic.html#a0bd121d3b47fc0e2675adca750751a4b", null ],
     [ "fourdst::atomic::Au_209", "namespacefourdst_1_1atomic.html#a44faf7f0ec7dfec4cac5ee0eb9e9f254", null ],
     [ "fourdst::atomic::Au_210", "namespacefourdst_1_1atomic.html#afff955be16cbe4538218312291b8afe4", null ],
+    [ "fourdst::atomic::az_to_species", "namespacefourdst_1_1atomic.html#a29fe92b293db689c5da78599b8958c70", null ],
     [ "fourdst::atomic::B_10", "namespacefourdst_1_1atomic.html#ac5cd3b25b3beb7010ce868e475e3ab74", null ],
     [ "fourdst::atomic::B_11", "namespacefourdst_1_1atomic.html#afab1780e9187ea28b0f847f816e35f15", null ],
     [ "fourdst::atomic::B_12", "namespacefourdst_1_1atomic.html#a8a04db3a85c4949266d0b81cbee5b797", null ],

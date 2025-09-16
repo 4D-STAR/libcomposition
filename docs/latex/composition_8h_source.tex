@@ -212,27 +212,39 @@
 \DoxyCodeLine{\Hypertarget{composition_8h_source_l00725}00725\ }
 \DoxyCodeLine{\Hypertarget{composition_8h_source_l00735}00735\ \ \ \ \ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{structfourdst_1_1composition_1_1_canonical_composition}{CanonicalComposition}}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ac75dbc8377556c835455991c7c7fe206}{getCanonicalComposition}}(\textcolor{keywordtype}{bool}\ harsh=\textcolor{keyword}{false})\ \textcolor{keyword}{const};}
 \DoxyCodeLine{\Hypertarget{composition_8h_source_l00736}00736\ }
-\DoxyCodeLine{\Hypertarget{composition_8h_source_l00743}00743\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\&\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a36c2525d21cd932065bb2bb30bc57fb4}{operator<<}}(std::ostream\&\ os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a23b83b76ee025f6fc009184ee19bba88}{Composition}}\&\ \mbox{\hyperlink{namespacefourdst_1_1composition}{composition}});}
-\DoxyCodeLine{\Hypertarget{composition_8h_source_l00744}00744\ }
-\DoxyCodeLine{\Hypertarget{composition_8h_source_l00753}00753\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a23b83b76ee025f6fc009184ee19bba88}{Composition}}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a24a3bdeb8e8e55b54ecdee6dcb0d9561}{operator+}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a23b83b76ee025f6fc009184ee19bba88}{Composition}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00744}00744\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::vector<double>\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_acdbdf980297580e885ce3f124164315f}{getMassFractionVector}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00745}00745\ }
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00753}00753\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::vector<double>\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a2a41242de5d49b005e0b608e79e2f2d9}{getNumberFractionVector}}()\ \textcolor{keyword}{const};}
 \DoxyCodeLine{\Hypertarget{composition_8h_source_l00754}00754\ }
-\DoxyCodeLine{\Hypertarget{composition_8h_source_l00759}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ab1701644ff1c83c220dc04eb58d1621b}{00759}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ab1701644ff1c83c220dc04eb58d1621b}{begin}}()\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8h_source_l00760}00760\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa7f2753b10e85ae3bbf0c3d600a973db}{m\_compositions}}.begin();}
-\DoxyCodeLine{\Hypertarget{composition_8h_source_l00761}00761\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8h_source_l00762}00762\ }
-\DoxyCodeLine{\Hypertarget{composition_8h_source_l00767}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_adf41a833e8b704daf4f581fca5c8cb9b}{00767}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_adf41a833e8b704daf4f581fca5c8cb9b}{begin}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{\Hypertarget{composition_8h_source_l00768}00768\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa7f2753b10e85ae3bbf0c3d600a973db}{m\_compositions}}.cbegin();}
-\DoxyCodeLine{\Hypertarget{composition_8h_source_l00769}00769\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8h_source_l00770}00770\ }
-\DoxyCodeLine{\Hypertarget{composition_8h_source_l00775}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_adeaf6f1213e78cb1fe8a8317f0a8adc2}{00775}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_adeaf6f1213e78cb1fe8a8317f0a8adc2}{end}}()\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8h_source_l00776}00776\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa7f2753b10e85ae3bbf0c3d600a973db}{m\_compositions}}.end();}
-\DoxyCodeLine{\Hypertarget{composition_8h_source_l00777}00777\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8h_source_l00778}00778\ }
-\DoxyCodeLine{\Hypertarget{composition_8h_source_l00783}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aed2f5676f8f742199f01e4d1e9664bdd}{00783}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aed2f5676f8f742199f01e4d1e9664bdd}{end}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{\Hypertarget{composition_8h_source_l00784}00784\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa7f2753b10e85ae3bbf0c3d600a973db}{m\_compositions}}.cend();}
-\DoxyCodeLine{\Hypertarget{composition_8h_source_l00785}00785\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8h_source_l00786}00786\ }
-\DoxyCodeLine{\Hypertarget{composition_8h_source_l00787}00787\ \ \ \ \ \};}
-\DoxyCodeLine{\Hypertarget{composition_8h_source_l00788}00788\ \};\ \textcolor{comment}{//\ namespace\ fourdst::composition}}
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00762}00762\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::vector<double>\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a84d62b971bee83d944d2792c6850bc0b}{getMolarAbundanceVector}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00763}00763\ }
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00774}00774\ \ \ \ \ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a1204a6421205feaaed13937aefa158ba}{getSpeciesIndex}}(\textcolor{keyword}{const}\ std::string\&\ symbol)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00775}00775\ }
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00786}00786\ \ \ \ \ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a1204a6421205feaaed13937aefa158ba}{getSpeciesIndex}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic::Species}}\&\ species)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00787}00787\ }
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00797}00797\ \ \ \ \ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic::Species}}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa534a01f24074cc9edd7f41df228eb50}{getSpeciesAtIndex}}(\textcolor{keywordtype}{size\_t}\ index)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00798}00798\ }
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00805}00805\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\&\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a36c2525d21cd932065bb2bb30bc57fb4}{operator<<}}(std::ostream\&\ os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a23b83b76ee025f6fc009184ee19bba88}{Composition}}\&\ \mbox{\hyperlink{namespacefourdst_1_1composition}{composition}});}
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00806}00806\ }
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00815}00815\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a23b83b76ee025f6fc009184ee19bba88}{Composition}}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a24a3bdeb8e8e55b54ecdee6dcb0d9561}{operator+}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a23b83b76ee025f6fc009184ee19bba88}{Composition}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00816}00816\ }
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00821}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ab1701644ff1c83c220dc04eb58d1621b}{00821}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ab1701644ff1c83c220dc04eb58d1621b}{begin}}()\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00822}00822\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa7f2753b10e85ae3bbf0c3d600a973db}{m\_compositions}}.begin();}
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00823}00823\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00824}00824\ }
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00829}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_adf41a833e8b704daf4f581fca5c8cb9b}{00829}}\ \ \ \ \ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_adf41a833e8b704daf4f581fca5c8cb9b}{begin}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00830}00830\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa7f2753b10e85ae3bbf0c3d600a973db}{m\_compositions}}.cbegin();}
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00831}00831\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00832}00832\ }
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00837}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_adeaf6f1213e78cb1fe8a8317f0a8adc2}{00837}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_adeaf6f1213e78cb1fe8a8317f0a8adc2}{end}}()\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00838}00838\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa7f2753b10e85ae3bbf0c3d600a973db}{m\_compositions}}.end();}
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00839}00839\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00840}00840\ }
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00845}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aed2f5676f8f742199f01e4d1e9664bdd}{00845}}\ \ \ \ \ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aed2f5676f8f742199f01e4d1e9664bdd}{end}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00846}00846\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa7f2753b10e85ae3bbf0c3d600a973db}{m\_compositions}}.cend();}
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00847}00847\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00848}00848\ }
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00849}00849\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{composition_8h_source_l00850}00850\ \};\ \textcolor{comment}{//\ namespace\ fourdst::composition}}
 
 \end{DoxyCode}
