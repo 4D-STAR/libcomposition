@@ -88,6 +88,9 @@ namespace fourdst::composition {
         double m_massFraction = 0.0; ///< The mass fraction of the species. Valid only if `m_massFracMode` is true.
         double m_numberFraction = 0.0; ///< The number fraction (mole fraction) of the species. Valid only if `m_massFracMode` is false.
         double m_relAbundance = 0.0; ///< The relative abundance, used internally for conversions. For mass fraction mode, this is X_i / A_i; for number fraction mode, it's n_i * A_i.
+        double m_molesPerMass = 0.0;
+        double m_cachedNumberFraction = 0.0; ///< Cached number fraction for conversions when in mass fraction mode.
+
 
         bool m_initialized = false; ///< True if the composition entry has been initialized with a valid species.
 
@@ -138,13 +141,6 @@ namespace fourdst::composition {
         [[nodiscard]] double mass_fraction() const;
 
         /**
-         * @brief Gets the mass fraction, converting from number fraction if necessary.
-         * @param meanMolarMass The mean molar mass of the entire composition, required for conversion.
-         * @return The mass fraction of the species.
-         */
-        [[nodiscard]] double mass_fraction(double meanMolarMass) const;
-
-        /**
          * @brief Gets the number fraction of the species.
          * @pre The entry must be in number fraction mode.
          * @return The number fraction of the species.
@@ -154,10 +150,10 @@ namespace fourdst::composition {
 
         /**
          * @brief Gets the number fraction, converting from mass fraction if necessary.
-         * @param totalMoles The total moles per unit mass (specific number density) of the entire composition.
+         * @param totalMolesPerMass The total moles per unit mass (specific number density) of the entire composition.
          * @return The number fraction of the species.
          */
-        [[nodiscard]] double number_fraction(double totalMoles) const;
+        [[nodiscard]] double number_fraction(double totalMolesPerMass) const;
 
         /**
          * @brief Gets the relative abundance of the species.
@@ -202,10 +198,10 @@ namespace fourdst::composition {
 
         /**
          * @brief Switches the mode to number fraction mode.
-         * @param totalMoles The total moles per unit mass (specific number density) of the composition.
+         * @param totalMolesPerMass The total moles per unit mass (specific number density) of the composition.
          * @return True if the mode was successfully set, false otherwise.
          */
-        bool setNumberFracMode(double totalMoles);
+        bool setNumberFracMode(double totalMolesPerMass);
 
         /**
          * @brief Overloaded output stream operator for CompositionEntry.
@@ -257,8 +253,36 @@ namespace fourdst::composition {
      */
     class Composition {
     private:
-        fourdst::config::Config& m_config = fourdst::config::Config::getInstance();
-        fourdst::logging::LogManager& m_logManager = fourdst::logging::LogManager::getInstance();
+        struct CompositionCache {
+            std::optional<GlobalComposition> globalComp; ///< Cached global composition data.
+            std::optional<CanonicalComposition> canonicalComp; ///< Cached canonical composition data.
+            std::optional<std::vector<double>> massFractions; ///< Cached vector of mass fractions.
+            std::optional<std::vector<double>> numberFractions; ///< Cached vector of number fractions.
+            std::optional<std::vector<double>> molarAbundances; ///< Cached vector of molar abundances.
+            std::optional<std::vector<atomic::Species>> sortedSpecies; ///< Cached vector of sorted species (by mass).
+            std::optional<std::vector<std::string>> sortedSymbols; ///< Cached vector of sorted species (by mass).
+            std::optional<double> Ye; ///< Cached electron abundance.
+
+            void clear() {
+                globalComp = std::nullopt;
+                canonicalComp = std::nullopt;
+                massFractions = std::nullopt;
+                numberFractions = std::nullopt;
+                molarAbundances = std::nullopt;
+                sortedSymbols = std::nullopt;
+                sortedSpecies = std::nullopt;
+                Ye = std::nullopt;
+            }
+
+            [[nodiscard]] bool is_clear() const {
+                return !globalComp.has_value() && !canonicalComp.has_value() && !massFractions.has_value() &&
+                       !numberFractions.has_value() && !molarAbundances.has_value() && !sortedSymbols.has_value() &&
+                       !Ye.has_value() && !sortedSpecies.has_value();
+            }
+        };
+    private:
+        config::Config& m_config = config::Config::getInstance();
+        logging::LogManager& m_logManager = logging::LogManager::getInstance();
         quill::Logger* m_logger = m_logManager.getLogger("log");
 
         bool m_finalized = false; ///< True if the composition is finalized.
@@ -268,6 +292,9 @@ namespace fourdst::composition {
 
         std::set<std::string> m_registeredSymbols; ///< The registered symbols.
         std::unordered_map<std::string, CompositionEntry> m_compositions; ///< The compositions.
+
+        mutable CompositionCache m_cache; ///< Cache for computed properties to avoid redundant calculations.
+
 
         /**
          * @brief Checks if the given symbol is valid by checking against the global species database.
@@ -687,6 +714,14 @@ namespace fourdst::composition {
         [[nodiscard]] double getMeanAtomicNumber() const;
 
         /**
+         * @brief Compute the electron abundance of the composition.
+         * @details Ye is defined as the sum over all species of (Z_i * X_i / A_i), where Z_i is the atomic number, X_i is the mass fraction, and A_i is the atomic mass of species i.
+         * @return Ye (electron abundance).
+         * @pre The composition must be finalized.
+         */
+        [[nodiscard]] double getElectronAbundance() const;
+
+        /**
          * @brief Creates a new Composition object containing a subset of species from this one.
          * @param symbols The symbols to include in the subset.
          * @param method The method for handling the abundances of the new subset. Can be "norm" (normalize abundances to sum to 1) or "none" (keep original abundances).
@@ -711,7 +746,7 @@ namespace fourdst::composition {
          * @return True if the isotope is in the composition, false otherwise.
          * @throws exceptions::CompositionNotFinalizedError if the composition is not finalized.
          */
-        [[nodiscard]] bool contains(const fourdst::atomic::Species& isotope) const;
+        [[nodiscard]] bool contains(const atomic::Species& isotope) const;
 
         /**
         * @brief Sets the composition mode (mass fraction vs. number fraction).

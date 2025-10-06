@@ -116,10 +116,10 @@ TEST_F(compositionTest, registerSymbol) {
     EXPECT_THROW(comp.registerSymbol("He-21"), fourdst::composition::exceptions::InvalidSymbolError);
 
     std::set<std::string> registeredSymbols = comp.getRegisteredSymbols();
-    EXPECT_TRUE(registeredSymbols.find("H-1") != registeredSymbols.end());
-    EXPECT_TRUE(registeredSymbols.find("He-4") != registeredSymbols.end());
-    EXPECT_TRUE(registeredSymbols.find("H-19") == registeredSymbols.end());
-    EXPECT_TRUE(registeredSymbols.find("He-21") == registeredSymbols.end());
+    EXPECT_TRUE(registeredSymbols.contains("H-1"));
+    EXPECT_TRUE(registeredSymbols.contains("He-4"));
+    EXPECT_TRUE(!registeredSymbols.contains("H-19"));
+    EXPECT_TRUE(!registeredSymbols.contains("He-21"));
 }
 
 /**
@@ -431,5 +431,374 @@ TEST_F(compositionTest, getRegisteredSpecies) {
 
 TEST_F(compositionTest, getSpeciesFromAZ) {
     EXPECT_EQ(fourdst::atomic::O_12, fourdst::atomic::az_to_species(12, 8));
+}
+
+TEST_F(compositionTest, constructorWithSymbolsVectorAndSet) {
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    std::vector<std::string> vs = {"H-1", "He-4"};
+    std::set<std::string> ss = {"H-1", "He-4"};
+
+    fourdst::composition::Composition compVec(vs);
+    EXPECT_TRUE(compVec.hasSymbol("H-1"));
+    EXPECT_TRUE(compVec.hasSymbol("He-4"));
+
+    fourdst::composition::Composition compSet(ss);
+    EXPECT_TRUE(compSet.hasSymbol("H-1"));
+    EXPECT_TRUE(compSet.hasSymbol("He-4"));
+}
+
+TEST_F(compositionTest, constructorWithSymbolsAndFractionsMassAndNumber) {
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    using fourdst::composition::Composition;
+    using fourdst::atomic::species;
+
+    // Mass-fraction constructor
+    std::vector<std::string> symM = {"H-1", "He-4"};
+    std::vector<double> fracM = {0.6, 0.4};
+    Composition compM(symM, fracM, true);
+    EXPECT_NEAR(compM.getMassFraction("H-1"), 0.6, 1e-12);
+    EXPECT_NEAR(compM.getMassFraction("He-4"), 0.4, 1e-12);
+    // Mean particle mass and specific number density are reciprocals
+    double sn = 0.6/species.at("H-1").mass() + 0.4/species.at("He-4").mass();
+    double mp = 1.0/sn;
+    EXPECT_NEAR(compM.getMeanParticleMass(), mp, 1e-12);
+
+    // Number-fraction constructor
+    std::vector<std::string> symN = {"H-1", "He-4"};
+    std::vector<double> fracN = {0.9, 0.1};
+    Composition compN(symN, fracN, false);
+    EXPECT_NEAR(compN.getNumberFraction("H-1"), 0.9, 1e-12);
+    EXPECT_NEAR(compN.getNumberFraction("He-4"), 0.1, 1e-12);
+    double meanA = 0.9*species.at("H-1").mass() + 0.1*species.at("He-4").mass();
+    EXPECT_NEAR(compN.getMeanParticleMass(), meanA, 1e-12);
+    // Check converted mass fractions X_i = n_i * A_i / <A>
+    double xH = 0.9*species.at("H-1").mass()/meanA;
+    double xHe = 0.1*species.at("He-4").mass()/meanA;
+    compN.setCompositionMode(true);
+    EXPECT_NEAR(compN.getMassFraction("H-1"), xH, 1e-12);
+    EXPECT_NEAR(compN.getMassFraction("He-4"), xHe, 1e-12);
+}
+
+TEST_F(compositionTest, registerSymbolVectorAndSingleSpeciesAndModeMismatch) {
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    using fourdst::composition::Composition;
+    Composition comp;
+    comp.registerSymbol(std::vector<std::string>{"H-1", "He-4"});
+    EXPECT_TRUE(comp.hasSymbol("H-1"));
+    EXPECT_TRUE(comp.hasSymbol("He-4"));
+
+    // Register by Species
+    Composition comp2;
+    comp2.registerSpecies(fourdst::atomic::H_1);
+    comp2.registerSpecies(fourdst::atomic::He_4);
+    EXPECT_TRUE(comp2.hasSymbol("H-1"));
+    EXPECT_TRUE(comp2.hasSymbol("He-4"));
+
+    // Mode mismatch should throw
+    Composition comp3;
+    comp3.registerSymbol("H-1", true); // mass mode
+    EXPECT_THROW(comp3.registerSymbol("He-4", false), fourdst::composition::exceptions::CompositionModeError);
+}
+
+TEST_F(compositionTest, setMassFractionBySpeciesAndVector) {
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    using fourdst::composition::Composition;
+    using fourdst::atomic::H_1;
+    using fourdst::atomic::He_4;
+
+    Composition comp;
+    comp.registerSymbol("H-1");
+    comp.registerSymbol("He-4");
+
+    // Single species overload
+    double old = comp.setMassFraction(H_1, 0.7);
+    EXPECT_NEAR(old, 0.0, 1e-15);
+    old = comp.setMassFraction(He_4, 0.3);
+    EXPECT_NEAR(old, 0.0, 1e-15);
+
+    // Vector overload
+    std::vector<fourdst::atomic::Species> sp = {H_1, He_4};
+    std::vector<double> xs = {0.6, 0.4};
+    auto olds = comp.setMassFraction(sp, xs);
+    ASSERT_EQ(olds.size(), 2u);
+    EXPECT_NEAR(olds[0], 0.7, 1e-12);
+    EXPECT_NEAR(olds[1], 0.3, 1e-12);
+
+    EXPECT_TRUE(comp.finalize());
+    EXPECT_NEAR(comp.getMassFraction("H-1"), 0.6, 1e-12);
+    EXPECT_NEAR(comp.getMassFraction(He_4), 0.4, 1e-12);
+}
+
+TEST_F(compositionTest, setNumberFractionOverloads) {
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    using fourdst::composition::Composition;
+    using fourdst::atomic::H_1;
+    using fourdst::atomic::He_4;
+
+    Composition comp;
+    comp.registerSymbol("H-1", false);
+    comp.registerSymbol("He-4", false);
+
+    // Single symbol
+    double old = comp.setNumberFraction("H-1", 0.8);
+    EXPECT_NEAR(old, 0.0, 1e-15);
+    // Vector of symbols
+    auto oldv = comp.setNumberFraction(std::vector<std::string>{"H-1", "He-4"}, std::vector<double>{0.75, 0.25});
+    ASSERT_EQ(oldv.size(), 2u);
+    EXPECT_NEAR(oldv[0], 0.8, 1e-12);
+    EXPECT_NEAR(oldv[1], 0.0, 1e-12);
+
+    // Species and vector<Species>
+    old = comp.setNumberFraction(H_1, 0.7);
+    EXPECT_NEAR(old, 0.75, 1e-12);
+    auto oldsv = comp.setNumberFraction(std::vector<fourdst::atomic::Species>{H_1, He_4}, std::vector<double>{0.6, 0.4});
+    ASSERT_EQ(oldsv.size(), 2u);
+    EXPECT_NEAR(oldsv[0], 0.7, 1e-12);
+    EXPECT_NEAR(oldsv[1], 0.25, 1e-12);
+
+    EXPECT_TRUE(comp.finalize());
+    EXPECT_NEAR(comp.getNumberFraction("H-1"), 0.6, 1e-12);
+    EXPECT_NEAR(comp.getNumberFraction(He_4), 0.4, 1e-12);
+}
+
+TEST_F(compositionTest, mixErrorCases) {
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    using fourdst::composition::Composition;
+
+    Composition a; a.registerSymbol("H-1"); a.registerSymbol("He-4"); a.setMassFraction("H-1", 0.6); a.setMassFraction("He-4", 0.4); a.finalize();
+    Composition b; b.registerSymbol("H-1"); b.registerSymbol("He-4"); b.setMassFraction("H-1", 0.5); b.setMassFraction("He-4", 0.5);
+    // Not finalized second comp
+    EXPECT_THROW(static_cast<void>(a.mix(b, 0.5)), fourdst::composition::exceptions::CompositionNotFinalizedError);
+    b.finalize();
+    // Invalid fraction
+    EXPECT_THROW(static_cast<void>(a.mix(b, -0.1)), fourdst::composition::exceptions::InvalidCompositionError);
+    EXPECT_THROW(static_cast<void>(a.mix(b, 1.1)), fourdst::composition::exceptions::InvalidCompositionError);
+}
+
+TEST_F(compositionTest, getMassAndNumberFractionMapsAndSpeciesOverloads) {
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    using fourdst::composition::Composition;
+
+    Composition comp; comp.registerSymbol("H-1"); comp.registerSymbol("He-4");
+    comp.setMassFraction("H-1", 0.6); comp.setMassFraction("He-4", 0.4);
+    ASSERT_TRUE(comp.finalize());
+
+    auto m = comp.getMassFraction();
+    ASSERT_EQ(m.size(), 2u);
+    EXPECT_NEAR(m.at("H-1"), 0.6, 1e-12);
+    EXPECT_NEAR(m.at("He-4"), 0.4, 1e-12);
+    EXPECT_NEAR(comp.getMassFraction(fourdst::atomic::H_1), 0.6, 1e-12);
+    EXPECT_NEAR(comp.getMolarAbundance(fourdst::atomic::H_1), m.at("H-1")/fourdst::atomic::H_1.mass(), 1e-12);
+
+    // Switch to number-fraction mode and verify number maps
+    comp.setCompositionMode(false);
+    // Must re-finalize after modifications (mode switch itself keeps values consistent but not finalized status changed? setCompositionMode requires to be finalized; here we just switched modes)
+    // Set specific number fractions and finalize
+    comp.setNumberFraction("H-1", 0.7);
+    comp.setNumberFraction("He-4", 0.3);
+    ASSERT_TRUE(comp.finalize());
+
+    auto n = comp.getNumberFraction();
+    ASSERT_EQ(n.size(), 2u);
+    EXPECT_NEAR(n.at("H-1"), 0.7, 1e-12);
+    EXPECT_NEAR(n.at("He-4"), 0.3, 1e-12);
+    EXPECT_NEAR(comp.getNumberFraction(fourdst::atomic::He_4), 0.3, 1e-12);
+}
+
+TEST_F(compositionTest, meanAtomicNumberAndElectronAbundance) {
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    using fourdst::atomic::species;
+    using fourdst::composition::Composition;
+
+    Composition comp; comp.registerSymbol("H-1"); comp.registerSymbol("He-4");
+    comp.setMassFraction("H-1", 0.6); comp.setMassFraction("He-4", 0.4);
+    ASSERT_TRUE(comp.finalize());
+
+    // Compute expected Ye = sum(X_i * Z_i / A_i)
+    constexpr double xH = 0.6, xHe = 0.4;
+    const double aH = species.at("H-1").a();
+    const double aHe = species.at("He-4").a();
+    const double zH = species.at("H-1").z();
+    const double zHe = species.at("He-4").z();
+    const double expectedYe = xH*zH/aH + xHe*zHe/aHe;
+
+    EXPECT_NEAR(comp.getElectronAbundance(), expectedYe, 1e-12);
+
+    // <Z> = <A> * sum(X_i * Z_i / A_i)
+    const double expectedZ = comp.getMeanParticleMass() * expectedYe;
+    EXPECT_NEAR(comp.getMeanAtomicNumber(), expectedZ, 1e-12);
+}
+
+TEST_F(compositionTest, canonicalCompositionAndCaching) {
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    using fourdst::composition::Composition;
+
+    Composition comp; comp.registerSymbol("H-1"); comp.registerSymbol("He-4");
+    comp.setMassFraction("H-1", 0.6); comp.setMassFraction("He-4", 0.4);
+    ASSERT_TRUE(comp.finalize());
+
+    auto canon1 = comp.getCanonicalComposition();
+    EXPECT_NEAR(canon1.X, 0.6, 1e-12);
+    EXPECT_NEAR(canon1.Y, 0.4, 1e-12);
+    EXPECT_NEAR(canon1.Z, 0.0, 1e-12);
+
+    // Call again to exercise caching code path
+    auto canon2 = comp.getCanonicalComposition();
+    EXPECT_NEAR(canon2.X, 0.6, 1e-12);
+    EXPECT_NEAR(canon2.Y, 0.4, 1e-12);
+    EXPECT_NEAR(canon2.Z, 0.0, 1e-12);
+
+    // Add a metal and re-check
+    Composition comp2; comp2.registerSymbol("H-1"); comp2.registerSymbol("He-4"); comp2.registerSymbol("O-16");
+    comp2.setMassFraction("H-1", 0.6); comp2.setMassFraction("He-4", 0.35); comp2.setMassFraction("O-16", 0.05);
+    ASSERT_TRUE(comp2.finalize());
+    auto canon3 = comp2.getCanonicalComposition(true);
+    EXPECT_NEAR(canon3.X, 0.6, 1e-12);
+    EXPECT_NEAR(canon3.Y, 0.35, 1e-12);
+    EXPECT_NEAR(canon3.Z, 0.05, 1e-12);
+}
+
+TEST_F(compositionTest, vectorsAndIndexingAndSpeciesAtIndex) {
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    using fourdst::composition::Composition;
+    using fourdst::atomic::species;
+
+    Composition comp; comp.registerSymbol("H-1"); comp.registerSymbol("He-4"); comp.registerSymbol("O-16");
+    comp.setMassFraction("H-1", 0.5); comp.setMassFraction("He-4", 0.3); comp.setMassFraction("O-16", 0.2);
+    ASSERT_TRUE(comp.finalize());
+
+    // Mass fraction vector sorted by mass: H-1, He-4, O-16
+    auto mv = comp.getMassFractionVector();
+    ASSERT_EQ(mv.size(), 3u);
+    EXPECT_NEAR(mv[0], 0.5, 1e-12);
+    EXPECT_NEAR(mv[1], 0.3, 1e-12);
+    EXPECT_NEAR(mv[2], 0.2, 1e-12);
+
+    // Species indices ordering
+    size_t iH = comp.getSpeciesIndex("H-1");
+    size_t iHe = comp.getSpeciesIndex("He-4");
+    size_t iO = comp.getSpeciesIndex("O-16");
+    EXPECT_LT(iH, iHe);
+    EXPECT_LT(iHe, iO);
+    EXPECT_EQ(comp.getSpeciesIndex(fourdst::atomic::H_1), iH);
+    EXPECT_EQ(comp.getSpeciesIndex(species.at("He-4")), iHe);
+
+    // Species at index
+    auto sAtHe = comp.getSpeciesAtIndex(iHe);
+    EXPECT_EQ(std::string(sAtHe.name()), std::string("He-4"));
+
+    // Number fraction vector after switching modes
+    comp.setCompositionMode(false);
+    // Tweak number fractions and finalize
+    // Compute expected number fractions from original mass fractions first
+    double denom = 0.5/species.at("H-1").mass() + 0.3/species.at("He-4").mass() + 0.2/species.at("O-16").mass();
+    double nH_exp = (0.5/species.at("H-1").mass())/denom;
+    double nHe_exp = (0.3/species.at("He-4").mass())/denom;
+    double nO_exp = (0.2/species.at("O-16").mass())/denom;
+
+    auto nv0 = comp.getNumberFractionVector();
+    ASSERT_EQ(nv0.size(), 3u);
+    EXPECT_NEAR(nv0[iH], nH_exp, 1e-12);
+    EXPECT_NEAR(nv0[iHe], nHe_exp, 1e-12);
+    EXPECT_NEAR(nv0[iO], nO_exp, 1e-12);
+
+    // Molar abundance vector X_i/A_i in mass mode; switch back to mass mode to verify
+    comp.setCompositionMode(true);
+    comp.finalize(true);
+    auto av = comp.getMolarAbundanceVector();
+    ASSERT_EQ(av.size(), 3u);
+    EXPECT_NEAR(av[iH], 0.5/species.at("H-1").mass(), 1e-12);
+    EXPECT_NEAR(av[iHe], 0.3/species.at("He-4").mass(), 1e-12);
+    EXPECT_NEAR(av[iO], 0.2/species.at("O-16").mass(), 1e-12);
+}
+
+TEST_F(compositionTest, containsAndPreFinalizationGuards) {
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    fourdst::composition::Composition comp;
+    comp.registerSymbol("H-1"); comp.registerSymbol("He-4");
+    comp.setMassFraction("H-1", 0.6); comp.setMassFraction("He-4", 0.4);
+    // contains should throw before finalize
+    EXPECT_THROW(static_cast<void>(comp.contains(fourdst::atomic::H_1)), fourdst::composition::exceptions::CompositionNotFinalizedError);
+
+    ASSERT_TRUE(comp.finalize());
+    EXPECT_TRUE(comp.contains(fourdst::atomic::H_1));
+    EXPECT_FALSE(comp.contains(fourdst::atomic::Li_6));
+}
+
+TEST_F(compositionTest, subsetNoneMethodAndNormalizationFlow) {
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    fourdst::composition::Composition comp;
+    comp.registerSymbol("H-1"); comp.registerSymbol("He-4"); comp.registerSymbol("O-16");
+    comp.setMassFraction("H-1", 0.5); comp.setMassFraction("He-4", 0.3); comp.setMassFraction("O-16", 0.2);
+    ASSERT_TRUE(comp.finalize());
+
+    fourdst::composition::Composition sub = comp.subset(std::vector<std::string>{"H-1", "He-4"}, "none");
+    // Not normalized: finalize without normalization should fail
+    EXPECT_FALSE(sub.finalize(false));
+    // With normalization, it should succeed and scale to sum to 1
+    EXPECT_TRUE(sub.finalize(true));
+    double sum = sub.getMassFraction("H-1") + sub.getMassFraction("He-4");
+    EXPECT_NEAR(sum, 1.0, 1e-12);
+    EXPECT_NEAR(sub.getMassFraction("H-1"), 0.5/(0.5+0.3), 1e-12);
+    EXPECT_NEAR(sub.getMassFraction("He-4"), 0.3/(0.5+0.3), 1e-12);
+}
+
+TEST_F(compositionTest, copyConstructorAndAssignmentIndependence) {
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    using fourdst::composition::Composition;
+
+    Composition comp; comp.registerSymbol("H-1"); comp.registerSymbol("He-4");
+    comp.setMassFraction("H-1", 0.6); comp.setMassFraction("He-4", 0.4);
+    ASSERT_TRUE(comp.finalize());
+
+    Composition copy(comp); // copy ctor
+    EXPECT_NEAR(copy.getMassFraction("H-1"), 0.6, 1e-12);
+    EXPECT_NEAR(copy.getMassFraction("He-4"), 0.4, 1e-12);
+
+    Composition assigned; assigned = comp; // assignment
+    EXPECT_NEAR(assigned.getMassFraction("H-1"), 0.6, 1e-12);
+    EXPECT_NEAR(assigned.getMassFraction("He-4"), 0.4, 1e-12);
+
+    // Modify original and ensure copies do not change
+    comp.setMassFraction("H-1", 0.7); comp.setMassFraction("He-4", 0.3); ASSERT_TRUE(comp.finalize());
+    EXPECT_NEAR(copy.getMassFraction("H-1"), 0.6, 1e-12);
+    EXPECT_NEAR(assigned.getMassFraction("He-4"), 0.4, 1e-12);
+}
+
+TEST_F(compositionTest, getCompositionBySpeciesAndAllEntries) {
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    using fourdst::composition::Composition;
+
+    Composition comp; comp.registerSymbol("H-1"); comp.registerSymbol("He-4");
+    comp.setMassFraction("H-1", 0.6); comp.setMassFraction("He-4", 0.4);
+    ASSERT_TRUE(comp.finalize());
+
+    auto pairBySpec = comp.getComposition(fourdst::atomic::H_1);
+    EXPECT_NEAR(pairBySpec.first.mass_fraction(), 0.6, 1e-12);
+    EXPECT_NEAR(pairBySpec.second.meanParticleMass, comp.getMeanParticleMass(), 1e-15);
+
+    auto all = comp.getComposition();
+    ASSERT_EQ(all.first.size(), 2u);
+    EXPECT_NEAR(all.first.at("H-1").mass_fraction(), 0.6, 1e-12);
+    EXPECT_NEAR(all.first.at("He-4").mass_fraction(), 0.4, 1e-12);
+    EXPECT_NEAR(all.second.meanParticleMass, comp.getMeanParticleMass(), 1e-15);
+}
+
+TEST_F(compositionTest, iterationBeginEndAndIndexOutOfRange) {
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    fourdst::composition::Composition comp;
+    comp.registerSymbol("H-1"); comp.registerSymbol("He-4"); comp.registerSymbol("O-16");
+    comp.setMassFraction("H-1", 0.5); comp.setMassFraction("He-4", 0.3); comp.setMassFraction("O-16", 0.2);
+    ASSERT_TRUE(comp.finalize());
+
+    // Iterate and count entries
+    size_t count = 0;
+    for (auto it = comp.begin(); it != comp.end(); ++it) {
+        count++;
+    }
+    EXPECT_EQ(count, 3u);
+
+    // Out-of-range access
+    EXPECT_THROW(static_cast<void>(comp.getSpeciesAtIndex(100)), std::out_of_range);
 }
 
