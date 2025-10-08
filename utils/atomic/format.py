@@ -224,17 +224,33 @@ def formatHeader(dataFrame):
 #include "fourdst/composition/atomicSpecies.h"
 #include "fourdst/composition/elements.h"
 
+#include <expected> // For std::expected
+
 namespace fourdst::atomic {{
     // Instantiate all species as static const objects.
     {'\n    '.join([formatSpecies(row)[0] for index, row in dataFrame.iterrows()])}
     
     // Create a map from species name (e.g., "H-1") to a pointer to the species object.
-    static const std::unordered_map<std::string, const Species*> species = {{
+    static const std::unordered_map<std::string, const Species&> species = {{
         {'\n        '.join([f'{{"{row["el"].strip()}-{row["a"]}", {mkInstanceName(row)}}},' for index, row in dataFrame.iterrows()])}
     }};
-    Species az_to_species(const int a, const int z) {{
-    const std::string element_symbol = element_symbol_map.at(static_cast<uint8_t>(z));
+    
+    // Create an enum to represent possible error types when looking up species.
+    enum class SpeciesErrorType {{
+        ELEMENT_SYMBOL_NOT_FOUND,
+        SPECIES_SYMBOL_NOT_FOUND
+    }};
+    
+    // Function to look up a species by its atomic number (Z) and mass number (A).
+    inline std::expected<Species, SpeciesErrorType> az_to_species(const int a, const int z) {{
+        if (!element_symbol_map.contains(static_cast<uint8_t>(z))) {{
+            return std::unexpected(SpeciesErrorType::ELEMENT_SYMBOL_NOT_FOUND);
+        }}
+        const std::string element_symbol = element_symbol_map.at(static_cast<uint8_t>(z));
         const std::string species_symbol = element_symbol + "-" + std::to_string(a);
+        if (!species.contains(species_symbol)) {{
+            return std::unexpected(SpeciesErrorType::SPECIES_SYMBOL_NOT_FOUND);
+        }}
         return species.at(species_symbol);
     }};
 

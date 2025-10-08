@@ -89,7 +89,7 @@ TEST_F(compositionTest, isotopeSpin) {
  * @par What this test proves:
  * - The default constructor is accessible and does not fail on basic initialization.
  * @par What this test does not prove:
- * - The state of the constructed object or the correctness of any of its methods.
+ * - The state of the constructed object or the correctness of its methods.
  */
 TEST_F(compositionTest, constructor) {
     fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
@@ -431,6 +431,8 @@ TEST_F(compositionTest, getRegisteredSpecies) {
 
 TEST_F(compositionTest, getSpeciesFromAZ) {
     EXPECT_EQ(fourdst::atomic::O_12, fourdst::atomic::az_to_species(12, 8));
+    EXPECT_EQ(fourdst::atomic::SpeciesErrorType::SPECIES_SYMBOL_NOT_FOUND, fourdst::atomic::az_to_species(120, 38).error());
+    EXPECT_EQ(fourdst::atomic::SpeciesErrorType::ELEMENT_SYMBOL_NOT_FOUND, fourdst::atomic::az_to_species(120, 500).error());
 }
 
 TEST_F(compositionTest, constructorWithSymbolsVectorAndSet) {

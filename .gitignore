@@ -72,6 +72,7 @@ subprojects/cppad/
 subprojects/libconfig/
 subprojects/libconstants/
 subprojects/liblogging/
+subprojects/.wraplock
 
 qhull.wrap
 quill.wrap
