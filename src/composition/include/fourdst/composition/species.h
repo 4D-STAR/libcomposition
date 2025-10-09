@@ -7138,7 +7138,7 @@ namespace fourdst::atomic {
     };
     
     // Function to look up a species by its atomic number (Z) and mass number (A).
-    inline std::expected<Species, SpeciesErrorType> az_to_species(const int a, const int z) {
+    inline std::expected<Species, SpeciesErrorType> az_to_species(const int a, const int z) noexcept {
         if (!element_symbol_map.contains(static_cast<uint8_t>(z))) {
             return std::unexpected(SpeciesErrorType::ELEMENT_SYMBOL_NOT_FOUND);
         }
