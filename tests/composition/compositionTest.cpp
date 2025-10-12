@@ -430,12 +430,28 @@ TEST_F(compositionTest, getRegisteredSpecies) {
     EXPECT_EQ(*it1, fourdst::atomic::H_1);
 }
 
+/**
+ * @brief Tests the az_to_species utility for correct species lookup and error handling.
+ * @details This test checks that az_to_species returns the correct Species for valid (A,Z) pairs,
+ * and the correct error codes for invalid atomic number or element number.
+ * @par What this test proves:
+ * - az_to_species correctly maps valid (A,Z) to Species.
+ * - az_to_species returns appropriate error codes for invalid input.
+ */
 TEST_F(compositionTest, getSpeciesFromAZ) {
     EXPECT_EQ(fourdst::atomic::O_12, fourdst::atomic::az_to_species(12, 8));
     EXPECT_EQ(fourdst::atomic::SpeciesErrorType::SPECIES_SYMBOL_NOT_FOUND, fourdst::atomic::az_to_species(120, 38).error());
     EXPECT_EQ(fourdst::atomic::SpeciesErrorType::ELEMENT_SYMBOL_NOT_FOUND, fourdst::atomic::az_to_species(120, 500).error());
 }
 
+/**
+ * @brief Tests constructors that take vectors and sets of symbols.
+ * @details This test verifies that the Composition can be constructed from a vector or set of symbols,
+ * and that the resulting object correctly registers those symbols.
+ * @par What this test proves:
+ * - Constructors accepting std::vector and std::set of symbols work as expected.
+ * - Registered symbols are correctly tracked.
+ */
 TEST_F(compositionTest, constructorWithSymbolsVectorAndSet) {
     fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     std::vector<std::string> vs = {"H-1", "He-4"};
@@ -450,6 +466,14 @@ TEST_F(compositionTest, constructorWithSymbolsVectorAndSet) {
     EXPECT_TRUE(compSet.hasSymbol("He-4"));
 }
 
+/**
+ * @brief Tests constructors that take symbols and fractions for both mass and number fraction modes.
+ * @details This test verifies that the Composition can be constructed directly from vectors of symbols and fractions,
+ * and that the resulting mass and number fractions are correct. It also checks conversions between modes.
+ * @par What this test proves:
+ * - Constructors for both mass and number fraction modes work as expected.
+ * - Conversion between mass and number fraction modes is correct.
+ */
 TEST_F(compositionTest, constructorWithSymbolsAndFractionsMassAndNumber) {
     fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     using fourdst::composition::Composition;
@@ -482,6 +506,15 @@ TEST_F(compositionTest, constructorWithSymbolsAndFractionsMassAndNumber) {
     EXPECT_NEAR(compN.getMassFraction("He-4"), xHe, 1e-12);
 }
 
+/**
+ * @brief Tests registering symbols via vector, single Species, and mode mismatch error.
+ * @details This test checks that symbols can be registered via a vector, that registering by Species works,
+ * and that attempting to register a symbol with a mismatched mode throws the correct exception.
+ * @par What this test proves:
+ * - registerSymbol works with vectors.
+ * - registerSpecies works with single Species.
+ * - Mode mismatch throws CompositionModeError.
+ */
 TEST_F(compositionTest, registerSymbolVectorAndSingleSpeciesAndModeMismatch) {
     fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     using fourdst::composition::Composition;
@@ -503,6 +536,14 @@ TEST_F(compositionTest, registerSymbolVectorAndSingleSpeciesAndModeMismatch) {
     EXPECT_THROW(comp3.registerSymbol("He-4", false), fourdst::composition::exceptions::CompositionModeError);
 }
 
+/**
+ * @brief Tests setMassFraction overloads for Species and vectors.
+ * @details This test verifies that setMassFraction works for both single Species and vectors of Species,
+ * and that the returned old values are correct.
+ * @par What this test proves:
+ * - setMassFraction overloads work as expected.
+ * - Old values are returned correctly.
+ */
 TEST_F(compositionTest, setMassFractionBySpeciesAndVector) {
     fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     using fourdst::composition::Composition;
@@ -532,6 +573,14 @@ TEST_F(compositionTest, setMassFractionBySpeciesAndVector) {
     EXPECT_NEAR(comp.getMassFraction(He_4), 0.4, 1e-12);
 }
 
+/**
+ * @brief Tests setNumberFraction overloads for symbols and Species.
+ * @details This test verifies that setNumberFraction works for both single symbols/Species and vectors,
+ * and that the returned old values are correct.
+ * @par What this test proves:
+ * - setNumberFraction overloads work as expected.
+ * - Old values are returned correctly.
+ */
 TEST_F(compositionTest, setNumberFractionOverloads) {
     fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     using fourdst::composition::Composition;
@@ -564,6 +613,13 @@ TEST_F(compositionTest, setNumberFractionOverloads) {
     EXPECT_NEAR(comp.getNumberFraction(He_4), 0.4, 1e-12);
 }
 
+/**
+ * @brief Tests error cases for mixing compositions.
+ * @details This test checks that mixing with a non-finalized composition or with invalid fractions throws the correct exceptions.
+ * @par What this test proves:
+ * - Mixing with a non-finalized composition throws CompositionNotFinalizedError.
+ * - Mixing with invalid fractions throws InvalidCompositionError.
+ */
 TEST_F(compositionTest, mixErrorCases) {
     fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     using fourdst::composition::Composition;
@@ -581,6 +637,14 @@ TEST_F(compositionTest, mixErrorCases) {
     EXPECT_THROW(static_cast<void>(a.mix(b, 1.1)), fourdst::composition::exceptions::InvalidCompositionError);
 }
 
+/**
+ * @brief Tests getMassFraction and getNumberFraction maps and Species overloads.
+ * @details This test verifies that the getter methods for mass and number fractions return correct maps,
+ * and that overloads for Species work as expected.
+ * @par What this test proves:
+ * - getMassFraction and getNumberFraction return correct maps.
+ * - Overloads for Species work as expected.
+ */
 TEST_F(compositionTest, getMassAndNumberFractionMapsAndSpeciesOverloads) {
     fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     using fourdst::composition::Composition;
@@ -611,6 +675,13 @@ TEST_F(compositionTest, getMassAndNumberFractionMapsAndSpeciesOverloads) {
     EXPECT_NEAR(comp.getNumberFraction(fourdst::atomic::He_4), 0.3, 1e-12);
 }
 
+/**
+ * @brief Tests mean atomic number and electron abundance calculations.
+ * @details This test verifies that getElectronAbundance and getMeanAtomicNumber return correct values
+ * based on the composition.
+ * @par What this test proves:
+ * - getElectronAbundance and getMeanAtomicNumber are calculated correctly.
+ */
 TEST_F(compositionTest, meanAtomicNumberAndElectronAbundance) {
     fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     using fourdst::atomic::species;
@@ -635,6 +706,14 @@ TEST_F(compositionTest, meanAtomicNumberAndElectronAbundance) {
     EXPECT_NEAR(comp.getMeanAtomicNumber(), expectedZ, 1e-12);
 }
 
+/**
+ * @brief Tests canonical composition and caching behavior.
+ * @details This test verifies that getCanonicalComposition returns correct X, Y, Z values,
+ * and that repeated calls use the cached result.
+ * @par What this test proves:
+ * - getCanonicalComposition returns correct canonical values.
+ * - Caching works as expected.
+ */
 TEST_F(compositionTest, canonicalCompositionAndCaching) {
     fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     using fourdst::composition::Composition;
@@ -664,6 +743,14 @@ TEST_F(compositionTest, canonicalCompositionAndCaching) {
     EXPECT_NEAR(canon3.Z, 0.05, 1e-12);
 }
 
+/**
+ * @brief Tests vector getters, indexing, and species-at-index functionality.
+ * @details This test verifies that the vector getters for mass, number, and molar abundance fractions
+ * return correct values, and that species can be accessed by index.
+ * @par What this test proves:
+ * - Vector getters return correct values.
+ * - Indexing and species-at-index work as expected.
+ */
 TEST_F(compositionTest, vectorsAndIndexingAndSpeciesAtIndex) {
     fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     using fourdst::composition::Composition;
@@ -719,6 +806,13 @@ TEST_F(compositionTest, vectorsAndIndexingAndSpeciesAtIndex) {
     EXPECT_NEAR(av[iO], 0.2/species.at("O-16").mass(), 1e-12);
 }
 
+/**
+ * @brief Tests contains method and pre-finalization guards.
+ * @details This test verifies that contains throws before finalization and works correctly after.
+ * @par What this test proves:
+ * - contains throws before finalize.
+ * - contains works as expected after finalize.
+ */
 TEST_F(compositionTest, containsAndPreFinalizationGuards) {
     fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     fourdst::composition::Composition comp;
@@ -732,6 +826,14 @@ TEST_F(compositionTest, containsAndPreFinalizationGuards) {
     EXPECT_FALSE(comp.contains(fourdst::atomic::Li_6));
 }
 
+/**
+ * @brief Tests subset method with "none" normalization and normalization flow.
+ * @details This test verifies that subset with "none" does not normalize by default,
+ * and that normalization can be forced with finalize(true).
+ * @par What this test proves:
+ * - subset with "none" does not normalize by default.
+ * - finalize(true) normalizes the subset.
+ */
 TEST_F(compositionTest, subsetNoneMethodAndNormalizationFlow) {
     fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     fourdst::composition::Composition comp;
@@ -750,6 +852,12 @@ TEST_F(compositionTest, subsetNoneMethodAndNormalizationFlow) {
     EXPECT_NEAR(sub.getMassFraction("He-4"), 0.3/(0.5+0.3), 1e-12);
 }
 
+/**
+ * @brief Tests copy constructor and assignment operator for independence.
+ * @details This test verifies that copies of a Composition object are independent of the original.
+ * @par What this test proves:
+ * - Copy constructor and assignment operator create independent objects.
+ */
 TEST_F(compositionTest, copyConstructorAndAssignmentIndependence) {
     fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     using fourdst::composition::Composition;
@@ -772,6 +880,13 @@ TEST_F(compositionTest, copyConstructorAndAssignmentIndependence) {
     EXPECT_NEAR(assigned.getMassFraction("He-4"), 0.4, 1e-12);
 }
 
+/**
+ * @brief Tests getComposition by Species and retrieval of all entries.
+ * @details This test verifies that getComposition works for both single Species and all entries,
+ * and that the returned values are correct.
+ * @par What this test proves:
+ * - getComposition works for both single Species and all entries.
+ */
 TEST_F(compositionTest, getCompositionBySpeciesAndAllEntries) {
     fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     using fourdst::composition::Composition;
@@ -791,6 +906,14 @@ TEST_F(compositionTest, getCompositionBySpeciesAndAllEntries) {
     EXPECT_NEAR(all.second.meanParticleMass, comp.getMeanParticleMass(), 1e-15);
 }
 
+/**
+ * @brief Tests iteration over composition and out-of-range index access.
+ * @details This test verifies that begin/end iteration covers all entries,
+ * and that accessing an out-of-range index throws an exception.
+ * @par What this test proves:
+ * - Iteration covers all entries.
+ * - Out-of-range index throws std::out_of_range.
+ */
 TEST_F(compositionTest, iterationBeginEndAndIndexOutOfRange) {
     fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     fourdst::composition::Composition comp;
@@ -809,6 +932,14 @@ TEST_F(compositionTest, iterationBeginEndAndIndexOutOfRange) {
     EXPECT_THROW(static_cast<void>(comp.getSpeciesAtIndex(100)), std::out_of_range);
 }
 
+/**
+ * @brief Tests inheritance from CompositionAbstract and overriding a getter.
+ * @details This test defines a derived class that overrides getMolarAbundance,
+ * and verifies that the override works and other getters are inherited.
+ * @par What this test proves:
+ * - Derived classes can override getters.
+ * - All CompositionAbstract children have the standard getter interface.
+ */
 TEST_F(compositionTest, abstractBase) {
     class UnrestrictedComposition : public fourdst::composition::Composition {
     private:
@@ -841,4 +972,3 @@ TEST_F(compositionTest, abstractBase) {
     ASSERT_DOUBLE_EQ(uComp.getMassFraction("He-4"), comp.getMassFraction("He-4"));
 
 }
-

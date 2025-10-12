@@ -3570,6 +3570,12 @@ namespace fourdst::atomic {
     static const Species Og_295("Og-295", "Og", 59, 177, 118, 295, 7076.0, "B-", std::numeric_limits<double>::quiet_NaN(), 680.0, "", "~100", 295.216178, 703.0);
     
     // Create a map from species name (e.g., "H-1") to a pointer to the species object.
+    /**
+     * @brief Map of species names to their corresponding Species objects.
+     *
+     * @details This unordered map allows for quick lookup of species by their string identifiers. All Species are stored
+     *          as constant references to ensure immutability and efficient access.
+     */
     static const std::unordered_map<std::string, const Species&> species = {
         {"n-1", n_1},
         {"H-1", H_1},
@@ -7130,14 +7136,25 @@ namespace fourdst::atomic {
         {"Og-294", Og_294},
         {"Og-295", Og_295},
     };
-    
-    // Create an enum to represent possible error types when looking up species.
+
+    /**
+     * @brief Error types for species lookup.
+     * @par Types
+     *  - ELEMENT_SYMBOL_NOT_FOUND: The element symbol corresponding to the provided atomic number (Z) was not found.
+     *  - SPECIES_SYMBOL_NOT_FOUND: The species symbol constructed from the element symbol and mass was not found.
+     */
     enum class SpeciesErrorType {
         ELEMENT_SYMBOL_NOT_FOUND,
         SPECIES_SYMBOL_NOT_FOUND
     };
-    
-    // Function to look up a species by its atomic number (Z) and mass number (A).
+
+    /**
+     * @breif Convert atomic mass (A) and atomic number (Z) to a Species object.
+     * @param a The atomic mass number.
+     * @param z the atomic number.
+     * @return A std::expected containing the Species object if found, or a SpeciesErrorType error if not found.
+     * @note This function is noexcept and will not throw exceptions. The only possible  exception is a bad_alloc from std::string operations and this is unrecoverable.
+     */
     inline std::expected<Species, SpeciesErrorType> az_to_species(const int a, const int z) noexcept {
         if (!element_symbol_map.contains(static_cast<uint8_t>(z))) {
             return std::unexpected(SpeciesErrorType::ELEMENT_SYMBOL_NOT_FOUND);

@@ -4,7 +4,27 @@
 #include <cstdint>
 #include <string>
 
+/**
+ * @file elements.h
+ * @brief Provides mappings between atomic numbers and element symbols for the periodic table.
+ *
+ * This header defines lookup tables for converting between atomic numbers (Z) and their corresponding
+ * chemical element symbols, and vice versa. These maps are useful for parsing, displaying, or validating
+ * chemical compositions in scientific applications.
+ */
+
 namespace fourdst::atomic {
+
+    /**
+     * @brief Maps atomic number (Z) to element symbol.
+     *
+     * This map allows lookup of the chemical symbol for a given atomic number.
+     *
+     * @par Example
+     * @code
+     * std::string symbol = fourdst::atomic::element_symbol_map.at(8); // symbol == "O"
+     * @endcode
+     */
     static const std::unordered_map<uint8_t, std::string> element_symbol_map = {
         {1u, "H"},
         {2u, "He"},
@@ -125,6 +145,17 @@ namespace fourdst::atomic {
         {117u, "Ts"},
         {118u, "Og"}
     };
+
+    /**
+     * @brief Maps element symbol to atomic number (Z).
+     *
+     * This map allows lookup of the atomic number for a given chemical symbol.
+     *
+     * @par Example
+     * @code
+     * uint8_t z = fourdst::atomic::symbol_element_map.at("Fe"); // z == 26
+     * @endcode
+     */
     static const std::unordered_map<std::string, uint8_t> symbol_element_map = {
         {"H", 1u},
         {"He", 2u},
