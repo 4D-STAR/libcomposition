@@ -101,8 +101,8 @@ The most common use case is defining a composition by mass fractions (X, Y, Z).
 \DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ 4.\ Finalize\ the\ composition\ to\ validate\ it\ and\ compute\ global\ properties}}
 \DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a72d063a74a9d2197065884a2cea57a14}{finalize}}())\ \{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Composition\ finalized\ successfully!"{}}\ <<\ std::endl;}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}H-\/1\ Mass\ Fraction:\ "{}}\ <<\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ad20bd541dd7c45274a2e586e6a0519a7}{getMassFraction}}(\textcolor{stringliteral}{"{}H-\/1"{}})\ <<\ std::endl;}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Mean\ Particle\ Mass:\ "{}}\ <<\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a66401fed7054172e9b1a2687e5cc8eff}{getMeanParticleMass}}()\ <<\ \textcolor{stringliteral}{"{}\ g/mol"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}H-\/1\ Mass\ Fraction:\ "{}}\ <<\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aae07019ab6e02394e6ea353e0b98a417}{getMassFraction}}(\textcolor{stringliteral}{"{}H-\/1"{}})\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Mean\ Particle\ Mass:\ "{}}\ <<\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a796386824d1358527fed7c6b537935d8}{getMeanParticleMass}}()\ <<\ \textcolor{stringliteral}{"{}\ g/mol"{}}\ <<\ std::endl;}
 \DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ finalize\ composition."{}}\ <<\ std::endl;}
 \DoxyCodeLine{\ \ \ \ \}}
@@ -131,16 +131,16 @@ The library can also work with number (mole) fractions and switch between modes.
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a72d063a74a9d2197065884a2cea57a14}{finalize}}())\ \{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ We\ can\ get\ number\ fractions\ directly}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}He-\/4\ Number\ Fraction:\ "{}}\ <<\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a84fea38bc1c005e483910285f6800e15}{getNumberFraction}}(\textcolor{stringliteral}{"{}He-\/4"{}})\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}He-\/4\ Number\ Fraction:\ "{}}\ <<\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a34f71d4d8f0297c576fd62fabd490305}{getNumberFraction}}(\textcolor{stringliteral}{"{}He-\/4"{}})\ <<\ std::endl;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Or\ get\ the\ equivalent\ mass\ fraction}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}He-\/4\ Mass\ Fraction:\ "{}}\ <<\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ad20bd541dd7c45274a2e586e6a0519a7}{getMassFraction}}(\textcolor{stringliteral}{"{}He-\/4"{}})\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}He-\/4\ Mass\ Fraction:\ "{}}\ <<\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aae07019ab6e02394e6ea353e0b98a417}{getMassFraction}}(\textcolor{stringliteral}{"{}He-\/4"{}})\ <<\ std::endl;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Switch\ the\ entire\ composition\ to\ mass\ fraction\ mode}}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a0af981ed1074b26c237cf6cf35f82c9e}{setCompositionMode}}(\textcolor{keyword}{true});\ \textcolor{comment}{//\ true\ for\ mass\ fraction\ mode}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Now,\ getting\ the\ mass\ fraction\ is\ a\ direct\ lookup}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}He-\/4\ Mass\ Fraction\ (after\ mode\ switch):\ "{}}\ <<\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ad20bd541dd7c45274a2e586e6a0519a7}{getMassFraction}}(\textcolor{stringliteral}{"{}He-\/4"{}})\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}He-\/4\ Mass\ Fraction\ (after\ mode\ switch):\ "{}}\ <<\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aae07019ab6e02394e6ea353e0b98a417}{getMassFraction}}(\textcolor{stringliteral}{"{}He-\/4"{}})\ <<\ std::endl;}
 \DoxyCodeLine{\ \ \ \ \}}
 \DoxyCodeLine{\}}
 
@@ -166,8 +166,8 @@ You can easily mix two compositions. The library handles the union of all specie
 \DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ 0.75\ of\ comp1,\ 0.25\ of\ comp2}}
 \DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{fourdst::composition::Composition}}\ mixed2\ =\ comp1.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a3aead72892606725a4149a5f65bd31ec}{mix}}(comp2,\ 0.75);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}50/50\ Mix\ H-\/1:\ "{}}\ <<\ mixed.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ad20bd541dd7c45274a2e586e6a0519a7}{getMassFraction}}(\textcolor{stringliteral}{"{}H-\/1"{}})\ <<\ std::endl;\ \ \ \textcolor{comment}{//\ -\/>\ 0.5}}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}75/25\ Mix\ H-\/1:\ "{}}\ <<\ mixed2.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ad20bd541dd7c45274a2e586e6a0519a7}{getMassFraction}}(\textcolor{stringliteral}{"{}H-\/1"{}})\ <<\ std::endl;\ \ \textcolor{comment}{//\ -\/>\ 0.75}}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}50/50\ Mix\ H-\/1:\ "{}}\ <<\ mixed.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aae07019ab6e02394e6ea353e0b98a417}{getMassFraction}}(\textcolor{stringliteral}{"{}H-\/1"{}})\ <<\ std::endl;\ \ \ \textcolor{comment}{//\ -\/>\ 0.5}}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}75/25\ Mix\ H-\/1:\ "{}}\ <<\ mixed2.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aae07019ab6e02394e6ea353e0b98a417}{getMassFraction}}(\textcolor{stringliteral}{"{}H-\/1"{}})\ <<\ std::endl;\ \ \textcolor{comment}{//\ -\/>\ 0.75}}
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
@@ -186,7 +186,7 @@ The library uses exceptions to report errors. Always wrap calls in a {\ttfamily 
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{try}\ \{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ will\ throw,\ because\ the\ composition\ is\ not\ finalized\ yet.}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ mass\ =\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ad20bd541dd7c45274a2e586e6a0519a7}{getMassFraction}}(\textcolor{stringliteral}{"{}H-\/1"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ mass\ =\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aae07019ab6e02394e6ea353e0b98a417}{getMassFraction}}(\textcolor{stringliteral}{"{}H-\/1"{}});}
 \DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1_composition_not_finalized_error}{fourdst::composition::exceptions::CompositionNotFinalizedError}}\&\ e)\ \{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Caught\ expected\ error:\ "{}}\ <<\ e.\mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1_composition_error_ae44ceddb19da8a8cda7ee150b6826d08}{what}}()\ <<\ std::endl;}
 \DoxyCodeLine{\ \ \ \ \}}

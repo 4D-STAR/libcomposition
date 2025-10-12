@@ -232,6 +232,6 @@ var searchData=
   ['np_5f243_229',['Np_243',['../namespacefourdst_1_1atomic.html#acbd65d6ae4c017144efd3761981b1de9',1,'fourdst::atomic']]],
   ['np_5f244_230',['Np_244',['../namespacefourdst_1_1atomic.html#ae902a255822a5ec3fd429d95bbdd2d22',1,'fourdst::atomic']]],
   ['np_5f245_231',['Np_245',['../namespacefourdst_1_1atomic.html#aca92cb8d2eba337119fe8a0505192b76',1,'fourdst::atomic']]],
-  ['number_5ffraction_232',['number_fraction',['../structfourdst_1_1composition_1_1_composition_entry.html#a2d55492d285068d4a64db5602dfb1c78',1,'fourdst::composition::CompositionEntry::number_fraction() const'],['../structfourdst_1_1composition_1_1_composition_entry.html#ab96d976b53f3828237525005b904a39c',1,'fourdst::composition::CompositionEntry::number_fraction(double totalMoles) const']]],
+  ['number_5ffraction_232',['number_fraction',['../structfourdst_1_1composition_1_1_composition_entry.html#a2d55492d285068d4a64db5602dfb1c78',1,'fourdst::composition::CompositionEntry::number_fraction() const'],['../structfourdst_1_1composition_1_1_composition_entry.html#aed91b28f66ed3e0937905c174712c3ca',1,'fourdst::composition::CompositionEntry::number_fraction(double totalMolesPerMass) const']]],
   ['nz_233',['nz',['../structfourdst_1_1atomic_1_1_species.html#aa5e452accca3a9b4937867044617a032',1,'fourdst::atomic::Species']]]
 ];

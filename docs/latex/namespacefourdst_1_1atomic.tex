@@ -10,6 +10,13 @@ Contains classes and functions related to atomic data, such as properties of ato
 \item 
 struct \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}}
 \begin{DoxyCompactList}\small\item\em Represents an atomic species (isotope) with its fundamental physical properties. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{namespacefourdst_1_1atomic_a6c728f75913c5bfb62f6dcf9dff294fe}{Species\+Error\+Type}} \{ \mbox{\hyperlink{namespacefourdst_1_1atomic_a6c728f75913c5bfb62f6dcf9dff294fea3118448fccedc8cc00213d97349eec7a}{ELEMENT\+\_\+\+SYMBOL\+\_\+\+NOT\+\_\+\+FOUND}}
+, \mbox{\hyperlink{namespacefourdst_1_1atomic_a6c728f75913c5bfb62f6dcf9dff294feabad4f0ccf5dd67ba5efc3be855889ef3}{SPECIES\+\_\+\+SYMBOL\+\_\+\+NOT\+\_\+\+FOUND}}
+ \}
+\begin{DoxyCompactList}\small\item\em Error types for species lookup. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -7139,21 +7146,55 @@ static const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \mb
 \item 
 static const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \mbox{\hyperlink{namespacefourdst_1_1atomic_a65016df026582f5d1718fd741c25b675}{Og\+\_\+295}} ("{}Og-\/295"{}, "{}Og"{}, 59, 177, 118, 295, 7076.\+0, "{}B-\/"{}, std\+::numeric\+\_\+limits$<$ double $>$\+::quiet\+\_\+\+NaN(), 680.\+0, "{}"{}, "{}\texorpdfstring{$\sim$}{\string~}100"{}, 295.\+216178, 703.\+0)
 \item 
-\mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \mbox{\hyperlink{namespacefourdst_1_1atomic_a29fe92b293db689c5da78599b8958c70}{az\+\_\+to\+\_\+species}} (const int a, const int z)
+std\+::expected$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}}, \mbox{\hyperlink{namespacefourdst_1_1atomic_a6c728f75913c5bfb62f6dcf9dff294fe}{Species\+Error\+Type}} $>$ \mbox{\hyperlink{namespacefourdst_1_1atomic_abd4cc0ec0922bf597ebee4c3c4d80f0d}{az\+\_\+to\+\_\+species}} (const int a, const int z) noexcept
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 static const std\+::unordered\+\_\+map$<$ uint8\+\_\+t, std\+::string $>$ \mbox{\hyperlink{namespacefourdst_1_1atomic_a82a2234f3c538636cc10293abd30e4a8}{element\+\_\+symbol\+\_\+map}}
-\item 
+\begin{DoxyCompactList}\small\item\em Maps atomic number (Z) to element symbol. \end{DoxyCompactList}\item 
 static const std\+::unordered\+\_\+map$<$ std\+::string, uint8\+\_\+t $>$ \mbox{\hyperlink{namespacefourdst_1_1atomic_ac39cc5fb90b416556e93bdc93f627203}{symbol\+\_\+element\+\_\+map}}
-\item 
+\begin{DoxyCompactList}\small\item\em Maps element symbol to atomic number (Z). \end{DoxyCompactList}\item 
 static const std\+::unordered\+\_\+map$<$ std\+::string, const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \& $>$ \mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Map of species names to their corresponding \doxylink{structfourdst_1_1atomic_1_1_species}{Species} objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Contains classes and functions related to atomic data, such as properties of atomic species. 
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{namespacefourdst_1_1atomic_a6c728f75913c5bfb62f6dcf9dff294fe}\index{fourdst::atomic@{fourdst::atomic}!SpeciesErrorType@{SpeciesErrorType}}
+\index{SpeciesErrorType@{SpeciesErrorType}!fourdst::atomic@{fourdst::atomic}}
+\doxysubsubsection{\texorpdfstring{SpeciesErrorType}{SpeciesErrorType}}
+{\footnotesize\ttfamily \label{namespacefourdst_1_1atomic_a6c728f75913c5bfb62f6dcf9dff294fe} 
+enum class \mbox{\hyperlink{namespacefourdst_1_1atomic_a6c728f75913c5bfb62f6dcf9dff294fe}{fourdst\+::atomic\+::\+Species\+Error\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Error types for species lookup. 
+
+\begin{DoxyParagraph}{Types}
+
+\begin{DoxyItemize}
+\item ELEMENT\+\_\+\+SYMBOL\+\_\+\+NOT\+\_\+\+FOUND\+: The element symbol corresponding to the provided atomic number (Z) was not found.
+\item SPECIES\+\_\+\+SYMBOL\+\_\+\+NOT\+\_\+\+FOUND\+: The species symbol constructed from the element symbol and mass was not found. 
+\end{DoxyItemize}
+\end{DoxyParagraph}
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ELEMENT\_SYMBOL\_NOT\_FOUND@{ELEMENT\_SYMBOL\_NOT\_FOUND}!fourdst::atomic@{fourdst::atomic}}\index{fourdst::atomic@{fourdst::atomic}!ELEMENT\_SYMBOL\_NOT\_FOUND@{ELEMENT\_SYMBOL\_NOT\_FOUND}}}\Hypertarget{namespacefourdst_1_1atomic_a6c728f75913c5bfb62f6dcf9dff294fea3118448fccedc8cc00213d97349eec7a}\label{namespacefourdst_1_1atomic_a6c728f75913c5bfb62f6dcf9dff294fea3118448fccedc8cc00213d97349eec7a} 
+ELEMENT\+\_\+\+SYMBOL\+\_\+\+NOT\+\_\+\+FOUND&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SPECIES\_SYMBOL\_NOT\_FOUND@{SPECIES\_SYMBOL\_NOT\_FOUND}!fourdst::atomic@{fourdst::atomic}}\index{fourdst::atomic@{fourdst::atomic}!SPECIES\_SYMBOL\_NOT\_FOUND@{SPECIES\_SYMBOL\_NOT\_FOUND}}}\Hypertarget{namespacefourdst_1_1atomic_a6c728f75913c5bfb62f6dcf9dff294feabad4f0ccf5dd67ba5efc3be855889ef3}\label{namespacefourdst_1_1atomic_a6c728f75913c5bfb62f6dcf9dff294feabad4f0ccf5dd67ba5efc3be855889ef3} 
+SPECIES\+\_\+\+SYMBOL\+\_\+\+NOT\+\_\+\+FOUND&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{species_8h_source_l07146}{7146}} of file \mbox{\hyperlink{species_8h_source}{species.\+h}}.
+
+
 
 \doxysubsection{Function Documentation}
 \Hypertarget{namespacefourdst_1_1atomic_ace9176ad95ecb1d5a3e078b9141a8d88}\index{fourdst::atomic@{fourdst::atomic}!Ac\_205@{Ac\_205}}
@@ -8752,15 +8793,28 @@ static const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} fou
 {\footnotesize\ttfamily \label{namespacefourdst_1_1atomic_afff955be16cbe4538218312291b8afe4} 
 static const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} fourdst\+::atomic\+::\+Au\+\_\+210 (\begin{DoxyParamCaption}\item[{"{}Au-\/210"{}}]{}{, }\item[{"{}Au"{}}]{}{, }\item[{52}]{}{, }\item[{131}]{}{, }\item[{79}]{}{, }\item[{210}]{}{, }\item[{7764.}]{0}{, }\item[{"{}B-\/"{}}]{}{, }\item[{7980.}]{0}{, }\item[{10.}]{0}{, }\item[{"{}+\#"{}}]{}{, }\item[{"{}-\/ ?;B-\/n ?"{}}]{}{, }\item[{210.}]{002877}{, }\item[{429.}]{0}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{namespacefourdst_1_1atomic_a29fe92b293db689c5da78599b8958c70}\index{fourdst::atomic@{fourdst::atomic}!az\_to\_species@{az\_to\_species}}
+\Hypertarget{namespacefourdst_1_1atomic_abd4cc0ec0922bf597ebee4c3c4d80f0d}\index{fourdst::atomic@{fourdst::atomic}!az\_to\_species@{az\_to\_species}}
 \index{az\_to\_species@{az\_to\_species}!fourdst::atomic@{fourdst::atomic}}
 \doxysubsubsection{\texorpdfstring{az\_to\_species()}{az\_to\_species()}}
-{\footnotesize\ttfamily \label{namespacefourdst_1_1atomic_a29fe92b293db689c5da78599b8958c70} 
-\mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} fourdst\+::atomic\+::az\+\_\+to\+\_\+species (\begin{DoxyParamCaption}\item[{const int}]{a}{, }\item[{const int}]{z}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \label{namespacefourdst_1_1atomic_abd4cc0ec0922bf597ebee4c3c4d80f0d} 
+std\+::expected$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}}, \mbox{\hyperlink{namespacefourdst_1_1atomic_a6c728f75913c5bfb62f6dcf9dff294fe}{Species\+Error\+Type}} $>$ fourdst\+::atomic\+::az\+\_\+to\+\_\+species (\begin{DoxyParamCaption}\item[{const int}]{a}{, }\item[{const int}]{z}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+@breif Convert atomic mass (A) and atomic number (Z) to a \doxylink{structfourdst_1_1atomic_1_1_species}{Species} object. 
+\begin{DoxyParams}{Parameters}
+{\em a} & The atomic mass number. \\
+\hline
+{\em z} & the atomic number. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A std\+::expected containing the \doxylink{structfourdst_1_1atomic_1_1_species}{Species} object if found, or a \doxylink{namespacefourdst_1_1atomic_a6c728f75913c5bfb62f6dcf9dff294fe}{Species\+Error\+Type} error if not found. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This function is noexcept and will not throw exceptions. The only possible exception is a bad\+\_\+alloc from std\+::string operations and this is unrecoverable. 
+\end{DoxyNote}
 
 
-
-Definition at line \mbox{\hyperlink{species_8h_source_l07142}{7142}} of file \mbox{\hyperlink{species_8h_source}{species.\+h}}.
+Definition at line \mbox{\hyperlink{species_8h_source_l07158}{7158}} of file \mbox{\hyperlink{species_8h_source}{species.\+h}}.
 
 \Hypertarget{namespacefourdst_1_1atomic_ac5cd3b25b3beb7010ce868e475e3ab74}\index{fourdst::atomic@{fourdst::atomic}!B\_10@{B\_10}}
 \index{B\_10@{B\_10}!fourdst::atomic@{fourdst::atomic}}
@@ -28675,7 +28729,21 @@ const std\+::unordered\+\_\+map$<$uint8\+\_\+t, std\+::string$>$ fourdst\+::atom
 
 
 
-Definition at line \mbox{\hyperlink{elements_8h_source_l00008}{8}} of file \mbox{\hyperlink{elements_8h_source}{elements.\+h}}.
+Maps atomic number (Z) to element symbol. 
+
+This map allows lookup of the chemical symbol for a given atomic number.
+
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::string\ symbol\ =\ \mbox{\hyperlink{namespacefourdst_1_1atomic_a82a2234f3c538636cc10293abd30e4a8}{fourdst::atomic::element\_symbol\_map}}.at(8);\ \textcolor{comment}{//\ symbol\ ==\ "{}O"{}}}
+
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+
+
+Definition at line \mbox{\hyperlink{elements_8h_source_l00028}{28}} of file \mbox{\hyperlink{elements_8h_source}{elements.\+h}}.
 
 \Hypertarget{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}\index{fourdst::atomic@{fourdst::atomic}!species@{species}}
 \index{species@{species}!fourdst::atomic@{fourdst::atomic}}
@@ -28685,7 +28753,11 @@ const std\+::unordered\+\_\+map$<$std\+::string, const \mbox{\hyperlink{structfo
 
 
 
-Definition at line \mbox{\hyperlink{species_8h_source_l03581}{3581}} of file \mbox{\hyperlink{species_8h_source}{species.\+h}}.
+Map of species names to their corresponding \doxylink{structfourdst_1_1atomic_1_1_species}{Species} objects. 
+
+This unordered map allows for quick lookup of species by their string identifiers. All \doxylink{structfourdst_1_1atomic_1_1_species}{Species} are stored as constant references to ensure immutability and efficient access. 
+
+Definition at line \mbox{\hyperlink{species_8h_source_l03579}{3579}} of file \mbox{\hyperlink{species_8h_source}{species.\+h}}.
 
 \Hypertarget{namespacefourdst_1_1atomic_ac39cc5fb90b416556e93bdc93f627203}\index{fourdst::atomic@{fourdst::atomic}!symbol\_element\_map@{symbol\_element\_map}}
 \index{symbol\_element\_map@{symbol\_element\_map}!fourdst::atomic@{fourdst::atomic}}
@@ -28695,5 +28767,19 @@ const std\+::unordered\+\_\+map$<$std\+::string, uint8\+\_\+t$>$ fourdst\+::atom
 
 
 
-Definition at line \mbox{\hyperlink{elements_8h_source_l00128}{128}} of file \mbox{\hyperlink{elements_8h_source}{elements.\+h}}.
+Maps element symbol to atomic number (Z). 
+
+This map allows lookup of the atomic number for a given chemical symbol.
+
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{uint8\_t\ z\ =\ \mbox{\hyperlink{namespacefourdst_1_1atomic_ac39cc5fb90b416556e93bdc93f627203}{fourdst::atomic::symbol\_element\_map}}.at(\textcolor{stringliteral}{"{}Fe"{}});\ \textcolor{comment}{//\ z\ ==\ 26}}
+
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+
+
+Definition at line \mbox{\hyperlink{elements_8h_source_l00159}{159}} of file \mbox{\hyperlink{elements_8h_source}{elements.\+h}}.
 

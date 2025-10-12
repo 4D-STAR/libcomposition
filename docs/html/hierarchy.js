@@ -1,7 +1,10 @@
 var hierarchy =
 [
     [ "fourdst::composition::CanonicalComposition", "structfourdst_1_1composition_1_1_canonical_composition.html", null ],
-    [ "fourdst::composition::Composition", "classfourdst_1_1composition_1_1_composition.html", null ],
+    [ "CompositionAbstract", "class_composition_abstract.html", [
+      [ "fourdst::composition::Composition", "classfourdst_1_1composition_1_1_composition.html", null ]
+    ] ],
+    [ "fourdst::composition::Composition::CompositionCache", "structfourdst_1_1composition_1_1_composition_1_1_composition_cache.html", null ],
     [ "fourdst::composition::CompositionEntry", "structfourdst_1_1composition_1_1_composition_entry.html", null ],
     [ "std::exception", null, [
       [ "fourdst::composition::exceptions::CompositionEntryError", "classfourdst_1_1composition_1_1exceptions_1_1_composition_entry_error.html", [

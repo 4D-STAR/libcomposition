@@ -77,7 +77,8 @@ var menudata={children:[
 {text:"x",url:"namespacemembers_func_x.html#index_x"},
 {text:"y",url:"namespacemembers_func_y.html#index_y"},
 {text:"z",url:"namespacemembers_func_z.html#index_z"}]},
-{text:"Variables",url:"namespacemembers_vars.html"}]}]},
+{text:"Variables",url:"namespacemembers_vars.html"},
+{text:"Enumerations",url:"namespacemembers_enum.html"}]}]},
 {text:"Classes",url:"annotated.html",children:[
 {text:"Class List",url:"annotated.html"},
 {text:"Class Index",url:"classes.html"},
@@ -124,16 +125,14 @@ var menudata={children:[
 {text:"z",url:"functions_func.html#index_z"},
 {text:"~",url:"functions_func.html#index__7E"}]},
 {text:"Variables",url:"functions_vars.html",children:[
+{text:"c",url:"functions_vars.html#index_c"},
+{text:"g",url:"functions_vars.html#index_g"},
 {text:"m",url:"functions_vars.html#index_m"},
+{text:"n",url:"functions_vars.html#index_n"},
 {text:"s",url:"functions_vars.html#index_s"},
 {text:"x",url:"functions_vars.html#index_x"},
 {text:"y",url:"functions_vars.html#index_y"},
 {text:"z",url:"functions_vars.html#index_z"}]},
 {text:"Related Symbols",url:"functions_rela.html"}]}]},
 {text:"Files",url:"files.html",children:[
-{text:"File List",url:"files.html"},
-{text:"File Members",url:"globals.html",children:[
-{text:"All",url:"globals.html",children:[
-{text:"s",url:"globals.html#index_s"}]},
-{text:"Macros",url:"globals_defs.html",children:[
-{text:"s",url:"globals_defs.html#index_s"}]}]}]}]}
+{text:"File List",url:"files.html"}]}]}

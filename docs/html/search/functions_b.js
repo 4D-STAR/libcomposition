@@ -1,7 +1,7 @@
 var searchData=
 [
   ['mass_0',['mass',['../structfourdst_1_1atomic_1_1_species.html#af5bdcc90ddafddfc027f94a98972eca3',1,'fourdst::atomic::Species']]],
-  ['mass_5ffraction_1',['mass_fraction',['../structfourdst_1_1composition_1_1_composition_entry.html#a66cb086719d7f654869bd7b0cee87ffc',1,'fourdst::composition::CompositionEntry::mass_fraction() const'],['../structfourdst_1_1composition_1_1_composition_entry.html#a27b0ae0f7ef9469d515c4c7b6ec8dc22',1,'fourdst::composition::CompositionEntry::mass_fraction(double meanMolarMass) const']]],
+  ['mass_5ffraction_1',['mass_fraction',['../structfourdst_1_1composition_1_1_composition_entry.html#a66cb086719d7f654869bd7b0cee87ffc',1,'fourdst::composition::CompositionEntry']]],
   ['massunc_2',['massUnc',['../structfourdst_1_1atomic_1_1_species.html#ac041c089469dc8d36548805c81492aca',1,'fourdst::atomic::Species']]],
   ['mc_5f287_3',['Mc_287',['../namespacefourdst_1_1atomic.html#af3cf0060ddbc8b5269ac073dae79abd8',1,'fourdst::atomic']]],
   ['mc_5f288_4',['Mc_288',['../namespacefourdst_1_1atomic.html#a56a6ec9b80e75faadb5c94204702d1b2',1,'fourdst::atomic']]],

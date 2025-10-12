@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['element_5fsymbol_5fmap_0',['element_symbol_map',['../namespacefourdst_1_1atomic.html#a82a2234f3c538636cc10293abd30e4a8',1,'fourdst::atomic']]]
+  ['canonicalcomp_0',['canonicalComp',['../structfourdst_1_1composition_1_1_composition_1_1_composition_cache.html#a459e01b94eb0e78dd95bb6932a967f13',1,'fourdst::composition::Composition::CompositionCache']]]
 ];

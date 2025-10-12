@@ -29,7 +29,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">fourdst::libcomposition<span id="projectnumber">&#160;v1.5.2</span>
+   <div id="projectname">fourdst::libcomposition<span id="projectnumber">&#160;v1.9.0</span>
    </div>
    <div id="projectbrief">Robust atomic species information library</div>
   </td>
@@ -100,6 +100,7 @@ $(function(){initNavTree('classfourdst_1_1composition_1_1_composition.html','');
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-static-methods">Static Private Member Functions</a> &#124;
@@ -114,15 +115,29 @@ $(function(){initNavTree('classfourdst_1_1composition_1_1_composition.html','');
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="composition_8h_source.html">composition.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for fourdst::composition::Composition:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classfourdst_1_1composition_1_1_composition.png" usemap="#fourdst::composition::Composition_map" alt=""/>
+  <map id="fourdst::composition::Composition_map" name="fourdst::composition::Composition_map">
+<area href="class_composition_abstract.html" title="Abstract base class for chemical composition representations." alt="CompositionAbstract" shape="rect" coords="0,0,197,24"/>
+  </map>
+</div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfourdst_1_1composition_1_1_composition_1_1_composition_cache.html">CompositionCache</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a23b83b76ee025f6fc009184ee19bba88" id="r_a23b83b76ee025f6fc009184ee19bba88"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23b83b76ee025f6fc009184ee19bba88">Composition</a> ()=default</td></tr>
 <tr class="memdesc:a23b83b76ee025f6fc009184ee19bba88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <br /></td></tr>
 <tr class="separator:a23b83b76ee025f6fc009184ee19bba88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3ff8ece122a9fad1252061148566749" id="r_aa3ff8ece122a9fad1252061148566749"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa3ff8ece122a9fad1252061148566749">~Composition</a> ()=default</td></tr>
-<tr class="memdesc:aa3ff8ece122a9fad1252061148566749"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor.  <br /></td></tr>
-<tr class="separator:aa3ff8ece122a9fad1252061148566749"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08c1d1fe9384c5255a6ba40e34b18315" id="r_a08c1d1fe9384c5255a6ba40e34b18315"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08c1d1fe9384c5255a6ba40e34b18315">~Composition</a> () override=default</td></tr>
+<tr class="memdesc:a08c1d1fe9384c5255a6ba40e34b18315"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor.  <br /></td></tr>
+<tr class="separator:a08c1d1fe9384c5255a6ba40e34b18315"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72d063a74a9d2197065884a2cea57a14" id="r_a72d063a74a9d2197065884a2cea57a14"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72d063a74a9d2197065884a2cea57a14">finalize</a> (bool norm=false)</td></tr>
 <tr class="memdesc:a72d063a74a9d2197065884a2cea57a14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalizes the composition, making it ready for querying.  <br /></td></tr>
 <tr class="separator:a72d063a74a9d2197065884a2cea57a14"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -153,12 +168,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a057f2bf2e86bcc3c649c0ddf18cf3826" id="r_a057f2bf2e86bcc3c649c0ddf18cf3826"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a057f2bf2e86bcc3c649c0ddf18cf3826">registerSpecies</a> (const std::vector&lt; <a class="el" href="structfourdst_1_1atomic_1_1_species.html">fourdst::atomic::Species</a> &gt; &amp;species, bool massFracMode=true)</td></tr>
 <tr class="memdesc:a057f2bf2e86bcc3c649c0ddf18cf3826"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a vector of new species.  <br /></td></tr>
 <tr class="separator:a057f2bf2e86bcc3c649c0ddf18cf3826"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84c7b72c2aee46b94492d404855dd3e0" id="r_a84c7b72c2aee46b94492d404855dd3e0"><td class="memItemLeft" align="right" valign="top">std::set&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84c7b72c2aee46b94492d404855dd3e0">getRegisteredSymbols</a> () const</td></tr>
-<tr class="memdesc:a84c7b72c2aee46b94492d404855dd3e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the registered symbols.  <br /></td></tr>
-<tr class="separator:a84c7b72c2aee46b94492d404855dd3e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3dee7b5e1f54920de9eab99f95a516ec" id="r_a3dee7b5e1f54920de9eab99f95a516ec"><td class="memItemLeft" align="right" valign="top">std::set&lt; <a class="el" href="structfourdst_1_1atomic_1_1_species.html">fourdst::atomic::Species</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3dee7b5e1f54920de9eab99f95a516ec">getRegisteredSpecies</a> () const</td></tr>
-<tr class="memdesc:a3dee7b5e1f54920de9eab99f95a516ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a set of all species that are registered in the composition.  <br /></td></tr>
-<tr class="separator:a3dee7b5e1f54920de9eab99f95a516ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f10f38878ba4be121d6d77a8b1f4d7a" id="r_a3f10f38878ba4be121d6d77a8b1f4d7a"><td class="memItemLeft" align="right" valign="top">std::set&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f10f38878ba4be121d6d77a8b1f4d7a">getRegisteredSymbols</a> () const override</td></tr>
+<tr class="memdesc:a3f10f38878ba4be121d6d77a8b1f4d7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the registered symbols.  <br /></td></tr>
+<tr class="separator:a3f10f38878ba4be121d6d77a8b1f4d7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af61ebe73a8b5926eb23037bb078fa87a" id="r_af61ebe73a8b5926eb23037bb078fa87a"><td class="memItemLeft" align="right" valign="top">std::set&lt; <a class="el" href="structfourdst_1_1atomic_1_1_species.html">fourdst::atomic::Species</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af61ebe73a8b5926eb23037bb078fa87a">getRegisteredSpecies</a> () const override</td></tr>
+<tr class="memdesc:af61ebe73a8b5926eb23037bb078fa87a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a set of all species that are registered in the composition.  <br /></td></tr>
+<tr class="separator:af61ebe73a8b5926eb23037bb078fa87a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a493224656aa3ade68389250720ef09af" id="r_a493224656aa3ade68389250720ef09af"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a493224656aa3ade68389250720ef09af">setMassFraction</a> (const std::string &amp;symbol, const double &amp;mass_fraction)</td></tr>
 <tr class="memdesc:a493224656aa3ade68389250720ef09af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the mass fraction for a given symbol.  <br /></td></tr>
 <tr class="separator:a493224656aa3ade68389250720ef09af"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -186,30 +201,30 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3aead72892606725a4149a5f65bd31ec" id="r_a3aead72892606725a4149a5f65bd31ec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfourdst_1_1composition_1_1_composition.html">Composition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3aead72892606725a4149a5f65bd31ec">mix</a> (const <a class="el" href="classfourdst_1_1composition_1_1_composition.html">Composition</a> &amp;other, double fraction) const</td></tr>
 <tr class="memdesc:a3aead72892606725a4149a5f65bd31ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mixes this composition with another to produce a new composition.  <br /></td></tr>
 <tr class="separator:a3aead72892606725a4149a5f65bd31ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad20bd541dd7c45274a2e586e6a0519a7" id="r_ad20bd541dd7c45274a2e586e6a0519a7"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad20bd541dd7c45274a2e586e6a0519a7">getMassFraction</a> () const</td></tr>
-<tr class="memdesc:ad20bd541dd7c45274a2e586e6a0519a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the mass fractions of all species in the composition.  <br /></td></tr>
-<tr class="separator:ad20bd541dd7c45274a2e586e6a0519a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f6a6edf02b55eeecf147c3f1f7f55e7" id="r_a7f6a6edf02b55eeecf147c3f1f7f55e7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f6a6edf02b55eeecf147c3f1f7f55e7">getMassFraction</a> (const std::string &amp;symbol) const</td></tr>
-<tr class="memdesc:a7f6a6edf02b55eeecf147c3f1f7f55e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the mass fraction for a given symbol.  <br /></td></tr>
-<tr class="separator:a7f6a6edf02b55eeecf147c3f1f7f55e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3ba0c742872384cff3ed03789c0a17d" id="r_aa3ba0c742872384cff3ed03789c0a17d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa3ba0c742872384cff3ed03789c0a17d">getMassFraction</a> (const <a class="el" href="structfourdst_1_1atomic_1_1_species.html">fourdst::atomic::Species</a> &amp;species) const</td></tr>
-<tr class="memdesc:aa3ba0c742872384cff3ed03789c0a17d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the mass fraction for a given isotope.  <br /></td></tr>
-<tr class="separator:aa3ba0c742872384cff3ed03789c0a17d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84fea38bc1c005e483910285f6800e15" id="r_a84fea38bc1c005e483910285f6800e15"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84fea38bc1c005e483910285f6800e15">getNumberFraction</a> (const std::string &amp;symbol) const</td></tr>
-<tr class="memdesc:a84fea38bc1c005e483910285f6800e15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the number fraction for a given symbol.  <br /></td></tr>
-<tr class="separator:a84fea38bc1c005e483910285f6800e15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0ce4143a267e96ab7967538c76acdc3" id="r_aa0ce4143a267e96ab7967538c76acdc3"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa0ce4143a267e96ab7967538c76acdc3">getNumberFraction</a> (const <a class="el" href="structfourdst_1_1atomic_1_1_species.html">fourdst::atomic::Species</a> &amp;species) const</td></tr>
-<tr class="memdesc:aa0ce4143a267e96ab7967538c76acdc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the number fraction for a given isotope.  <br /></td></tr>
-<tr class="separator:aa0ce4143a267e96ab7967538c76acdc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7731df9b30f8c8f13231f7e1a17b105c" id="r_a7731df9b30f8c8f13231f7e1a17b105c"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7731df9b30f8c8f13231f7e1a17b105c">getNumberFraction</a> () const</td></tr>
-<tr class="memdesc:a7731df9b30f8c8f13231f7e1a17b105c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the number fractions of all species in the composition.  <br /></td></tr>
-<tr class="separator:a7731df9b30f8c8f13231f7e1a17b105c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67a2ed844f3aee3d9cc1a3cb996eb56f" id="r_a67a2ed844f3aee3d9cc1a3cb996eb56f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67a2ed844f3aee3d9cc1a3cb996eb56f">getMolarAbundance</a> (const std::string &amp;symbol) const</td></tr>
-<tr class="memdesc:a67a2ed844f3aee3d9cc1a3cb996eb56f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the molar abundance (X_i / A_i) for a given symbol.  <br /></td></tr>
-<tr class="separator:a67a2ed844f3aee3d9cc1a3cb996eb56f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84d6552e2b762fabb7bddf68b05c4022" id="r_a84d6552e2b762fabb7bddf68b05c4022"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84d6552e2b762fabb7bddf68b05c4022">getMolarAbundance</a> (const <a class="el" href="structfourdst_1_1atomic_1_1_species.html">fourdst::atomic::Species</a> &amp;species) const</td></tr>
-<tr class="memdesc:a84d6552e2b762fabb7bddf68b05c4022"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the molar abundance for a given isotope.  <br /></td></tr>
-<tr class="separator:a84d6552e2b762fabb7bddf68b05c4022"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae07019ab6e02394e6ea353e0b98a417" id="r_aae07019ab6e02394e6ea353e0b98a417"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae07019ab6e02394e6ea353e0b98a417">getMassFraction</a> () const override</td></tr>
+<tr class="memdesc:aae07019ab6e02394e6ea353e0b98a417"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the mass fractions of all species in the composition.  <br /></td></tr>
+<tr class="separator:aae07019ab6e02394e6ea353e0b98a417"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5d8d21632fca2b35b0898f2b205cd10" id="r_ae5d8d21632fca2b35b0898f2b205cd10"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5d8d21632fca2b35b0898f2b205cd10">getMassFraction</a> (const std::string &amp;symbol) const override</td></tr>
+<tr class="memdesc:ae5d8d21632fca2b35b0898f2b205cd10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the mass fraction for a given symbol.  <br /></td></tr>
+<tr class="separator:ae5d8d21632fca2b35b0898f2b205cd10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeae9d6d3f742cd8b59b58abcb228a44d" id="r_aeae9d6d3f742cd8b59b58abcb228a44d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeae9d6d3f742cd8b59b58abcb228a44d">getMassFraction</a> (const <a class="el" href="structfourdst_1_1atomic_1_1_species.html">fourdst::atomic::Species</a> &amp;species) const override</td></tr>
+<tr class="memdesc:aeae9d6d3f742cd8b59b58abcb228a44d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the mass fraction for a given isotope.  <br /></td></tr>
+<tr class="separator:aeae9d6d3f742cd8b59b58abcb228a44d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34f71d4d8f0297c576fd62fabd490305" id="r_a34f71d4d8f0297c576fd62fabd490305"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34f71d4d8f0297c576fd62fabd490305">getNumberFraction</a> (const std::string &amp;symbol) const override</td></tr>
+<tr class="memdesc:a34f71d4d8f0297c576fd62fabd490305"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the number fraction for a given symbol.  <br /></td></tr>
+<tr class="separator:a34f71d4d8f0297c576fd62fabd490305"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a178d7393ee8b5d496925dcd901c03d23" id="r_a178d7393ee8b5d496925dcd901c03d23"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a178d7393ee8b5d496925dcd901c03d23">getNumberFraction</a> (const <a class="el" href="structfourdst_1_1atomic_1_1_species.html">fourdst::atomic::Species</a> &amp;species) const override</td></tr>
+<tr class="memdesc:a178d7393ee8b5d496925dcd901c03d23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the number fraction for a given isotope.  <br /></td></tr>
+<tr class="separator:a178d7393ee8b5d496925dcd901c03d23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae46fb8c3020dadd69080a7acd2054ea1" id="r_ae46fb8c3020dadd69080a7acd2054ea1"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae46fb8c3020dadd69080a7acd2054ea1">getNumberFraction</a> () const override</td></tr>
+<tr class="memdesc:ae46fb8c3020dadd69080a7acd2054ea1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the number fractions of all species in the composition.  <br /></td></tr>
+<tr class="separator:ae46fb8c3020dadd69080a7acd2054ea1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add67a92d73e3a57a2bbdb52bc9ca3bfe" id="r_add67a92d73e3a57a2bbdb52bc9ca3bfe"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add67a92d73e3a57a2bbdb52bc9ca3bfe">getMolarAbundance</a> (const std::string &amp;symbol) const override</td></tr>
+<tr class="memdesc:add67a92d73e3a57a2bbdb52bc9ca3bfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the molar abundance (X_i / A_i) for a given symbol.  <br /></td></tr>
+<tr class="separator:add67a92d73e3a57a2bbdb52bc9ca3bfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28c70279d36826e0e1026da3fa892ffc" id="r_a28c70279d36826e0e1026da3fa892ffc"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28c70279d36826e0e1026da3fa892ffc">getMolarAbundance</a> (const <a class="el" href="structfourdst_1_1atomic_1_1_species.html">fourdst::atomic::Species</a> &amp;species) const override</td></tr>
+<tr class="memdesc:a28c70279d36826e0e1026da3fa892ffc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the molar abundance for a given isotope.  <br /></td></tr>
+<tr class="separator:a28c70279d36826e0e1026da3fa892ffc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a092d3536b04167ea2e6e3a3b1446c377" id="r_a092d3536b04167ea2e6e3a3b1446c377"><td class="memItemLeft" align="right" valign="top">std::pair&lt; <a class="el" href="structfourdst_1_1composition_1_1_composition_entry.html">CompositionEntry</a>, <a class="el" href="structfourdst_1_1composition_1_1_global_composition.html">GlobalComposition</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a092d3536b04167ea2e6e3a3b1446c377">getComposition</a> (const std::string &amp;symbol) const</td></tr>
 <tr class="memdesc:a092d3536b04167ea2e6e3a3b1446c377"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the composition entry and global composition data for a given symbol.  <br /></td></tr>
 <tr class="separator:a092d3536b04167ea2e6e3a3b1446c377"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -219,45 +234,51 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1138c86f7ccd39594601c2ec63ad89e9" id="r_a1138c86f7ccd39594601c2ec63ad89e9"><td class="memItemLeft" align="right" valign="top">std::pair&lt; std::unordered_map&lt; std::string, <a class="el" href="structfourdst_1_1composition_1_1_composition_entry.html">CompositionEntry</a> &gt;, <a class="el" href="structfourdst_1_1composition_1_1_global_composition.html">GlobalComposition</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1138c86f7ccd39594601c2ec63ad89e9">getComposition</a> () const</td></tr>
 <tr class="memdesc:a1138c86f7ccd39594601c2ec63ad89e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets all composition entries and the global composition data.  <br /></td></tr>
 <tr class="separator:a1138c86f7ccd39594601c2ec63ad89e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66401fed7054172e9b1a2687e5cc8eff" id="r_a66401fed7054172e9b1a2687e5cc8eff"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66401fed7054172e9b1a2687e5cc8eff">getMeanParticleMass</a> () const</td></tr>
-<tr class="memdesc:a66401fed7054172e9b1a2687e5cc8eff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the mean particle mass of the composition.  <br /></td></tr>
-<tr class="separator:a66401fed7054172e9b1a2687e5cc8eff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98199f435cb553f5cf4f8e520fdb8a7a" id="r_a98199f435cb553f5cf4f8e520fdb8a7a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a98199f435cb553f5cf4f8e520fdb8a7a">getMeanAtomicNumber</a> () const</td></tr>
-<tr class="memdesc:a98199f435cb553f5cf4f8e520fdb8a7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the mean atomic number of the composition.  <br /></td></tr>
-<tr class="separator:a98199f435cb553f5cf4f8e520fdb8a7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a796386824d1358527fed7c6b537935d8" id="r_a796386824d1358527fed7c6b537935d8"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a796386824d1358527fed7c6b537935d8">getMeanParticleMass</a> () const override</td></tr>
+<tr class="memdesc:a796386824d1358527fed7c6b537935d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the mean particle mass of the composition.  <br /></td></tr>
+<tr class="separator:a796386824d1358527fed7c6b537935d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7dd8f7d69727acfacf1bf58c4083a27" id="r_af7dd8f7d69727acfacf1bf58c4083a27"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7dd8f7d69727acfacf1bf58c4083a27">getMeanAtomicNumber</a> () const override</td></tr>
+<tr class="memdesc:af7dd8f7d69727acfacf1bf58c4083a27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the mean atomic number of the composition.  <br /></td></tr>
+<tr class="separator:af7dd8f7d69727acfacf1bf58c4083a27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62dcfcf8f824d6af7903a9a9c3d5721e" id="r_a62dcfcf8f824d6af7903a9a9c3d5721e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62dcfcf8f824d6af7903a9a9c3d5721e">getElectronAbundance</a> () const override</td></tr>
+<tr class="memdesc:a62dcfcf8f824d6af7903a9a9c3d5721e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the electron abundance of the composition.  <br /></td></tr>
+<tr class="separator:a62dcfcf8f824d6af7903a9a9c3d5721e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17635cd21744c7cf86cb1eb75152c816" id="r_a17635cd21744c7cf86cb1eb75152c816"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfourdst_1_1composition_1_1_composition.html">Composition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17635cd21744c7cf86cb1eb75152c816">subset</a> (const std::vector&lt; std::string &gt; &amp;symbols, const std::string &amp;method=&quot;norm&quot;) const</td></tr>
 <tr class="memdesc:a17635cd21744c7cf86cb1eb75152c816"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a> object containing a subset of species from this one.  <br /></td></tr>
 <tr class="separator:a17635cd21744c7cf86cb1eb75152c816"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72a368f27094b03fdd9896844e075c94" id="r_a72a368f27094b03fdd9896844e075c94"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72a368f27094b03fdd9896844e075c94">hasSymbol</a> (const std::string &amp;symbol) const</td></tr>
-<tr class="memdesc:a72a368f27094b03fdd9896844e075c94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a symbol is registered in the composition.  <br /></td></tr>
-<tr class="separator:a72a368f27094b03fdd9896844e075c94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb08478f7032ecc13cb02283a18187e9" id="r_acb08478f7032ecc13cb02283a18187e9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb08478f7032ecc13cb02283a18187e9">contains</a> (const <a class="el" href="structfourdst_1_1atomic_1_1_species.html">fourdst::atomic::Species</a> &amp;isotope) const</td></tr>
-<tr class="memdesc:acb08478f7032ecc13cb02283a18187e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a given isotope is present in the composition.  <br /></td></tr>
-<tr class="separator:acb08478f7032ecc13cb02283a18187e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac01ae1967c266d8187bc6e104c8a0d19" id="r_ac01ae1967c266d8187bc6e104c8a0d19"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac01ae1967c266d8187bc6e104c8a0d19">hasSymbol</a> (const std::string &amp;symbol) const override</td></tr>
+<tr class="memdesc:ac01ae1967c266d8187bc6e104c8a0d19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a symbol is registered in the composition.  <br /></td></tr>
+<tr class="separator:ac01ae1967c266d8187bc6e104c8a0d19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55dfadad6cf5fb249356edad1733a813" id="r_a55dfadad6cf5fb249356edad1733a813"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55dfadad6cf5fb249356edad1733a813">hasSpecies</a> (const <a class="el" href="structfourdst_1_1atomic_1_1_species.html">fourdst::atomic::Species</a> &amp;species) const override</td></tr>
+<tr class="memdesc:a55dfadad6cf5fb249356edad1733a813"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a species is registered in the composition.  <br /></td></tr>
+<tr class="separator:a55dfadad6cf5fb249356edad1733a813"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7efe2cd3a69b743bf2086941b6dfd965" id="r_a7efe2cd3a69b743bf2086941b6dfd965"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7efe2cd3a69b743bf2086941b6dfd965">contains</a> (const <a class="el" href="structfourdst_1_1atomic_1_1_species.html">atomic::Species</a> &amp;isotope) const override</td></tr>
+<tr class="memdesc:a7efe2cd3a69b743bf2086941b6dfd965"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a given isotope is present in the composition.  <br /></td></tr>
+<tr class="separator:a7efe2cd3a69b743bf2086941b6dfd965"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0af981ed1074b26c237cf6cf35f82c9e" id="r_a0af981ed1074b26c237cf6cf35f82c9e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0af981ed1074b26c237cf6cf35f82c9e">setCompositionMode</a> (bool massFracMode)</td></tr>
 <tr class="memdesc:a0af981ed1074b26c237cf6cf35f82c9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the composition mode (mass fraction vs. number fraction).  <br /></td></tr>
 <tr class="separator:a0af981ed1074b26c237cf6cf35f82c9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac75dbc8377556c835455991c7c7fe206" id="r_ac75dbc8377556c835455991c7c7fe206"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structfourdst_1_1composition_1_1_canonical_composition.html">CanonicalComposition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac75dbc8377556c835455991c7c7fe206">getCanonicalComposition</a> (bool harsh=false) const</td></tr>
 <tr class="memdesc:ac75dbc8377556c835455991c7c7fe206"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current canonical composition (X, Y, Z).  <br /></td></tr>
 <tr class="separator:ac75dbc8377556c835455991c7c7fe206"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acdbdf980297580e885ce3f124164315f" id="r_acdbdf980297580e885ce3f124164315f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acdbdf980297580e885ce3f124164315f">getMassFractionVector</a> () const</td></tr>
-<tr class="memdesc:acdbdf980297580e885ce3f124164315f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a uniform vector representation of the mass fraction stored in the composition object sorted such that the lightest species is at index 0 and the heaviest is at the last index.  <br /></td></tr>
-<tr class="separator:acdbdf980297580e885ce3f124164315f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a41242de5d49b005e0b608e79e2f2d9" id="r_a2a41242de5d49b005e0b608e79e2f2d9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a41242de5d49b005e0b608e79e2f2d9">getNumberFractionVector</a> () const</td></tr>
-<tr class="memdesc:a2a41242de5d49b005e0b608e79e2f2d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a uniform vector representation of the number fractions stored in the composition object sorted such that the lightest species is at index 0 and the heaviest is at the last index.  <br /></td></tr>
-<tr class="separator:a2a41242de5d49b005e0b608e79e2f2d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84d62b971bee83d944d2792c6850bc0b" id="r_a84d62b971bee83d944d2792c6850bc0b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84d62b971bee83d944d2792c6850bc0b">getMolarAbundanceVector</a> () const</td></tr>
-<tr class="memdesc:a84d62b971bee83d944d2792c6850bc0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a uniform vector representation of the molar abundances stored in the composition object sorted such that the lightest species is at index 0 and the heaviest is at the last index.  <br /></td></tr>
-<tr class="separator:a84d62b971bee83d944d2792c6850bc0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1204a6421205feaaed13937aefa158ba" id="r_a1204a6421205feaaed13937aefa158ba"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1204a6421205feaaed13937aefa158ba">getSpeciesIndex</a> (const std::string &amp;symbol) const</td></tr>
-<tr class="memdesc:a1204a6421205feaaed13937aefa158ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the index in the sorted vector representation for a given symbol  <br /></td></tr>
-<tr class="separator:a1204a6421205feaaed13937aefa158ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad49012cd6d78558d80198cc06ec164b1" id="r_ad49012cd6d78558d80198cc06ec164b1"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad49012cd6d78558d80198cc06ec164b1">getSpeciesIndex</a> (const <a class="el" href="structfourdst_1_1atomic_1_1_species.html">atomic::Species</a> &amp;species) const</td></tr>
-<tr class="memdesc:ad49012cd6d78558d80198cc06ec164b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the index in the sorted vector representation for a given symbol  <br /></td></tr>
-<tr class="separator:ad49012cd6d78558d80198cc06ec164b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa534a01f24074cc9edd7f41df228eb50" id="r_aa534a01f24074cc9edd7f41df228eb50"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structfourdst_1_1atomic_1_1_species.html">atomic::Species</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa534a01f24074cc9edd7f41df228eb50">getSpeciesAtIndex</a> (size_t index) const</td></tr>
-<tr class="memdesc:aa534a01f24074cc9edd7f41df228eb50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the species at a given index in the sorted vector representation.  <br /></td></tr>
-<tr class="separator:aa534a01f24074cc9edd7f41df228eb50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85169b763138ab72047e43e07af978fb" id="r_a85169b763138ab72047e43e07af978fb"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85169b763138ab72047e43e07af978fb">getMassFractionVector</a> () const override</td></tr>
+<tr class="memdesc:a85169b763138ab72047e43e07af978fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a uniform vector representation of the mass fraction stored in the composition object sorted such that the lightest species is at index 0 and the heaviest is at the last index.  <br /></td></tr>
+<tr class="separator:a85169b763138ab72047e43e07af978fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49d2eba540f28324c6b7145a5b6cabfd" id="r_a49d2eba540f28324c6b7145a5b6cabfd"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49d2eba540f28324c6b7145a5b6cabfd">getNumberFractionVector</a> () const override</td></tr>
+<tr class="memdesc:a49d2eba540f28324c6b7145a5b6cabfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a uniform vector representation of the number fractions stored in the composition object sorted such that the lightest species is at index 0 and the heaviest is at the last index.  <br /></td></tr>
+<tr class="separator:a49d2eba540f28324c6b7145a5b6cabfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abed665c07c42b40682da453576621399" id="r_abed665c07c42b40682da453576621399"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abed665c07c42b40682da453576621399">getMolarAbundanceVector</a> () const override</td></tr>
+<tr class="memdesc:abed665c07c42b40682da453576621399"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a uniform vector representation of the molar abundances stored in the composition object sorted such that the lightest species is at index 0 and the heaviest is at the last index.  <br /></td></tr>
+<tr class="separator:abed665c07c42b40682da453576621399"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d94f62402bb90b5d12679faeaa8c5d7" id="r_a0d94f62402bb90b5d12679faeaa8c5d7"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d94f62402bb90b5d12679faeaa8c5d7">getSpeciesIndex</a> (const std::string &amp;symbol) const override</td></tr>
+<tr class="memdesc:a0d94f62402bb90b5d12679faeaa8c5d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the index in the sorted vector representation for a given symbol  <br /></td></tr>
+<tr class="separator:a0d94f62402bb90b5d12679faeaa8c5d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d220b42fa06d7d3a43944ee2b8f6a5f" id="r_a3d220b42fa06d7d3a43944ee2b8f6a5f"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d220b42fa06d7d3a43944ee2b8f6a5f">getSpeciesIndex</a> (const <a class="el" href="structfourdst_1_1atomic_1_1_species.html">atomic::Species</a> &amp;species) const override</td></tr>
+<tr class="memdesc:a3d220b42fa06d7d3a43944ee2b8f6a5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the index in the sorted vector representation for a given symbol  <br /></td></tr>
+<tr class="separator:a3d220b42fa06d7d3a43944ee2b8f6a5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4f854ded38f5e6fcd157a74a57cbf0c" id="r_ae4f854ded38f5e6fcd157a74a57cbf0c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structfourdst_1_1atomic_1_1_species.html">atomic::Species</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4f854ded38f5e6fcd157a74a57cbf0c">getSpeciesAtIndex</a> (size_t index) const override</td></tr>
+<tr class="memdesc:ae4f854ded38f5e6fcd157a74a57cbf0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the species at a given index in the sorted vector representation.  <br /></td></tr>
+<tr class="separator:ae4f854ded38f5e6fcd157a74a57cbf0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24a3bdeb8e8e55b54ecdee6dcb0d9561" id="r_a24a3bdeb8e8e55b54ecdee6dcb0d9561"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfourdst_1_1composition_1_1_composition.html">Composition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24a3bdeb8e8e55b54ecdee6dcb0d9561">operator+</a> (const <a class="el" href="classfourdst_1_1composition_1_1_composition.html">Composition</a> &amp;other) const</td></tr>
 <tr class="memdesc:a24a3bdeb8e8e55b54ecdee6dcb0d9561"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overloads the + operator to mix two compositions with a 50/50 fraction.  <br /></td></tr>
 <tr class="separator:a24a3bdeb8e8e55b54ecdee6dcb0d9561"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -273,6 +294,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aed2f5676f8f742199f01e4d1e9664bdd" id="r_aed2f5676f8f742199f01e4d1e9664bdd"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed2f5676f8f742199f01e4d1e9664bdd">end</a> () const</td></tr>
 <tr class="memdesc:aed2f5676f8f742199f01e4d1e9664bdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a const iterator to the end of the composition map.  <br /></td></tr>
 <tr class="separator:aed2f5676f8f742199f01e4d1e9664bdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_composition_abstract"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_composition_abstract')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_composition_abstract.html">CompositionAbstract</a></td></tr>
+<tr class="memitem:aaae3d6215b7433cb9871664852a95d1b inherit pub_methods_class_composition_abstract" id="r_aaae3d6215b7433cb9871664852a95d1b"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_composition_abstract.html#aaae3d6215b7433cb9871664852a95d1b">~CompositionAbstract</a> ()=default</td></tr>
+<tr class="memdesc:aaae3d6215b7433cb9871664852a95d1b inherit pub_methods_class_composition_abstract"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor.  <br /></td></tr>
+<tr class="separator:aaae3d6215b7433cb9871664852a95d1b inherit pub_methods_class_composition_abstract"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -297,10 +322,10 @@ Static Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a8a8096863464338bc6e3c5124407dca4" id="r_a8a8096863464338bc6e3c5124407dca4"><td class="memItemLeft" align="right" valign="top">fourdst::config::Config &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a8096863464338bc6e3c5124407dca4">m_config</a> = fourdst::config::Config::getInstance()</td></tr>
-<tr class="separator:a8a8096863464338bc6e3c5124407dca4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a695d37ec6cde63d86a20df1e9f26af19" id="r_a695d37ec6cde63d86a20df1e9f26af19"><td class="memItemLeft" align="right" valign="top">fourdst::logging::LogManager &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a695d37ec6cde63d86a20df1e9f26af19">m_logManager</a> = fourdst::logging::LogManager::getInstance()</td></tr>
-<tr class="separator:a695d37ec6cde63d86a20df1e9f26af19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f96b2c567364368ea5ee6f0826f3091" id="r_a1f96b2c567364368ea5ee6f0826f3091"><td class="memItemLeft" align="right" valign="top">config::Config &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f96b2c567364368ea5ee6f0826f3091">m_config</a> = config::Config::getInstance()</td></tr>
+<tr class="separator:a1f96b2c567364368ea5ee6f0826f3091"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40b2128948f01630cd2968488b450ce5" id="r_a40b2128948f01630cd2968488b450ce5"><td class="memItemLeft" align="right" valign="top">logging::LogManager &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a40b2128948f01630cd2968488b450ce5">m_logManager</a> = logging::LogManager::getInstance()</td></tr>
+<tr class="separator:a40b2128948f01630cd2968488b450ce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6c66f35e1fb05dd24aacaf90e115c5e" id="r_ab6c66f35e1fb05dd24aacaf90e115c5e"><td class="memItemLeft" align="right" valign="top">quill::Logger *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6c66f35e1fb05dd24aacaf90e115c5e">m_logger</a> = m_logManager.getLogger(&quot;log&quot;)</td></tr>
 <tr class="separator:ab6c66f35e1fb05dd24aacaf90e115c5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa00cbc0933d8a22bb900ac21a338e5ac" id="r_aa00cbc0933d8a22bb900ac21a338e5ac"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa00cbc0933d8a22bb900ac21a338e5ac">m_finalized</a> = false</td></tr>
@@ -321,6 +346,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:aa7f2753b10e85ae3bbf0c3d600a973db" id="r_aa7f2753b10e85ae3bbf0c3d600a973db"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, <a class="el" href="structfourdst_1_1composition_1_1_composition_entry.html">CompositionEntry</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7f2753b10e85ae3bbf0c3d600a973db">m_compositions</a></td></tr>
 <tr class="memdesc:aa7f2753b10e85ae3bbf0c3d600a973db"><td class="mdescLeft">&#160;</td><td class="mdescRight">The compositions.  <br /></td></tr>
 <tr class="separator:aa7f2753b10e85ae3bbf0c3d600a973db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02cd9d9608da082a200fdfa86d14bf5d" id="r_a02cd9d9608da082a200fdfa86d14bf5d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structfourdst_1_1composition_1_1_composition_1_1_composition_cache.html">CompositionCache</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02cd9d9608da082a200fdfa86d14bf5d">m_cache</a></td></tr>
+<tr class="memdesc:a02cd9d9608da082a200fdfa86d14bf5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cache for computed properties to avoid redundant calculations.  <br /></td></tr>
+<tr class="separator:a02cd9d9608da082a200fdfa86d14bf5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 Friends</h2></td></tr>
@@ -334,7 +362,7 @@ Friends</h2></td></tr>
 <p><b>Key Rules and Workflow:</b></p><ol type="1">
 <li><b>Registration:</b> Before setting an abundance for a species, its symbol (e.g., "He-4") must be registered using <code><a class="el" href="#a1bc2e64f87c12befdc2bc767e7405661" title="Registers a new symbol for inclusion in the composition.">registerSymbol()</a></code> or <code><a class="el" href="#a4ce00f73cc133bb1bac2b030b93ab480" title="Registers a new species by extracting its symbol.">registerSpecies()</a></code>. All registered species must conform to the same abundance mode (mass or number fraction).</li>
 <li><b>Setting Abundances:</b> Use <code><a class="el" href="#a493224656aa3ade68389250720ef09af" title="Sets the mass fraction for a given symbol.">setMassFraction()</a></code> or <code><a class="el" href="#a7d4d748f3ee25e68751fb143717ed080" title="Sets the number fraction for a given symbol.">setNumberFraction()</a></code> to define the composition.</li>
-<li><b>Finalization:</b> Before querying any compositional data (e.g., <code><a class="el" href="#ad20bd541dd7c45274a2e586e6a0519a7" title="Gets the mass fractions of all species in the composition.">getMassFraction()</a></code>, <code><a class="el" href="#a66401fed7054172e9b1a2687e5cc8eff" title="Compute the mean particle mass of the composition.">getMeanParticleMass()</a></code>), the composition must be <b>finalized</b> by calling <code><a class="el" href="#a72d063a74a9d2197065884a2cea57a14" title="Finalizes the composition, making it ready for querying.">finalize()</a></code>. This step validates the composition (abundances sum to ~1.0) and computes global properties.</li>
+<li><b>Finalization:</b> Before querying any compositional data (e.g., <code><a class="el" href="#aae07019ab6e02394e6ea353e0b98a417" title="Gets the mass fractions of all species in the composition.">getMassFraction()</a></code>, <code><a class="el" href="#a796386824d1358527fed7c6b537935d8" title="Compute the mean particle mass of the composition.">getMeanParticleMass()</a></code>), the composition must be <b>finalized</b> by calling <code><a class="el" href="#a72d063a74a9d2197065884a2cea57a14" title="Finalizes the composition, making it ready for querying.">finalize()</a></code>. This step validates the composition (abundances sum to ~1.0) and computes global properties.</li>
 <li><b>Modification:</b> Any modification to abundances after finalization will un-finalize the composition, requiring another call to <code><a class="el" href="#a72d063a74a9d2197065884a2cea57a14" title="Finalizes the composition, making it ready for querying.">finalize()</a></code> before data can be retrieved again.</li>
 <li><b>Construction:</b> A pre-finalized composition can be created by providing symbols and valid, normalized abundances to the constructor.</li>
 </ol>
@@ -350,13 +378,13 @@ Friends</h2></td></tr>
 <div class="line">comp.<a class="code hl_function" href="#a493224656aa3ade68389250720ef09af">setMassFraction</a>(<span class="stringliteral">&quot;H-1&quot;</span>, 0.75);</div>
 <div class="line">comp.<a class="code hl_function" href="#a493224656aa3ade68389250720ef09af">setMassFraction</a>(<span class="stringliteral">&quot;He-4&quot;</span>, 0.25);</div>
 <div class="line"><span class="keywordflow">if</span> (comp.<a class="code hl_function" href="#a72d063a74a9d2197065884a2cea57a14">finalize</a>()) {</div>
-<div class="line">    <span class="keywordtype">double</span> he_mass_frac = comp.<a class="code hl_function" href="#ad20bd541dd7c45274a2e586e6a0519a7">getMassFraction</a>(<span class="stringliteral">&quot;He-4&quot;</span>); <span class="comment">// Returns 0.25</span></div>
+<div class="line">    <span class="keywordtype">double</span> he_mass_frac = comp.<a class="code hl_function" href="#aae07019ab6e02394e6ea353e0b98a417">getMassFraction</a>(<span class="stringliteral">&quot;He-4&quot;</span>); <span class="comment">// Returns 0.25</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a1bc2e64f87c12befdc2bc767e7405661"><div class="ttname"><a href="#a1bc2e64f87c12befdc2bc767e7405661">fourdst::composition::Composition::registerSymbol</a></div><div class="ttdeci">void registerSymbol(const std::string &amp;symbol, bool massFracMode=true)</div><div class="ttdoc">Registers a new symbol for inclusion in the composition.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00233">composition.cpp:233</a></div></div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a1bc2e64f87c12befdc2bc767e7405661"><div class="ttname"><a href="#a1bc2e64f87c12befdc2bc767e7405661">fourdst::composition::Composition::registerSymbol</a></div><div class="ttdeci">void registerSymbol(const std::string &amp;symbol, bool massFracMode=true)</div><div class="ttdoc">Registers a new symbol for inclusion in the composition.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00255">composition.cpp:255</a></div></div>
 <div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a23b83b76ee025f6fc009184ee19bba88"><div class="ttname"><a href="#a23b83b76ee025f6fc009184ee19bba88">fourdst::composition::Composition::Composition</a></div><div class="ttdeci">Composition()=default</div><div class="ttdoc">Default constructor.</div></div>
-<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a493224656aa3ade68389250720ef09af"><div class="ttname"><a href="#a493224656aa3ade68389250720ef09af">fourdst::composition::Composition::setMassFraction</a></div><div class="ttdeci">double setMassFraction(const std::string &amp;symbol, const double &amp;mass_fraction)</div><div class="ttdoc">Sets the mass fraction for a given symbol.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00312">composition.cpp:312</a></div></div>
-<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a72d063a74a9d2197065884a2cea57a14"><div class="ttname"><a href="#a72d063a74a9d2197065884a2cea57a14">fourdst::composition::Composition::finalize</a></div><div class="ttdeci">bool finalize(bool norm=false)</div><div class="ttdoc">Finalizes the composition, making it ready for querying.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00414">composition.cpp:414</a></div></div>
-<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_ad20bd541dd7c45274a2e586e6a0519a7"><div class="ttname"><a href="#ad20bd541dd7c45274a2e586e6a0519a7">fourdst::composition::Composition::getMassFraction</a></div><div class="ttdeci">std::unordered_map&lt; std::string, double &gt; getMassFraction() const</div><div class="ttdoc">Gets the mass fractions of all species in the composition.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00559">composition.cpp:559</a></div></div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a493224656aa3ade68389250720ef09af"><div class="ttname"><a href="#a493224656aa3ade68389250720ef09af">fourdst::composition::Composition::setMassFraction</a></div><div class="ttdeci">double setMassFraction(const std::string &amp;symbol, const double &amp;mass_fraction)</div><div class="ttdoc">Sets the mass fraction for a given symbol.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00343">composition.cpp:343</a></div></div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a72d063a74a9d2197065884a2cea57a14"><div class="ttname"><a href="#a72d063a74a9d2197065884a2cea57a14">fourdst::composition::Composition::finalize</a></div><div class="ttdeci">bool finalize(bool norm=false)</div><div class="ttdoc">Finalizes the composition, making it ready for querying.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00445">composition.cpp:445</a></div></div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_aae07019ab6e02394e6ea353e0b98a417"><div class="ttname"><a href="#aae07019ab6e02394e6ea353e0b98a417">fourdst::composition::Composition::getMassFraction</a></div><div class="ttdeci">std::unordered_map&lt; std::string, double &gt; getMassFraction() const override</div><div class="ttdoc">Gets the mass fractions of all species in the composition.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00601">composition.cpp:601</a></div></div>
 </div><!-- fragment --></dd></dl>
 <dl class="section user"><dt>Number Fraction Example:</dt><dd><div class="fragment"><div class="line"><a class="code hl_function" href="#a23b83b76ee025f6fc009184ee19bba88">Composition</a> comp;</div>
 <div class="line">comp.<a class="code hl_function" href="#a1bc2e64f87c12befdc2bc767e7405661">registerSymbol</a>(<span class="stringliteral">&quot;H-1&quot;</span>, <span class="keyword">false</span>); <span class="comment">// Register in number fraction mode</span></div>
@@ -364,13 +392,13 @@ Friends</h2></td></tr>
 <div class="line">comp.<a class="code hl_function" href="#a7d4d748f3ee25e68751fb143717ed080">setNumberFraction</a>(<span class="stringliteral">&quot;H-1&quot;</span>, 0.9);</div>
 <div class="line">comp.<a class="code hl_function" href="#a7d4d748f3ee25e68751fb143717ed080">setNumberFraction</a>(<span class="stringliteral">&quot;He-4&quot;</span>, 0.1);</div>
 <div class="line"><span class="keywordflow">if</span> (comp.<a class="code hl_function" href="#a72d063a74a9d2197065884a2cea57a14">finalize</a>()) {</div>
-<div class="line">    <span class="keywordtype">double</span> he_num_frac = comp.<a class="code hl_function" href="#a84fea38bc1c005e483910285f6800e15">getNumberFraction</a>(<span class="stringliteral">&quot;He-4&quot;</span>); <span class="comment">// Returns 0.1</span></div>
+<div class="line">    <span class="keywordtype">double</span> he_num_frac = comp.<a class="code hl_function" href="#a34f71d4d8f0297c576fd62fabd490305">getNumberFraction</a>(<span class="stringliteral">&quot;He-4&quot;</span>); <span class="comment">// Returns 0.1</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a7d4d748f3ee25e68751fb143717ed080"><div class="ttname"><a href="#a7d4d748f3ee25e68751fb143717ed080">fourdst::composition::Composition::setNumberFraction</a></div><div class="ttdeci">double setNumberFraction(const std::string &amp;symbol, const double &amp;number_fraction)</div><div class="ttdoc">Sets the number fraction for a given symbol.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00363">composition.cpp:363</a></div></div>
-<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a84fea38bc1c005e483910285f6800e15"><div class="ttname"><a href="#a84fea38bc1c005e483910285f6800e15">fourdst::composition::Composition::getNumberFraction</a></div><div class="ttdeci">double getNumberFraction(const std::string &amp;symbol) const</div><div class="ttdoc">Gets the number fraction for a given symbol.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00568">composition.cpp:568</a></div></div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a34f71d4d8f0297c576fd62fabd490305"><div class="ttname"><a href="#a34f71d4d8f0297c576fd62fabd490305">fourdst::composition::Composition::getNumberFraction</a></div><div class="ttdeci">double getNumberFraction(const std::string &amp;symbol) const override</div><div class="ttdoc">Gets the number fraction for a given symbol.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00610">composition.cpp:610</a></div></div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a7d4d748f3ee25e68751fb143717ed080"><div class="ttname"><a href="#a7d4d748f3ee25e68751fb143717ed080">fourdst::composition::Composition::setNumberFraction</a></div><div class="ttdeci">double setNumberFraction(const std::string &amp;symbol, const double &amp;number_fraction)</div><div class="ttdoc">Sets the number fraction for a given symbol.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00374">composition.cpp:374</a></div></div>
 </div><!-- fragment --> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00258">258</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00255">255</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a23b83b76ee025f6fc009184ee19bba88" name="a23b83b76ee025f6fc009184ee19bba88"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a23b83b76ee025f6fc009184ee19bba88">&#9670;&#160;</a></span>Composition() <span class="overload">[1/5]</span></h2>
@@ -399,8 +427,8 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="aa3ff8ece122a9fad1252061148566749" name="aa3ff8ece122a9fad1252061148566749"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa3ff8ece122a9fad1252061148566749">&#9670;&#160;</a></span>~Composition()</h2>
+<a id="a08c1d1fe9384c5255a6ba40e34b18315" name="a08c1d1fe9384c5255a6ba40e34b18315"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08c1d1fe9384c5255a6ba40e34b18315">&#9670;&#160;</a></span>~Composition()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -417,7 +445,7 @@ Friends</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel default">default</span></span>  </td>
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel default">default</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -467,10 +495,10 @@ Friends</h2></td></tr>
 <div class="line">comp.setMassFraction(<span class="stringliteral">&quot;H-1&quot;</span>, 0.11);</div>
 <div class="line">comp.setMassFraction(<span class="stringliteral">&quot;O-16&quot;</span>, 0.89);</div>
 <div class="line">comp.finalize();</div>
-<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html"><div class="ttname"><a href="classfourdst_1_1composition_1_1_composition.html">fourdst::composition::Composition</a></div><div class="ttdoc">Manages a collection of chemical species and their abundances.</div><div class="ttdef"><b>Definition</b> <a href="composition_8h_source.html#l00258">composition.h:258</a></div></div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html"><div class="ttname"><a href="classfourdst_1_1composition_1_1_composition.html">fourdst::composition::Composition</a></div><div class="ttdoc">Manages a collection of chemical species and their abundances.</div><div class="ttdef"><b>Definition</b> <a href="composition_8h_source.html#l00255">composition.h:255</a></div></div>
 </div><!-- fragment --> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00176">176</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00187">187</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -514,7 +542,7 @@ Friends</h2></td></tr>
 <div class="line"><a class="code hl_class" href="classfourdst_1_1composition_1_1_composition.html">Composition</a> comp(symbols);</div>
 </div><!-- fragment --> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00182">182</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00195">195</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -564,7 +592,7 @@ Friends</h2></td></tr>
 <div class="line"><a class="code hl_function" href="#a23b83b76ee025f6fc009184ee19bba88">Composition</a> comp(symbols, mass_fractions); <span class="comment">// Finalized on construction</span></div>
 </div><!-- fragment --> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00188">188</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00203">203</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -591,7 +619,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00210">210</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00234">234</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -622,7 +650,7 @@ Friends</h2></td></tr>
 <p>Returns an iterator to the beginning of the composition map. </p>
 <dl class="section return"><dt>Returns</dt><dd>An iterator to the beginning. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00821">821</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00864">864</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
 
 </div>
 </div>
@@ -652,12 +680,12 @@ Friends</h2></td></tr>
 <p>Returns a const iterator to the beginning of the composition map. </p>
 <dl class="section return"><dt>Returns</dt><dd>A const iterator to the beginning. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00829">829</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00872">872</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
 
 </div>
 </div>
-<a id="acb08478f7032ecc13cb02283a18187e9" name="acb08478f7032ecc13cb02283a18187e9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb08478f7032ecc13cb02283a18187e9">&#9670;&#160;</a></span>contains()</h2>
+<a id="a7efe2cd3a69b743bf2086941b6dfd965" name="a7efe2cd3a69b743bf2086941b6dfd965"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7efe2cd3a69b743bf2086941b6dfd965">&#9670;&#160;</a></span>contains()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -668,13 +696,13 @@ Friends</h2></td></tr>
         <tr>
           <td class="memname">bool fourdst::composition::Composition::contains </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structfourdst_1_1atomic_1_1_species.html">fourdst::atomic::Species</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>isotope</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="structfourdst_1_1atomic_1_1_species.html">atomic::Species</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>isotope</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -695,7 +723,9 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00906">906</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p>Implements <a class="el" href="class_composition_abstract.html#a10778c866d515826cb1ba1d9e88f7d8f">CompositionAbstract</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l01038">1038</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -725,7 +755,7 @@ Friends</h2></td></tr>
 <p>Returns an iterator to the end of the composition map. </p>
 <dl class="section return"><dt>Returns</dt><dd>An iterator to the end. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00837">837</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00880">880</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
 
 </div>
 </div>
@@ -755,7 +785,7 @@ Friends</h2></td></tr>
 <p>Returns a const iterator to the end of the composition map. </p>
 <dl class="section return"><dt>Returns</dt><dd>A const iterator to the end. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00845">845</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00888">888</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
 
 </div>
 </div>
@@ -764,6 +794,9 @@ Friends</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool fourdst::composition::Composition::finalize </td>
@@ -772,6 +805,11 @@ Friends</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Finalizes the composition, making it ready for querying. </p>
@@ -784,7 +822,7 @@ Friends</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>True if the composition is valid and successfully finalized, false otherwise. </dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>If successful, <code>m_finalized</code> is true and global properties are computed. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00414">414</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00445">445</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -820,7 +858,7 @@ Friends</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the composition is successfully finalized, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00427">427</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00453">453</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -856,7 +894,7 @@ Friends</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the composition is successfully finalized, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00464">464</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00489">489</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -900,7 +938,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00715">715</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00785">785</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -937,7 +975,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00630">630</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00682">682</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -981,7 +1019,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00625">625</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00676">676</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1025,12 +1063,45 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00613">613</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00662">662</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
-<a id="ad20bd541dd7c45274a2e586e6a0519a7" name="ad20bd541dd7c45274a2e586e6a0519a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad20bd541dd7c45274a2e586e6a0519a7">&#9670;&#160;</a></span>getMassFraction() <span class="overload">[1/3]</span></h2>
+<a id="a62dcfcf8f824d6af7903a9a9c3d5721e" name="a62dcfcf8f824d6af7903a9a9c3d5721e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62dcfcf8f824d6af7903a9a9c3d5721e">&#9670;&#160;</a></span>getElectronAbundance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double fourdst::composition::Composition::getElectronAbundance </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Compute the electron abundance of the composition. </p>
+<p>Ye is defined as the sum over all species of (Z_i * X_i / A_i), where Z_i is the atomic number, X_i is the mass fraction, and A_i is the atomic mass of species i. </p><dl class="section return"><dt>Returns</dt><dd>Ye (electron abundance). </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>The composition must be finalized. </dd></dl>
+
+<p>Implements <a class="el" href="class_composition_abstract.html#a25e0bfc7ef1861be6b80bc67bbed096f">CompositionAbstract</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00716">716</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aae07019ab6e02394e6ea353e0b98a417" name="aae07019ab6e02394e6ea353e0b98a417"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae07019ab6e02394e6ea353e0b98a417">&#9670;&#160;</a></span>getMassFraction() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1047,7 +1118,7 @@ Friends</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1062,12 +1133,14 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00559">559</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p>Implements <a class="el" href="class_composition_abstract.html#a9f45d416a557c77f71d6a0fccd405543">CompositionAbstract</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00601">601</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
-<a id="aa3ba0c742872384cff3ed03789c0a17d" name="aa3ba0c742872384cff3ed03789c0a17d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa3ba0c742872384cff3ed03789c0a17d">&#9670;&#160;</a></span>getMassFraction() <span class="overload">[2/3]</span></h2>
+<a id="aeae9d6d3f742cd8b59b58abcb228a44d" name="aeae9d6d3f742cd8b59b58abcb228a44d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeae9d6d3f742cd8b59b58abcb228a44d">&#9670;&#160;</a></span>getMassFraction() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1084,7 +1157,7 @@ Friends</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1106,12 +1179,14 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00555">555</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p>Implements <a class="el" href="class_composition_abstract.html#a401e8298ed93b7963624e8a17eb17b55">CompositionAbstract</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00595">595</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a7f6a6edf02b55eeecf147c3f1f7f55e7" name="a7f6a6edf02b55eeecf147c3f1f7f55e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7f6a6edf02b55eeecf147c3f1f7f55e7">&#9670;&#160;</a></span>getMassFraction() <span class="overload">[3/3]</span></h2>
+<a id="ae5d8d21632fca2b35b0898f2b205cd10" name="ae5d8d21632fca2b35b0898f2b205cd10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5d8d21632fca2b35b0898f2b205cd10">&#9670;&#160;</a></span>getMassFraction() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1128,7 +1203,7 @@ Friends</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1150,12 +1225,14 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00528">528</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p>Implements <a class="el" href="class_composition_abstract.html#ae0044d30efddccacc9fe7c8e58003066">CompositionAbstract</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00568">568</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
-<a id="acdbdf980297580e885ce3f124164315f" name="acdbdf980297580e885ce3f124164315f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acdbdf980297580e885ce3f124164315f">&#9670;&#160;</a></span>getMassFractionVector()</h2>
+<a id="a85169b763138ab72047e43e07af978fb" name="a85169b763138ab72047e43e07af978fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85169b763138ab72047e43e07af978fb">&#9670;&#160;</a></span>getMassFractionVector()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1172,7 +1249,7 @@ Friends</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1187,12 +1264,14 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00762">762</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p>Implements <a class="el" href="class_composition_abstract.html#a7e4ec98a256dbfd42d194fb4318d869a">CompositionAbstract</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00840">840</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a98199f435cb553f5cf4f8e520fdb8a7a" name="a98199f435cb553f5cf4f8e520fdb8a7a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a98199f435cb553f5cf4f8e520fdb8a7a">&#9670;&#160;</a></span>getMeanAtomicNumber()</h2>
+<a id="af7dd8f7d69727acfacf1bf58c4083a27" name="af7dd8f7d69727acfacf1bf58c4083a27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7dd8f7d69727acfacf1bf58c4083a27">&#9670;&#160;</a></span>getMeanAtomicNumber()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1209,7 +1288,7 @@ Friends</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1224,12 +1303,14 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00646">646</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p>Implements <a class="el" href="class_composition_abstract.html#ac2736dfc4a2fc0e94b875585f21e6cc4">CompositionAbstract</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00698">698</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a66401fed7054172e9b1a2687e5cc8eff" name="a66401fed7054172e9b1a2687e5cc8eff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a66401fed7054172e9b1a2687e5cc8eff">&#9670;&#160;</a></span>getMeanParticleMass()</h2>
+<a id="a796386824d1358527fed7c6b537935d8" name="a796386824d1358527fed7c6b537935d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a796386824d1358527fed7c6b537935d8">&#9670;&#160;</a></span>getMeanParticleMass()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1246,7 +1327,7 @@ Friends</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1261,12 +1342,14 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00638">638</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p>Implements <a class="el" href="class_composition_abstract.html#ac52886e3e6b2c7d0f79338d9e872cf3a">CompositionAbstract</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00690">690</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a84d6552e2b762fabb7bddf68b05c4022" name="a84d6552e2b762fabb7bddf68b05c4022"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a84d6552e2b762fabb7bddf68b05c4022">&#9670;&#160;</a></span>getMolarAbundance() <span class="overload">[1/2]</span></h2>
+<a id="a28c70279d36826e0e1026da3fa892ffc" name="a28c70279d36826e0e1026da3fa892ffc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28c70279d36826e0e1026da3fa892ffc">&#9670;&#160;</a></span>getMolarAbundance() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1283,7 +1366,7 @@ Friends</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1305,12 +1388,14 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00609">609</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p>Implements <a class="el" href="class_composition_abstract.html#a4cfc9e37370caae275c0f801b700e37b">CompositionAbstract</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00656">656</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a67a2ed844f3aee3d9cc1a3cb996eb56f" name="a67a2ed844f3aee3d9cc1a3cb996eb56f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67a2ed844f3aee3d9cc1a3cb996eb56f">&#9670;&#160;</a></span>getMolarAbundance() <span class="overload">[2/2]</span></h2>
+<a id="add67a92d73e3a57a2bbdb52bc9ca3bfe" name="add67a92d73e3a57a2bbdb52bc9ca3bfe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add67a92d73e3a57a2bbdb52bc9ca3bfe">&#9670;&#160;</a></span>getMolarAbundance() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1327,7 +1412,7 @@ Friends</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1349,12 +1434,14 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00596">596</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p>Implements <a class="el" href="class_composition_abstract.html#a71fb459bf4375af2fe33c8a7c0747ce0">CompositionAbstract</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00641">641</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a84d62b971bee83d944d2792c6850bc0b" name="a84d62b971bee83d944d2792c6850bc0b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a84d62b971bee83d944d2792c6850bc0b">&#9670;&#160;</a></span>getMolarAbundanceVector()</h2>
+<a id="abed665c07c42b40682da453576621399" name="abed665c07c42b40682da453576621399"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abed665c07c42b40682da453576621399">&#9670;&#160;</a></span>getMolarAbundanceVector()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1371,7 +1458,7 @@ Friends</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1386,12 +1473,14 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00803">803</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p>Implements <a class="el" href="class_composition_abstract.html#a266ce894ebf533a62f63ad246fa21d96">CompositionAbstract</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00891">891</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a7731df9b30f8c8f13231f7e1a17b105c" name="a7731df9b30f8c8f13231f7e1a17b105c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7731df9b30f8c8f13231f7e1a17b105c">&#9670;&#160;</a></span>getNumberFraction() <span class="overload">[1/3]</span></h2>
+<a id="ae46fb8c3020dadd69080a7acd2054ea1" name="ae46fb8c3020dadd69080a7acd2054ea1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae46fb8c3020dadd69080a7acd2054ea1">&#9670;&#160;</a></span>getNumberFraction() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1408,7 +1497,7 @@ Friends</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1423,12 +1512,14 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00588">588</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p>Implements <a class="el" href="class_composition_abstract.html#ac1f2f30cdb2d1b9db76512c25c25618c">CompositionAbstract</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00633">633</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
-<a id="aa0ce4143a267e96ab7967538c76acdc3" name="aa0ce4143a267e96ab7967538c76acdc3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa0ce4143a267e96ab7967538c76acdc3">&#9670;&#160;</a></span>getNumberFraction() <span class="overload">[2/3]</span></h2>
+<a id="a178d7393ee8b5d496925dcd901c03d23" name="a178d7393ee8b5d496925dcd901c03d23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a178d7393ee8b5d496925dcd901c03d23">&#9670;&#160;</a></span>getNumberFraction() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1445,7 +1536,7 @@ Friends</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1467,12 +1558,14 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00584">584</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p>Implements <a class="el" href="class_composition_abstract.html#a27d1d91203adb736454aa9b9936fc8c3">CompositionAbstract</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00627">627</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a84fea38bc1c005e483910285f6800e15" name="a84fea38bc1c005e483910285f6800e15"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a84fea38bc1c005e483910285f6800e15">&#9670;&#160;</a></span>getNumberFraction() <span class="overload">[3/3]</span></h2>
+<a id="a34f71d4d8f0297c576fd62fabd490305" name="a34f71d4d8f0297c576fd62fabd490305"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34f71d4d8f0297c576fd62fabd490305">&#9670;&#160;</a></span>getNumberFraction() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1489,7 +1582,7 @@ Friends</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1511,12 +1604,14 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00568">568</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p>Implements <a class="el" href="class_composition_abstract.html#ae6026b1335230c6dfbd897ec8dfda295">CompositionAbstract</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00610">610</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a2a41242de5d49b005e0b608e79e2f2d9" name="a2a41242de5d49b005e0b608e79e2f2d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2a41242de5d49b005e0b608e79e2f2d9">&#9670;&#160;</a></span>getNumberFractionVector()</h2>
+<a id="a49d2eba540f28324c6b7145a5b6cabfd" name="a49d2eba540f28324c6b7145a5b6cabfd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49d2eba540f28324c6b7145a5b6cabfd">&#9670;&#160;</a></span>getNumberFractionVector()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1533,7 +1628,7 @@ Friends</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1548,12 +1643,14 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00783">783</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p>Implements <a class="el" href="class_composition_abstract.html#a221dadad44f913b7f364508f5138303f">CompositionAbstract</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00866">866</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a3dee7b5e1f54920de9eab99f95a516ec" name="a3dee7b5e1f54920de9eab99f95a516ec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3dee7b5e1f54920de9eab99f95a516ec">&#9670;&#160;</a></span>getRegisteredSpecies()</h2>
+<a id="af61ebe73a8b5926eb23037bb078fa87a" name="af61ebe73a8b5926eb23037bb078fa87a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af61ebe73a8b5926eb23037bb078fa87a">&#9670;&#160;</a></span>getRegisteredSpecies()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1562,7 +1659,7 @@ Friends</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::set&lt; <a class="el" href="structfourdst_1_1atomic_1_1_species.html">fourdst::atomic::Species</a> &gt; fourdst::composition::Composition::getRegisteredSpecies </td>
+          <td class="memname">std::set&lt; <a class="el" href="structfourdst_1_1atomic_1_1_species.html">atomic::Species</a> &gt; fourdst::composition::Composition::getRegisteredSpecies </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -1570,7 +1667,7 @@ Friends</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1578,12 +1675,14 @@ Friends</h2></td></tr>
 <p>Get a set of all species that are registered in the composition. </p>
 <dl class="section return"><dt>Returns</dt><dd>A set of <code><a class="el" href="structfourdst_1_1atomic_1_1_species.html" title="Represents an atomic species (isotope) with its fundamental physical properties.">atomic::Species</a></code> objects registered in the composition. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00280">280</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p>Implements <a class="el" href="class_composition_abstract.html#a6bf81edc0d21d34dbb8badc4ebdc0e17">CompositionAbstract</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00313">313</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a84c7b72c2aee46b94492d404855dd3e0" name="a84c7b72c2aee46b94492d404855dd3e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a84c7b72c2aee46b94492d404855dd3e0">&#9670;&#160;</a></span>getRegisteredSymbols()</h2>
+<a id="a3f10f38878ba4be121d6d77a8b1f4d7a" name="a3f10f38878ba4be121d6d77a8b1f4d7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f10f38878ba4be121d6d77a8b1f4d7a">&#9670;&#160;</a></span>getRegisteredSymbols()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1600,7 +1699,7 @@ Friends</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1608,12 +1707,14 @@ Friends</h2></td></tr>
 <p>Gets the registered symbols. </p>
 <dl class="section return"><dt>Returns</dt><dd>A set of registered symbols. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00276">276</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p>Implements <a class="el" href="class_composition_abstract.html#a4834d6b6caf5acced57989680e87be03">CompositionAbstract</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00309">309</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
-<a id="aa534a01f24074cc9edd7f41df228eb50" name="aa534a01f24074cc9edd7f41df228eb50"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa534a01f24074cc9edd7f41df228eb50">&#9670;&#160;</a></span>getSpeciesAtIndex()</h2>
+<a id="ae4f854ded38f5e6fcd157a74a57cbf0c" name="ae4f854ded38f5e6fcd157a74a57cbf0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4f854ded38f5e6fcd157a74a57cbf0c">&#9670;&#160;</a></span>getSpeciesAtIndex()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1630,7 +1731,7 @@ Friends</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1652,12 +1753,14 @@ Friends</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The species at the given index in the sorted vector representation. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00873">873</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p>Implements <a class="el" href="class_composition_abstract.html#aaee3651c1672b2763181e966e4525ba6">CompositionAbstract</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00993">993</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
-<a id="ad49012cd6d78558d80198cc06ec164b1" name="ad49012cd6d78558d80198cc06ec164b1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad49012cd6d78558d80198cc06ec164b1">&#9670;&#160;</a></span>getSpeciesIndex() <span class="overload">[1/2]</span></h2>
+<a id="a3d220b42fa06d7d3a43944ee2b8f6a5f" name="a3d220b42fa06d7d3a43944ee2b8f6a5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d220b42fa06d7d3a43944ee2b8f6a5f">&#9670;&#160;</a></span>getSpeciesIndex() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1674,7 +1777,7 @@ Friends</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1685,7 +1788,7 @@ Friends</h2></td></tr>
 symbol must be registered in the composition </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">species</td><td>the species to look up the index for. Note that this is the index species data will be at if you were to call <a class="el" href="#a84d62b971bee83d944d2792c6850bc0b" title="Get a uniform vector representation of the molar abundances stored in the composition object sorted s...">getMolarAbundanceVector()</a>, <a class="el" href="#acdbdf980297580e885ce3f124164315f" title="Get a uniform vector representation of the mass fraction stored in the composition object sorted such...">getMassFractionVector()</a>, or <a class="el" href="#a2a41242de5d49b005e0b608e79e2f2d9" title="Get a uniform vector representation of the number fractions stored in the composition object sorted s...">getNumberFractionVector()</a> </td></tr>
+    <tr><td class="paramname">species</td><td>the species to look up the index for. Note that this is the index species data will be at if you were to call <a class="el" href="#abed665c07c42b40682da453576621399" title="Get a uniform vector representation of the molar abundances stored in the composition object sorted s...">getMolarAbundanceVector()</a>, <a class="el" href="#a85169b763138ab72047e43e07af978fb" title="Get a uniform vector representation of the mass fraction stored in the composition object sorted such...">getMassFractionVector()</a>, or <a class="el" href="#a49d2eba540f28324c6b7145a5b6cabfd" title="Get a uniform vector representation of the number fractions stored in the composition object sorted s...">getNumberFractionVector()</a> </td></tr>
   </table>
   </dd>
 </dl>
@@ -1698,12 +1801,14 @@ symbol must be registered in the composition </dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The index of the symbol in the sorted vector representation. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00848">848</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p>Implements <a class="el" href="class_composition_abstract.html#ab41311a8c20a9556d087a604da735767">CompositionAbstract</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00955">955</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a1204a6421205feaaed13937aefa158ba" name="a1204a6421205feaaed13937aefa158ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1204a6421205feaaed13937aefa158ba">&#9670;&#160;</a></span>getSpeciesIndex() <span class="overload">[2/2]</span></h2>
+<a id="a0d94f62402bb90b5d12679faeaa8c5d7" name="a0d94f62402bb90b5d12679faeaa8c5d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d94f62402bb90b5d12679faeaa8c5d7">&#9670;&#160;</a></span>getSpeciesIndex() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1720,7 +1825,7 @@ symbol must be registered in the composition </dd></dl>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1731,7 +1836,7 @@ symbol must be registered in the composition </dd></dl>
 symbol must be registered in the composition </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">symbol</td><td>the symbol to look up the index for. Note that this is the index species data will be at if you were to call <a class="el" href="#a84d62b971bee83d944d2792c6850bc0b" title="Get a uniform vector representation of the molar abundances stored in the composition object sorted s...">getMolarAbundanceVector()</a>, <a class="el" href="#acdbdf980297580e885ce3f124164315f" title="Get a uniform vector representation of the mass fraction stored in the composition object sorted such...">getMassFractionVector()</a>, or <a class="el" href="#a2a41242de5d49b005e0b608e79e2f2d9" title="Get a uniform vector representation of the number fractions stored in the composition object sorted s...">getNumberFractionVector()</a> </td></tr>
+    <tr><td class="paramname">symbol</td><td>the symbol to look up the index for. Note that this is the index species data will be at if you were to call <a class="el" href="#abed665c07c42b40682da453576621399" title="Get a uniform vector representation of the molar abundances stored in the composition object sorted s...">getMolarAbundanceVector()</a>, <a class="el" href="#a85169b763138ab72047e43e07af978fb" title="Get a uniform vector representation of the mass fraction stored in the composition object sorted such...">getMassFractionVector()</a>, or <a class="el" href="#a49d2eba540f28324c6b7145a5b6cabfd" title="Get a uniform vector representation of the number fractions stored in the composition object sorted s...">getNumberFractionVector()</a> </td></tr>
   </table>
   </dd>
 </dl>
@@ -1744,12 +1849,52 @@ symbol must be registered in the composition </dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The index of the symbol in the sorted vector representation. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00823">823</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p>Implements <a class="el" href="class_composition_abstract.html#a1e5195debe590960aa064289733958ba">CompositionAbstract</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00917">917</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a72a368f27094b03fdd9896844e075c94" name="a72a368f27094b03fdd9896844e075c94"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a72a368f27094b03fdd9896844e075c94">&#9670;&#160;</a></span>hasSymbol()</h2>
+<a id="a55dfadad6cf5fb249356edad1733a813" name="a55dfadad6cf5fb249356edad1733a813"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55dfadad6cf5fb249356edad1733a813">&#9670;&#160;</a></span>hasSpecies()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fourdst::composition::Composition::hasSpecies </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structfourdst_1_1atomic_1_1_species.html">fourdst::atomic::Species</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>species</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks if a species is registered in the composition. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">species</td><td>The species to check. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the species is registered, false otherwise. </dd></dl>
+
+<p>Implements <a class="el" href="class_composition_abstract.html#a7f66ab9ddc975b946f46f368f13eba1b">CompositionAbstract</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l01029">1029</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ac01ae1967c266d8187bc6e104c8a0d19" name="ac01ae1967c266d8187bc6e104c8a0d19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac01ae1967c266d8187bc6e104c8a0d19">&#9670;&#160;</a></span>hasSymbol()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1766,7 +1911,7 @@ symbol must be registered in the composition </dd></dl>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1780,7 +1925,9 @@ symbol must be registered in the composition </dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the symbol is registered, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00902">902</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p>Implements <a class="el" href="class_composition_abstract.html#a26a3d396a4c435dc3c20553dc5bad7df">CompositionAbstract</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l01023">1023</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1816,7 +1963,7 @@ symbol must be registered in the composition </dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the fractions are valid, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00295">295</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00334">334</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1852,7 +1999,7 @@ symbol must be registered in the composition </dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the symbol is valid, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00308">308</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00321">321</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1901,7 +2048,7 @@ symbol must be registered in the composition </dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00498">498</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00533">533</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1937,7 +2084,7 @@ symbol must be registered in the composition </dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00921">921</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l01054">1054</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -1965,7 +2112,7 @@ symbol must be registered in the composition </dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00219">219</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00243">243</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -2006,12 +2153,12 @@ symbol must be registered in the composition </dd></dl>
 <dl class="section user"><dt>Usage Example:</dt><dd><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="species_8h.html">fourdst/composition/species.h</a>&quot;</span> <span class="comment">// Assuming species like H1 are defined here</span></div>
 <div class="line"><a class="code hl_function" href="#a23b83b76ee025f6fc009184ee19bba88">Composition</a> comp;</div>
 <div class="line">comp.<a class="code hl_function" href="#a4ce00f73cc133bb1bac2b030b93ab480">registerSpecies</a>(<a class="code hl_variable" href="namespacefourdst_1_1atomic.html#a3f619cc8f8b2cd718a4082c6adb0de90">fourdst::atomic::species</a>.at(<span class="stringliteral">&quot;H-1&quot;</span>));</div>
-<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a4ce00f73cc133bb1bac2b030b93ab480"><div class="ttname"><a href="#a4ce00f73cc133bb1bac2b030b93ab480">fourdst::composition::Composition::registerSpecies</a></div><div class="ttdeci">void registerSpecies(const fourdst::atomic::Species &amp;species, bool massFracMode=true)</div><div class="ttdoc">Registers a new species by extracting its symbol.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00266">composition.cpp:266</a></div></div>
-<div class="ttc" id="anamespacefourdst_1_1atomic_html_a3f619cc8f8b2cd718a4082c6adb0de90"><div class="ttname"><a href="namespacefourdst_1_1atomic.html#a3f619cc8f8b2cd718a4082c6adb0de90">fourdst::atomic::species</a></div><div class="ttdeci">static const std::unordered_map&lt; std::string, const Species &amp; &gt; species</div><div class="ttdef"><b>Definition</b> <a href="species_8h_source.html#l03581">species.h:3581</a></div></div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a4ce00f73cc133bb1bac2b030b93ab480"><div class="ttname"><a href="#a4ce00f73cc133bb1bac2b030b93ab480">fourdst::composition::Composition::registerSpecies</a></div><div class="ttdeci">void registerSpecies(const fourdst::atomic::Species &amp;species, bool massFracMode=true)</div><div class="ttdoc">Registers a new species by extracting its symbol.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00293">composition.cpp:293</a></div></div>
+<div class="ttc" id="anamespacefourdst_1_1atomic_html_a3f619cc8f8b2cd718a4082c6adb0de90"><div class="ttname"><a href="namespacefourdst_1_1atomic.html#a3f619cc8f8b2cd718a4082c6adb0de90">fourdst::atomic::species</a></div><div class="ttdeci">static const std::unordered_map&lt; std::string, const Species &amp; &gt; species</div><div class="ttdoc">Map of species names to their corresponding Species objects.</div><div class="ttdef"><b>Definition</b> <a href="species_8h_source.html#l03579">species.h:3579</a></div></div>
 <div class="ttc" id="aspecies_8h_html"><div class="ttname"><a href="species_8h.html">species.h</a></div></div>
 </div><!-- fragment --> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00266">266</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00293">293</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -2055,7 +2202,7 @@ symbol must be registered in the composition </dd></dl>
 <div class="line">comp.<a class="code hl_function" href="#a4ce00f73cc133bb1bac2b030b93ab480">registerSpecies</a>(my_species, <span class="keyword">false</span>); <span class="comment">// Number fraction mode</span></div>
 </div><!-- fragment --> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00270">270</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00300">300</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -2098,7 +2245,7 @@ symbol must be registered in the composition </dd></dl>
 <div class="line">comp.<a class="code hl_function" href="#a1bc2e64f87c12befdc2bc767e7405661">registerSymbol</a>(<span class="stringliteral">&quot;He-4&quot;</span>); <span class="comment">// Must also be mass fraction mode</span></div>
 </div><!-- fragment --> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00233">233</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00255">255</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -2141,7 +2288,7 @@ symbol must be registered in the composition </dd></dl>
 <div class="line">comp.<a class="code hl_function" href="#a1bc2e64f87c12befdc2bc767e7405661">registerSymbol</a>(symbols);</div>
 </div><!-- fragment --> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00260">260</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00284">284</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -2176,7 +2323,7 @@ symbol must be registered in the composition </dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00694">694</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00762">762</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -2217,7 +2364,7 @@ symbol must be registered in the composition </dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00349">349</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00411">411</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -2263,7 +2410,7 @@ symbol must be registered in the composition </dd></dl>
 <div class="line">comp.<a class="code hl_function" href="#a493224656aa3ade68389250720ef09af">setMassFraction</a>(<span class="stringliteral">&quot;H-1&quot;</span>, 0.7);</div>
 </div><!-- fragment --> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00312">312</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00343">343</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -2302,7 +2449,7 @@ symbol must be registered in the composition </dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00353">353</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00418">418</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -2343,7 +2490,7 @@ symbol must be registered in the composition </dd></dl>
 </dl>
 <dl class="section post"><dt>Postcondition</dt><dd>The composition is marked as not finalized. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00335">335</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00362">362</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -2384,7 +2531,7 @@ symbol must be registered in the composition </dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00400">400</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00428">428</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -2426,7 +2573,7 @@ symbol must be registered in the composition </dd></dl>
 </dl>
 <dl class="section post"><dt>Postcondition</dt><dd>The composition is marked as not finalized. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00363">363</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00374">374</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -2465,7 +2612,7 @@ symbol must be registered in the composition </dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00404">404</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00435">435</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -2505,7 +2652,7 @@ symbol must be registered in the composition </dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00386">386</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00396">396</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -2554,7 +2701,7 @@ symbol must be registered in the composition </dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00665">665</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00734">734</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -2595,7 +2742,7 @@ symbol must be registered in the composition </dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00288">288</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00327">327</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
@@ -2637,11 +2784,37 @@ symbol must be registered in the composition </dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The output stream. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00937">937</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l01078">1078</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a02cd9d9608da082a200fdfa86d14bf5d" name="a02cd9d9608da082a200fdfa86d14bf5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02cd9d9608da082a200fdfa86d14bf5d">&#9670;&#160;</a></span>m_cache</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structfourdst_1_1composition_1_1_composition_1_1_composition_cache.html">CompositionCache</a> fourdst::composition::Composition::m_cache</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel mutable">mutable</span><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Cache for computed properties to avoid redundant calculations. </p>
+
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00297">297</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+
+</div>
+</div>
 <a id="aa7f2753b10e85ae3bbf0c3d600a973db" name="aa7f2753b10e85ae3bbf0c3d600a973db"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa7f2753b10e85ae3bbf0c3d600a973db">&#9670;&#160;</a></span>m_compositions</h2>
 
@@ -2664,12 +2837,12 @@ symbol must be registered in the composition </dd></dl>
 
 <p>The compositions. </p>
 
-<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00270">270</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00295">295</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
 
 </div>
 </div>
-<a id="a8a8096863464338bc6e3c5124407dca4" name="a8a8096863464338bc6e3c5124407dca4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a8096863464338bc6e3c5124407dca4">&#9670;&#160;</a></span>m_config</h2>
+<a id="a1f96b2c567364368ea5ee6f0826f3091" name="a1f96b2c567364368ea5ee6f0826f3091"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f96b2c567364368ea5ee6f0826f3091">&#9670;&#160;</a></span>m_config</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2678,7 +2851,7 @@ symbol must be registered in the composition </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">fourdst::config::Config&amp; fourdst::composition::Composition::m_config = fourdst::config::Config::getInstance()</td>
+          <td class="memname">config::Config&amp; fourdst::composition::Composition::m_config = config::Config::getInstance()</td>
         </tr>
       </table>
   </td>
@@ -2688,7 +2861,7 @@ symbol must be registered in the composition </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00260">260</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00285">285</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
 
 </div>
 </div>
@@ -2714,7 +2887,7 @@ symbol must be registered in the composition </dd></dl>
 
 <p>True if the composition is finalized. </p>
 
-<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00264">264</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00289">289</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
 
 </div>
 </div>
@@ -2738,12 +2911,12 @@ symbol must be registered in the composition </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00262">262</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00287">287</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
 
 </div>
 </div>
-<a id="a695d37ec6cde63d86a20df1e9f26af19" name="a695d37ec6cde63d86a20df1e9f26af19"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a695d37ec6cde63d86a20df1e9f26af19">&#9670;&#160;</a></span>m_logManager</h2>
+<a id="a40b2128948f01630cd2968488b450ce5" name="a40b2128948f01630cd2968488b450ce5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40b2128948f01630cd2968488b450ce5">&#9670;&#160;</a></span>m_logManager</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2752,7 +2925,7 @@ symbol must be registered in the composition </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">fourdst::logging::LogManager&amp; fourdst::composition::Composition::m_logManager = fourdst::logging::LogManager::getInstance()</td>
+          <td class="memname">logging::LogManager&amp; fourdst::composition::Composition::m_logManager = logging::LogManager::getInstance()</td>
         </tr>
       </table>
   </td>
@@ -2762,7 +2935,7 @@ symbol must be registered in the composition </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00261">261</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00286">286</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
 
 </div>
 </div>
@@ -2788,7 +2961,7 @@ symbol must be registered in the composition </dd></dl>
 
 <p>True if mass fraction mode, false if number fraction mode. </p>
 
-<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00267">267</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00292">292</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
 
 </div>
 </div>
@@ -2814,7 +2987,7 @@ symbol must be registered in the composition </dd></dl>
 
 <p>The mean particle mass of the composition (\sum_{i} \frac{n_i}{m_i}. where n_i is the number fraction of the ith species and m_i is the mass of the ith species). </p>
 
-<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00266">266</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00291">291</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
 
 </div>
 </div>
@@ -2840,7 +3013,7 @@ symbol must be registered in the composition </dd></dl>
 
 <p>The registered symbols. </p>
 
-<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00269">269</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00294">294</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
 
 </div>
 </div>
@@ -2866,7 +3039,7 @@ symbol must be registered in the composition </dd></dl>
 
 <p>The specific number density of the composition (\sum_{i} X_i m_i. Where X_i is the number fraction of the ith species and m_i is the mass of the ith species). </p>
 
-<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00265">265</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00290">290</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
 
 </div>
 </div>

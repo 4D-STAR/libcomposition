@@ -26,5 +26,6 @@ var annotated_dup =
     ] ],
     [ "std", null, [
       [ "hash< fourdst::atomic::Species >", "structstd_1_1hash_3_01fourdst_1_1atomic_1_1_species_01_4.html", "structstd_1_1hash_3_01fourdst_1_1atomic_1_1_species_01_4" ]
-    ] ]
+    ] ],
+    [ "CompositionAbstract", "class_composition_abstract.html", "class_composition_abstract" ]
 ];
