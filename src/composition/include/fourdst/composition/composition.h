@@ -28,6 +28,7 @@
 
 #include "fourdst/config/config.h"
 #include "fourdst/logging/logging.h"
+#include "fourdst/composition/composition_abstract.h"
 #include "fourdst/composition/atomicSpecies.h"
 
 namespace fourdst::composition {
@@ -251,7 +252,7 @@ namespace fourdst::composition {
      * }
      * @endcode
      */
-    class Composition {
+    class Composition : public CompositionAbstract {
     private:
         struct CompositionCache {
             std::optional<GlobalComposition> globalComp; ///< Cached global composition data.
@@ -340,7 +341,7 @@ namespace fourdst::composition {
         /**
          * @brief Default destructor.
          */
-        ~Composition() = default;
+        ~Composition() override = default;
 
         /**
          * @brief Finalizes the composition, making it ready for querying.
@@ -351,7 +352,7 @@ namespace fourdst::composition {
          * @return True if the composition is valid and successfully finalized, false otherwise.
          * @post If successful, `m_finalized` is true and global properties are computed.
          */
-        bool finalize(bool norm=false);
+        [[nodiscard]] bool finalize(bool norm=false);
 
         /**
          * @brief Constructs a Composition and registers the given symbols.
@@ -480,13 +481,13 @@ namespace fourdst::composition {
          * @brief Gets the registered symbols.
          * @return A set of registered symbols.
          */
-        [[nodiscard]] std::set<std::string> getRegisteredSymbols() const;
+        [[nodiscard]] std::set<std::string> getRegisteredSymbols() const override;
 
         /**
          * @brief Get a set of all species that are registered in the composition.
          * @return A set of `atomic::Species` objects registered in the composition.
          */
-        [[nodiscard]] std::set<fourdst::atomic::Species> getRegisteredSpecies() const;
+        [[nodiscard]] std::set<fourdst::atomic::Species> getRegisteredSpecies() const override;
 
         /**
          * @brief Sets the mass fraction for a given symbol.
@@ -599,7 +600,7 @@ namespace fourdst::composition {
          * @return An unordered map of symbols to their mass fractions.
          * @throws exceptions::CompositionNotFinalizedError if the composition is not finalized.
          */
-        [[nodiscard]] std::unordered_map<std::string, double> getMassFraction() const;
+        [[nodiscard]] std::unordered_map<std::string, double> getMassFraction() const override;
 
         /**
          * @brief Gets the mass fraction for a given symbol.
@@ -609,7 +610,7 @@ namespace fourdst::composition {
          * @throws exceptions::CompositionNotFinalizedError if the composition is not finalized.
          * @throws exceptions::UnregisteredSymbolError if the symbol is not in the composition.
          */
-        [[nodiscard]] double getMassFraction(const std::string& symbol) const;
+        [[nodiscard]] double getMassFraction(const std::string& symbol) const override;
 
         /**
          * @brief Gets the mass fraction for a given isotope.
@@ -619,7 +620,7 @@ namespace fourdst::composition {
          * @throws exceptions::CompositionNotFinalizedError if the composition is not finalized.
          * @throws exceptions::UnregisteredSymbolError if the isotope is not registered in the composition.
          */
-        [[nodiscard]] double getMassFraction(const fourdst::atomic::Species& species) const;
+        [[nodiscard]] double getMassFraction(const fourdst::atomic::Species& species) const override;
 
         /**
          * @brief Gets the number fraction for a given symbol.
@@ -629,7 +630,7 @@ namespace fourdst::composition {
          * @throws exceptions::CompositionNotFinalizedError if the composition is not finalized.
          * @throws exceptions::UnregisteredSymbolError if the symbol is not in the composition.
          */
-        [[nodiscard]] double getNumberFraction(const std::string& symbol) const;
+        [[nodiscard]] double getNumberFraction(const std::string& symbol) const override;
 
         /**
          * @brief Gets the number fraction for a given isotope.
@@ -639,7 +640,7 @@ namespace fourdst::composition {
          * @throws exceptions::CompositionNotFinalizedError if the composition is not finalized.
          * @throws exceptions::UnregisteredSymbolError if the isotope is not registered in the composition.
          */
-        [[nodiscard]] double getNumberFraction(const fourdst::atomic::Species& species) const;
+        [[nodiscard]] double getNumberFraction(const fourdst::atomic::Species& species) const override;
 
         /**
          * @brief Gets the number fractions of all species in the composition.
@@ -647,7 +648,7 @@ namespace fourdst::composition {
          * @return An unordered map of symbols to their number fractions.
          * @throws exceptions::CompositionNotFinalizedError if the composition is not finalized.
          */
-        [[nodiscard]] std::unordered_map<std::string, double> getNumberFraction() const;
+        [[nodiscard]] std::unordered_map<std::string, double> getNumberFraction() const override;
 
         /**
         * @brief Gets the molar abundance (X_i / A_i) for a given symbol.
@@ -657,7 +658,7 @@ namespace fourdst::composition {
         * @throws exceptions::CompositionNotFinalizedError if the composition is not finalized.
         * @throws exceptions::UnregisteredSymbolError if the symbol is not in the composition.
         */
-        [[nodiscard]] double getMolarAbundance(const std::string& symbol) const;
+        [[nodiscard]] double getMolarAbundance(const std::string& symbol) const override;
 
         /**
          * @brief Gets the molar abundance for a given isotope.
@@ -667,7 +668,7 @@ namespace fourdst::composition {
          * @throws exceptions::CompositionNotFinalizedError if the composition is not finalized.
          * @throws exceptions::UnregisteredSymbolError if the isotope is not registered in the composition.
          */
-        [[nodiscard]] double getMolarAbundance(const fourdst::atomic::Species& species) const;
+        [[nodiscard]] double getMolarAbundance(const fourdst::atomic::Species& species) const override;
 
         /**
          * @brief Gets the composition entry and global composition data for a given symbol.
@@ -703,7 +704,7 @@ namespace fourdst::composition {
          * @return Mean particle mass in atomic mass units (g/mol).
          * @throws exceptions::CompositionNotFinalizedError if the composition is not finalized.
          */
-        [[nodiscard]] double getMeanParticleMass() const;
+        [[nodiscard]] double getMeanParticleMass() const override;
 
         /**
          * @brief Compute the mean atomic number of the composition.
@@ -711,7 +712,7 @@ namespace fourdst::composition {
          * @return Mean atomic number <Z>.
          * @throws exceptions::CompositionNotFinalizedError if the composition is not finalized.
          */
-        [[nodiscard]] double getMeanAtomicNumber() const;
+        [[nodiscard]] double getMeanAtomicNumber() const override;
 
         /**
          * @brief Compute the electron abundance of the composition.
@@ -719,7 +720,7 @@ namespace fourdst::composition {
          * @return Ye (electron abundance).
          * @pre The composition must be finalized.
          */
-        [[nodiscard]] double getElectronAbundance() const;
+        [[nodiscard]] double getElectronAbundance() const override;
 
         /**
          * @brief Creates a new Composition object containing a subset of species from this one.
@@ -737,7 +738,14 @@ namespace fourdst::composition {
          * @param symbol The symbol to check.
          * @return True if the symbol is registered, false otherwise.
          */
-        [[nodiscard]] bool hasSymbol(const std::string& symbol) const;
+        [[nodiscard]] bool hasSymbol(const std::string& symbol) const override;
+
+        /**
+         * @brief Checks if a species is registered in the composition.
+         * @param species The species to check.
+         * @return True if the species is registered, false otherwise.
+         */
+        [[nodiscard]] bool hasSpecies(const fourdst::atomic::Species &species) const override;
 
         /**
          * @brief Checks if a given isotope is present in the composition.
@@ -746,7 +754,7 @@ namespace fourdst::composition {
          * @return True if the isotope is in the composition, false otherwise.
          * @throws exceptions::CompositionNotFinalizedError if the composition is not finalized.
          */
-        [[nodiscard]] bool contains(const atomic::Species& isotope) const;
+        [[nodiscard]] bool contains(const atomic::Species& isotope) const override;
 
         /**
         * @brief Sets the composition mode (mass fraction vs. number fraction).
@@ -776,7 +784,7 @@ namespace fourdst::composition {
          * @pre The composition must be finalized.
          * @throws exceptions::CompositionNotFinalizedError if the composition is not finalized.
          */
-        [[nodiscard]] std::vector<double> getMassFractionVector() const;
+        [[nodiscard]] std::vector<double> getMassFractionVector() const override;
 
         /**
          * @brief Get a uniform vector representation of the number fractions stored in the composition object sorted such that the lightest species is at index 0 and the heaviest is at the last index.
@@ -785,7 +793,7 @@ namespace fourdst::composition {
          * @pre The composition must be finalized.
          * @throws exceptions::CompositionNotFinalizedError if the composition is not finalized.
          */
-        [[nodiscard]] std::vector<double> getNumberFractionVector() const;
+        [[nodiscard]] std::vector<double> getNumberFractionVector() const override;
 
         /**
          * @brief Get a uniform vector representation of the molar abundances stored in the composition object sorted such that the lightest species is at index 0 and the heaviest is at the last index.
@@ -794,7 +802,7 @@ namespace fourdst::composition {
          * @pre The composition must be finalized.
          * @throws exceptions::CompositionNotFinalizedError if the composition is not finalized.
          */
-        [[nodiscard]] std::vector<double> getMolarAbundanceVector() const;
+        [[nodiscard]] std::vector<double> getMolarAbundanceVector() const override;
 
         /**
          * @brief get the index in the sorted vector representation for a given symbol
@@ -806,7 +814,7 @@ namespace fourdst::composition {
          * @throws exceptions::UnregisteredSymbolError if the symbol is not registered in the composition
          * @return The index of the symbol in the sorted vector representation.
          */
-        [[nodiscard]] size_t getSpeciesIndex(const std::string& symbol) const;
+        [[nodiscard]] size_t getSpeciesIndex(const std::string& symbol) const override;
 
         /**
          * @brief get the index in the sorted vector representation for a given symbol
@@ -818,7 +826,7 @@ namespace fourdst::composition {
          * @throws exceptions::UnregisteredSymbolError if the symbol is not registered in the composition
          * @return The index of the symbol in the sorted vector representation.
          */
-        [[nodiscard]] size_t getSpeciesIndex(const atomic::Species& species) const;
+        [[nodiscard]] size_t getSpeciesIndex(const atomic::Species& species) const override;
 
         /**
          * @brief Get the species at a given index in the sorted vector representation.
@@ -829,7 +837,7 @@ namespace fourdst::composition {
          * @throws std::out_of_range if the index is out of range.
          * @return The species at the given index in the sorted vector representation.
          */
-        [[nodiscard]] atomic::Species getSpeciesAtIndex(size_t index) const;
+        [[nodiscard]] atomic::Species getSpeciesAtIndex(size_t index) const override;
 
         /**
          * @brief Overloaded output stream operator for Composition.

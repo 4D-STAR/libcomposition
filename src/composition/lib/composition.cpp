@@ -223,7 +223,12 @@ namespace fourdst::composition {
                 setNumberFraction(symbols[i], fractions[i]);
             }
         }
-        finalize();
+        if (const bool didFinalize = finalize(); !didFinalize) {
+            std::string msg = "Failed to finalize composition on construction. ";
+            msg += "Construction of a composition object requires that the sum of the fractions vector be 1.\n";
+            LOG_CRITICAL(m_logger, "{}", msg);
+            throw exceptions::InvalidCompositionError(msg);
+        }
     }
 
     Composition::Composition(const Composition &composition) {
@@ -327,7 +332,7 @@ namespace fourdst::composition {
     }
 
     bool Composition::isValidComposition(const std::vector<double>& fractions) const {
-        double sum = std::accumulate(fractions.begin(), fractions.end(), 0.0);
+        const double sum = std::accumulate(fractions.begin(), fractions.end(), 0.0);
         if (sum < 0.999999 || sum > 1.000001) {
             LOG_ERROR(m_logger, "The sum of fractions must be equal to 1 (expected 1, got {}).", sum);
             return false;
@@ -416,7 +421,7 @@ namespace fourdst::composition {
     ) {
         std::vector<std::string> symbols;
         symbols.reserve(species.size());
-        for(const auto& s : species) symbols.push_back(std::string(s.name()));
+        for(const auto& s : species) symbols.emplace_back(s.name());
         return setMassFraction(symbols, mass_fractions);
     }
 
@@ -551,7 +556,12 @@ namespace fourdst::composition {
             double massFraction = fraction * thisMassFrac + otherMassFrac * (1-fraction);
             mixedComposition.setMassFraction(symbol, massFraction);
         }
-        mixedComposition.finalize();
+        if (const bool didFinalize = mixedComposition.finalize(); !didFinalize) {
+            std::string msg = "Failed to finalize mixed composition. ";
+            msg += "This likely indicates an issue with the input compositions not summing to 1.\n";
+            LOG_CRITICAL(m_logger, "{}", msg);
+            throw exceptions::InvalidCompositionError(msg);
+        }
         return mixedComposition;
     }
 
@@ -1014,6 +1024,15 @@ namespace fourdst::composition {
         const std::string& symbol
     ) const {
         return m_compositions.contains(symbol);
+    }
+
+    bool Composition::hasSpecies(const fourdst::atomic::Species &species) const {
+        for (const auto &entry: m_compositions | std::views::values) {
+            if (entry.isotope() == species) {
+                return true;
+            }
+        }
+        return false;
     }
 
     bool Composition::contains(

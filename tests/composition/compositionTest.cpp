@@ -146,7 +146,7 @@ TEST_F(compositionTest, setGetComposition) {
     EXPECT_DOUBLE_EQ(comp.setMassFraction("H-1", 0.6), 0.5);
     EXPECT_DOUBLE_EQ(comp.setMassFraction("He-4", 0.4), 0.5);
 
-    EXPECT_NO_THROW(comp.finalize());
+    EXPECT_NO_THROW(static_cast<void>(comp.finalize()));
     EXPECT_DOUBLE_EQ(comp.getMassFraction("H-1"), 0.6);
 
     EXPECT_THROW(comp.setMassFraction("He-3", 0.3), fourdst::composition::exceptions::UnregisteredSymbolError);
@@ -186,7 +186,7 @@ TEST_F(compositionTest, setGetNumberFraction) {
     EXPECT_DOUBLE_EQ(comp.setNumberFraction("H-1", 0.6), 0.5);
     EXPECT_DOUBLE_EQ(comp.setNumberFraction("He-4", 0.4), 0.5);
 
-    EXPECT_NO_THROW(comp.finalize());
+    EXPECT_NO_THROW(static_cast<void>(comp.finalize()));
     EXPECT_DOUBLE_EQ(comp.getNumberFraction("H-1"), 0.6);
 
     EXPECT_THROW(comp.setNumberFraction("He-3", 0.3), fourdst::composition::exceptions::UnregisteredSymbolError);
@@ -211,7 +211,7 @@ TEST_F(compositionTest, subset) {
     comp.registerSymbol("He-4");
     comp.setMassFraction("H-1", 0.6);
     comp.setMassFraction("He-4", 0.4);
-    EXPECT_NO_THROW(comp.finalize());
+    EXPECT_NO_THROW(static_cast<void>(comp.finalize()));
 
     std::vector<std::string> symbols = {"H-1"};
     fourdst::composition::Composition subsetComp = comp.subset(symbols, "norm");
@@ -282,7 +282,7 @@ TEST_F(compositionTest, getComposition) {
     comp.registerSymbol("He-4");
     comp.setMassFraction("H-1", 0.6);
     comp.setMassFraction("He-4", 0.4);
-    EXPECT_NO_THROW(comp.finalize());
+    EXPECT_NO_THROW(static_cast<void>(comp.finalize()));
 
     const auto compositionEntry = comp.getComposition("H-1");
     EXPECT_DOUBLE_EQ(compositionEntry.first.mass_fraction(), 0.6);
@@ -309,7 +309,7 @@ TEST_F(compositionTest, setCompositionMode) {
     comp.registerSymbol("He-4");
     comp.setMassFraction("H-1", 0.6);
     comp.setMassFraction("He-4", 0.4);
-    EXPECT_NO_THROW(comp.finalize());
+    EXPECT_NO_THROW(static_cast<void>(comp.finalize()));
 
     EXPECT_DOUBLE_EQ(comp.getMassFraction("H-1"), 0.6);
     EXPECT_DOUBLE_EQ(comp.getMassFraction("He-4"), 0.4);
@@ -320,7 +320,7 @@ TEST_F(compositionTest, setCompositionMode) {
     EXPECT_NO_THROW(comp.setNumberFraction("He-4", 0.1));
 
     EXPECT_THROW(comp.setCompositionMode(true), fourdst::composition::exceptions::CompositionNotFinalizedError);
-    EXPECT_NO_THROW(comp.finalize());
+    EXPECT_NO_THROW(static_cast<void>(comp.finalize()));
     EXPECT_NO_THROW(comp.setCompositionMode(true));
 }
 
@@ -340,7 +340,7 @@ TEST_F(compositionTest, hasSymbol) {
     comp.registerSymbol("He-4");
     comp.setMassFraction("H-1", 0.6);
     comp.setMassFraction("He-4", 0.4);
-    EXPECT_NO_THROW(comp.finalize());
+    EXPECT_NO_THROW(static_cast<void>(comp.finalize()));
 
     EXPECT_TRUE(comp.hasSymbol("H-1"));
     EXPECT_TRUE(comp.hasSymbol("He-4"));
@@ -366,14 +366,14 @@ TEST_F(compositionTest, mix) {
     comp1.registerSymbol("He-4");
     comp1.setMassFraction("H-1", 0.6);
     comp1.setMassFraction("He-4", 0.4);
-    EXPECT_NO_THROW(comp1.finalize());
+    EXPECT_NO_THROW(static_cast<void>(comp1.finalize()));
 
     fourdst::composition::Composition comp2;
     comp2.registerSymbol("H-1");
     comp2.registerSymbol("He-4");
     comp2.setMassFraction("H-1", 0.4);
     comp2.setMassFraction("He-4", 0.6);
-    EXPECT_NO_THROW(comp2.finalize());
+    EXPECT_NO_THROW(static_cast<void>(comp2.finalize()));
 
     fourdst::composition::Composition mixedComp = comp1 + comp2;
     EXPECT_TRUE(mixedComp.finalize());
@@ -401,8 +401,9 @@ TEST_F(compositionTest, molarAbundance) {
     comp1.registerSymbol("He-4");
     comp1.setMassFraction("H-1", 0.5);
     comp1.setMassFraction("He-4", 0.5);
-    comp1.finalize();
+    const bool didFinalize = comp1.finalize();
 
+    EXPECT_TRUE(didFinalize);
     EXPECT_DOUBLE_EQ(comp1.getMolarAbundance("H-1"), 0.5/fourdst::atomic::H_1.mass());
     EXPECT_DOUBLE_EQ(comp1.getMolarAbundance("He-4"), 0.5/fourdst::atomic::He_4.mass());
 }
@@ -567,11 +568,14 @@ TEST_F(compositionTest, mixErrorCases) {
     fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
     using fourdst::composition::Composition;
 
-    Composition a; a.registerSymbol("H-1"); a.registerSymbol("He-4"); a.setMassFraction("H-1", 0.6); a.setMassFraction("He-4", 0.4); a.finalize();
+    Composition a; a.registerSymbol("H-1"); a.registerSymbol("He-4"); a.setMassFraction("H-1", 0.6); a.setMassFraction("He-4", 0.4);
+    bool didFinalizeA = a.finalize();
+    EXPECT_TRUE(didFinalizeA);
     Composition b; b.registerSymbol("H-1"); b.registerSymbol("He-4"); b.setMassFraction("H-1", 0.5); b.setMassFraction("He-4", 0.5);
     // Not finalized second comp
     EXPECT_THROW(static_cast<void>(a.mix(b, 0.5)), fourdst::composition::exceptions::CompositionNotFinalizedError);
-    b.finalize();
+    bool didFinalizeB = b.finalize();
+    EXPECT_TRUE(didFinalizeB);
     // Invalid fraction
     EXPECT_THROW(static_cast<void>(a.mix(b, -0.1)), fourdst::composition::exceptions::InvalidCompositionError);
     EXPECT_THROW(static_cast<void>(a.mix(b, 1.1)), fourdst::composition::exceptions::InvalidCompositionError);
@@ -706,7 +710,8 @@ TEST_F(compositionTest, vectorsAndIndexingAndSpeciesAtIndex) {
 
     // Molar abundance vector X_i/A_i in mass mode; switch back to mass mode to verify
     comp.setCompositionMode(true);
-    comp.finalize(true);
+    bool didFinalize = comp.finalize(true);
+    EXPECT_TRUE(didFinalize);
     auto av = comp.getMolarAbundanceVector();
     ASSERT_EQ(av.size(), 3u);
     EXPECT_NEAR(av[iH], 0.5/species.at("H-1").mass(), 1e-12);
@@ -802,5 +807,38 @@ TEST_F(compositionTest, iterationBeginEndAndIndexOutOfRange) {
 
     // Out-of-range access
     EXPECT_THROW(static_cast<void>(comp.getSpeciesAtIndex(100)), std::out_of_range);
+}
+
+TEST_F(compositionTest, abstractBase) {
+    class UnrestrictedComposition : public fourdst::composition::Composition {
+    private:
+        fourdst::atomic::Species m_species;
+        const Composition& m_composition;
+    public:
+        UnrestrictedComposition(const Composition& base, const fourdst::atomic::Species& species):
+        Composition(base),
+        m_species(species),
+        m_composition(base)
+        {}
+
+        double getMolarAbundance(const fourdst::atomic::Species &species) const override {
+            if (species == m_species) {
+                return 1.0;
+            }
+            return m_composition.getMolarAbundance(species);
+        }
+    };
+
+    fourdst::config::Config::getInstance().loadConfig(EXAMPLE_FILENAME);
+    fourdst::composition::Composition comp;
+    comp.registerSymbol("H-1"); comp.registerSymbol("He-4"); comp.registerSymbol("O-16");
+    comp.setMassFraction("H-1", 0.5); comp.setMassFraction("He-4", 0.3); comp.setMassFraction("O-16", 0.2);
+    ASSERT_TRUE(comp.finalize());
+
+    const UnrestrictedComposition uComp(comp, fourdst::atomic::H_1);
+
+    ASSERT_DOUBLE_EQ(uComp.getMolarAbundance(fourdst::atomic::H_1), 1.0);
+    ASSERT_DOUBLE_EQ(uComp.getMassFraction("He-4"), comp.getMassFraction("He-4"));
+
 }
 
