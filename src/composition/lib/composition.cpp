@@ -66,10 +66,7 @@ namespace {
 
 namespace fourdst::composition {
 
-    CompositionEntry::CompositionEntry() :
-    m_symbol("H-1"),
-    m_isotope(fourdst::atomic::species.at("H-1")),
-    m_initialized(false) {}
+    CompositionEntry::CompositionEntry() = default;
 
     CompositionEntry::CompositionEntry(
         const std::string& symbol,
@@ -96,7 +93,7 @@ namespace fourdst::composition {
     }
 
     std::string CompositionEntry::symbol() const {
-        return m_symbol;
+        return m_symbol.value();
     }
 
     double CompositionEntry::mass_fraction() const {
@@ -104,7 +101,7 @@ namespace fourdst::composition {
             throw exceptions::CompositionModeError("Composition entry is in number fraction mode.");
         }
         // X_i = (moles_i / mass_total) * (mass_i / moles_i) = m_molesPerMass * A_i
-        return m_molesPerMass * m_isotope.mass();
+        return m_molesPerMass * m_isotope->mass();
     }
 
     double CompositionEntry::number_fraction() const {
@@ -128,7 +125,7 @@ namespace fourdst::composition {
     }
 
     atomic::Species CompositionEntry::isotope() const {
-        return m_isotope;
+        return m_isotope.value();
     }
 
     void CompositionEntry::setMassFraction(
@@ -138,10 +135,10 @@ namespace fourdst::composition {
             throw exceptions::CompositionModeError("Composition entry is in number fraction mode.");
         }
         // Set the invariant from the given mass fraction
-        if (m_isotope.mass() == 0.0) {
+        if (m_isotope->mass() == 0.0) {
              m_molesPerMass = 0.0;
         } else {
-             m_molesPerMass = mass_fraction / m_isotope.mass();
+             m_molesPerMass = mass_fraction / m_isotope->mass();
         }
     }
 
@@ -705,7 +702,7 @@ namespace fourdst::composition {
 
         for (const auto &val: m_compositions | std::views::values) {
             // Sum of (X_i * Z_i / A_i)
-            zSum += (val.mass_fraction() * val.m_isotope.z())/val.m_isotope.a();
+            zSum += (val.mass_fraction() * val.m_isotope->z())/val.m_isotope->a();
         }
 
         // <Z> = <A> * sum(X_i * Z_i / A_i)
@@ -725,7 +722,7 @@ namespace fourdst::composition {
 
         double Ye = 0.0;
         for (const auto &val: m_compositions | std::views::values) {
-            Ye += (val.mass_fraction() * val.m_isotope.z())/val.m_isotope.a();
+            Ye += (val.mass_fraction() * val.m_isotope->z())/val.m_isotope->a();
         }
         m_cache.Ye = Ye;
         return Ye;
@@ -1071,7 +1068,7 @@ namespace fourdst::composition {
         std::ostream& os,
         const CompositionEntry& entry
     ) {
-        os << "<" << entry.m_symbol << " : m_frac = " << entry.mass_fraction() << ">";
+        os << "<" << entry.m_symbol.value() << " : m_frac = " << entry.mass_fraction() << ">";
         return os;
     }
 

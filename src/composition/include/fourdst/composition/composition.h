@@ -25,6 +25,7 @@
 #include <set>
 
 #include <utility>
+#include <optional>
 
 #include "fourdst/config/config.h"
 #include "fourdst/logging/logging.h"
@@ -82,8 +83,8 @@ namespace fourdst::composition {
      * fraction or number fraction). It manages the state and conversions for that single entry.
      */
     struct CompositionEntry {
-        std::string m_symbol; ///< The chemical symbol of the species (e.g., "H-1", "Fe-56").
-        atomic::Species m_isotope; ///< The `atomic::Species` object containing detailed isotope data.
+        std::optional<std::string> m_symbol = std::nullopt; ///< The chemical symbol of the species (e.g., "H-1", "Fe-56").
+        std::optional<atomic::Species> m_isotope = std::nullopt; ///< The `atomic::Species` object containing detailed isotope data.
         bool m_massFracMode = true; ///< The mode of the composition entry. True if mass fraction, false if number fraction.
 
         double m_massFraction = 0.0; ///< The mass fraction of the species. Valid only if `m_massFracMode` is true.
