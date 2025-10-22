@@ -283,9 +283,11 @@ namespace fourdst::composition {
             }
         };
     private:
-        config::Config& m_config = config::Config::getInstance();
-        logging::LogManager& m_logManager = logging::LogManager::getInstance();
-        quill::Logger* m_logger = m_logManager.getLogger("log");
+        // logging::LogManager& m_logManager = logging::LogManager::getInstance();
+        static quill::Logger* getLogger() {
+            static quill::Logger* logger = logging::LogManager::getInstance().getLogger("log");
+            return logger;
+        }
 
         bool m_finalized = false; ///< True if the composition is finalized.
         double m_specificNumberDensity = 0.0; ///< The specific number density of the composition (\sum_{i} X_i m_i. Where X_i is the number fraction of the ith species and m_i is the mass of the ith species).
