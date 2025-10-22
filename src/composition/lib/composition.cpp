@@ -321,14 +321,14 @@ namespace fourdst::composition {
         return atomic::species.contains(symbol);
     }
 
-    void Composition::validateComposition(const std::vector<double>& fractions) const {
+    void Composition::validateComposition(const std::vector<double>& fractions) {
         if (!isValidComposition(fractions)) {
             LOG_ERROR(getLogger(), "Invalid composition.");
             throw exceptions::InvalidCompositionError("Invalid composition.");
         }
     }
 
-    bool Composition::isValidComposition(const std::vector<double>& fractions) const {
+    bool Composition::isValidComposition(const std::vector<double>& fractions) {
         const double sum = std::accumulate(fractions.begin(), fractions.end(), 0.0);
         if (sum < 0.999999 || sum > 1.000001) {
             LOG_ERROR(getLogger(), "The sum of fractions must be equal to 1 (expected 1, got {}).", sum);
@@ -435,7 +435,7 @@ namespace fourdst::composition {
     ) {
         std::vector<std::string> symbols;
         symbols.reserve(species.size());
-        for(const auto& s : species) symbols.push_back(std::string(s.name()));
+        for(const auto& s : species) symbols.emplace_back(s.name());
         return setNumberFraction(symbols, number_fractions);
     }
 
@@ -1024,12 +1024,12 @@ namespace fourdst::composition {
     }
 
     bool Composition::hasSpecies(const fourdst::atomic::Species &species) const {
-        for (const auto &entry: m_compositions | std::views::values) {
-            if (entry.isotope() == species) {
-                return true;
+        return std::ranges::any_of(
+            m_compositions | std::views::values,
+            [&species](const CompositionEntry &entry) {
+                return entry.isotope() == species;
             }
-        }
-        return false;
+        );
     }
 
     bool Composition::contains(

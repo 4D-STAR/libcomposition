@@ -312,14 +312,14 @@ namespace fourdst::composition {
          * @param fractions The fractions to check.
          * @return True if the fractions are valid, false otherwise.
          */
-        [[nodiscard]] bool isValidComposition(const std::vector<double>& fractions) const;
+        [[nodiscard]] static bool isValidComposition(const std::vector<double>& fractions) ;
 
         /**
          * @brief Validates the given fractions, throwing an exception on failure.
          * @param fractions The fractions to validate.
          * @throws exceptions::InvalidCompositionError if the fractions are invalid.
          */
-        void validateComposition(const std::vector<double>& fractions) const;
+        static void validateComposition(const std::vector<double>& fractions) ;
 
         /**
          * @brief Finalizes the composition in mass fraction mode.
