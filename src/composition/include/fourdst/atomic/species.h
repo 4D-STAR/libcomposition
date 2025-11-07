@@ -3,8 +3,8 @@
 #include <string_view>
 #include <string>
 #include <limits> // Required for std::numeric_limits
-#include "fourdst/composition/atomicSpecies.h"
-#include "fourdst/composition/elements.h"
+#include "fourdst/atomic/atomicSpecies.h"
+#include "elements.h"
 
 #include <expected> // For std::expected
 
