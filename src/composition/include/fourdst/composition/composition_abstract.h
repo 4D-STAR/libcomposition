@@ -1,6 +1,6 @@
 #pragma once
 
-#include "fourdst/composition/atomicSpecies.h"
+#include "fourdst/atomic/atomicSpecies.h"
 
 #include <string>
 #include <unordered_map>
@@ -37,25 +37,20 @@ public:
     virtual ~CompositionAbstract() = default;
 
     /**
-     * @brief Check if a chemical symbol is registered in the composition.
-     * @param symbol The chemical symbol to check (e.g., "H", "He").
-     * @return True if the symbol is present, false otherwise.
-     */
-    [[nodiscard]] virtual bool hasSymbol(const std::string& symbol) const = 0;
-
-    /**
-     * @brief Check if a species is registered in the composition.
-     * @param species The atomic species to check.
-     * @return True if the species is present, false otherwise.
-     */
-    [[nodiscard]] virtual bool hasSpecies(const fourdst::atomic::Species& species) const = 0;
-
-    /**
      * @brief Check if the composition contains the given species.
      * @param species The atomic species to check.
      * @return True if the species is contained, false otherwise.
      */
     [[nodiscard]] virtual bool contains(const fourdst::atomic::Species& species) const = 0;
+
+    /**
+     * @brief Check if the composition contains the given species.
+     * @param symbol The symbol of the atomic species to check.
+     * @return True if the species is contained, false otherwise.
+     */
+    [[nodiscard]] virtual bool contains(const std::string& symbol) const = 0;
+
+    [[nodiscard]] virtual size_t size() const = 0;
 
     /**
      * @brief Get all registered chemical symbols in the composition.
@@ -67,19 +62,19 @@ public:
      * @brief Get all registered atomic species in the composition.
      * @return A set of registered atomic species.
      */
-    [[nodiscard]] virtual std::set<fourdst::atomic::Species> getRegisteredSpecies() const = 0;
+    [[nodiscard]] virtual const std::set<fourdst::atomic::Species> &getRegisteredSpecies() const = 0;
 
     /**
      * @brief Get the mass fraction for all registered symbols.
      * @return An unordered map from symbol to mass fraction.
      */
-    [[nodiscard]] virtual std::unordered_map<std::string, double> getMassFraction() const = 0;
+    [[nodiscard]] virtual std::unordered_map<fourdst::atomic::Species, double> getMassFraction() const = 0;
 
     /**
      * @brief Get the number fraction for all registered symbols.
      * @return An unordered map from symbol to number fraction.
      */
-    [[nodiscard]] virtual std::unordered_map<std::string, double> getNumberFraction() const = 0;
+    [[nodiscard]] virtual std::unordered_map<fourdst::atomic::Species, double> getNumberFraction() const = 0;
 
     /**
      * @brief Get the mass fraction for a given symbol.
@@ -128,12 +123,6 @@ public:
      * @return The mean particle mass.
      */
     [[nodiscard]] virtual double getMeanParticleMass() const = 0;
-
-    /**
-     * @brief Get the mean atomic number of the composition.
-     * @return The mean atomic number.
-     */
-    [[nodiscard]] virtual double getMeanAtomicNumber() const = 0;
 
     /**
      * @brief Get the electron abundance of the composition.

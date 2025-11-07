@@ -95,14 +95,6 @@ namespace fourdst::composition::exceptions {
     };
 
     /**
-     * @class InvalidSymbolError
-     * @brief Exception thrown when a symbol used in a composition is invalid.
-     */
-    class InvalidSymbolError final : public CompositionError {
-        using CompositionError::CompositionError;
-    };
-
-    /**
      * @class UnregisteredSymbolError
      * @brief Exception thrown when a symbol is used that has not been registered.
      *
@@ -144,6 +136,22 @@ namespace fourdst::composition::exceptions {
      */
     class CompositionModeError final : public CompositionEntryError {
         using CompositionEntryError::CompositionEntryError;
+    };
+
+    class SpeciesError : public std::exception {
+    protected:
+        std::string m_message;
+    public:
+        explicit SpeciesError(const std::string& message)
+            : m_message(std::move(message)) {}
+
+        const char* what() const noexcept override {
+            return m_message.c_str();
+        }
+    };
+
+    class UnknownSymbolError final : public SpeciesError {
+        using SpeciesError::SpeciesError;
     };
 
 }

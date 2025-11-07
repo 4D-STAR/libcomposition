@@ -3,7 +3,7 @@
 
 #include <string_view>
 #include <string>
-#include <iostream>
+#include <optional>
 #include <limits>
 
 
@@ -17,7 +17,7 @@ namespace fourdst::atomic {
      * @param jpi_string The spin-parity string to convert (e.g., "1/2+", "5/2-", "0+").
      * @return The spin value as a double. Returns `NaN` for invalid or unparsable strings.
      */
-    inline double convert_jpi_to_double(const std::string& jpi_string);
+    inline double convert_jpi_to_double(const std::string& jpi_string) noexcept;
 
     /**
      * @struct Species
@@ -63,7 +63,7 @@ namespace fourdst::atomic {
         std::string m_decayModes; ///< Decay modes as a string.
         double m_atomicMass; ///< Atomic mass in atomic mass units (u).
         double m_atomicMassUnc; ///< Uncertainty in the atomic mass.
-        double m_spin = 0.0; ///< Nuclear spin as a double, derived from m_spinParity.
+        mutable std::optional<double> m_spin = std::nullopt; ///< Nuclear spin as a double, derived from m_spinParity.
 
         /**
          * @brief Constructs a Species object with detailed properties.
@@ -114,9 +114,7 @@ namespace fourdst::atomic {
         m_spinParity(spinParity),
         m_decayModes(decayModes),
         m_atomicMass(atomicMass),
-        m_atomicMassUnc(atomicMassUnc) {
-            m_spin = convert_jpi_to_double(m_spinParity);
-        };
+        m_atomicMassUnc(atomicMassUnc) {};
 
         /**
          * @brief Copy constructor for Species.
@@ -138,7 +136,6 @@ namespace fourdst::atomic {
             m_decayModes = species.m_decayModes;
             m_atomicMass = species.m_atomicMass;
             m_atomicMassUnc = species.m_atomicMassUnc;
-            m_spin = convert_jpi_to_double(m_spinParity);
         }
 
 
@@ -259,7 +256,10 @@ namespace fourdst::atomic {
          * @return The spin as a double.
          */
         [[nodiscard]] double spin() const {
-            return m_spin;
+            if (!m_spin.has_value()) { // The spin calculation is very expensive, and we almost never need it so we only compute it the first time it is requested
+                m_spin = convert_jpi_to_double(m_spinParity);
+            }
+            return m_spin.value();
         }
 
         /**
@@ -345,7 +345,7 @@ namespace fourdst::atomic {
      *
      * @return The spin value as a `double`. Returns `NaN` for invalid or unparsable strings.
      */
-    inline double convert_jpi_to_double(const std::string& jpi_string) {
+    inline double convert_jpi_to_double(const std::string& jpi_string) noexcept {
         std::string s = jpi_string;
 
         if (s.empty()) {

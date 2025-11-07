@@ -1,7 +1,10 @@
 required_headers = [
     'fourdst/composition/atomicSpecies.h',
     'fourdst/composition/species.h',
-    'fourdst/composition/composition.h'
+    'fourdst/composition/composition.h',
+    'fourdst/composition/utils.h',
+    'fourdst/composition/composition_abstract.h',
+    'fourdst/composition/exceptions/exceptions_composition.h'
 ]
 
 foreach h : required_headers
@@ -18,6 +21,7 @@ message('✅ libcomposition species_weight dependency declared')
 
 composition_sources = files(
   'lib/composition.cpp',
+  'lib/utils.cpp',
 )
 
 
@@ -44,11 +48,20 @@ composition_dep = declare_dependency(
 # Make headers accessible
 composition_headers = files(
   'include/fourdst/composition/composition.h',
-  'include/fourdst/composition/atomicSpecies.h',
-  'include/fourdst/composition/species.h',
-  'include/fourdst/composition/elements.h'
 )
 install_headers(composition_headers, subdir : 'fourdst/fourdst/composition')
+
+composition_headers_utils = files(
+    'include/fourdst/composition/utils.h',
+)
+install_headers(composition_headers_utils, subdir : 'fourdst/fourdst/composition/utils')
+
+composition_headers_atomic = files(
+    'include/fourdst/atomic/atomicSpecies.h',
+    'include/fourdst/atomic/elements.h',
+    'include/fourdst/atomic/species.h',
+)
+install_headers(composition_headers_atomic, subdir : 'fourdst/fourdst/atomic')
 
 composition_exception_headers = files(
     'include/fourdst/composition/exceptions/exceptions_composition.h',
