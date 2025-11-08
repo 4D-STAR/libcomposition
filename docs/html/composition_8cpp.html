@@ -29,7 +29,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">fourdst::libcomposition<span id="projectnumber">&#160;v1.9.0</span>
+   <div id="projectname">fourdst::libcomposition<span id="projectnumber">&#160;v2.0.0</span>
    </div>
    <div id="projectbrief">Robust atomic species information library</div>
   </td>
@@ -109,15 +109,20 @@ $(function(){initNavTree('composition_8cpp.html',''); initResizable(true); });
 <code>#include &lt;stdexcept&gt;</code><br />
 <code>#include &lt;unordered_map&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
-<code>#include &lt;array&gt;</code><br />
 <code>#include &lt;ranges&gt;</code><br />
 <code>#include &lt;algorithm&gt;</code><br />
+<code>#include &lt;set&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
 <code>#include &lt;utility&gt;</code><br />
-<code>#include &quot;<a class="el" href="atomic_species_8h_source.html">fourdst/composition/atomicSpecies.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="species_8h_source.html">fourdst/composition/species.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="atomic_species_8h_source.html">fourdst/atomic/atomicSpecies.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="species_8h_source.html">fourdst/atomic/species.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="composition_8h_source.html">fourdst/composition/composition.h</a>&quot;</code><br />
-<code>#include &lt;numeric&gt;</code><br />
 <code>#include &quot;<a class="el" href="exceptions__composition_8h_source.html">fourdst/composition/exceptions/exceptions_composition.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for composition.cpp:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="composition_8cpp__incl.svg" width="100%" height="593"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 </div>
 <p><a href="composition_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -126,15 +131,13 @@ Namespaces</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefourdst.html">fourdst</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefourdst_1_1composition.html">fourdst::composition</a></td></tr>
+<tr class="memdesc:namespacefourdst_1_1composition"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utilities and types for representing and manipulating chemical compositions. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8468dde1b148c0583b8a9f85b8d0ce9a" id="r_a8468dde1b148c0583b8a9f85b8d0ce9a"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefourdst_1_1composition.html#a8468dde1b148c0583b8a9f85b8d0ce9a">fourdst::composition::operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="structfourdst_1_1composition_1_1_global_composition.html">GlobalComposition</a> &amp;comp)</td></tr>
-<tr class="separator:a8468dde1b148c0583b8a9f85b8d0ce9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a676f771864958c4db4ed2a82cc0e85dd" id="r_a676f771864958c4db4ed2a82cc0e85dd"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefourdst_1_1composition.html#a676f771864958c4db4ed2a82cc0e85dd">fourdst::composition::operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="structfourdst_1_1composition_1_1_composition_entry.html">CompositionEntry</a> &amp;entry)</td></tr>
-<tr class="separator:a676f771864958c4db4ed2a82cc0e85dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e8ccc2bd9e91eebcd3ef5fe470163a1" id="r_a5e8ccc2bd9e91eebcd3ef5fe470163a1"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefourdst_1_1composition.html#a5e8ccc2bd9e91eebcd3ef5fe470163a1">fourdst::composition::operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="classfourdst_1_1composition_1_1_composition.html">Composition</a> &amp;composition)</td></tr>
+<tr class="memdesc:a5e8ccc2bd9e91eebcd3ef5fe470163a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">OVERLOADS.  <br /></td></tr>
 <tr class="separator:a5e8ccc2bd9e91eebcd3ef5fe470163a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->

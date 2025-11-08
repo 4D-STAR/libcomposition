@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>fourdst::libcomposition: src/composition/include/fourdst/composition/atomicSpecies.h File Reference</title>
+<title>fourdst::libcomposition: src/composition/include/fourdst/atomic/atomicSpecies.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">fourdst::libcomposition<span id="projectnumber">&#160;v1.9.0</span>
+   <div id="projectname">fourdst::libcomposition<span id="projectnumber">&#160;v2.0.0</span>
    </div>
    <div id="projectbrief">Robust atomic species information library</div>
   </td>
@@ -108,8 +108,18 @@ $(function(){initNavTree('atomic_species_8h.html',''); initResizable(true); });
 <div class="contents">
 <div class="textblock"><code>#include &lt;string_view&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
-<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;optional&gt;</code><br />
 <code>#include &lt;limits&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for atomicSpecies.h:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="atomic_species_8h__incl.svg" width="343" height="126"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="atomic_species_8h__dep__incl.svg" width="616" height="422"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <p><a href="atomic_species_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -125,16 +135,16 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefourdst_1_1atomic.html">fourdst::atomic</a></td></tr>
-<tr class="memdesc:namespacefourdst_1_1atomic"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains classes and functions related to atomic data, such as properties of atomic species. <br /></td></tr>
+<tr class="memdesc:namespacefourdst_1_1atomic"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains canonical information about atomic species and elements used by 4D-STAR. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefourdst.html">fourdst</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ada037e2130ddb6174ff7934cda49c2ba" id="r_ada037e2130ddb6174ff7934cda49c2ba"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefourdst_1_1atomic.html#ada037e2130ddb6174ff7934cda49c2ba">fourdst::atomic::convert_jpi_to_double</a> (const std::string &amp;jpi_string)</td></tr>
-<tr class="memdesc:ada037e2130ddb6174ff7934cda49c2ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a spin-parity string (JPI string) to a double-precision floating-point number.  <br /></td></tr>
-<tr class="separator:ada037e2130ddb6174ff7934cda49c2ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8b3572582a3f80243ecce021b4782d1" id="r_ab8b3572582a3f80243ecce021b4782d1"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefourdst_1_1atomic.html#ab8b3572582a3f80243ecce021b4782d1">fourdst::atomic::convert_jpi_to_double</a> (const std::string &amp;jpi_string) noexcept</td></tr>
+<tr class="memdesc:ab8b3572582a3f80243ecce021b4782d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a spin-parity string (JPI string) to a double-precision floating-point number.  <br /></td></tr>
+<tr class="separator:ab8b3572582a3f80243ecce021b4782d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a277fa6e5107f1358e204c807146deeb4" id="r_a277fa6e5107f1358e204c807146deeb4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefourdst_1_1atomic.html#a277fa6e5107f1358e204c807146deeb4">fourdst::atomic::operator==</a> (const <a class="el" href="structfourdst_1_1atomic_1_1_species.html">Species</a> &amp;lhs, const <a class="el" href="structfourdst_1_1atomic_1_1_species.html">Species</a> &amp;rhs)</td></tr>
 <tr class="memdesc:a277fa6e5107f1358e204c807146deeb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Equality operator for <a class="el" href="structfourdst_1_1atomic_1_1_species.html" title="Represents an atomic species (isotope) with its fundamental physical properties.">Species</a>. Compares based on name.  <br /></td></tr>
 <tr class="separator:a277fa6e5107f1358e204c807146deeb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -153,7 +163,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_425afc2e69e55565110382214454a15b.html">composition</a></li><li class="navelem"><a class="el" href="dir_cb6fc2f7165eff3b2362b2440dfaea8e.html">include</a></li><li class="navelem"><a class="el" href="dir_3c9efac6790a3720e63e1a08c00d11f2.html">fourdst</a></li><li class="navelem"><a class="el" href="dir_f0fdd83dd0cb4aa6fd6a832374ae4f05.html">composition</a></li><li class="navelem"><a class="el" href="atomic_species_8h.html">atomicSpecies.h</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_425afc2e69e55565110382214454a15b.html">composition</a></li><li class="navelem"><a class="el" href="dir_cb6fc2f7165eff3b2362b2440dfaea8e.html">include</a></li><li class="navelem"><a class="el" href="dir_3c9efac6790a3720e63e1a08c00d11f2.html">fourdst</a></li><li class="navelem"><a class="el" href="dir_22f8ab1532b3f549185d596a293d3842.html">atomic</a></li><li class="navelem"><a class="el" href="atomic_species_8h.html">atomicSpecies.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

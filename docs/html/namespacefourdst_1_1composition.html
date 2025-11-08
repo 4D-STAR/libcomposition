@@ -29,7 +29,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">fourdst::libcomposition<span id="projectnumber">&#160;v1.9.0</span>
+   <div id="projectname">fourdst::libcomposition<span id="projectnumber">&#160;v2.0.0</span>
    </div>
    <div id="projectbrief">Robust atomic species information library</div>
   </td>
@@ -106,6 +106,9 @@ $(function(){initNavTree('namespacefourdst_1_1composition.html',''); initResizab
   <div class="headertitle"><div class="title">fourdst::composition Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Utilities and types for representing and manipulating chemical compositions.  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -120,25 +123,227 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfourdst_1_1composition_1_1_composition.html">Composition</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manages a collection of chemical species and their abundances.  <a href="classfourdst_1_1composition_1_1_composition.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfourdst_1_1composition_1_1_composition_entry.html">CompositionEntry</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a single entry (an isotope) within a composition.  <a href="structfourdst_1_1composition_1_1_composition_entry.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfourdst_1_1composition_1_1_global_composition.html">GlobalComposition</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents global properties of a finalized composition.  <a href="structfourdst_1_1composition_1_1_global_composition.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8468dde1b148c0583b8a9f85b8d0ce9a" id="r_a8468dde1b148c0583b8a9f85b8d0ce9a"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8468dde1b148c0583b8a9f85b8d0ce9a">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="structfourdst_1_1composition_1_1_global_composition.html">GlobalComposition</a> &amp;comp)</td></tr>
-<tr class="separator:a8468dde1b148c0583b8a9f85b8d0ce9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a676f771864958c4db4ed2a82cc0e85dd" id="r_a676f771864958c4db4ed2a82cc0e85dd"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a676f771864958c4db4ed2a82cc0e85dd">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="structfourdst_1_1composition_1_1_composition_entry.html">CompositionEntry</a> &amp;entry)</td></tr>
-<tr class="separator:a676f771864958c4db4ed2a82cc0e85dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa90b1ef07d607c0c829bedccf381cf54" id="r_aa90b1ef07d607c0c829bedccf381cf54"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfourdst_1_1composition_1_1_composition.html">Composition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa90b1ef07d607c0c829bedccf381cf54">buildCompositionFromMassFractions</a> (const std::vector&lt; std::string &gt; &amp;symbols, const std::vector&lt; double &gt; &amp;massFractions)</td></tr>
+<tr class="memdesc:aa90b1ef07d607c0c829bedccf381cf54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a <a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a> object from symbols and their corresponding mass fractions.  <br /></td></tr>
+<tr class="separator:aa90b1ef07d607c0c829bedccf381cf54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39d4f84dfa85ddda3b9feb5dda1afc1e" id="r_a39d4f84dfa85ddda3b9feb5dda1afc1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfourdst_1_1composition_1_1_composition.html">Composition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39d4f84dfa85ddda3b9feb5dda1afc1e">buildCompositionFromMassFractions</a> (const std::vector&lt; <a class="el" href="structfourdst_1_1atomic_1_1_species.html">atomic::Species</a> &gt; &amp;species, const std::vector&lt; double &gt; &amp;massFractions)</td></tr>
+<tr class="memdesc:a39d4f84dfa85ddda3b9feb5dda1afc1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a <a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a> object from species and their corresponding mass fractions.  <br /></td></tr>
+<tr class="separator:a39d4f84dfa85ddda3b9feb5dda1afc1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cb98194b465f646973ceba38d0e7d95" id="r_a2cb98194b465f646973ceba38d0e7d95"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfourdst_1_1composition_1_1_composition.html">Composition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cb98194b465f646973ceba38d0e7d95">buildCompositionFromMassFractions</a> (const std::set&lt; <a class="el" href="structfourdst_1_1atomic_1_1_species.html">atomic::Species</a> &gt; &amp;species, const std::vector&lt; double &gt; &amp;massFractions)</td></tr>
+<tr class="memdesc:a2cb98194b465f646973ceba38d0e7d95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a <a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a> object from species in a set and their corresponding mass fractions.  <br /></td></tr>
+<tr class="separator:a2cb98194b465f646973ceba38d0e7d95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e8ccc2bd9e91eebcd3ef5fe470163a1" id="r_a5e8ccc2bd9e91eebcd3ef5fe470163a1"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e8ccc2bd9e91eebcd3ef5fe470163a1">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="classfourdst_1_1composition_1_1_composition.html">Composition</a> &amp;composition)</td></tr>
+<tr class="memdesc:a5e8ccc2bd9e91eebcd3ef5fe470163a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">OVERLOADS.  <br /></td></tr>
 <tr class="separator:a5e8ccc2bd9e91eebcd3ef5fe470163a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Utilities and types for representing and manipulating chemical compositions. </p>
+<p>The composition module provides a small, but expressive, API for constructing and querying material compositions used throughout the 4D-STAR codebase. A <a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a> represents a collection of atomic species together with their molar abundances. From these molar abundances the module can compute derived quantities such as mass fractions, number fractions, canonical (X, Y, Z) composition, mean particle mass, and the electron abundance (Y_e).</p>
+<p>Key concepts:</p><ul>
+<li>Species and Symbols: Atomic isotopes are represented by the strongly-typed <a class="el" href="structfourdst_1_1atomic_1_1_species.html" title="Represents an atomic species (isotope) with its fundamental physical properties.">fourdst::atomic::Species</a> values (see <code><a class="el" href="species_8h.html">fourdst/atomic/species.h</a></code>). Each species also has a human-readable string symbol (e.g. "H-1", "He-4") used by some constructors and convenience overloads.</li>
+<li>Molar abundances: The <a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a> API accepts and stores molar abundances (absolute mole counts). Many derived quantities (mass fraction, number fraction, mean particle mass) are computed from these molar abundances.</li>
+<li>Canonical composition: A <a class="el" href="structfourdst_1_1composition_1_1_canonical_composition.html" title="Represents the canonical (X, Y, Z) composition of stellar material.">CanonicalComposition</a> (X, Y, Z) is provided which groups mass fractions into hydrogen (X), helium (Y), and metals (Z). A lightweight struct <code><a class="el" href="structfourdst_1_1composition_1_1_canonical_composition.html" title="Represents the canonical (X, Y, Z) composition of stellar material.">CanonicalComposition</a></code> holds these values and provides an ostream operator for easy logging and testing.</li>
+<li>Caching: The concrete <a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a> implementation caches computed vectors and scalars to avoid repeated work. The cache is invalidated automatically when molar abundances or registered species are changed.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md6"></a>
+Main types and functions</h2>
+<ul>
+<li><p class="startli"><a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a>: The primary concrete class for building and interrogating compositions. It implements the <a class="el" href="class_composition_abstract.html" title="Abstract base class for chemical composition representations.">CompositionAbstract</a> interface and exposes methods to register symbols/species, set molar abundances, and query all commonly-needed derived quantities. Multiple constructors are provided for convenience (from vectors/sets of symbols or species, with optional molar-abundance initialization).</p>
+<p class="startli">Important member functions include:</p><ul>
+<li>registerSymbol / registerSpecies (single or many overloads)</li>
+<li>setMolarAbundance (many overloads accepting symbols or species)</li>
+<li>getMolarAbundance, getMassFraction, getNumberFraction (symbol and species overloads)</li>
+<li>getMassFractionVector, getNumberFractionVector, getMolarAbundanceVector</li>
+<li>getMeanParticleMass, getElectronAbundance</li>
+<li>getCanonicalComposition</li>
+<li>Iteration support (begin/end) which iterates species from lightest to heaviest because species ordering is defined by atomic mass.</li>
+</ul>
+</li>
+<li><a class="el" href="class_composition_abstract.html" title="Abstract base class for chemical composition representations.">CompositionAbstract</a>: A compact abstract interface implemented by <a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a> which guarantees the presence of all getter/query methods. This allows other components to accept composition-like objects without depending on the concrete implementation.</li>
+<li>Utilities (<a class="el" href="#aa90b1ef07d607c0c829bedccf381cf54" title="Build a Composition object from symbols and their corresponding mass fractions.">fourdst::composition::buildCompositionFromMassFractions</a>): Convenience helpers exist to construct a <a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a> from mass fractions (instead of molar abundances). Those helpers validate that the provided mass fractions sum to unity within a tight tolerance and convert them into the corresponding molar abundances before returning a populated <a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a>.</li>
+<li>Exceptions (namespace <a class="el" href="namespacefourdst_1_1composition_1_1exceptions.html">fourdst::composition::exceptions</a>): The module defines a small hierarchy of exceptions for error handling:<ul>
+<li>CompositionError: Base class for composition-related errors.</li>
+<li>InvalidCompositionError: Thrown when the composition is inconsistent or when mass fractions fail validation.</li>
+<li>UnregisteredSymbolError: Thrown when an operation requires a symbol that hasn't been registered on the <a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a> object.</li>
+<li>UnknownSymbolError: Thrown when a provided string symbol does not map to any known atomic species in the atomic species database.</li>
+</ul>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md7"></a>
+Usage examples</h2>
+<p>Example 1 – basic construction and queries: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="composition_8h.html">fourdst/composition/composition.h</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacefourdst_1_1composition.html">fourdst::composition</a>;</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_class" href="classfourdst_1_1composition_1_1_composition.html">Composition</a> comp;</div>
+<div class="line">comp.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#a3ab4dcda0bfd1a35b169bcc57fe66725">registerSymbol</a>(<span class="stringliteral">&quot;H-1&quot;</span>);</div>
+<div class="line">comp.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#a3ab4dcda0bfd1a35b169bcc57fe66725">registerSymbol</a>(<span class="stringliteral">&quot;He-4&quot;</span>);</div>
+<div class="line">comp.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#a262d7133035d4e6f45daa81827abf5e7">setMolarAbundance</a>(<span class="stringliteral">&quot;H-1&quot;</span>, 1.0);</div>
+<div class="line">comp.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#a262d7133035d4e6f45daa81827abf5e7">setMolarAbundance</a>(<span class="stringliteral">&quot;He-4&quot;</span>, 0.5);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">double</span> X_h1 = comp.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#a9ea2b673341fdc67afeb0f0517a54c8c">getMassFraction</a>(<span class="stringliteral">&quot;H-1&quot;</span>);</div>
+<div class="line"><span class="keywordtype">double</span> meanA = comp.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#afbbb5e51ad5ae5c0fa6bc0094195aecd">getMeanParticleMass</a>();</div>
+<div class="line"><a class="code hl_struct" href="structfourdst_1_1composition_1_1_canonical_composition.html">CanonicalComposition</a> canon = comp.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#aac5b214a3d1278e127422224cb9cee50">getCanonicalComposition</a>();</div>
+<div class="line">std::cout &lt;&lt; canon &lt;&lt; std::endl; <span class="comment">// prints X, Y, Z</span></div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html"><div class="ttname"><a href="classfourdst_1_1composition_1_1_composition.html">fourdst::composition::Composition</a></div><div class="ttdoc">Manages a collection of chemical species and their abundances.</div><div class="ttdef"><b>Definition</b> <a href="composition_8h_source.html#l00097">composition.h:97</a></div></div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a262d7133035d4e6f45daa81827abf5e7"><div class="ttname"><a href="classfourdst_1_1composition_1_1_composition.html#a262d7133035d4e6f45daa81827abf5e7">fourdst::composition::Composition::setMolarAbundance</a></div><div class="ttdeci">void setMolarAbundance(const std::string &amp;symbol, const double &amp;molar_abundance)</div><div class="ttdoc">Sets the molar abundance for a given symbol.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00529">composition.cpp:529</a></div></div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a3ab4dcda0bfd1a35b169bcc57fe66725"><div class="ttname"><a href="classfourdst_1_1composition_1_1_composition.html#a3ab4dcda0bfd1a35b169bcc57fe66725">fourdst::composition::Composition::registerSymbol</a></div><div class="ttdeci">void registerSymbol(const std::string &amp;symbol)</div><div class="ttdoc">Registers a new symbol for inclusion in the composition.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00178">composition.cpp:178</a></div></div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a9ea2b673341fdc67afeb0f0517a54c8c"><div class="ttname"><a href="classfourdst_1_1composition_1_1_composition.html#a9ea2b673341fdc67afeb0f0517a54c8c">fourdst::composition::Composition::getMassFraction</a></div><div class="ttdeci">std::unordered_map&lt; atomic::Species, double &gt; getMassFraction() const noexcept override</div><div class="ttdoc">Gets the mass fractions of all species in the composition.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00251">composition.cpp:251</a></div></div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_aac5b214a3d1278e127422224cb9cee50"><div class="ttname"><a href="classfourdst_1_1composition_1_1_composition.html#aac5b214a3d1278e127422224cb9cee50">fourdst::composition::Composition::getCanonicalComposition</a></div><div class="ttdeci">CanonicalComposition getCanonicalComposition() const</div><div class="ttdoc">Compute the canonical composition (X, Y, Z) of the composition.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00330">composition.cpp:330</a></div></div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_afbbb5e51ad5ae5c0fa6bc0094195aecd"><div class="ttname"><a href="classfourdst_1_1composition_1_1_composition.html#afbbb5e51ad5ae5c0fa6bc0094195aecd">fourdst::composition::Composition::getMeanParticleMass</a></div><div class="ttdeci">double getMeanParticleMass() const noexcept override</div><div class="ttdoc">Compute the mean particle mass of the composition.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00311">composition.cpp:311</a></div></div>
+<div class="ttc" id="acomposition_8h_html"><div class="ttname"><a href="composition_8h.html">composition.h</a></div></div>
+<div class="ttc" id="anamespacefourdst_1_1composition_html"><div class="ttname"><a href="namespacefourdst_1_1composition.html">fourdst::composition</a></div><div class="ttdoc">Utilities and types for representing and manipulating chemical compositions.</div></div>
+<div class="ttc" id="astructfourdst_1_1composition_1_1_canonical_composition_html"><div class="ttname"><a href="structfourdst_1_1composition_1_1_canonical_composition.html">fourdst::composition::CanonicalComposition</a></div><div class="ttdoc">Represents the canonical (X, Y, Z) composition of stellar material.</div><div class="ttdef"><b>Definition</b> <a href="composition_8h_source.html#l00044">composition.h:44</a></div></div>
+</div><!-- fragment --><p>Example 2 – constructing from mass fractions: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="utils_8h.html">fourdst/composition/utils.h</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line">std::vector&lt;std::string&gt; symbols = {<span class="stringliteral">&quot;H-1&quot;</span>, <span class="stringliteral">&quot;He-4&quot;</span>, <span class="stringliteral">&quot;C-12&quot;</span>};</div>
+<div class="line">std::vector&lt;double&gt; massFractions = {0.70, 0.28, 0.02};</div>
+<div class="line"><a class="code hl_class" href="classfourdst_1_1composition_1_1_composition.html">Composition</a> comp = <a class="code hl_function" href="#aa90b1ef07d607c0c829bedccf381cf54">buildCompositionFromMassFractions</a>(symbols, massFractions);</div>
+<div class="ttc" id="anamespacefourdst_1_1composition_html_aa90b1ef07d607c0c829bedccf381cf54"><div class="ttname"><a href="#aa90b1ef07d607c0c829bedccf381cf54">fourdst::composition::buildCompositionFromMassFractions</a></div><div class="ttdeci">Composition buildCompositionFromMassFractions(const std::vector&lt; std::string &gt; &amp;symbols, const std::vector&lt; double &gt; &amp;massFractions)</div><div class="ttdoc">Build a Composition object from symbols and their corresponding mass fractions.</div><div class="ttdef"><b>Definition</b> <a href="utils_8cpp_source.html#l00074">utils.cpp:74</a></div></div>
+<div class="ttc" id="autils_8h_html"><div class="ttname"><a href="utils_8h.html">utils.h</a></div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
+Notes and remarks</h2>
+<ul>
+<li>Molar abundances are the canonical input for the <a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a> class. When passing mass fractions, use the <code>buildCompositionFromMassFractions</code> helper which performs the safe conversion and validation.</li>
+<li>Many methods throw exceptions from the <code><a class="el" href="namespacefourdst_1_1composition_1_1exceptions.html">fourdst::composition::exceptions</a></code> namespace on invalid usage (unknown symbols, unregistered species, or invalid abundance values). Callers should catch and handle these where appropriate.</li>
+<li>Floating point results (mass/number fractions, mean particle mass, Y_e) are computed as doubles and may have small numerical round-off. Callers comparing values in tests should use an appropriate tolerance.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md9"></a>
+See also</h2>
+<ul>
+<li><a class="el" href="species_8h.html">fourdst/atomic/species.h</a> — canonical atomic species definitions and symbols.</li>
+<li><a class="el" href="composition_8h.html">fourdst/composition/composition.h</a> — concrete <a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a> implementation.</li>
+<li><a class="el" href="composition__abstract_8h.html">fourdst/composition/composition_abstract.h</a> — abstract composition interface.</li>
+<li><a class="el" href="utils_8h.html">fourdst/composition/utils.h</a> — helpers for constructing compositions from mass fractions. </li>
+</ul>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a2cb98194b465f646973ceba38d0e7d95" name="a2cb98194b465f646973ceba38d0e7d95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cb98194b465f646973ceba38d0e7d95">&#9670;&#160;</a></span>buildCompositionFromMassFractions() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classfourdst_1_1composition_1_1_composition.html">Composition</a> fourdst::composition::buildCompositionFromMassFractions </td>
+          <td>(</td>
+          <td class="paramtype">const std::set&lt; <a class="el" href="structfourdst_1_1atomic_1_1_species.html">atomic::Species</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>species</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>massFractions</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Build a <a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a> object from species in a set and their corresponding mass fractions. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">species</td><td>The species to register. </td></tr>
+    <tr><td class="paramname">massFractions</td><td>The corresponding mass fractions for each species. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a> object constructed from the provided species and mass fractions. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classfourdst_1_1composition_1_1exceptions_1_1_invalid_composition_error.html" title="Exception thrown when a composition is in an invalid or inconsistent state.">exceptions::InvalidCompositionError</a></td><td>if the provided mass fractions do not sum to within one part in 10^10 of 1.0. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classfourdst_1_1composition_1_1exceptions_1_1_invalid_composition_error.html" title="Exception thrown when a composition is in an invalid or inconsistent state.">exceptions::InvalidCompositionError</a></td><td>if the number of species does not match the number of mass fractions.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This is the version of the function which the other overloads ultimately call. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00036">36</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a39d4f84dfa85ddda3b9feb5dda1afc1e" name="a39d4f84dfa85ddda3b9feb5dda1afc1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39d4f84dfa85ddda3b9feb5dda1afc1e">&#9670;&#160;</a></span>buildCompositionFromMassFractions() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classfourdst_1_1composition_1_1_composition.html">Composition</a> fourdst::composition::buildCompositionFromMassFractions </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="structfourdst_1_1atomic_1_1_species.html">atomic::Species</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>species</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>massFractions</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Build a <a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a> object from species and their corresponding mass fractions. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">species</td><td>The species to register. </td></tr>
+    <tr><td class="paramname">massFractions</td><td>The corresponding mass fractions for each species. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a> object constructed from the provided species and mass fractions. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classfourdst_1_1composition_1_1exceptions_1_1_invalid_composition_error.html" title="Exception thrown when a composition is in an invalid or inconsistent state.">exceptions::InvalidCompositionError</a></td><td>if the provided mass fractions do not sum to within one part in 10^10 of 1.0. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classfourdst_1_1composition_1_1exceptions_1_1_invalid_composition_error.html" title="Exception thrown when a composition is in an invalid or inconsistent state.">exceptions::InvalidCompositionError</a></td><td>if the number of species does not match the number of mass fractions. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00070">70</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aa90b1ef07d607c0c829bedccf381cf54" name="aa90b1ef07d607c0c829bedccf381cf54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa90b1ef07d607c0c829bedccf381cf54">&#9670;&#160;</a></span>buildCompositionFromMassFractions() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classfourdst_1_1composition_1_1_composition.html">Composition</a> fourdst::composition::buildCompositionFromMassFractions </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>symbols</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>massFractions</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Build a <a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a> object from symbols and their corresponding mass fractions. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">symbols</td><td>The symbols to register. </td></tr>
+    <tr><td class="paramname">massFractions</td><td>The corresponding mass fractions for each symbol. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a> object constructed from the provided symbols and mass fractions. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classfourdst_1_1composition_1_1exceptions_1_1_unknown_symbol_error.html" title="Exception thrown when an unknown symbol is encountered.">exceptions::UnknownSymbolError</a></td><td>if any symbol is invalid. Symbols are invalid if they are not registered at compile time in the atomic species database (<code><a class="el" href="species_8h.html">fourdst/atomic/species.h</a></code>). </td></tr>
+    <tr><td class="paramname"><a class="el" href="classfourdst_1_1composition_1_1exceptions_1_1_invalid_composition_error.html" title="Exception thrown when a composition is in an invalid or inconsistent state.">exceptions::InvalidCompositionError</a></td><td>if the provided mass fractions do not sum to within one part in 10^10 of 1.0. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classfourdst_1_1composition_1_1exceptions_1_1_invalid_composition_error.html" title="Exception thrown when a composition is in an invalid or inconsistent state.">exceptions::InvalidCompositionError</a></td><td>if the number of symbols does not match the number of mass fractions. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00074">74</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+
+</div>
+</div>
 <a id="a5e8ccc2bd9e91eebcd3ef5fe470163a1" name="a5e8ccc2bd9e91eebcd3ef5fe470163a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5e8ccc2bd9e91eebcd3ef5fe470163a1">&#9670;&#160;</a></span>operator&lt;&lt;() <span class="overload">[1/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e8ccc2bd9e91eebcd3ef5fe470163a1">&#9670;&#160;</a></span>operator&lt;&lt;()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -155,6 +360,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>OVERLOADS. </p>
+<p>Overloaded output stream operator for <a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">os</td><td>The output stream. </td></tr>
@@ -164,61 +372,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The output stream. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l01078">1078</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a676f771864958c4db4ed2a82cc0e85dd" name="a676f771864958c4db4ed2a82cc0e85dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a676f771864958c4db4ed2a82cc0e85dd">&#9670;&#160;</a></span>operator&lt;&lt;() <span class="overload">[2/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::ostream &amp; fourdst::composition::operator&lt;&lt; </td>
-          <td>(</td>
-          <td class="paramtype">std::ostream &amp;</td>          <td class="paramname"><span class="paramname"><em>os</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structfourdst_1_1composition_1_1_composition_entry.html">CompositionEntry</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>entry</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">os</td><td>The output stream. </td></tr>
-    <tr><td class="paramname">entry</td><td>The <a class="el" href="structfourdst_1_1composition_1_1_composition_entry.html" title="Represents a single entry (an isotope) within a composition.">CompositionEntry</a> to output. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The output stream. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l01070">1070</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a8468dde1b148c0583b8a9f85b8d0ce9a" name="a8468dde1b148c0583b8a9f85b8d0ce9a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8468dde1b148c0583b8a9f85b8d0ce9a">&#9670;&#160;</a></span>operator&lt;&lt;() <span class="overload">[3/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::ostream &amp; fourdst::composition::operator&lt;&lt; </td>
-          <td>(</td>
-          <td class="paramtype">std::ostream &amp;</td>          <td class="paramname"><span class="paramname"><em>os</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="structfourdst_1_1composition_1_1_global_composition.html">GlobalComposition</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>comp</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l01060">1060</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8cpp_source.html#l00593">593</a> of file <a class="el" href="composition_8cpp_source.html">composition.cpp</a>.</p>
 
 </div>
 </div>

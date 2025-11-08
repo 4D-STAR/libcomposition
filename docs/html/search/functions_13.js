@@ -28,6 +28,5 @@ var searchData=
   ['v_5f64_25',['V_64',['../namespacefourdst_1_1atomic.html#a0c293640007ac91a58eefc584dfc21a1',1,'fourdst::atomic']]],
   ['v_5f65_26',['V_65',['../namespacefourdst_1_1atomic.html#aa83f8c6438f4c36a306ae0ed218b29f1',1,'fourdst::atomic']]],
   ['v_5f66_27',['V_66',['../namespacefourdst_1_1atomic.html#a98330237c2316efd679cc4d81e8e491f',1,'fourdst::atomic']]],
-  ['v_5f67_28',['V_67',['../namespacefourdst_1_1atomic.html#ae5e9d25600b0e210c0dc25dc0a938df5',1,'fourdst::atomic']]],
-  ['validatecomposition_29',['validateComposition',['../classfourdst_1_1composition_1_1_composition.html#a86982685c34db4a8f079ddafc25c594e',1,'fourdst::composition::Composition']]]
+  ['v_5f67_28',['V_67',['../namespacefourdst_1_1atomic.html#ae5e9d25600b0e210c0dc25dc0a938df5',1,'fourdst::atomic']]]
 ];

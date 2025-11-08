@@ -41,5 +41,5 @@ var searchData=
   ['w_5f195_38',['W_195',['../namespacefourdst_1_1atomic.html#ac460450df76df9ebe4c954dd1aa3ed5a',1,'fourdst::atomic']]],
   ['w_5f196_39',['W_196',['../namespacefourdst_1_1atomic.html#a0b03a0ffcd26522dfc4073621ce15cf1',1,'fourdst::atomic']]],
   ['w_5f197_40',['W_197',['../namespacefourdst_1_1atomic.html#ad4bd6aeb43e46573aff92550c736782c',1,'fourdst::atomic']]],
-  ['what_41',['what',['../classfourdst_1_1composition_1_1exceptions_1_1_composition_error.html#ae44ceddb19da8a8cda7ee150b6826d08',1,'fourdst::composition::exceptions::CompositionError::what()'],['../classfourdst_1_1composition_1_1exceptions_1_1_composition_entry_error.html#aeba45905c6dc1a47ec1ad3f978f94e57',1,'fourdst::composition::exceptions::CompositionEntryError::what()']]]
+  ['what_41',['what',['../classfourdst_1_1composition_1_1exceptions_1_1_composition_error.html#ae44ceddb19da8a8cda7ee150b6826d08',1,'fourdst::composition::exceptions::CompositionError::what()'],['../classfourdst_1_1composition_1_1exceptions_1_1_species_error.html#af0c63f7e05d0c65157b960c654d09b67',1,'fourdst::composition::exceptions::SpeciesError::what()']]]
 ];

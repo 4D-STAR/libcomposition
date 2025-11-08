@@ -29,7 +29,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">fourdst::libcomposition<span id="projectnumber">&#160;v1.9.0</span>
+   <div id="projectname">fourdst::libcomposition<span id="projectnumber">&#160;v2.0.0</span>
    </div>
    <div id="projectbrief">Robust atomic species information library</div>
   </td>
@@ -112,6 +112,11 @@ $(function(){initNavTree('structfourdst_1_1atomic_1_1_species.html',''); initRes
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for fourdst::atomic::Species:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structfourdst_1_1atomic_1_1_species__coll__graph.svg" width="184" height="275"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -211,9 +216,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a4c6aa98435227f8257b93311a19c4adf" id="r_a4c6aa98435227f8257b93311a19c4adf"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c6aa98435227f8257b93311a19c4adf">m_atomicMassUnc</a></td></tr>
 <tr class="memdesc:a4c6aa98435227f8257b93311a19c4adf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uncertainty in the atomic mass.  <br /></td></tr>
 <tr class="separator:a4c6aa98435227f8257b93311a19c4adf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1d73b936b428aaa29b37c119e3426e7" id="r_af1d73b936b428aaa29b37c119e3426e7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af1d73b936b428aaa29b37c119e3426e7">m_spin</a> = 0.0</td></tr>
-<tr class="memdesc:af1d73b936b428aaa29b37c119e3426e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nuclear spin as a double, derived from m_spinParity.  <br /></td></tr>
-<tr class="separator:af1d73b936b428aaa29b37c119e3426e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dcfca3c5e28f6523bb1a10ede645048" id="r_a9dcfca3c5e28f6523bb1a10ede645048"><td class="memItemLeft" align="right" valign="top">std::optional&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9dcfca3c5e28f6523bb1a10ede645048">m_spin</a> = std::nullopt</td></tr>
+<tr class="memdesc:a9dcfca3c5e28f6523bb1a10ede645048"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nuclear spin as a double, derived from m_spinParity.  <br /></td></tr>
+<tr class="separator:a9dcfca3c5e28f6523bb1a10ede645048"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 Friends</h2></td></tr>
@@ -237,7 +242,7 @@ Friends</h2></td></tr>
 <div class="textblock"><p>Represents an atomic species (isotope) with its fundamental physical properties. </p>
 <p>This struct holds data parsed from nuclear data libraries, such as atomic mass, half-life, and spin. It is a fundamental data structure for representing the components of a material composition.</p>
 <dl class="section note"><dt>Note</dt><dd>This struct is designed to be lightweight and is primarily a data container.</dd></dl>
-<dl class="section user"><dt>Usage Example</dt><dd><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="atomic_species_8h.html">fourdst/composition/atomicSpecies.h</a>&quot;</span></div>
+<dl class="section user"><dt>Usage Example</dt><dd><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;fourdst/composition/atomicSpecies.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main() {</div>
@@ -252,7 +257,6 @@ Friends</h2></td></tr>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-<div class="ttc" id="aatomic_species_8h_html"><div class="ttname"><a href="atomic_species_8h.html">atomicSpecies.h</a></div></div>
 <div class="ttc" id="astructfourdst_1_1atomic_1_1_species_html"><div class="ttname"><a href="structfourdst_1_1atomic_1_1_species.html">fourdst::atomic::Species</a></div><div class="ttdoc">Represents an atomic species (isotope) with its fundamental physical properties.</div><div class="ttdef"><b>Definition</b> <a href="atomic_species_8h_source.html#l00051">atomicSpecies.h:51</a></div></div>
 </div><!-- fragment --> </dd></dl>
 
@@ -403,7 +407,7 @@ Friends</h2></td></tr>
 </dl>
 <dl class="section post"><dt>Postcondition</dt><dd>A new <a class="el" href="structfourdst_1_1atomic_1_1_species.html" title="Represents an atomic species (isotope) with its fundamental physical properties.">Species</a> object is created as a deep copy of <code>species</code>. The <code>m_spin</code> member is re-calculated. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00126">126</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00124">124</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
 
 </div>
 </div>
@@ -434,7 +438,7 @@ Friends</h2></td></tr>
 <p>Gets the mass number. </p>
 <dl class="section return"><dt>Returns</dt><dd>The mass number (A = N + Z). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00253">253</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00250">250</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
 
 </div>
 </div>
@@ -464,7 +468,7 @@ Friends</h2></td></tr>
 <p>Gets the beta decay code. </p>
 <dl class="section return"><dt>Returns</dt><dd>A string_view of the beta decay code. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00205">205</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00202">202</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
 
 </div>
 </div>
@@ -494,7 +498,7 @@ Friends</h2></td></tr>
 <p>Gets the beta decay energy of the species. </p>
 <dl class="section return"><dt>Returns</dt><dd>The beta decay energy in keV. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00197">197</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00194">194</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
 
 </div>
 </div>
@@ -524,7 +528,7 @@ Friends</h2></td></tr>
 <p>Gets the binding energy of the species. </p>
 <dl class="section return"><dt>Returns</dt><dd>The binding energy in keV. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00189">189</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00186">186</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
 
 </div>
 </div>
@@ -554,7 +558,7 @@ Friends</h2></td></tr>
 <p>Gets the decay modes as a string. </p>
 <dl class="section return"><dt>Returns</dt><dd>A string_view of the decay modes. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00181">181</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00178">178</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
 
 </div>
 </div>
@@ -584,7 +588,7 @@ Friends</h2></td></tr>
 <p>Gets the element symbol of the species. </p>
 <dl class="section return"><dt>Returns</dt><dd>A string_view of the element symbol (e.g., "Fe"). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00221">221</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00218">218</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
 
 </div>
 </div>
@@ -614,7 +618,7 @@ Friends</h2></td></tr>
 <p>Gets the half-life of the species. </p>
 <dl class="section return"><dt>Returns</dt><dd>The half-life in seconds. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00165">165</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00162">162</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
 
 </div>
 </div>
@@ -644,7 +648,7 @@ Friends</h2></td></tr>
 <p>Gets the atomic mass of the species. </p>
 <dl class="section return"><dt>Returns</dt><dd>The atomic mass in atomic mass units (u). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00149">149</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00146">146</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
 
 </div>
 </div>
@@ -674,7 +678,7 @@ Friends</h2></td></tr>
 <p>Gets the uncertainty in the atomic mass. </p>
 <dl class="section return"><dt>Returns</dt><dd>The atomic mass uncertainty. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00157">157</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00154">154</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
 
 </div>
 </div>
@@ -704,7 +708,7 @@ Friends</h2></td></tr>
 <p>Gets the number of neutrons. </p>
 <dl class="section return"><dt>Returns</dt><dd>The number of neutrons (N). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00237">237</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00234">234</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
 
 </div>
 </div>
@@ -734,7 +738,7 @@ Friends</h2></td></tr>
 <p>Gets the name of the species. </p>
 <dl class="section return"><dt>Returns</dt><dd>A string_view of the species name (e.g., "Fe56"). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00213">213</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00210">210</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
 
 </div>
 </div>
@@ -764,7 +768,7 @@ Friends</h2></td></tr>
 <p>Gets the NZ identifier of the species. </p>
 <dl class="section return"><dt>Returns</dt><dd>The NZ identifier (1000*Z + A). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00229">229</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00226">226</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
 
 </div>
 </div>
@@ -794,7 +798,7 @@ Friends</h2></td></tr>
 <p>Gets the nuclear spin as a numeric value. </p>
 <dl class="section return"><dt>Returns</dt><dd>The spin as a double. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00261">261</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00258">258</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
 
 </div>
 </div>
@@ -824,7 +828,7 @@ Friends</h2></td></tr>
 <p>Gets the spin and parity as a string. </p>
 <dl class="section return"><dt>Returns</dt><dd>A string_view of the spin and parity (e.g., "1/2+"). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00173">173</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00170">170</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
 
 </div>
 </div>
@@ -854,7 +858,7 @@ Friends</h2></td></tr>
 <p>Gets the atomic number (number of protons). </p>
 <dl class="section return"><dt>Returns</dt><dd>The atomic number (Z). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00245">245</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="atomic_species_8h_source.html#l00242">242</a> of file <a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a>.</p>
 
 </div>
 </div>
@@ -1281,16 +1285,24 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="af1d73b936b428aaa29b37c119e3426e7" name="af1d73b936b428aaa29b37c119e3426e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af1d73b936b428aaa29b37c119e3426e7">&#9670;&#160;</a></span>m_spin</h2>
+<a id="a9dcfca3c5e28f6523bb1a10ede645048" name="a9dcfca3c5e28f6523bb1a10ede645048"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9dcfca3c5e28f6523bb1a10ede645048">&#9670;&#160;</a></span>m_spin</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">double fourdst::atomic::Species::m_spin = 0.0</td>
+          <td class="memname">std::optional&lt;double&gt; fourdst::atomic::Species::m_spin = std::nullopt</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel mutable">mutable</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Nuclear spin as a double, derived from m_spinParity. </p>
@@ -1336,7 +1348,7 @@ Friends</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>src/composition/include/fourdst/composition/<a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a></li>
+<li>src/composition/include/fourdst/atomic/<a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

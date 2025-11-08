@@ -1,5 +1,10 @@
 \doxysection{fourdst\+::composition Namespace Reference}
 \hypertarget{namespacefourdst_1_1composition}{}\label{namespacefourdst_1_1composition}\index{fourdst::composition@{fourdst::composition}}
+
+
+Utilities and types for representing and manipulating chemical compositions.  
+
+
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
@@ -11,28 +16,210 @@ namespace \mbox{\hyperlink{namespacefourdst_1_1composition_1_1exceptions}{except
 struct \mbox{\hyperlink{structfourdst_1_1composition_1_1_canonical_composition}{Canonical\+Composition}}
 \begin{DoxyCompactList}\small\item\em Represents the canonical (X, Y, Z) composition of stellar material. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}}
-\begin{DoxyCompactList}\small\item\em Manages a collection of chemical species and their abundances. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry}{Composition\+Entry}}
-\begin{DoxyCompactList}\small\item\em Represents a single entry (an isotope) within a composition. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{structfourdst_1_1composition_1_1_global_composition}{Global\+Composition}}
-\begin{DoxyCompactList}\small\item\em Represents global properties of a finalized composition. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Manages a collection of chemical species and their abundances. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-std\+::ostream \& \mbox{\hyperlink{namespacefourdst_1_1composition_a8468dde1b148c0583b8a9f85b8d0ce9a}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{structfourdst_1_1composition_1_1_global_composition}{Global\+Composition}} \&comp)
-\item 
-std\+::ostream \& \mbox{\hyperlink{namespacefourdst_1_1composition_a676f771864958c4db4ed2a82cc0e85dd}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry}{Composition\+Entry}} \&entry)
-\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} \mbox{\hyperlink{namespacefourdst_1_1composition_aa90b1ef07d607c0c829bedccf381cf54}{build\+Composition\+From\+Mass\+Fractions}} (const std\+::vector$<$ std\+::string $>$ \&symbols, const std\+::vector$<$ double $>$ \&mass\+Fractions)
+\begin{DoxyCompactList}\small\item\em Build a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} object from symbols and their corresponding mass fractions. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} \mbox{\hyperlink{namespacefourdst_1_1composition_a39d4f84dfa85ddda3b9feb5dda1afc1e}{build\+Composition\+From\+Mass\+Fractions}} (const std\+::vector$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} $>$ \&species, const std\+::vector$<$ double $>$ \&mass\+Fractions)
+\begin{DoxyCompactList}\small\item\em Build a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} object from species and their corresponding mass fractions. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} \mbox{\hyperlink{namespacefourdst_1_1composition_a2cb98194b465f646973ceba38d0e7d95}{build\+Composition\+From\+Mass\+Fractions}} (const std\+::set$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} $>$ \&species, const std\+::vector$<$ double $>$ \&mass\+Fractions)
+\begin{DoxyCompactList}\small\item\em Build a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} object from species in a set and their corresponding mass fractions. \end{DoxyCompactList}\item 
 std\+::ostream \& \mbox{\hyperlink{namespacefourdst_1_1composition_a5e8ccc2bd9e91eebcd3ef5fe470163a1}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} \&composition)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em OVERLOADS. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Utilities and types for representing and manipulating chemical compositions. 
+
+The composition module provides a small, but expressive, API for constructing and querying material compositions used throughout the 4D-\/\+STAR codebase. A \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} represents a collection of atomic species together with their molar abundances. From these molar abundances the module can compute derived quantities such as mass fractions, number fractions, canonical (X, Y, Z) composition, mean particle mass, and the electron abundance (Y\+\_\+e).
+
+Key concepts\+:
+\begin{DoxyItemize}
+\item Species and Symbols\+: Atomic isotopes are represented by the strongly-\/typed \doxylink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species} values (see {\ttfamily \doxylink{species_8h}{fourdst/atomic/species.\+h}}). Each species also has a human-\/readable string symbol (e.\+g. "{}\+H-\/1"{}, "{}\+He-\/4"{}) used by some constructors and convenience overloads.
+\item Molar abundances\+: The \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} API accepts and stores molar abundances (absolute mole counts). Many derived quantities (mass fraction, number fraction, mean particle mass) are computed from these molar abundances.
+\item Canonical composition\+: A \doxylink{structfourdst_1_1composition_1_1_canonical_composition}{Canonical\+Composition} (X, Y, Z) is provided which groups mass fractions into hydrogen (X), helium (Y), and metals (Z). A lightweight struct {\ttfamily \doxylink{structfourdst_1_1composition_1_1_canonical_composition}{Canonical\+Composition}} holds these values and provides an ostream operator for easy logging and testing.
+\item Caching\+: The concrete \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} implementation caches computed vectors and scalars to avoid repeated work. The cache is invalidated automatically when molar abundances or registered species are changed.
+\end{DoxyItemize}\hypertarget{namespacefourdst_1_1composition_autotoc_md6}{}\doxysubsubsection{\texorpdfstring{Main types and functions}{Main types and functions}}\label{namespacefourdst_1_1composition_autotoc_md6}
+
+\begin{DoxyItemize}
+\item \doxylink{classfourdst_1_1composition_1_1_composition}{Composition}\+: The primary concrete class for building and interrogating compositions. It implements the \doxylink{class_composition_abstract}{Composition\+Abstract} interface and exposes methods to register symbols/species, set molar abundances, and query all commonly-\/needed derived quantities. Multiple constructors are provided for convenience (from vectors/sets of symbols or species, with optional molar-\/abundance initialization).
+
+Important member functions include\+:
+\begin{DoxyItemize}
+\item register\+Symbol / register\+Species (single or many overloads)
+\item set\+Molar\+Abundance (many overloads accepting symbols or species)
+\item get\+Molar\+Abundance, get\+Mass\+Fraction, get\+Number\+Fraction (symbol and species overloads)
+\item get\+Mass\+Fraction\+Vector, get\+Number\+Fraction\+Vector, get\+Molar\+Abundance\+Vector
+\item get\+Mean\+Particle\+Mass, get\+Electron\+Abundance
+\item get\+Canonical\+Composition
+\item Iteration support (begin/end) which iterates species from lightest to heaviest because species ordering is defined by atomic mass.
+\end{DoxyItemize}
+\item \doxylink{class_composition_abstract}{Composition\+Abstract}\+: A compact abstract interface implemented by \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} which guarantees the presence of all getter/query methods. This allows other components to accept composition-\/like objects without depending on the concrete implementation.
+\item Utilities (\doxylink{namespacefourdst_1_1composition_aa90b1ef07d607c0c829bedccf381cf54}{fourdst\+::composition\+::build\+Composition\+From\+Mass\+Fractions})\+: Convenience helpers exist to construct a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} from mass fractions (instead of molar abundances). Those helpers validate that the provided mass fractions sum to unity within a tight tolerance and convert them into the corresponding molar abundances before returning a populated \doxylink{classfourdst_1_1composition_1_1_composition}{Composition}.
+\item Exceptions (namespace \doxylink{namespacefourdst_1_1composition_1_1exceptions}{fourdst\+::composition\+::exceptions})\+: The module defines a small hierarchy of exceptions for error handling\+:
+\begin{DoxyItemize}
+\item Composition\+Error\+: Base class for composition-\/related errors.
+\item Invalid\+Composition\+Error\+: Thrown when the composition is inconsistent or when mass fractions fail validation.
+\item Unregistered\+Symbol\+Error\+: Thrown when an operation requires a symbol that hasn\textquotesingle{}t been registered on the \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} object.
+\item Unknown\+Symbol\+Error\+: Thrown when a provided string symbol does not map to any known atomic species in the atomic species database.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{namespacefourdst_1_1composition_autotoc_md7}{}\doxysubsubsection{\texorpdfstring{Usage examples}{Usage examples}}\label{namespacefourdst_1_1composition_autotoc_md7}
+Example 1 – basic construction and queries\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{composition_8h}{fourdst/composition/composition.h}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacefourdst_1_1composition}{fourdst::composition}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}}\ comp;}
+\DoxyCodeLine{comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a3ab4dcda0bfd1a35b169bcc57fe66725}{registerSymbol}}(\textcolor{stringliteral}{"{}H-\/1"{}});}
+\DoxyCodeLine{comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a3ab4dcda0bfd1a35b169bcc57fe66725}{registerSymbol}}(\textcolor{stringliteral}{"{}He-\/4"{}});}
+\DoxyCodeLine{comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(\textcolor{stringliteral}{"{}H-\/1"{}},\ 1.0);}
+\DoxyCodeLine{comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(\textcolor{stringliteral}{"{}He-\/4"{}},\ 0.5);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{double}\ X\_h1\ =\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a9ea2b673341fdc67afeb0f0517a54c8c}{getMassFraction}}(\textcolor{stringliteral}{"{}H-\/1"{}});}
+\DoxyCodeLine{\textcolor{keywordtype}{double}\ meanA\ =\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_afbbb5e51ad5ae5c0fa6bc0094195aecd}{getMeanParticleMass}}();}
+\DoxyCodeLine{\mbox{\hyperlink{structfourdst_1_1composition_1_1_canonical_composition}{CanonicalComposition}}\ canon\ =\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aac5b214a3d1278e127422224cb9cee50}{getCanonicalComposition}}();}
+\DoxyCodeLine{std::cout\ <<\ canon\ <<\ std::endl;\ \textcolor{comment}{//\ prints\ X,\ Y,\ Z}}
+
+\end{DoxyCode}
+
+
+Example 2 – constructing from mass fractions\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{utils_8h}{fourdst/composition/utils.h}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{std::vector<std::string>\ symbols\ =\ \{\textcolor{stringliteral}{"{}H-\/1"{}},\ \textcolor{stringliteral}{"{}He-\/4"{}},\ \textcolor{stringliteral}{"{}C-\/12"{}}\};}
+\DoxyCodeLine{std::vector<double>\ massFractions\ =\ \{0.70,\ 0.28,\ 0.02\};}
+\DoxyCodeLine{\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}}\ comp\ =\ \mbox{\hyperlink{namespacefourdst_1_1composition_aa90b1ef07d607c0c829bedccf381cf54}{buildCompositionFromMassFractions}}(symbols,\ massFractions);}
+
+\end{DoxyCode}
+\hypertarget{namespacefourdst_1_1composition_autotoc_md8}{}\doxysubsubsection{\texorpdfstring{Notes and remarks}{Notes and remarks}}\label{namespacefourdst_1_1composition_autotoc_md8}
+
+\begin{DoxyItemize}
+\item Molar abundances are the canonical input for the \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} class. When passing mass fractions, use the {\ttfamily build\+Composition\+From\+Mass\+Fractions} helper which performs the safe conversion and validation.
+\item Many methods throw exceptions from the {\ttfamily \doxylink{namespacefourdst_1_1composition_1_1exceptions}{fourdst\+::composition\+::exceptions}} namespace on invalid usage (unknown symbols, unregistered species, or invalid abundance values). Callers should catch and handle these where appropriate.
+\item Floating point results (mass/number fractions, mean particle mass, Y\+\_\+e) are computed as doubles and may have small numerical round-\/off. Callers comparing values in tests should use an appropriate tolerance.
+\end{DoxyItemize}\hypertarget{namespacefourdst_1_1composition_autotoc_md9}{}\doxysubsubsection{\texorpdfstring{See also}{See also}}\label{namespacefourdst_1_1composition_autotoc_md9}
+
+\begin{DoxyItemize}
+\item \doxylink{species_8h}{fourdst/atomic/species.\+h} — canonical atomic species definitions and symbols.
+\item \doxylink{composition_8h}{fourdst/composition/composition.\+h} — concrete \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} implementation.
+\item \doxylink{composition__abstract_8h}{fourdst/composition/composition\+\_\+abstract.\+h} — abstract composition interface.
+\item \doxylink{utils_8h}{fourdst/composition/utils.\+h} — helpers for constructing compositions from mass fractions. 
+\end{DoxyItemize}
 
 \doxysubsection{Function Documentation}
+\Hypertarget{namespacefourdst_1_1composition_a2cb98194b465f646973ceba38d0e7d95}\index{fourdst::composition@{fourdst::composition}!buildCompositionFromMassFractions@{buildCompositionFromMassFractions}}
+\index{buildCompositionFromMassFractions@{buildCompositionFromMassFractions}!fourdst::composition@{fourdst::composition}}
+\doxysubsubsection{\texorpdfstring{buildCompositionFromMassFractions()}{buildCompositionFromMassFractions()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{namespacefourdst_1_1composition_a2cb98194b465f646973ceba38d0e7d95} 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} fourdst\+::composition\+::build\+Composition\+From\+Mass\+Fractions (\begin{DoxyParamCaption}\item[{const std\+::set$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} $>$ \&}]{species}{, }\item[{const std\+::vector$<$ double $>$ \&}]{mass\+Fractions}{}\end{DoxyParamCaption})}
+
+
+
+Build a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} object from species in a set and their corresponding mass fractions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em species} & The species to register. \\
+\hline
+{\em mass\+Fractions} & The corresponding mass fractions for each species. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} object constructed from the provided species and mass fractions. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classfourdst_1_1composition_1_1exceptions_1_1_invalid_composition_error}{exceptions\+::\+Invalid\+Composition\+Error}} & if the provided mass fractions do not sum to within one part in 10\texorpdfstring{$^\wedge$}{\string^}10 of 1.\+0. \\
+\hline
+{\em \doxylink{classfourdst_1_1composition_1_1exceptions_1_1_invalid_composition_error}{exceptions\+::\+Invalid\+Composition\+Error}} & if the number of species does not match the number of mass fractions.\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyNote}{Note}
+This is the version of the function which the other overloads ultimately call. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00036}{36}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+\Hypertarget{namespacefourdst_1_1composition_a39d4f84dfa85ddda3b9feb5dda1afc1e}\index{fourdst::composition@{fourdst::composition}!buildCompositionFromMassFractions@{buildCompositionFromMassFractions}}
+\index{buildCompositionFromMassFractions@{buildCompositionFromMassFractions}!fourdst::composition@{fourdst::composition}}
+\doxysubsubsection{\texorpdfstring{buildCompositionFromMassFractions()}{buildCompositionFromMassFractions()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{namespacefourdst_1_1composition_a39d4f84dfa85ddda3b9feb5dda1afc1e} 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} fourdst\+::composition\+::build\+Composition\+From\+Mass\+Fractions (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} $>$ \&}]{species}{, }\item[{const std\+::vector$<$ double $>$ \&}]{mass\+Fractions}{}\end{DoxyParamCaption})}
+
+
+
+Build a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} object from species and their corresponding mass fractions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em species} & The species to register. \\
+\hline
+{\em mass\+Fractions} & The corresponding mass fractions for each species. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} object constructed from the provided species and mass fractions. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classfourdst_1_1composition_1_1exceptions_1_1_invalid_composition_error}{exceptions\+::\+Invalid\+Composition\+Error}} & if the provided mass fractions do not sum to within one part in 10\texorpdfstring{$^\wedge$}{\string^}10 of 1.\+0. \\
+\hline
+{\em \doxylink{classfourdst_1_1composition_1_1exceptions_1_1_invalid_composition_error}{exceptions\+::\+Invalid\+Composition\+Error}} & if the number of species does not match the number of mass fractions. \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00070}{70}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+\Hypertarget{namespacefourdst_1_1composition_aa90b1ef07d607c0c829bedccf381cf54}\index{fourdst::composition@{fourdst::composition}!buildCompositionFromMassFractions@{buildCompositionFromMassFractions}}
+\index{buildCompositionFromMassFractions@{buildCompositionFromMassFractions}!fourdst::composition@{fourdst::composition}}
+\doxysubsubsection{\texorpdfstring{buildCompositionFromMassFractions()}{buildCompositionFromMassFractions()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{namespacefourdst_1_1composition_aa90b1ef07d607c0c829bedccf381cf54} 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} fourdst\+::composition\+::build\+Composition\+From\+Mass\+Fractions (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{symbols}{, }\item[{const std\+::vector$<$ double $>$ \&}]{mass\+Fractions}{}\end{DoxyParamCaption})}
+
+
+
+Build a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} object from symbols and their corresponding mass fractions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbols} & The symbols to register. \\
+\hline
+{\em mass\+Fractions} & The corresponding mass fractions for each symbol. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} object constructed from the provided symbols and mass fractions. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classfourdst_1_1composition_1_1exceptions_1_1_unknown_symbol_error}{exceptions\+::\+Unknown\+Symbol\+Error}} & if any symbol is invalid. Symbols are invalid if they are not registered at compile time in the atomic species database ({\ttfamily \doxylink{species_8h}{fourdst/atomic/species.\+h}}). \\
+\hline
+{\em \doxylink{classfourdst_1_1composition_1_1exceptions_1_1_invalid_composition_error}{exceptions\+::\+Invalid\+Composition\+Error}} & if the provided mass fractions do not sum to within one part in 10\texorpdfstring{$^\wedge$}{\string^}10 of 1.\+0. \\
+\hline
+{\em \doxylink{classfourdst_1_1composition_1_1exceptions_1_1_invalid_composition_error}{exceptions\+::\+Invalid\+Composition\+Error}} & if the number of symbols does not match the number of mass fractions. \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00074}{74}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
 \Hypertarget{namespacefourdst_1_1composition_a5e8ccc2bd9e91eebcd3ef5fe470163a1}\index{fourdst::composition@{fourdst::composition}!operator$<$$<$@{operator$<$$<$}}
 \index{operator$<$$<$@{operator$<$$<$}!fourdst::composition@{fourdst::composition}}
-\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
 {\footnotesize\ttfamily \label{namespacefourdst_1_1composition_a5e8ccc2bd9e91eebcd3ef5fe470163a1} 
 std\+::ostream \& fourdst\+::composition\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os}{, }\item[{const \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} \&}]{composition}{}\end{DoxyParamCaption})}
+
+
+
+OVERLOADS. 
+
+Overloaded output stream operator for \doxylink{classfourdst_1_1composition_1_1_composition}{Composition}.
 
 
 \begin{DoxyParams}{Parameters}
@@ -46,35 +233,5 @@ The output stream.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l01078}{1078}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
-
-\Hypertarget{namespacefourdst_1_1composition_a676f771864958c4db4ed2a82cc0e85dd}\index{fourdst::composition@{fourdst::composition}!operator$<$$<$@{operator$<$$<$}}
-\index{operator$<$$<$@{operator$<$$<$}!fourdst::composition@{fourdst::composition}}
-\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
-{\footnotesize\ttfamily \label{namespacefourdst_1_1composition_a676f771864958c4db4ed2a82cc0e85dd} 
-std\+::ostream \& fourdst\+::composition\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os}{, }\item[{const \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_entry}{Composition\+Entry}} \&}]{entry}{}\end{DoxyParamCaption})}
-
-
-\begin{DoxyParams}{Parameters}
-{\em os} & The output stream. \\
-\hline
-{\em entry} & The \doxylink{structfourdst_1_1composition_1_1_composition_entry}{Composition\+Entry} to output. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The output stream. 
-\end{DoxyReturn}
-
-
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l01070}{1070}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
-
-\Hypertarget{namespacefourdst_1_1composition_a8468dde1b148c0583b8a9f85b8d0ce9a}\index{fourdst::composition@{fourdst::composition}!operator$<$$<$@{operator$<$$<$}}
-\index{operator$<$$<$@{operator$<$$<$}!fourdst::composition@{fourdst::composition}}
-\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
-{\footnotesize\ttfamily \label{namespacefourdst_1_1composition_a8468dde1b148c0583b8a9f85b8d0ce9a} 
-std\+::ostream \& fourdst\+::composition\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os}{, }\item[{const \mbox{\hyperlink{structfourdst_1_1composition_1_1_global_composition}{Global\+Composition}} \&}]{comp}{}\end{DoxyParamCaption})}
-
-
-
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l01060}{1060}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00593}{593}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 

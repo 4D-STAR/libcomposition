@@ -1,9 +1,23 @@
-\doxysection{src/composition/include/fourdst/composition/atomic\+Species.h File Reference}
-\hypertarget{atomic_species_8h}{}\label{atomic_species_8h}\index{src/composition/include/fourdst/composition/atomicSpecies.h@{src/composition/include/fourdst/composition/atomicSpecies.h}}
+\doxysection{src/composition/include/fourdst/atomic/atomic\+Species.h File Reference}
+\hypertarget{atomic_species_8h}{}\label{atomic_species_8h}\index{src/composition/include/fourdst/atomic/atomicSpecies.h@{src/composition/include/fourdst/atomic/atomicSpecies.h}}
 {\ttfamily \#include $<$string\+\_\+view$>$}\newline
 {\ttfamily \#include $<$string$>$}\newline
-{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$optional$>$}\newline
 {\ttfamily \#include $<$limits$>$}\newline
+Include dependency graph for atomic\+Species.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=329pt]{atomic_species_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{atomic_species_8h__dep__incl}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
@@ -15,13 +29,13 @@ struct \mbox{\hyperlink{structstd_1_1hash_3_01fourdst_1_1atomic_1_1_species_01_4
 \begin{DoxyCompactItemize}
 \item 
 namespace \mbox{\hyperlink{namespacefourdst_1_1atomic}{fourdst\+::atomic}}
-\begin{DoxyCompactList}\small\item\em Contains classes and functions related to atomic data, such as properties of atomic species. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Contains canonical information about atomic species and elements used by 4D-\/\+STAR. \end{DoxyCompactList}\item 
 namespace \mbox{\hyperlink{namespacefourdst}{fourdst}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-double \mbox{\hyperlink{namespacefourdst_1_1atomic_ada037e2130ddb6174ff7934cda49c2ba}{fourdst\+::atomic\+::convert\+\_\+jpi\+\_\+to\+\_\+double}} (const std\+::string \&jpi\+\_\+string)
+double \mbox{\hyperlink{namespacefourdst_1_1atomic_ab8b3572582a3f80243ecce021b4782d1}{fourdst\+::atomic\+::convert\+\_\+jpi\+\_\+to\+\_\+double}} (const std\+::string \&jpi\+\_\+string) noexcept
 \begin{DoxyCompactList}\small\item\em Converts a spin-\/parity string (JPI string) to a double-\/precision floating-\/point number. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{namespacefourdst_1_1atomic_a277fa6e5107f1358e204c807146deeb4}{fourdst\+::atomic\+::operator==}} (const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&lhs, const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&rhs)
 \begin{DoxyCompactList}\small\item\em Equality operator for \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. Compares based on name. \end{DoxyCompactList}\item 

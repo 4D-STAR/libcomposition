@@ -2,7 +2,7 @@
 \hypertarget{namespacefourdst_1_1atomic}{}\label{namespacefourdst_1_1atomic}\index{fourdst::atomic@{fourdst::atomic}}
 
 
-Contains classes and functions related to atomic data, such as properties of atomic species.  
+Contains canonical information about atomic species and elements used by 4D-\/\+STAR.  
 
 
 \doxysubsubsection*{Classes}
@@ -20,7 +20,7 @@ enum class \mbox{\hyperlink{namespacefourdst_1_1atomic_a6c728f75913c5bfb62f6dcf9
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-double \mbox{\hyperlink{namespacefourdst_1_1atomic_ada037e2130ddb6174ff7934cda49c2ba}{convert\+\_\+jpi\+\_\+to\+\_\+double}} (const std\+::string \&jpi\+\_\+string)
+double \mbox{\hyperlink{namespacefourdst_1_1atomic_ab8b3572582a3f80243ecce021b4782d1}{convert\+\_\+jpi\+\_\+to\+\_\+double}} (const std\+::string \&jpi\+\_\+string) noexcept
 \begin{DoxyCompactList}\small\item\em Converts a spin-\/parity string (JPI string) to a double-\/precision floating-\/point number. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{namespacefourdst_1_1atomic_a277fa6e5107f1358e204c807146deeb4}{operator==}} (const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&lhs, const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&rhs)
 \begin{DoxyCompactList}\small\item\em Equality operator for \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. Compares based on name. \end{DoxyCompactList}\item 
@@ -7160,7 +7160,96 @@ static const std\+::unordered\+\_\+map$<$ std\+::string, const \mbox{\hyperlink{
 
 
 \doxysubsection{Detailed Description}
-Contains classes and functions related to atomic data, such as properties of atomic species. 
+Contains canonical information about atomic species and elements used by 4D-\/\+STAR. 
+
+Contains classes and functions related to atomic data, such as properties of atomic species.
+
+The {\ttfamily \doxylink{namespacefourdst_1_1atomic}{fourdst\+::atomic}} namespace provides a comprehensive, compile-\/time-\/accessible database of predefined atomic isotopes (\doxylink{structfourdst_1_1atomic_1_1_species}{Species}) and helper utilities for working with them. \doxylink{structfourdst_1_1atomic_1_1_species}{Species} are available as strongly-\/typed constants following the pattern {\ttfamily \doxylink{namespacefourdst_1_1atomic_a6766bc834fd656df51bdcf22f7d97877}{fourdst\+::atomic\+::\+H\+\_\+1}}, {\ttfamily \doxylink{namespacefourdst_1_1atomic_ab665e3014e2a805624227350699f141a}{fourdst\+::atomic\+::\+He\+\_\+4}}, {\ttfamily \doxylink{namespacefourdst_1_1atomic_a21ab5363d81d491f5230e8d90a149f31}{fourdst\+::atomic\+::\+C\+\_\+12}}, etc.
+
+Each atomic \doxylink{structfourdst_1_1atomic_1_1_species}{Species} object encapsulates detailed metadata about the isotope, including\+:
+\begin{DoxyItemize}
+\item Atomic number (Z)
+\item Mass number (A)
+\item Neutron number (N)
+\item Element symbol (e.\+g., "{}\+H"{} for Hydrogen)
+\item \doxylink{structfourdst_1_1atomic_1_1_species}{Species} symbol (e.\+g., "{}\+H-\/1"{} for Hydrogen-\/1)
+\item Atomic mass (in atomic mass units)
+\item Uncertainty in atomic mass (in atomic mass units)
+\item Half-\/life (seconds; a value of -\/1 or another sentinel indicates stability)
+\item Binding energy (in keV)
+\item Beta decay code (classification code from the atomic database)
+\item Beta decay energy (in keV)
+\item Spin parity string (e.\+g., "{}1/2+"{})
+\item Decay modes as a descriptive string
+\item Nuclear spin
+\end{DoxyItemize}
+
+\doxylink{structfourdst_1_1atomic_1_1_species}{Species} instances are intended to be lightweight, immutable value objects providing easy accessors for these properties. They are the canonical representation of an isotope throughout the codebase and are safe to pass and store by value.\hypertarget{namespacefourdst_1_1atomic_autotoc_md0}{}\doxysubsubsection{\texorpdfstring{Species lookup}{Species lookup}}\label{namespacefourdst_1_1atomic_autotoc_md0}
+The namespace exposes a map lookup structure {\ttfamily \doxylink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{fourdst\+::atomic\+::species}} which maps the human-\/readable species symbol (e.\+g. "{}\+C-\/12"{}) to the corresponding {\ttfamily \doxylink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}} object. This is useful for APIs that accept string symbols at runtime and need to resolve them to the strongly-\/typed species value.\hypertarget{namespacefourdst_1_1atomic_autotoc_md1}{}\doxysubsubsection{\texorpdfstring{Comparison semantics}{Comparison semantics}}\label{namespacefourdst_1_1atomic_autotoc_md1}
+Comparison operators for {\ttfamily \doxylink{structfourdst_1_1atomic_1_1_species}{Species}} are overloaded to provide sensible ordering and equality semantics\+:
+\begin{DoxyItemize}
+\item Equality ({\ttfamily ==}) and inequality ({\ttfamily !=}) evaluate true/false based on the species symbol — two species are equal only if they share the same species symbol (same isotope).
+\item Relational operators ({\ttfamily \texorpdfstring{$<$}{<}}, {\ttfamily \texorpdfstring{$>$}{>}}, {\ttfamily \texorpdfstring{$<$}{<}=}, {\ttfamily \texorpdfstring{$>$}{>}=}) are defined based on atomic mass. This provides a natural ordering from lightest to heaviest isotope which is convenient when creating sorted containers or deterministic vector representations.
+\end{DoxyItemize}\hypertarget{namespacefourdst_1_1atomic_autotoc_md2}{}\doxysubsubsection{\texorpdfstring{Stream output}{Stream output}}\label{namespacefourdst_1_1atomic_autotoc_md2}
+The stream insertion operator ({\ttfamily operator\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}}) is overloaded for \doxylink{structfourdst_1_1atomic_1_1_species}{Species} objects and prints the species symbol (for example "{}\+C-\/12"{}) to output streams. This makes logging and test output concise and human-\/readable.\hypertarget{namespacefourdst_1_1atomic_autotoc_md3}{}\doxysubsubsection{\texorpdfstring{Typical usage}{Typical usage}}\label{namespacefourdst_1_1atomic_autotoc_md3}
+Example\+: Using predefined species directly 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{species_8h}{fourdst/atomic/species.h}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacefourdst_1_1atomic}{fourdst::atomic}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}}\ s\ =\ \mbox{\hyperlink{namespacefourdst_1_1atomic_a6766bc834fd656df51bdcf22f7d97877}{H\_1}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Hydrogen-\/1\ species\ object}}
+\DoxyCodeLine{std::cout\ <<\ s\ <<\ std::endl;\ \ \ \textcolor{comment}{//\ prints\ "{}H-\/1"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ Z\ =\ s.getAtomicNumber();\ \ \ \textcolor{comment}{//\ atomic\ number\ (1\ for\ hydrogen)}}
+\DoxyCodeLine{\textcolor{keywordtype}{double}\ mass\ =\ s.getAtomicMass();}
+\DoxyCodeLine{\textcolor{keywordtype}{bool}\ isStable\ =\ (s.getHalfLife()\ <\ 0);}
+
+\end{DoxyCode}
+
+
+Example\+: Resolving a runtime symbol to a \doxylink{structfourdst_1_1atomic_1_1_species}{Species} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{species_8h}{fourdst/atomic/species.h}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{std::string\ sym\ =\ \textcolor{stringliteral}{"{}C-\/12"{}};}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ sp\ =\ \mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{fourdst::atomic::species}}.at(sym);\ \textcolor{comment}{//\ throws\ if\ sym\ not\ found}}
+\DoxyCodeLine{\textcolor{comment}{//\ now\ sp\ is\ the\ canonical\ Species\ for\ Carbon-\/12}}
+
+\end{DoxyCode}
+
+
+Example\+: Using \doxylink{structfourdst_1_1atomic_1_1_species}{Species} in sorted containers and compositions 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{composition_8h}{fourdst/composition/composition.h}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacefourdst_1_1atomic}{fourdst::atomic}};}
+\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacefourdst_1_1composition}{fourdst::composition}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}}\ comp;}
+\DoxyCodeLine{comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a392a34c19f45d6c936cc7030e6cfaf3f}{registerSpecies}}(\mbox{\hyperlink{namespacefourdst_1_1atomic_a6766bc834fd656df51bdcf22f7d97877}{H\_1}});}
+\DoxyCodeLine{comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a392a34c19f45d6c936cc7030e6cfaf3f}{registerSpecies}}(\mbox{\hyperlink{namespacefourdst_1_1atomic_ab665e3014e2a805624227350699f141a}{He\_4}});}
+\DoxyCodeLine{comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a392a34c19f45d6c936cc7030e6cfaf3f}{registerSpecies}}(\mbox{\hyperlink{namespacefourdst_1_1atomic_a21ab5363d81d491f5230e8d90a149f31}{C\_12}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Iteration\ and\ vector\ representations\ rely\ on\ species\ ordering\ by\ mass}}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&sp\ :\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a33db253ca50431b5166d43412ff18f71}{getRegisteredSpecies}}())\ \{}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ sp\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{namespacefourdst_1_1atomic_autotoc_md4}{}\doxysubsubsection{\texorpdfstring{Notes and recommendations}{Notes and recommendations}}\label{namespacefourdst_1_1atomic_autotoc_md4}
+
+\begin{DoxyItemize}
+\item The species map ({\ttfamily \doxylink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{fourdst\+::atomic\+::species}}) is the canonical runtime symbol-\/to-\/species translation. Code that must accept user-\/provided symbols should use this map and handle potential exceptions (e.\+g. {\ttfamily std\+::out\+\_\+of\+\_\+range} or a library-\/specific exception) when a symbol is unknown.
+\item Because comparison operators are mass-\/based, using ordered containers (std\+::set, std\+::map) with \doxylink{structfourdst_1_1atomic_1_1_species}{Species} will order entries from lightest to heaviest by default.
+\item The printed representation of a \doxylink{structfourdst_1_1atomic_1_1_species}{Species} is the species symbol only. For more verbose output (mass, half-\/life, binding energy), use the individual accessors.
+\item Floating-\/point values (e.\+g., atomic mass) are provided as doubles. When comparing such values in tests, use an appropriate tolerance.
+\end{DoxyItemize}\hypertarget{namespacefourdst_1_1atomic_autotoc_md5}{}\doxysubsubsection{\texorpdfstring{See also}{See also}}\label{namespacefourdst_1_1atomic_autotoc_md5}
+
+\begin{DoxyItemize}
+\item {\ttfamily \doxylink{species_8h}{fourdst/atomic/species.\+h}} — definitions of \doxylink{structfourdst_1_1atomic_1_1_species}{Species} constants and the {\ttfamily species} map.
+\item {\ttfamily \doxylink{composition_8h}{fourdst/composition/composition.\+h}} — Composition API which consumes \doxylink{structfourdst_1_1atomic_1_1_species}{Species} objects. 
+\end{DoxyItemize}
 
 \doxysubsection{Enumeration Type Documentation}
 \Hypertarget{namespacefourdst_1_1atomic_a6c728f75913c5bfb62f6dcf9dff294fe}\index{fourdst::atomic@{fourdst::atomic}!SpeciesErrorType@{SpeciesErrorType}}
@@ -11372,11 +11461,11 @@ static const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} fou
 {\footnotesize\ttfamily \label{namespacefourdst_1_1atomic_a179693c05bf6f8d2a03449458b570c3f} 
 static const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} fourdst\+::atomic\+::\+Co\+\_\+78 (\begin{DoxyParamCaption}\item[{"{}Co-\/78"{}}]{}{, }\item[{"{}Co"{}}]{}{, }\item[{24}]{}{, }\item[{51}]{}{, }\item[{27}]{}{, }\item[{78}]{}{, }\item[{7997.}]{0}{, }\item[{"{}B-\/"{}}]{}{, }\item[{19560.}]{0}{, }\item[{11.}]{0}{, }\item[{"{}"{}}]{}{, }\item[{"{}-\/ ?"{}}]{}{, }\item[{77.}]{983553}{, }\item[{751.}]{0}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{namespacefourdst_1_1atomic_ada037e2130ddb6174ff7934cda49c2ba}\index{fourdst::atomic@{fourdst::atomic}!convert\_jpi\_to\_double@{convert\_jpi\_to\_double}}
+\Hypertarget{namespacefourdst_1_1atomic_ab8b3572582a3f80243ecce021b4782d1}\index{fourdst::atomic@{fourdst::atomic}!convert\_jpi\_to\_double@{convert\_jpi\_to\_double}}
 \index{convert\_jpi\_to\_double@{convert\_jpi\_to\_double}!fourdst::atomic@{fourdst::atomic}}
 \doxysubsubsection{\texorpdfstring{convert\_jpi\_to\_double()}{convert\_jpi\_to\_double()}}
-{\footnotesize\ttfamily \label{namespacefourdst_1_1atomic_ada037e2130ddb6174ff7934cda49c2ba} 
-double fourdst\+::atomic\+::convert\+\_\+jpi\+\_\+to\+\_\+double (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{jpi\+\_\+string}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \label{namespacefourdst_1_1atomic_ab8b3572582a3f80243ecce021b4782d1} 
+double fourdst\+::atomic\+::convert\+\_\+jpi\+\_\+to\+\_\+double (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{jpi\+\_\+string}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 

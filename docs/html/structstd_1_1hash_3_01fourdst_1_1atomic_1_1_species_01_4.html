@@ -29,7 +29,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">fourdst::libcomposition<span id="projectnumber">&#160;v1.9.0</span>
+   <div id="projectname">fourdst::libcomposition<span id="projectnumber">&#160;v2.0.0</span>
    </div>
    <div id="projectbrief">Robust atomic species information library</div>
   </td>
@@ -120,7 +120,7 @@ Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Specialization of <code>std::hash</code> for <code><a class="el" href="structfourdst_1_1atomic_1_1_species.html" title="Represents an atomic species (isotope) with its fundamental physical properties.">fourdst::atomic::Species</a></code>. </p>
 <p>This allows <code><a class="el" href="structfourdst_1_1atomic_1_1_species.html" title="Represents an atomic species (isotope) with its fundamental physical properties.">fourdst::atomic::Species</a></code> objects to be used as keys in unordered associative containers like <code>std::unordered_map</code> and <code>std::unordered_set</code>. The hash is computed based on the species' name (<code>m_name</code>), as it is expected to be a unique identifier for each species.</p>
-<dl class="section user"><dt>Usage Example</dt><dd><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="atomic_species_8h.html">fourdst/composition/atomicSpecies.h</a>&quot;</span></div>
+<dl class="section user"><dt>Usage Example</dt><dd><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;fourdst/composition/atomicSpecies.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"> </div>
@@ -130,7 +130,6 @@ Public Member Functions</h2></td></tr>
 <div class="line">    abundance[h1] = 0.999;</div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-<div class="ttc" id="aatomic_species_8h_html"><div class="ttname"><a href="atomic_species_8h.html">atomicSpecies.h</a></div></div>
 <div class="ttc" id="astructfourdst_1_1atomic_1_1_species_html"><div class="ttname"><a href="structfourdst_1_1atomic_1_1_species.html">fourdst::atomic::Species</a></div><div class="ttdoc">Represents an atomic species (isotope) with its fundamental physical properties.</div><div class="ttdef"><b>Definition</b> <a href="atomic_species_8h_source.html#l00051">atomicSpecies.h:51</a></div></div>
 </div><!-- fragment --> </dd></dl>
 
@@ -173,7 +172,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>src/composition/include/fourdst/composition/<a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a></li>
+<li>src/composition/include/fourdst/atomic/<a class="el" href="atomic_species_8h_source.html">atomicSpecies.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
