@@ -1,6 +1,6 @@
 required_headers = [
-    'fourdst/composition/atomicSpecies.h',
-    'fourdst/composition/species.h',
+    'fourdst/atomic/atomicSpecies.h',
+    'fourdst/atomic/species.h',
     'fourdst/composition/composition.h',
     'fourdst/composition/utils.h',
     'fourdst/composition/composition_abstract.h',
