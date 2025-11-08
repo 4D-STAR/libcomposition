@@ -34,7 +34,7 @@ var structfourdst_1_1atomic_1_1_species =
     [ "m_n", "structfourdst_1_1atomic_1_1_species.html#a8f0a4eb006c924bc006bb9eb6d3907ac", null ],
     [ "m_name", "structfourdst_1_1atomic_1_1_species.html#a4f782752e18e8972c66ee7168a06279d", null ],
     [ "m_nz", "structfourdst_1_1atomic_1_1_species.html#a50d5e1c96be4884ccfebde1eec79b6e8", null ],
-    [ "m_spin", "structfourdst_1_1atomic_1_1_species.html#af1d73b936b428aaa29b37c119e3426e7", null ],
+    [ "m_spin", "structfourdst_1_1atomic_1_1_species.html#a9dcfca3c5e28f6523bb1a10ede645048", null ],
     [ "m_spinParity", "structfourdst_1_1atomic_1_1_species.html#a874bc48272e4f091817bc25a72eebc2d", null ],
     [ "m_z", "structfourdst_1_1atomic_1_1_species.html#aae24c637c169f9f5eca03b6dcf8329e0", null ]
 ];

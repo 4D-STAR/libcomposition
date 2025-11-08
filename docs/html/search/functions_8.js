@@ -127,8 +127,5 @@ var searchData=
   ['ir_5f203_124',['Ir_203',['../namespacefourdst_1_1atomic.html#a90b22014195c723607dae0212a124a70',1,'fourdst::atomic']]],
   ['ir_5f204_125',['Ir_204',['../namespacefourdst_1_1atomic.html#acf9185e7d53062fc2dccaa82786cd06c',1,'fourdst::atomic']]],
   ['ir_5f205_126',['Ir_205',['../namespacefourdst_1_1atomic.html#aceac8d6d45e2e85722426528ad89f48b',1,'fourdst::atomic']]],
-  ['is_5fclear_127',['is_clear',['../structfourdst_1_1composition_1_1_composition_1_1_composition_cache.html#af291583560120bb53c4546a598666477',1,'fourdst::composition::Composition::CompositionCache']]],
-  ['isotope_128',['isotope',['../structfourdst_1_1composition_1_1_composition_entry.html#af49920b1168be92d517aea03a308fee1',1,'fourdst::composition::CompositionEntry']]],
-  ['isvalidcomposition_129',['isValidComposition',['../classfourdst_1_1composition_1_1_composition.html#addf03ba8b988970d341884d487aa94d5',1,'fourdst::composition::Composition']]],
-  ['isvalidsymbol_130',['isValidSymbol',['../classfourdst_1_1composition_1_1_composition.html#a8fdac26e6298008aaeaa5b15f7fe244f',1,'fourdst::composition::Composition']]]
+  ['is_5fclear_127',['is_clear',['../structfourdst_1_1composition_1_1_composition_1_1_composition_cache.html#af291583560120bb53c4546a598666477',1,'fourdst::composition::Composition::CompositionCache']]]
 ];

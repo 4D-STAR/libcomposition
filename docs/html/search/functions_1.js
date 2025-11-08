@@ -189,5 +189,6 @@ var searchData=
   ['br_5f95_186',['Br_95',['../namespacefourdst_1_1atomic.html#a990b8a4cebb9c3e3aca3014ed6e83a09',1,'fourdst::atomic']]],
   ['br_5f96_187',['Br_96',['../namespacefourdst_1_1atomic.html#a7f03bfde539c2fe3ecfb157d853dce7d',1,'fourdst::atomic']]],
   ['br_5f97_188',['Br_97',['../namespacefourdst_1_1atomic.html#ae8d4969b89cdc20e69493477e5818fdc',1,'fourdst::atomic']]],
-  ['br_5f98_189',['Br_98',['../namespacefourdst_1_1atomic.html#abfd5c14b1e356264de1d14988fd2d588',1,'fourdst::atomic']]]
+  ['br_5f98_189',['Br_98',['../namespacefourdst_1_1atomic.html#abfd5c14b1e356264de1d14988fd2d588',1,'fourdst::atomic']]],
+  ['buildcompositionfrommassfractions_190',['buildCompositionFromMassFractions',['../namespacefourdst_1_1composition.html#aa90b1ef07d607c0c829bedccf381cf54',1,'fourdst::composition::buildCompositionFromMassFractions(const std::vector&lt; std::string &gt; &amp;symbols, const std::vector&lt; double &gt; &amp;massFractions)'],['../namespacefourdst_1_1composition.html#a39d4f84dfa85ddda3b9feb5dda1afc1e',1,'fourdst::composition::buildCompositionFromMassFractions(const std::vector&lt; atomic::Species &gt; &amp;species, const std::vector&lt; double &gt; &amp;massFractions)'],['../namespacefourdst_1_1composition.html#a2cb98194b465f646973ceba38d0e7d95',1,'fourdst::composition::buildCompositionFromMassFractions(const std::set&lt; atomic::Species &gt; &amp;species, const std::vector&lt; double &gt; &amp;massFractions)']]]
 ];

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['data_0',['5. Accessing Atomic Data',['../index.html#autotoc_md11',1,'']]],
+  ['data_0',['5. Accessing Atomic Data',['../index.html#autotoc_md21',1,'']]],
   ['db_5f255_1',['Db_255',['../namespacefourdst_1_1atomic.html#ab93f519d8cef84e1ff665b97eabc473f',1,'fourdst::atomic']]],
   ['db_5f256_2',['Db_256',['../namespacefourdst_1_1atomic.html#a78e097d6af5a93ef055a32d35dfa0870',1,'fourdst::atomic']]],
   ['db_5f257_3',['Db_257',['../namespacefourdst_1_1atomic.html#abba0bc1112e3bc00c4982e2805bc60ad',1,'fourdst::atomic']]],

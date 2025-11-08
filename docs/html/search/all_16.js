@@ -162,7 +162,7 @@ var searchData=
   ['te_5f143_159',['Te_143',['../namespacefourdst_1_1atomic.html#a96d82c710a234fda72303c8d44c6a7f4',1,'fourdst::atomic']]],
   ['te_5f144_160',['Te_144',['../namespacefourdst_1_1atomic.html#ad92d1d135a153914039797d2d9adcca1',1,'fourdst::atomic']]],
   ['te_5f145_161',['Te_145',['../namespacefourdst_1_1atomic.html#a52c8c4add987da5349a7585770c0e494',1,'fourdst::atomic']]],
-  ['test_20coverage_20includes_3a_162',['Test Coverage Includes:',['../index.html#autotoc_md13',1,'']]],
+  ['test_20coverage_20includes_3a_162',['Test Coverage Includes:',['../index.html#autotoc_md23',1,'']]],
   ['testing_163',['Testing',['../index.html#test_sec',1,'']]],
   ['th_5f208_164',['Th_208',['../namespacefourdst_1_1atomic.html#a1076658def2bd8bc01693315b3c254fe',1,'fourdst::atomic']]],
   ['th_5f209_165',['Th_209',['../namespacefourdst_1_1atomic.html#ad96978951d26252c93a283b2a815d4c8',1,'fourdst::atomic']]],
@@ -311,5 +311,7 @@ var searchData=
   ['ts_5f292_308',['Ts_292',['../namespacefourdst_1_1atomic.html#aff27c6884dd0efa31476d4b625651c26',1,'fourdst::atomic']]],
   ['ts_5f293_309',['Ts_293',['../namespacefourdst_1_1atomic.html#a5c30badbc2aaafdc7816b23e784ffeb6',1,'fourdst::atomic']]],
   ['ts_5f294_310',['Ts_294',['../namespacefourdst_1_1atomic.html#a45832f1cf5925dad348df3f4b396e0d5',1,'fourdst::atomic']]],
-  ['two_20compositions_311',['3. Mixing Two Compositions',['../index.html#autotoc_md9',1,'']]]
+  ['two_20compositions_311',['3. Mixing Two Compositions',['../index.html#autotoc_md19',1,'']]],
+  ['types_20and_20functions_312',['Main types and functions',['../namespacefourdst_1_1composition.html#autotoc_md6',1,'']]],
+  ['typical_20usage_313',['Typical usage',['../namespacefourdst_1_1atomic.html#autotoc_md3',1,'']]]
 ];

@@ -1,0 +1,126 @@
+/**
+ * @file composition.dox
+ * @brief High-level documentation for the fourdst::composition namespace.
+ *
+ * This file provides namespace-level Doxygen documentation for the composition module.
+ * It summarizes the public API (classes, utilities, and exceptions) and shows small
+ * examples demonstrating typical usage patterns.
+ */
+
+/**
+ * @namespace fourdst::composition
+ * @brief Utilities and types for representing and manipulating chemical compositions.
+ *
+ * The composition module provides a small, but expressive, API for constructing and
+ * querying material compositions used throughout the 4D-STAR codebase. A Composition
+ * represents a collection of atomic species together with their molar abundances. From
+ * these molar abundances the module can compute derived quantities such as mass
+ * fractions, number fractions, canonical (X, Y, Z) composition, mean particle mass,
+ * and the electron abundance (Y_e).
+ *
+ * Key concepts:
+ * - Species and Symbols: Atomic isotopes are represented by the strongly-typed
+ *   fourdst::atomic::Species values (see `fourdst/atomic/species.h`). Each species
+ *   also has a human-readable string symbol (e.g. "H-1", "He-4") used by some
+ *   constructors and convenience overloads.
+ * - Molar abundances: The Composition API accepts and stores molar abundances
+ *   (absolute mole counts). Many derived quantities (mass fraction, number
+ *   fraction, mean particle mass) are computed from these molar abundances.
+ * - Canonical composition: A CanonicalComposition (X, Y, Z) is provided which
+ *   groups mass fractions into hydrogen (X), helium (Y), and metals (Z). A
+ *   lightweight struct `CanonicalComposition` holds these values and provides an
+ *   ostream operator for easy logging and testing.
+ * - Caching: The concrete Composition implementation caches computed vectors and
+ *   scalars to avoid repeated work. The cache is invalidated automatically when
+ *   molar abundances or registered species are changed.
+ *
+ * Main types and functions
+ * ------------------------
+ * - Composition: The primary concrete class for building and interrogating
+ *   compositions. It implements the CompositionAbstract interface and exposes
+ *   methods to register symbols/species, set molar abundances, and query all
+ *   commonly-needed derived quantities. Multiple constructors are provided for
+ *   convenience (from vectors/sets of symbols or species, with optional
+ *   molar-abundance initialization).
+ *
+ *   Important member functions include:
+ *   - registerSymbol / registerSpecies (single or many overloads)
+ *   - setMolarAbundance (many overloads accepting symbols or species)
+ *   - getMolarAbundance, getMassFraction, getNumberFraction (symbol and species overloads)
+ *   - getMassFractionVector, getNumberFractionVector, getMolarAbundanceVector
+ *   - getMeanParticleMass, getElectronAbundance
+ *   - getCanonicalComposition
+ *   - Iteration support (begin/end) which iterates species from lightest to heaviest
+ *     because species ordering is defined by atomic mass.
+ *
+ * - CompositionAbstract: A compact abstract interface implemented by Composition
+ *   which guarantees the presence of all getter/query methods. This allows other
+ *   components to accept composition-like objects without depending on the concrete
+ *   implementation.
+ *
+ * - Utilities (fourdst::composition::buildCompositionFromMassFractions):
+ *   Convenience helpers exist to construct a Composition from mass fractions
+ *   (instead of molar abundances). Those helpers validate that the provided mass
+ *   fractions sum to unity within a tight tolerance and convert them into the
+ *   corresponding molar abundances before returning a populated Composition.
+ *
+ * - Exceptions (namespace fourdst::composition::exceptions):
+ *   The module defines a small hierarchy of exceptions for error handling:
+ *   - CompositionError: Base class for composition-related errors.
+ *   - InvalidCompositionError: Thrown when the composition is inconsistent or
+ *     when mass fractions fail validation.
+ *   - UnregisteredSymbolError: Thrown when an operation requires a symbol that
+ *     hasn't been registered on the Composition object.
+ *   - UnknownSymbolError: Thrown when a provided string symbol does not map to
+ *     any known atomic species in the atomic species database.
+ *
+ * Usage examples
+ * --------------
+ * Example 1 – basic construction and queries:
+ * @code
+ * #include "fourdst/composition/composition.h"
+ *
+ * using namespace fourdst::composition;
+ *
+ * Composition comp;
+ * comp.registerSymbol("H-1");
+ * comp.registerSymbol("He-4");
+ * comp.setMolarAbundance("H-1", 1.0);
+ * comp.setMolarAbundance("He-4", 0.5);
+ *
+ * double X_h1 = comp.getMassFraction("H-1");
+ * double meanA = comp.getMeanParticleMass();
+ * CanonicalComposition canon = comp.getCanonicalComposition();
+ * std::cout << canon << std::endl; // prints X, Y, Z
+ * @endcode
+ *
+ * Example 2 – constructing from mass fractions:
+ * @code
+ * #include "fourdst/composition/utils.h"
+ *
+ * std::vector<std::string> symbols = {"H-1", "He-4", "C-12"};
+ * std::vector<double> massFractions = {0.70, 0.28, 0.02};
+ * Composition comp = buildCompositionFromMassFractions(symbols, massFractions);
+ * @endcode
+ *
+ * Notes and remarks
+ * -----------------
+ * - Molar abundances are the canonical input for the Composition class. When
+ *   passing mass fractions, use the `buildCompositionFromMassFractions` helper
+ *   which performs the safe conversion and validation.
+ * - Many methods throw exceptions from the `fourdst::composition::exceptions`
+ *   namespace on invalid usage (unknown symbols, unregistered species, or
+ *   invalid abundance values). Callers should catch and handle these where
+ *   appropriate.
+ * - Floating point results (mass/number fractions, mean particle mass, Y_e)
+ *   are computed as doubles and may have small numerical round-off. Callers
+ *   comparing values in tests should use an appropriate tolerance.
+ *
+ * See also
+ * --------
+ * - fourdst/atomic/species.h — canonical atomic species definitions and symbols.
+ * - fourdst/composition/composition.h — concrete Composition implementation.
+ * - fourdst/composition/composition_abstract.h — abstract composition interface.
+ * - fourdst/composition/utils.h — helpers for constructing compositions from mass fractions.
+ */
+namespace fourdst::composition;

@@ -698,7 +698,7 @@ var namespacefourdst_1_1atomic =
     [ "Co_76", "namespacefourdst_1_1atomic.html#a2de2216dc858abdc701b6a4171a2297b", null ],
     [ "Co_77", "namespacefourdst_1_1atomic.html#abd69bb0ad5ba79dd113c16d8dff0ea33", null ],
     [ "Co_78", "namespacefourdst_1_1atomic.html#a179693c05bf6f8d2a03449458b570c3f", null ],
-    [ "convert_jpi_to_double", "namespacefourdst_1_1atomic.html#ada037e2130ddb6174ff7934cda49c2ba", null ],
+    [ "convert_jpi_to_double", "namespacefourdst_1_1atomic.html#ab8b3572582a3f80243ecce021b4782d1", null ],
     [ "Cr_41", "namespacefourdst_1_1atomic.html#a13193b662eaa33853d6bd4afff1eb794", null ],
     [ "Cr_42", "namespacefourdst_1_1atomic.html#a224bed526eb6fdab158bda7d424de8f2", null ],
     [ "Cr_43", "namespacefourdst_1_1atomic.html#a56a685094d4a73b4a45f33f6397a8f70", null ],

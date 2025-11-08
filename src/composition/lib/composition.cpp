@@ -196,7 +196,7 @@ namespace fourdst::composition {
 
     void Composition::registerSpecies(
         const atomic::Species &species
-    ) {
+    ) noexcept {
         m_registeredSpecies.insert(species);
         if (!m_molarAbundances.contains(species)) {
             m_molarAbundances.emplace(species, 0.0);
@@ -205,13 +205,13 @@ namespace fourdst::composition {
 
     void Composition::registerSpecies(
         const std::vector<atomic::Species> &species
-    ) {
+    ) noexcept {
         for (const auto& s : species) {
             registerSpecies(s);
         }
     }
 
-    std::set<std::string> Composition::getRegisteredSymbols() const {
+    std::set<std::string> Composition::getRegisteredSymbols() const noexcept {
         std::set<std::string> symbols;
         for (const auto& species : m_registeredSpecies) {
             symbols.insert(std::string(species.name()));
@@ -219,7 +219,7 @@ namespace fourdst::composition {
         return symbols;
     }
 
-    const std::set<atomic::Species> &Composition::getRegisteredSpecies() const {
+    const std::set<atomic::Species> &Composition::getRegisteredSpecies() const noexcept {
         return m_registeredSpecies;
     }
 
@@ -235,6 +235,9 @@ namespace fourdst::composition {
     double Composition::getMassFraction(
         const atomic::Species &species
     ) const {
+        if (!m_molarAbundances.contains(species)) {
+            throw_unregistered_symbol(getLogger(), std::string(species.name()));
+        }
         std::map<atomic::Species, double> raw_mass;
         double totalMass = 0;
         for (const auto& [sp, y] : m_molarAbundances) {
@@ -245,7 +248,7 @@ namespace fourdst::composition {
         return raw_mass.at(species) / totalMass;
     }
 
-    std::unordered_map<atomic::Species, double> Composition::getMassFraction() const {
+    std::unordered_map<atomic::Species, double> Composition::getMassFraction() const noexcept {
         std::unordered_map<atomic::Species, double> mass_fractions;
         for (const auto &species: m_molarAbundances | std::views::keys) {
             mass_fractions.emplace(species, getMassFraction(species));
@@ -257,7 +260,7 @@ namespace fourdst::composition {
     double Composition::getNumberFraction(
         const std::string& symbol
     ) const {
-        auto species = getSpecies(symbol);
+        const auto species = getSpecies(symbol);
         if (!species) {
             throw_unknown_symbol(getLogger(), symbol);
         }
@@ -267,6 +270,9 @@ namespace fourdst::composition {
     double Composition::getNumberFraction(
         const atomic::Species &species
     ) const {
+        if (!m_molarAbundances.contains(species)) {
+            throw_unregistered_symbol(getLogger(), std::string(species.name()));
+        }
         double total_moles_per_gram = 0.0;
         for (const auto &y: m_molarAbundances | std::views::values) {
             total_moles_per_gram += y;
@@ -274,7 +280,7 @@ namespace fourdst::composition {
         return m_molarAbundances.at(species) / total_moles_per_gram;
     }
 
-    std::unordered_map<atomic::Species, double> Composition::getNumberFraction() const {
+    std::unordered_map<atomic::Species, double> Composition::getNumberFraction() const noexcept {
         std::unordered_map<atomic::Species, double> number_fractions;
         for (const auto &species: m_molarAbundances | std::views::keys) {
             number_fractions.emplace(species, getNumberFraction(species));
@@ -285,7 +291,7 @@ namespace fourdst::composition {
     double Composition::getMolarAbundance(
         const std::string &symbol
     ) const {
-        auto species = getSpecies(symbol);
+        const auto species = getSpecies(symbol);
         if (!species) {
             throw_unknown_symbol(getLogger(), symbol);
         }
@@ -297,13 +303,12 @@ namespace fourdst::composition {
         const atomic::Species &species
     ) const {
         if (!m_molarAbundances.contains(species)) {
-            LOG_CRITICAL(getLogger(), "Species {} is not registered in the composition.", species.name());
-            throw exceptions::UnregisteredSymbolError("Species " + std::string(species.name()) + " is not registered in the composition.");
+            throw_unregistered_symbol(getLogger(), std::string(species.name()));
         }
         return m_molarAbundances.at(species);
     }
 
-    double Composition::getMeanParticleMass() const {
+    double Composition::getMeanParticleMass() const noexcept {
         std::vector<double> X = getMassFractionVector();
         double sum = 0.0;
         for (const auto& [species, x] : std::views::zip(m_registeredSpecies, X)) {
@@ -313,7 +318,7 @@ namespace fourdst::composition {
         return 1.0 / sum;
     }
 
-    double Composition::getElectronAbundance() const {
+    double Composition::getElectronAbundance() const noexcept {
         double Ye = 0.0;
         for (const auto& [species, y] : m_molarAbundances) {
             Ye += species.z() * y;
@@ -323,7 +328,6 @@ namespace fourdst::composition {
 
 
     CanonicalComposition Composition::getCanonicalComposition(
-        const bool harsh
     ) const {
         using namespace fourdst::atomic;
 
@@ -358,20 +362,15 @@ namespace fourdst::composition {
 
         // ReSharper disable once CppTooWideScopeInitStatement
         const double Z = 1.0 - (canonicalComposition.X + canonicalComposition.Y);
-        if (std::abs(Z - canonicalComposition.Z) > 1e-6) {
-            if (!harsh) {
-                LOG_WARNING(getLogger(), "Validation composition Z (X-Y = {}) is different than canonical composition Z ({}) (∑a_i where a_i != H/He).", Z, canonicalComposition.Z);
-            }
-            else {
-                LOG_ERROR(getLogger(), "Validation composition Z (X-Y = {}) is different than canonical composition Z ({}) (∑a_i where a_i != H/He).", Z, canonicalComposition.Z);
-                throw std::runtime_error("Validation composition Z (X-Y = " + std::to_string(Z) + ") is different than canonical composition Z (" + std::to_string(canonicalComposition.Z) + ") (∑a_i where a_i != H/He).");
-            }
+        if (std::abs(Z - canonicalComposition.Z) > 1e-16) {
+            LOG_ERROR(getLogger(), "Validation composition Z (X-Y = {}) is different than canonical composition Z ({}) (∑a_i where a_i != H/He).", Z, canonicalComposition.Z);
+            throw exceptions::InvalidCompositionError("Validation composition Z (X-Y = " + std::to_string(Z) + ") is different than canonical composition Z (" + std::to_string(canonicalComposition.Z) + ") (∑a_i where a_i != H/He).");
         }
         m_cache.canonicalComp = canonicalComposition;
         return canonicalComposition;
     }
 
-    std::vector<double> Composition::getMassFractionVector() const {
+    std::vector<double> Composition::getMassFractionVector() const noexcept {
         if (m_cache.massFractions.has_value()) {
             return m_cache.massFractions.value(); // Short circuit if we have cached the mass fractions
         }
@@ -393,7 +392,7 @@ namespace fourdst::composition {
 
     }
 
-    std::vector<double> Composition::getNumberFractionVector() const {
+    std::vector<double> Composition::getNumberFractionVector() const noexcept {
         if (m_cache.numberFractions.has_value()) {
             return m_cache.numberFractions.value(); // Short circuit if we have cached the number fractions
         }
@@ -414,7 +413,7 @@ namespace fourdst::composition {
         return numberFractions;
     }
 
-    std::vector<double> Composition::getMolarAbundanceVector() const {
+    std::vector<double> Composition::getMolarAbundanceVector() const noexcept {
         if (m_cache.molarAbundances.has_value()) {
             return m_cache.molarAbundances.value(); // Short circuit if we have cached the molar abundances
         }
@@ -500,12 +499,16 @@ namespace fourdst::composition {
         }
 
         std::vector<atomic::Species> sortedSymbols = sortVectorBy(speciesVector, speciesMass);
+        if (index >= sortedSymbols.size()) {
+            LOG_ERROR(getLogger(), "Index {} is out of range for composition of size {}.", index, sortedSymbols.size());
+            throw std::out_of_range("Index " + std::to_string(index) + " is out of range for composition of size " + std::to_string(sortedSymbols.size()) + ".");
+        }
         return sortedSymbols.at(index);
     }
 
     bool Composition::contains(
         const atomic::Species &species
-    ) const {
+    ) const noexcept {
         return m_registeredSpecies.contains(species);
     }
 
@@ -519,7 +522,7 @@ namespace fourdst::composition {
         return contains(species.value());
     }
 
-    size_t Composition::size() const {
+    size_t Composition::size() const noexcept {
         return m_registeredSpecies.size();
     }
 
@@ -532,11 +535,7 @@ namespace fourdst::composition {
             throw_unknown_symbol(getLogger(), symbol);
         }
 
-        if (!m_registeredSpecies.contains(species.value())) {
-            throw_unregistered_symbol(getLogger(), symbol);
-        }
-
-        m_molarAbundances.at(species.value()) = molar_abundance;
+        setMolarAbundance(species.value(), molar_abundance);
     }
 
     void Composition::setMolarAbundance(
@@ -545,6 +544,10 @@ namespace fourdst::composition {
     ) {
         if (!m_registeredSpecies.contains(species)) {
             throw_unregistered_symbol(getLogger(), std::string(species.name()));
+        }
+        if (molar_abundance < 0.0) {
+            LOG_ERROR(getLogger(), "Molar abundance must be non-negative for symbol {}. Currently it is {}.", species.name(), molar_abundance);
+            throw exceptions::InvalidCompositionError("Molar abundance must be non-negative, got " + std::to_string(molar_abundance) + " for symbol " + std::string(species.name()) + ".");
         }
         m_molarAbundances.at(species) = molar_abundance;
     }
