@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['4_20error_20handling_0',['4. Error Handling',['../index.html#autotoc_md20',1,'']]]
+  ['4_20iterating_20and_20sorted_20vector_20interfaces_0',['4. Iterating and Sorted Vector Interfaces',['../index.html#autotoc_md18',1,'']]]
 ];

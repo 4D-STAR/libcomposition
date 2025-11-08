@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['3_20mixing_20two_20compositions_0',['3. Mixing Two Compositions',['../index.html#autotoc_md19',1,'']]]
+  ['3_20building_20from_20mass_20fractions_20helper_20utility_0',['3. Building from Mass Fractions (Helper Utility)',['../index.html#autotoc_md17',1,'']]]
 ];

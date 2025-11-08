@@ -2,15 +2,21 @@
 
 @section intro_sec Introduction
 
-`libcomposition` is a modern C++23 library designed for the creation, manipulation, and analysis of chemical compositions, with a focus on astrophysical applications. It provides a robust and user-friendly interface for handling material compositions defined by mass or number fractions.
+`libcomposition` is a modern, C++23 library, for the creation, manipulation, and analysis of astrophysical chemical
+compositions. It provides a robust and type‑safe interface for assembling a set of isotopes together with their molar
+abundances and for deriving commonly used bulk properties (mass fractions, number fractions, canonical X/Y/Z, mean
+particle mass, and electron abundance). `libcomposition` is designed to be tighly integrated into SERiF and related
+projects such as GridFire.
 
 ### Key Features
 
--   **Dual-Mode Operation**: Natively supports compositions defined by **mass fraction** or **number fraction**.
--   **Rich Atomic Database**: Includes a comprehensive, header-only database of isotopic properties (mass, half-life, spin, etc.) generated from the AME2020 and NUBASE2020 evaluations.
--   **Type Safety and Error Handling**: Utilizes a clear exception hierarchy to report errors, such as using an unregistered isotope or accessing data from a non-validated composition.
--   **Powerful Functionality**: Core features include mixing, subsetting, and on-the-fly conversion between mass and number fractions.
--   **Easy Integration**: Designed for seamless integration with other projects using the Meson build system and `pkg-config`.
+- **Type–Safe Species Representation**: Strongly typed isotopes (`fourdst::atomic::Species`) generated from evaluated nuclear data (AME2020 / NUBASE2020).
+- **Molar Abundance Core**: Stores absolute molar abundances and derives all secondary quantities (mass / number fractions, mean particle mass, electron abundance) on demand, with internal caching.
+- **Canonical Composition Support**: Direct computation of canonical (X: Hydrogen, Y: Helium, Z: Metals) mass fractions via `getCanonicalComposition()`.
+- **Convenience Construction**: Helper utilities for constructing compositions from a vector or set of mass fractions (`buildCompositionFromMassFractions`).
+- **Deterministic Ordering**: Species are always stored and iterated lightest→heaviest (ordering defined by atomic mass) enabling uniform vector interfaces.
+- **Clear Exception Hierarchy**: Explicit error signaling for invalid symbols, unregistered species, and inconsistent input data.
+- **Meson + pkg-config Integration**: Simple build, install, and consumption in external projects.
 
 ---
 
@@ -22,7 +28,7 @@
 
 **Setup the build directory:**
 
-The first step is to use meson to set up an out of source build. Note that this means that you can have multiple builds configured and cleanly seperated!
+The first step is to use meson to set up an out of source build. Note that this means that you can have multiple builds configured and cleanly separated!
 
 ```bash
 meson setup builddir
@@ -30,13 +36,13 @@ meson setup builddir
 
 **Compile the library:**
 
-meson by default uses ninja to compile so it should be very fast; however, gcc is very slow when compiling the species database so that migth take some time (clang tends to be very fast for this).
+meson by default uses ninja to compile so it should be very fast; however, gcc is very slow when compiling the species database so that might take some time (clang tends to be very fast for this).
 
 ```bash
 meson compile -C builddir
 ```
 
- **Install the library:**
+**Install the library:**
 
 This will also install a pkg-config file!
 
@@ -46,7 +52,7 @@ sudo meson install -C builddir
 
 ### Build Options
 
-You can enable the generation of a `pkg-config` file during the setup step, which simplifies linking the library in other projects. by default this is true; it can be useful to disable this when using some build system orgestrator (such as meson-python).
+You can enable the generation of a `pkg-config` file during the setup step, which simplifies linking the library in other projects. By default this is true; it can be useful to disable this when using some build system orchestrator (such as meson-python).
 
 ```bash
 # Enable pkg-config file generation
@@ -56,6 +62,183 @@ meson setup builddir -Dpkg-config=true
 ---
 
 @section usage_sec Usage
+
+Below are focused examples illustrating the current API. All examples assume headers are available via pkg-config or your include path.
+
+#### 1. Constructing a Composition from Symbols
+
+```cpp
+#include <iostream>
+#include "fourdst/composition/composition.h"
+
+int main() {
+    using namespace fourdst::composition;
+
+    // Register symbols upon construction (no molar abundances yet -> default 0.0)
+    Composition comp({"H-1", "He-4", "C-12"});
+
+    // Set molar abundances (absolute counts; they need not sum to 1.0)
+    comp.setMolarAbundance("H-1", 10.0);
+    comp.setMolarAbundance("He-4", 3.0);
+    comp.setMolarAbundance("C-12", 0.25);
+
+    // Query derived properties
+    double x_h1 = comp.getMassFraction("H-1");
+    double y_he4 = comp.getNumberFraction("He-4");
+    auto canon = comp.getCanonicalComposition(); // X, Y, Z mass fractions
+
+    std::cout << "H-1 mass fraction: " << x_h1 << "\n";
+    std::cout << "He-4 number fraction: " << y_he4 << "\n";
+    std::cout << canon << "\n"; // <CanonicalComposition: X=..., Y=..., Z=...>
+}
+```
+
+#### 2. Constructing from Strongly Typed Species
+
+```cpp
+#include <iostream>
+#include "fourdst/composition/composition.h"
+#include "fourdst/atomic/species.h"
+
+int main() {
+    using namespace fourdst::composition;
+    using namespace fourdst::atomic;
+
+    // Build directly from species constants
+    Composition comp(std::vector<Species>{H_1, He_4, O_16});
+
+    comp.setMolarAbundance(H_1, 5.0);
+    comp.setMolarAbundance(He_4, 2.5);
+    comp.setMolarAbundance(O_16, 0.1);
+
+    std::cout << "Mean particle mass: " << comp.getMeanParticleMass() << " g/mol\n";
+    std::cout << "Electron abundance (Ye): " << comp.getElectronAbundance() << "\n";
+}
+```
+
+#### 3. Building from Mass Fractions (Helper Utility)
+
+```cpp
+#include <iostream>
+#include "fourdst/composition/utils.h"
+
+int main() {
+    using namespace fourdst::composition;
+
+    std::vector<std::string> symbols = {"H-1", "He-4", "C-12"};
+    std::vector<double> mf       = {0.70, 0.28, 0.02}; // Must sum to ~1 within tolerance
+
+    Composition comp = buildCompositionFromMassFractions(symbols, mf);
+
+    auto canon = comp.getCanonicalComposition();
+    std::cout << canon << "\n";
+}
+```
+
+#### 4. Iterating and Sorted Vector Interfaces
+
+```cpp
+#include <iostream>
+#include "fourdst/composition/composition.h"
+
+int main() {
+    using namespace fourdst::composition;
+
+    Composition comp({"H-1", "C-12", "He-4"}); // Internally sorted by mass (H < He < C)
+    comp.setMolarAbundance({"H-1", "He-4", "C-12"}, {10.0, 3.0, 0.25});
+
+    // Ordered iteration (lightest -> heaviest)
+    for (const auto &[sp, y] : comp) {
+        std::cout << sp << ": molar = " << y << "\n";
+    }
+
+    // Vector access (index corresponds to ordering by atomic mass)
+    auto molarVec = comp.getMolarAbundanceVector();
+    auto massVec  = comp.getMassFractionVector();
+
+    size_t idx_he4 = comp.getSpeciesIndex("He-4");
+    std::cout << "He-4 index: " << idx_he4 << ", molar abundance at index: " << molarVec[idx_he4] << "\n";
+}
+```
+
+#### 5. Accessing Specific Derived Quantities
+
+```cpp
+// Assume 'comp' is already populated.
+
+double mf_c12   = comp.getMassFraction("C-12");
+double nf_c12   = comp.getNumberFraction("C-12");
+double mol_c12  = comp.getMolarAbundance("C-12");
+double meanA    = comp.getMeanParticleMass();
+double Ye       = comp.getElectronAbundance();
+auto   canon    = comp.getCanonicalComposition();
+```
+
+#### 6. Exception Handling Examples
+
+```cpp
+#include <iostream>
+#include "fourdst/composition/composition.h"
+#include "fourdst/composition/exceptions/exceptions_composition.h"
+
+int main() {
+    using namespace fourdst::composition;
+    using namespace fourdst::composition::exceptions;
+
+    Composition comp;
+
+    try {
+        // Unknown symbol (not in species database)
+        comp.registerSymbol("Xx-999");
+    } catch (const UnknownSymbolError &e) {
+        std::cerr << "Caught UnknownSymbolError: " << e.what() << "\n";
+    }
+
+    comp.registerSymbol("H-1");
+    try {
+        // Unregistered symbol used in a setter
+        comp.setMolarAbundance("He-4", 1.0); // He-4 not registered yet
+    } catch (const UnregisteredSymbolError &e) {
+        std::cerr << "Caught UnregisteredSymbolError: " << e.what() << "\n";
+    }
+
+    comp.registerSymbol("He-4");
+    try {
+        comp.setMolarAbundance("H-1", -3.0);
+    } catch (const InvalidCompositionError &e) { 
+        std::cerr << "Caught InvalidCompositionError: " << e.what() << "\n";
+    }
+
+    // Mass fraction construction validation
+    try {
+        Composition bad = buildCompositionFromMassFractions({"H-1", "He-4"}, {0.6, 0.5}); // sums to 1.1
+    } catch (const InvalidCompositionError &e) {
+        std::cerr << "Caught InvalidCompositionError: " << e.what() << "\n";
+    }
+}
+```
+
+---
+
+@section exceptions_sec Possible Exception States
+
+The library surfaces errors through a focused hierarchy in `fourdst::composition::exceptions`:
+
+| Exception Type | When It Occurs |
+|----------------|----------------|
+| `UnknownSymbolError` | A string symbol does not correspond to any known isotope in the compiled species database. |
+| `UnregisteredSymbolError` | A valid species/symbol is used before being registered with a Composition instance. |
+| `InvalidCompositionError` | Construction from mass fractions fails validation (sum deviates from unity beyond tolerance) or canonical (X+Y+Z) check fails. |
+| `CompositionError` | Base class; may be thrown for generic composition-level issues (e.g. negative abundances via the documented `InvalidAbundanceError` contract). |
+
+Recommended patterns:
+- Validate externally provided symbol lists before calling bulk registration.
+- Use species‑based overloads (strongly typed) where possible for slightly lower overhead (no symbol resolution).
+- Wrap construction from mass fractions in a try/catch to surface normalization issues early.
+
+---
+
+@section api_sec Linking and Integration
 
 ### Linking with pkg-config
 
@@ -74,165 +257,27 @@ pkg-config --libs fourdst_composition
 g++ my_app.cpp $(pkg-config --cflags --libs fourdst_composition) -o my_app
 ```
 
-### C++ Usage Examples
+---
 
-#### 1. Basic Mass Fraction Composition
+@section api_ref_sec API Reference
 
-The most common use case is defining a composition by mass fractions (X, Y, Z).
+For a complete list of all classes, methods, and functions, see the **Namespaces** and **Classes** sections of this generated documentation.
 
-```cpp
-#include <iostream>
-#include "fourdst/composition/composition.h"
-
-int main() {
-    // 1. Create a composition object
-    fourdst::composition::Composition comp;
-
-    // 2. Register the symbols you want to use
-    comp.registerSymbol("H-1");
-    comp.registerSymbol("He-4");
-
-    // 3. Set their mass fractions
-    comp.setMassFraction("H-1", 0.75);
-    comp.setMassFraction("He-4", 0.25);
-
-    // 4. Finalize the composition to validate it and compute global properties
-    if (comp.finalize()) {
-        std::cout << "Composition finalized successfully!" << std::endl;
-        std::cout << "H-1 Mass Fraction: " << comp.getMassFraction("H-1") << std::endl;
-        std::cout << "Mean Particle Mass: " << comp.getMeanParticleMass() << " g/mol" << std::endl;
-    } else {
-        std::cerr << "Failed to finalize composition." << std::endl;
-    }
-
-    return 0;
-}
-```
-
-#### 2. Number Fraction Composition and Mode Switching
-
-The library can also work with number (mole) fractions and switch between modes.
-
-```cpp
-#include "fourdst/composition/composition.h"
-#include "fourdst/composition/exceptions/exceptions_composition.h"
-
-void number_fraction_example() {
-    fourdst::composition::Composition comp;
-
-    // Register symbols in number fraction mode
-    comp.registerSymbol("H-1", false); // massFracMode = false
-    comp.registerSymbol("He-4", false);
-
-    comp.setNumberFraction("H-1", 0.9);
-    comp.setNumberFraction("He-4", 0.1);
-
-    if (comp.finalize()) {
-        // We can get number fractions directly
-        std::cout << "He-4 Number Fraction: " << comp.getNumberFraction("He-4") << std::endl;
-
-        // Or get the equivalent mass fraction
-        std::cout << "He-4 Mass Fraction: " << comp.getMassFraction("He-4") << std::endl;
-
-        // Switch the entire composition to mass fraction mode
-        comp.setCompositionMode(true); // true for mass fraction mode
-
-        // Now, getting the mass fraction is a direct lookup
-        std::cout << "He-4 Mass Fraction (after mode switch): " << comp.getMassFraction("He-4") << std::endl;
-    }
-}
-```
-
-#### 3. Mixing Two Compositions
-
-You can easily mix two compositions. The library handles the union of all species.
-
-```cpp
-#include "fourdst/composition/composition.h"
-
-void mixing_example() {
-    // Composition 1: Pure Hydrogen
-    fourdst::composition::Composition comp1({"H-1"}, {1.0});
-
-    // Composition 2: Pure Helium
-    fourdst::composition::Composition comp2({"He-4"}, {1.0});
-
-    // Mix them with a 50/50 ratio using the '+' operator
-    fourdst::composition::Composition mixed = comp1 + comp2;
-
-    // Mix them with a 75/25 ratio using the mix() method
-    // 0.75 of comp1, 0.25 of comp2
-    fourdst::composition::Composition mixed2 = comp1.mix(comp2, 0.75);
-
-    std::cout << "50/50 Mix H-1: " << mixed.getMassFraction("H-1") << std::endl;   // -> 0.5
-    std::cout << "75/25 Mix H-1: " << mixed2.getMassFraction("H-1") << std::endl;  // -> 0.75
-}
-```
-
-#### 4. Error Handling
-
-The library uses exceptions to report errors. Always wrap calls in a `try-catch` block for robust code.
-
-```cpp
-#include "fourdst/composition/composition.h"
-#include "fourdst/composition/exceptions/exceptions_composition.h"
-
-void error_example() {
-    fourdst::composition::Composition comp;
-    comp.registerSymbol("H-1");
-    comp.setMassFraction("H-1", 1.0);
-
-    try {
-        // This will throw, because the composition is not finalized yet.
-        double mass = comp.getMassFraction("H-1");
-    } catch (const fourdst::composition::exceptions::CompositionNotFinalizedError& e) {
-        std::cerr << "Caught expected error: " << e.what() << std::endl;
-    }
-
-    try {
-        // This will throw, because "Li-6" was never registered.
-        comp.setMassFraction("Li-6", 0.1);
-    } catch (const fourdst::composition::exceptions::UnregisteredSymbolError& e) {
-        std::cerr << "Caught expected error: " << e.what() << std::endl;
-    }
-}
-```
-
-#### 5. Accessing Atomic Data
-
-You can directly access the static database of all known species.
-
-```cpp
-#include "fourdst/composition/species.h" // Provides static instances like H_1
-#include "fourdst/composition/atomicSpecies.h" // Provides the main 'species' map
-
-void data_example() {
-    // Access via the map
-    const auto& fe56 = fourdst::atomic::species.at("Fe-56");
-    std::cout << "Fe-56 mass: " << fe56->mass() << std::endl;
-
-    // Access via the static instance
-    std::cout << "H-1 spin: " << fourdst::atomic::H_1.spin() << std::endl;
-    std::cout << "F-18 half-life: " << fourdst::atomic::F_18.halfLife() << " s" << std::endl;
-}
-```
+- Namespace overview: `fourdst::composition`, `fourdst::atomic`
+- Core classes: `fourdst::composition::Composition`, `fourdst::composition::CompositionAbstract`
+- Helper utilities: `buildCompositionFromMassFractions`
+- Exception hierarchy: `fourdst::composition::exceptions`
 
 ---
 
-@section test_sec Testing
+@section test_sec Testing Overview
 
-`libcomposition` is tested using the GoogleTest framework. The test suite provides high coverage of the library's functionality.
+The test suite (GoogleTest) exercises:
+- Species database integrity (selected property spot checks).
+- Registration and abundance setting (symbols vs species overloads).
+- Mass fraction utility construction and validation tolerances.
+- Canonical composition correctness (X + Y + Z ≈ 1.0).
+- Vector interface ordering and index lookup consistency.
+- Exception pathways for unknown/unregistered symbols and invalid compositions.
 
-### Test Coverage Includes:
-
--   **Atomic Data Validation**: Spot checks on isotopic properties (mass, half-life, spin) for a wide range of elements to ensure the underlying data files are parsed and represented correctly.
--   **Core `Composition` Workflow**: Verification of object construction, symbol registration (for both valid and invalid symbols), and the complete workflow of setting and getting both mass and number fractions.
--   **Finalization Logic**: Ensures that `finalize()` is a required step before querying data. Tests the validation logic for compositions that sum to 1.0 and the auto-normalization feature (`finalize(true)`).
--   **Advanced Features**: Dedicated tests for `mix()`, `subset()`, `setCompositionMode()`, and the calculation of derived quantities like `getMolarAbundance()` and `getMeanAtomicNumber()`.
--   **Exception Handling**: Confirms that invalid operations (e.g., using an unregistered symbol, mixing un-finalized compositions) correctly throw exceptions from the `fourdst::composition::exceptions` hierarchy.
-
----
-
-@section api_sec API Reference
-
-For a complete list of all classes, methods, and functions, please see the **<a href="namespaces.html">Namespaces</a>** and **<a href="annotated.html">Classes</a>** sections of this documentation.
+Use tolerances (e.g. 1e-12–1e-14) when comparing floating‑point derived quantities in custom tests.

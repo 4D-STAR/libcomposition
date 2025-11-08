@@ -387,7 +387,7 @@ namespace fourdst::composition {
          *
          * @throws exceptions::UnknownSymbolError if the symbol is not in the atomic species database.
          * @throws exceptions::UnregisteredSymbolError if the symbol is not in the composition.
-         * @throws exceptions::InvalidAbundanceError if the molar abundance is negative.
+         * @throws exceptions::InvalidCompositionError if the molar abundance is negative.
          *
          * @par Example:
          * @code
@@ -407,7 +407,7 @@ namespace fourdst::composition {
          * @param molar_abundance The molar abundance to set.
          *
          * @throws exceptions::UnregisteredSymbolError if the isotope is not registered in the composition.
-         * @throws exceptions::InvalidAbundanceError if the molar abundance is negative.
+         * @throws exceptions::InvalidCompositionError if the molar abundance is negative.
          *
          * @par Example:
          * @code
@@ -432,7 +432,7 @@ namespace fourdst::composition {
          *
          * @throws exceptions::UnknownSymbolError if any symbol is not in the atomic species database.
          * @throws exceptions::UnregisteredSymbolError if any symbol is not in the composition.
-         * @throws exceptions::InvalidAbundanceError if any molar abundance is negative.
+         * @throws exceptions::InvalidCompositionError if any molar abundance is negative.
          *
          * @par Example:
          * @code
@@ -451,7 +451,7 @@ namespace fourdst::composition {
          * @param molar_abundances The molar abundances to set.
          *
          * @throws exceptions::UnregisteredSymbolError if any isotope is not registered in the composition.
-         * @throws exceptions::InvalidAbundanceError if any molar abundance is negative.
+         * @throws exceptions::InvalidCompositionError if any molar abundance is negative.
          *
          * @par Example:
          * @code
@@ -475,7 +475,7 @@ namespace fourdst::composition {
          *
          * @throws exceptions::UnknownSymbolError if any symbol is not in the atomic species database.
          * @throws exceptions::UnregisteredSymbolError if any symbol is not in the composition.
-         * @throws exceptions::InvalidAbundanceError if any molar abundance is negative.
+         * @throws exceptions::InvalidCompositionError if any molar abundance is negative.
          *
          * @par Example:
          * @code
@@ -495,7 +495,7 @@ namespace fourdst::composition {
          * @param molar_abundances The molar abundances to set.
          *
          * @throws exceptions::UnregisteredSymbolError if any isotope is not registered in the composition.
-         * @throws exceptions::InvalidAbundanceError if any molar abundance is negative.
+         * @throws exceptions::InvalidCompositionError if any molar abundance is negative.
          *
          * @par Example:
          * @code

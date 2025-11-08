@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['2_20number_20fraction_20composition_20and_20mode_20switching_0',['2. Number Fraction Composition and Mode Switching',['../index.html#autotoc_md18',1,'']]]
+  ['2_20constructing_20from_20strongly_20typed_20species_0',['2. Constructing from Strongly Typed Species',['../index.html#autotoc_md16',1,'']]]
 ];

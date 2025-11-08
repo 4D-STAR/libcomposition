@@ -29,7 +29,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">fourdst::libcomposition<span id="projectnumber">&#160;v2.0.0</span>
+   <div id="projectname">fourdst::libcomposition<span id="projectnumber">&#160;v2.0.1</span>
    </div>
    <div id="projectbrief">Robust atomic species information library</div>
   </td>
@@ -104,15 +104,17 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="intro_sec"></a>
 Introduction</h1>
-<p><code>libcomposition</code> is a modern C++23 library designed for the creation, manipulation, and analysis of chemical compositions, with a focus on astrophysical applications. It provides a robust and user-friendly interface for handling material compositions defined by mass or number fractions.</p>
+<p><code>libcomposition</code> is a modern, C++23 library, for the creation, manipulation, and analysis of astrophysical chemical compositions. It provides a robust and type‑safe interface for assembling a set of isotopes together with their molar abundances and for deriving commonly used bulk properties (mass fractions, number fractions, canonical X/Y/Z, mean particle mass, and electron abundance). <code>libcomposition</code> is designed to be tighly integrated into SERiF and related projects such as GridFire.</p>
 <h3><a class="anchor" id="autotoc_md10"></a>
 Key Features</h3>
 <ul>
-<li><b>Dual-Mode Operation</b>: Natively supports compositions defined by <b>mass fraction</b> or <b>number fraction</b>.</li>
-<li><b>Rich Atomic Database</b>: Includes a comprehensive, header-only database of isotopic properties (mass, half-life, spin, etc.) generated from the AME2020 and NUBASE2020 evaluations.</li>
-<li><b>Type Safety and Error Handling</b>: Utilizes a clear exception hierarchy to report errors, such as using an unregistered isotope or accessing data from a non-validated composition.</li>
-<li><b>Powerful Functionality</b>: Core features include mixing, subsetting, and on-the-fly conversion between mass and number fractions.</li>
-<li><b>Easy Integration</b>: Designed for seamless integration with other projects using the Meson build system and <code>pkg-config</code>.</li>
+<li><b>Type–Safe Species Representation</b>: Strongly typed isotopes (<code><a class="el" href="structfourdst_1_1atomic_1_1_species.html" title="Represents an atomic species (isotope) with its fundamental physical properties.">fourdst::atomic::Species</a></code>) generated from evaluated nuclear data (AME2020 / NUBASE2020).</li>
+<li><b>Molar Abundance Core</b>: Stores absolute molar abundances and derives all secondary quantities (mass / number fractions, mean particle mass, electron abundance) on demand, with internal caching.</li>
+<li><b>Canonical Composition Support</b>: Direct computation of canonical (X: Hydrogen, Y: Helium, Z: Metals) mass fractions via <code>getCanonicalComposition()</code>.</li>
+<li><b>Convenience Construction</b>: Helper utilities for constructing compositions from a vector or set of mass fractions (<code>buildCompositionFromMassFractions</code>).</li>
+<li><b>Deterministic Ordering</b>: Species are always stored and iterated lightest→heaviest (ordering defined by atomic mass) enabling uniform vector interfaces.</li>
+<li><b>Clear Exception Hierarchy</b>: Explicit error signaling for invalid symbols, unregistered species, and inconsistent input data.</li>
+<li><b>Meson + pkg-config Integration</b>: Simple build, install, and consumption in external projects.</li>
 </ul>
 <hr  />
 <h1><a class="anchor" id="install_sec"></a>
@@ -121,23 +123,203 @@ Installation</h1>
 <h3><a class="anchor" id="autotoc_md12"></a>
 Build Steps</h3>
 <p><b>Setup the build directory:</b></p>
-<p>The first step is to use meson to set up an out of source build. Note that this means that you can have multiple builds configured and cleanly seperated!</p>
+<p>The first step is to use meson to set up an out of source build. Note that this means that you can have multiple builds configured and cleanly separated!</p>
 <div class="fragment"><div class="line">meson setup builddir</div>
 </div><!-- fragment --><p><b>Compile the library:</b></p>
-<p>meson by default uses ninja to compile so it should be very fast; however, gcc is very slow when compiling the species database so that migth take some time (clang tends to be very fast for this).</p>
+<p>meson by default uses ninja to compile so it should be very fast; however, gcc is very slow when compiling the species database so that might take some time (clang tends to be very fast for this).</p>
 <div class="fragment"><div class="line">meson compile -C builddir</div>
 </div><!-- fragment --><p><b>Install the library:</b></p>
 <p>This will also install a pkg-config file!</p>
 <div class="fragment"><div class="line">sudo meson install -C builddir</div>
 </div><!-- fragment --><h3><a class="anchor" id="autotoc_md13"></a>
 Build Options</h3>
-<p>You can enable the generation of a <code>pkg-config</code> file during the setup step, which simplifies linking the library in other projects. by default this is true; it can be useful to disable this when using some build system orgestrator (such as meson-python).</p>
+<p>You can enable the generation of a <code>pkg-config</code> file during the setup step, which simplifies linking the library in other projects. By default this is true; it can be useful to disable this when using some build system orchestrator (such as meson-python).</p>
 <div class="fragment"><div class="line"># Enable pkg-config file generation</div>
 <div class="line">meson setup builddir -Dpkg-config=true</div>
 </div><!-- fragment --><hr  />
 <h1><a class="anchor" id="usage_sec"></a>
 Usage</h1>
-<h3><a class="anchor" id="autotoc_md15"></a>
+<p>Below are focused examples illustrating the current API. All examples assume headers are available via pkg-config or your include path.</p>
+<h4><a class="anchor" id="autotoc_md15"></a>
+1. Constructing a Composition from Symbols</h4>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="composition_8h.html">fourdst/composition/composition.h</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">    <span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacefourdst_1_1composition.html">fourdst::composition</a>;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Register symbols upon construction (no molar abundances yet -&gt; default 0.0)</span></div>
+<div class="line">    <a class="code hl_class" href="classfourdst_1_1composition_1_1_composition.html">Composition</a> comp({<span class="stringliteral">&quot;H-1&quot;</span>, <span class="stringliteral">&quot;He-4&quot;</span>, <span class="stringliteral">&quot;C-12&quot;</span>});</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Set molar abundances (absolute counts; they need not sum to 1.0)</span></div>
+<div class="line">    comp.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#a262d7133035d4e6f45daa81827abf5e7">setMolarAbundance</a>(<span class="stringliteral">&quot;H-1&quot;</span>, 10.0);</div>
+<div class="line">    comp.setMolarAbundance(<span class="stringliteral">&quot;He-4&quot;</span>, 3.0);</div>
+<div class="line">    comp.setMolarAbundance(<span class="stringliteral">&quot;C-12&quot;</span>, 0.25);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Query derived properties</span></div>
+<div class="line">    <span class="keywordtype">double</span> x_h1 = comp.getMassFraction(<span class="stringliteral">&quot;H-1&quot;</span>);</div>
+<div class="line">    <span class="keywordtype">double</span> y_he4 = comp.getNumberFraction(<span class="stringliteral">&quot;He-4&quot;</span>);</div>
+<div class="line">    <span class="keyword">auto</span> canon = comp.getCanonicalComposition(); <span class="comment">// X, Y, Z mass fractions</span></div>
+<div class="line"> </div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;H-1 mass fraction: &quot;</span> &lt;&lt; x_h1 &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;He-4 number fraction: &quot;</span> &lt;&lt; y_he4 &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">    std::cout &lt;&lt; canon &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>; <span class="comment">// &lt;CanonicalComposition: X=..., Y=..., Z=...&gt;</span></div>
+<div class="line">}</div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html"><div class="ttname"><a href="classfourdst_1_1composition_1_1_composition.html">fourdst::composition::Composition</a></div><div class="ttdoc">Manages a collection of chemical species and their abundances.</div><div class="ttdef"><b>Definition</b> <a href="composition_8h_source.html#l00097">composition.h:97</a></div></div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a262d7133035d4e6f45daa81827abf5e7"><div class="ttname"><a href="classfourdst_1_1composition_1_1_composition.html#a262d7133035d4e6f45daa81827abf5e7">fourdst::composition::Composition::setMolarAbundance</a></div><div class="ttdeci">void setMolarAbundance(const std::string &amp;symbol, const double &amp;molar_abundance)</div><div class="ttdoc">Sets the molar abundance for a given symbol.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00529">composition.cpp:529</a></div></div>
+<div class="ttc" id="acomposition_8h_html"><div class="ttname"><a href="composition_8h.html">composition.h</a></div></div>
+<div class="ttc" id="anamespacefourdst_1_1composition_html"><div class="ttname"><a href="namespacefourdst_1_1composition.html">fourdst::composition</a></div><div class="ttdoc">Utilities and types for representing and manipulating chemical compositions.</div></div>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md16"></a>
+2. Constructing from Strongly Typed Species</h4>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="composition_8h.html">fourdst/composition/composition.h</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="species_8h.html">fourdst/atomic/species.h</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">    <span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacefourdst_1_1composition.html">fourdst::composition</a>;</div>
+<div class="line">    <span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacefourdst_1_1atomic.html">fourdst::atomic</a>;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Build directly from species constants</span></div>
+<div class="line">    <a class="code hl_class" href="classfourdst_1_1composition_1_1_composition.html">Composition</a> comp(std::vector&lt;Species&gt;{<a class="code hl_function" href="namespacefourdst_1_1atomic.html#a6766bc834fd656df51bdcf22f7d97877">H_1</a>, <a class="code hl_function" href="namespacefourdst_1_1atomic.html#ab665e3014e2a805624227350699f141a">He_4</a>, <a class="code hl_function" href="namespacefourdst_1_1atomic.html#af2588b97ce949e37c193d6a3e5cb84a0">O_16</a>});</div>
+<div class="line"> </div>
+<div class="line">    comp.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#a262d7133035d4e6f45daa81827abf5e7">setMolarAbundance</a>(<a class="code hl_function" href="namespacefourdst_1_1atomic.html#a6766bc834fd656df51bdcf22f7d97877">H_1</a>, 5.0);</div>
+<div class="line">    comp.setMolarAbundance(<a class="code hl_function" href="namespacefourdst_1_1atomic.html#ab665e3014e2a805624227350699f141a">He_4</a>, 2.5);</div>
+<div class="line">    comp.setMolarAbundance(<a class="code hl_function" href="namespacefourdst_1_1atomic.html#af2588b97ce949e37c193d6a3e5cb84a0">O_16</a>, 0.1);</div>
+<div class="line"> </div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Mean particle mass: &quot;</span> &lt;&lt; comp.getMeanParticleMass() &lt;&lt; <span class="stringliteral">&quot; g/mol\n&quot;</span>;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Electron abundance (Ye): &quot;</span> &lt;&lt; comp.getElectronAbundance() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">}</div>
+<div class="ttc" id="anamespacefourdst_1_1atomic_html"><div class="ttname"><a href="namespacefourdst_1_1atomic.html">fourdst::atomic</a></div><div class="ttdoc">Contains canonical information about atomic species and elements used by 4D-STAR.</div></div>
+<div class="ttc" id="anamespacefourdst_1_1atomic_html_a6766bc834fd656df51bdcf22f7d97877"><div class="ttname"><a href="namespacefourdst_1_1atomic.html#a6766bc834fd656df51bdcf22f7d97877">fourdst::atomic::H_1</a></div><div class="ttdeci">static const Species H_1(&quot;H-1&quot;, &quot;H&quot;, -1, 0, 1, 1, 0.0, &quot;B-&quot;, std::numeric_limits&lt; double &gt;::quiet_NaN(), std::numeric_limits&lt; double &gt;::infinity(), &quot;/2+*&quot;, &quot;S=99.9855 78&quot;, 1.007825031898, 1.4e-05)</div></div>
+<div class="ttc" id="anamespacefourdst_1_1atomic_html_ab665e3014e2a805624227350699f141a"><div class="ttname"><a href="namespacefourdst_1_1atomic.html#ab665e3014e2a805624227350699f141a">fourdst::atomic::He_4</a></div><div class="ttdeci">static const Species He_4(&quot;He-4&quot;, &quot;He&quot;, 0, 2, 2, 4, 7073.9156, &quot;B-&quot;, -22898.274, std::numeric_limits&lt; double &gt;::infinity(), &quot;+&quot;, &quot;S=99.9998 2&quot;, 4.00260325413, 0.00016)</div></div>
+<div class="ttc" id="anamespacefourdst_1_1atomic_html_af2588b97ce949e37c193d6a3e5cb84a0"><div class="ttname"><a href="namespacefourdst_1_1atomic.html#af2588b97ce949e37c193d6a3e5cb84a0">fourdst::atomic::O_16</a></div><div class="ttdeci">static const Species O_16(&quot;O-16&quot;, &quot;O&quot;, 0, 8, 8, 16, 7976.2072, &quot;B-&quot;, -15412.184, std::numeric_limits&lt; double &gt;::infinity(), &quot;+&quot;, &quot;S=99.757 11&quot;, 15.99491461926, 0.00032)</div></div>
+<div class="ttc" id="aspecies_8h_html"><div class="ttname"><a href="species_8h.html">species.h</a></div></div>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md17"></a>
+3. Building from Mass Fractions (Helper Utility)</h4>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="utils_8h.html">fourdst/composition/utils.h</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">    <span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacefourdst_1_1composition.html">fourdst::composition</a>;</div>
+<div class="line"> </div>
+<div class="line">    std::vector&lt;std::string&gt; symbols = {<span class="stringliteral">&quot;H-1&quot;</span>, <span class="stringliteral">&quot;He-4&quot;</span>, <span class="stringliteral">&quot;C-12&quot;</span>};</div>
+<div class="line">    std::vector&lt;double&gt; mf       = {0.70, 0.28, 0.02}; <span class="comment">// Must sum to ~1 within tolerance</span></div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_class" href="classfourdst_1_1composition_1_1_composition.html">Composition</a> comp = <a class="code hl_function" href="namespacefourdst_1_1composition.html#aa90b1ef07d607c0c829bedccf381cf54">buildCompositionFromMassFractions</a>(symbols, mf);</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">auto</span> canon = comp.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#aac5b214a3d1278e127422224cb9cee50">getCanonicalComposition</a>();</div>
+<div class="line">    std::cout &lt;&lt; canon &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_aac5b214a3d1278e127422224cb9cee50"><div class="ttname"><a href="classfourdst_1_1composition_1_1_composition.html#aac5b214a3d1278e127422224cb9cee50">fourdst::composition::Composition::getCanonicalComposition</a></div><div class="ttdeci">CanonicalComposition getCanonicalComposition() const</div><div class="ttdoc">Compute the canonical composition (X, Y, Z) of the composition.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00330">composition.cpp:330</a></div></div>
+<div class="ttc" id="anamespacefourdst_1_1composition_html_aa90b1ef07d607c0c829bedccf381cf54"><div class="ttname"><a href="namespacefourdst_1_1composition.html#aa90b1ef07d607c0c829bedccf381cf54">fourdst::composition::buildCompositionFromMassFractions</a></div><div class="ttdeci">Composition buildCompositionFromMassFractions(const std::vector&lt; std::string &gt; &amp;symbols, const std::vector&lt; double &gt; &amp;massFractions)</div><div class="ttdoc">Build a Composition object from symbols and their corresponding mass fractions.</div><div class="ttdef"><b>Definition</b> <a href="utils_8cpp_source.html#l00074">utils.cpp:74</a></div></div>
+<div class="ttc" id="autils_8h_html"><div class="ttname"><a href="utils_8h.html">utils.h</a></div></div>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md18"></a>
+4. Iterating and Sorted Vector Interfaces</h4>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="composition_8h.html">fourdst/composition/composition.h</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">    <span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacefourdst_1_1composition.html">fourdst::composition</a>;</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_class" href="classfourdst_1_1composition_1_1_composition.html">Composition</a> comp({<span class="stringliteral">&quot;H-1&quot;</span>, <span class="stringliteral">&quot;C-12&quot;</span>, <span class="stringliteral">&quot;He-4&quot;</span>}); <span class="comment">// Internally sorted by mass (H &lt; He &lt; C)</span></div>
+<div class="line">    comp.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#a262d7133035d4e6f45daa81827abf5e7">setMolarAbundance</a>({<span class="stringliteral">&quot;H-1&quot;</span>, <span class="stringliteral">&quot;He-4&quot;</span>, <span class="stringliteral">&quot;C-12&quot;</span>}, {10.0, 3.0, 0.25});</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Ordered iteration (lightest -&gt; heaviest)</span></div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[sp, y] : comp) {</div>
+<div class="line">        std::cout &lt;&lt; sp &lt;&lt; <span class="stringliteral">&quot;: molar = &quot;</span> &lt;&lt; y &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Vector access (index corresponds to ordering by atomic mass)</span></div>
+<div class="line">    <span class="keyword">auto</span> molarVec = comp.getMolarAbundanceVector();</div>
+<div class="line">    <span class="keyword">auto</span> massVec  = comp.getMassFractionVector();</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordtype">size_t</span> idx_he4 = comp.getSpeciesIndex(<span class="stringliteral">&quot;He-4&quot;</span>);</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;He-4 index: &quot;</span> &lt;&lt; idx_he4 &lt;&lt; <span class="stringliteral">&quot;, molar abundance at index: &quot;</span> &lt;&lt; molarVec[idx_he4] &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">}</div>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md19"></a>
+5. Accessing Specific Derived Quantities</h4>
+<div class="fragment"><div class="line"><span class="comment">// Assume &#39;comp&#39; is already populated.</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">double</span> mf_c12   = comp.getMassFraction(<span class="stringliteral">&quot;C-12&quot;</span>);</div>
+<div class="line"><span class="keywordtype">double</span> nf_c12   = comp.getNumberFraction(<span class="stringliteral">&quot;C-12&quot;</span>);</div>
+<div class="line"><span class="keywordtype">double</span> mol_c12  = comp.getMolarAbundance(<span class="stringliteral">&quot;C-12&quot;</span>);</div>
+<div class="line"><span class="keywordtype">double</span> meanA    = comp.getMeanParticleMass();</div>
+<div class="line"><span class="keywordtype">double</span> Ye       = comp.getElectronAbundance();</div>
+<div class="line"><span class="keyword">auto</span>   canon    = comp.getCanonicalComposition();</div>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md20"></a>
+6. Exception Handling Examples</h4>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="composition_8h.html">fourdst/composition/composition.h</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="exceptions__composition_8h.html">fourdst/composition/exceptions/exceptions_composition.h</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">    <span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacefourdst_1_1composition.html">fourdst::composition</a>;</div>
+<div class="line">    <span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacefourdst_1_1composition_1_1exceptions.html">fourdst::composition::exceptions</a>;</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_class" href="classfourdst_1_1composition_1_1_composition.html">Composition</a> comp;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">try</span> {</div>
+<div class="line">        <span class="comment">// Unknown symbol (not in species database)</span></div>
+<div class="line">        comp.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#a3ab4dcda0bfd1a35b169bcc57fe66725">registerSymbol</a>(<span class="stringliteral">&quot;Xx-999&quot;</span>);</div>
+<div class="line">    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code hl_class" href="classfourdst_1_1composition_1_1exceptions_1_1_unknown_symbol_error.html">UnknownSymbolError</a> &amp;e) {</div>
+<div class="line">        std::cerr &lt;&lt; <span class="stringliteral">&quot;Caught UnknownSymbolError: &quot;</span> &lt;&lt; e.<a class="code hl_function" href="classfourdst_1_1composition_1_1exceptions_1_1_species_error.html#af0c63f7e05d0c65157b960c654d09b67">what</a>() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    comp.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#a3ab4dcda0bfd1a35b169bcc57fe66725">registerSymbol</a>(<span class="stringliteral">&quot;H-1&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">try</span> {</div>
+<div class="line">        <span class="comment">// Unregistered symbol used in a setter</span></div>
+<div class="line">        comp.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#a262d7133035d4e6f45daa81827abf5e7">setMolarAbundance</a>(<span class="stringliteral">&quot;He-4&quot;</span>, 1.0); <span class="comment">// He-4 not registered yet</span></div>
+<div class="line">    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code hl_class" href="classfourdst_1_1composition_1_1exceptions_1_1_unregistered_symbol_error.html">UnregisteredSymbolError</a> &amp;e) {</div>
+<div class="line">        std::cerr &lt;&lt; <span class="stringliteral">&quot;Caught UnregisteredSymbolError: &quot;</span> &lt;&lt; e.<a class="code hl_function" href="classfourdst_1_1composition_1_1exceptions_1_1_composition_error.html#ae44ceddb19da8a8cda7ee150b6826d08">what</a>() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    comp.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#a3ab4dcda0bfd1a35b169bcc57fe66725">registerSymbol</a>(<span class="stringliteral">&quot;He-4&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">try</span> {</div>
+<div class="line">        comp.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#a262d7133035d4e6f45daa81827abf5e7">setMolarAbundance</a>(<span class="stringliteral">&quot;H-1&quot;</span>, -3.0);</div>
+<div class="line">    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code hl_class" href="classfourdst_1_1composition_1_1exceptions_1_1_invalid_composition_error.html">InvalidCompositionError</a> &amp;e) { </div>
+<div class="line">        std::cerr &lt;&lt; <span class="stringliteral">&quot;Caught InvalidCompositionError: &quot;</span> &lt;&lt; e.<a class="code hl_function" href="classfourdst_1_1composition_1_1exceptions_1_1_composition_error.html#ae44ceddb19da8a8cda7ee150b6826d08">what</a>() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Mass fraction construction validation</span></div>
+<div class="line">    <span class="keywordflow">try</span> {</div>
+<div class="line">        <a class="code hl_class" href="classfourdst_1_1composition_1_1_composition.html">Composition</a> bad = <a class="code hl_function" href="namespacefourdst_1_1composition.html#aa90b1ef07d607c0c829bedccf381cf54">buildCompositionFromMassFractions</a>({<span class="stringliteral">&quot;H-1&quot;</span>, <span class="stringliteral">&quot;He-4&quot;</span>}, {0.6, 0.5}); <span class="comment">// sums to 1.1</span></div>
+<div class="line">    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code hl_class" href="classfourdst_1_1composition_1_1exceptions_1_1_invalid_composition_error.html">InvalidCompositionError</a> &amp;e) {</div>
+<div class="line">        std::cerr &lt;&lt; <span class="stringliteral">&quot;Caught InvalidCompositionError: &quot;</span> &lt;&lt; e.<a class="code hl_function" href="classfourdst_1_1composition_1_1exceptions_1_1_composition_error.html#ae44ceddb19da8a8cda7ee150b6826d08">what</a>() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a3ab4dcda0bfd1a35b169bcc57fe66725"><div class="ttname"><a href="classfourdst_1_1composition_1_1_composition.html#a3ab4dcda0bfd1a35b169bcc57fe66725">fourdst::composition::Composition::registerSymbol</a></div><div class="ttdeci">void registerSymbol(const std::string &amp;symbol)</div><div class="ttdoc">Registers a new symbol for inclusion in the composition.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00178">composition.cpp:178</a></div></div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1exceptions_1_1_composition_error_html_ae44ceddb19da8a8cda7ee150b6826d08"><div class="ttname"><a href="classfourdst_1_1composition_1_1exceptions_1_1_composition_error.html#ae44ceddb19da8a8cda7ee150b6826d08">fourdst::composition::exceptions::CompositionError::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdoc">Returns the error message.</div><div class="ttdef"><b>Definition</b> <a href="exceptions__composition_8h_source.html#l00032">exceptions_composition.h:32</a></div></div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1exceptions_1_1_invalid_composition_error_html"><div class="ttname"><a href="classfourdst_1_1composition_1_1exceptions_1_1_invalid_composition_error.html">fourdst::composition::exceptions::InvalidCompositionError</a></div><div class="ttdoc">Exception thrown when a composition is in an invalid or inconsistent state.</div><div class="ttdef"><b>Definition</b> <a href="exceptions__composition_8h_source.html#l00041">exceptions_composition.h:41</a></div></div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1exceptions_1_1_species_error_html_af0c63f7e05d0c65157b960c654d09b67"><div class="ttname"><a href="classfourdst_1_1composition_1_1exceptions_1_1_species_error.html#af0c63f7e05d0c65157b960c654d09b67">fourdst::composition::exceptions::SpeciesError::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdef"><b>Definition</b> <a href="exceptions__composition_8h_source.html#l00066">exceptions_composition.h:66</a></div></div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1exceptions_1_1_unknown_symbol_error_html"><div class="ttname"><a href="classfourdst_1_1composition_1_1exceptions_1_1_unknown_symbol_error.html">fourdst::composition::exceptions::UnknownSymbolError</a></div><div class="ttdoc">Exception thrown when an unknown symbol is encountered.</div><div class="ttdef"><b>Definition</b> <a href="exceptions__composition_8h_source.html#l00077">exceptions_composition.h:77</a></div></div>
+<div class="ttc" id="aclassfourdst_1_1composition_1_1exceptions_1_1_unregistered_symbol_error_html"><div class="ttname"><a href="classfourdst_1_1composition_1_1exceptions_1_1_unregistered_symbol_error.html">fourdst::composition::exceptions::UnregisteredSymbolError</a></div><div class="ttdoc">Exception thrown when a symbol is used that has not been registered.</div><div class="ttdef"><b>Definition</b> <a href="exceptions__composition_8h_source.html#l00051">exceptions_composition.h:51</a></div></div>
+<div class="ttc" id="aexceptions__composition_8h_html"><div class="ttname"><a href="exceptions__composition_8h.html">exceptions_composition.h</a></div></div>
+<div class="ttc" id="anamespacefourdst_1_1composition_1_1exceptions_html"><div class="ttname"><a href="namespacefourdst_1_1composition_1_1exceptions.html">fourdst::composition::exceptions</a></div><div class="ttdef"><b>Definition</b> <a href="exceptions__composition_8h_source.html#l00006">exceptions_composition.h:6</a></div></div>
+</div><!-- fragment --><hr  />
+<h1><a class="anchor" id="exceptions_sec"></a>
+Possible Exception States</h1>
+<p>The library surfaces errors through a focused hierarchy in <code><a class="el" href="namespacefourdst_1_1composition_1_1exceptions.html">fourdst::composition::exceptions</a></code>:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Exception Type   </th><th class="markdownTableHeadNone">When It Occurs    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>UnknownSymbolError</code>   </td><td class="markdownTableBodyNone">A string symbol does not correspond to any known isotope in the compiled species database.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>UnregisteredSymbolError</code>   </td><td class="markdownTableBodyNone">A valid species/symbol is used before being registered with a Composition instance.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>InvalidCompositionError</code>   </td><td class="markdownTableBodyNone">Construction from mass fractions fails validation (sum deviates from unity beyond tolerance) or canonical (X+Y+Z) check fails.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>CompositionError</code>   </td><td class="markdownTableBodyNone">Base class; may be thrown for generic composition-level issues (e.g. negative abundances via the documented <code>InvalidAbundanceError</code> contract).   </td></tr>
+</table>
+<p>Recommended patterns:</p><ul>
+<li>Validate externally provided symbol lists before calling bulk registration.</li>
+<li>Use species‑based overloads (strongly typed) where possible for slightly lower overhead (no symbol resolution).</li>
+<li>Wrap construction from mass fractions in a try/catch to surface normalization issues early.</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="api_sec"></a>
+Linking and Integration</h1>
+<h3><a class="anchor" id="autotoc_md23"></a>
 Linking with pkg-config</h3>
 <p>If you installed <code>libcomposition</code> with the <code>pkg-config</code> option enabled, you can get the necessary compiler and linker flags easily:</p>
 <div class="fragment"><div class="line"># Get compiler flags (include paths)</div>
@@ -146,158 +328,28 @@ Linking with pkg-config</h3>
 <div class="line"># Get linker flags (library paths and names)</div>
 <div class="line">pkg-config --libs fourdst_composition</div>
 </div><!-- fragment --><p><b>Example compilation command:</b> </p><div class="fragment"><div class="line">g++ my_app.cpp $(pkg-config --cflags --libs fourdst_composition) -o my_app</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md16"></a>
-C++ Usage Examples</h3>
-<h4><a class="anchor" id="autotoc_md17"></a>
-1. Basic Mass Fraction Composition</h4>
-<p>The most common use case is defining a composition by mass fractions (X, Y, Z).</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="composition_8h.html">fourdst/composition/composition.h</a>&quot;</span></div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> main() {</div>
-<div class="line">    <span class="comment">// 1. Create a composition object</span></div>
-<div class="line">    <a class="code hl_class" href="classfourdst_1_1composition_1_1_composition.html">fourdst::composition::Composition</a> comp;</div>
-<div class="line"> </div>
-<div class="line">    <span class="comment">// 2. Register the symbols you want to use</span></div>
-<div class="line">    comp.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#a3ab4dcda0bfd1a35b169bcc57fe66725">registerSymbol</a>(<span class="stringliteral">&quot;H-1&quot;</span>);</div>
-<div class="line">    comp.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#a3ab4dcda0bfd1a35b169bcc57fe66725">registerSymbol</a>(<span class="stringliteral">&quot;He-4&quot;</span>);</div>
-<div class="line"> </div>
-<div class="line">    <span class="comment">// 3. Set their mass fractions</span></div>
-<div class="line">    comp.setMassFraction(<span class="stringliteral">&quot;H-1&quot;</span>, 0.75);</div>
-<div class="line">    comp.setMassFraction(<span class="stringliteral">&quot;He-4&quot;</span>, 0.25);</div>
-<div class="line"> </div>
-<div class="line">    <span class="comment">// 4. Finalize the composition to validate it and compute global properties</span></div>
-<div class="line">    <span class="keywordflow">if</span> (comp.finalize()) {</div>
-<div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;Composition finalized successfully!&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;H-1 Mass Fraction: &quot;</span> &lt;&lt; comp.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#a9ea2b673341fdc67afeb0f0517a54c8c">getMassFraction</a>(<span class="stringliteral">&quot;H-1&quot;</span>) &lt;&lt; std::endl;</div>
-<div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;Mean Particle Mass: &quot;</span> &lt;&lt; comp.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#afbbb5e51ad5ae5c0fa6bc0094195aecd">getMeanParticleMass</a>() &lt;&lt; <span class="stringliteral">&quot; g/mol&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line">    } <span class="keywordflow">else</span> {</div>
-<div class="line">        std::cerr &lt;&lt; <span class="stringliteral">&quot;Failed to finalize composition.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line">    }</div>
-<div class="line"> </div>
-<div class="line">    <span class="keywordflow">return</span> 0;</div>
-<div class="line">}</div>
-<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html"><div class="ttname"><a href="classfourdst_1_1composition_1_1_composition.html">fourdst::composition::Composition</a></div><div class="ttdoc">Manages a collection of chemical species and their abundances.</div><div class="ttdef"><b>Definition</b> <a href="composition_8h_source.html#l00097">composition.h:97</a></div></div>
-<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a3ab4dcda0bfd1a35b169bcc57fe66725"><div class="ttname"><a href="classfourdst_1_1composition_1_1_composition.html#a3ab4dcda0bfd1a35b169bcc57fe66725">fourdst::composition::Composition::registerSymbol</a></div><div class="ttdeci">void registerSymbol(const std::string &amp;symbol)</div><div class="ttdoc">Registers a new symbol for inclusion in the composition.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00178">composition.cpp:178</a></div></div>
-<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a9ea2b673341fdc67afeb0f0517a54c8c"><div class="ttname"><a href="classfourdst_1_1composition_1_1_composition.html#a9ea2b673341fdc67afeb0f0517a54c8c">fourdst::composition::Composition::getMassFraction</a></div><div class="ttdeci">std::unordered_map&lt; atomic::Species, double &gt; getMassFraction() const noexcept override</div><div class="ttdoc">Gets the mass fractions of all species in the composition.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00251">composition.cpp:251</a></div></div>
-<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_afbbb5e51ad5ae5c0fa6bc0094195aecd"><div class="ttname"><a href="classfourdst_1_1composition_1_1_composition.html#afbbb5e51ad5ae5c0fa6bc0094195aecd">fourdst::composition::Composition::getMeanParticleMass</a></div><div class="ttdeci">double getMeanParticleMass() const noexcept override</div><div class="ttdoc">Compute the mean particle mass of the composition.</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00311">composition.cpp:311</a></div></div>
-<div class="ttc" id="acomposition_8h_html"><div class="ttname"><a href="composition_8h.html">composition.h</a></div></div>
-</div><!-- fragment --><h4><a class="anchor" id="autotoc_md18"></a>
-2. Number Fraction Composition and Mode Switching</h4>
-<p>The library can also work with number (mole) fractions and switch between modes.</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="composition_8h.html">fourdst/composition/composition.h</a>&quot;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="exceptions__composition_8h.html">fourdst/composition/exceptions/exceptions_composition.h</a>&quot;</span></div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> number_fraction_example() {</div>
-<div class="line">    <a class="code hl_class" href="classfourdst_1_1composition_1_1_composition.html">fourdst::composition::Composition</a> comp;</div>
-<div class="line"> </div>
-<div class="line">    <span class="comment">// Register symbols in number fraction mode</span></div>
-<div class="line">    comp.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#a3ab4dcda0bfd1a35b169bcc57fe66725">registerSymbol</a>(<span class="stringliteral">&quot;H-1&quot;</span>, <span class="keyword">false</span>); <span class="comment">// massFracMode = false</span></div>
-<div class="line">    comp.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#a3ab4dcda0bfd1a35b169bcc57fe66725">registerSymbol</a>(<span class="stringliteral">&quot;He-4&quot;</span>, <span class="keyword">false</span>);</div>
-<div class="line"> </div>
-<div class="line">    comp.setNumberFraction(<span class="stringliteral">&quot;H-1&quot;</span>, 0.9);</div>
-<div class="line">    comp.setNumberFraction(<span class="stringliteral">&quot;He-4&quot;</span>, 0.1);</div>
-<div class="line"> </div>
-<div class="line">    <span class="keywordflow">if</span> (comp.finalize()) {</div>
-<div class="line">        <span class="comment">// We can get number fractions directly</span></div>
-<div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;He-4 Number Fraction: &quot;</span> &lt;&lt; comp.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#a34f71d4d8f0297c576fd62fabd490305">getNumberFraction</a>(<span class="stringliteral">&quot;He-4&quot;</span>) &lt;&lt; std::endl;</div>
-<div class="line"> </div>
-<div class="line">        <span class="comment">// Or get the equivalent mass fraction</span></div>
-<div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;He-4 Mass Fraction: &quot;</span> &lt;&lt; comp.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#a9ea2b673341fdc67afeb0f0517a54c8c">getMassFraction</a>(<span class="stringliteral">&quot;He-4&quot;</span>) &lt;&lt; std::endl;</div>
-<div class="line"> </div>
-<div class="line">        <span class="comment">// Switch the entire composition to mass fraction mode</span></div>
-<div class="line">        comp.setCompositionMode(<span class="keyword">true</span>); <span class="comment">// true for mass fraction mode</span></div>
-<div class="line"> </div>
-<div class="line">        <span class="comment">// Now, getting the mass fraction is a direct lookup</span></div>
-<div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;He-4 Mass Fraction (after mode switch): &quot;</span> &lt;&lt; comp.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#a9ea2b673341fdc67afeb0f0517a54c8c">getMassFraction</a>(<span class="stringliteral">&quot;He-4&quot;</span>) &lt;&lt; std::endl;</div>
-<div class="line">    }</div>
-<div class="line">}</div>
-<div class="ttc" id="aclassfourdst_1_1composition_1_1_composition_html_a34f71d4d8f0297c576fd62fabd490305"><div class="ttname"><a href="classfourdst_1_1composition_1_1_composition.html#a34f71d4d8f0297c576fd62fabd490305">fourdst::composition::Composition::getNumberFraction</a></div><div class="ttdeci">double getNumberFraction(const std::string &amp;symbol) const override</div><div class="ttdoc">Gets the number fraction for a given symbol. See the overload for species-based lookup for more detai...</div><div class="ttdef"><b>Definition</b> <a href="composition_8cpp_source.html#l00260">composition.cpp:260</a></div></div>
-<div class="ttc" id="aexceptions__composition_8h_html"><div class="ttname"><a href="exceptions__composition_8h.html">exceptions_composition.h</a></div></div>
-</div><!-- fragment --><h4><a class="anchor" id="autotoc_md19"></a>
-3. Mixing Two Compositions</h4>
-<p>You can easily mix two compositions. The library handles the union of all species.</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="composition_8h.html">fourdst/composition/composition.h</a>&quot;</span></div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> mixing_example() {</div>
-<div class="line">    <span class="comment">// Composition 1: Pure Hydrogen</span></div>
-<div class="line">    <a class="code hl_class" href="classfourdst_1_1composition_1_1_composition.html">fourdst::composition::Composition</a> comp1({<span class="stringliteral">&quot;H-1&quot;</span>}, {1.0});</div>
-<div class="line"> </div>
-<div class="line">    <span class="comment">// Composition 2: Pure Helium</span></div>
-<div class="line">    <a class="code hl_class" href="classfourdst_1_1composition_1_1_composition.html">fourdst::composition::Composition</a> comp2({<span class="stringliteral">&quot;He-4&quot;</span>}, {1.0});</div>
-<div class="line"> </div>
-<div class="line">    <span class="comment">// Mix them with a 50/50 ratio using the &#39;+&#39; operator</span></div>
-<div class="line">    <a class="code hl_class" href="classfourdst_1_1composition_1_1_composition.html">fourdst::composition::Composition</a> mixed = comp1 + comp2;</div>
-<div class="line"> </div>
-<div class="line">    <span class="comment">// Mix them with a 75/25 ratio using the mix() method</span></div>
-<div class="line">    <span class="comment">// 0.75 of comp1, 0.25 of comp2</span></div>
-<div class="line">    <a class="code hl_class" href="classfourdst_1_1composition_1_1_composition.html">fourdst::composition::Composition</a> mixed2 = comp1.mix(comp2, 0.75);</div>
-<div class="line"> </div>
-<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;50/50 Mix H-1: &quot;</span> &lt;&lt; mixed.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#a9ea2b673341fdc67afeb0f0517a54c8c">getMassFraction</a>(<span class="stringliteral">&quot;H-1&quot;</span>) &lt;&lt; std::endl;   <span class="comment">// -&gt; 0.5</span></div>
-<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;75/25 Mix H-1: &quot;</span> &lt;&lt; mixed2.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#a9ea2b673341fdc67afeb0f0517a54c8c">getMassFraction</a>(<span class="stringliteral">&quot;H-1&quot;</span>) &lt;&lt; std::endl;  <span class="comment">// -&gt; 0.75</span></div>
-<div class="line">}</div>
-</div><!-- fragment --><h4><a class="anchor" id="autotoc_md20"></a>
-4. Error Handling</h4>
-<p>The library uses exceptions to report errors. Always wrap calls in a <code>try-catch</code> block for robust code.</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="composition_8h.html">fourdst/composition/composition.h</a>&quot;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="exceptions__composition_8h.html">fourdst/composition/exceptions/exceptions_composition.h</a>&quot;</span></div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> error_example() {</div>
-<div class="line">    <a class="code hl_class" href="classfourdst_1_1composition_1_1_composition.html">fourdst::composition::Composition</a> comp;</div>
-<div class="line">    comp.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#a3ab4dcda0bfd1a35b169bcc57fe66725">registerSymbol</a>(<span class="stringliteral">&quot;H-1&quot;</span>);</div>
-<div class="line">    comp.setMassFraction(<span class="stringliteral">&quot;H-1&quot;</span>, 1.0);</div>
-<div class="line"> </div>
-<div class="line">    <span class="keywordflow">try</span> {</div>
-<div class="line">        <span class="comment">// This will throw, because the composition is not finalized yet.</span></div>
-<div class="line">        <span class="keywordtype">double</span> mass = comp.<a class="code hl_function" href="classfourdst_1_1composition_1_1_composition.html#a9ea2b673341fdc67afeb0f0517a54c8c">getMassFraction</a>(<span class="stringliteral">&quot;H-1&quot;</span>);</div>
-<div class="line">    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> fourdst::composition::exceptions::CompositionNotFinalizedError&amp; e) {</div>
-<div class="line">        std::cerr &lt;&lt; <span class="stringliteral">&quot;Caught expected error: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
-<div class="line">    }</div>
-<div class="line"> </div>
-<div class="line">    <span class="keywordflow">try</span> {</div>
-<div class="line">        <span class="comment">// This will throw, because &quot;Li-6&quot; was never registered.</span></div>
-<div class="line">        comp.setMassFraction(<span class="stringliteral">&quot;Li-6&quot;</span>, 0.1);</div>
-<div class="line">    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code hl_class" href="classfourdst_1_1composition_1_1exceptions_1_1_unregistered_symbol_error.html">fourdst::composition::exceptions::UnregisteredSymbolError</a>&amp; e) {</div>
-<div class="line">        std::cerr &lt;&lt; <span class="stringliteral">&quot;Caught expected error: &quot;</span> &lt;&lt; e.<a class="code hl_function" href="classfourdst_1_1composition_1_1exceptions_1_1_composition_error.html#ae44ceddb19da8a8cda7ee150b6826d08">what</a>() &lt;&lt; std::endl;</div>
-<div class="line">    }</div>
-<div class="line">}</div>
-<div class="ttc" id="aclassfourdst_1_1composition_1_1exceptions_1_1_composition_error_html_ae44ceddb19da8a8cda7ee150b6826d08"><div class="ttname"><a href="classfourdst_1_1composition_1_1exceptions_1_1_composition_error.html#ae44ceddb19da8a8cda7ee150b6826d08">fourdst::composition::exceptions::CompositionError::what</a></div><div class="ttdeci">const char * what() const noexcept override</div><div class="ttdoc">Returns the error message.</div><div class="ttdef"><b>Definition</b> <a href="exceptions__composition_8h_source.html#l00032">exceptions_composition.h:32</a></div></div>
-<div class="ttc" id="aclassfourdst_1_1composition_1_1exceptions_1_1_unregistered_symbol_error_html"><div class="ttname"><a href="classfourdst_1_1composition_1_1exceptions_1_1_unregistered_symbol_error.html">fourdst::composition::exceptions::UnregisteredSymbolError</a></div><div class="ttdoc">Exception thrown when a symbol is used that has not been registered.</div><div class="ttdef"><b>Definition</b> <a href="exceptions__composition_8h_source.html#l00051">exceptions_composition.h:51</a></div></div>
-</div><!-- fragment --><h4><a class="anchor" id="autotoc_md21"></a>
-5. Accessing Atomic Data</h4>
-<p>You can directly access the static database of all known species.</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;fourdst/composition/species.h&quot;</span> <span class="comment">// Provides static instances like H_1</span></div>
-<div class="line"><span class="preprocessor">#include &quot;fourdst/composition/atomicSpecies.h&quot;</span> <span class="comment">// Provides the main &#39;species&#39; map</span></div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> data_example() {</div>
-<div class="line">    <span class="comment">// Access via the map</span></div>
-<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span>&amp; fe56 = <a class="code hl_variable" href="namespacefourdst_1_1atomic.html#a3f619cc8f8b2cd718a4082c6adb0de90">fourdst::atomic::species</a>.at(<span class="stringliteral">&quot;Fe-56&quot;</span>);</div>
-<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Fe-56 mass: &quot;</span> &lt;&lt; fe56-&gt;mass() &lt;&lt; std::endl;</div>
-<div class="line"> </div>
-<div class="line">    <span class="comment">// Access via the static instance</span></div>
-<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;H-1 spin: &quot;</span> &lt;&lt; <a class="code hl_function" href="namespacefourdst_1_1atomic.html#a6766bc834fd656df51bdcf22f7d97877">fourdst::atomic::H_1</a>.spin() &lt;&lt; std::endl;</div>
-<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;F-18 half-life: &quot;</span> &lt;&lt; <a class="code hl_function" href="namespacefourdst_1_1atomic.html#a3c09ded079905f8c355f9ea87b6b191f">fourdst::atomic::F_18</a>.halfLife() &lt;&lt; <span class="stringliteral">&quot; s&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line">}</div>
-<div class="ttc" id="anamespacefourdst_1_1atomic_html_a3c09ded079905f8c355f9ea87b6b191f"><div class="ttname"><a href="namespacefourdst_1_1atomic.html#a3c09ded079905f8c355f9ea87b6b191f">fourdst::atomic::F_18</a></div><div class="ttdeci">static const Species F_18(&quot;F-18&quot;, &quot;F&quot;, 0, 9, 9, 18, 7631.6383, &quot;B-&quot;, -4444.5049, 6584.04, &quot;+&quot;, &quot;+=100&quot;, 18.000937324, 0.497)</div></div>
-<div class="ttc" id="anamespacefourdst_1_1atomic_html_a3f619cc8f8b2cd718a4082c6adb0de90"><div class="ttname"><a href="namespacefourdst_1_1atomic.html#a3f619cc8f8b2cd718a4082c6adb0de90">fourdst::atomic::species</a></div><div class="ttdeci">static const std::unordered_map&lt; std::string, const Species &amp; &gt; species</div><div class="ttdoc">Map of species names to their corresponding Species objects.</div><div class="ttdef"><b>Definition</b> <a href="species_8h_source.html#l03579">species.h:3579</a></div></div>
-<div class="ttc" id="anamespacefourdst_1_1atomic_html_a6766bc834fd656df51bdcf22f7d97877"><div class="ttname"><a href="namespacefourdst_1_1atomic.html#a6766bc834fd656df51bdcf22f7d97877">fourdst::atomic::H_1</a></div><div class="ttdeci">static const Species H_1(&quot;H-1&quot;, &quot;H&quot;, -1, 0, 1, 1, 0.0, &quot;B-&quot;, std::numeric_limits&lt; double &gt;::quiet_NaN(), std::numeric_limits&lt; double &gt;::infinity(), &quot;/2+*&quot;, &quot;S=99.9855 78&quot;, 1.007825031898, 1.4e-05)</div></div>
 </div><!-- fragment --><hr  />
-<h1><a class="anchor" id="test_sec"></a>
-Testing</h1>
-<p><code>libcomposition</code> is tested using the GoogleTest framework. The test suite provides high coverage of the library's functionality.</p>
-<h3><a class="anchor" id="autotoc_md23"></a>
-Test Coverage Includes:</h3>
+<h1><a class="anchor" id="api_ref_sec"></a>
+API Reference</h1>
+<p>For a complete list of all classes, methods, and functions, see the <b>Namespaces</b> and <b>Classes</b> sections of this generated documentation.</p>
 <ul>
-<li><b>Atomic Data Validation</b>: Spot checks on isotopic properties (mass, half-life, spin) for a wide range of elements to ensure the underlying data files are parsed and represented correctly.</li>
-<li><b>Core <code>Composition</code> Workflow</b>: Verification of object construction, symbol registration (for both valid and invalid symbols), and the complete workflow of setting and getting both mass and number fractions.</li>
-<li><b>Finalization Logic</b>: Ensures that <code>finalize()</code> is a required step before querying data. Tests the validation logic for compositions that sum to 1.0 and the auto-normalization feature (<code>finalize(true)</code>).</li>
-<li><b>Advanced Features</b>: Dedicated tests for <code>mix()</code>, <code>subset()</code>, <code>setCompositionMode()</code>, and the calculation of derived quantities like <code>getMolarAbundance()</code> and <code>getMeanAtomicNumber()</code>.</li>
-<li><b>Exception Handling</b>: Confirms that invalid operations (e.g., using an unregistered symbol, mixing un-finalized compositions) correctly throw exceptions from the <code><a class="el" href="namespacefourdst_1_1composition_1_1exceptions.html">fourdst::composition::exceptions</a></code> hierarchy.</li>
+<li>Namespace overview: <code><a class="el" href="namespacefourdst_1_1composition.html" title="Utilities and types for representing and manipulating chemical compositions.">fourdst::composition</a></code>, <code><a class="el" href="namespacefourdst_1_1atomic.html" title="Contains canonical information about atomic species and elements used by 4D-STAR.">fourdst::atomic</a></code></li>
+<li>Core classes: <code><a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">fourdst::composition::Composition</a></code>, <code>fourdst::composition::CompositionAbstract</code></li>
+<li>Helper utilities: <code>buildCompositionFromMassFractions</code></li>
+<li>Exception hierarchy: <code><a class="el" href="namespacefourdst_1_1composition_1_1exceptions.html">fourdst::composition::exceptions</a></code></li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="api_sec"></a>
-API Reference</h1>
-<p>For a complete list of all classes, methods, and functions, please see the **<a href="namespaces.html">Namespaces</a>** and **<a href="annotated.html">Classes</a>** sections of this documentation. </p>
+<h1><a class="anchor" id="test_sec"></a>
+Testing Overview</h1>
+<p>The test suite (GoogleTest) exercises:</p><ul>
+<li>Species database integrity (selected property spot checks).</li>
+<li>Registration and abundance setting (symbols vs species overloads).</li>
+<li>Mass fraction utility construction and validation tolerances.</li>
+<li>Canonical composition correctness (X + Y + Z ≈ 1.0).</li>
+<li>Vector interface ordering and index lookup consistency.</li>
+<li>Exception pathways for unknown/unregistered symbols and invalid compositions.</li>
+</ul>
+<p>Use tolerances (e.g. 1e-12–1e-14) when comparing floating‑point derived quantities in custom tests. </p>
 </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>
 </div><!-- contents -->

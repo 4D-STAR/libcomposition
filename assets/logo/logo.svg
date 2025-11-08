@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg1"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px">
+    <inkscape:page
+       x="0"
+       y="0"
+       width="512"
+       height="512"
+       id="page2"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="fill:#394d76;fill-opacity:1;stroke-width:5;stroke-linecap:round;stroke-linejoin:round"
+       id="path1"
+       cx="256"
+       cy="256"
+       r="239.85747" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:53.0016px;font-family:'Apple Braille';-inkscape-font-specification:'Apple Braille';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:2.48445;stroke-linecap:round;stroke-linejoin:round"
+       x="257.63138"
+       y="273.66513"
+       id="text2"><tspan
+         sodipodi:role="line"
+         id="tspan2"
+         x="257.63138"
+         y="273.66513"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'FiraCode Nerd Font Mono';-inkscape-font-specification:'FiraCode Nerd Font Mono';stroke-width:2.48445">libcomposition</tspan></text>
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke-width:5;stroke-linecap:round;stroke-linejoin:round"
+       id="path6"
+       cx="313.84622"
+       cy="383.46661"
+       r="55.374836" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke-width:5;stroke-linecap:round;stroke-linejoin:round"
+       id="path7"
+       cx="191.12643"
+       cy="120.75651"
+       r="66.165833" />
+    <circle
+       style="fill:#394d76;fill-opacity:1;stroke-width:5;stroke-linecap:round;stroke-linejoin:round"
+       id="path8"
+       cx="170.41191"
+       cy="89.128677"
+       r="14.168824" />
+    <circle
+       style="fill:#394d76;fill-opacity:1;stroke-width:5;stroke-linecap:round;stroke-linejoin:round"
+       id="path9"
+       cx="208.65009"
+       cy="156.92506"
+       r="15.551148" />
+    <circle
+       style="fill:#394d76;fill-opacity:1;stroke-width:5;stroke-linecap:round;stroke-linejoin:round"
+       id="path10"
+       cx="328.99319"
+       cy="359.40433"
+       r="14.514405" />
+    <circle
+       style="fill:#394d76;fill-opacity:1;stroke-width:5;stroke-linecap:round;stroke-linejoin:round"
+       id="path11"
+       cx="299.21255"
+       cy="410.2562"
+       r="16.069521" />
+  </g>
+</svg>

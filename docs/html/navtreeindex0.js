@@ -189,10 +189,12 @@ var NAVTREEINDEX0 =
 "hierarchy.html":[2,2],
 "index.html":[],
 "index.html":[0],
+"index.html#api_ref_sec":[0,5],
 "index.html#api_sec":[0,4],
+"index.html#exceptions_sec":[0,3],
 "index.html#install_sec":[0,1],
 "index.html#intro_sec":[0,0],
-"index.html#test_sec":[0,3],
+"index.html#test_sec":[0,6],
 "index.html#usage_sec":[0,2],
 "namespacefourdst.html":[1,0,0],
 "namespacefourdst_1_1atomic.html":[1,0,0,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX0 =
 "namespacefourdst_1_1atomic.html#a038104a5b36aad3c2191121259310f04":[1,0,0,0,652],
 "namespacefourdst_1_1atomic.html#a0386b97393ebfd7c45e4734dd959c265":[1,0,0,0,3284],
 "namespacefourdst_1_1atomic.html#a0389d836c4facea1dfb53421d5363dfd":[1,0,0,0,1263],
-"namespacefourdst_1_1atomic.html#a038c89510ad6dedb466845db9d60a9d5":[1,0,0,0,1541],
-"namespacefourdst_1_1atomic.html#a039a79b2a13ccff0795215eb0ec794c7":[1,0,0,0,566],
-"namespacefourdst_1_1atomic.html#a03a11a56471c248cabeae8c317fe80f7":[1,0,0,0,2384]
+"namespacefourdst_1_1atomic.html#a038c89510ad6dedb466845db9d60a9d5":[1,0,0,0,1541]
 };
