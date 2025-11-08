@@ -1,0 +1,120 @@
+/**
+ * @file atomic.dox
+ * @brief Documentation for the fourdst::atomic namespace
+ */
+
+/**
+ * @namespace fourdst::atomic
+ * @brief Contains canonical information about atomic species and elements used by 4D-STAR.
+ *
+ * @details
+ * The `fourdst::atomic` namespace provides a comprehensive, compile-time-accessible
+ * database of predefined atomic isotopes (Species) and helper utilities for working
+ * with them. Species are available as strongly-typed constants following the pattern
+ * `fourdst::atomic::H_1`, `fourdst::atomic::He_4`, `fourdst::atomic::C_12`, etc.
+ *
+ * Each atomic Species object encapsulates detailed metadata about the isotope, including:
+ *  - Atomic number (Z)
+ *  - Mass number (A)
+ *  - Neutron number (N)
+ *  - Element symbol (e.g., "H" for Hydrogen)
+ *  - Species symbol (e.g., "H-1" for Hydrogen-1)
+ *  - Atomic mass (in atomic mass units)
+ *  - Uncertainty in atomic mass (in atomic mass units)
+ *  - Half-life (seconds; a value of -1 or another sentinel indicates stability)
+ *  - Binding energy (in keV)
+ *  - Beta decay code (classification code from the atomic database)
+ *  - Beta decay energy (in keV)
+ *  - Spin parity string (e.g., "1/2+")
+ *  - Decay modes as a descriptive string
+ *  - Nuclear spin
+ *
+ * Species instances are intended to be lightweight, immutable value objects providing
+ * easy accessors for these properties. They are the canonical representation of an isotope
+ * throughout the codebase and are safe to pass and store by value.
+ *
+ * Species lookup
+ * ----------------
+ * The namespace exposes a map lookup structure `fourdst::atomic::species` which
+ * maps the human-readable species symbol (e.g. "C-12") to the corresponding
+ * `fourdst::atomic::Species` object. This is useful for APIs that accept string
+ * symbols at runtime and need to resolve them to the strongly-typed species value.
+ *
+ * Comparison semantics
+ * --------------------
+ * Comparison operators for `Species` are overloaded to provide sensible ordering and
+ * equality semantics:
+ *  - Equality (`==`) and inequality (`!=`) evaluate true/false based on the species symbol
+ *    — two species are equal only if they share the same species symbol (same isotope).
+ *  - Relational operators (`<`, `>`, `<=`, `>=`) are defined based on atomic mass. This
+ *    provides a natural ordering from lightest to heaviest isotope which is convenient
+ *    when creating sorted containers or deterministic vector representations.
+ *
+ * Stream output
+ * -------------
+ * The stream insertion operator (`operator<<`) is overloaded for Species objects and
+ * prints the species symbol (for example "C-12") to output streams. This makes logging
+ * and test output concise and human-readable.
+ *
+ * Typical usage
+ * -------------
+ * Example: Using predefined species directly
+ * @code
+ * #include "fourdst/atomic/species.h"
+ *
+ * using namespace fourdst::atomic;
+ *
+ * Species s = H_1;               // Hydrogen-1 species object
+ * std::cout << s << std::endl;   // prints "H-1"
+ *
+ * int Z = s.getAtomicNumber();   // atomic number (1 for hydrogen)
+ * double mass = s.getAtomicMass();
+ * bool isStable = (s.getHalfLife() < 0);
+ * @endcode
+ *
+ * Example: Resolving a runtime symbol to a Species
+ * @code
+ * #include "fourdst/atomic/species.h"
+ *
+ * std::string sym = "C-12";
+ * auto sp = fourdst::atomic::species.at(sym); // throws if sym not found
+ * // now sp is the canonical Species for Carbon-12
+ * @endcode
+ *
+ * Example: Using Species in sorted containers and compositions
+ * @code
+ * #include "fourdst/composition/composition.h"
+ *
+ * using namespace fourdst::atomic;
+ * using namespace fourdst::composition;
+ *
+ * Composition comp;
+ * comp.registerSpecies(H_1);
+ * comp.registerSpecies(He_4);
+ * comp.registerSpecies(C_12);
+ *
+ * // Iteration and vector representations rely on species ordering by mass
+ * for (const auto &sp : comp.getRegisteredSpecies()) {
+ *     std::cout << sp << "\n";
+ * }
+ * @endcode
+ *
+ * Notes and recommendations
+ * -------------------------
+ * - The species map (`fourdst::atomic::species`) is the canonical runtime symbol-to-species
+ *   translation. Code that must accept user-provided symbols should use this map and handle
+ *   potential exceptions (e.g. `std::out_of_range` or a library-specific exception) when a
+ *   symbol is unknown.
+ * - Because comparison operators are mass-based, using ordered containers (std::set, std::map)
+ *   with Species will order entries from lightest to heaviest by default.
+ * - The printed representation of a Species is the species symbol only. For more verbose
+ *   output (mass, half-life, binding energy), use the individual accessors.
+ * - Floating-point values (e.g., atomic mass) are provided as doubles. When comparing such
+ *   values in tests, use an appropriate tolerance.
+ *
+ * See also
+ * --------
+ * - `fourdst/atomic/species.h` — definitions of Species constants and the `species` map.
+ * - `fourdst/composition/composition.h` — Composition API which consumes Species objects.
+ */
+namespace fourdst::atomic;

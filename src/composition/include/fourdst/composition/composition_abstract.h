@@ -5,6 +5,7 @@
 #include <string>
 #include <unordered_map>
 #include <set>
+#include <vector>
 
 /**
  * @brief Abstract base class for chemical composition representations.
@@ -41,7 +42,7 @@ public:
      * @param species The atomic species to check.
      * @return True if the species is contained, false otherwise.
      */
-    [[nodiscard]] virtual bool contains(const fourdst::atomic::Species& species) const = 0;
+    [[nodiscard]] virtual bool contains(const fourdst::atomic::Species& species) const noexcept = 0;
 
     /**
      * @brief Check if the composition contains the given species.
@@ -50,31 +51,31 @@ public:
      */
     [[nodiscard]] virtual bool contains(const std::string& symbol) const = 0;
 
-    [[nodiscard]] virtual size_t size() const = 0;
+    [[nodiscard]] virtual size_t size() const noexcept = 0;
 
     /**
      * @brief Get all registered chemical symbols in the composition.
      * @return A set of registered chemical symbols.
      */
-    [[nodiscard]] virtual std::set<std::string> getRegisteredSymbols() const = 0;
+    [[nodiscard]] virtual std::set<std::string> getRegisteredSymbols() const noexcept = 0;
 
     /**
      * @brief Get all registered atomic species in the composition.
      * @return A set of registered atomic species.
      */
-    [[nodiscard]] virtual const std::set<fourdst::atomic::Species> &getRegisteredSpecies() const = 0;
+    [[nodiscard]] virtual const std::set<fourdst::atomic::Species> &getRegisteredSpecies() const noexcept = 0;
 
     /**
      * @brief Get the mass fraction for all registered symbols.
      * @return An unordered map from symbol to mass fraction.
      */
-    [[nodiscard]] virtual std::unordered_map<fourdst::atomic::Species, double> getMassFraction() const = 0;
+    [[nodiscard]] virtual std::unordered_map<fourdst::atomic::Species, double> getMassFraction() const noexcept = 0;
 
     /**
      * @brief Get the number fraction for all registered symbols.
      * @return An unordered map from symbol to number fraction.
      */
-    [[nodiscard]] virtual std::unordered_map<fourdst::atomic::Species, double> getNumberFraction() const = 0;
+    [[nodiscard]] virtual std::unordered_map<fourdst::atomic::Species, double> getNumberFraction() const noexcept = 0;
 
     /**
      * @brief Get the mass fraction for a given symbol.
@@ -122,31 +123,31 @@ public:
      * @brief Get the mean particle mass of the composition.
      * @return The mean particle mass.
      */
-    [[nodiscard]] virtual double getMeanParticleMass() const = 0;
+    [[nodiscard]] virtual double getMeanParticleMass() const noexcept = 0;
 
     /**
      * @brief Get the electron abundance of the composition.
      * @return The electron abundance.
      */
-    [[nodiscard]] virtual double getElectronAbundance() const = 0;
+    [[nodiscard]] virtual double getElectronAbundance() const noexcept = 0;
 
     /**
      * @brief Get the mass fraction as a vector.
      * @return A vector of mass fractions for all species.
      */
-    [[nodiscard]] virtual std::vector<double> getMassFractionVector() const = 0;
+    [[nodiscard]] virtual std::vector<double> getMassFractionVector() const noexcept = 0;
 
     /**
      * @brief Get the number fraction as a vector.
      * @return A vector of number fractions for all species.
      */
-    [[nodiscard]] virtual std::vector<double> getNumberFractionVector() const = 0;
+    [[nodiscard]] virtual std::vector<double> getNumberFractionVector() const noexcept = 0;
 
     /**
      * @brief Get the molar abundance as a vector.
      * @return A vector of molar abundances for all species.
      */
-    [[nodiscard]] virtual std::vector<double> getMolarAbundanceVector() const = 0;
+    [[nodiscard]] virtual std::vector<double> getMolarAbundanceVector() const noexcept = 0;
 
     /**
      * @brief Get the index of a species by symbol.

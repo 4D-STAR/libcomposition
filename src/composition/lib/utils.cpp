@@ -3,11 +3,15 @@
 #include "fourdst/atomic/atomicSpecies.h"
 #include "fourdst/atomic/species.h"
 #include "fourdst/composition/utils.h"
+#include "fourdst/logging/logging.h"
 
+#include <numeric>
 #include <ranges>
 #include <vector>
 #include <set>
 #include <string>
+
+#include "quill/LogMacros.h"
 
 namespace {
     std::optional<fourdst::atomic::Species> getSpecies(const std::string& symbol) {
@@ -17,7 +21,13 @@ namespace {
         return fourdst::atomic::species.at(symbol);
     }
 
-    void throw_unknown_symbol(quill::Logger* logger, const std::string& symbol) {
+    quill::Logger* getLogger() {
+        static quill::Logger* logger = fourdst::logging::LogManager::getInstance().getLogger("log");
+        return logger;
+    }
+
+    void throw_unknown_symbol(const std::string& symbol) {
+        LOG_ERROR(getLogger(), "Symbol {} is not a valid species symbol (not in the species database)", symbol);
         throw fourdst::composition::exceptions::UnknownSymbolError("Symbol " + symbol + " is not a valid species symbol (not in the species database)");
     }
 }
@@ -27,6 +37,26 @@ namespace fourdst::composition {
         const std::set<atomic::Species> &species,
         const std::vector<double> &massFractions
     ) {
+        const double sum = std::accumulate(
+            massFractions.begin(),
+            massFractions.end(),
+            0.0
+        );
+
+        if (std::abs(sum - 1.0) > 1e-10) {
+            throw exceptions::InvalidCompositionError(
+                "Mass fractions must sum to 1.0, got " +  std::to_string(sum)
+            );
+        }
+
+        if (species.size() != massFractions.size()) {
+            throw exceptions::InvalidCompositionError(
+                "The number of species and mass fractions must be equal. Got " +
+                std::to_string(species.size()) + " species and " +
+                std::to_string(massFractions.size()) + " mass fractions."
+            );
+        }
+
         Composition composition;
 
         for (const auto& [sp, xi] : std::views::zip(species, massFractions)) {
@@ -46,13 +76,10 @@ namespace fourdst::composition {
         for (const auto& symbol : symbols) {
             auto result = getSpecies(symbol);
             if (!result) {
-                throw_unknown_symbol(nullptr, symbol);
+                throw_unknown_symbol(symbol);
             }
             species.insert(result.value());
         }
         return buildCompositionFromMassFractions(species, massFractions);
     }
-
-
-
 }
