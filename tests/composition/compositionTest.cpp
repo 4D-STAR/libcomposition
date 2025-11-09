@@ -8,6 +8,7 @@
 #include "fourdst/composition/composition.h"
 #include "fourdst/composition/exceptions/exceptions_composition.h"
 #include "fourdst/composition/utils.h"
+#include "fourdst/composition/composition_abstract.h"
 
 #include "fourdst/config/config.h"
 
@@ -247,30 +248,28 @@ TEST_F(compositionTest, buildFromMassFractions) {
  * - All CompositionAbstract children have the standard getter interface.
  */
 TEST_F(compositionTest, abstractBase) {
-    class UnrestrictedComposition : public fourdst::composition::Composition {
-    private:
-        fourdst::atomic::Species m_species;
-        const Composition& m_composition;
+    class UnrestrictedComposition : public fourdst::composition::CompositionDecorator {
     public:
-        UnrestrictedComposition(const Composition& base, const fourdst::atomic::Species& species):
-        Composition(base),
-        m_species(species),
-        m_composition(base)
+        UnrestrictedComposition(std::unique_ptr<CompositionAbstract> base, const fourdst::atomic::Species& species):
+        CompositionDecorator(std::move(base)),
+        m_species(species)
         {}
 
         double getMolarAbundance(const fourdst::atomic::Species &species) const override {
             if (species == m_species) {
                 return 1.0;
             }
-            return m_composition.getMolarAbundance(species);
+            return CompositionDecorator::getMolarAbundance(species);
         }
+    private:
+        fourdst::atomic::Species m_species;
     };
 
     fourdst::composition::Composition comp;
     comp.registerSymbol("H-1"); comp.registerSymbol("He-4"); comp.registerSymbol("O-16");
     comp.setMolarAbundance("H-1", 0.6); comp.setMolarAbundance("He-4", 0.6);
 
-    const UnrestrictedComposition uComp(comp, fourdst::atomic::H_1);
+    const UnrestrictedComposition uComp(std::make_unique<fourdst::composition::Composition>(comp), fourdst::atomic::H_1);
 
     ASSERT_DOUBLE_EQ(uComp.getMolarAbundance(fourdst::atomic::H_1), 1.0);
     ASSERT_DOUBLE_EQ(uComp.getMassFraction("He-4"), comp.getMassFraction("He-4"));
