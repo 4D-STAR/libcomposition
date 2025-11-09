@@ -48,6 +48,7 @@ composition_dep = declare_dependency(
 # Make headers accessible
 composition_headers = files(
   'include/fourdst/composition/composition.h',
+  'include/fourdst/composition/composition_abstract.h'
 )
 install_headers(composition_headers, subdir : 'fourdst/fourdst/composition')
 
