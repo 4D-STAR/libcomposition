@@ -506,6 +506,10 @@ namespace fourdst::composition {
         return sortedSymbols.at(index);
     }
 
+    std::unique_ptr<CompositionAbstract> Composition::clone() const {
+        return std::make_unique<Composition>(*this);
+    }
+
     bool Composition::contains(
         const atomic::Species &species
     ) const noexcept {

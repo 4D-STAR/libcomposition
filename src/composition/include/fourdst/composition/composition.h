@@ -94,7 +94,7 @@ namespace fourdst::composition {
      *
      */
     // ReSharper disable once CppClassCanBeFinal
-    class Composition : public CompositionAbstract {
+    class Composition final : public CompositionAbstract {
     private:
         /**
          * @struct CompositionCache
@@ -725,6 +725,8 @@ namespace fourdst::composition {
          */
         [[nodiscard]] atomic::Species getSpeciesAtIndex(size_t index) const override;
 
+        [[nodiscard]] std::unique_ptr<CompositionAbstract> clone() const override;
+
         /**
          * @brief Overloaded output stream operator for Composition.
          * @param os The output stream.
@@ -750,7 +752,7 @@ namespace fourdst::composition {
          * for species are defined based on their atomic mass. When iterating over the molar abundance map, species will be
          * seen in order from lightest to heaviest.
          */
-        auto begin() {
+        [[nodiscard]] std::map<atomic::Species, double>::iterator begin() override {
             return m_molarAbundances.begin();
         }
 
@@ -771,7 +773,7 @@ namespace fourdst::composition {
          * for species are defined based on their atomic mass. When iterating over the molar abundance map, species will be
          * seen in order from lightest to heaviest.
          */
-        [[nodiscard]] auto begin() const {
+        [[nodiscard]] std::map<atomic::Species, double>::const_iterator begin() const override {
             return m_molarAbundances.cbegin();
         }
 
@@ -792,7 +794,7 @@ namespace fourdst::composition {
          * for species are defined based on their atomic mass. When iterating over the molar abundance map, species will be
          * seen in order from lightest to heaviest.
          */
-        auto end() {
+        [[nodiscard]] std::map<atomic::Species, double>::iterator end() override {
             return m_molarAbundances.end();
         }
 
@@ -813,7 +815,7 @@ namespace fourdst::composition {
          * for species are defined based on their atomic mass. When iterating over the molar abundance map, species will be
          * seen in order from lightest to heaviest.
          */
-        [[nodiscard]] auto end() const {
+        [[nodiscard]] std::map<atomic::Species, double>::const_iterator end() const override {
             return m_molarAbundances.cend();
         }
 

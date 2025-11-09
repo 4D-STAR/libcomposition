@@ -169,7 +169,14 @@ namespace fourdst::composition {
          * @param index The index of the species.
          * @return The atomic species at the specified index.
          */
-        [[nodiscard]] virtual fourdst::atomic::Species getSpeciesAtIndex(size_t index) const = 0;
+        [[nodiscard]] virtual atomic::Species getSpeciesAtIndex(size_t index) const = 0;
+
+        [[nodiscard]] virtual std::unique_ptr<CompositionAbstract> clone() const = 0;
+
+        [[nodiscard]] virtual std::map<atomic::Species, double>::iterator begin() = 0;
+        [[nodiscard]] virtual std::map<atomic::Species, double>::iterator end() = 0;
+        [[nodiscard]] virtual std::map<atomic::Species, double>::const_iterator begin() const = 0;
+        [[nodiscard]] virtual std::map<atomic::Species, double>::const_iterator end() const = 0;
     };
 
     // ReSharper disable once CppClassCanBeFinal
@@ -197,6 +204,21 @@ namespace fourdst::composition {
         [[nodiscard]] size_t getSpeciesIndex(const std::string& symbol) const override { return m_base_composition->getSpeciesIndex(symbol); };
         [[nodiscard]] size_t getSpeciesIndex(const atomic::Species& species) const override { return m_base_composition->getSpeciesIndex(species); };
         [[nodiscard]] atomic::Species getSpeciesAtIndex(const size_t index) const override { return m_base_composition->getSpeciesAtIndex(index); };
+        [[nodiscard]] std::unique_ptr<CompositionAbstract> clone() const override {
+            return std::make_unique<CompositionDecorator>(m_base_composition->clone());
+        }
+        [[nodiscard]] std::map<atomic::Species, double>::iterator begin() override {
+            return m_base_composition->begin();
+        }
+        [[nodiscard]] std::map<atomic::Species, double>::iterator end() override {
+            return m_base_composition->end();
+        }
+        [[nodiscard]] std::map<atomic::Species, double>::const_iterator begin() const override {
+            return std::as_const(*m_base_composition).begin();
+        }
+        [[nodiscard]] std::map<atomic::Species, double>::const_iterator end() const override {
+            return std::as_const(*m_base_composition).end();
+        }
     private:
         std::unique_ptr<CompositionAbstract> m_base_composition;
     };
