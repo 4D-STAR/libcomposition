@@ -22,6 +22,7 @@ message('✅ libcomposition species_weight dependency declared')
 composition_sources = files(
   'lib/composition.cpp',
   'lib/utils.cpp',
+  'lib/decorators/composition_masked.cpp',
 )
 
 
