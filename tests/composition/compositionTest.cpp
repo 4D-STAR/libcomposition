@@ -9,6 +9,7 @@
 #include "fourdst/composition/exceptions/exceptions_composition.h"
 #include "fourdst/composition/utils.h"
 #include "fourdst/composition/decorators/composition_masked.h"
+#include "fourdst/composition/utils/composition_hash.h"
 
 #include "fourdst/config/config.h"
 
@@ -248,6 +249,102 @@ TEST_F(compositionTest, decorators) {
 
     comp.setMolarAbundance("H-1", 1.0);
     ASSERT_NE(mComp.getMolarAbundance(fourdst::atomic::H_1), 1.0);
+}
 
+TEST_F(compositionTest, orderInvariance) {
+    fourdst::composition::Composition a;
+    a.registerSymbol("He-4"); a.registerSymbol("H-1"); a.registerSymbol("O-16");
+    a.setMolarAbundance("H-1", 0.6); a.setMolarAbundance("He-4", 0.6);
 
+    fourdst::composition::Composition b;
+    b.registerSymbol("O-16"); b.registerSymbol("H-1"); b.registerSymbol("He-4");
+    b.setMolarAbundance("He-4", 0.6); b.setMolarAbundance("H-1", 0.6);
+
+    const std::uint64_t ha = fourdst::composition::utils::CompositionHash::hash_exact(a);
+    const std::uint64_t hb = fourdst::composition::utils::CompositionHash::hash_exact(b);
+    ASSERT_EQ(ha, hb);
+}
+
+TEST_F(compositionTest, negativeZeroEqualsPositiveZero) {
+    fourdst::composition::Composition a, b;
+    a.registerSymbol("H-1"); b.registerSymbol("H-1");
+    a.setMolarAbundance("H-1", 0.0);
+    b.setMolarAbundance("H-1", -0.0);
+
+    ASSERT_EQ(fourdst::composition::utils::CompositionHash::hash_exact(a),
+              fourdst::composition::utils::CompositionHash::hash_exact(b));
+}
+
+TEST_F(compositionTest, quantizedIgnoresTinyJitter) {
+    fourdst::composition::Composition a, b;
+    a.registerSymbol("H-1"); b.registerSymbol("H-1");
+    a.setMolarAbundance("H-1", 1.0);
+    b.setMolarAbundance("H-1", 1.0 + 5e-14); // smaller than eps
+
+    const double eps = 1e-12;
+    const auto hqa = fourdst::composition::utils::CompositionHash::hash_quantized(a, eps);
+    const auto hqb = fourdst::composition::utils::CompositionHash::hash_quantized(b, eps);
+    ASSERT_EQ(hqa, hqb);
+
+    // But exact should differ if the bit pattern changes
+    const auto hea = fourdst::composition::utils::CompositionHash::hash_exact(a);
+    const auto heb = fourdst::composition::utils::CompositionHash::hash_exact(b);
+    ASSERT_NE(hea, heb);
+}
+
+TEST_F(compositionTest, quantizedDetectsAboveEps) {
+    fourdst::composition::Composition a, b;
+    a.registerSymbol("H-1"); b.registerSymbol("H-1");
+    a.setMolarAbundance("H-1", 1.0);
+    b.setMolarAbundance("H-1", 1.0 + 2e-12); // larger than eps
+
+    const double eps = 1e-12;
+    ASSERT_NE(fourdst::composition::utils::CompositionHash::hash_quantized(a, eps),
+              fourdst::composition::utils::CompositionHash::hash_quantized(b, eps));
+}
+
+TEST_F(compositionTest, exactVsQuantizedDifferentSeeds) {
+    fourdst::composition::Composition a;
+    a.registerSymbol("H-1"); a.setMolarAbundance("H-1", 0.5);
+
+    const auto he = fourdst::composition::utils::CompositionHash::hash_exact(a);
+    const auto hq = fourdst::composition::utils::CompositionHash::hash_quantized(a, 1e-12);
+    ASSERT_NE(he, hq);
+}
+
+TEST_F(compositionTest, cloneAndCopyStable) {
+    std::vector<std::string> symbols = {"H-1", "He-4"};
+    std::vector<double> abundances = {0.6, 0.4};
+    fourdst::composition::Composition a(symbols, abundances);
+    fourdst::composition::Composition b(a);
+
+    const auto ha = fourdst::composition::utils::CompositionHash::hash_exact(a);
+    const auto hb = fourdst::composition::utils::CompositionHash::hash_exact(b);
+    ASSERT_EQ(ha, hb);
+
+    std::unique_ptr<fourdst::composition::CompositionAbstract> cptr = a.clone();
+    const auto hc = fourdst::composition::utils::CompositionHash::hash_exact(
+        *static_cast<fourdst::composition::Composition*>(cptr.get()));
+    ASSERT_EQ(ha, hc);
+}
+
+TEST_F(compositionTest, bothSidesRegisterSameZeroSpeciesEquality) {
+    fourdst::composition::Composition a, b;
+    a.registerSymbol("H-1"); b.registerSymbol("H-1");
+    a.setMolarAbundance("H-1", 0.6); b.setMolarAbundance("H-1", 0.6);
+
+    a.registerSymbol("He-4"); b.registerSymbol("He-4");
+    ASSERT_EQ(fourdst::composition::utils::CompositionHash::hash_exact(a),
+              fourdst::composition::utils::CompositionHash::hash_exact(b));
+}
+
+TEST_F(compositionTest, canonicalizeNaNIfAllowed) {
+    fourdst::composition::Composition a, b;
+    a.registerSymbol("H-1"); b.registerSymbol("H-1");
+    double qnan1 = std::numeric_limits<double>::quiet_NaN();
+    double qnan2 = std::bit_cast<double>(std::uint64_t{0x7ff80000'00000042ULL});
+    a.setMolarAbundance("H-1", qnan1);
+    b.setMolarAbundance("H-1", qnan2);
+    ASSERT_EQ(fourdst::composition::utils::CompositionHash::hash_exact(a),
+              fourdst::composition::utils::CompositionHash::hash_exact(b));
 }

@@ -274,6 +274,8 @@ namespace fourdst::composition {
          */
         Composition(const Composition& composition);
 
+        explicit Composition(const CompositionAbstract& composition);
+
         /**
          * @brief Assignment operator.
          * @param other The Composition to assign from.
@@ -820,4 +822,22 @@ namespace fourdst::composition {
         }
 
     };
+
+    inline bool operator==(const Composition& a, const Composition& b) noexcept {
+        if (a.size() != b.size()) return false;
+
+        // Compare species sets quickly
+        if (a.getRegisteredSpecies() != b.getRegisteredSpecies())
+            return false;
+
+        // Compare all abundances
+        for (auto itA = a.begin(), itB = b.begin();
+             itA != a.end() && itB != b.end(); ++itA, ++itB) {
+            if (itA->first != itB->first)
+                return false;
+            if (itA->second != itB->second)
+                return false;
+             }
+        return true;
+    }
 }; // namespace fourdst::composition

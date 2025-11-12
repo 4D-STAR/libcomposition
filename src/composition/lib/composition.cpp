@@ -165,6 +165,13 @@ namespace fourdst::composition {
         m_molarAbundances = composition.m_molarAbundances;
     }
 
+    Composition::Composition(const CompositionAbstract &composition) {
+        for (const auto& species : composition.getRegisteredSpecies()) {
+            registerSpecies(species);
+            setMolarAbundance(species, composition.getMolarAbundance(species));
+        }
+    }
+
     Composition& Composition::operator=(
         const Composition &other
     ) {

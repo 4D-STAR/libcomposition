@@ -30,7 +30,8 @@ dependencies = [
     species_weight_dep,
     const_dep,
     config_dep,
-    log_dep
+    log_dep,
+    xxhash_dep
 ]
 
 # Define the libcomposition library so it can be linked against by other parts of the build system
@@ -69,3 +70,15 @@ composition_exception_headers = files(
     'include/fourdst/composition/exceptions/exceptions_composition.h',
 )
 install_headers(composition_exception_headers, subdir : 'fourdst/fourdst/composition/exceptions')
+
+v = meson.project_version()
+
+conf_data = configuration_data()
+conf_data.set_quoted('PROJECT_VERSION', v)
+conf_data.set_quoted('PROJECT_NAME', meson.project_name())
+
+configure_file(
+    input : 'include/fourdst/config.h.in',
+    output : 'config.h',
+    configuration : conf_data
+)
