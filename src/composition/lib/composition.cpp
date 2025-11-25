@@ -113,6 +113,18 @@ namespace fourdst::composition {
         }
     }
 
+    Composition::Composition(const std::unordered_set<std::string> &symbols) {
+        for (const auto& symbol : symbols) {
+            registerSymbol(symbol);
+        }
+    }
+
+    Composition::Composition(const std::unordered_set<atomic::Species> &species) {
+        for (const auto& s : species) {
+            registerSpecies(s);
+        }
+    }
+
     Composition::Composition(
         const std::vector<std::string>& symbols,
         const std::vector<double>& molarAbundances
@@ -155,6 +167,34 @@ namespace fourdst::composition {
         for (const auto& [symbol, y] : std::views::zip(sortVectorBy<std::string>(std::vector<std::string>(symbols.begin(), symbols.end()), molarAbundances), molarAbundances)) {
             registerSymbol(symbol);
             setMolarAbundance(symbol, y);
+        }
+    }
+
+    Composition::Composition(const std::unordered_map<std::string, double> &symbolMolarAbundances) {
+        for (const auto& [symbol, y] : symbolMolarAbundances) {
+            registerSymbol(symbol);
+            setMolarAbundance(symbol, y);
+        }
+    }
+
+    Composition::Composition(const std::map<std::string, double> &symbolMolarAbundances) {
+        for (const auto& [symbol, y] : symbolMolarAbundances) {
+            registerSymbol(symbol);
+            setMolarAbundance(symbol, y);
+        }
+    }
+
+    Composition::Composition(const std::unordered_map<atomic::Species, double> &speciesMolarAbundances) {
+        for (const auto& [species, y] : speciesMolarAbundances) {
+            registerSpecies(species);
+            setMolarAbundance(species, y);
+        }
+    }
+
+    Composition::Composition(const std::map<atomic::Species, double> &speciesMolarAbundances) {
+        for (const auto& [species, y] : speciesMolarAbundances) {
+            registerSpecies(species);
+            setMolarAbundance(species, y);
         }
     }
 

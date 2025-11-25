@@ -68,7 +68,17 @@ namespace fourdst::composition {
     }
 
     Composition buildCompositionFromMassFractions(const std::vector<atomic::Species> &species, const std::vector<double> &massFractions) {
-        return buildCompositionFromMassFractions(std::set<atomic::Species>(species.begin(), species.end()), massFractions);
+        std::set<atomic::Species> speciesSet(species.begin(), species.end());
+        std::vector<double> sortedMassFractions;
+
+        sortedMassFractions.resize(massFractions.size());
+        for (const auto& [s, xi] : std::views::zip(species, massFractions)) {
+            const size_t index = std::distance(speciesSet.begin(), speciesSet.find(s));
+            assert (index < sortedMassFractions.size());
+            sortedMassFractions[index] = xi;
+        }
+
+        return buildCompositionFromMassFractions(speciesSet, sortedMassFractions);
     }
 
     Composition buildCompositionFromMassFractions(const std::vector<std::string> &symbols, const std::vector<double> &massFractions) {
@@ -80,6 +90,107 @@ namespace fourdst::composition {
             }
             species.insert(result.value());
         }
+
+        std::vector<double> sortedMassFractions(massFractions.size());
+        for (const auto& [symbol, xi] : std::views::zip(symbols, massFractions)) {
+            auto result = getSpecies(symbol);
+            if (!result) {
+                throw_unknown_symbol(symbol);
+            }
+            const size_t index = std::distance(species.begin(), species.find(result.value()));
+            assert (index < sortedMassFractions.size());
+            sortedMassFractions[index] = xi;
+        }
+        return buildCompositionFromMassFractions(species, sortedMassFractions);
+    }
+
+    Composition buildCompositionFromMassFractions(const std::unordered_map<atomic::Species, double>& massFractionsMap) {
+        std::set<atomic::Species> species;
+        std::vector<double> massFractions;
+
+        massFractions.reserve(massFractionsMap.size());
+
+        for (const auto &sp: massFractionsMap | std::views::keys) {
+            species.insert(sp);
+        }
+
+        massFractions.resize(massFractionsMap.size());
+        for (const auto& [sp, xi] : massFractionsMap) {
+            const size_t index = std::distance(species.begin(), species.find(sp));
+            assert (index < massFractions.size());
+            massFractions[index] = xi;
+        }
+
         return buildCompositionFromMassFractions(species, massFractions);
     }
+
+    Composition buildCompositionFromMassFractions(std::map<atomic::Species, double> massFractions) {
+        std::set<atomic::Species> species;
+        std::vector<double> massFractionVector;
+
+        massFractionVector.reserve(massFractions.size());
+
+        for (const auto& [sp, xi] : massFractions) {
+            species.insert(sp);
+            massFractionVector.push_back(xi);
+        }
+
+        return buildCompositionFromMassFractions(species, massFractionVector);
+    }
+
+    Composition buildCompositionFromMassFractions(std::map<std::string, double> massFractions) {
+        std::set<atomic::Species> species;
+        std::vector<double> massFractionVector;
+
+
+        for (const auto &symbol: massFractions | std::views::keys) {
+            auto result = getSpecies(symbol);
+            if (!result) {
+                throw_unknown_symbol(symbol);
+            }
+            species.insert(result.value());
+        }
+
+        massFractionVector.resize(massFractions.size());
+
+        for (const auto& [symbol, xi] : massFractions) {
+            auto result = getSpecies(symbol);
+            if (!result) {
+                throw_unknown_symbol(symbol);
+            }
+            const size_t index = std::distance(species.begin(), species.find(result.value()));
+            assert (index < massFractionVector.size());
+            massFractionVector[index] = xi;
+        }
+
+
+        return buildCompositionFromMassFractions(species, massFractionVector);
+    }
+
+    Composition buildCompositionFromMassFractions(const std::unordered_map<std::string, double>& massFractions) {
+        std::set<atomic::Species> species;
+        std::vector<double> massFractionVector;
+
+        for (const auto &symbol: massFractions | std::views::keys) {
+            auto result = getSpecies(symbol);
+            if (!result) {
+                throw_unknown_symbol(symbol);
+            }
+            species.insert(result.value());
+        }
+
+        massFractionVector.resize(massFractions.size());
+        for (const auto& [sp, xi] : massFractions) {
+            auto result = getSpecies(sp);
+            if (!result) {
+                throw_unknown_symbol(sp);
+            }
+            const size_t index = std::distance(species.begin(), species.find(result.value()));
+            assert (index < massFractionVector.size());
+            massFractionVector[index] = xi;
+        }
+
+        return buildCompositionFromMassFractions(species, massFractionVector);
+    }
+
 }

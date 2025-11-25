@@ -47,4 +47,44 @@ namespace fourdst::composition {
         const std::set<atomic::Species>& species,
         const std::vector<double>& massFractions
     );
+
+    /**
+     * @brief Build a Composition object from a map of species to mass fractions.
+     * @param massFractionsMap The map of species to their corresponding mass fractions.
+     * @return A Composition object constructed from the provided species and mass fractions.
+     * @throws exceptions::InvalidCompositionError if the provided mass fractions do not sum to within one part in 10^10 of 1.0.
+     */
+    Composition buildCompositionFromMassFractions(
+        const std::unordered_map<atomic::Species, double>& massFractionsMap
+    );
+
+    /**
+     * @brief Build a Composition object from a map of species to mass fractions.
+     * @param massFractions The map of species to their corresponding mass fractions.
+     * @return A Composition object constructed from the provided species and mass fractions.
+     * @throws exceptions::InvalidCompositionError if the provided mass fractions do not sum to within one part in 10^10 of 1.0.
+     */
+    Composition buildCompositionFromMassFractions(
+        const std::unordered_map<std::string, double>& massFractions
+    );
+
+    /**
+     * @brief Build a Composition object from a map of species to mass fractions.
+     * @param massFractions The map of species to their corresponding mass fractions.
+     * @return A Composition object constructed from the provided species and mass fractions.
+     * @throws exceptions::InvalidCompositionError if the provided mass fractions do not sum to within one part in 10^10 of 1.0.
+     */
+    Composition buildCompositionFromMassFractions(
+        std::map<atomic::Species, double> massFractions
+    );
+
+    /**
+     * @brief Build a Composition object from a map of species to mass fractions.
+     * @param massFractions The map of species to their corresponding mass fractions.
+     * @return A Composition object constructed from the provided species and mass fractions.
+     * @throws exceptions::InvalidCompositionError if the provided mass fractions do not sum to within one part in 10^10 of 1.0.
+     */
+    Composition buildCompositionFromMassFractions(
+        std::map<std::string, double> massFractions
+    );
 }

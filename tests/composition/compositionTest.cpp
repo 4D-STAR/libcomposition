@@ -221,12 +221,44 @@ TEST_F(compositionTest, meanElectronAbundance) {
     EXPECT_NEAR(comp.getElectronAbundance(), expectedYe, 1e-12);
 }
 
-TEST_F(compositionTest, buildFromMassFractions) {
+TEST_F(compositionTest, buildFromMassFractionVector) {
     using fourdst::atomic::Species;
     using namespace fourdst::atomic;
     using fourdst::composition::Composition;
 
-    const std::vector<Species> sVec = {H_1, He_4, C_12};
+    const std::vector<Species> sVec = {H_1, Mg_24, He_4, C_12};
+    const std::vector<double>  massFractions = {0.7, 0.01, 0.28, 0.01};
+
+    const Composition comp = fourdst::composition::buildCompositionFromMassFractions(sVec, massFractions);
+
+    EXPECT_DOUBLE_EQ(comp.getMassFraction(H_1), 0.7);
+    EXPECT_DOUBLE_EQ(comp.getMassFraction(He_4), 0.28);
+    EXPECT_DOUBLE_EQ(comp.getMassFraction(C_12), 0.01);
+    EXPECT_DOUBLE_EQ(comp.getMassFraction(Mg_24), 0.01);
+}
+
+TEST_F(compositionTest, buildFromMassFractionVectorString) {
+    using fourdst::atomic::Species;
+    using namespace fourdst::atomic;
+    using fourdst::composition::Composition;
+
+    const std::vector<std::string> sVec = {"H-1", "Mg-24", "He-4", "C-12"};
+    const std::vector<double>  massFractions = {0.7, 0.01, 0.28, 0.01};
+
+    const Composition comp = fourdst::composition::buildCompositionFromMassFractions(sVec, massFractions);
+
+    EXPECT_DOUBLE_EQ(comp.getMassFraction(H_1), 0.7);
+    EXPECT_DOUBLE_EQ(comp.getMassFraction(He_4), 0.28);
+    EXPECT_DOUBLE_EQ(comp.getMassFraction(C_12), 0.01);
+    EXPECT_DOUBLE_EQ(comp.getMassFraction(Mg_24), 0.01);
+}
+
+TEST_F(compositionTest, buildFromMassFractionSet) {
+    using fourdst::atomic::Species;
+    using namespace fourdst::atomic;
+    using fourdst::composition::Composition;
+
+    const std::set<Species> sVec = {H_1, He_4, C_12};
     const std::vector<double>  massFractions = {0.7, 0.28, 0.02};
 
     const Composition comp = fourdst::composition::buildCompositionFromMassFractions(sVec, massFractions);
@@ -234,7 +266,66 @@ TEST_F(compositionTest, buildFromMassFractions) {
     EXPECT_DOUBLE_EQ(comp.getMassFraction(H_1), 0.7);
     EXPECT_DOUBLE_EQ(comp.getMassFraction(He_4), 0.28);
     EXPECT_DOUBLE_EQ(comp.getMassFraction(C_12), 0.02);
+}
 
+TEST_F(compositionTest, buildFromMassFractionUnorderedMap) {
+    using fourdst::atomic::Species;
+    using namespace fourdst::atomic;
+    using fourdst::composition::Composition;
+
+    const std::unordered_map<Species, double> sMap = {{H_1, 0.7}, {Mg_24, 0.01}, {He_4, 0.28}, {C_12, 0.01}};
+
+    const Composition comp = fourdst::composition::buildCompositionFromMassFractions(sMap);
+
+    EXPECT_DOUBLE_EQ(comp.getMassFraction(H_1), 0.7);
+    EXPECT_DOUBLE_EQ(comp.getMassFraction(He_4), 0.28);
+    EXPECT_DOUBLE_EQ(comp.getMassFraction(C_12), 0.01);
+    EXPECT_DOUBLE_EQ(comp.getMassFraction(Mg_24), 0.01);
+}
+
+TEST_F(compositionTest, buildFromMassFractionUnorderedMapString) {
+    using fourdst::atomic::Species;
+    using namespace fourdst::atomic;
+    using fourdst::composition::Composition;
+
+    const std::unordered_map<std::string, double> sMap = {{"H-1", 0.7}, {"Mg-24", 0.01}, {"He-4", 0.28}, {"C-12", 0.01}};
+
+    const Composition comp = fourdst::composition::buildCompositionFromMassFractions(sMap);
+
+    EXPECT_DOUBLE_EQ(comp.getMassFraction(H_1), 0.7);
+    EXPECT_DOUBLE_EQ(comp.getMassFraction(He_4), 0.28);
+    EXPECT_DOUBLE_EQ(comp.getMassFraction(C_12), 0.01);
+    EXPECT_DOUBLE_EQ(comp.getMassFraction(Mg_24), 0.01);
+}
+
+TEST_F(compositionTest, buildFromMassFractionOrderedMap) {
+    using fourdst::atomic::Species;
+    using namespace fourdst::atomic;
+    using fourdst::composition::Composition;
+
+    const std::map<Species, double> sMap = {{H_1, 0.7}, {Mg_24, 0.01}, {He_4, 0.28}, {C_12, 0.01}};
+
+    const Composition comp = fourdst::composition::buildCompositionFromMassFractions(sMap);
+
+    EXPECT_DOUBLE_EQ(comp.getMassFraction(H_1), 0.7);
+    EXPECT_DOUBLE_EQ(comp.getMassFraction(He_4), 0.28);
+    EXPECT_DOUBLE_EQ(comp.getMassFraction(C_12), 0.01);
+    EXPECT_DOUBLE_EQ(comp.getMassFraction(Mg_24), 0.01);
+}
+
+TEST_F(compositionTest, buildFromMassFractionOrderedMapString) {
+    using fourdst::atomic::Species;
+    using namespace fourdst::atomic;
+    using fourdst::composition::Composition;
+
+    const std::map<std::string, double> sMap = {{"H-1", 0.7}, {"Mg-24", 0.01}, {"He-4", 0.28}, {"C-12", 0.01}};
+
+    const Composition comp = fourdst::composition::buildCompositionFromMassFractions(sMap);
+
+    EXPECT_DOUBLE_EQ(comp.getMassFraction(H_1), 0.7);
+    EXPECT_DOUBLE_EQ(comp.getMassFraction(He_4), 0.28);
+    EXPECT_DOUBLE_EQ(comp.getMassFraction(C_12), 0.01);
+    EXPECT_DOUBLE_EQ(comp.getMassFraction(Mg_24), 0.01);
 }
 
 TEST_F(compositionTest, decorators) {

@@ -25,6 +25,7 @@
 #include <set>
 
 #include <optional>
+#include <unordered_set>
 
 #include "fourdst/config/config.h"
 #include "fourdst/logging/logging.h"
@@ -218,6 +219,9 @@ namespace fourdst::composition {
          */
         explicit Composition(const std::set<atomic::Species>& species);
 
+        explicit Composition(const std::unordered_set<std::string>& symbols);
+        explicit Composition(const std::unordered_set<atomic::Species>& species);
+
         /**
          * @brief Constructs a Composition from symbols and their corresponding molar abundances.
          * @param symbols The symbols to register.
@@ -267,6 +271,13 @@ namespace fourdst::composition {
          * @note Molar abundances do not need to sum to 1.0, they are an absolute quantity.
          */
         Composition(const std::set<std::string>& symbols, const std::vector<double>& molarAbundances);
+
+        explicit Composition(const std::unordered_map<std::string, double>& symbolMolarAbundances);
+        explicit Composition(const std::map<std::string, double>& symbolMolarAbundances);
+
+        explicit Composition(const std::unordered_map<atomic::Species, double>& speciesMolarAbundances);
+        explicit Composition(const std::map<atomic::Species, double>& speciesMolarAbundances);
+
 
         /**
          * @brief Constructs a Composition from another Composition.
