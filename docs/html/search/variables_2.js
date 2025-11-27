@@ -1,24 +1,5 @@
 var searchData=
 [
-  ['m_5fa_0',['m_a',['../structfourdst_1_1atomic_1_1_species.html#a6e7c5ab92da7ab867018da87a14ef3ef',1,'fourdst::atomic::Species']]],
-  ['m_5fatomicmass_1',['m_atomicMass',['../structfourdst_1_1atomic_1_1_species.html#ab3e057d426e0d8dbf0134f92fda1c322',1,'fourdst::atomic::Species']]],
-  ['m_5fatomicmassunc_2',['m_atomicMassUnc',['../structfourdst_1_1atomic_1_1_species.html#a4c6aa98435227f8257b93311a19c4adf',1,'fourdst::atomic::Species']]],
-  ['m_5fbetacode_3',['m_betaCode',['../structfourdst_1_1atomic_1_1_species.html#abe9c5f69d657383e17dd49b41b7e4e15',1,'fourdst::atomic::Species']]],
-  ['m_5fbetadecayenergy_4',['m_betaDecayEnergy',['../structfourdst_1_1atomic_1_1_species.html#a0fc7e4b41662fe0a726dd962e9dbae9e',1,'fourdst::atomic::Species']]],
-  ['m_5fbindingenergy_5',['m_bindingEnergy',['../structfourdst_1_1atomic_1_1_species.html#acbb5b36d6892ee09e95d774eda235d3c',1,'fourdst::atomic::Species']]],
-  ['m_5fcache_6',['m_cache',['../classfourdst_1_1composition_1_1_composition.html#a02cd9d9608da082a200fdfa86d14bf5d',1,'fourdst::composition::Composition']]],
-  ['m_5fdecaymodes_7',['m_decayModes',['../structfourdst_1_1atomic_1_1_species.html#a545093f4fd3d9ad490a5bea84e950d35',1,'fourdst::atomic::Species']]],
-  ['m_5fel_8',['m_el',['../structfourdst_1_1atomic_1_1_species.html#a704e9d164033a89d610685c494fd53eb',1,'fourdst::atomic::Species']]],
-  ['m_5fhalflife_5fs_9',['m_halfLife_s',['../structfourdst_1_1atomic_1_1_species.html#af76d148ab7be629601a389f5758238ee',1,'fourdst::atomic::Species']]],
-  ['m_5fmessage_10',['m_message',['../classfourdst_1_1composition_1_1exceptions_1_1_composition_error.html#a4cd69d727a162f90045cd6d4aaf95440',1,'fourdst::composition::exceptions::CompositionError::m_message'],['../classfourdst_1_1composition_1_1exceptions_1_1_species_error.html#a07a424e42edd368e6fb5113655ab6d1e',1,'fourdst::composition::exceptions::SpeciesError::m_message']]],
-  ['m_5fmolarabundances_11',['m_molarAbundances',['../classfourdst_1_1composition_1_1_composition.html#aa05a640e0ea80142682bf4ee30a93c7f',1,'fourdst::composition::Composition']]],
-  ['m_5fn_12',['m_n',['../structfourdst_1_1atomic_1_1_species.html#a8f0a4eb006c924bc006bb9eb6d3907ac',1,'fourdst::atomic::Species']]],
-  ['m_5fname_13',['m_name',['../structfourdst_1_1atomic_1_1_species.html#a4f782752e18e8972c66ee7168a06279d',1,'fourdst::atomic::Species']]],
-  ['m_5fnz_14',['m_nz',['../structfourdst_1_1atomic_1_1_species.html#a50d5e1c96be4884ccfebde1eec79b6e8',1,'fourdst::atomic::Species']]],
-  ['m_5fregisteredspecies_15',['m_registeredSpecies',['../classfourdst_1_1composition_1_1_composition.html#a452b0affb86dc971a96c80d01f4fcb2b',1,'fourdst::composition::Composition']]],
-  ['m_5fspin_16',['m_spin',['../structfourdst_1_1atomic_1_1_species.html#a9dcfca3c5e28f6523bb1a10ede645048',1,'fourdst::atomic::Species']]],
-  ['m_5fspinparity_17',['m_spinParity',['../structfourdst_1_1atomic_1_1_species.html#a874bc48272e4f091817bc25a72eebc2d',1,'fourdst::atomic::Species']]],
-  ['m_5fz_18',['m_z',['../structfourdst_1_1atomic_1_1_species.html#aae24c637c169f9f5eca03b6dcf8329e0',1,'fourdst::atomic::Species']]],
-  ['massfractions_19',['massFractions',['../structfourdst_1_1composition_1_1_composition_1_1_composition_cache.html#add5ce97ae6a1796c5f6488bfa1555be6',1,'fourdst::composition::Composition::CompositionCache']]],
-  ['molarabundances_20',['molarAbundances',['../structfourdst_1_1composition_1_1_composition_1_1_composition_cache.html#ab74c9cd92ba8aaf5f95c8ca5284206a6',1,'fourdst::composition::Composition::CompositionCache']]]
+  ['kseed_0',['kSeed',['../structfourdst_1_1composition_1_1utils_1_1CompositionHash.html#ac80f1cb0966ae3d0358e77c7a6f904f5',1,'fourdst::composition::utils::CompositionHash']]],
+  ['ktag_1',['kTag',['../structfourdst_1_1composition_1_1utils_1_1CompositionHash.html#ae8913343a3612786bdc9b96863494533',1,'fourdst::composition::utils::CompositionHash']]]
 ];

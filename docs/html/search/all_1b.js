@@ -41,6 +41,7 @@ var searchData=
   ['w_5f195_38',['W_195',['../namespacefourdst_1_1atomic.html#ac460450df76df9ebe4c954dd1aa3ed5a',1,'fourdst::atomic']]],
   ['w_5f196_39',['W_196',['../namespacefourdst_1_1atomic.html#a0b03a0ffcd26522dfc4073621ce15cf1',1,'fourdst::atomic']]],
   ['w_5f197_40',['W_197',['../namespacefourdst_1_1atomic.html#ad4bd6aeb43e46573aff92550c736782c',1,'fourdst::atomic']]],
-  ['what_41',['what',['../classfourdst_1_1composition_1_1exceptions_1_1_composition_error.html#ae44ceddb19da8a8cda7ee150b6826d08',1,'fourdst::composition::exceptions::CompositionError::what()'],['../classfourdst_1_1composition_1_1exceptions_1_1_species_error.html#af0c63f7e05d0c65157b960c654d09b67',1,'fourdst::composition::exceptions::SpeciesError::what()']]],
-  ['with_20pkg_20config_42',['Linking with pkg-config',['../index.html#autotoc_md23',1,'']]]
+  ['what_41',['what',['../classfourdst_1_1composition_1_1exceptions_1_1SpeciesError.html#af0c63f7e05d0c65157b960c654d09b67',1,'fourdst::composition::exceptions::SpeciesError::what()'],['../classfourdst_1_1composition_1_1exceptions_1_1CompositionError.html#ae44ceddb19da8a8cda7ee150b6826d08',1,'fourdst::composition::exceptions::CompositionError::what()']]],
+  ['with_20pkg_20config_42',['Linking with pkg-config',['../index.html#autotoc_md23',1,'']]],
+  ['write_5fheader_43',['write_header',['../structfourdst_1_1composition_1_1utils_1_1CompositionHash.html#af02e9cdbc51fd5d166ea88b5be2c989a',1,'fourdst::composition::utils::CompositionHash']]]
 ];

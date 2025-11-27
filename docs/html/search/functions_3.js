@@ -16,7 +16,7 @@ var searchData=
   ['db_5f268_13',['Db_268',['../namespacefourdst_1_1atomic.html#a090def46dd7d5f269e6c3df8c9e013e3',1,'fourdst::atomic']]],
   ['db_5f269_14',['Db_269',['../namespacefourdst_1_1atomic.html#a2c8f9f67a5874dfd973a621efa924d60',1,'fourdst::atomic']]],
   ['db_5f270_15',['Db_270',['../namespacefourdst_1_1atomic.html#a1c8c94ef0ae8cfdcab243495bd9ae9eb',1,'fourdst::atomic']]],
-  ['decaymodes_16',['decayModes',['../structfourdst_1_1atomic_1_1_species.html#aad5094dfc8317db36468356bbc4a3e2f',1,'fourdst::atomic::Species']]],
+  ['decaymodes_16',['decayModes',['../structfourdst_1_1atomic_1_1Species.html#aad5094dfc8317db36468356bbc4a3e2f',1,'fourdst::atomic::Species']]],
   ['ds_5f267_17',['Ds_267',['../namespacefourdst_1_1atomic.html#a02f36abb6cbf6e1835e8c4c58547de92',1,'fourdst::atomic']]],
   ['ds_5f268_18',['Ds_268',['../namespacefourdst_1_1atomic.html#a6d90940945169d63a47645b085ee6366',1,'fourdst::atomic']]],
   ['ds_5f269_19',['Ds_269',['../namespacefourdst_1_1atomic.html#a858b6994cb1515aefbe78e013732baf3',1,'fourdst::atomic']]],

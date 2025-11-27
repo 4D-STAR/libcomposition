@@ -40,7 +40,7 @@ var NAVTREE =
       [ "Class Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
-        [ "All", "functions.html", null ],
+        [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", null ],
         [ "Variables", "functions_vars.html", null ],
         [ "Related Symbols", "functions_rela.html", null ]
@@ -55,22 +55,38 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"namespacefourdst_1_1atomic.html#a039a79b2a13ccff0795215eb0ec794c7",
-"namespacefourdst_1_1atomic.html#a1455845489486b17a5ca939804d87767",
-"namespacefourdst_1_1atomic.html#a26bda8d58e97646f2444ecd25435dc51",
-"namespacefourdst_1_1atomic.html#a37a5815a4b0c5a3c6c79fd9f7c35af96",
-"namespacefourdst_1_1atomic.html#a49ccc6148f428740441ae0648cffbcce",
-"namespacefourdst_1_1atomic.html#a5aad0953a2d294df08c82601a502318f",
-"namespacefourdst_1_1atomic.html#a6d07cf2386e3f335d963a1305b7d5195",
-"namespacefourdst_1_1atomic.html#a7f5c79c8c5fca4add0459aa8a1e98986",
-"namespacefourdst_1_1atomic.html#a92784ae5a0a0572170bcfb2efb83ea71",
-"namespacefourdst_1_1atomic.html#aa50fd2680c31f51f0513c25e011a00c5",
-"namespacefourdst_1_1atomic.html#ab7d43617ac909ce1cb5211e9a2431487",
-"namespacefourdst_1_1atomic.html#acad30ec13d13b0b52e5205c52d215578",
-"namespacefourdst_1_1atomic.html#adc6037c659fd0a11fa6b2a39616391c8",
-"namespacefourdst_1_1atomic.html#aee9aa6ef52f47aa3ad44053dab94be66",
-"namespacefourdst_1_1atomic.html#afee59fcaa37f51796d8d134fed7d2850"
+"classfourdst_1_1composition_1_1MaskedComposition.html#a0e146a8433a786702b03bbeddce38ff8",
+"namespacefourdst_1_1atomic.html#a063b35d882d26a90b7ecad0a557c90e2",
+"namespacefourdst_1_1atomic.html#a177a45b882b291b0b3d36aa12c6834c1",
+"namespacefourdst_1_1atomic.html#a299fbb89e951b7c0e6cd88675e42eaa8",
+"namespacefourdst_1_1atomic.html#a3b0a882eda8911632a7b09bdccf1038c",
+"namespacefourdst_1_1atomic.html#a4c7bcd891facb064ffca8f3cf4d7b599",
+"namespacefourdst_1_1atomic.html#a5d867bb2b2ef43f96f4a28f55faeb61a",
+"namespacefourdst_1_1atomic.html#a6f60bb665e1cb21f7f46c787bc4bee46",
+"namespacefourdst_1_1atomic.html#a8274ae0115bb053f907112786dedb66d",
+"namespacefourdst_1_1atomic.html#a95eb889900c5d0f8a306ff217da499d9",
+"namespacefourdst_1_1atomic.html#aa85bb30f5484544fb5e0a37f51cde483",
+"namespacefourdst_1_1atomic.html#abba47639d93174033c4446f3a3ae5e3c",
+"namespacefourdst_1_1atomic.html#ace58a02d4c2d7d6fcfcc9fd5e8238ec3",
+"namespacefourdst_1_1atomic.html#adfaa31e006f67e1fbc043da81444c713",
+"namespacefourdst_1_1atomic.html#af145f72c2ff7bef74d100a10491557d2",
+"namespacemembers_func_f.html",
+"species_8h.html#a0ddde36192e029dc700b161c0790aa13",
+"species_8h.html#a1f8f714e128c6d61eac4b0aa619560ce",
+"species_8h.html#a3106e28fb53608b51accbf42b2f983b6",
+"species_8h.html#a435f4aa80d272acdb11adf80c1cfe859",
+"species_8h.html#a55127132366a6c262a0ae4363467b079",
+"species_8h.html#a667f0a9536e42703dd33f461c2041807",
+"species_8h.html#a78887ec137127d5e9c63dc78387f3726",
+"species_8h.html#a8bdd8e97730a6750ab4573b384a58fe2",
+"species_8h.html#a9eaebc26e55a6124dad2dbc690c9b097",
+"species_8h.html#ab0c8afc81ed81801c49589932d6b2e8d",
+"species_8h.html#ac4c2ee2883fb41eb04e699dda65e5965",
+"species_8h.html#ad6d522c7020751ef6b4c22c4a3f7521f",
+"species_8h.html#ae7ad9527adbe5d26719dd71ae2d34cf5",
+"species_8h.html#af9bad28199f56e721eaea8146cbcde8b",
+"structstd_1_1hash_3_01fourdst_1_1composition_1_1Composition_01_4.html#a20ef7280a7d2353f5b391a1a00263d0c"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronization';
-var SYNCOFFMSG = 'click to enable panel synchronization';
+var SYNCONMSG = 'click to disable panel synchronisation';
+var SYNCOFFMSG = 'click to enable panel synchronisation';

@@ -88,7 +88,7 @@ var searchData=
   ['integration_85',['Linking and Integration',['../index.html#api_sec',1,'']]],
   ['interfaces_86',['4. Iterating and Sorted Vector Interfaces',['../index.html#autotoc_md18',1,'']]],
   ['introduction_87',['Introduction',['../index.html#intro_sec',1,'']]],
-  ['invalidcompositionerror_88',['InvalidCompositionError',['../classfourdst_1_1composition_1_1exceptions_1_1_invalid_composition_error.html',1,'fourdst::composition::exceptions']]],
+  ['invalidcompositionerror_88',['InvalidCompositionError',['../classfourdst_1_1composition_1_1exceptions_1_1InvalidCompositionError.html',1,'fourdst::composition::exceptions']]],
   ['ir_5f163_89',['Ir_163',['../namespacefourdst_1_1atomic.html#ad17a3c6ff7abcf5ba007c4a0b599f9bd',1,'fourdst::atomic']]],
   ['ir_5f164_90',['Ir_164',['../namespacefourdst_1_1atomic.html#afcef2e4de537aa8fe37302a006b3589c',1,'fourdst::atomic']]],
   ['ir_5f165_91',['Ir_165',['../namespacefourdst_1_1atomic.html#aaa142f21a94643951761c4f9df09f729',1,'fourdst::atomic']]],
@@ -132,6 +132,7 @@ var searchData=
   ['ir_5f203_129',['Ir_203',['../namespacefourdst_1_1atomic.html#a90b22014195c723607dae0212a124a70',1,'fourdst::atomic']]],
   ['ir_5f204_130',['Ir_204',['../namespacefourdst_1_1atomic.html#acf9185e7d53062fc2dccaa82786cd06c',1,'fourdst::atomic']]],
   ['ir_5f205_131',['Ir_205',['../namespacefourdst_1_1atomic.html#aceac8d6d45e2e85722426528ad89f48b',1,'fourdst::atomic']]],
-  ['is_5fclear_132',['is_clear',['../structfourdst_1_1composition_1_1_composition_1_1_composition_cache.html#af291583560120bb53c4546a598666477',1,'fourdst::composition::Composition::CompositionCache']]],
-  ['iterating_20and_20sorted_20vector_20interfaces_133',['4. Iterating and Sorted Vector Interfaces',['../index.html#autotoc_md18',1,'']]]
+  ['is_5fclear_132',['is_clear',['../structfourdst_1_1composition_1_1Composition_1_1CompositionCache.html#af291583560120bb53c4546a598666477',1,'fourdst::composition::Composition::CompositionCache']]],
+  ['is_5ffinite_133',['is_finite',['../structfourdst_1_1composition_1_1utils_1_1CompositionHash.html#a200d15d86b755cab2e4ef0f9d480adb7',1,'fourdst::composition::utils::CompositionHash']]],
+  ['iterating_20and_20sorted_20vector_20interfaces_134',['4. Iterating and Sorted Vector Interfaces',['../index.html#autotoc_md18',1,'']]]
 ];

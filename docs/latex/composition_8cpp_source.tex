@@ -35,7 +35,7 @@
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00031}00031\ }
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ <utility>}}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00033}00033\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{atomic_species_8h}{fourdst/atomic/atomicSpecies.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{atomicSpecies_8h}{fourdst/atomic/atomicSpecies.h}}"{}}}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00035}00035\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{species_8h}{fourdst/atomic/species.h}}"{}}}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00036}00036\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{composition_8h}{fourdst/composition/composition.h}}"{}}}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00037}00037\ }
@@ -75,541 +75,592 @@
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00071}00071\ }
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00072}00072\ \ \ \ \ \textcolor{keywordtype}{void}\ throw\_unknown\_symbol(quill::Logger*\ logger,\ \textcolor{keyword}{const}\ std::string\&\ symbol)\ \{}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ LOG\_ERROR(logger,\ \textcolor{stringliteral}{"{}Symbol\ \{\}\ is\ not\ a\ valid\ species\ symbol\ (not\ in\ the\ species\ database)"{}},\ symbol);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1_unknown_symbol_error}{fourdst::composition::exceptions::UnknownSymbolError}}(\textcolor{stringliteral}{"{}Symbol\ "{}}\ +\ symbol\ +\ \textcolor{stringliteral}{"{}\ is\ not\ a\ valid\ species\ symbol\ (not\ in\ the\ species\ database)"{}});}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1UnknownSymbolError}{fourdst::composition::exceptions::UnknownSymbolError}}(\textcolor{stringliteral}{"{}Symbol\ "{}}\ +\ symbol\ +\ \textcolor{stringliteral}{"{}\ is\ not\ a\ valid\ species\ symbol\ (not\ in\ the\ species\ database)"{}});}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00075}00075\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00076}00076\ }
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{keywordtype}{void}\ throw\_unregistered\_symbol(quill::Logger*\ logger,\ \textcolor{keyword}{const}\ std::string\&\ symbol)\ \{}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ LOG\_ERROR(logger,\ \textcolor{stringliteral}{"{}Symbol\ \{\}\ is\ not\ registered\ in\ the\ composition."{}},\ symbol);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1_unregistered_symbol_error}{fourdst::composition::exceptions::UnregisteredSymbolError}}(\textcolor{stringliteral}{"{}Symbol\ "{}}\ +\ symbol\ +\ \textcolor{stringliteral}{"{}\ is\ not\ registered\ in\ the\ composition."{}});}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1UnregisteredSymbolError}{fourdst::composition::exceptions::UnregisteredSymbolError}}(\textcolor{stringliteral}{"{}Symbol\ "{}}\ +\ symbol\ +\ \textcolor{stringliteral}{"{}\ is\ not\ registered\ in\ the\ composition."{}});}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00080}00080\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00081}00081\ \}}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00082}00082\ }
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00083}00083\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacefourdst_1_1composition}{fourdst::composition}}\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00084}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ae3cc2099efd7db8eec3d9af2294b75fa}{00084}}\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a23b83b76ee025f6fc009184ee19bba88}{Composition::Composition}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00084}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_ae3cc2099efd7db8eec3d9af2294b75fa}{00084}}\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a23b83b76ee025f6fc009184ee19bba88}{Composition::Composition}}(}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00085}00085\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::string>\&\ symbols}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00086}00086\ \ \ \ \ )\ \{}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ symbol\ :\ symbols)\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a3ab4dcda0bfd1a35b169bcc57fe66725}{registerSymbol}}(symbol);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a3ab4dcda0bfd1a35b169bcc57fe66725}{registerSymbol}}(symbol);}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00090}00090\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00091}00091\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00092}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a2d6fbe5c8142b358641bbe7ffde51053}{00092}}\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a23b83b76ee025f6fc009184ee19bba88}{Composition::Composition}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00092}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a2d6fbe5c8142b358641bbe7ffde51053}{00092}}\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a23b83b76ee025f6fc009184ee19bba88}{Composition::Composition}}(}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::set<std::string>\&\ symbols}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00094}00094\ \ \ \ \ )\ \{}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ symbol\ :\ symbols)\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a3ab4dcda0bfd1a35b169bcc57fe66725}{registerSymbol}}(symbol);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a3ab4dcda0bfd1a35b169bcc57fe66725}{registerSymbol}}(symbol);}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00098}00098\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00099}00099\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00100}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_afa95dddfa88a101ad6ce261295a4460c}{00100}}\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a23b83b76ee025f6fc009184ee19bba88}{Composition::Composition}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00100}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_afa95dddfa88a101ad6ce261295a4460c}{00100}}\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a23b83b76ee025f6fc009184ee19bba88}{Composition::Composition}}(}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<atomic::Species>\ \&species}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00102}00102\ \ \ \ \ )\ \{}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ s\ :\ species)\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a392a34c19f45d6c936cc7030e6cfaf3f}{registerSpecies}}(s);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a392a34c19f45d6c936cc7030e6cfaf3f}{registerSpecies}}(s);}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00106}00106\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00107}00107\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00108}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a7d19fb3326e51c8fc8db5e0738e97d95}{00108}}\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a23b83b76ee025f6fc009184ee19bba88}{Composition::Composition}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00108}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a7d19fb3326e51c8fc8db5e0738e97d95}{00108}}\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a23b83b76ee025f6fc009184ee19bba88}{Composition::Composition}}(}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::set<atomic::Species>\ \&species}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00110}00110\ \ \ \ \ )\ \{}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ s\ :\ species)\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a392a34c19f45d6c936cc7030e6cfaf3f}{registerSpecies}}(s);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a392a34c19f45d6c936cc7030e6cfaf3f}{registerSpecies}}(s);}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00114}00114\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00115}00115\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00116}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a0b3c93ce7c9473ac4aa4c9ee04f78051}{00116}}\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a23b83b76ee025f6fc009184ee19bba88}{Composition::Composition}}(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::string>\&\ symbols,}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<double>\&\ molarAbundances}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00119}00119\ \ \ \ \ )\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (symbols.size()\ !=\ molarAbundances.size())\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_CRITICAL(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ \textcolor{stringliteral}{"{}The\ number\ of\ symbols\ and\ molarAbundances\ must\ be\ equal\ (got\ \{\}\ symbols\ and\ \{\}\ molarAbundances)."{}},\ symbols.size(),\ molarAbundances.size());}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1_invalid_composition_error}{exceptions::InvalidCompositionError}}(\textcolor{stringliteral}{"{}The\ number\ of\ symbols\ and\ fractions\ must\ be\ equal.\ Got\ "{}}\ +\ std::to\_string(symbols.size())\ +\ \textcolor{stringliteral}{"{}\ symbols\ and\ "{}}\ +\ std::to\_string(molarAbundances.size())\ +\ \textcolor{stringliteral}{"{}\ fractions."{}});}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00124}00124\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&[symbol,\ y]\ :\ std::views::zip(symbols,\ molarAbundances))\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a3ab4dcda0bfd1a35b169bcc57fe66725}{registerSymbol}}(symbol);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(symbol,\ y);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00129}00129\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00130}00130\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00131}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a7f0798b3f1191561b38f336406acf62a}{00131}}\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a23b83b76ee025f6fc009184ee19bba88}{Composition::Composition}}(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<atomic::Species>\ \&species,}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<double>\ \&molarAbundances}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00134}00134\ \ \ \ \ )\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (species.size()\ !=\ molarAbundances.size())\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_CRITICAL(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ \textcolor{stringliteral}{"{}The\ number\ of\ species\ and\ molarAbundances\ must\ be\ equal\ (got\ \{\}\ species\ and\ \{\}\ molarAbundances)."{}},\ species.size(),\ molarAbundances.size());}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1_invalid_composition_error}{exceptions::InvalidCompositionError}}(\textcolor{stringliteral}{"{}The\ number\ of\ species\ and\ fractions\ must\ be\ equal.\ Got\ "{}}\ +\ std::to\_string(species.size())\ +\ \textcolor{stringliteral}{"{}\ species\ and\ "{}}\ +\ std::to\_string(molarAbundances.size())\ +\ \textcolor{stringliteral}{"{}\ fractions."{}});}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00139}00139\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [s,\ y]\ :\ std::views::zip(species,\ molarAbundances))\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a392a34c19f45d6c936cc7030e6cfaf3f}{registerSpecies}}(s);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(s,\ y);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00144}00144\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00145}00145\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00146}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ad6cdb28598267743f236d053cd5a62ae}{00146}}\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a23b83b76ee025f6fc009184ee19bba88}{Composition::Composition}}(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::set<std::string>\ \&symbols,}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<double>\ \&molarAbundances}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00149}00149\ \ \ \ \ )\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (symbols.size()\ !=\ molarAbundances.size())\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_CRITICAL(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ \textcolor{stringliteral}{"{}The\ number\ of\ symbols\ and\ molarAbundances\ must\ be\ equal\ (got\ \{\}\ symbols\ and\ \{\}\ molarAbundances)."{}},\ symbols.size(),\ molarAbundances.size());}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1_invalid_composition_error}{exceptions::InvalidCompositionError}}(\textcolor{stringliteral}{"{}The\ number\ of\ symbols\ and\ fractions\ must\ be\ equal.\ Got\ "{}}\ +\ std::to\_string(symbols.size())\ +\ \textcolor{stringliteral}{"{}\ symbols\ and\ "{}}\ +\ std::to\_string(molarAbundances.size())\ +\ \textcolor{stringliteral}{"{}\ fractions."{}});}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00154}00154\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [symbol,\ y]\ :\ std::views::zip(sortVectorBy<std::string>(std::vector<std::string>(symbols.begin(),\ symbols.end()),\ molarAbundances),\ molarAbundances))\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a3ab4dcda0bfd1a35b169bcc57fe66725}{registerSymbol}}(symbol);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(symbol,\ y);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00159}00159\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00160}00160\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00161}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a21369a80378d4c90438a34f0e4a275ca}{00161}}\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a23b83b76ee025f6fc009184ee19bba88}{Composition::Composition}}(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a23b83b76ee025f6fc009184ee19bba88}{Composition}}\ \&\mbox{\hyperlink{namespacefourdst_1_1composition}{composition}}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00163}00163\ \ \ \ \ )\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a452b0affb86dc971a96c80d01f4fcb2b}{m\_registeredSpecies}}\ =\ \mbox{\hyperlink{namespacefourdst_1_1composition}{composition}}.m\_registeredSpecies;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}\ =\ \mbox{\hyperlink{namespacefourdst_1_1composition}{composition}}.m\_molarAbundances;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00166}00166\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00167}00167\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00168}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a4ec1e23cfecef764cb831171fed62fc2}{00168}}\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a23b83b76ee025f6fc009184ee19bba88}{Composition}}\&\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a4ec1e23cfecef764cb831171fed62fc2}{Composition::operator=}}(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a23b83b76ee025f6fc009184ee19bba88}{Composition}}\ \&other}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00170}00170\ \ \ \ \ )\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00171}00171\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ !=\ \&other)\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a452b0affb86dc971a96c80d01f4fcb2b}{m\_registeredSpecies}}\ =\ other.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a452b0affb86dc971a96c80d01f4fcb2b}{m\_registeredSpecies}};}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}\ \ \ =\ other.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}};}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00176}00176\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00177}00177\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00178}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a3ab4dcda0bfd1a35b169bcc57fe66725}{00178}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a3ab4dcda0bfd1a35b169bcc57fe66725}{Composition::registerSymbol}}(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ symbol}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00180}00180\ \ \ \ \ )\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ result\ =\ getSpecies(symbol);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!result)\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ throw\_unknown\_symbol(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ symbol);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00116}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aae910b7824058f70b96460425a637837}{00116}}\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a23b83b76ee025f6fc009184ee19bba88}{Composition::Composition}}(\textcolor{keyword}{const}\ std::unordered\_set<std::string>\ \&symbols)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ symbol\ :\ symbols)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a3ab4dcda0bfd1a35b169bcc57fe66725}{registerSymbol}}(symbol);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00120}00120\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00122}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a8e7f19488c52c8aba1d7e488688ced7f}{00122}}\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a23b83b76ee025f6fc009184ee19bba88}{Composition::Composition}}(\textcolor{keyword}{const}\ std::unordered\_set<atomic::Species>\ \&species)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ s\ :\ species)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a392a34c19f45d6c936cc7030e6cfaf3f}{registerSpecies}}(s);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00126}00126\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00128}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a0b3c93ce7c9473ac4aa4c9ee04f78051}{00128}}\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a23b83b76ee025f6fc009184ee19bba88}{Composition::Composition}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::string>\&\ symbols,}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<double>\&\ molarAbundances}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00131}00131\ \ \ \ \ )\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (symbols.size()\ !=\ molarAbundances.size())\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_CRITICAL(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ \textcolor{stringliteral}{"{}The\ number\ of\ symbols\ and\ molarAbundances\ must\ be\ equal\ (got\ \{\}\ symbols\ and\ \{\}\ molarAbundances)."{}},\ symbols.size(),\ molarAbundances.size());}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1InvalidCompositionError}{exceptions::InvalidCompositionError}}(\textcolor{stringliteral}{"{}The\ number\ of\ symbols\ and\ fractions\ must\ be\ equal.\ Got\ "{}}\ +\ std::to\_string(symbols.size())\ +\ \textcolor{stringliteral}{"{}\ symbols\ and\ "{}}\ +\ std::to\_string(molarAbundances.size())\ +\ \textcolor{stringliteral}{"{}\ fractions."{}});}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&[symbol,\ y]\ :\ std::views::zip(symbols,\ molarAbundances))\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a3ab4dcda0bfd1a35b169bcc57fe66725}{registerSymbol}}(symbol);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(symbol,\ y);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00141}00141\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00143}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a7f0798b3f1191561b38f336406acf62a}{00143}}\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a23b83b76ee025f6fc009184ee19bba88}{Composition::Composition}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<atomic::Species>\ \&species,}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<double>\ \&molarAbundances}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00146}00146\ \ \ \ \ )\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (species.size()\ !=\ molarAbundances.size())\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_CRITICAL(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ \textcolor{stringliteral}{"{}The\ number\ of\ species\ and\ molarAbundances\ must\ be\ equal\ (got\ \{\}\ species\ and\ \{\}\ molarAbundances)."{}},\ species.size(),\ molarAbundances.size());}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1InvalidCompositionError}{exceptions::InvalidCompositionError}}(\textcolor{stringliteral}{"{}The\ number\ of\ species\ and\ fractions\ must\ be\ equal.\ Got\ "{}}\ +\ std::to\_string(species.size())\ +\ \textcolor{stringliteral}{"{}\ species\ and\ "{}}\ +\ std::to\_string(molarAbundances.size())\ +\ \textcolor{stringliteral}{"{}\ fractions."{}});}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [s,\ y]\ :\ std::views::zip(species,\ molarAbundances))\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a392a34c19f45d6c936cc7030e6cfaf3f}{registerSpecies}}(s);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(s,\ y);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00156}00156\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00157}00157\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00158}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_ad6cdb28598267743f236d053cd5a62ae}{00158}}\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a23b83b76ee025f6fc009184ee19bba88}{Composition::Composition}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::set<std::string>\ \&symbols,}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<double>\ \&molarAbundances}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00161}00161\ \ \ \ \ )\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (symbols.size()\ !=\ molarAbundances.size())\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_CRITICAL(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ \textcolor{stringliteral}{"{}The\ number\ of\ symbols\ and\ molarAbundances\ must\ be\ equal\ (got\ \{\}\ symbols\ and\ \{\}\ molarAbundances)."{}},\ symbols.size(),\ molarAbundances.size());}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1InvalidCompositionError}{exceptions::InvalidCompositionError}}(\textcolor{stringliteral}{"{}The\ number\ of\ symbols\ and\ fractions\ must\ be\ equal.\ Got\ "{}}\ +\ std::to\_string(symbols.size())\ +\ \textcolor{stringliteral}{"{}\ symbols\ and\ "{}}\ +\ std::to\_string(molarAbundances.size())\ +\ \textcolor{stringliteral}{"{}\ fractions."{}});}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [symbol,\ y]\ :\ std::views::zip(sortVectorBy<std::string>(std::vector<std::string>(symbols.begin(),\ symbols.end()),\ molarAbundances),\ molarAbundances))\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a3ab4dcda0bfd1a35b169bcc57fe66725}{registerSymbol}}(symbol);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(symbol,\ y);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00171}00171\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00173}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a1e5e0bd7cf77d5cf260c94418612bb36}{00173}}\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a23b83b76ee025f6fc009184ee19bba88}{Composition::Composition}}(\textcolor{keyword}{const}\ std::unordered\_map<std::string,\ double>\ \&symbolMolarAbundances)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [symbol,\ y]\ :\ symbolMolarAbundances)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a3ab4dcda0bfd1a35b169bcc57fe66725}{registerSymbol}}(symbol);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(symbol,\ y);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00177}00177\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00178}00178\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00180}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a5d3fe0a5d2c6aeae667d4e3894b0ee3b}{00180}}\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a23b83b76ee025f6fc009184ee19bba88}{Composition::Composition}}(\textcolor{keyword}{const}\ std::map<std::string,\ double>\ \&symbolMolarAbundances)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [symbol,\ y]\ :\ symbolMolarAbundances)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a3ab4dcda0bfd1a35b169bcc57fe66725}{registerSymbol}}(symbol);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(symbol,\ y);}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00185}00185\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00186}00186\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a392a34c19f45d6c936cc7030e6cfaf3f}{registerSpecies}}(result.value());}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00187}00187\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00188}00188\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00189}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a156d1198ef47deed9689949f271969e2}{00189}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a3ab4dcda0bfd1a35b169bcc57fe66725}{Composition::registerSymbol}}(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::string>\&\ symbols}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00191}00191\ \ \ \ \ )\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00192}00192\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ symbol\ :\ symbols)\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a3ab4dcda0bfd1a35b169bcc57fe66725}{registerSymbol}}(symbol);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00194}00194\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00195}00195\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00196}00196\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00197}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a392a34c19f45d6c936cc7030e6cfaf3f}{00197}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a392a34c19f45d6c936cc7030e6cfaf3f}{Composition::registerSpecies}}(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00198}00198\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic::Species}}\ \&species}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00199}00199\ \ \ \ \ )\ \textcolor{keyword}{noexcept}\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00200}00200\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a452b0affb86dc971a96c80d01f4fcb2b}{m\_registeredSpecies}}.insert(species);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00201}00201\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.contains(species))\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.emplace(species,\ 0.0);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00203}00203\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00204}00204\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00205}00205\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00206}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a2846f4ea0d6075ecdaf4334741a54750}{00206}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a392a34c19f45d6c936cc7030e6cfaf3f}{Composition::registerSpecies}}(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00207}00207\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<atomic::Species>\ \&species}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00208}00208\ \ \ \ \ )\ \textcolor{keyword}{noexcept}\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00209}00209\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ s\ :\ species)\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a392a34c19f45d6c936cc7030e6cfaf3f}{registerSpecies}}(s);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00211}00211\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00212}00212\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00213}00213\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00214}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a3ae885c28580ae15be8c16614bef3b0e}{00214}}\ \ \ \ \ std::set<std::string>\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a3ae885c28580ae15be8c16614bef3b0e}{Composition::getRegisteredSymbols}}()\ const\ noexcept\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00215}00215\ \ \ \ \ \ \ \ \ std::set<std::string>\ symbols;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00216}00216\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ species\ :\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a452b0affb86dc971a96c80d01f4fcb2b}{m\_registeredSpecies}})\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ symbols.insert(std::string(species.name()));}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00218}00218\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00219}00219\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ symbols;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00220}00220\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00221}00221\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00222}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a33db253ca50431b5166d43412ff18f71}{00222}}\ \ \ \ \ \textcolor{keyword}{const}\ std::set<atomic::Species>\ \&\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a33db253ca50431b5166d43412ff18f71}{Composition::getRegisteredSpecies}}()\ const\ noexcept\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00223}00223\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a452b0affb86dc971a96c80d01f4fcb2b}{m\_registeredSpecies}};}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00224}00224\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00225}00225\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00226}00226\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00227}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ae5d8d21632fca2b35b0898f2b205cd10}{00227}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a9ea2b673341fdc67afeb0f0517a54c8c}{Composition::getMassFraction}}(\textcolor{keyword}{const}\ std::string\&\ symbol)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ species\ =\ getSpecies(symbol);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!species)\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ throw\_unknown\_symbol(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ symbol);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00185}00185\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00186}00186\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00187}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a321598f3b8bb4c58992d09a90ea3079b}{00187}}\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a23b83b76ee025f6fc009184ee19bba88}{Composition::Composition}}(\textcolor{keyword}{const}\ std::unordered\_map<atomic::Species,\ double>\ \&speciesMolarAbundances)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [species,\ y]\ :\ speciesMolarAbundances)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a392a34c19f45d6c936cc7030e6cfaf3f}{registerSpecies}}(species);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(species,\ y);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00191}00191\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00192}00192\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00194}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a8a371588eaa38c8d54b4baec2a594fc2}{00194}}\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a23b83b76ee025f6fc009184ee19bba88}{Composition::Composition}}(\textcolor{keyword}{const}\ std::map<atomic::Species,\ double>\ \&speciesMolarAbundances)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00195}00195\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [species,\ y]\ :\ speciesMolarAbundances)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a392a34c19f45d6c936cc7030e6cfaf3f}{registerSpecies}}(species);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(species,\ y);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00198}00198\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00199}00199\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00201}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a21369a80378d4c90438a34f0e4a275ca}{00201}}\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a23b83b76ee025f6fc009184ee19bba88}{Composition::Composition}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition}{Composition}}\ \&composition}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00203}00203\ \ \ \ \ )\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00204}00204\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a452b0affb86dc971a96c80d01f4fcb2b}{m\_registeredSpecies}}\ =\ composition.\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a452b0affb86dc971a96c80d01f4fcb2b}{m\_registeredSpecies}};}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00205}00205\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}\ =\ composition.\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}};}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00206}00206\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00207}00207\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00208}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a11e281872b4047e5c757923f2b0682cf}{00208}}\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a23b83b76ee025f6fc009184ee19bba88}{Composition::Composition}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1CompositionAbstract}{CompositionAbstract}}\ \&composition)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00209}00209\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ species\ :\ composition.\mbox{\hyperlink{classfourdst_1_1composition_1_1CompositionAbstract_a7e17ffec871ac543624a4b0eee147cc2}{getRegisteredSpecies}}())\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a392a34c19f45d6c936cc7030e6cfaf3f}{registerSpecies}}(species);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(species,\ composition.\mbox{\hyperlink{classfourdst_1_1composition_1_1CompositionAbstract_a29613d8197cee96f764aeeaa3b7286f8}{getMolarAbundance}}(species));}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00212}00212\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00213}00213\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00214}00214\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00215}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a4ec1e23cfecef764cb831171fed62fc2}{00215}}\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition}{Composition}}\&\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a4ec1e23cfecef764cb831171fed62fc2}{Composition::operator=}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00216}00216\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition}{Composition}}\ \&other}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00217}00217\ \ \ \ \ )\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00218}00218\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ !=\ \&other)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a452b0affb86dc971a96c80d01f4fcb2b}{m\_registeredSpecies}}\ =\ other.\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a452b0affb86dc971a96c80d01f4fcb2b}{m\_registeredSpecies}};}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}\ \ \ =\ other.\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}};}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00221}00221\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00222}00222\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00223}00223\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00224}00224\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00225}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a3ab4dcda0bfd1a35b169bcc57fe66725}{00225}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a3ab4dcda0bfd1a35b169bcc57fe66725}{Composition::registerSymbol}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00226}00226\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ symbol}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00227}00227\ \ \ \ \ )\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ result\ =\ getSpecies(symbol);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!result)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ throw\_unknown\_symbol(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ symbol);}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00231}00231\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00232}00232\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a9ea2b673341fdc67afeb0f0517a54c8c}{getMassFraction}}(species.value());}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00233}00233\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00234}00234\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00235}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ae8fe4e7158f8317bf29b5cd0c65a9524}{00235}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a9ea2b673341fdc67afeb0f0517a54c8c}{Composition::getMassFraction}}(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00236}00236\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic::Species}}\ \&species}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00237}00237\ \ \ \ \ )\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00238}00238\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.contains(species))\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ throw\_unregistered\_symbol(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ std::string(species.\mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a1fcc01fc978b34ba2531117f10be6741}{name}}()));}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00240}00240\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00241}00241\ \ \ \ \ \ \ \ \ std::map<atomic::Species,\ double>\ raw\_mass;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00242}00242\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ totalMass\ =\ 0;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00243}00243\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [sp,\ y]\ :\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}})\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ contrib\ =\ y\ *\ sp.mass();}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ totalMass\ +=\ contrib;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ raw\_mass.emplace(sp,\ contrib);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00247}00247\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00248}00248\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ raw\_mass.at(species)\ /\ totalMass;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00249}00249\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00250}00250\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00251}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a9ea2b673341fdc67afeb0f0517a54c8c}{00251}}\ \ \ \ \ std::unordered\_map<atomic::Species,\ double>\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a9ea2b673341fdc67afeb0f0517a54c8c}{Composition::getMassFraction}}()\ const\ noexcept\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00252}00252\ \ \ \ \ \ \ \ \ std::unordered\_map<atomic::Species,\ double>\ mass\_fractions;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00253}00253\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&species:\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}\ |\ std::views::keys)\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ mass\_fractions.emplace(species,\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a9ea2b673341fdc67afeb0f0517a54c8c}{getMassFraction}}(species));}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00255}00255\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00256}00256\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mass\_fractions;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00257}00257\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00258}00258\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00259}00259\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00260}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a34f71d4d8f0297c576fd62fabd490305}{00260}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a1f87ed64a1be9a6091c852131d24e476}{Composition::getNumberFraction}}(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ symbol}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00262}00262\ \ \ \ \ )\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00263}00263\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ species\ =\ getSpecies(symbol);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00264}00264\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!species)\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ throw\_unknown\_symbol(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ symbol);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00266}00266\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00267}00267\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a1f87ed64a1be9a6091c852131d24e476}{getNumberFraction}}(species.value());}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00268}00268\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00269}00269\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00270}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a1aa79993925f16ba3c30a376aa39161b}{00270}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a1f87ed64a1be9a6091c852131d24e476}{Composition::getNumberFraction}}(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00271}00271\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic::Species}}\ \&species}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00272}00272\ \ \ \ \ )\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00273}00273\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.contains(species))\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00274}00274\ \ \ \ \ \ \ \ \ \ \ \ \ throw\_unregistered\_symbol(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ std::string(species.\mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a1fcc01fc978b34ba2531117f10be6741}{name}}()));}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00275}00275\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00276}00276\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ total\_moles\_per\_gram\ =\ 0.0;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00277}00277\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&y:\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}\ |\ std::views::values)\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ total\_moles\_per\_gram\ +=\ y;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00279}00279\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00280}00280\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.at(species)\ /\ total\_moles\_per\_gram;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00281}00281\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00282}00282\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00283}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a1f87ed64a1be9a6091c852131d24e476}{00283}}\ \ \ \ \ std::unordered\_map<atomic::Species,\ double>\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a1f87ed64a1be9a6091c852131d24e476}{Composition::getNumberFraction}}()\ const\ noexcept\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00284}00284\ \ \ \ \ \ \ \ \ std::unordered\_map<atomic::Species,\ double>\ number\_fractions;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00285}00285\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&species:\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}\ |\ std::views::keys)\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00286}00286\ \ \ \ \ \ \ \ \ \ \ \ \ number\_fractions.emplace(species,\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a1f87ed64a1be9a6091c852131d24e476}{getNumberFraction}}(species));}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00233}00233\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a392a34c19f45d6c936cc7030e6cfaf3f}{registerSpecies}}(result.value());}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00234}00234\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00235}00235\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00236}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a156d1198ef47deed9689949f271969e2}{00236}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a3ab4dcda0bfd1a35b169bcc57fe66725}{Composition::registerSymbol}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00237}00237\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::string>\&\ symbols}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00238}00238\ \ \ \ \ )\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00239}00239\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ symbol\ :\ symbols)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00240}00240\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a3ab4dcda0bfd1a35b169bcc57fe66725}{registerSymbol}}(symbol);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00241}00241\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00242}00242\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00243}00243\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00244}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a392a34c19f45d6c936cc7030e6cfaf3f}{00244}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a392a34c19f45d6c936cc7030e6cfaf3f}{Composition::registerSpecies}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00245}00245\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structfourdst_1_1atomic_1_1Species}{atomic::Species}}\ \&species}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00246}00246\ \ \ \ \ )\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00247}00247\ \ \ \ \ \ \ \ \ m\_registeredSpecies.insert(species);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00248}00248\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!m\_molarAbundances.contains(species))\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ m\_molarAbundances.emplace(species,\ 0.0);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00250}00250\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00251}00251\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00252}00252\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00253}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a2846f4ea0d6075ecdaf4334741a54750}{00253}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a392a34c19f45d6c936cc7030e6cfaf3f}{Composition::registerSpecies}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00254}00254\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<atomic::Species>\ \&species}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00255}00255\ \ \ \ \ )\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00256}00256\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ s\ :\ species)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ registerSpecies(s);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00258}00258\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00259}00259\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00260}00260\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00261}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a3ae885c28580ae15be8c16614bef3b0e}{00261}}\ \ \ \ \ std::set<std::string>\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a3ae885c28580ae15be8c16614bef3b0e}{Composition::getRegisteredSymbols}}()\ const\ noexcept\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00262}00262\ \ \ \ \ \ \ \ \ std::set<std::string>\ symbols;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00263}00263\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ species\ :\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a452b0affb86dc971a96c80d01f4fcb2b}{m\_registeredSpecies}})\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ symbols.insert(std::string(species.name()));}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00265}00265\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00266}00266\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ symbols;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00267}00267\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00268}00268\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00269}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a33db253ca50431b5166d43412ff18f71}{00269}}\ \ \ \ \ \textcolor{keyword}{const}\ std::set<atomic::Species>\ \&\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a33db253ca50431b5166d43412ff18f71}{Composition::getRegisteredSpecies}}()\ const\ noexcept\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00270}00270\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a452b0affb86dc971a96c80d01f4fcb2b}{m\_registeredSpecies}};}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00271}00271\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00272}00272\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00273}00273\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00274}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_ae5d8d21632fca2b35b0898f2b205cd10}{00274}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a9ea2b673341fdc67afeb0f0517a54c8c}{Composition::getMassFraction}}(\textcolor{keyword}{const}\ std::string\&\ symbol)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00275}00275\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ species\ =\ getSpecies(symbol);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00276}00276\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!species)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ throw\_unknown\_symbol(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ symbol);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00278}00278\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00279}00279\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a9ea2b673341fdc67afeb0f0517a54c8c}{getMassFraction}}(species.value());}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00280}00280\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00281}00281\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00282}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_ae8fe4e7158f8317bf29b5cd0c65a9524}{00282}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a9ea2b673341fdc67afeb0f0517a54c8c}{Composition::getMassFraction}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00283}00283\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structfourdst_1_1atomic_1_1Species}{atomic::Species}}\ \&species}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00284}00284\ \ \ \ \ )\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00285}00285\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.contains(species))\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00286}00286\ \ \ \ \ \ \ \ \ \ \ \ \ throw\_unregistered\_symbol(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ std::string(species.\mbox{\hyperlink{structfourdst_1_1atomic_1_1Species_a1fcc01fc978b34ba2531117f10be6741}{name}}()));}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00287}00287\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00288}00288\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ number\_fractions;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00289}00289\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00290}00290\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00291}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_add67a92d73e3a57a2bbdb52bc9ca3bfe}{00291}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_add67a92d73e3a57a2bbdb52bc9ca3bfe}{Composition::getMolarAbundance}}(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00292}00292\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&symbol}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00293}00293\ \ \ \ \ )\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00294}00294\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ species\ =\ getSpecies(symbol);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00295}00295\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!species)\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ throw\_unknown\_symbol(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ symbol);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00297}00297\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00298}00298\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_add67a92d73e3a57a2bbdb52bc9ca3bfe}{getMolarAbundance}}(species.value());}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00299}00299\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00300}00300\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00301}00301\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00302}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a78a43e9e77a9c1b0f27c50b9feb52449}{00302}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_add67a92d73e3a57a2bbdb52bc9ca3bfe}{Composition::getMolarAbundance}}(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00303}00303\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic::Species}}\ \&species}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00304}00304\ \ \ \ \ )\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00305}00305\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.contains(species))\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ throw\_unregistered\_symbol(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ std::string(species.\mbox{\hyperlink{structfourdst_1_1atomic_1_1_species_a1fcc01fc978b34ba2531117f10be6741}{name}}()));}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00307}00307\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00308}00308\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.at(species);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00309}00309\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00310}00310\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00311}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_afbbb5e51ad5ae5c0fa6bc0094195aecd}{00311}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_afbbb5e51ad5ae5c0fa6bc0094195aecd}{Composition::getMeanParticleMass}}()\ const\ noexcept\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00312}00312\ \ \ \ \ \ \ \ \ std::vector<double>\ X\ =\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_af4f44aaf8b7e0d63872a70b5e2131369}{getMassFractionVector}}();}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00313}00313\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ sum\ =\ 0.0;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00314}00314\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [species,\ x]\ :\ std::views::zip(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a452b0affb86dc971a96c80d01f4fcb2b}{m\_registeredSpecies}},\ X))\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ sum\ +=\ x/species.mass();}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00316}00316\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00317}00317\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00318}00318\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1.0\ /\ sum;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00319}00319\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00320}00320\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00321}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a90fc71d1fe03017ee4c7a1cac69d24fb}{00321}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a90fc71d1fe03017ee4c7a1cac69d24fb}{Composition::getElectronAbundance}}()\ const\ noexcept\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00322}00322\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ Ye\ =\ 0.0;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00323}00323\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [species,\ y]\ :\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}})\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ Ye\ +=\ species.z()\ *\ y;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00325}00325\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ye;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00327}00327\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00328}00328\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00288}00288\ \ \ \ \ \ \ \ \ std::map<atomic::Species,\ double>\ raw\_mass;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00289}00289\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ totalMass\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00290}00290\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [sp,\ y]\ :\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}})\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ contrib\ =\ y\ *\ sp.mass();}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ totalMass\ +=\ contrib;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ raw\_mass.emplace(sp,\ contrib);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00294}00294\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00295}00295\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ raw\_mass.at(species)\ /\ totalMass;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00296}00296\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00297}00297\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00298}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a9ea2b673341fdc67afeb0f0517a54c8c}{00298}}\ \ \ \ \ std::unordered\_map<atomic::Species,\ double>\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a9ea2b673341fdc67afeb0f0517a54c8c}{Composition::getMassFraction}}()\ const\ noexcept\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00299}00299\ \ \ \ \ \ \ \ \ std::unordered\_map<atomic::Species,\ double>\ mass\_fractions;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00300}00300\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&species:\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}\ |\ std::views::keys)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ mass\_fractions.emplace(species,\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a9ea2b673341fdc67afeb0f0517a54c8c}{getMassFraction}}(species));}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00302}00302\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00303}00303\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mass\_fractions;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00304}00304\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00305}00305\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00306}00306\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00307}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a34f71d4d8f0297c576fd62fabd490305}{00307}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a1f87ed64a1be9a6091c852131d24e476}{Composition::getNumberFraction}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00308}00308\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ symbol}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00309}00309\ \ \ \ \ )\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00310}00310\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ species\ =\ getSpecies(symbol);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00311}00311\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!species)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ throw\_unknown\_symbol(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ symbol);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00313}00313\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00314}00314\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a1f87ed64a1be9a6091c852131d24e476}{getNumberFraction}}(species.value());}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00315}00315\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00316}00316\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00317}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a1aa79993925f16ba3c30a376aa39161b}{00317}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a1f87ed64a1be9a6091c852131d24e476}{Composition::getNumberFraction}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00318}00318\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structfourdst_1_1atomic_1_1Species}{atomic::Species}}\ \&species}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00319}00319\ \ \ \ \ )\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00320}00320\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.contains(species))\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00321}00321\ \ \ \ \ \ \ \ \ \ \ \ \ throw\_unregistered\_symbol(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ std::string(species.\mbox{\hyperlink{structfourdst_1_1atomic_1_1Species_a1fcc01fc978b34ba2531117f10be6741}{name}}()));}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00322}00322\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00323}00323\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ total\_moles\_per\_gram\ =\ 0.0;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00324}00324\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&y:\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}\ |\ std::views::values)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ total\_moles\_per\_gram\ +=\ y;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00327}00327\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.at(species)\ /\ total\_moles\_per\_gram;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00328}00328\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00329}00329\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00330}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aac5b214a3d1278e127422224cb9cee50}{00330}}\ \ \ \ \ \mbox{\hyperlink{structfourdst_1_1composition_1_1_canonical_composition}{CanonicalComposition}}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aac5b214a3d1278e127422224cb9cee50}{Composition::getCanonicalComposition}}(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00331}00331\ \ \ \ \ )\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00332}00332\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacefourdst_1_1atomic}{fourdst::atomic}};}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00333}00333\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00334}00334\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.canonicalComp.has\_value())\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00335}00335\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.canonicalComp.value();\ \textcolor{comment}{//\ Short\ circuit\ if\ we\ have\ cached\ the\ canonical\ composition}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00336}00336\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00337}00337\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structfourdst_1_1composition_1_1_canonical_composition}{CanonicalComposition}}\ canonicalComposition;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00338}00338\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::set<Species>\ canonicalH\ =\ \{\mbox{\hyperlink{namespacefourdst_1_1atomic_a6766bc834fd656df51bdcf22f7d97877}{H\_1}},\ \mbox{\hyperlink{namespacefourdst_1_1atomic_a0eac406fa90f2925ea40737380ce0d74}{H\_2}},\ \mbox{\hyperlink{namespacefourdst_1_1atomic_aef4effd489bc5c3048b1d11397e0055d}{H\_3}},\ \mbox{\hyperlink{namespacefourdst_1_1atomic_affc40733f035db6b300952134eb25a29}{H\_4}},\ \mbox{\hyperlink{namespacefourdst_1_1atomic_a7380b7fa06e2d923d2ebdb7eea18ef60}{H\_5}},\ \mbox{\hyperlink{namespacefourdst_1_1atomic_a11a078384fa8a6d313333d92e6d8851a}{H\_6}},\ \mbox{\hyperlink{namespacefourdst_1_1atomic_a0c96e4ac6ca0140e91ff32207c9395e9}{H\_7}}\};}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00339}00339\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::set<Species>\ canonicalHe\ =\ \{\mbox{\hyperlink{namespacefourdst_1_1atomic_a5ca60b34f7ec098da5d2bfbfc404bf3d}{He\_3}},\ \mbox{\hyperlink{namespacefourdst_1_1atomic_ab665e3014e2a805624227350699f141a}{He\_4}},\ \mbox{\hyperlink{namespacefourdst_1_1atomic_ae26dd796d5688fd18f76563227a36d89}{He\_5}},\ \mbox{\hyperlink{namespacefourdst_1_1atomic_af13ee6f2bbc2d1770746835f6d72ddff}{He\_6}},\ \mbox{\hyperlink{namespacefourdst_1_1atomic_a7e5f3e73bd4fadfce3a1f86dba9fada8}{He\_7}},\ \mbox{\hyperlink{namespacefourdst_1_1atomic_a5bf469759634aaacc63420f84a05b04b}{He\_8}},\ \mbox{\hyperlink{namespacefourdst_1_1atomic_a31064f9bb4ce03b23bebd6d4527bd9ff}{He\_9}},\ \mbox{\hyperlink{namespacefourdst_1_1atomic_a2a9fea0f9d56b153f829192a5c79d64d}{He\_10}}\};}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00340}00340\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00341}00341\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ symbol\ :\ canonicalH)\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a194f715788e7921bd611579440de2ecd}{contains}}(symbol))\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ canonicalComposition.\mbox{\hyperlink{structfourdst_1_1composition_1_1_canonical_composition_abe5b01574242f8eaabd00c3d653291f7}{X}}\ +=\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a9ea2b673341fdc67afeb0f0517a54c8c}{getMassFraction}}(symbol);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00344}00344\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00345}00345\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00346}00346\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ symbol\ :\ canonicalHe)\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00347}00347\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a194f715788e7921bd611579440de2ecd}{contains}}(symbol))\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00348}00348\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ canonicalComposition.\mbox{\hyperlink{structfourdst_1_1composition_1_1_canonical_composition_a93927bfccc5d2b3906565d092ed4f7f4}{Y}}\ +=\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a9ea2b673341fdc67afeb0f0517a54c8c}{getMassFraction}}(symbol);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00349}00349\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00350}00350\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00351}00351\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00352}00352\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ \mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}\ :\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}\ |\ std::views::keys)\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00353}00353\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ isHIsotope\ =\ canonicalH.contains(\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}});}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00354}00354\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ isHeIsotope\ =\ canonicalHe.contains(\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}});}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00355}00355\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00356}00356\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isHIsotope\ ||\ isHeIsotope)\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00357}00357\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};\ \textcolor{comment}{//\ Skip\ canonical\ H\ and\ He\ symbols}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00358}00358\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00359}00359\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00360}00360\ \ \ \ \ \ \ \ \ \ \ \ \ canonicalComposition.\mbox{\hyperlink{structfourdst_1_1composition_1_1_canonical_composition_ae1981f5ddd36abd17a4a69fa1f43de18}{Z}}\ +=\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a9ea2b673341fdc67afeb0f0517a54c8c}{getMassFraction}}(\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}});}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00361}00361\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00362}00362\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00363}00363\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ReSharper\ disable\ once\ CppTooWideScopeInitStatement}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00364}00364\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Z\ =\ 1.0\ -\/\ (canonicalComposition.\mbox{\hyperlink{structfourdst_1_1composition_1_1_canonical_composition_abe5b01574242f8eaabd00c3d653291f7}{X}}\ +\ canonicalComposition.\mbox{\hyperlink{structfourdst_1_1composition_1_1_canonical_composition_a93927bfccc5d2b3906565d092ed4f7f4}{Y}});}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00365}00365\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::abs(Z\ -\/\ canonicalComposition.\mbox{\hyperlink{structfourdst_1_1composition_1_1_canonical_composition_ae1981f5ddd36abd17a4a69fa1f43de18}{Z}})\ >\ 1e-\/16)\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00366}00366\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_ERROR(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ \textcolor{stringliteral}{"{}Validation\ composition\ Z\ (X-\/Y\ =\ \{\})\ is\ different\ than\ canonical\ composition\ Z\ (\{\})\ (∑a\_i\ where\ a\_i\ !=\ H/He)."{}},\ Z,\ canonicalComposition.\mbox{\hyperlink{structfourdst_1_1composition_1_1_canonical_composition_ae1981f5ddd36abd17a4a69fa1f43de18}{Z}});}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00367}00367\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1_invalid_composition_error}{exceptions::InvalidCompositionError}}(\textcolor{stringliteral}{"{}Validation\ composition\ Z\ (X-\/Y\ =\ "{}}\ +\ std::to\_string(Z)\ +\ \textcolor{stringliteral}{"{})\ is\ different\ than\ canonical\ composition\ Z\ ("{}}\ +\ std::to\_string(canonicalComposition.\mbox{\hyperlink{structfourdst_1_1composition_1_1_canonical_composition_ae1981f5ddd36abd17a4a69fa1f43de18}{Z}})\ +\ \textcolor{stringliteral}{"{})\ (∑a\_i\ where\ a\_i\ !=\ H/He)."{}});}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00368}00368\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00369}00369\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.canonicalComp\ =\ canonicalComposition;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00370}00370\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ canonicalComposition;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00371}00371\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00372}00372\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00373}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_af4f44aaf8b7e0d63872a70b5e2131369}{00373}}\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_af4f44aaf8b7e0d63872a70b5e2131369}{Composition::getMassFractionVector}}()\ const\ noexcept\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00374}00374\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.massFractions.has\_value())\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00375}00375\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.massFractions.value();\ \textcolor{comment}{//\ Short\ circuit\ if\ we\ have\ cached\ the\ mass\ fractions}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00376}00376\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00377}00377\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00378}00378\ \ \ \ \ \ \ \ \ std::vector<double>\ massFractionVector;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00379}00379\ \ \ \ \ \ \ \ \ std::vector<double>\ speciesMass;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00330}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a1f87ed64a1be9a6091c852131d24e476}{00330}}\ \ \ \ \ std::unordered\_map<atomic::Species,\ double>\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a1f87ed64a1be9a6091c852131d24e476}{Composition::getNumberFraction}}()\ const\ noexcept\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00331}00331\ \ \ \ \ \ \ \ \ std::unordered\_map<atomic::Species,\ double>\ number\_fractions;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00332}00332\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&species:\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}\ |\ std::views::keys)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00333}00333\ \ \ \ \ \ \ \ \ \ \ \ \ number\_fractions.emplace(species,\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a1f87ed64a1be9a6091c852131d24e476}{getNumberFraction}}(species));}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00334}00334\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00335}00335\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ number\_fractions;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00336}00336\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00337}00337\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00338}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_add67a92d73e3a57a2bbdb52bc9ca3bfe}{00338}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_add67a92d73e3a57a2bbdb52bc9ca3bfe}{Composition::getMolarAbundance}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00339}00339\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&symbol}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00340}00340\ \ \ \ \ )\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00341}00341\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ species\ =\ getSpecies(symbol);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00342}00342\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!species)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ throw\_unknown\_symbol(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ symbol);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00344}00344\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00345}00345\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_add67a92d73e3a57a2bbdb52bc9ca3bfe}{getMolarAbundance}}(species.value());}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00346}00346\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00347}00347\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00348}00348\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00349}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a78a43e9e77a9c1b0f27c50b9feb52449}{00349}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_add67a92d73e3a57a2bbdb52bc9ca3bfe}{Composition::getMolarAbundance}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00350}00350\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structfourdst_1_1atomic_1_1Species}{atomic::Species}}\ \&species}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00351}00351\ \ \ \ \ )\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00352}00352\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.contains(species))\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00353}00353\ \ \ \ \ \ \ \ \ \ \ \ \ throw\_unregistered\_symbol(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ std::string(species.\mbox{\hyperlink{structfourdst_1_1atomic_1_1Species_a1fcc01fc978b34ba2531117f10be6741}{name}}()));}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00354}00354\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00355}00355\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.at(species);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00356}00356\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00357}00357\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00358}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_afbbb5e51ad5ae5c0fa6bc0094195aecd}{00358}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_afbbb5e51ad5ae5c0fa6bc0094195aecd}{Composition::getMeanParticleMass}}()\ const\ noexcept\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00359}00359\ \ \ \ \ \ \ \ \ std::vector<double>\ X\ =\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_af4f44aaf8b7e0d63872a70b5e2131369}{getMassFractionVector}}();}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00360}00360\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ sum\ =\ 0.0;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00361}00361\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [species,\ x]\ :\ std::views::zip(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a452b0affb86dc971a96c80d01f4fcb2b}{m\_registeredSpecies}},\ X))\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00362}00362\ \ \ \ \ \ \ \ \ \ \ \ \ sum\ +=\ x/species.mass();}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00363}00363\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00364}00364\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00365}00365\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1.0\ /\ sum;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00366}00366\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00367}00367\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00368}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a90fc71d1fe03017ee4c7a1cac69d24fb}{00368}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a90fc71d1fe03017ee4c7a1cac69d24fb}{Composition::getElectronAbundance}}()\ const\ noexcept\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00369}00369\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ Ye\ =\ 0.0;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00370}00370\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [species,\ y]\ :\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}})\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00371}00371\ \ \ \ \ \ \ \ \ \ \ \ \ Ye\ +=\ species.z()\ *\ y;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00372}00372\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00373}00373\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ye;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00374}00374\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00375}00375\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00376}00376\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00377}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aac5b214a3d1278e127422224cb9cee50}{00377}}\ \ \ \ \ \mbox{\hyperlink{structfourdst_1_1composition_1_1CanonicalComposition}{CanonicalComposition}}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aac5b214a3d1278e127422224cb9cee50}{Composition::getCanonicalComposition}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00378}00378\ \ \ \ \ )\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00379}00379\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacefourdst_1_1atomic}{fourdst::atomic}};}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00380}00380\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00381}00381\ \ \ \ \ \ \ \ \ massFractionVector.reserve(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.size());}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00382}00382\ \ \ \ \ \ \ \ \ speciesMass.reserve(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.size());}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00383}00383\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00384}00384\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}:\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}\ |\ std::views::keys)\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00385}00385\ \ \ \ \ \ \ \ \ \ \ \ \ massFractionVector.push\_back(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a9ea2b673341fdc67afeb0f0517a54c8c}{getMassFraction}}(\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}));}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00386}00386\ \ \ \ \ \ \ \ \ \ \ \ \ speciesMass.push\_back(\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}.mass());}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00387}00387\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00388}00388\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00389}00389\ \ \ \ \ \ \ \ \ std::vector<double>\ massFractions\ =\ sortVectorBy(massFractionVector,\ speciesMass);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00390}00390\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.massFractions\ =\ massFractions;\ \textcolor{comment}{//\ Cache\ the\ result}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00391}00391\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ massFractions;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00392}00392\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00393}00393\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00394}00394\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00395}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ae4f72972cf4d1ff422d0790080e11473}{00395}}\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ae4f72972cf4d1ff422d0790080e11473}{Composition::getNumberFractionVector}}()\ const\ noexcept\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00396}00396\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.numberFractions.has\_value())\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00397}00397\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.numberFractions.value();\ \textcolor{comment}{//\ Short\ circuit\ if\ we\ have\ cached\ the\ number\ fractions}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00398}00398\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00399}00399\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00400}00400\ \ \ \ \ \ \ \ \ std::vector<double>\ numberFractionVector;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00401}00401\ \ \ \ \ \ \ \ \ std::vector<double>\ speciesMass;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00381}00381\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.\mbox{\hyperlink{structfourdst_1_1composition_1_1Composition_1_1CompositionCache_a459e01b94eb0e78dd95bb6932a967f13}{canonicalComp}}.has\_value())\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00382}00382\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.\mbox{\hyperlink{structfourdst_1_1composition_1_1Composition_1_1CompositionCache_a459e01b94eb0e78dd95bb6932a967f13}{canonicalComp}}.value();\ \textcolor{comment}{//\ Short\ circuit\ if\ we\ have\ cached\ the\ canonical\ composition}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00383}00383\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00384}00384\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structfourdst_1_1composition_1_1CanonicalComposition}{CanonicalComposition}}\ canonicalComposition;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00385}00385\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::set<Species>\ canonicalH\ =\ \{H\_1,\ H\_2,\ H\_3,\ H\_4,\ H\_5,\ H\_6,\ H\_7\};}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00386}00386\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::set<Species>\ canonicalHe\ =\ \{He\_3,\ He\_4,\ He\_5,\ He\_6,\ He\_7,\ He\_8,\ He\_9,\ He\_10\};}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00387}00387\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00388}00388\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ symbol\ :\ canonicalH)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00389}00389\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a194f715788e7921bd611579440de2ecd}{contains}}(symbol))\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00390}00390\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ canonicalComposition.\mbox{\hyperlink{structfourdst_1_1composition_1_1CanonicalComposition_abe5b01574242f8eaabd00c3d653291f7}{X}}\ +=\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a9ea2b673341fdc67afeb0f0517a54c8c}{getMassFraction}}(symbol);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00391}00391\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00392}00392\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00393}00393\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ symbol\ :\ canonicalHe)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00394}00394\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a194f715788e7921bd611579440de2ecd}{contains}}(symbol))\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00395}00395\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ canonicalComposition.\mbox{\hyperlink{structfourdst_1_1composition_1_1CanonicalComposition_a93927bfccc5d2b3906565d092ed4f7f4}{Y}}\ +=\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a9ea2b673341fdc67afeb0f0517a54c8c}{getMassFraction}}(symbol);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00396}00396\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00397}00397\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00398}00398\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00399}00399\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ species\ :\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}\ |\ std::views::keys)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00400}00400\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ isHIsotope\ =\ canonicalH.contains(species);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00401}00401\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ isHeIsotope\ =\ canonicalHe.contains(species);}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00402}00402\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00403}00403\ \ \ \ \ \ \ \ \ numberFractionVector.reserve(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.size());}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00404}00404\ \ \ \ \ \ \ \ \ speciesMass.reserve(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.size());}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00405}00405\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00406}00406\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}:\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}\ |\ std::views::keys)\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00407}00407\ \ \ \ \ \ \ \ \ \ \ \ \ numberFractionVector.push\_back(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a1f87ed64a1be9a6091c852131d24e476}{getNumberFraction}}(\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}));}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00408}00408\ \ \ \ \ \ \ \ \ \ \ \ \ speciesMass.push\_back(\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}.mass());}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00409}00409\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00410}00410\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00411}00411\ \ \ \ \ \ \ \ \ std::vector<double>\ numberFractions\ =\ sortVectorBy(numberFractionVector,\ speciesMass);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00412}00412\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.numberFractions\ =\ numberFractions;\ \textcolor{comment}{//\ Cache\ the\ result}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00413}00413\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ numberFractions;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00414}00414\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00415}00415\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00416}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abcb391f5fca2b636127e48e681e4c3ee}{00416}}\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abcb391f5fca2b636127e48e681e4c3ee}{Composition::getMolarAbundanceVector}}()\ const\ noexcept\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00417}00417\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.molarAbundances.has\_value())\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00418}00418\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.molarAbundances.value();\ \textcolor{comment}{//\ Short\ circuit\ if\ we\ have\ cached\ the\ molar\ abundances}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00419}00419\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00420}00420\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00421}00421\ \ \ \ \ \ \ \ \ std::vector<double>\ molarAbundanceVector;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00422}00422\ \ \ \ \ \ \ \ \ std::vector<double>\ speciesMass;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00423}00423\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00424}00424\ \ \ \ \ \ \ \ \ molarAbundanceVector.reserve(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.size());}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00425}00425\ \ \ \ \ \ \ \ \ speciesMass.reserve(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.size());}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00426}00426\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00427}00427\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&[\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}},\ y]:\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}})\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00428}00428\ \ \ \ \ \ \ \ \ \ \ \ \ molarAbundanceVector.push\_back(y);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00429}00429\ \ \ \ \ \ \ \ \ \ \ \ \ speciesMass.push\_back(\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}.mass());}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00430}00430\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00431}00431\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00432}00432\ \ \ \ \ \ \ \ \ std::vector<double>\ molarAbundances\ =\ sortVectorBy(molarAbundanceVector,\ speciesMass);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00433}00433\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.molarAbundances\ =\ molarAbundances;\ \textcolor{comment}{//\ Cache\ the\ result}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00434}00434\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ molarAbundances;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00403}00403\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isHIsotope\ ||\ isHeIsotope)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00404}00404\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};\ \textcolor{comment}{//\ Skip\ canonical\ H\ and\ He\ symbols}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00405}00405\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00406}00406\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00407}00407\ \ \ \ \ \ \ \ \ \ \ \ \ canonicalComposition.\mbox{\hyperlink{structfourdst_1_1composition_1_1CanonicalComposition_ae1981f5ddd36abd17a4a69fa1f43de18}{Z}}\ +=\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a9ea2b673341fdc67afeb0f0517a54c8c}{getMassFraction}}(species);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00408}00408\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00409}00409\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00410}00410\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ReSharper\ disable\ once\ CppTooWideScopeInitStatement}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00411}00411\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Z\ =\ 1.0\ -\/\ (canonicalComposition.\mbox{\hyperlink{structfourdst_1_1composition_1_1CanonicalComposition_abe5b01574242f8eaabd00c3d653291f7}{X}}\ +\ canonicalComposition.\mbox{\hyperlink{structfourdst_1_1composition_1_1CanonicalComposition_a93927bfccc5d2b3906565d092ed4f7f4}{Y}});}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00412}00412\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::abs(Z\ -\/\ canonicalComposition.\mbox{\hyperlink{structfourdst_1_1composition_1_1CanonicalComposition_ae1981f5ddd36abd17a4a69fa1f43de18}{Z}})\ >\ 1e-\/16)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00413}00413\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_ERROR(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ \textcolor{stringliteral}{"{}Validation\ composition\ Z\ (X-\/Y\ =\ \{\})\ is\ different\ than\ canonical\ composition\ Z\ (\{\})\ (∑a\_i\ where\ a\_i\ !=\ H/He)."{}},\ Z,\ canonicalComposition.\mbox{\hyperlink{structfourdst_1_1composition_1_1CanonicalComposition_ae1981f5ddd36abd17a4a69fa1f43de18}{Z}});}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00414}00414\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1InvalidCompositionError}{exceptions::InvalidCompositionError}}(\textcolor{stringliteral}{"{}Validation\ composition\ Z\ (X-\/Y\ =\ "{}}\ +\ std::to\_string(Z)\ +\ \textcolor{stringliteral}{"{})\ is\ different\ than\ canonical\ composition\ Z\ ("{}}\ +\ std::to\_string(canonicalComposition.\mbox{\hyperlink{structfourdst_1_1composition_1_1CanonicalComposition_ae1981f5ddd36abd17a4a69fa1f43de18}{Z}})\ +\ \textcolor{stringliteral}{"{})\ (∑a\_i\ where\ a\_i\ !=\ H/He)."{}});}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00415}00415\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00416}00416\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.\mbox{\hyperlink{structfourdst_1_1composition_1_1Composition_1_1CompositionCache_a459e01b94eb0e78dd95bb6932a967f13}{canonicalComp}}\ =\ canonicalComposition;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00417}00417\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ canonicalComposition;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00418}00418\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00419}00419\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00420}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_af4f44aaf8b7e0d63872a70b5e2131369}{00420}}\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_af4f44aaf8b7e0d63872a70b5e2131369}{Composition::getMassFractionVector}}()\ const\ noexcept\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00421}00421\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.\mbox{\hyperlink{structfourdst_1_1composition_1_1Composition_1_1CompositionCache_add5ce97ae6a1796c5f6488bfa1555be6}{massFractions}}.has\_value())\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00422}00422\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.\mbox{\hyperlink{structfourdst_1_1composition_1_1Composition_1_1CompositionCache_add5ce97ae6a1796c5f6488bfa1555be6}{massFractions}}.value();\ \textcolor{comment}{//\ Short\ circuit\ if\ we\ have\ cached\ the\ mass\ fractions}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00423}00423\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00424}00424\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00425}00425\ \ \ \ \ \ \ \ \ std::vector<double>\ massFractionVector;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00426}00426\ \ \ \ \ \ \ \ \ std::vector<double>\ speciesMass;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00427}00427\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00428}00428\ \ \ \ \ \ \ \ \ massFractionVector.reserve(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.size());}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00429}00429\ \ \ \ \ \ \ \ \ speciesMass.reserve(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.size());}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00430}00430\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00431}00431\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&species:\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}\ |\ std::views::keys)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00432}00432\ \ \ \ \ \ \ \ \ \ \ \ \ massFractionVector.push\_back(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a9ea2b673341fdc67afeb0f0517a54c8c}{getMassFraction}}(species));}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00433}00433\ \ \ \ \ \ \ \ \ \ \ \ \ speciesMass.push\_back(species.mass());}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00434}00434\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00435}00435\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00436}00436\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00437}00437\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00438}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a0d94f62402bb90b5d12679faeaa8c5d7}{00438}}\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a0d94f62402bb90b5d12679faeaa8c5d7}{Composition::getSpeciesIndex}}(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00439}00439\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&symbol}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00440}00440\ \ \ \ \ )\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00441}00441\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}\ =\ getSpecies(symbol);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00442}00442\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}})\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00443}00443\ \ \ \ \ \ \ \ \ \ \ \ \ throw\_unknown\_symbol(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ symbol);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00444}00444\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00445}00445\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00446}00446\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a0d94f62402bb90b5d12679faeaa8c5d7}{getSpeciesIndex}}(\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}.value());}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00447}00447\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00448}00448\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00449}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a3d220b42fa06d7d3a43944ee2b8f6a5f}{00449}}\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a0d94f62402bb90b5d12679faeaa8c5d7}{Composition::getSpeciesIndex}}(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00450}00450\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic::Species}}\ \&\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00451}00451\ \ \ \ \ )\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00452}00452\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a452b0affb86dc971a96c80d01f4fcb2b}{m\_registeredSpecies}}.contains(\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}))\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00453}00453\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_ERROR(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ \textcolor{stringliteral}{"{}Species\ \{\}\ is\ not\ in\ the\ composition."{}},\ \mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}.name());}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00454}00454\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1_unregistered_symbol_error}{exceptions::UnregisteredSymbolError}}(\textcolor{stringliteral}{"{}Species\ "{}}\ +\ std::string(\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}.name())\ +\ \textcolor{stringliteral}{"{}\ is\ not\ in\ the\ composition."{}});}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00455}00455\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00456}00456\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.sortedSpecies.has\_value())\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00457}00457\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::distance(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00458}00458\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.sortedSpecies-\/>begin(),}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00459}00459\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::ranges::find(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00460}00460\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.sortedSpecies.value().begin(),}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00461}00461\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.sortedSpecies.value().end(),}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00462}00462\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00463}00463\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00464}00464\ \ \ \ \ \ \ \ \ \ \ \ \ );}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00465}00465\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00466}00466\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00467}00467\ \ \ \ \ \ \ \ \ std::vector<atomic::Species>\ speciesVector;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00468}00468\ \ \ \ \ \ \ \ \ std::vector<double>\ speciesMass;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00469}00469\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00470}00470\ \ \ \ \ \ \ \ \ speciesVector.reserve(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.size());}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00471}00471\ \ \ \ \ \ \ \ \ speciesMass.reserve(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.size());}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00472}00472\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00473}00473\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&s:\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a452b0affb86dc971a96c80d01f4fcb2b}{m\_registeredSpecies}})\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00474}00474\ \ \ \ \ \ \ \ \ \ \ \ \ speciesVector.emplace\_back(s);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00475}00475\ \ \ \ \ \ \ \ \ \ \ \ \ speciesMass.push\_back(s.mass());}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00476}00476\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00477}00477\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00478}00478\ \ \ \ \ \ \ \ \ std::vector<atomic::Species>\ sortedSpecies\ =\ sortVectorBy(speciesVector,\ speciesMass);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00479}00479\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.sortedSpecies\ =\ sortedSpecies;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00480}00480\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::distance(sortedSpecies.begin(),\ std::ranges::find(sortedSpecies,\ \mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}));}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00481}00481\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00436}00436\ \ \ \ \ \ \ \ \ std::vector<double>\ massFractions\ =\ sortVectorBy(massFractionVector,\ speciesMass);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00437}00437\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.\mbox{\hyperlink{structfourdst_1_1composition_1_1Composition_1_1CompositionCache_add5ce97ae6a1796c5f6488bfa1555be6}{massFractions}}\ =\ massFractions;\ \textcolor{comment}{//\ Cache\ the\ result}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00438}00438\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ massFractions;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00439}00439\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00440}00440\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00441}00441\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00442}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_ae4f72972cf4d1ff422d0790080e11473}{00442}}\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_ae4f72972cf4d1ff422d0790080e11473}{Composition::getNumberFractionVector}}()\ const\ noexcept\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00443}00443\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.\mbox{\hyperlink{structfourdst_1_1composition_1_1Composition_1_1CompositionCache_a41ce9d6b4a0f00030e3027b23c0269fb}{numberFractions}}.has\_value())\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00444}00444\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.\mbox{\hyperlink{structfourdst_1_1composition_1_1Composition_1_1CompositionCache_a41ce9d6b4a0f00030e3027b23c0269fb}{numberFractions}}.value();\ \textcolor{comment}{//\ Short\ circuit\ if\ we\ have\ cached\ the\ number\ fractions}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00445}00445\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00446}00446\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00447}00447\ \ \ \ \ \ \ \ \ std::vector<double>\ numberFractionVector;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00448}00448\ \ \ \ \ \ \ \ \ std::vector<double>\ speciesMass;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00449}00449\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00450}00450\ \ \ \ \ \ \ \ \ numberFractionVector.reserve(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.size());}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00451}00451\ \ \ \ \ \ \ \ \ speciesMass.reserve(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.size());}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00452}00452\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00453}00453\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&species:\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}\ |\ std::views::keys)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00454}00454\ \ \ \ \ \ \ \ \ \ \ \ \ numberFractionVector.push\_back(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a1f87ed64a1be9a6091c852131d24e476}{getNumberFraction}}(species));}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00455}00455\ \ \ \ \ \ \ \ \ \ \ \ \ speciesMass.push\_back(species.mass());}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00456}00456\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00457}00457\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00458}00458\ \ \ \ \ \ \ \ \ std::vector<double>\ numberFractions\ =\ sortVectorBy(numberFractionVector,\ speciesMass);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00459}00459\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.\mbox{\hyperlink{structfourdst_1_1composition_1_1Composition_1_1CompositionCache_a41ce9d6b4a0f00030e3027b23c0269fb}{numberFractions}}\ =\ numberFractions;\ \textcolor{comment}{//\ Cache\ the\ result}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00460}00460\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ numberFractions;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00461}00461\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00462}00462\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00463}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_abcb391f5fca2b636127e48e681e4c3ee}{00463}}\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_abcb391f5fca2b636127e48e681e4c3ee}{Composition::getMolarAbundanceVector}}()\ const\ noexcept\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00464}00464\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.\mbox{\hyperlink{structfourdst_1_1composition_1_1Composition_1_1CompositionCache_ab74c9cd92ba8aaf5f95c8ca5284206a6}{molarAbundances}}.has\_value())\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00465}00465\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.\mbox{\hyperlink{structfourdst_1_1composition_1_1Composition_1_1CompositionCache_ab74c9cd92ba8aaf5f95c8ca5284206a6}{molarAbundances}}.value();\ \textcolor{comment}{//\ Short\ circuit\ if\ we\ have\ cached\ the\ molar\ abundances}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00466}00466\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00467}00467\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00468}00468\ \ \ \ \ \ \ \ \ std::vector<double>\ molarAbundanceVector;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00469}00469\ \ \ \ \ \ \ \ \ std::vector<double>\ speciesMass;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00470}00470\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00471}00471\ \ \ \ \ \ \ \ \ molarAbundanceVector.reserve(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.size());}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00472}00472\ \ \ \ \ \ \ \ \ speciesMass.reserve(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.size());}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00473}00473\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00474}00474\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&[species,\ y]:\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}})\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00475}00475\ \ \ \ \ \ \ \ \ \ \ \ \ molarAbundanceVector.push\_back(y);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00476}00476\ \ \ \ \ \ \ \ \ \ \ \ \ speciesMass.push\_back(species.mass());}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00477}00477\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00478}00478\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00479}00479\ \ \ \ \ \ \ \ \ std::vector<double>\ molarAbundances\ =\ sortVectorBy(molarAbundanceVector,\ speciesMass);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00480}00480\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.\mbox{\hyperlink{structfourdst_1_1composition_1_1Composition_1_1CompositionCache_ab74c9cd92ba8aaf5f95c8ca5284206a6}{molarAbundances}}\ =\ molarAbundances;\ \textcolor{comment}{//\ Cache\ the\ result}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00481}00481\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ molarAbundances;}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00482}00482\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00483}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ae4f854ded38f5e6fcd157a74a57cbf0c}{00483}}\ \ \ \ \ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic::Species}}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ae4f854ded38f5e6fcd157a74a57cbf0c}{Composition::getSpeciesAtIndex}}(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00484}00484\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ index}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00485}00485\ \ \ \ \ )\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00486}00486\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.sortedSpecies.has\_value())\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00487}00487\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.sortedSpecies.value().at(index);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00488}00488\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00489}00489\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00490}00490\ \ \ \ \ \ \ \ \ std::vector<atomic::Species>\ speciesVector;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00491}00491\ \ \ \ \ \ \ \ \ std::vector<double>\ speciesMass;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00483}00483\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00484}00484\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00485}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a0d94f62402bb90b5d12679faeaa8c5d7}{00485}}\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a0d94f62402bb90b5d12679faeaa8c5d7}{Composition::getSpeciesIndex}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00486}00486\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&symbol}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00487}00487\ \ \ \ \ )\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00488}00488\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ species\ =\ getSpecies(symbol);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00489}00489\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!species)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00490}00490\ \ \ \ \ \ \ \ \ \ \ \ \ throw\_unknown\_symbol(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ symbol);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00491}00491\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00492}00492\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00493}00493\ \ \ \ \ \ \ \ \ speciesVector.reserve(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.size());}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00494}00494\ \ \ \ \ \ \ \ \ speciesMass.reserve(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.size());}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00493}00493\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a0d94f62402bb90b5d12679faeaa8c5d7}{getSpeciesIndex}}(species.value());}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00494}00494\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00495}00495\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00496}00496\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}:\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a452b0affb86dc971a96c80d01f4fcb2b}{m\_registeredSpecies}})\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00497}00497\ \ \ \ \ \ \ \ \ \ \ \ \ speciesVector.emplace\_back(\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}});}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00498}00498\ \ \ \ \ \ \ \ \ \ \ \ \ speciesMass.push\_back(\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}.mass());}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00499}00499\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00500}00500\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00501}00501\ \ \ \ \ \ \ \ \ std::vector<atomic::Species>\ sortedSymbols\ =\ sortVectorBy(speciesVector,\ speciesMass);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00502}00502\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ >=\ sortedSymbols.size())\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00503}00503\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_ERROR(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ \textcolor{stringliteral}{"{}Index\ \{\}\ is\ out\ of\ range\ for\ composition\ of\ size\ \{\}."{}},\ index,\ sortedSymbols.size());}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00504}00504\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}Index\ "{}}\ +\ std::to\_string(index)\ +\ \textcolor{stringliteral}{"{}\ is\ out\ of\ range\ for\ composition\ of\ size\ "{}}\ +\ std::to\_string(sortedSymbols.size())\ +\ \textcolor{stringliteral}{"{}."{}});}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00505}00505\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00506}00506\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sortedSymbols.at(index);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00507}00507\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00508}00508\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00509}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a194f715788e7921bd611579440de2ecd}{00509}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a194f715788e7921bd611579440de2ecd}{Composition::contains}}(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00510}00510\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic::Species}}\ \&\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00511}00511\ \ \ \ \ )\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00512}00512\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a452b0affb86dc971a96c80d01f4fcb2b}{m\_registeredSpecies}}.contains(\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}});}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00513}00513\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00514}00514\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00515}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ac3bfb56a2587215a59894e76d4867ede}{00515}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a194f715788e7921bd611579440de2ecd}{Composition::contains}}(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00516}00516\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&symbol}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00517}00517\ \ \ \ \ )\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00518}00518\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}\ =\ getSpecies(symbol);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00519}00519\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}})\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00520}00520\ \ \ \ \ \ \ \ \ \ \ \ \ throw\_unknown\_symbol(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ symbol);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00521}00521\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00522}00522\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a194f715788e7921bd611579440de2ecd}{contains}}(\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}.value());}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00523}00523\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00496}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a3d220b42fa06d7d3a43944ee2b8f6a5f}{00496}}\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a0d94f62402bb90b5d12679faeaa8c5d7}{Composition::getSpeciesIndex}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00497}00497\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structfourdst_1_1atomic_1_1Species}{atomic::Species}}\ \&species}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00498}00498\ \ \ \ \ )\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00499}00499\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a452b0affb86dc971a96c80d01f4fcb2b}{m\_registeredSpecies}}.contains(species))\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00500}00500\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_ERROR(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ \textcolor{stringliteral}{"{}Species\ \{\}\ is\ not\ in\ the\ composition."{}},\ species.\mbox{\hyperlink{structfourdst_1_1atomic_1_1Species_a1fcc01fc978b34ba2531117f10be6741}{name}}());}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00501}00501\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1UnregisteredSymbolError}{exceptions::UnregisteredSymbolError}}(\textcolor{stringliteral}{"{}Species\ "{}}\ +\ std::string(species.\mbox{\hyperlink{structfourdst_1_1atomic_1_1Species_a1fcc01fc978b34ba2531117f10be6741}{name}}())\ +\ \textcolor{stringliteral}{"{}\ is\ not\ in\ the\ composition."{}});}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00502}00502\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00503}00503\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.\mbox{\hyperlink{structfourdst_1_1composition_1_1Composition_1_1CompositionCache_a14761ff2df5423884330e423ec38e98c}{sortedSpecies}}.has\_value())\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00504}00504\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::distance(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00505}00505\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.\mbox{\hyperlink{structfourdst_1_1composition_1_1Composition_1_1CompositionCache_a14761ff2df5423884330e423ec38e98c}{sortedSpecies}}-\/>begin(),}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00506}00506\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::ranges::find(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00507}00507\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.\mbox{\hyperlink{structfourdst_1_1composition_1_1Composition_1_1CompositionCache_a14761ff2df5423884330e423ec38e98c}{sortedSpecies}}.value().begin(),}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00508}00508\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.\mbox{\hyperlink{structfourdst_1_1composition_1_1Composition_1_1CompositionCache_a14761ff2df5423884330e423ec38e98c}{sortedSpecies}}.value().end(),}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00509}00509\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ species}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00510}00510\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00511}00511\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00512}00512\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00513}00513\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00514}00514\ \ \ \ \ \ \ \ \ std::vector<atomic::Species>\ speciesVector;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00515}00515\ \ \ \ \ \ \ \ \ std::vector<double>\ speciesMass;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00516}00516\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00517}00517\ \ \ \ \ \ \ \ \ speciesVector.reserve(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.size());}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00518}00518\ \ \ \ \ \ \ \ \ speciesMass.reserve(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.size());}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00519}00519\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00520}00520\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&s:\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a452b0affb86dc971a96c80d01f4fcb2b}{m\_registeredSpecies}})\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00521}00521\ \ \ \ \ \ \ \ \ \ \ \ \ speciesVector.emplace\_back(s);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00522}00522\ \ \ \ \ \ \ \ \ \ \ \ \ speciesMass.push\_back(s.mass());}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00523}00523\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00524}00524\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00525}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a9d177d36b728442bcbd8cb66712c7c75}{00525}}\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a9d177d36b728442bcbd8cb66712c7c75}{Composition::size}}()\ const\ noexcept\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00526}00526\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a452b0affb86dc971a96c80d01f4fcb2b}{m\_registeredSpecies}}.size();}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00527}00527\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00528}00528\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00529}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a262d7133035d4e6f45daa81827abf5e7}{00529}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a262d7133035d4e6f45daa81827abf5e7}{Composition::setMolarAbundance}}(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00530}00530\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&symbol,}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00531}00531\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&molar\_abundance}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00532}00532\ \ \ \ \ )\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00533}00533\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}\ =\ getSpecies(symbol);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00534}00534\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}})\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00535}00535\ \ \ \ \ \ \ \ \ \ \ \ \ throw\_unknown\_symbol(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ symbol);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00536}00536\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00537}00537\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00538}00538\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}.value(),\ molar\_abundance);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00539}00539\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00540}00540\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00541}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ac386709ef1e872fa558b8e30fc8b4c44}{00541}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a262d7133035d4e6f45daa81827abf5e7}{Composition::setMolarAbundance}}(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00542}00542\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic::Species}}\ \&\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}},}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00543}00543\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&molar\_abundance}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00544}00544\ \ \ \ \ )\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00545}00545\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a452b0affb86dc971a96c80d01f4fcb2b}{m\_registeredSpecies}}.contains(\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}))\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00546}00546\ \ \ \ \ \ \ \ \ \ \ \ \ throw\_unregistered\_symbol(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ std::string(\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}.name()));}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00547}00547\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00548}00548\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (molar\_abundance\ <\ 0.0)\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00549}00549\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_ERROR(\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ \textcolor{stringliteral}{"{}Molar\ abundance\ must\ be\ non-\/negative\ for\ symbol\ \{\}.\ Currently\ it\ is\ \{\}."{}},\ \mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}.name(),\ molar\_abundance);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00550}00550\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1_invalid_composition_error}{exceptions::InvalidCompositionError}}(\textcolor{stringliteral}{"{}Molar\ abundance\ must\ be\ non-\/negative,\ got\ "{}}\ +\ std::to\_string(molar\_abundance)\ +\ \textcolor{stringliteral}{"{}\ for\ symbol\ "{}}\ +\ std::string(\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}.name())\ +\ \textcolor{stringliteral}{"{}."{}});}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00551}00551\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00552}00552\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.at(\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}})\ =\ molar\_abundance;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00553}00553\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00554}00554\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00555}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a6baa22b92a78fd43d10d4941f30c8ac2}{00555}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a262d7133035d4e6f45daa81827abf5e7}{Composition::setMolarAbundance}}(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00556}00556\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::string>\ \&symbols,}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00557}00557\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<double>\ \&molar\_abundances}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00558}00558\ \ \ \ \ )\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00559}00559\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [symbol,\ y]\ :\ std::views::zip(symbols,\ molar\_abundances))\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00560}00560\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(symbol,\ y);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00561}00561\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00562}00562\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00563}00563\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00564}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ae908cda3a994292e2eb767fa476b666b}{00564}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a262d7133035d4e6f45daa81827abf5e7}{Composition::setMolarAbundance}}(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00565}00565\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<atomic::Species>\ \&\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}},}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00566}00566\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<double>\ \&molar\_abundances}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00567}00567\ \ \ \ \ )\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00568}00568\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [s,\ y]\ :\ std::views::zip(\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}},\ molar\_abundances))\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00569}00569\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(s,\ y);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00570}00570\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00571}00571\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00572}00572\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00573}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a49b06737a50df9c25a234499a1431388}{00573}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a262d7133035d4e6f45daa81827abf5e7}{Composition::setMolarAbundance}}(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00574}00574\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::set<std::string>\ \&symbols,}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00575}00575\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<double>\ \&molar\_abundances}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00576}00576\ \ \ \ \ )\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00577}00577\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [symbol,\ y]\ :\ std::views::zip(symbols,\ molar\_abundances))\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00578}00578\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(symbol,\ y);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00579}00579\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00580}00580\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00581}00581\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00582}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ad7af2f8f3050969a6c5b9a9ef5fead64}{00582}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a262d7133035d4e6f45daa81827abf5e7}{Composition::setMolarAbundance}}(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00583}00583\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::set<atomic::Species>\ \&\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}},}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00584}00584\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<double>\ \&molar\_abundances}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00585}00585\ \ \ \ \ )\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00586}00586\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [s,\ y]\ :\ std::views::zip(\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}},\ molar\_abundances))\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00587}00587\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(s,\ y);}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00588}00588\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00589}00589\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00590}00590\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00592}00592\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00593}\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a36c2525d21cd932065bb2bb30bc57fb4}{00593}}\ \ \ \ \ std::ostream\&\ \mbox{\hyperlink{namespacefourdst_1_1composition_a5e8ccc2bd9e91eebcd3ef5fe470163a1}{operator<<}}(}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00594}00594\ \ \ \ \ \ \ \ \ std::ostream\&\ os,}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00595}00595\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a23b83b76ee025f6fc009184ee19bba88}{Composition}}\&\ \mbox{\hyperlink{namespacefourdst_1_1composition}{composition}}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00596}00596\ \ \ \ \ )\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00597}00597\ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}Composition(Mass\ Fractions\ =>\ ["{}};}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00598}00598\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ count\ =\ 0;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00599}00599\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}\ :\ \mbox{\hyperlink{namespacefourdst_1_1composition}{composition}}.m\_registeredSpecies)\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00600}00600\ \ \ \ \ \ \ \ \ \ \ \ \ os\ <<\ \mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}}\ <<\ \textcolor{stringliteral}{"{}:\ "{}}\ <<\ \mbox{\hyperlink{namespacefourdst_1_1composition}{composition}}.getMassFraction(\mbox{\hyperlink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{species}});}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00601}00601\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (count\ <\ \mbox{\hyperlink{namespacefourdst_1_1composition}{composition}}.size()\ -\/\ 1)\ \{}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00602}00602\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{},\ "{}};}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00603}00603\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00604}00604\ \ \ \ \ \ \ \ \ \ \ \ \ count++;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00605}00605\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00606}00606\ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}])"{}};}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00607}00607\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00608}00608\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00609}00609\ }
-\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00610}00610\ \}\ \textcolor{comment}{//\ namespace\ fourdst::composition}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00525}00525\ \ \ \ \ \ \ \ \ std::vector<atomic::Species>\ sortedSpecies\ =\ sortVectorBy(speciesVector,\ speciesMass);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00526}00526\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.\mbox{\hyperlink{structfourdst_1_1composition_1_1Composition_1_1CompositionCache_a14761ff2df5423884330e423ec38e98c}{sortedSpecies}}\ =\ sortedSpecies;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00527}00527\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::distance(sortedSpecies.begin(),\ std::ranges::find(sortedSpecies,\ species));}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00528}00528\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00529}00529\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00530}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_ae4f854ded38f5e6fcd157a74a57cbf0c}{00530}}\ \ \ \ \ \mbox{\hyperlink{structfourdst_1_1atomic_1_1Species}{atomic::Species}}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_ae4f854ded38f5e6fcd157a74a57cbf0c}{Composition::getSpeciesAtIndex}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00531}00531\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ index}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00532}00532\ \ \ \ \ )\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00533}00533\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.\mbox{\hyperlink{structfourdst_1_1composition_1_1Composition_1_1CompositionCache_a14761ff2df5423884330e423ec38e98c}{sortedSpecies}}.has\_value())\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00534}00534\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\_cache}}.\mbox{\hyperlink{structfourdst_1_1composition_1_1Composition_1_1CompositionCache_a14761ff2df5423884330e423ec38e98c}{sortedSpecies}}.value().at(index);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00535}00535\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00536}00536\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00537}00537\ \ \ \ \ \ \ \ \ std::vector<atomic::Species>\ speciesVector;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00538}00538\ \ \ \ \ \ \ \ \ std::vector<double>\ speciesMass;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00539}00539\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00540}00540\ \ \ \ \ \ \ \ \ speciesVector.reserve(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.size());}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00541}00541\ \ \ \ \ \ \ \ \ speciesMass.reserve(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.size());}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00542}00542\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00543}00543\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&species:\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a452b0affb86dc971a96c80d01f4fcb2b}{m\_registeredSpecies}})\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00544}00544\ \ \ \ \ \ \ \ \ \ \ \ \ speciesVector.emplace\_back(species);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00545}00545\ \ \ \ \ \ \ \ \ \ \ \ \ speciesMass.push\_back(species.mass());}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00546}00546\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00547}00547\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00548}00548\ \ \ \ \ \ \ \ \ std::vector<atomic::Species>\ sortedSymbols\ =\ sortVectorBy(speciesVector,\ speciesMass);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00549}00549\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ >=\ sortedSymbols.size())\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00550}00550\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_ERROR(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ \textcolor{stringliteral}{"{}Index\ \{\}\ is\ out\ of\ range\ for\ composition\ of\ size\ \{\}."{}},\ index,\ sortedSymbols.size());}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00551}00551\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}Index\ "{}}\ +\ std::to\_string(index)\ +\ \textcolor{stringliteral}{"{}\ is\ out\ of\ range\ for\ composition\ of\ size\ "{}}\ +\ std::to\_string(sortedSymbols.size())\ +\ \textcolor{stringliteral}{"{}."{}});}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00552}00552\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00553}00553\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sortedSymbols.at(index);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00554}00554\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00555}00555\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00556}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a5a1f5661a329ec7bc8b7e118ff9d6c25}{00556}}\ \ \ \ \ std::unique\_ptr<CompositionAbstract>\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a5a1f5661a329ec7bc8b7e118ff9d6c25}{Composition::clone}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00557}00557\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::make\_unique<Composition>(*\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00558}00558\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00559}00559\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00560}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a194f715788e7921bd611579440de2ecd}{00560}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a194f715788e7921bd611579440de2ecd}{Composition::contains}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00561}00561\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structfourdst_1_1atomic_1_1Species}{atomic::Species}}\ \&species}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00562}00562\ \ \ \ \ )\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00563}00563\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_registeredSpecies.contains(species);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00564}00564\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00565}00565\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00566}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_ac3bfb56a2587215a59894e76d4867ede}{00566}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a194f715788e7921bd611579440de2ecd}{Composition::contains}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00567}00567\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&symbol}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00568}00568\ \ \ \ \ )\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00569}00569\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ species\ =\ getSpecies(symbol);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00570}00570\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!species)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00571}00571\ \ \ \ \ \ \ \ \ \ \ \ \ throw\_unknown\_symbol(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ symbol);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00572}00572\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00573}00573\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a194f715788e7921bd611579440de2ecd}{contains}}(species.value());}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00574}00574\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00575}00575\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00576}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a9d177d36b728442bcbd8cb66712c7c75}{00576}}\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a9d177d36b728442bcbd8cb66712c7c75}{Composition::size}}()\ const\ noexcept\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00577}00577\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a452b0affb86dc971a96c80d01f4fcb2b}{m\_registeredSpecies}}.size();}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00578}00578\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00579}00579\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00580}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a262d7133035d4e6f45daa81827abf5e7}{00580}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a262d7133035d4e6f45daa81827abf5e7}{Composition::setMolarAbundance}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00581}00581\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&symbol,}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00582}00582\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&molar\_abundance}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00583}00583\ \ \ \ \ )\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00584}00584\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ species\ =\ getSpecies(symbol);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00585}00585\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!species)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00586}00586\ \ \ \ \ \ \ \ \ \ \ \ \ throw\_unknown\_symbol(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ symbol);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00587}00587\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00588}00588\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00589}00589\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(species.value(),\ molar\_abundance);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00590}00590\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00591}00591\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00592}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_ac386709ef1e872fa558b8e30fc8b4c44}{00592}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a262d7133035d4e6f45daa81827abf5e7}{Composition::setMolarAbundance}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00593}00593\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structfourdst_1_1atomic_1_1Species}{atomic::Species}}\ \&species,}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00594}00594\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&molar\_abundance}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00595}00595\ \ \ \ \ )\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00596}00596\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a452b0affb86dc971a96c80d01f4fcb2b}{m\_registeredSpecies}}.contains(species))\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00597}00597\ \ \ \ \ \ \ \ \ \ \ \ \ throw\_unregistered\_symbol(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ std::string(species.\mbox{\hyperlink{structfourdst_1_1atomic_1_1Species_a1fcc01fc978b34ba2531117f10be6741}{name}}()));}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00598}00598\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00599}00599\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (molar\_abundance\ <\ 0.0)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00600}00600\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_ERROR(\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{getLogger}}(),\ \textcolor{stringliteral}{"{}Molar\ abundance\ must\ be\ non-\/negative\ for\ symbol\ \{\}.\ Currently\ it\ is\ \{\}."{}},\ species.\mbox{\hyperlink{structfourdst_1_1atomic_1_1Species_a1fcc01fc978b34ba2531117f10be6741}{name}}(),\ molar\_abundance);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00601}00601\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1InvalidCompositionError}{exceptions::InvalidCompositionError}}(\textcolor{stringliteral}{"{}Molar\ abundance\ must\ be\ non-\/negative,\ got\ "{}}\ +\ std::to\_string(molar\_abundance)\ +\ \textcolor{stringliteral}{"{}\ for\ symbol\ "{}}\ +\ std::string(species.\mbox{\hyperlink{structfourdst_1_1atomic_1_1Species_a1fcc01fc978b34ba2531117f10be6741}{name}}())\ +\ \textcolor{stringliteral}{"{}."{}});}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00602}00602\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00603}00603\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\_molarAbundances}}.at(species)\ =\ molar\_abundance;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00604}00604\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00605}00605\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00606}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a6baa22b92a78fd43d10d4941f30c8ac2}{00606}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a262d7133035d4e6f45daa81827abf5e7}{Composition::setMolarAbundance}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00607}00607\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::string>\ \&symbols,}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00608}00608\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<double>\ \&molar\_abundances}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00609}00609\ \ \ \ \ )\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00610}00610\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [symbol,\ y]\ :\ std::views::zip(symbols,\ molar\_abundances))\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00611}00611\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(symbol,\ y);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00612}00612\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00613}00613\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00614}00614\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00615}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_ae908cda3a994292e2eb767fa476b666b}{00615}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a262d7133035d4e6f45daa81827abf5e7}{Composition::setMolarAbundance}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00616}00616\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<atomic::Species>\ \&species,}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00617}00617\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<double>\ \&molar\_abundances}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00618}00618\ \ \ \ \ )\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00619}00619\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [s,\ y]\ :\ std::views::zip(species,\ molar\_abundances))\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00620}00620\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(s,\ y);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00621}00621\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00622}00622\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00623}00623\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00624}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a49b06737a50df9c25a234499a1431388}{00624}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a262d7133035d4e6f45daa81827abf5e7}{Composition::setMolarAbundance}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00625}00625\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::set<std::string>\ \&symbols,}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00626}00626\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<double>\ \&molar\_abundances}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00627}00627\ \ \ \ \ )\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00628}00628\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [symbol,\ y]\ :\ std::views::zip(symbols,\ molar\_abundances))\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00629}00629\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(symbol,\ y);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00630}00630\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00631}00631\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00632}00632\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00633}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_ad7af2f8f3050969a6c5b9a9ef5fead64}{00633}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a262d7133035d4e6f45daa81827abf5e7}{Composition::setMolarAbundance}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00634}00634\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::set<atomic::Species>\ \&species,}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00635}00635\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<double>\ \&molar\_abundances}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00636}00636\ \ \ \ \ )\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00637}00637\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [s,\ y]\ :\ std::views::zip(species,\ molar\_abundances))\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00638}00638\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(s,\ y);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00639}00639\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00640}00640\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00641}00641\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00643}00643\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00644}\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a36c2525d21cd932065bb2bb30bc57fb4}{00644}}\ \ \ \ \ std::ostream\&\ \mbox{\hyperlink{namespacefourdst_1_1composition_a5e8ccc2bd9e91eebcd3ef5fe470163a1}{operator<<}}(}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00645}00645\ \ \ \ \ \ \ \ \ std::ostream\&\ os,}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00646}00646\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition}{Composition}}\&\ composition}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00647}00647\ \ \ \ \ )\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00648}00648\ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}Composition(Mass\ Fractions\ =>\ ["{}};}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00649}00649\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ count\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00650}00650\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&species\ :\ composition.\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a452b0affb86dc971a96c80d01f4fcb2b}{m\_registeredSpecies}})\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00651}00651\ \ \ \ \ \ \ \ \ \ \ \ \ os\ <<\ species\ <<\ \textcolor{stringliteral}{"{}:\ "{}}\ <<\ composition.\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a9ea2b673341fdc67afeb0f0517a54c8c}{getMassFraction}}(species);}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00652}00652\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (count\ <\ composition.\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a9d177d36b728442bcbd8cb66712c7c75}{size}}()\ -\/\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00653}00653\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{},\ "{}};}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00654}00654\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00655}00655\ \ \ \ \ \ \ \ \ \ \ \ \ count++;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00656}00656\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00657}00657\ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}])"{}};}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00658}00658\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00659}00659\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00660}00660\ }
+\DoxyCodeLine{\Hypertarget{composition_8cpp_source_l00661}00661\ \}\ \textcolor{comment}{//\ namespace\ fourdst::composition}}
 
 \end{DoxyCode}

@@ -29,12 +29,11 @@ var searchData=
   ['u_5f241_26',['U_241',['../namespacefourdst_1_1atomic.html#a70fe028de504a3de6de26bc6aa50fea9',1,'fourdst::atomic']]],
   ['u_5f242_27',['U_242',['../namespacefourdst_1_1atomic.html#a92075008236543846c38b56ce3d2384a',1,'fourdst::atomic']]],
   ['u_5f243_28',['U_243',['../namespacefourdst_1_1atomic.html#a6a691dbefa234f43137e82716d1d0d73',1,'fourdst::atomic']]],
-  ['unknownsymbolerror_29',['UnknownSymbolError',['../classfourdst_1_1composition_1_1exceptions_1_1_unknown_symbol_error.html',1,'fourdst::composition::exceptions']]],
-  ['unregisteredsymbolerror_30',['UnregisteredSymbolError',['../classfourdst_1_1composition_1_1exceptions_1_1_unregistered_symbol_error.html',1,'fourdst::composition::exceptions']]],
-  ['usage_31',['Usage',['../index.html#usage_sec',1,'']]],
-  ['usage_32',['Typical usage',['../namespacefourdst_1_1atomic.html#autotoc_md3',1,'']]],
-  ['usage_20examples_33',['Usage examples',['../namespacefourdst_1_1composition.html#autotoc_md7',1,'']]],
-  ['utility_34',['3. Building from Mass Fractions (Helper Utility)',['../index.html#autotoc_md17',1,'']]],
-  ['utils_2ecpp_35',['utils.cpp',['../utils_8cpp.html',1,'']]],
-  ['utils_2eh_36',['utils.h',['../utils_8h.html',1,'']]]
+  ['unknownsymbolerror_29',['UnknownSymbolError',['../classfourdst_1_1composition_1_1exceptions_1_1UnknownSymbolError.html',1,'fourdst::composition::exceptions']]],
+  ['unregisteredsymbolerror_30',['UnregisteredSymbolError',['../classfourdst_1_1composition_1_1exceptions_1_1UnregisteredSymbolError.html',1,'fourdst::composition::exceptions']]],
+  ['usage_31',['usage',['../namespacefourdst_1_1atomic.html#autotoc_md3',1,'Typical usage'],['../index.html#usage_sec',1,'Usage']]],
+  ['usage_20examples_32',['Usage examples',['../namespacefourdst_1_1composition.html#autotoc_md7',1,'']]],
+  ['utility_33',['3. Building from Mass Fractions (Helper Utility)',['../index.html#autotoc_md17',1,'']]],
+  ['utils_2ecpp_34',['utils.cpp',['../utils_8cpp.html',1,'']]],
+  ['utils_2eh_35',['utils.h',['../utils_8h.html',1,'']]]
 ];

@@ -4,7 +4,7 @@
 {\ttfamily libcomposition} is a modern, C++23 library, for the creation, manipulation, and analysis of astrophysical chemical compositions. It provides a robust and type‑safe interface for assembling a set of isotopes together with their molar abundances and for deriving commonly used bulk properties (mass fractions, number fractions, canonical X/\+Y/Z, mean particle mass, and electron abundance). {\ttfamily libcomposition} is designed to be tighly integrated into SERiF and related projects such as Grid\+Fire.\hypertarget{index_autotoc_md10}{}\doxysubsubsection{\texorpdfstring{Key Features}{Key Features}}\label{index_autotoc_md10}
 
 \begin{DoxyItemize}
-\item {\bfseries{Type–\+Safe Species Representation}}\+: Strongly typed isotopes ({\ttfamily \doxylink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}}) generated from evaluated nuclear data (AME2020 / NUBASE2020).
+\item {\bfseries{Type–\+Safe Species Representation}}\+: Strongly typed isotopes ({\ttfamily \doxylink{structfourdst_1_1atomic_1_1Species}{fourdst\+::atomic\+::\+Species}}) generated from evaluated nuclear data (AME2020 / NUBASE2020).
 \item {\bfseries{Molar Abundance Core}}\+: Stores absolute molar abundances and derives all secondary quantities (mass / number fractions, mean particle mass, electron abundance) on demand, with internal caching.
 \item {\bfseries{Canonical Composition Support}}\+: Direct computation of canonical (X\+: Hydrogen, Y\+: Helium, Z\+: Metals) mass fractions via {\ttfamily get\+Canonical\+Composition()}.
 \item {\bfseries{Convenience Construction}}\+: Helper utilities for constructing compositions from a vector or set of mass fractions ({\ttfamily build\+Composition\+From\+Mass\+Fractions}).
@@ -60,7 +60,7 @@ You can enable the generation of a {\ttfamily pkg-\/config} file during the setu
 
 \DoxyHorRuler{0}
 \hypertarget{index_usage_sec}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{index_usage_sec}
-Below are focused examples illustrating the current API. All examples assume headers are available via pkg-\/config or your include path.\hypertarget{index_autotoc_md15}{}\doxysubsubsubsection{\texorpdfstring{1. Constructing a Composition from Symbols}{1. Constructing a Composition from Symbols}}\label{index_autotoc_md15}
+Below are focused examples illustrating the current API. All examples assume headers are available via pkg-\/config or your include path.\hypertarget{index_autotoc_md15}{}\doxyparagraph{\texorpdfstring{1. Constructing a Composition from Symbols}{1. Constructing a Composition from Symbols}}\label{index_autotoc_md15}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include\ <iostream>}}
@@ -70,10 +70,10 @@ Below are focused examples illustrating the current API. All examples assume hea
 \DoxyCodeLine{\ \ \ \ \textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacefourdst_1_1composition}{fourdst::composition}};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Register\ symbols\ upon\ construction\ (no\ molar\ abundances\ yet\ -\/>\ default\ 0.0)}}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}}\ comp(\{\textcolor{stringliteral}{"{}H-\/1"{}},\ \textcolor{stringliteral}{"{}He-\/4"{}},\ \textcolor{stringliteral}{"{}C-\/12"{}}\});}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition}{Composition}}\ comp(\{\textcolor{stringliteral}{"{}H-\/1"{}},\ \textcolor{stringliteral}{"{}He-\/4"{}},\ \textcolor{stringliteral}{"{}C-\/12"{}}\});}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Set\ molar\ abundances\ (absolute\ counts;\ they\ need\ not\ sum\ to\ 1.0)}}
-\DoxyCodeLine{\ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(\textcolor{stringliteral}{"{}H-\/1"{}},\ 10.0);}
+\DoxyCodeLine{\ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(\textcolor{stringliteral}{"{}H-\/1"{}},\ 10.0);}
 \DoxyCodeLine{\ \ \ \ comp.setMolarAbundance(\textcolor{stringliteral}{"{}He-\/4"{}},\ 3.0);}
 \DoxyCodeLine{\ \ \ \ comp.setMolarAbundance(\textcolor{stringliteral}{"{}C-\/12"{}},\ 0.25);}
 \DoxyCodeLine{}
@@ -88,7 +88,7 @@ Below are focused examples illustrating the current API. All examples assume hea
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md16}{}\doxysubsubsubsection{\texorpdfstring{2. Constructing from Strongly Typed Species}{2. Constructing from Strongly Typed Species}}\label{index_autotoc_md16}
+\hypertarget{index_autotoc_md16}{}\doxyparagraph{\texorpdfstring{2. Constructing from Strongly Typed Species}{2. Constructing from Strongly Typed Species}}\label{index_autotoc_md16}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include\ <iostream>}}
@@ -100,18 +100,18 @@ Below are focused examples illustrating the current API. All examples assume hea
 \DoxyCodeLine{\ \ \ \ \textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacefourdst_1_1atomic}{fourdst::atomic}};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Build\ directly\ from\ species\ constants}}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}}\ comp(std::vector<Species>\{\mbox{\hyperlink{namespacefourdst_1_1atomic_a6766bc834fd656df51bdcf22f7d97877}{H\_1}},\ \mbox{\hyperlink{namespacefourdst_1_1atomic_ab665e3014e2a805624227350699f141a}{He\_4}},\ \mbox{\hyperlink{namespacefourdst_1_1atomic_af2588b97ce949e37c193d6a3e5cb84a0}{O\_16}}\});}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition}{Composition}}\ comp(std::vector<Species>\{H\_1,\ He\_4,\ O\_16\});}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(\mbox{\hyperlink{namespacefourdst_1_1atomic_a6766bc834fd656df51bdcf22f7d97877}{H\_1}},\ 5.0);}
-\DoxyCodeLine{\ \ \ \ comp.setMolarAbundance(\mbox{\hyperlink{namespacefourdst_1_1atomic_ab665e3014e2a805624227350699f141a}{He\_4}},\ 2.5);}
-\DoxyCodeLine{\ \ \ \ comp.setMolarAbundance(\mbox{\hyperlink{namespacefourdst_1_1atomic_af2588b97ce949e37c193d6a3e5cb84a0}{O\_16}},\ 0.1);}
+\DoxyCodeLine{\ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(H\_1,\ 5.0);}
+\DoxyCodeLine{\ \ \ \ comp.setMolarAbundance(He\_4,\ 2.5);}
+\DoxyCodeLine{\ \ \ \ comp.setMolarAbundance(O\_16,\ 0.1);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Mean\ particle\ mass:\ "{}}\ <<\ comp.getMeanParticleMass()\ <<\ \textcolor{stringliteral}{"{}\ g/mol\(\backslash\)n"{}};}
 \DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Electron\ abundance\ (Ye):\ "{}}\ <<\ comp.getElectronAbundance()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md17}{}\doxysubsubsubsection{\texorpdfstring{3. Building from Mass Fractions (Helper Utility)}{3. Building from Mass Fractions (Helper Utility)}}\label{index_autotoc_md17}
+\hypertarget{index_autotoc_md17}{}\doxyparagraph{\texorpdfstring{3. Building from Mass Fractions (\+Helper Utility)}{3. Building from Mass Fractions (Helper Utility)}}\label{index_autotoc_md17}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include\ <iostream>}}
@@ -123,14 +123,14 @@ Below are focused examples illustrating the current API. All examples assume hea
 \DoxyCodeLine{\ \ \ \ std::vector<std::string>\ symbols\ =\ \{\textcolor{stringliteral}{"{}H-\/1"{}},\ \textcolor{stringliteral}{"{}He-\/4"{}},\ \textcolor{stringliteral}{"{}C-\/12"{}}\};}
 \DoxyCodeLine{\ \ \ \ std::vector<double>\ mf\ \ \ \ \ \ \ =\ \{0.70,\ 0.28,\ 0.02\};\ \textcolor{comment}{//\ Must\ sum\ to\ \string~1\ within\ tolerance}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}}\ comp\ =\ \mbox{\hyperlink{namespacefourdst_1_1composition_aa90b1ef07d607c0c829bedccf381cf54}{buildCompositionFromMassFractions}}(symbols,\ mf);}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition}{Composition}}\ comp\ =\ \mbox{\hyperlink{namespacefourdst_1_1composition_aa90b1ef07d607c0c829bedccf381cf54}{buildCompositionFromMassFractions}}(symbols,\ mf);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{auto}\ canon\ =\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aac5b214a3d1278e127422224cb9cee50}{getCanonicalComposition}}();}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{auto}\ canon\ =\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aac5b214a3d1278e127422224cb9cee50}{getCanonicalComposition}}();}
 \DoxyCodeLine{\ \ \ \ std::cout\ <<\ canon\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md18}{}\doxysubsubsubsection{\texorpdfstring{4. Iterating and Sorted Vector Interfaces}{4. Iterating and Sorted Vector Interfaces}}\label{index_autotoc_md18}
+\hypertarget{index_autotoc_md18}{}\doxyparagraph{\texorpdfstring{4. Iterating and Sorted Vector Interfaces}{4. Iterating and Sorted Vector Interfaces}}\label{index_autotoc_md18}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include\ <iostream>}}
@@ -139,8 +139,8 @@ Below are focused examples illustrating the current API. All examples assume hea
 \DoxyCodeLine{\textcolor{keywordtype}{int}\ main()\ \{}
 \DoxyCodeLine{\ \ \ \ \textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacefourdst_1_1composition}{fourdst::composition}};}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}}\ comp(\{\textcolor{stringliteral}{"{}H-\/1"{}},\ \textcolor{stringliteral}{"{}C-\/12"{}},\ \textcolor{stringliteral}{"{}He-\/4"{}}\});\ \textcolor{comment}{//\ Internally\ sorted\ by\ mass\ (H\ <\ He\ <\ C)}}
-\DoxyCodeLine{\ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(\{\textcolor{stringliteral}{"{}H-\/1"{}},\ \textcolor{stringliteral}{"{}He-\/4"{}},\ \textcolor{stringliteral}{"{}C-\/12"{}}\},\ \{10.0,\ 3.0,\ 0.25\});}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition}{Composition}}\ comp(\{\textcolor{stringliteral}{"{}H-\/1"{}},\ \textcolor{stringliteral}{"{}C-\/12"{}},\ \textcolor{stringliteral}{"{}He-\/4"{}}\});\ \textcolor{comment}{//\ Internally\ sorted\ by\ mass\ (H\ <\ He\ <\ C)}}
+\DoxyCodeLine{\ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(\{\textcolor{stringliteral}{"{}H-\/1"{}},\ \textcolor{stringliteral}{"{}He-\/4"{}},\ \textcolor{stringliteral}{"{}C-\/12"{}}\},\ \{10.0,\ 3.0,\ 0.25\});}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Ordered\ iteration\ (lightest\ -\/>\ heaviest)}}
 \DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&[sp,\ y]\ :\ comp)\ \{}
@@ -148,28 +148,28 @@ Below are focused examples illustrating the current API. All examples assume hea
 \DoxyCodeLine{\ \ \ \ \}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Vector\ access\ (index\ corresponds\ to\ ordering\ by\ atomic\ mass)}}
-\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{auto}\ molarVec\ =\ comp.getMolarAbundanceVector();}
-\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{auto}\ massVec\ \ =\ comp.getMassFractionVector();}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{auto}\ molarVec\ =\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_abcb391f5fca2b636127e48e681e4c3ee}{getMolarAbundanceVector}}();}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{auto}\ massVec\ \ =\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_af4f44aaf8b7e0d63872a70b5e2131369}{getMassFractionVector}}();}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{size\_t}\ idx\_he4\ =\ comp.getSpeciesIndex(\textcolor{stringliteral}{"{}He-\/4"{}});}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{size\_t}\ idx\_he4\ =\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a0d94f62402bb90b5d12679faeaa8c5d7}{getSpeciesIndex}}(\textcolor{stringliteral}{"{}He-\/4"{}});}
 \DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}He-\/4\ index:\ "{}}\ <<\ idx\_he4\ <<\ \textcolor{stringliteral}{"{},\ molar\ abundance\ at\ index:\ "{}}\ <<\ molarVec[idx\_he4]\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md19}{}\doxysubsubsubsection{\texorpdfstring{5. Accessing Specific Derived Quantities}{5. Accessing Specific Derived Quantities}}\label{index_autotoc_md19}
+\hypertarget{index_autotoc_md19}{}\doxyparagraph{\texorpdfstring{5. Accessing Specific Derived Quantities}{5. Accessing Specific Derived Quantities}}\label{index_autotoc_md19}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{comment}{//\ Assume\ 'comp'\ is\ already\ populated.}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{double}\ mf\_c12\ \ \ =\ comp.getMassFraction(\textcolor{stringliteral}{"{}C-\/12"{}});}
-\DoxyCodeLine{\textcolor{keywordtype}{double}\ nf\_c12\ \ \ =\ comp.getNumberFraction(\textcolor{stringliteral}{"{}C-\/12"{}});}
-\DoxyCodeLine{\textcolor{keywordtype}{double}\ mol\_c12\ \ =\ comp.getMolarAbundance(\textcolor{stringliteral}{"{}C-\/12"{}});}
-\DoxyCodeLine{\textcolor{keywordtype}{double}\ meanA\ \ \ \ =\ comp.getMeanParticleMass();}
-\DoxyCodeLine{\textcolor{keywordtype}{double}\ Ye\ \ \ \ \ \ \ =\ comp.getElectronAbundance();}
-\DoxyCodeLine{\textcolor{keyword}{auto}\ \ \ canon\ \ \ \ =\ comp.getCanonicalComposition();}
+\DoxyCodeLine{\textcolor{keywordtype}{double}\ mf\_c12\ \ \ =\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a9ea2b673341fdc67afeb0f0517a54c8c}{getMassFraction}}(\textcolor{stringliteral}{"{}C-\/12"{}});}
+\DoxyCodeLine{\textcolor{keywordtype}{double}\ nf\_c12\ \ \ =\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a34f71d4d8f0297c576fd62fabd490305}{getNumberFraction}}(\textcolor{stringliteral}{"{}C-\/12"{}});}
+\DoxyCodeLine{\textcolor{keywordtype}{double}\ mol\_c12\ \ =\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_add67a92d73e3a57a2bbdb52bc9ca3bfe}{getMolarAbundance}}(\textcolor{stringliteral}{"{}C-\/12"{}});}
+\DoxyCodeLine{\textcolor{keywordtype}{double}\ meanA\ \ \ \ =\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_afbbb5e51ad5ae5c0fa6bc0094195aecd}{getMeanParticleMass}}();}
+\DoxyCodeLine{\textcolor{keywordtype}{double}\ Ye\ \ \ \ \ \ \ =\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a90fc71d1fe03017ee4c7a1cac69d24fb}{getElectronAbundance}}();}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ \ \ canon\ \ \ \ =\ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_aac5b214a3d1278e127422224cb9cee50}{getCanonicalComposition}}();}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md20}{}\doxysubsubsubsection{\texorpdfstring{6. Exception Handling Examples}{6. Exception Handling Examples}}\label{index_autotoc_md20}
+\hypertarget{index_autotoc_md20}{}\doxyparagraph{\texorpdfstring{6. Exception Handling Examples}{6. Exception Handling Examples}}\label{index_autotoc_md20}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include\ <iostream>}}
@@ -180,35 +180,35 @@ Below are focused examples illustrating the current API. All examples assume hea
 \DoxyCodeLine{\ \ \ \ \textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacefourdst_1_1composition}{fourdst::composition}};}
 \DoxyCodeLine{\ \ \ \ \textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacefourdst_1_1composition_1_1exceptions}{fourdst::composition::exceptions}};}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}}\ comp;}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition}{Composition}}\ comp;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{try}\ \{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Unknown\ symbol\ (not\ in\ species\ database)}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a3ab4dcda0bfd1a35b169bcc57fe66725}{registerSymbol}}(\textcolor{stringliteral}{"{}Xx-\/999"{}});}
-\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1_unknown_symbol_error}{UnknownSymbolError}}\ \&e)\ \{}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Caught\ UnknownSymbolError:\ "{}}\ <<\ e.\mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1_species_error_af0c63f7e05d0c65157b960c654d09b67}{what}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a3ab4dcda0bfd1a35b169bcc57fe66725}{registerSymbol}}(\textcolor{stringliteral}{"{}Xx-\/999"{}});}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1UnknownSymbolError}{UnknownSymbolError}}\ \&e)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Caught\ UnknownSymbolError:\ "{}}\ <<\ e.\mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1SpeciesError_af0c63f7e05d0c65157b960c654d09b67}{what}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{\ \ \ \ \}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a3ab4dcda0bfd1a35b169bcc57fe66725}{registerSymbol}}(\textcolor{stringliteral}{"{}H-\/1"{}});}
+\DoxyCodeLine{\ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a3ab4dcda0bfd1a35b169bcc57fe66725}{registerSymbol}}(\textcolor{stringliteral}{"{}H-\/1"{}});}
 \DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{try}\ \{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Unregistered\ symbol\ used\ in\ a\ setter}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(\textcolor{stringliteral}{"{}He-\/4"{}},\ 1.0);\ \textcolor{comment}{//\ He-\/4\ not\ registered\ yet}}
-\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1_unregistered_symbol_error}{UnregisteredSymbolError}}\ \&e)\ \{}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Caught\ UnregisteredSymbolError:\ "{}}\ <<\ e.\mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1_composition_error_ae44ceddb19da8a8cda7ee150b6826d08}{what}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(\textcolor{stringliteral}{"{}He-\/4"{}},\ 1.0);\ \textcolor{comment}{//\ He-\/4\ not\ registered\ yet}}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1UnregisteredSymbolError}{UnregisteredSymbolError}}\ \&e)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Caught\ UnregisteredSymbolError:\ "{}}\ <<\ e.\mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1CompositionError_ae44ceddb19da8a8cda7ee150b6826d08}{what}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{\ \ \ \ \}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a3ab4dcda0bfd1a35b169bcc57fe66725}{registerSymbol}}(\textcolor{stringliteral}{"{}He-\/4"{}});}
+\DoxyCodeLine{\ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a3ab4dcda0bfd1a35b169bcc57fe66725}{registerSymbol}}(\textcolor{stringliteral}{"{}He-\/4"{}});}
 \DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{try}\ \{}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(\textcolor{stringliteral}{"{}H-\/1"{}},\ -\/3.0);}
-\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1_invalid_composition_error}{InvalidCompositionError}}\ \&e)\ \{\ }
-\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Caught\ InvalidCompositionError:\ "{}}\ <<\ e.\mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1_composition_error_ae44ceddb19da8a8cda7ee150b6826d08}{what}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ comp.\mbox{\hyperlink{classfourdst_1_1composition_1_1Composition_a262d7133035d4e6f45daa81827abf5e7}{setMolarAbundance}}(\textcolor{stringliteral}{"{}H-\/1"{}},\ -\/3.0);}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1InvalidCompositionError}{InvalidCompositionError}}\ \&e)\ \{\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Caught\ InvalidCompositionError:\ "{}}\ <<\ e.\mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1CompositionError_ae44ceddb19da8a8cda7ee150b6826d08}{what}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{\ \ \ \ \}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Mass\ fraction\ construction\ validation}}
 \DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{try}\ \{}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}}\ bad\ =\ \mbox{\hyperlink{namespacefourdst_1_1composition_aa90b1ef07d607c0c829bedccf381cf54}{buildCompositionFromMassFractions}}(\{\textcolor{stringliteral}{"{}H-\/1"{}},\ \textcolor{stringliteral}{"{}He-\/4"{}}\},\ \{0.6,\ 0.5\});\ \textcolor{comment}{//\ sums\ to\ 1.1}}
-\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1_invalid_composition_error}{InvalidCompositionError}}\ \&e)\ \{}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Caught\ InvalidCompositionError:\ "{}}\ <<\ e.\mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1_composition_error_ae44ceddb19da8a8cda7ee150b6826d08}{what}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition}{Composition}}\ bad\ =\ \mbox{\hyperlink{namespacefourdst_1_1composition_aa90b1ef07d607c0c829bedccf381cf54}{buildCompositionFromMassFractions}}(\{\textcolor{stringliteral}{"{}H-\/1"{}},\ \textcolor{stringliteral}{"{}He-\/4"{}}\},\ \{0.6,\ 0.5\});\ \textcolor{comment}{//\ sums\ to\ 1.1}}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1InvalidCompositionError}{InvalidCompositionError}}\ \&e)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Caught\ InvalidCompositionError:\ "{}}\ <<\ e.\mbox{\hyperlink{classfourdst_1_1composition_1_1exceptions_1_1CompositionError_ae44ceddb19da8a8cda7ee150b6826d08}{what}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
 \DoxyCodeLine{\ \ \ \ \}}
 \DoxyCodeLine{\}}
 
@@ -245,7 +245,7 @@ Recommended patterns\+:
 
 \DoxyHorRuler{0}
 \hypertarget{index_api_sec}{}\doxysection{\texorpdfstring{Linking and Integration}{Linking and Integration}}\label{index_api_sec}
-\hypertarget{index_autotoc_md23}{}\doxysubsubsection{\texorpdfstring{Linking with pkg-\/config}{Linking with pkg-\/config}}\label{index_autotoc_md23}
+\hypertarget{index_autotoc_md23}{}\doxysubsubsection{\texorpdfstring{Linking with pkg-\/config}{Linking with pkg-config}}\label{index_autotoc_md23}
 If you installed {\ttfamily libcomposition} with the {\ttfamily pkg-\/config} option enabled, you can get the necessary compiler and linker flags easily\+:
 
 
@@ -273,7 +273,7 @@ For a complete list of all classes, methods, and functions, see the {\bfseries{N
 
 \begin{DoxyItemize}
 \item Namespace overview\+: {\ttfamily \doxylink{namespacefourdst_1_1composition}{fourdst\+::composition}}, {\ttfamily \doxylink{namespacefourdst_1_1atomic}{fourdst\+::atomic}}
-\item Core classes\+: {\ttfamily \doxylink{classfourdst_1_1composition_1_1_composition}{fourdst\+::composition\+::\+Composition}}, {\ttfamily fourdst\+::composition\+::\+Composition\+Abstract}
+\item Core classes\+: {\ttfamily \doxylink{classfourdst_1_1composition_1_1Composition}{fourdst\+::composition\+::\+Composition}}, {\ttfamily \doxylink{classfourdst_1_1composition_1_1CompositionAbstract}{fourdst\+::composition\+::\+Composition\+Abstract}}
 \item Helper utilities\+: {\ttfamily build\+Composition\+From\+Mass\+Fractions}
 \item Exception hierarchy\+: {\ttfamily \doxylink{namespacefourdst_1_1composition_1_1exceptions}{fourdst\+::composition\+::exceptions}}
 \end{DoxyItemize}

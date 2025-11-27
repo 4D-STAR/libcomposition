@@ -64,5 +64,7 @@ var searchData=
   ['kr_5f96_61',['Kr_96',['../namespacefourdst_1_1atomic.html#ab3b64e30e43cd958d851d69a4668c794',1,'fourdst::atomic']]],
   ['kr_5f97_62',['Kr_97',['../namespacefourdst_1_1atomic.html#a038c89510ad6dedb466845db9d60a9d5',1,'fourdst::atomic']]],
   ['kr_5f98_63',['Kr_98',['../namespacefourdst_1_1atomic.html#ad1140ed78d1d90e129952f18e90a1c32',1,'fourdst::atomic']]],
-  ['kr_5f99_64',['Kr_99',['../namespacefourdst_1_1atomic.html#a9c589825d8b1a9f0d9e272fd2b70bf13',1,'fourdst::atomic']]]
+  ['kr_5f99_64',['Kr_99',['../namespacefourdst_1_1atomic.html#a9c589825d8b1a9f0d9e272fd2b70bf13',1,'fourdst::atomic']]],
+  ['kseed_65',['kSeed',['../structfourdst_1_1composition_1_1utils_1_1CompositionHash.html#ac80f1cb0966ae3d0358e77c7a6f904f5',1,'fourdst::composition::utils::CompositionHash']]],
+  ['ktag_66',['kTag',['../structfourdst_1_1composition_1_1utils_1_1CompositionHash.html#ae8913343a3612786bdc9b96863494533',1,'fourdst::composition::utils::CompositionHash']]]
 ];

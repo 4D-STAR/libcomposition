@@ -127,5 +127,6 @@ var searchData=
   ['ir_5f203_124',['Ir_203',['../namespacefourdst_1_1atomic.html#a90b22014195c723607dae0212a124a70',1,'fourdst::atomic']]],
   ['ir_5f204_125',['Ir_204',['../namespacefourdst_1_1atomic.html#acf9185e7d53062fc2dccaa82786cd06c',1,'fourdst::atomic']]],
   ['ir_5f205_126',['Ir_205',['../namespacefourdst_1_1atomic.html#aceac8d6d45e2e85722426528ad89f48b',1,'fourdst::atomic']]],
-  ['is_5fclear_127',['is_clear',['../structfourdst_1_1composition_1_1_composition_1_1_composition_cache.html#af291583560120bb53c4546a598666477',1,'fourdst::composition::Composition::CompositionCache']]]
+  ['is_5fclear_127',['is_clear',['../structfourdst_1_1composition_1_1Composition_1_1CompositionCache.html#af291583560120bb53c4546a598666477',1,'fourdst::composition::Composition::CompositionCache']]],
+  ['is_5ffinite_128',['is_finite',['../structfourdst_1_1composition_1_1utils_1_1CompositionHash.html#a200d15d86b755cab2e4ef0f9d480adb7',1,'fourdst::composition::utils::CompositionHash']]]
 ];

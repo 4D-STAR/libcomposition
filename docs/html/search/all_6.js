@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['a_0',['a',['../structfourdst_1_1atomic_1_1_species.html#adc960c98d6e6051940d0a5c0d9a1183d',1,'fourdst::atomic::Species']]],
+  ['a_0',['a',['../structfourdst_1_1atomic_1_1Species.html#adc960c98d6e6051940d0a5c0d9a1183d',1,'fourdst::atomic::Species']]],
   ['a_20composition_20from_20symbols_1',['1. Constructing a Composition from Symbols',['../index.html#autotoc_md15',1,'']]],
   ['a_20modern_20c_20library_20for_20chemical_20compositions_2',['libcomposition: A Modern C++ Library for Chemical Compositions',['../index.html',1,'']]],
   ['ac_5f205_3',['Ac_205',['../namespacefourdst_1_1atomic.html#ace9176ad95ecb1d5a3e078b9141a8d88',1,'fourdst::atomic']]],
@@ -102,7 +102,7 @@ var searchData=
   ['al_5f41_99',['Al_41',['../namespacefourdst_1_1atomic.html#acac06c6e480c9ca5d2ffda2ab488931a',1,'fourdst::atomic']]],
   ['al_5f42_100',['Al_42',['../namespacefourdst_1_1atomic.html#aad6a9b94cd4139bdd8c9c6ae6d518625',1,'fourdst::atomic']]],
   ['al_5f43_101',['Al_43',['../namespacefourdst_1_1atomic.html#a04a7f2ae6fbeab20e5b76798a266f727',1,'fourdst::atomic']]],
-  ['also_102',['also',['../namespacefourdst_1_1atomic.html#autotoc_md5',1,'See also'],['../namespacefourdst_1_1composition.html#autotoc_md9',1,'See also']]],
+  ['also_102',['also',['../namespacefourdst_1_1composition.html#autotoc_md9',1,'See also'],['../namespacefourdst_1_1atomic.html#autotoc_md5',1,'See also']]],
   ['am_5f223_103',['Am_223',['../namespacefourdst_1_1atomic.html#a35fb534235fca0fde15d8d2fa9a4e6ad',1,'fourdst::atomic']]],
   ['am_5f224_104',['Am_224',['../namespacefourdst_1_1atomic.html#afb3626bafa3b46029b5a55ed89d060b8',1,'fourdst::atomic']]],
   ['am_5f225_105',['Am_225',['../namespacefourdst_1_1atomic.html#a5298791e5eedc8c25a699d4b9d33045b',1,'fourdst::atomic']]],
@@ -235,7 +235,7 @@ var searchData=
   ['at_5f228_232',['At_228',['../namespacefourdst_1_1atomic.html#a55c58115a29f1e2825ac66bc910a2667',1,'fourdst::atomic']]],
   ['at_5f229_233',['At_229',['../namespacefourdst_1_1atomic.html#aadd6c0a4e18db737adbd0fa209d75572',1,'fourdst::atomic']]],
   ['atomic_2edox_234',['atomic.dox',['../atomic_8dox.html',1,'']]],
-  ['atomicspecies_2eh_235',['atomicSpecies.h',['../atomic_species_8h.html',1,'']]],
+  ['atomicspecies_2eh_235',['atomicSpecies.h',['../atomicSpecies_8h.html',1,'']]],
   ['au_5f168_236',['Au_168',['../namespacefourdst_1_1atomic.html#a0953568eec3bd930637eac7087e6b0cd',1,'fourdst::atomic']]],
   ['au_5f169_237',['Au_169',['../namespacefourdst_1_1atomic.html#a5e1ae531dbf749301483f0941c6d306c',1,'fourdst::atomic']]],
   ['au_5f170_238',['Au_170',['../namespacefourdst_1_1atomic.html#a5e58cf73b3c0fe710cd689a737aafb9f',1,'fourdst::atomic']]],

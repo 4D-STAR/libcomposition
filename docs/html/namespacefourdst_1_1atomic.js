@@ -1,6 +1,6 @@
 var namespacefourdst_1_1atomic =
 [
-    [ "Species", "structfourdst_1_1atomic_1_1_species.html", "structfourdst_1_1atomic_1_1_species" ],
+    [ "Species", "structfourdst_1_1atomic_1_1Species.html", "structfourdst_1_1atomic_1_1Species" ],
     [ "SpeciesErrorType", "namespacefourdst_1_1atomic.html#a6c728f75913c5bfb62f6dcf9dff294fe", [
       [ "ELEMENT_SYMBOL_NOT_FOUND", "namespacefourdst_1_1atomic.html#a6c728f75913c5bfb62f6dcf9dff294fea3118448fccedc8cc00213d97349eec7a", null ],
       [ "SPECIES_SYMBOL_NOT_FOUND", "namespacefourdst_1_1atomic.html#a6c728f75913c5bfb62f6dcf9dff294feabad4f0ccf5dd67ba5efc3be855889ef3", null ]

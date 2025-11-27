@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['a_0',['a',['../structfourdst_1_1atomic_1_1_species.html#adc960c98d6e6051940d0a5c0d9a1183d',1,'fourdst::atomic::Species']]],
+  ['a_0',['a',['../structfourdst_1_1atomic_1_1Species.html#adc960c98d6e6051940d0a5c0d9a1183d',1,'fourdst::atomic::Species']]],
   ['ac_5f205_1',['Ac_205',['../namespacefourdst_1_1atomic.html#ace9176ad95ecb1d5a3e078b9141a8d88',1,'fourdst::atomic']]],
   ['ac_5f206_2',['Ac_206',['../namespacefourdst_1_1atomic.html#a0d0b4c5af684275be779098677d824e9',1,'fourdst::atomic']]],
   ['ac_5f207_3',['Ac_207',['../namespacefourdst_1_1atomic.html#a212f0db21b20438199045dba2aca783e',1,'fourdst::atomic']]],

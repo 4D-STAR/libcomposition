@@ -4,18 +4,21 @@
 {\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
 {\ttfamily \#include $<$set$>$}\newline
 {\ttfamily \#include $<$optional$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+set$>$}\newline
 {\ttfamily \#include "{}fourdst/config/config.\+h"{}}\newline
 {\ttfamily \#include "{}fourdst/logging/logging.\+h"{}}\newline
 {\ttfamily \#include "{}fourdst/composition/composition\+\_\+abstract.\+h"{}}\newline
 {\ttfamily \#include "{}fourdst/atomic/atomic\+Species.\+h"{}}\newline
-Include dependency graph for composition.\+h\+:\nopagebreak
+Include dependency graph for composition.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{composition_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -25,11 +28,11 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct \mbox{\hyperlink{structfourdst_1_1composition_1_1_canonical_composition}{fourdst\+::composition\+::\+Canonical\+Composition}}
+struct \mbox{\hyperlink{structfourdst_1_1composition_1_1CanonicalComposition}{fourdst\+::composition\+::\+Canonical\+Composition}}
 \begin{DoxyCompactList}\small\item\em Represents the canonical (X, Y, Z) composition of stellar material. \end{DoxyCompactList}\item 
-class \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{fourdst\+::composition\+::\+Composition}}
+class \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition}{fourdst\+::composition\+::\+Composition}}
 \begin{DoxyCompactList}\small\item\em Manages a collection of chemical species and their abundances. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_1_1_composition_cache}{fourdst\+::composition\+::\+Composition\+::\+Composition\+Cache}}
+struct \mbox{\hyperlink{structfourdst_1_1composition_1_1Composition_1_1CompositionCache}{fourdst\+::composition\+::\+Composition\+::\+Composition\+Cache}}
 \begin{DoxyCompactList}\small\item\em Caches computed properties of the composition to avoid redundant calculations. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
@@ -38,3 +41,8 @@ namespace \mbox{\hyperlink{namespacefourdst}{fourdst}}
 \item 
 namespace \mbox{\hyperlink{namespacefourdst_1_1composition}{fourdst\+::composition}}
 \begin{DoxyCompactList}\small\item\em Utilities and types for representing and manipulating chemical compositions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{namespacefourdst_1_1composition_a06f5abc74104de40349e47ad367c402a}{fourdst\+::composition\+::operator==}} (const \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition}{Composition}} \&a, const \mbox{\hyperlink{classfourdst_1_1composition_1_1Composition}{Composition}} \&b) noexcept
+\end{DoxyCompactItemize}

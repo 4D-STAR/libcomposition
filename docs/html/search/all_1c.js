@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['x_0',['X',['../structfourdst_1_1composition_1_1_canonical_composition.html#abe5b01574242f8eaabd00c3d653291f7',1,'fourdst::composition::CanonicalComposition']]],
+  ['x_0',['X',['../structfourdst_1_1composition_1_1CanonicalComposition.html#abe5b01574242f8eaabd00c3d653291f7',1,'fourdst::composition::CanonicalComposition']]],
   ['xe_5f108_1',['Xe_108',['../namespacefourdst_1_1atomic.html#a9fc4eaf9136f39c1067515a91e826a22',1,'fourdst::atomic']]],
   ['xe_5f109_2',['Xe_109',['../namespacefourdst_1_1atomic.html#a309ae5ee0aac928373d35b314deb0df3',1,'fourdst::atomic']]],
   ['xe_5f110_3',['Xe_110',['../namespacefourdst_1_1atomic.html#ad6d522c7020751ef6b4c22c4a3f7521f',1,'fourdst::atomic']]],
