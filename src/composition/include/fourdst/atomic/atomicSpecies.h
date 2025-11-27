@@ -5,7 +5,7 @@
 #include <string>
 #include <optional>
 #include <limits>
-
+#include <stdexcept>
 
 /**
  * @namespace fourdst::atomic

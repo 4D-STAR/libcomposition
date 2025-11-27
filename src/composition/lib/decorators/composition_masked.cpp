@@ -1,6 +1,7 @@
 #include "fourdst/composition/decorators/composition_masked.h"
 
 #include "fourdst/atomic/species.h"
+#include <memory>
 
 namespace fourdst::composition {
 MaskedComposition::MaskedComposition(
