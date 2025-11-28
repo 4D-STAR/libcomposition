@@ -34,6 +34,7 @@
 #include "fourdst/atomic/atomicSpecies.h"
 #include "fourdst/atomic/species.h"
 #include "fourdst/composition/composition.h"
+#include "fourdst/composition/utils.h"
 
 #include "fourdst/composition/exceptions/exceptions_composition.h"
 
@@ -60,13 +61,6 @@ namespace {
         }
 
         return sorted;
-    }
-
-    std::optional<fourdst::atomic::Species> getSpecies(const std::string& symbol) {
-        if (!fourdst::atomic::species.contains(symbol)) {
-            return std::nullopt;
-        }
-        return fourdst::atomic::species.at(symbol);
     }
 
     void throw_unknown_symbol(quill::Logger* logger, const std::string& symbol) {

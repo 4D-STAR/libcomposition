@@ -14,13 +14,6 @@
 #include "quill/LogMacros.h"
 
 namespace {
-    std::optional<fourdst::atomic::Species> getSpecies(const std::string& symbol) {
-        if (!fourdst::atomic::species.contains(symbol)) {
-            return std::nullopt;
-        }
-        return fourdst::atomic::species.at(symbol);
-    }
-
     quill::Logger* getLogger() {
         static quill::Logger* logger = fourdst::logging::LogManager::getInstance().getLogger("log");
         return logger;
@@ -191,6 +184,13 @@ namespace fourdst::composition {
         }
 
         return buildCompositionFromMassFractions(species, massFractionVector);
+    }
+
+    std::optional<fourdst::atomic::Species> getSpecies(const std::string& symbol) {
+        if (!fourdst::atomic::species.contains(symbol)) {
+            return std::nullopt;
+        }
+        return fourdst::atomic::species.at(symbol);
     }
 
 }

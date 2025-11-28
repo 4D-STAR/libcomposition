@@ -4,6 +4,8 @@
 #include "fourdst/atomic/atomicSpecies.h"
 
 #include <vector>
+#include <optional>
+#include <string>
 
 namespace fourdst::composition {
     /**
@@ -87,4 +89,6 @@ namespace fourdst::composition {
     Composition buildCompositionFromMassFractions(
         std::map<std::string, double> massFractions
     );
+
+    std::optional<fourdst::atomic::Species> getSpecies(const std::string& symbol);
 }
