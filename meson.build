@@ -18,7 +18,7 @@
 #   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 #
 # *********************************************************************** #
-project('libcomposition', 'cpp', version: 'v2.2.2', default_options: ['cpp_std=c++23'], meson_version: '>=1.5.0')
+project('libcomposition', 'cpp', version: 'v2.2.3', default_options: ['cpp_std=c++23'], meson_version: '>=1.5.0')
 
 # Add default visibility for all C++ targets
 add_project_arguments('-fvisibility=default', language: 'cpp')
@@ -30,9 +30,16 @@ subdir('build-config')
 
 
 subdir('src')
-subdir('tests')
 
-if get_option('pkg-config')
+if get_option('build_tests')
+  subdir('tests')
+endif
+
+if get_option('build_examples')
+  subdir('examples')
+endif
+
+if get_option('pkg_config')
     message('Generating pkg-config file for libcomposition...')
     pkg = import('pkgconfig')
     pkg.generate(
