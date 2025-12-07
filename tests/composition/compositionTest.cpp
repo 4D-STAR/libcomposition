@@ -451,14 +451,14 @@ TEST_F(compositionTest, hash) {
 
 TEST_F(compositionTest, hashCaching) {
     using namespace fourdst::atomic;
-    std::unordered_map<Species, double> abundances ={
+    const std::unordered_map<Species, double> abundances ={
         {H_1, 0.702},
         {He_4, 0.06},
         {C_12, 0.001},
         {N_14, 0.0005},
         {O_16, 0.22},
     };
-    fourdst::composition::Composition a(abundances);
+    const fourdst::composition::Composition a(abundances);
 
     const auto first_hash_clock_start = std::chrono::high_resolution_clock::now();
     (void)a.hash();
@@ -471,4 +471,21 @@ TEST_F(compositionTest, hashCaching) {
     const auto second_hash_duration = std::chrono::duration_cast<std::chrono::nanoseconds>(second_hash_clock_end - second_hash_clock_start).count();
 
     EXPECT_LT(second_hash_duration, first_hash_duration);
+}
+
+TEST_F(compositionTest, hashStaleing) {
+    using namespace fourdst::atomic;
+    const std::unordered_map<Species, double> abundances ={
+        {H_1, 0.702},
+        {He_4, 0.06},
+        {C_12, 0.001},
+        {N_14, 0.0005},
+        {O_16, 0.22},
+    };
+    fourdst::composition::Composition a(abundances);
+
+    const std::size_t hash1 = a.hash();
+    a.setMolarAbundance("C-12", 0.002);
+    const std::size_t hash2 = a.hash();
+    EXPECT_NE(hash1, hash2);
 }

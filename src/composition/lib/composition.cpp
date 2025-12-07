@@ -604,6 +604,8 @@ namespace fourdst::composition {
             LOG_ERROR(getLogger(), "Molar abundance must be non-negative for symbol {}. Currently it is {}.", species.name(), molar_abundance);
             throw exceptions::InvalidCompositionError("Molar abundance must be non-negative, got " + std::to_string(molar_abundance) + " for symbol " + std::string(species.name()) + ".");
         }
+
+        m_cache.clear();
         m_molarAbundances.at(species) = molar_abundance;
     }
 
