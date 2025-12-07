@@ -6,141 +6,95 @@
 #include <bit>
 
 #include "xxhash64.h"
+#include "fourdst/composition/composition.h"
+#include "fourdst/composition/composition_abstract.h"
 
 namespace fourdst::composition::utils {
     struct CompositionHash {
-        static constexpr uint64_t kSeed = 0xC04D5EEDBEEFull;
-        static constexpr char kTag[] = "4DSTAR:Composition";
-
         template <typename CompositionT>
         static uint64_t hash_exact(const CompositionT& comp) {
-            std::vector<std::uint8_t> buf;
-            reserve_bytes(comp, buf);
-            write_header(comp, buf);
+            uint64_t h0 = kSeed;
+            uint64_t h1 = kSeed ^ kPrime1;
+            uint64_t h2 = kSeed ^ kPrime2;
+            uint64_t h3 = kSeed ^ kPrime3;
 
-            for (auto it = comp.begin(); it != comp.end(); ++it) {
-                const auto& species = it->first;
-                const double abundance = it->second;
+            auto it = comp.begin();
+            size_t remaining = comp.size();
 
-                const std::uint32_t spWord = pack_species(species);
-                push_le32(buf, spWord);
+            while (remaining >= 4) {
+                const auto& p0 = *it;
+                ++it;
+                h0 ^= pack_species_id(p0.first);
+                h0 = mum(h0, kPrime1);
+                h0 ^= normalize_double_bits(p0.second);
+                h0 = mum(h0, kPrime2);
 
-                const std::uint64_t bits = normalize_double_bits(abundance);
-                push_le64(buf, bits);
+                const auto& p1 = *it;
+                ++it;
+                h1 ^= pack_species_id(p1.first);
+                h1 = mum(h1, kPrime1);
+                h1 ^= normalize_double_bits(p1.second);
+                h1 = mum(h1, kPrime2);
+
+                const auto& p2 = *it;
+                ++it;
+                h2 ^= pack_species_id(p2.first);
+                h2 = mum(h2, kPrime1);
+                h2 ^= normalize_double_bits(p2.second);
+                h2 = mum(h2, kPrime2);
+
+                const auto& p3 = *it;
+                ++it;
+                h3 ^= pack_species_id(p3.first);
+                h3 = mum(h3, kPrime1);
+                h3 ^= normalize_double_bits(p3.second);
+                h3 = mum(h3, kPrime2);
+
+                remaining -= 4;
             }
 
-            return XXHash64::hash(buf.data(), buf.size(), kSeed);
-        }
-
-        static inline bool is_finite(double v) noexcept {
-            return std::isfinite(v);
-        }
-
-        static inline std::int64_t quantize_index(double v, double eps) noexcept {
-            const auto ld_v = static_cast<long double>(v);
-            const auto ld_eps = static_cast<long double>(eps);
-
-            const long double scaled = ld_v / ld_eps;
-            const long long idx = std::llroundl(scaled);
-            return static_cast<std::int64_t>(idx);
-        }
-
-        template <typename CompositionT>
-        static uint64_t hash_quantized(const CompositionT& comp, double eps) noexcept {
-            std::vector<std::uint8_t> buf;
-            reserve_bytes(comp, buf);
-            write_header(comp, buf);
-            push_bytes(buf, reinterpret_cast<const std::uint8_t*>("quantized"), 9);
-            push_le64(buf, encode_fp64(eps));
-
-            for (auto it = comp.begin(); it != comp.end(); ++it) {
-                const auto& species = it->first;
-                const double abundance = it->second;
-
-                const std::uint32_t spWord = pack_species(species);
-                push_le32(buf, spWord);
-
-                if (!is_finite(abundance) || eps <= 0.0) {
-                    const std::uint64_t bits = normalize_double_bits(abundance);
-                    push_le64(buf, bits);
-                } else {
-                    const std::int64_t idx = quantize_index(abundance, eps);
-                    push_le64(buf, static_cast<std::uint64_t>(idx));
-                }
+            while (remaining > 0) {
+                const auto& p = *it;
+                ++it;
+                h0 ^= pack_species_id(p.first);
+                h0 = mum(h0, kPrime1);
+                h0 ^= normalize_double_bits(p.second);
+                h0 = mum(h0, kPrime2);
+                --remaining;
             }
 
-            return XXHash64::hash(buf.data(), buf.size(), kSeed ^ 0x7319'BEEF'1234ull);
+            return mum(h0 ^ h1 ^ h2 ^ h3, kPrime3);
         }
-
 
     private:
-        template <typename SpeciesT>
-        static std::uint32_t pack_species(const SpeciesT& s) noexcept {
-            // Adjust accessors if your Species API differs.
-            const auto z = static_cast<std::uint16_t>(s.z());
-            const auto a = static_cast<std::uint16_t>(s.a());
-            return (static_cast<std::uint32_t>(z) << 16) | static_cast<std::uint32_t>(a);
+        static constexpr uint64_t kSeed = 0xC04D5EEDBEEFull;
+        static constexpr uint64_t kPrime1 = 0xa0761d6478bd642fULL;
+        static constexpr uint64_t kPrime2 = 0xe7037ed1a0b428dbULL;
+        static constexpr uint64_t kPrime3 = 0x8ebc6af09c88c6e3ULL;
+
+        // --- Helper: Fast integer mixing ---
+        static inline uint64_t mum(const uint64_t a, const uint64_t b) noexcept {
+            const unsigned __int128 r = static_cast<unsigned __int128>(a) * static_cast<unsigned __int128>(b);
+            return static_cast<uint64_t>(r) ^ static_cast<uint64_t>(r >> 64);
         }
 
-        static inline std::uint64_t normalize_double_bits(double v) noexcept {
+        static inline uint64_t mix(const uint64_t h) noexcept {
+            return mum(h, kPrime1);
+        }
+
+        // --- Normalization Logic ---
+        static inline uint64_t normalize_double_bits(double v) noexcept {
             if (v == 0.0) v = 0.0; // fold -0.0 -> +0.0
             if (std::isnan(v)) {
                 return 0x7ff8000000000000ULL; // canonical quiet NaN
             }
-            return std::bit_cast<std::uint64_t>(v);
+            return std::bit_cast<uint64_t>(v);
         }
 
-        static inline double quantize(double v, double eps) noexcept {
-            if (!std::isfinite(v) || eps <= 0.0) return v;
-            const double q = std::nearbyint(v / eps) * eps;
-            return (q == 0.0) ? 0.0 : q;
-        }
-
-        static inline std::uint64_t encode_fp64(double v) noexcept {
-            return std::bit_cast<std::uint64_t>(v);
-        }
-
-        // ---------- byte helpers (explicit little-endian) ----------
-        static inline void push_le32(std::vector<std::uint8_t>& b, std::uint32_t x) {
-            b.push_back(static_cast<std::uint8_t>( x        & 0xFF));
-            b.push_back(static_cast<std::uint8_t>((x >> 8 ) & 0xFF));
-            b.push_back(static_cast<std::uint8_t>((x >> 16) & 0xFF));
-            b.push_back(static_cast<std::uint8_t>((x >> 24) & 0xFF));
-        }
-
-        static inline void push_le64(std::vector<std::uint8_t>& b, std::uint64_t x) noexcept {
-            b.push_back(static_cast<std::uint8_t>( x        & 0xFF));
-            b.push_back(static_cast<std::uint8_t>((x >> 8 ) & 0xFF));
-            b.push_back(static_cast<std::uint8_t>((x >> 16) & 0xFF));
-            b.push_back(static_cast<std::uint8_t>((x >> 24) & 0xFF));
-            b.push_back(static_cast<std::uint8_t>((x >> 32) & 0xFF));
-            b.push_back(static_cast<std::uint8_t>((x >> 40) & 0xFF));
-            b.push_back(static_cast<std::uint8_t>((x >> 48) & 0xFF));
-            b.push_back(static_cast<std::uint8_t>((x >> 56) & 0xFF));
-        }
-
-        static inline void push_bytes(std::vector<std::uint8_t>& b, const std::uint8_t* p, std::size_t n) noexcept{
-            b.insert(b.end(), p, p + n);
-        }
-
-        template <typename CompositionT>
-        static void write_header(const CompositionT& comp, std::vector<std::uint8_t>& buf) noexcept {
-            push_bytes(buf, reinterpret_cast<const std::uint8_t*>(kTag), sizeof(kTag) - 1);
-
-            const std::size_t nRegistered = comp.getRegisteredSpecies().size();
-            std::size_t nMolar = 0;
-            for (auto it = comp.begin(); it != comp.end(); ++it) { ++nMolar; }
-
-            push_le64(buf, static_cast<std::uint64_t>(nRegistered));
-            push_le64(buf, static_cast<std::uint64_t>(nMolar));
-        }
-
-        template <typename CompositionT>
-        static void reserve_bytes(const CompositionT& comp, std::vector<std::uint8_t>& buf) noexcept {
-            std::size_t nMolar = 0;
-            for (auto it = comp.begin(); it != comp.end(); ++it) { ++nMolar; }
-            const std::size_t approx = (sizeof(kTag) - 1) + 16 + nMolar * (4 + 8 + 0 /*quantized flag optional*/);
-            buf.reserve(approx);
+        static inline uint32_t pack_species_id(const auto& s) noexcept {
+            const auto z = static_cast<uint16_t>(s.z());
+            const auto a = static_cast<uint16_t>(s.a());
+            return (static_cast<uint32_t>(z) << 16) | static_cast<uint32_t>(a);
         }
     };
 }

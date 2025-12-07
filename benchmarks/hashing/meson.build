@@ -1,0 +1,1 @@
+executable('hashing_bench', 'benchmark_composition_hash.cpp', dependencies: [composition_dep])

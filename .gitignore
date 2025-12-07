@@ -73,10 +73,12 @@ subprojects/libconfig/
 subprojects/libconstants/
 subprojects/liblogging/
 subprojects/.wraplock
+subprojects/tomlplusplus-*/
 
 qhull.wrap
 quill.wrap
 yaml-cpp.wrap
+tomlplusplus.wrap
 
 .vscode/
 

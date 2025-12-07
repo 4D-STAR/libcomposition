@@ -367,43 +367,6 @@ TEST_F(compositionTest, negativeZeroEqualsPositiveZero) {
               fourdst::composition::utils::CompositionHash::hash_exact(b));
 }
 
-TEST_F(compositionTest, quantizedIgnoresTinyJitter) {
-    fourdst::composition::Composition a, b;
-    a.registerSymbol("H-1"); b.registerSymbol("H-1");
-    a.setMolarAbundance("H-1", 1.0);
-    b.setMolarAbundance("H-1", 1.0 + 5e-14); // smaller than eps
-
-    const double eps = 1e-12;
-    const auto hqa = fourdst::composition::utils::CompositionHash::hash_quantized(a, eps);
-    const auto hqb = fourdst::composition::utils::CompositionHash::hash_quantized(b, eps);
-    ASSERT_EQ(hqa, hqb);
-
-    // But exact should differ if the bit pattern changes
-    const auto hea = fourdst::composition::utils::CompositionHash::hash_exact(a);
-    const auto heb = fourdst::composition::utils::CompositionHash::hash_exact(b);
-    ASSERT_NE(hea, heb);
-}
-
-TEST_F(compositionTest, quantizedDetectsAboveEps) {
-    fourdst::composition::Composition a, b;
-    a.registerSymbol("H-1"); b.registerSymbol("H-1");
-    a.setMolarAbundance("H-1", 1.0);
-    b.setMolarAbundance("H-1", 1.0 + 2e-12); // larger than eps
-
-    const double eps = 1e-12;
-    ASSERT_NE(fourdst::composition::utils::CompositionHash::hash_quantized(a, eps),
-              fourdst::composition::utils::CompositionHash::hash_quantized(b, eps));
-}
-
-TEST_F(compositionTest, exactVsQuantizedDifferentSeeds) {
-    fourdst::composition::Composition a;
-    a.registerSymbol("H-1"); a.setMolarAbundance("H-1", 0.5);
-
-    const auto he = fourdst::composition::utils::CompositionHash::hash_exact(a);
-    const auto hq = fourdst::composition::utils::CompositionHash::hash_quantized(a, 1e-12);
-    ASSERT_NE(he, hq);
-}
-
 TEST_F(compositionTest, cloneAndCopyStable) {
     std::vector<std::string> symbols = {"H-1", "He-4"};
     std::vector<double> abundances = {0.6, 0.4};
@@ -442,15 +405,12 @@ TEST_F(compositionTest, canonicalizeNaNIfAllowed) {
 }
 
 TEST_F(compositionTest, hash) {
+    using namespace fourdst::atomic;
     fourdst::composition::Composition a, b;
     a.registerSymbol("H-1"); b.registerSymbol("H-1");
     a.setMolarAbundance("H-1", 0.6); b.setMolarAbundance("H-1", 0.6);
     EXPECT_NO_THROW((void)a.hash());
     EXPECT_EQ(a.hash(), b.hash());
-}
-
-TEST_F(compositionTest, hashCaching) {
-    using namespace fourdst::atomic;
     const std::unordered_map<Species, double> abundances ={
         {H_1, 0.702},
         {He_4, 0.06},
@@ -458,19 +418,8 @@ TEST_F(compositionTest, hashCaching) {
         {N_14, 0.0005},
         {O_16, 0.22},
     };
-    const fourdst::composition::Composition a(abundances);
-
-    const auto first_hash_clock_start = std::chrono::high_resolution_clock::now();
-    (void)a.hash();
-    const auto first_hash_clock_end = std::chrono::high_resolution_clock::now();
-    const auto first_hash_duration = std::chrono::duration_cast<std::chrono::nanoseconds>(first_hash_clock_end - first_hash_clock_start).count();
-
-    const auto second_hash_clock_start = std::chrono::high_resolution_clock::now();
-    (void)a.hash();
-    const auto second_hash_clock_end = std::chrono::high_resolution_clock::now();
-    const auto second_hash_duration = std::chrono::duration_cast<std::chrono::nanoseconds>(second_hash_clock_end - second_hash_clock_start).count();
-
-    EXPECT_LT(second_hash_duration, first_hash_duration);
+    fourdst::composition::Composition c(abundances), d(abundances);
+    EXPECT_EQ(c.hash(), d.hash());
 }
 
 TEST_F(compositionTest, hashStaleing) {

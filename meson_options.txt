@@ -1,3 +1,4 @@
 option('pkg_config', type: 'boolean', value: true, description: 'generate pkg-config file for libcomposition (fourdst_composition.pc)')
 option('build_tests', type: 'boolean', value: true, description: 'build unit tests (uses gtest)')
 option('build_examples', type: 'boolean', value: true, description: 'build example programs')
+option('build_benchmarks', type: 'boolean', value: false, description: 'build benchmark programs')
