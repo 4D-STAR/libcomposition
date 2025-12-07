@@ -34,6 +34,7 @@
 #include "fourdst/atomic/atomicSpecies.h"
 #include "fourdst/atomic/species.h"
 #include "fourdst/composition/composition.h"
+#include "fourdst/composition/utils/composition_hash.h"
 #include "fourdst/composition/utils.h"
 
 #include "fourdst/composition/exceptions/exceptions_composition.h"
@@ -549,6 +550,15 @@ namespace fourdst::composition {
 
     std::unique_ptr<CompositionAbstract> Composition::clone() const {
         return std::make_unique<Composition>(*this);
+    }
+
+    std::size_t Composition::hash() const {
+        if (m_cache.hash.has_value()) {
+            return m_cache.hash.value();
+        }
+        std::size_t hash = utils::CompositionHash::hash_exact(*this);
+        m_cache.hash = hash;
+        return hash;
     }
 
     bool Composition::contains(

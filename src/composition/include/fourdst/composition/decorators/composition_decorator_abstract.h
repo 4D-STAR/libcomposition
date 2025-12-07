@@ -36,6 +36,7 @@ namespace fourdst::composition {
         [[nodiscard]] size_t getSpeciesIndex(const std::string& symbol) const override { return m_base_composition->getSpeciesIndex(symbol); };
         [[nodiscard]] size_t getSpeciesIndex(const atomic::Species& species) const override { return m_base_composition->getSpeciesIndex(species); };
         [[nodiscard]] atomic::Species getSpeciesAtIndex(const size_t index) const override { return m_base_composition->getSpeciesAtIndex(index); }
+        [[nodiscard]] size_t hash() const override { return m_base_composition->hash(); };
 
         [[nodiscard]] std::map<atomic::Species, double>::iterator begin() override { return m_base_composition->begin(); };
         [[nodiscard]] std::map<atomic::Species, double>::iterator end() override { return m_base_composition->end(); };

@@ -179,6 +179,8 @@ namespace fourdst::composition {
         [[nodiscard]] virtual std::map<atomic::Species, double>::iterator end() = 0;
         [[nodiscard]] virtual std::map<atomic::Species, double>::const_iterator begin() const = 0;
         [[nodiscard]] virtual std::map<atomic::Species, double>::const_iterator end() const = 0;
+
+        [[nodiscard]] virtual std::size_t hash() const = 0;
     };
 
     // ReSharper disable once CppClassCanBeFinal

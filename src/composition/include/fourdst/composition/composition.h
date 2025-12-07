@@ -112,6 +112,7 @@ namespace fourdst::composition {
             std::optional<std::vector<atomic::Species>> sortedSpecies; ///< Cached vector of sorted species (by mass).
             std::optional<std::vector<std::string>> sortedSymbols; ///< Cached vector of sorted species (by mass).
             std::optional<double> Ye; ///< Cached electron abundance.
+            std::optional<std::size_t> hash;
 
             /**
              * @brief Clears all cached values.
@@ -124,6 +125,7 @@ namespace fourdst::composition {
                 sortedSymbols = std::nullopt;
                 sortedSpecies = std::nullopt;
                 Ye = std::nullopt;
+                hash = std::nullopt;
             }
 
             /**
@@ -133,7 +135,7 @@ namespace fourdst::composition {
             [[nodiscard]] bool is_clear() const {
                 return !canonicalComp.has_value() && !massFractions.has_value() &&
                        !numberFractions.has_value() && !molarAbundances.has_value() && !sortedSymbols.has_value() &&
-                       !Ye.has_value() && !sortedSpecies.has_value();
+                       !Ye.has_value() && !sortedSpecies.has_value() && !hash.has_value();
             }
         };
     private:
@@ -831,6 +833,8 @@ namespace fourdst::composition {
         [[nodiscard]] std::map<atomic::Species, double>::const_iterator end() const override {
             return m_molarAbundances.cend();
         }
+
+        [[nodiscard]] std::size_t hash() const override;
 
     };
 

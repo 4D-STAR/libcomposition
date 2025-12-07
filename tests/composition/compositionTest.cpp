@@ -2,6 +2,7 @@
 #include <stdexcept>
 #include <string>
 #include <algorithm>
+#include <chrono>
 
 #include "fourdst/atomic/atomicSpecies.h"
 #include "fourdst/atomic/species.h"
@@ -438,4 +439,36 @@ TEST_F(compositionTest, canonicalizeNaNIfAllowed) {
     b.setMolarAbundance("H-1", qnan2);
     ASSERT_EQ(fourdst::composition::utils::CompositionHash::hash_exact(a),
               fourdst::composition::utils::CompositionHash::hash_exact(b));
+}
+
+TEST_F(compositionTest, hash) {
+    fourdst::composition::Composition a, b;
+    a.registerSymbol("H-1"); b.registerSymbol("H-1");
+    a.setMolarAbundance("H-1", 0.6); b.setMolarAbundance("H-1", 0.6);
+    EXPECT_NO_THROW((void)a.hash());
+    EXPECT_EQ(a.hash(), b.hash());
+}
+
+TEST_F(compositionTest, hashCaching) {
+    using namespace fourdst::atomic;
+    std::unordered_map<Species, double> abundances ={
+        {H_1, 0.702},
+        {He_4, 0.06},
+        {C_12, 0.001},
+        {N_14, 0.0005},
+        {O_16, 0.22},
+    };
+    fourdst::composition::Composition a(abundances);
+
+    const auto first_hash_clock_start = std::chrono::high_resolution_clock::now();
+    (void)a.hash();
+    const auto first_hash_clock_end = std::chrono::high_resolution_clock::now();
+    const auto first_hash_duration = std::chrono::duration_cast<std::chrono::nanoseconds>(first_hash_clock_end - first_hash_clock_start).count();
+
+    const auto second_hash_clock_start = std::chrono::high_resolution_clock::now();
+    (void)a.hash();
+    const auto second_hash_clock_end = std::chrono::high_resolution_clock::now();
+    const auto second_hash_duration = std::chrono::duration_cast<std::chrono::nanoseconds>(second_hash_clock_end - second_hash_clock_start).count();
+
+    EXPECT_LT(second_hash_duration, first_hash_duration);
 }
