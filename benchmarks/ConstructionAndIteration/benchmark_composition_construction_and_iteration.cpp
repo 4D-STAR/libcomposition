@@ -62,10 +62,10 @@ std::chrono::duration<double, std::nano> benchmark_access(const size_t iteration
 
     const Composition comp(species_to_register, molarAbundances);
 
-    std::uniform_int_distribution<>(0, nSpecies - 1);
+    std::uniform_int_distribution<> sIDDis(0, nSpecies - 1);
     std::vector<Species> random_lookup_species;
     for (size_t i = 0; i < iterations; ++i) {
-        random_lookup_species.push_back(species_to_register[static_cast<size_t>(dis(gen))]);
+        random_lookup_species.push_back(species_to_register[sIDDis(gen)]);
     }
 
     const auto duration = fdst_benchmark_function([&]() {
