@@ -34,36 +34,15 @@
 #include "fourdst/atomic/atomicSpecies.h"
 #include "fourdst/atomic/species.h"
 #include "fourdst/composition/composition.h"
+
+#include <numeric>
+
 #include "fourdst/composition/utils/composition_hash.h"
 #include "fourdst/composition/utils.h"
 
 #include "fourdst/composition/exceptions/exceptions_composition.h"
 
 namespace {
-    template<typename A, typename B>
-    std::vector<A> sortVectorBy(
-        std::vector<A> toSort,
-        const std::vector<B>& by
-    ) {
-        std::vector<std::size_t> indices(by.size());
-        for (size_t i = 0; i < indices.size(); i++) {
-            indices[i] = i;
-        }
-
-        std::ranges::sort(indices, [&](size_t a, size_t b) {
-            return by[a] < by[b];
-        });
-
-        std::vector<A> sorted;
-        sorted.reserve(indices.size());
-
-        for (const auto idx: indices) {
-            sorted.push_back(toSort[idx]);
-        }
-
-        return sorted;
-    }
-
     void throw_unknown_symbol(quill::Logger* logger, const std::string& symbol) {
         LOG_ERROR(logger, "Symbol {} is not a valid species symbol (not in the species database)", symbol);
         throw fourdst::composition::exceptions::UnknownSymbolError("Symbol " + symbol + " is not a valid species symbol (not in the species database)");
@@ -76,127 +55,142 @@ namespace {
 }
 
 namespace fourdst::composition {
-    Composition::Composition(
-    const std::vector<std::string>& symbols
-    ) {
-        for (const auto& symbol : symbols) {
-            registerSymbol(symbol);
-        }
-    }
+
+    /////////////////////////////////////////////
+    /// Constructors without molar abundances ///
+    /// These all delegate to the ctor        ///
+    /// vector<Species>                       ///
+    /////////////////////////////////////////////
 
     Composition::Composition(
         const std::set<std::string>& symbols
-    ) {
-        for (const auto& symbol : symbols) {
-            registerSymbol(symbol);
-        }
-    }
+    ) : Composition(symbols | std::ranges::to<std::vector>()) {}
+
+    Composition::Composition(
+        const std::set<atomic::Species> &species
+    ) : Composition(species | std::ranges::to<std::vector>()) {}
+
+    Composition::Composition(
+        const std::unordered_set<std::string> &symbols
+    ) : Composition(symbols | std::ranges::to<std::vector>()) {}
+
+    Composition::Composition(
+        const std::unordered_set<atomic::Species> &species
+    ) : Composition(species | std::ranges::to<std::vector>()) {}
+
+    Composition::Composition(
+        const std::vector<std::string>& symbols
+    ) : Composition(symbolVectorToSpeciesVector(symbols)) {}
 
     Composition::Composition(
         const std::vector<atomic::Species> &species
     ) {
-        for (const auto& s : species) {
-            registerSpecies(s);
-        }
+        m_species = species;
+        std::ranges::sort(m_species, [&](const atomic::Species& a, const atomic::Species& b) {
+            return a < b;
+        });
+
+        const auto last = std::ranges::unique(m_species).begin();
+        m_species.erase(last, m_species.end());
+
+        m_molarAbundances.resize(m_species.size(), 0.0);
     }
 
-    Composition::Composition(
-        const std::set<atomic::Species> &species
-    ) {
-        for (const auto& s : species) {
-            registerSpecies(s);
-        }
-    }
-
-    Composition::Composition(const std::unordered_set<std::string> &symbols) {
-        for (const auto& symbol : symbols) {
-            registerSymbol(symbol);
-        }
-    }
-
-    Composition::Composition(const std::unordered_set<atomic::Species> &species) {
-        for (const auto& s : species) {
-            registerSpecies(s);
-        }
-    }
+    //////////////////////////////////////////
+    /// Constructors with molar abundances ///
+    /// These all delegate to the ctor     ///
+    /// vector<Species, vector<double>>    ///
+    //////////////////////////////////////////
 
     Composition::Composition(
         const std::vector<std::string>& symbols,
         const std::vector<double>& molarAbundances
-    ) {
-        if (symbols.size() != molarAbundances.size()) {
-            LOG_CRITICAL(getLogger(), "The number of symbols and molarAbundances must be equal (got {} symbols and {} molarAbundances).", symbols.size(), molarAbundances.size());
-            throw exceptions::InvalidCompositionError("The number of symbols and fractions must be equal. Got " + std::to_string(symbols.size()) + " symbols and " + std::to_string(molarAbundances.size()) + " fractions.");
-        }
+    ) : Composition(symbolVectorToSpeciesVector(symbols), molarAbundances) {}
 
-        for (const auto &[symbol, y] : std::views::zip(symbols, molarAbundances)) {
-            registerSymbol(symbol);
-            setMolarAbundance(symbol, y);
-        }
-    }
+    Composition::Composition(
+        const std::set<std::string> &symbols,
+        const std::vector<double> &molarAbundances
+    ) : Composition(symbolVectorToSpeciesVector(symbols | std::ranges::to<std::vector>()), molarAbundances) {}
+
+
+    Composition::Composition(
+        const std::unordered_map<std::string, double> &symbolMolarAbundances
+    ) : Composition(
+        symbolMolarAbundances | std::views::keys | std::ranges::to<std::vector>(),
+        symbolMolarAbundances | std::views::values | std::ranges::to<std::vector>()
+        ) {}
+
+    Composition::Composition(
+        const std::map<std::string, double> &symbolMolarAbundances
+    ) : Composition(
+        symbolMolarAbundances | std::views::keys | std::ranges::to<std::vector>(),
+        symbolMolarAbundances | std::views::values | std::ranges::to<std::vector>()
+        ) {}
+
+    Composition::Composition(
+        const std::unordered_map<atomic::Species, double> &speciesMolarAbundances
+    ) : Composition(
+        speciesMolarAbundances | std::views::keys | std::ranges::to<std::vector>(),
+        speciesMolarAbundances | std::views::values | std::ranges::to<std::vector>()
+        ) {}
+
+    Composition::Composition(
+        const std::map<atomic::Species, double> &speciesMolarAbundances
+    ) : Composition(
+        speciesMolarAbundances | std::views::keys | std::ranges::to<std::vector>(),
+        speciesMolarAbundances | std::views::values | std::ranges::to<std::vector>()
+        ) {}
 
     Composition::Composition(
         const std::vector<atomic::Species> &species,
         const std::vector<double> &molarAbundances
     ) {
-        if (species.size() != molarAbundances.size()) {
+        if (__builtin_expect(species.size() != molarAbundances.size(), 0)) {
             LOG_CRITICAL(getLogger(), "The number of species and molarAbundances must be equal (got {} species and {} molarAbundances).", species.size(), molarAbundances.size());
             throw exceptions::InvalidCompositionError("The number of species and fractions must be equal. Got " + std::to_string(species.size()) + " species and " + std::to_string(molarAbundances.size()) + " fractions.");
         }
 
-        for (const auto& [s, y] : std::views::zip(species, molarAbundances)) {
-            registerSpecies(s);
-            setMolarAbundance(s, y);
+        const size_t numSpecies = species.size();
+        m_species.reserve(numSpecies);
+        m_molarAbundances.reserve(numSpecies);
+
+        for (size_t i = 0; i < numSpecies; ++i) {
+            m_species.push_back(species[i]);
+            if (__builtin_expect(molarAbundances[i] < 0.0, 0)) {
+                LOG_CRITICAL(getLogger(), "Molar abundance for species {} is negative (y = {}). Molar abundances must be non-negative.", species[i].name(), molarAbundances[i]);
+                throw exceptions::InvalidCompositionError("Molar abundance for species " + std::string(species[i].name()) + " is negative (y = " + std::to_string(molarAbundances[i]) + "). Molar abundances must be non-negative.");
+            }
+            m_molarAbundances.push_back(molarAbundances[i]);
         }
+
+        auto combined = std::views::zip(m_species, m_molarAbundances);
+
+        std::ranges::sort(combined, [](const auto& a, const auto& b) -> bool {
+            const auto& spA = std::get<0>(a);
+            const auto& spB = std::get<0>(b);
+
+            if (spA != spB) {
+                return spA < spB;
+            }
+
+            return std::get<1>(a) > std::get<1>(b);
+        });
+
+        auto [first, last] = std::ranges::unique(combined, [](const auto& a, const auto& b) {
+            return std::get<0>(a) == std::get<0>(b);
+        });
+
+        const auto newEndIndex = std::distance(combined.begin(), first);
+        m_species.erase(m_species.begin() + newEndIndex, m_species.end());
+        m_molarAbundances.erase(m_molarAbundances.begin() + newEndIndex, m_molarAbundances.end());
     }
 
-    Composition::Composition(
-        const std::set<std::string> &symbols,
-        const std::vector<double> &molarAbundances
-    ) {
-        if (symbols.size() != molarAbundances.size()) {
-            LOG_CRITICAL(getLogger(), "The number of symbols and molarAbundances must be equal (got {} symbols and {} molarAbundances).", symbols.size(), molarAbundances.size());
-            throw exceptions::InvalidCompositionError("The number of symbols and fractions must be equal. Got " + std::to_string(symbols.size()) + " symbols and " + std::to_string(molarAbundances.size()) + " fractions.");
-        }
+    ////////////////////////////////////////////
+    /// Copy and conversion constructors     ///
+    ////////////////////////////////////////////
 
-        for (const auto& [symbol, y] : std::views::zip(sortVectorBy<std::string>(std::vector<std::string>(symbols.begin(), symbols.end()), molarAbundances), molarAbundances)) {
-            registerSymbol(symbol);
-            setMolarAbundance(symbol, y);
-        }
-    }
-
-    Composition::Composition(const std::unordered_map<std::string, double> &symbolMolarAbundances) {
-        for (const auto& [symbol, y] : symbolMolarAbundances) {
-            registerSymbol(symbol);
-            setMolarAbundance(symbol, y);
-        }
-    }
-
-    Composition::Composition(const std::map<std::string, double> &symbolMolarAbundances) {
-        for (const auto& [symbol, y] : symbolMolarAbundances) {
-            registerSymbol(symbol);
-            setMolarAbundance(symbol, y);
-        }
-    }
-
-    Composition::Composition(const std::unordered_map<atomic::Species, double> &speciesMolarAbundances) {
-        for (const auto& [species, y] : speciesMolarAbundances) {
-            registerSpecies(species);
-            setMolarAbundance(species, y);
-        }
-    }
-
-    Composition::Composition(const std::map<atomic::Species, double> &speciesMolarAbundances) {
-        for (const auto& [species, y] : speciesMolarAbundances) {
-            registerSpecies(species);
-            setMolarAbundance(species, y);
-        }
-    }
-
-    Composition::Composition(
-        const Composition &composition
-    ) {
-        m_registeredSpecies = composition.m_registeredSpecies;
+    Composition::Composition(const Composition &composition) {
+        m_species = composition.m_species;
         m_molarAbundances = composition.m_molarAbundances;
     }
 
@@ -211,11 +205,31 @@ namespace fourdst::composition {
         const Composition &other
     ) {
         if (this != &other) {
-            m_registeredSpecies = other.m_registeredSpecies;
+            m_species = other.m_species;
             m_molarAbundances   = other.m_molarAbundances;
+        }
+        m_cache.clear();
+        return *this;
+    }
+
+    Composition & Composition::operator=(const CompositionAbstract &other) {
+        m_species.clear();
+        m_molarAbundances.clear();
+        m_cache.clear();
+        for (const auto& species : other.getRegisteredSpecies()) {
+            registerSpecies(species);
+            setMolarAbundance(species, other.getMolarAbundance(species));
         }
         return *this;
     }
+
+    std::unique_ptr<CompositionAbstract> Composition::clone() const {
+        return std::make_unique<Composition>(*this);
+    }
+
+    //------------------------------------------
+    // Registration methods
+    //------------------------------------------
 
     void Composition::registerSymbol(
         const std::string& symbol
@@ -231,40 +245,189 @@ namespace fourdst::composition {
     void Composition::registerSymbol(
         const std::vector<std::string>& symbols
     ) {
-        for (const auto& symbol : symbols) {
-            registerSymbol(symbol);
-        }
+        registerSpecies(symbolVectorToSpeciesVector(symbols));
     }
 
     void Composition::registerSpecies(
         const atomic::Species &species
     ) noexcept {
-        m_registeredSpecies.insert(species);
-        if (!m_molarAbundances.contains(species)) {
-            m_molarAbundances.emplace(species, 0.0);
+        if (const auto it = std::ranges::lower_bound(m_species, species); it == m_species.end() || *it != species) {
+            const auto index = std::distance(m_species.begin(), it);
+            m_species.insert(it, species);
+            m_molarAbundances.insert(m_molarAbundances.begin() + index, 0.0);
+            m_cache.clear();
         }
     }
 
     void Composition::registerSpecies(
         const std::vector<atomic::Species> &species
     ) noexcept {
-        for (const auto& s : species) {
-            registerSpecies(s);
+        // We do not simply call registerSpecies(species) here as that would have a complexity of O(n^2) due to constantly
+        // reinserting into the vector. Rather we build the vector once and then sort it
+
+        if (species.empty()) return;
+
+        const size_t total_size = m_species.size() + species.size();
+        m_species.reserve(total_size);
+        m_molarAbundances.reserve(total_size);
+
+        for (const auto& sp : species) {
+            m_species.push_back(sp);
+            m_molarAbundances.push_back(0.0);
         }
+
+        auto combined = std::views::zip(m_species, m_molarAbundances);
+
+        std::ranges::sort(combined, [](const auto& a, const auto& b) {
+            const auto& speciesA = std::get<0>(a);
+            const auto& speciesB = std::get<0>(b);
+
+            if (speciesA != speciesB) {
+                return speciesA < speciesB;
+            }
+
+            return std::get<1>(a) > std::get<1>(b);
+        });
+
+        auto [first, last] = std::ranges::unique(combined, [](const auto& a, const auto& b) {
+            return std::get<0>(a) == std::get<0>(b);
+        });
+
+        const auto newEndIndex = std::distance(combined.begin(), first);
+
+        m_species.erase(m_species.begin() + newEndIndex, m_species.end());
+        m_molarAbundances.erase(m_molarAbundances.begin() + newEndIndex, m_molarAbundances.end());
+
+        m_cache.clear();
     }
 
     std::set<std::string> Composition::getRegisteredSymbols() const noexcept {
         std::set<std::string> symbols;
-        for (const auto& species : m_registeredSpecies) {
+        for (const auto& species : m_species) {
             symbols.insert(std::string(species.name()));
         }
         return symbols;
     }
 
-    const std::set<atomic::Species> &Composition::getRegisteredSpecies() const noexcept {
-        return m_registeredSpecies;
+    const std::vector<atomic::Species> &Composition::getRegisteredSpecies() const noexcept {
+        return m_species;
     }
 
+
+    //------------------------------------------
+    // Molar abundance setters
+    //------------------------------------------
+
+    void Composition::setMolarAbundance(
+        const std::string &symbol,
+        const double &molar_abundance
+    ) {
+        const auto species = getSpecies(symbol);
+        if (__builtin_expect(!species, 0)) {
+            throw_unknown_symbol(getLogger(), symbol);
+        }
+
+        setMolarAbundance(species.value(), molar_abundance);
+    }
+
+    void Composition::setMolarAbundance(
+        const atomic::Species &species,
+        const double &molar_abundance
+    ) {
+        if (__builtin_expect(molar_abundance < 0.0, 0)) {
+            LOG_ERROR(getLogger(), "Molar abundance must be non-negative for symbol {}. Currently it is {}.", species.name(), molar_abundance);
+            throw exceptions::InvalidCompositionError("Molar abundance must be non-negative, got " + std::to_string(molar_abundance) + " for symbol " + std::string(species.name()) + ".");
+        }
+
+        const std::expected<std::ptrdiff_t, SpeciesIndexLookupError> speciesIndexResult = findSpeciesIndex(species);
+        if (__builtin_expect(!speciesIndexResult, 0)) {
+            throw_unregistered_symbol(getLogger(), std::string(species.name()));
+        }
+
+        assert(speciesIndexResult.value() < m_molarAbundances.size());
+
+        m_molarAbundances[speciesIndexResult.value()] = molar_abundance;
+        m_cache.clear();
+    }
+
+
+    ////----------------------------------------------
+    ///   Methods which set multiple molar abundances
+    ///   delegate to vector<Species>, vector<double>
+    ///-----------------------------------------------
+
+    void Composition::setMolarAbundance(
+        const std::vector<std::string> &symbols,
+        const std::vector<double> &molar_abundances
+    ) {
+        setMolarAbundance(symbolVectorToSpeciesVector(symbols), molar_abundances);
+    }
+
+    void Composition::setMolarAbundance(
+        const std::set<std::string> &symbols,
+        const std::vector<double> &molar_abundances
+    ) {
+        setMolarAbundance(symbolVectorToSpeciesVector(symbols | std::ranges::to<std::vector>()), molar_abundances);
+    }
+
+    void Composition::setMolarAbundance(
+        const std::set<atomic::Species> &species,
+        const std::vector<double> &molar_abundances
+    ) {
+        setMolarAbundance(species | std::ranges::to<std::vector>(), molar_abundances);
+    }
+
+    void Composition::setMolarAbundance(
+        const std::vector<atomic::Species> &species,
+        const std::vector<double> &molar_abundances
+    ) {
+        if (__builtin_expect(species.size() != molar_abundances.size(), 0)) {
+            LOG_CRITICAL(getLogger(), "The number of species and molar_abundances must be equal (got {} species and {} molar_abundances).", species.size(), molar_abundances.size());
+            throw exceptions::InvalidCompositionError("The number of species and fractions must be equal. Got " + std::to_string(species.size()) + " species and " + std::to_string(molar_abundances.size()) + " fractions.");
+        }
+
+        if (species.empty()) return;
+
+        if (species.size() == m_species.size()) {
+            if (species == m_species) {
+                for (const auto& [sp, y] : std::views::zip(species, molar_abundances)) {
+                    if (__builtin_expect(y < 0.0, 0)) {
+                        LOG_ERROR(getLogger(), "Molar abundance must be non-negative. Instead got {} for species {}.", y, sp.name());
+                        throw exceptions::InvalidCompositionError("Molar abundance must be non-negative. Instead got " + std::to_string(y) + " for species " + std::string(sp.name()) + ".");
+                    }
+                }
+
+                m_molarAbundances = molar_abundances;
+                m_cache.clear();
+                return;
+            }
+        }
+
+        for (size_t i  = 0; i < species.size(); ++i) {
+            const double y = molar_abundances[i];
+            const auto& sp = species[i];
+            if (__builtin_expect(y < 0.0, 0)) {
+                LOG_CRITICAL(getLogger(), "Molar abundance must be non-negative. Instead got {} for species {}.", y, sp.name());
+                throw exceptions::InvalidCompositionError("Molar abundance must be non-negative. Instead got " + std::to_string(y) + " for species " + std::string(sp.name()) + ".");
+            }
+
+            const std::expected<std::ptrdiff_t, SpeciesIndexLookupError> speciesIndexResult = findSpeciesIndex(sp);
+            if (__builtin_expect(!speciesIndexResult, 0)) {
+                throw_unregistered_symbol(getLogger(), std::string(sp.name()));
+            }
+
+            const std::ptrdiff_t speciesIndex = speciesIndexResult.value();
+
+            m_molarAbundances[speciesIndex] = y;
+        }
+
+        m_cache.clear();
+    }
+
+
+    //------------------------------------------
+    // Fraction and abundance getters
+    //------------------------------------------
 
     double Composition::getMassFraction(const std::string& symbol) const {
         const auto species = getSpecies(symbol);
@@ -277,22 +440,26 @@ namespace fourdst::composition {
     double Composition::getMassFraction(
         const atomic::Species &species
     ) const {
-        if (!m_molarAbundances.contains(species)) {
+        const std::expected<std::ptrdiff_t, SpeciesIndexLookupError> speciesIndexResult = findSpeciesIndex(species);
+        if (!speciesIndexResult) {
             throw_unregistered_symbol(getLogger(), std::string(species.name()));
         }
-        std::map<atomic::Species, double> raw_mass;
+
         double totalMass = 0;
-        for (const auto& [sp, y] : m_molarAbundances) {
+        double speciesMass = 0;
+        for (const auto& [sp, y] : *this) {
             const double contrib = y * sp.mass();
             totalMass += contrib;
-            raw_mass.emplace(sp, contrib);
+            if (sp == species) {
+                speciesMass = contrib;
+            }
         }
-        return raw_mass.at(species) / totalMass;
+        return speciesMass / totalMass;
     }
 
     std::unordered_map<atomic::Species, double> Composition::getMassFraction() const noexcept {
         std::unordered_map<atomic::Species, double> mass_fractions;
-        for (const auto &species: m_molarAbundances | std::views::keys) {
+        for (const auto &species: *this | std::views::keys) {
             mass_fractions.emplace(species, getMassFraction(species));
         }
         return mass_fractions;
@@ -312,19 +479,23 @@ namespace fourdst::composition {
     double Composition::getNumberFraction(
         const atomic::Species &species
     ) const {
-        if (!m_molarAbundances.contains(species)) {
+        const std::expected<std::ptrdiff_t, SpeciesIndexLookupError> speciesIndexResult = findSpeciesIndex(species);
+        if (!speciesIndexResult) {
             throw_unregistered_symbol(getLogger(), std::string(species.name()));
         }
-        double total_moles_per_gram = 0.0;
-        for (const auto &y: m_molarAbundances | std::views::values) {
-            total_moles_per_gram += y;
-        }
-        return m_molarAbundances.at(species) / total_moles_per_gram;
+        const std::ptrdiff_t speciesIndex = speciesIndexResult.value();
+
+        const double total_moles_per_gram = std::accumulate(
+            m_molarAbundances.begin(),
+            m_molarAbundances.end(),
+            0.0
+        );
+        return m_molarAbundances[speciesIndex] / total_moles_per_gram;
     }
 
     std::unordered_map<atomic::Species, double> Composition::getNumberFraction() const noexcept {
         std::unordered_map<atomic::Species, double> number_fractions;
-        for (const auto &species: m_molarAbundances | std::views::keys) {
+        for (const auto &species: m_species) {
             number_fractions.emplace(species, getNumberFraction(species));
         }
         return number_fractions;
@@ -344,25 +515,34 @@ namespace fourdst::composition {
     double Composition::getMolarAbundance(
         const atomic::Species &species
     ) const {
-        if (!m_molarAbundances.contains(species)) {
+        const std::expected<std::ptrdiff_t, SpeciesIndexLookupError> speciesIndexResult = findSpeciesIndex(species);
+        if (!speciesIndexResult) {
             throw_unregistered_symbol(getLogger(), std::string(species.name()));
         }
-        return m_molarAbundances.at(species);
+        const std::ptrdiff_t speciesIndex = speciesIndexResult.value();
+        return m_molarAbundances[speciesIndex];
     }
+
+    //------------------------------------------
+    // Derived property getters
+    //------------------------------------------
 
     double Composition::getMeanParticleMass() const noexcept {
-        std::vector<double> X = getMassFractionVector();
-        double sum = 0.0;
-        for (const auto& [species, x] : std::views::zip(m_registeredSpecies, X)) {
-            sum += x/species.mass();
+        double totalMass = 0.0;
+        double totalMoles = 0.0;
+
+        for (size_t i = 0; i < m_species.size(); ++i) {
+            totalMoles += m_molarAbundances[i];
+            totalMass  += m_molarAbundances[i] * m_species[i].mass();
         }
 
-        return 1.0 / sum;
+        return totalMass / totalMoles;
     }
+
 
     double Composition::getElectronAbundance() const noexcept {
         double Ye = 0.0;
-        for (const auto& [species, y] : m_molarAbundances) {
+        for (const auto& [species, y] : *this) {
             Ye += species.z() * y;
         }
         return Ye;
@@ -377,8 +557,8 @@ namespace fourdst::composition {
             return m_cache.canonicalComp.value(); // Short circuit if we have cached the canonical composition
         }
         CanonicalComposition canonicalComposition;
-        const std::set<Species> canonicalH = {H_1, H_2, H_3, H_4, H_5, H_6, H_7};
-        const std::set<Species> canonicalHe = {He_3, He_4, He_5, He_6, He_7, He_8, He_9, He_10};
+        static const std::unordered_set<Species> canonicalH = {H_1, H_2, H_3, H_4, H_5, H_6, H_7};
+        static const std::unordered_set<Species> canonicalHe = {He_3, He_4, He_5, He_6, He_7, He_8, He_9, He_10};
 
         for (const auto& symbol : canonicalH) {
             if (contains(symbol)) {
@@ -391,11 +571,8 @@ namespace fourdst::composition {
             }
         }
 
-        for (const auto& species : m_molarAbundances | std::views::keys) {
-            const bool isHIsotope = canonicalH.contains(species);
-            const bool isHeIsotope = canonicalHe.contains(species);
-
-            if (isHIsotope || isHeIsotope) {
+        for (const auto& species : m_species) {
+            if (canonicalH.contains(species) || canonicalHe.contains(species)) {
                 continue; // Skip canonical H and He symbols
             }
 
@@ -412,25 +589,25 @@ namespace fourdst::composition {
         return canonicalComposition;
     }
 
+    //------------------------------------------
+    // Vector getters
+    //------------------------------------------
+
     std::vector<double> Composition::getMassFractionVector() const noexcept {
         if (m_cache.massFractions.has_value()) {
             return m_cache.massFractions.value(); // Short circuit if we have cached the mass fractions
         }
 
         std::vector<double> massFractionVector;
-        std::vector<double> speciesMass;
 
         massFractionVector.reserve(m_molarAbundances.size());
-        speciesMass.reserve(m_molarAbundances.size());
 
-        for (const auto &species: m_molarAbundances | std::views::keys) {
+        for (const auto &species: m_species) {
             massFractionVector.push_back(getMassFraction(species));
-            speciesMass.push_back(species.mass());
         }
 
-        std::vector<double> massFractions = sortVectorBy(massFractionVector, speciesMass);
-        m_cache.massFractions = massFractions; // Cache the result
-        return massFractions;
+        m_cache.massFractions = massFractionVector; // Cache the result
+        return massFractionVector;
 
     }
 
@@ -440,42 +617,24 @@ namespace fourdst::composition {
         }
 
         std::vector<double> numberFractionVector;
-        std::vector<double> speciesMass;
 
         numberFractionVector.reserve(m_molarAbundances.size());
-        speciesMass.reserve(m_molarAbundances.size());
 
-        for (const auto &species: m_molarAbundances | std::views::keys) {
+        for (const auto &species: m_species) {
             numberFractionVector.push_back(getNumberFraction(species));
-            speciesMass.push_back(species.mass());
         }
 
-        std::vector<double> numberFractions = sortVectorBy(numberFractionVector, speciesMass);
-        m_cache.numberFractions = numberFractions; // Cache the result
-        return numberFractions;
+        m_cache.numberFractions = numberFractionVector; // Cache the result
+        return numberFractionVector;
     }
 
     std::vector<double> Composition::getMolarAbundanceVector() const noexcept {
-        if (m_cache.molarAbundances.has_value()) {
-            return m_cache.molarAbundances.value(); // Short circuit if we have cached the molar abundances
-        }
-
-        std::vector<double> molarAbundanceVector;
-        std::vector<double> speciesMass;
-
-        molarAbundanceVector.reserve(m_molarAbundances.size());
-        speciesMass.reserve(m_molarAbundances.size());
-
-        for (const auto &[species, y]: m_molarAbundances) {
-            molarAbundanceVector.push_back(y);
-            speciesMass.push_back(species.mass());
-        }
-
-        std::vector<double> molarAbundances = sortVectorBy(molarAbundanceVector, speciesMass);
-        m_cache.molarAbundances = molarAbundances; // Cache the result
-        return molarAbundances;
-
+        return m_molarAbundances;
     }
+
+    //------------------------------------------
+    // Species index getters and lookups
+    //------------------------------------------
 
     size_t Composition::getSpeciesIndex(
         const std::string &symbol
@@ -491,66 +650,36 @@ namespace fourdst::composition {
     size_t Composition::getSpeciesIndex(
         const atomic::Species &species
     ) const {
-        if (!m_registeredSpecies.contains(species)) {
-            LOG_ERROR(getLogger(), "Species {} is not in the composition.", species.name());
-            throw exceptions::UnregisteredSymbolError("Species " + std::string(species.name()) + " is not in the composition.");
-        }
-        if (m_cache.sortedSpecies.has_value()) {
-            return std::distance(
-                m_cache.sortedSpecies->begin(),
-                std::ranges::find(
-                    m_cache.sortedSpecies.value().begin(),
-                    m_cache.sortedSpecies.value().end(),
-                    species
-                )
-            );
+        std::expected<std::ptrdiff_t, SpeciesIndexLookupError> speciesIndexResult = findSpeciesIndex(species);
+        if (!speciesIndexResult) {
+            switch (speciesIndexResult.error()) {
+                case SpeciesIndexLookupError::NO_REGISTERED_SPECIES:
+                    [[fallthrough]];
+                case SpeciesIndexLookupError::SPECIES_NOT_FOUND:
+                    throw_unregistered_symbol(getLogger(), std::string(species.name()));
+                default:
+                    throw std::logic_error("Unhandled SpeciesIndexLookupError in Composition::getSpeciesIndex");
+            }
         }
 
-        std::vector<atomic::Species> speciesVector;
-        std::vector<double> speciesMass;
-
-        speciesVector.reserve(m_molarAbundances.size());
-        speciesMass.reserve(m_molarAbundances.size());
-
-        for (const auto &s: m_registeredSpecies) {
-            speciesVector.emplace_back(s);
-            speciesMass.push_back(s.mass());
-        }
-
-        std::vector<atomic::Species> sortedSpecies = sortVectorBy(speciesVector, speciesMass);
-        m_cache.sortedSpecies = sortedSpecies;
-        return std::distance(sortedSpecies.begin(), std::ranges::find(sortedSpecies, species));
+        return static_cast<size_t>(speciesIndexResult.value());
     }
 
     atomic::Species Composition::getSpeciesAtIndex(
         const size_t index
     ) const {
-        if (m_cache.sortedSpecies.has_value()) {
-            return m_cache.sortedSpecies.value().at(index);
+        if (index >= m_species.size()) {
+            LOG_ERROR(getLogger(), "Index {} is out of bounds for registered species (size {}).", index, m_species.size());
+            throw std::out_of_range("Index " + std::to_string(index) + " is out of bounds for registered species (size " + std::to_string(m_species.size()) + ").");
         }
 
-        std::vector<atomic::Species> speciesVector;
-        std::vector<double> speciesMass;
-
-        speciesVector.reserve(m_molarAbundances.size());
-        speciesMass.reserve(m_molarAbundances.size());
-
-        for (const auto &species: m_registeredSpecies) {
-            speciesVector.emplace_back(species);
-            speciesMass.push_back(species.mass());
-        }
-
-        std::vector<atomic::Species> sortedSymbols = sortVectorBy(speciesVector, speciesMass);
-        if (index >= sortedSymbols.size()) {
-            LOG_ERROR(getLogger(), "Index {} is out of range for composition of size {}.", index, sortedSymbols.size());
-            throw std::out_of_range("Index " + std::to_string(index) + " is out of range for composition of size " + std::to_string(sortedSymbols.size()) + ".");
-        }
-        return sortedSymbols.at(index);
+        return m_species[index];
     }
 
-    std::unique_ptr<CompositionAbstract> Composition::clone() const {
-        return std::make_unique<Composition>(*this);
-    }
+
+    //------------------------------------------
+    // Utility methods
+    //------------------------------------------
 
     std::size_t Composition::hash() const {
         if (m_cache.hash.has_value()) {
@@ -564,7 +693,7 @@ namespace fourdst::composition {
     bool Composition::contains(
         const atomic::Species &species
     ) const noexcept {
-        return m_registeredSpecies.contains(species);
+        return std::ranges::binary_search(m_species, species);
     }
 
     bool Composition::contains(
@@ -578,74 +707,41 @@ namespace fourdst::composition {
     }
 
     size_t Composition::size() const noexcept {
-        return m_registeredSpecies.size();
+        return m_species.size();
     }
 
-    void Composition::setMolarAbundance(
-        const std::string &symbol,
-        const double &molar_abundance
-    ) {
-        const auto species = getSpecies(symbol);
-        if (!species) {
-            throw_unknown_symbol(getLogger(), symbol);
+    std::expected<std::ptrdiff_t, Composition::SpeciesIndexLookupError> Composition::findSpeciesIndex(const atomic::Species &species) const noexcept {
+        if (m_species.empty()) return std::unexpected(SpeciesIndexLookupError::NO_REGISTERED_SPECIES);
+
+        const auto it = std::ranges::lower_bound(m_species, species);
+
+        if (it == m_species.end() || *it != species) {
+            return std::unexpected(SpeciesIndexLookupError::SPECIES_NOT_FOUND);
         }
 
-        setMolarAbundance(species.value(), molar_abundance);
+        return std::distance(m_species.begin(), it);
     }
 
-    void Composition::setMolarAbundance(
-        const atomic::Species &species,
-        const double &molar_abundance
-    ) {
-        if (!m_registeredSpecies.contains(species)) {
-            throw_unregistered_symbol(getLogger(), std::string(species.name()));
-        }
-        if (molar_abundance < 0.0) {
-            LOG_ERROR(getLogger(), "Molar abundance must be non-negative for symbol {}. Currently it is {}.", species.name(), molar_abundance);
-            throw exceptions::InvalidCompositionError("Molar abundance must be non-negative, got " + std::to_string(molar_abundance) + " for symbol " + std::string(species.name()) + ".");
+    std::vector<atomic::Species> Composition::symbolVectorToSpeciesVector(const std::vector<std::string> &symbols) {
+        std::vector<atomic::Species> species;
+        species.reserve(symbols.size());
+
+
+        for (const auto& symbol : symbols) {
+            const auto speciesResult = getSpecies(symbol);
+            if (!speciesResult) {
+                throw_unknown_symbol(getLogger(), symbol);
+            }
+            species.push_back(speciesResult.value());
         }
 
-        m_cache.clear();
-        m_molarAbundances.at(species) = molar_abundance;
+        return species;
     }
 
-    void Composition::setMolarAbundance(
-        const std::vector<std::string> &symbols,
-        const std::vector<double> &molar_abundances
-    ) {
-        for (const auto& [symbol, y] : std::views::zip(symbols, molar_abundances)) {
-            setMolarAbundance(symbol, y);
-        }
-    }
 
-    void Composition::setMolarAbundance(
-        const std::vector<atomic::Species> &species,
-        const std::vector<double> &molar_abundances
-    ) {
-        for (const auto& [s, y] : std::views::zip(species, molar_abundances)) {
-            setMolarAbundance(s, y);
-        }
-    }
-
-    void Composition::setMolarAbundance(
-        const std::set<std::string> &symbols,
-        const std::vector<double> &molar_abundances
-    ) {
-        for (const auto& [symbol, y] : std::views::zip(symbols, molar_abundances)) {
-            setMolarAbundance(symbol, y);
-        }
-    }
-
-    void Composition::setMolarAbundance(
-        const std::set<atomic::Species> &species,
-        const std::vector<double> &molar_abundances
-    ) {
-        for (const auto& [s, y] : std::views::zip(species, molar_abundances)) {
-            setMolarAbundance(s, y);
-        }
-    }
-
-    /// OVERLOADS
+    //------------------------------------------
+    // Stream operator
+    //------------------------------------------
 
     std::ostream& operator<<(
         std::ostream& os,
@@ -653,7 +749,7 @@ namespace fourdst::composition {
     ) {
         os << "Composition(Mass Fractions => [";
         size_t count = 0;
-        for (const auto &species : composition.m_registeredSpecies) {
+        for (const auto &species : composition.m_species) {
             os << species << ": " << composition.getMassFraction(species);
             if (count < composition.size() - 1) {
                 os << ", ";

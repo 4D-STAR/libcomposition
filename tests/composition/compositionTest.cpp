@@ -3,6 +3,7 @@
 #include <string>
 #include <algorithm>
 #include <chrono>
+#include <ranges>
 
 #include "fourdst/atomic/atomicSpecies.h"
 #include "fourdst/atomic/species.h"
@@ -176,12 +177,9 @@ TEST_F(compositionTest, setGetComposition) {
 TEST_F(compositionTest, getRegisteredSpecies) {
     fourdst::composition::Composition comp;
     comp.registerSpecies({fourdst::atomic::Be_7, fourdst::atomic::H_1, fourdst::atomic::He_4});
-    auto registeredSpecies = comp.getRegisteredSpecies();
-    EXPECT_TRUE(registeredSpecies.contains(fourdst::atomic::H_1));
-    EXPECT_TRUE(registeredSpecies.contains(fourdst::atomic::He_4));
-    EXPECT_FALSE(registeredSpecies.contains(fourdst::atomic::Li_6));
-    const auto it1 = registeredSpecies.begin();
-    EXPECT_EQ(*it1, fourdst::atomic::H_1);
+    EXPECT_TRUE(comp.contains(fourdst::atomic::H_1));
+    EXPECT_TRUE(comp.contains(fourdst::atomic::He_4));
+    EXPECT_FALSE(comp.contains(fourdst::atomic::Li_6));
 }
 
 /**
@@ -397,7 +395,7 @@ TEST_F(compositionTest, canonicalizeNaNIfAllowed) {
     fourdst::composition::Composition a, b;
     a.registerSymbol("H-1"); b.registerSymbol("H-1");
     double qnan1 = std::numeric_limits<double>::quiet_NaN();
-    double qnan2 = std::bit_cast<double>(std::uint64_t{0x7ff80000'00000042ULL});
+    auto qnan2 = std::bit_cast<double>(std::uint64_t{0x7ff80000'00000042ULL});
     a.setMolarAbundance("H-1", qnan1);
     b.setMolarAbundance("H-1", qnan2);
     ASSERT_EQ(fourdst::composition::utils::CompositionHash::hash_exact(a),
@@ -437,4 +435,51 @@ TEST_F(compositionTest, hashStaleing) {
     a.setMolarAbundance("C-12", 0.002);
     const std::size_t hash2 = a.hash();
     EXPECT_NE(hash1, hash2);
+}
+
+TEST_F(compositionTest, speciesOrdering) {
+    using namespace fourdst::atomic;
+    const std::unordered_map<Species, double> abundances ={
+        {C_12, 0.001},
+        {H_1, 0.702},
+        {O_16, 0.22},
+        {N_14, 0.0005},
+        {He_4, 0.06},
+        {Ar_30, 0.0001},
+        {Li_6, 0.0002}
+    };
+
+    const fourdst::composition::Composition a(abundances);
+    static const std::vector<Species> speciesInOrder = {
+        H_1, He_4, Li_6, C_12, N_14, O_16, Ar_30
+    };
+
+    const std::vector<Species>& specieFromComposition = a.getRegisteredSpecies();
+    for (const auto& [spe, spo] : std::views::zip(speciesInOrder, specieFromComposition)) {
+        EXPECT_EQ(spe, spo);
+    }
+}
+
+TEST_F(compositionTest, iterationOrdering) {
+    using namespace fourdst::atomic;
+    const std::unordered_map<Species, double> abundances ={
+        {C_12, 0.001},
+        {H_1, 0.702},
+        {O_16, 0.22},
+        {N_14, 0.0005},
+        {He_4, 0.06},
+        {Ar_30, 0.0001},
+        {Li_6, 0.0002}
+    };
+
+    const fourdst::composition::Composition a(abundances);
+    static const std::vector<Species> speciesInOrder = {
+        H_1, He_4, Li_6, C_12, N_14, O_16, Ar_30
+    };
+
+    size_t count = 0;
+    for (const auto &sp: a | std::views::keys) {
+        EXPECT_EQ(sp, speciesInOrder[count]);
+        ++count;
+    }
 }

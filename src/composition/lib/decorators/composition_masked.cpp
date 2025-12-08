@@ -1,29 +1,41 @@
 #include "fourdst/composition/decorators/composition_masked.h"
-
+#include "fourdst/composition/exceptions/exceptions_composition.h"
 #include "fourdst/atomic/species.h"
+
+#include <algorithm>
 #include <memory>
+#include <string>
+#include <vector>
+#include <set>
+#include <unordered_map>
+
+#include "fourdst/composition/utils/composition_hash.h"
 
 namespace fourdst::composition {
-MaskedComposition::MaskedComposition(
+    MaskedComposition::MaskedComposition(
         const CompositionAbstract& baseComposition,
-        const std::set<atomic::Species>& activeSpecies
+        const std::vector<atomic::Species>& activeSpecies
     ) :
     CompositionDecorator(baseComposition.clone()),
     m_activeSpecies(activeSpecies) {
+
+        std::ranges::sort(m_activeSpecies, [](const auto &a, const auto &b) {
+            return a < b;
+        });
+
+        m_molarAbundances.reserve(m_activeSpecies.size());
         for (const auto& species : m_activeSpecies) {
-            if (CompositionDecorator::contains(species)) {
-                m_masked_composition.emplace(species, CompositionDecorator::getMolarAbundance(species));
+            if (!CompositionDecorator::contains(species)) {
+                m_molarAbundances.push_back(0.0);
             } else {
-                m_masked_composition.emplace(species, 0.0);
+                m_molarAbundances.push_back(CompositionDecorator::getMolarAbundance(species));
             }
         }
+
     }
 
     bool MaskedComposition::contains(const atomic::Species &species) const noexcept{
-        if (m_activeSpecies.contains(species)) {
-            return true;
-        }
-        return false;
+        return std::ranges::contains(m_activeSpecies, species);
     }
 
     bool MaskedComposition::contains(const std::string &symbol) const {
@@ -31,14 +43,10 @@ MaskedComposition::MaskedComposition(
             throw exceptions::UnknownSymbolError("Cannot find species '" + symbol + "' in base composition");
         }
         const atomic::Species& species = atomic::species.at(symbol);
-        if (m_activeSpecies.contains(species)) {
-            return true;
-        }
-
-        return false;
+        return contains(species);
     }
 
-    const std::set<atomic::Species>& MaskedComposition::getRegisteredSpecies() const noexcept {
+    const std::vector<atomic::Species>& MaskedComposition::getRegisteredSpecies() const noexcept {
         return m_activeSpecies;
     }
 
@@ -179,11 +187,19 @@ MaskedComposition::MaskedComposition(
         if (!contains(symbol)) {
             throw exceptions::UnregisteredSymbolError("Species '" + symbol + "' is not part of the active species in the MaskedComposition.");
         }
-        return std::distance(m_activeSpecies.begin(), m_activeSpecies.find(atomic::species.at(symbol)));
+        return std::distance(
+            m_activeSpecies.begin(),
+            std::ranges::find_if(m_activeSpecies,
+            [&symbol](const atomic::Species& sp) {
+                    return std::string(sp.name()) == symbol;
+        }));
     }
 
     size_t MaskedComposition::getSpeciesIndex(const atomic::Species &species) const {
-        return std::distance(m_activeSpecies.begin(), m_activeSpecies.find(species));
+        return std::distance(
+            m_activeSpecies.begin(),
+            std::ranges::find(m_activeSpecies, species)
+        );
     }
 
     atomic::Species MaskedComposition::getSpeciesAtIndex(const size_t index) const {
@@ -199,19 +215,23 @@ MaskedComposition::MaskedComposition(
         return std::make_unique<MaskedComposition>(*m_base_composition, m_activeSpecies);
     }
 
-    std::map<atomic::Species, double>::iterator MaskedComposition::begin() {
-        return m_masked_composition.begin();
+    MaskedComposition::iterator MaskedComposition::begin() {
+        return {m_activeSpecies.begin(), m_molarAbundances.begin()};
     }
 
-    std::map<atomic::Species, double>::iterator MaskedComposition::end() {
-        return m_masked_composition.end();
+    MaskedComposition::iterator MaskedComposition::end() {
+        return  {m_activeSpecies.end(), m_molarAbundances.end()};
     }
 
-    std::map<atomic::Species, double>::const_iterator MaskedComposition::begin() const {
-        return m_masked_composition.cbegin();
+    MaskedComposition::const_iterator MaskedComposition::begin() const {
+        return {m_activeSpecies.cbegin(), m_molarAbundances.cbegin()};
     }
 
-    std::map<atomic::Species, double>::const_iterator MaskedComposition::end() const {
-        return m_masked_composition.cend();
+    MaskedComposition::const_iterator MaskedComposition::end() const {
+        return {m_activeSpecies.cend(), m_molarAbundances.cend()};
+    }
+
+    size_t MaskedComposition::hash() const {
+        return utils::CompositionHash::hash_exact<MaskedComposition>(*this);
     }
 };

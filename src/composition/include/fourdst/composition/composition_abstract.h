@@ -1,10 +1,10 @@
 #pragma once
 
 #include "fourdst/atomic/atomicSpecies.h"
+#include "fourdst/composition/iterators/composition_abstract_iterator.h"
 
 #include <string>
 #include <unordered_map>
-#include <map>
 #include <set>
 #include <vector>
 #include <memory>
@@ -35,6 +35,8 @@ namespace fourdst::composition {
      */
     class CompositionAbstract {
     public:
+        using iterator = detail::CompositionIterator<false>;
+        using const_iterator = detail::CompositionIterator<true>;
         /**
          * @brief Virtual destructor.
          */
@@ -66,7 +68,7 @@ namespace fourdst::composition {
          * @brief Get all registered atomic species in the composition.
          * @return A set of registered atomic species.
          */
-        [[nodiscard]] virtual const std::set<fourdst::atomic::Species> &getRegisteredSpecies() const noexcept = 0;
+        [[nodiscard]] virtual const std::vector<atomic::Species> &getRegisteredSpecies() const noexcept = 0;
 
         /**
          * @brief Get the mass fraction for all registered symbols.
@@ -175,10 +177,10 @@ namespace fourdst::composition {
 
         [[nodiscard]] virtual std::unique_ptr<CompositionAbstract> clone() const = 0;
 
-        [[nodiscard]] virtual std::map<atomic::Species, double>::iterator begin() = 0;
-        [[nodiscard]] virtual std::map<atomic::Species, double>::iterator end() = 0;
-        [[nodiscard]] virtual std::map<atomic::Species, double>::const_iterator begin() const = 0;
-        [[nodiscard]] virtual std::map<atomic::Species, double>::const_iterator end() const = 0;
+        [[nodiscard]] virtual iterator begin() = 0;
+        [[nodiscard]] virtual iterator end() = 0;
+        [[nodiscard]] virtual const_iterator begin() const = 0;
+        [[nodiscard]] virtual const_iterator end() const = 0;
 
         [[nodiscard]] virtual std::size_t hash() const = 0;
     };

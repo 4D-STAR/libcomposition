@@ -2,6 +2,7 @@
 
 #include <exception>
 #include <string>
+#include <utility>
 
 namespace fourdst::composition::exceptions {
     /**
@@ -22,14 +23,14 @@ namespace fourdst::composition::exceptions {
          * @brief Constructs a CompositionError with an error message.
          * @param message The error message.
          */
-        explicit CompositionError(const std::string& message)
+        explicit CompositionError(std::string  message)
             : m_message(std::move(message)) {}
 
         /**
          * @brief Returns the error message.
          * @return A C-style string containing the error message.
          */
-        const char* what() const noexcept override{
+        [[nodiscard]] const char* what() const noexcept override{
             return m_message.c_str();
         }
     };
@@ -60,10 +61,10 @@ namespace fourdst::composition::exceptions {
     protected:
         std::string m_message;
     public:
-        explicit SpeciesError(const std::string& message)
+        explicit SpeciesError(std::string  message)
             : m_message(std::move(message)) {}
 
-        const char* what() const noexcept override {
+        [[nodiscard]] const char* what() const noexcept override {
             return m_message.c_str();
         }
     };
