@@ -101,7 +101,7 @@ int main () {
                  *std::ranges::min_element(durations));
 
 
-    plot_ascii_histogram(durations, "Composition Construction Time Histogram");
+    std::println("{}", plot_ascii_histogram(durations, "Composition Construction Time Histogram"));
 
 
     durations.clear();
@@ -119,5 +119,5 @@ int main () {
     std::println("Min time to access composition over {} iterations: {} ns", nIterations,
                  *std::ranges::min_element(durations));
 
-    plot_ascii_histogram(durations, "Composition Access Time Histogram");
+    std::println("{}", plot_ascii_histogram(durations, "Composition Access Time Histogram"));
 }
