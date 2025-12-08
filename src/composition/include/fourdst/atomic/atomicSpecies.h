@@ -1,6 +1,7 @@
 #pragma once
 
 
+#include <format>
 #include <string_view>
 #include <string>
 #include <optional>
@@ -275,8 +276,7 @@ namespace fourdst::atomic {
 
         friend bool operator==(const Species& lhs, const Species& rhs);
         friend bool operator!=(const Species& lhs, const Species& rhs);
-        friend bool operator<(const Species& lhs, const Species& rhs);
-        friend bool operator>(const Species& lhs, const Species& rhs);
+        friend std::partial_ordering operator<=>(const Species &lhs, const Species &rhs);
     };
     /**
      * @brief Equality operator for Species. Compares based on name.
@@ -296,24 +296,17 @@ namespace fourdst::atomic {
     inline bool operator!=(const Species& lhs, const Species& rhs) {
         return (lhs.m_name != rhs.m_name);
     }
-    /**
-     * @brief Less-than operator for Species. Compares based on atomic mass.
-     * @param lhs The left-hand side Species.
-     * @param rhs The right-hand side Species.
-     * @return `true` if lhs atomic mass is less than rhs atomic mass, `false` otherwise.
-     */
-    inline bool operator<(const Species& lhs, const Species& rhs) {
-        return (lhs.m_atomicMass < rhs.m_atomicMass);
+
+    inline std::partial_ordering operator<=>(const Species &lhs, const Species &rhs) {
+        if (const auto cmp = lhs.m_atomicMass <=> rhs.m_atomicMass; cmp != 0) {
+            return cmp;
+        }
+
+        return lhs.m_name <=> rhs.m_name;
     }
-    /**
-     * @brief Greater-than operator for Species. Compares based on atomic mass.
-     * @param lhs The left-hand side Species.
-     * @param rhs The right-hand side Species.
-     * @return `true` if lhs atomic mass is greater than rhs atomic mass, `false` otherwise.
-     */
-    inline bool operator>(const Species& lhs, const Species& rhs) {
-        return (lhs.m_atomicMass > rhs.m_atomicMass);
-    }
+
+
+
 
     /**
      * @brief Converts a spin-parity string (JPI string) to a double-precision floating-point number representing the spin.
@@ -424,14 +417,15 @@ namespace fourdst::atomic {
  * }
  * @endcode
  */
+
 template<>
 struct std::hash<fourdst::atomic::Species> {
     /**
-     * @brief Computes the hash for a Species object.
-     * @param s The Species object to hash.
-     * @return The hash value of the species' name.
-     */
+         * @brief Computes the hash for a Species object.
+         * @param s The Species object to hash.
+         * @return The hash value of the species' name.
+         */
     size_t operator()(const fourdst::atomic::Species& s) const noexcept {
         return std::hash<std::string>()(s.m_name);
     }
-}; // namespace std
+};

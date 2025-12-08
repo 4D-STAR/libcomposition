@@ -1,0 +1,1 @@
+executable('construction_and_iteration_bench', 'benchmark_composition_construction_and_iteration.cpp', dependencies: [composition_dep], include_directories: [benchmark_utils_includes])

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "fourdst/atomic/atomicSpecies.h"
+#include "fourdst/composition/iterators/composition_abstract_iterator.h"
 
 #include "fourdst/composition/composition_abstract.h"
 
@@ -19,7 +20,7 @@ namespace fourdst::composition {
         [[nodiscard]] bool contains(const std::string& symbol) const override { return m_base_composition->contains(symbol); };
         [[nodiscard]] size_t size() const noexcept override { return m_base_composition->size(); };
         [[nodiscard]] std::set<std::string> getRegisteredSymbols() const noexcept override { return m_base_composition->getRegisteredSymbols(); };
-        [[nodiscard]] const std::set<atomic::Species> &getRegisteredSpecies() const noexcept override { return m_base_composition->getRegisteredSpecies(); };
+        [[nodiscard]] const std::vector<atomic::Species> &getRegisteredSpecies() const noexcept override { return m_base_composition->getRegisteredSpecies(); };
         [[nodiscard]] std::unordered_map<atomic::Species, double> getMassFraction() const noexcept override { return m_base_composition->getMassFraction(); };
         [[nodiscard]] std::unordered_map<atomic::Species, double> getNumberFraction() const noexcept override { return m_base_composition->getNumberFraction(); };
         [[nodiscard]] double getMassFraction(const std::string& symbol) const override { return m_base_composition->getMassFraction(symbol); };
@@ -36,13 +37,12 @@ namespace fourdst::composition {
         [[nodiscard]] size_t getSpeciesIndex(const std::string& symbol) const override { return m_base_composition->getSpeciesIndex(symbol); };
         [[nodiscard]] size_t getSpeciesIndex(const atomic::Species& species) const override { return m_base_composition->getSpeciesIndex(species); };
         [[nodiscard]] atomic::Species getSpeciesAtIndex(const size_t index) const override { return m_base_composition->getSpeciesAtIndex(index); }
-        [[nodiscard]] size_t hash() const override { return m_base_composition->hash(); };
 
-        [[nodiscard]] std::map<atomic::Species, double>::iterator begin() override { return m_base_composition->begin(); };
-        [[nodiscard]] std::map<atomic::Species, double>::iterator end() override { return m_base_composition->end(); };
+        [[nodiscard]] detail::CompositionIterator<false> begin() override { return m_base_composition->begin(); };
+        [[nodiscard]] detail::CompositionIterator<false> end() override { return m_base_composition->end(); };
 
-        [[nodiscard]] std::map<atomic::Species, double>::const_iterator begin() const override { return std::as_const(*m_base_composition).begin(); };
-        [[nodiscard]] std::map<atomic::Species, double>::const_iterator end() const override { return std::as_const(*m_base_composition).end(); };
+        [[nodiscard]] detail::CompositionIterator<true> begin() const override { return std::as_const(*m_base_composition).begin(); };
+        [[nodiscard]] detail::CompositionIterator<true> end() const override { return std::as_const(*m_base_composition).end(); };
     protected:
         std::unique_ptr<CompositionAbstract> m_base_composition;
     };

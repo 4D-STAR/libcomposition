@@ -1,7 +1,6 @@
 #pragma once
 
 #include <cstring>
-#include <cmath>
 #include <vector>
 #include <bit>
 
@@ -10,8 +9,12 @@
 #include "fourdst/composition/composition_abstract.h"
 
 namespace fourdst::composition::utils {
+    // Make a concept which checks if a type inherits from CompositionAbstract
+    template <typename CompT>
+    concept CompositionType = std::is_base_of_v<CompositionAbstract, CompT>;
+
     struct CompositionHash {
-        template <typename CompositionT>
+        template <CompositionType CompositionT>
         static uint64_t hash_exact(const CompositionT& comp) {
             uint64_t h0 = kSeed;
             uint64_t h1 = kSeed ^ kPrime1;
@@ -99,13 +102,19 @@ namespace fourdst::composition::utils {
     };
 }
 
-namespace std {
-    template<>
-    struct hash<fourdst::composition::Composition> {
-        std::size_t operator()(const fourdst::composition::Composition& c) const noexcept {
-            return static_cast<std::size_t>(
-                fourdst::composition::utils::CompositionHash::hash_exact(c)
-            );
-        }
-    };
-}
+template<>
+struct std::hash<fourdst::composition::CompositionAbstract> {
+    std::size_t operator()(const fourdst::composition::CompositionAbstract& c) const noexcept {
+        return static_cast<std::size_t>(
+            fourdst::composition::utils::CompositionHash::hash_exact(c)
+        );
+    }
+};
+template<>
+struct std::hash<fourdst::composition::Composition> {
+    std::size_t operator()(const fourdst::composition::Composition& c) const noexcept {
+        return static_cast<std::size_t>(
+            fourdst::composition::utils::CompositionHash::hash_exact(c)
+        );
+    }
+};

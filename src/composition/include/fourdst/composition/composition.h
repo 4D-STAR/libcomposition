@@ -26,6 +26,7 @@
 
 #include <optional>
 #include <unordered_set>
+#include <expected>
 
 #include "fourdst/config/config.h"
 #include "fourdst/logging/logging.h"
@@ -96,6 +97,9 @@ namespace fourdst::composition {
      */
     // ReSharper disable once CppClassCanBeFinal
     class Composition final : public CompositionAbstract {
+    public:
+        using iterator = detail::CompositionIterator<false>;
+        using const_iterator = detail::CompositionIterator<true>;
     private:
         /**
          * @struct CompositionCache
@@ -138,6 +142,11 @@ namespace fourdst::composition {
                        !Ye.has_value() && !sortedSpecies.has_value() && !hash.has_value();
             }
         };
+
+        enum class SpeciesIndexLookupError : uint8_t {
+            NO_REGISTERED_SPECIES,
+            SPECIES_NOT_FOUND
+        };
     private:
         /**
          * @brief Gets the logger instance for the Composition class. This is static to ensure that all composition
@@ -149,10 +158,17 @@ namespace fourdst::composition {
             return logger;
         }
 
-        std::set<atomic::Species> m_registeredSpecies; ///< Set of registered species in the composition.
-        std::map<atomic::Species, double> m_molarAbundances; ///< Map of species to their molar abundances.
+        // std::set<atomic::Species> m_registeredSpecies; ///< Set of registered species in the composition.
+        // std::map<atomic::Species, double> m_molarAbundances; ///< Map of species to their molar abundances.
+
+        std::vector<atomic::Species> m_species;
+        std::vector<double> m_molarAbundances;
 
         mutable CompositionCache m_cache; ///< Cache for computed properties to avoid redundant calculations.
+
+    private:
+        [[nodiscard]] std::expected<std::ptrdiff_t, SpeciesIndexLookupError> findSpeciesIndex(const atomic::Species &species) const noexcept;
+        [[nodiscard]] static std::vector<atomic::Species> symbolVectorToSpeciesVector(const std::vector<std::string>& symbols);
 
     public:
         /**
@@ -295,6 +311,7 @@ namespace fourdst::composition {
          * @return A reference to this Composition.
          */
         Composition& operator=(Composition const& other);
+        Composition& operator=(const CompositionAbstract& other);
 
         /**
          * @brief Registers a new symbol for inclusion in the composition.
@@ -546,7 +563,7 @@ namespace fourdst::composition {
          * value of this method will only be valid as long as the Composition object is valid (i.e. it cannot
          * outlive the Composition object it was called on).
          */
-        [[nodiscard]] const std::set<atomic::Species> &getRegisteredSpecies() const noexcept override;
+        [[nodiscard]] const std::vector<atomic::Species> &getRegisteredSpecies() const noexcept override;
 
         /**
          * @brief Gets the mass fractions of all species in the composition.
@@ -767,8 +784,8 @@ namespace fourdst::composition {
          * for species are defined based on their atomic mass. When iterating over the molar abundance map, species will be
          * seen in order from lightest to heaviest.
          */
-        [[nodiscard]] std::map<atomic::Species, double>::iterator begin() override {
-            return m_molarAbundances.begin();
+        [[nodiscard]] iterator begin() override {
+            return {m_species.begin(), m_molarAbundances.begin()};
         }
 
         /**
@@ -788,8 +805,8 @@ namespace fourdst::composition {
          * for species are defined based on their atomic mass. When iterating over the molar abundance map, species will be
          * seen in order from lightest to heaviest.
          */
-        [[nodiscard]] std::map<atomic::Species, double>::const_iterator begin() const override {
-            return m_molarAbundances.cbegin();
+        [[nodiscard]] const_iterator begin() const override {
+            return {m_species.cbegin(), m_molarAbundances.cbegin()};
         }
 
         /**
@@ -809,8 +826,8 @@ namespace fourdst::composition {
          * for species are defined based on their atomic mass. When iterating over the molar abundance map, species will be
          * seen in order from lightest to heaviest.
          */
-        [[nodiscard]] std::map<atomic::Species, double>::iterator end() override {
-            return m_molarAbundances.end();
+        [[nodiscard]] detail::CompositionIterator<false> end() override {
+            return {m_species.end(), m_molarAbundances.end()};
         }
 
         /**
@@ -830,8 +847,8 @@ namespace fourdst::composition {
          * for species are defined based on their atomic mass. When iterating over the molar abundance map, species will be
          * seen in order from lightest to heaviest.
          */
-        [[nodiscard]] std::map<atomic::Species, double>::const_iterator end() const override {
-            return m_molarAbundances.cend();
+        [[nodiscard]] detail::CompositionIterator<true> end() const override {
+            return {m_species.cend(), m_molarAbundances.cend()};
         }
 
         [[nodiscard]] std::size_t hash() const override;
@@ -841,18 +858,9 @@ namespace fourdst::composition {
     inline bool operator==(const Composition& a, const Composition& b) noexcept {
         if (a.size() != b.size()) return false;
 
-        // Compare species sets quickly
         if (a.getRegisteredSpecies() != b.getRegisteredSpecies())
             return false;
 
-        // Compare all abundances
-        for (auto itA = a.begin(), itB = b.begin();
-             itA != a.end() && itB != b.end(); ++itA, ++itB) {
-            if (itA->first != itB->first)
-                return false;
-            if (itA->second != itB->second)
-                return false;
-             }
-        return true;
+        return a.hash() == b.hash();
     }
 }; // namespace fourdst::composition

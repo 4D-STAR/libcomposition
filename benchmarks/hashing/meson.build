@@ -1,1 +1,1 @@
-executable('hashing_bench', 'benchmark_composition_hash.cpp', dependencies: [composition_dep])
+executable('hashing_bench', 'benchmark_composition_hash.cpp', dependencies: [composition_dep], include_directories: [benchmark_utils_includes])

@@ -1,58 +1,16 @@
 #include "fourdst/composition/composition.h"
 #include "fourdst/composition/utils/composition_hash.h"
-#include "fourdst/composition/utils.h"
 #include "fourdst/atomic/atomicSpecies.h"
 #include "fourdst/atomic/species.h"
 
-#include <chrono>
 #include <numeric>
 #include <print>
-#include <string>
 #include <vector>
-#include <cstdint>
 #include <ranges>
+#include <chrono>
 
-template <class T>
-void do_not_optimize(T&& datum) {
-    asm volatile("" : "+r" (datum));
-}
+#include "benchmark_utils.h"
 
-uint32_t calc_num_bins(const std::vector<double>& data) {
-    // Use Sturges' formula
-    const size_t n = data.size();
-    return static_cast<uint32_t>(std::ceil(std::log2(n) + 1));
-}
-
-std::string plot_ascii_histogram(std::vector<double> data, std::string title) {
-    // Use std::format
-    const uint32_t nBins = calc_num_bins(data);
-    const double minVal = *std::ranges::min_element(data);
-    const double maxVal = *std::ranges::max_element(data);
-
-    std::string histogram;
-    histogram += std::format("{:^60}\n", title);
-    histogram += std::string(60, '=') + "\n";
-    std::vector<uint32_t> bins(nBins, 0);
-    const double binWidth = (maxVal - minVal) / nBins;
-    for (const auto& value : data) {
-        const uint32_t binIndex = static_cast<uint32_t>((value - minVal) / binWidth);
-        if (binIndex < nBins) {
-            bins[binIndex]++;
-        } else {
-            bins[nBins - 1]++;
-        }
-    }
-    const uint32_t maxBinCount = *std::ranges::max_element(bins);
-    for (uint32_t i = 0; i < nBins; ++i) {
-        const double binStart = minVal + i * binWidth;
-        const double binEnd = binStart + binWidth;
-        const uint32_t barLength = static_cast<uint32_t>(std::round((static_cast<double>(bins[i]) / maxBinCount) * 50.0));
-        histogram += std::format("[{:.2e}, {:.2e}): {:>15} | {:}\n",
-                                 binStart, binEnd, bins[i], std::string(barLength, '*'));
-    }
-    return histogram;
-
-}
 
 std::chrono::duration<double, std::nano> build_and_hash_compositions(const size_t iter, const size_t nSpecies = 8) {
     using namespace fourdst::composition;
@@ -69,15 +27,14 @@ std::chrono::duration<double, std::nano> build_and_hash_compositions(const size_
         count++;
     }
 
-    const auto start = std::chrono::high_resolution_clock::now();
-    for (size_t i = 0; i < iter; ++i) {
-        uint64_t hashValue = utils::CompositionHash::hash_exact(comp);
-        do_not_optimize(hashValue);
-    }
-    const auto end = std::chrono::high_resolution_clock::now();
+    const auto duration = fdst_benchmark_function([&]() {
+        for (size_t i = 0; i < iter; ++i) {
+            uint64_t hashValue = utils::CompositionHash::hash_exact(comp);
+            do_not_optimize(hashValue);
+        }
+    });
 
-    const std::chrono::duration<double, std::nano> duration = (end - start)/iter;
-    return duration;
+    return duration / static_cast<double>(iter);
 }
 
 int main() {
