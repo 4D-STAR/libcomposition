@@ -344,7 +344,7 @@ namespace fourdst::composition {
             throw_unregistered_symbol(getLogger(), std::string(species.name()));
         }
 
-        assert(speciesIndexResult.value() < m_molarAbundances.size());
+        assert(static_cast<size_t>(speciesIndexResult.value()) < m_molarAbundances.size());
 
         m_molarAbundances[speciesIndexResult.value()] = molar_abundance;
         m_cache.clear();
