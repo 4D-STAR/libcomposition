@@ -1,0 +1,7 @@
+<map id="fourdst::composition::exceptions::InvalidCompositionError" name="fourdst::composition::exceptions::InvalidCompositionError">
+<area shape="rect" id="Node000001" title="Exception thrown when a composition is in an invalid or inconsistent state." alt="" coords="5,168,217,223"/>
+<area shape="rect" id="Node000002" href="$classfourdst_1_1composition_1_1exceptions_1_1_composition_error.html" title="Base class for exceptions related to composition objects." alt="" coords="10,79,212,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,135,114,167,108,167,108,135"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="59,5,163,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="114,46,114,79,108,79,108,46"/>
+</map>

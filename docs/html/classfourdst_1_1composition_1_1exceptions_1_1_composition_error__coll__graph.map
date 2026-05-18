@@ -1,0 +1,9 @@
+<map id="fourdst::composition::exceptions::CompositionError" name="fourdst::composition::exceptions::CompositionError">
+<area shape="rect" id="Node000001" title="Base class for exceptions related to composition objects." alt="" coords="5,184,207,225"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="33,95,136,121"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,135,104,183,99,184,88,137"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="161,95,240,121"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="180,134,128,185,124,182,176,130"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="138,5,263,46"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="203,61,203,95,198,95,198,61"/>
+</map>

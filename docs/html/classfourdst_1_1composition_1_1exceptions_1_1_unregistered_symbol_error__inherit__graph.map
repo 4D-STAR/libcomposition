@@ -1,0 +1,7 @@
+<map id="fourdst::composition::exceptions::UnregisteredSymbolError" name="fourdst::composition::exceptions::UnregisteredSymbolError">
+<area shape="rect" id="Node000001" title="Exception thrown when a symbol is used that has not been registered." alt="" coords="5,168,224,223"/>
+<area shape="rect" id="Node000002" href="$classfourdst_1_1composition_1_1exceptions_1_1_composition_error.html" title="Base class for exceptions related to composition objects." alt="" coords="14,79,215,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,135,117,167,112,167,112,135"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="63,5,166,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="117,46,117,79,112,79,112,46"/>
+</map>

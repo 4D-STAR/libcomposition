@@ -1,0 +1,11 @@
+<map id="fourdst::composition::exceptions::UnknownSymbolError" name="fourdst::composition::exceptions::UnknownSymbolError">
+<area shape="rect" id="Node000001" title="Exception thrown when an unknown symbol is encountered." alt="" coords="5,274,205,330"/>
+<area shape="rect" id="Node000002" href="$classfourdst_1_1composition_1_1exceptions_1_1_species_error.html" title="Base class for exceptions related to atomic species." alt="" coords="17,184,193,225"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,240,108,274,102,274,102,240"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="32,95,135,121"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="92,135,103,183,98,184,87,137"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="160,95,239,121"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="179,134,127,185,123,182,175,130"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="137,5,262,46"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="202,61,202,95,197,95,197,61"/>
+</map>

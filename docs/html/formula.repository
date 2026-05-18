@@ -1,0 +1,22 @@
+\_form#0=100x34:\[X_i = \frac{(N_i \cdot A_i)}{\sum_j (N_j \cdot A_j)}
+\]
+\_form#1=14x13:$N_i$
+\_form#2=14x13:$A_i$
+\_form#3=66x33:\[Y_i = \frac{N_i}{\sum_j N_j}
+\]
+\_form#4=93x31:\[\bar{A} = \frac{\sum_i (N_i \cdot A_i)}{\sum_i N_i}
+\]
+\_form#5=93x28:\[Y_e = \sum_i (N_i \cdot Z_i)
+\]
+\_form#6=11x13:$Z_i$
+\_form#7=55x16:$\sum_{i=1}^{7}X_{^{i}H}$
+\_form#8=60x16:$\sum_{i=3}^{10}X_{^{i}He}$
+\_form#9=98x34:\[X_i = \frac{(Y_i \cdot A_i)}{\sum_j (Y_j \cdot A_j)}
+\]
+\_form#10=11x13:$Y_i$
+\_form#11=66x33:\[X_i = \frac{Y_i}{\sum_j Y_j}
+\]
+\_form#12=90x34:\[\bar{A} = \frac{\sum_i (Y_i \cdot A_i)}{\sum_j Y_j}
+\]
+\_form#13=90x28:\[Y_e = \sum_i (Y_i \cdot Z_i)
+\]

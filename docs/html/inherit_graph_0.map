@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$class_composition_abstract.html" title="Abstract base class for chemical composition representations." alt="" coords="5,13,149,38"/>
+<area shape="rect" id="Node000001" href="$classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances." alt="" coords="197,5,336,46"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="164,23,196,23,196,28,164,28"/>
+</map>

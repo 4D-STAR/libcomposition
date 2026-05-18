@@ -1,0 +1,9 @@
+<map id="src/composition/include/fourdst/atomic/elements.h" name="src/composition/include/fourdst/atomic/elements.h">
+<area shape="rect" id="Node000001" title="Provides mappings between atomic numbers and element symbols for the periodic table." alt="" coords="82,5,258,46"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,94,116,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,49,91,87,88,82,141,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="140,94,200,120"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="172,46,172,78,167,78,167,46"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="224,94,278,120"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="192,44,230,81,226,85,188,48"/>
+</map>

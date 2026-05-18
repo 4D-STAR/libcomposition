@@ -1,0 +1,9 @@
+<map id="fourdst::composition::exceptions::CompositionError" name="fourdst::composition::exceptions::CompositionError">
+<area shape="rect" id="Node000001" title="Base class for exceptions related to composition objects." alt="" coords="157,53,358,94"/>
+<area shape="rect" id="Node000003" href="$classfourdst_1_1composition_1_1exceptions_1_1_invalid_composition_error.html" title="Exception thrown when a composition is in an invalid or inconsistent state." alt="" coords="410,5,621,61"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="373,53,409,47,410,52,374,58"/>
+<area shape="rect" id="Node000004" href="$classfourdst_1_1composition_1_1exceptions_1_1_unregistered_symbol_error.html" title="Exception thrown when a symbol is used that has not been registered." alt="" coords="406,85,624,141"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="374,89,406,94,405,99,373,94"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,60,109,86"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,70,156,70,156,76,124,76"/>
+</map>
