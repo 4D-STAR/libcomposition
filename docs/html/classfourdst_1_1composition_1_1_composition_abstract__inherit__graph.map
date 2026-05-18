@@ -1,0 +1,9 @@
+<map id="fourdst::composition::CompositionAbstract" name="fourdst::composition::CompositionAbstract">
+<area shape="rect" id="Node000001" title="Abstract base class for chemical composition representations." alt="" coords="86,5,237,46"/>
+<area shape="rect" id="Node000002" href="$classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances." alt="" coords="5,94,145,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="130,59,97,95,93,92,133,55"/>
+<area shape="rect" id="Node000003" href="$classfourdst_1_1composition_1_1_composition_decorator.html" title=" " alt="" coords="169,94,328,135"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="193,54,231,93,226,94,191,60"/>
+<area shape="rect" id="Node000004" href="$classfourdst_1_1composition_1_1_masked_composition.html" title=" " alt="" coords="174,183,322,223"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="250,148,251,184,246,181,246,152"/>
+</map>

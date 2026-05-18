@@ -11,16 +11,18 @@ Manages a collection of chemical species and their abundances.
 
 
 
-Inheritance diagram for fourdst\+::composition\+::Composition\+:\nopagebreak
+Inheritance diagram for fourdst\+::composition\+::Composition\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=188pt]{classfourdst_1_1composition_1_1_composition__inherit__graph}
+\includegraphics[width=194pt]{classfourdst_1_1composition_1_1_composition__inherit__graph}
 \end{center}
 \end{figure}
 
 
-Collaboration diagram for fourdst\+::composition\+::Composition\+:\nopagebreak
+Collaboration diagram for fourdst\+::composition\+::Composition\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -32,6 +34,20 @@ Collaboration diagram for fourdst\+::composition\+::Composition\+:\nopagebreak
 \item 
 struct \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_1_1_composition_cache}{Composition\+Cache}}
 \begin{DoxyCompactList}\small\item\em Caches computed properties of the composition to avoid redundant calculations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a7eace279c95ac7cccb05434320203343}{iterator}} = \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{detail\+::\+Composition\+Iterator}}$<$false$>$
+\item 
+using \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a38bbc17eb83b6155163382b27b3818e6}{const\+\_\+iterator}} = \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{detail\+::\+Composition\+Iterator}}$<$true$>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract}{fourdst\+::composition\+::\+Composition\+Abstract}}}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_abd12f3a9a5b6217498ff19e25ee3ddb0}{iterator}} = \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{detail\+::\+Composition\+Iterator}}$<$false$>$
+\item 
+using \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_a0bb9772bc73d637950b6cf2e8e6afeb0}{const\+\_\+iterator}} = \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{detail\+::\+Composition\+Iterator}}$<$true$>$
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -47,16 +63,32 @@ struct \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_1_1_composi
 \begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} and registers the given symbols from a set. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a7d19fb3326e51c8fc8db5e0738e97d95}{Composition}} (const std\+::set$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} $>$ \&species)
 \begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} and registers the given species from a set. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aae910b7824058f70b96460425a637837}{Composition}} (const std\+::unordered\+\_\+set$<$ std\+::string $>$ \&symbols)
+\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a8e7f19488c52c8aba1d7e488688ced7f}{Composition}} (const std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} $>$ \&species)
+\item 
 \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a0b3c93ce7c9473ac4aa4c9ee04f78051}{Composition}} (const std\+::vector$<$ std\+::string $>$ \&symbols, const std\+::vector$<$ double $>$ \&molar\+Abundances)
 \begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} from symbols and their corresponding molar abundances. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a7f0798b3f1191561b38f336406acf62a}{Composition}} (const std\+::vector$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} $>$ \&species, const std\+::vector$<$ double $>$ \&molar\+Abundances)
 \begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} from species and their corresponding molar abundances. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ad6cdb28598267743f236d053cd5a62ae}{Composition}} (const std\+::set$<$ std\+::string $>$ \&symbols, const std\+::vector$<$ double $>$ \&molar\+Abundances)
 \begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} from symbols in a set and their corresponding molar abundances. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a1e5e0bd7cf77d5cf260c94418612bb36}{Composition}} (const std\+::unordered\+\_\+map$<$ std\+::string, double $>$ \&symbol\+Molar\+Abundances)
+\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a5d3fe0a5d2c6aeae667d4e3894b0ee3b}{Composition}} (const std\+::map$<$ std\+::string, double $>$ \&symbol\+Molar\+Abundances)
+\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a321598f3b8bb4c58992d09a90ea3079b}{Composition}} (const std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}}, double $>$ \&species\+Molar\+Abundances)
+\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a8a371588eaa38c8d54b4baec2a594fc2}{Composition}} (const std\+::map$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}}, double $>$ \&species\+Molar\+Abundances)
+\item 
 \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a21369a80378d4c90438a34f0e4a275ca}{Composition}} (const \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} \&composition)
 \begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} from another \doxylink{classfourdst_1_1composition_1_1_composition}{Composition}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a11e281872b4047e5c757923f2b0682cf}{Composition}} (const \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract}{Composition\+Abstract}} \&composition)
+\item 
 \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} \& \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a4ec1e23cfecef764cb831171fed62fc2}{operator=}} (\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} const \&other)
 \begin{DoxyCompactList}\small\item\em Assignment operator. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} \& \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_afba49b5ceeb42e0372b6118f48b4ee54}{operator=}} (const \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract}{Composition\+Abstract}} \&other)
+\item 
 void \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a3ab4dcda0bfd1a35b169bcc57fe66725}{register\+Symbol}} (const std\+::string \&symbol)
 \begin{DoxyCompactList}\small\item\em Registers a new symbol for inclusion in the composition. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a156d1198ef47deed9689949f271969e2}{register\+Symbol}} (const std\+::vector$<$ std\+::string $>$ \&symbols)
@@ -85,7 +117,7 @@ void \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ad7af2f8f30509
 \begin{DoxyCompactList}\small\item\em Sets the molar abundances for a set of isotopes. \end{DoxyCompactList}\item 
 std\+::set$<$ std\+::string $>$ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a3ae885c28580ae15be8c16614bef3b0e}{get\+Registered\+Symbols}} () const noexcept override
 \begin{DoxyCompactList}\small\item\em Gets the registered symbols. \end{DoxyCompactList}\item 
-const std\+::set$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} $>$ \& \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a33db253ca50431b5166d43412ff18f71}{get\+Registered\+Species}} () const noexcept override
+const std\+::vector$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} $>$ \& \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_af4b01ec4140e278d92c18f139f69ab1f}{get\+Registered\+Species}} () const noexcept override
 \begin{DoxyCompactList}\small\item\em Get a set of all species that are registered in the composition. \end{DoxyCompactList}\item 
 std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}}, double $>$ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a9ea2b673341fdc67afeb0f0517a54c8c}{get\+Mass\+Fraction}} () const noexcept override
 \begin{DoxyCompactList}\small\item\em Gets the mass fractions of all species in the composition. \end{DoxyCompactList}\item 
@@ -121,31 +153,49 @@ size\+\_\+t \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a3d220b
 \begin{DoxyCompactList}\small\item\em get the index in the sorted vector representation for a given symbol \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ae4f854ded38f5e6fcd157a74a57cbf0c}{get\+Species\+At\+Index}} (size\+\_\+t index) const override
 \begin{DoxyCompactList}\small\item\em Get the species at a given index in the sorted vector representation. \end{DoxyCompactList}\item 
-auto \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ab1701644ff1c83c220dc04eb58d1621b}{begin}} ()
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract}{Composition\+Abstract}} $>$ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a5a1f5661a329ec7bc8b7e118ff9d6c25}{clone}} () const override
+\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a7eace279c95ac7cccb05434320203343}{iterator}} \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a5bdb6ca3f734fae901b3d6179dbc17a0}{begin}} () override
 \begin{DoxyCompactList}\small\item\em Returns an iterator to the beginning of the molar abundance map. \end{DoxyCompactList}\item 
-auto \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_adf41a833e8b704daf4f581fca5c8cb9b}{begin}} () const
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a38bbc17eb83b6155163382b27b3818e6}{const\+\_\+iterator}} \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ae4600dc915645fc1b50c67e0218b794d}{begin}} () const override
 \begin{DoxyCompactList}\small\item\em Returns a const iterator to the beginning of the molar abundance map. \end{DoxyCompactList}\item 
-auto \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_adeaf6f1213e78cb1fe8a8317f0a8adc2}{end}} ()
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{detail\+::\+Composition\+Iterator}}$<$ false $>$ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aaa89050308dda5e51d4b47d18d54cb58}{end}} () override
 \begin{DoxyCompactList}\small\item\em Returns an iterator to the end of the molar abundance map. \end{DoxyCompactList}\item 
-auto \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aed2f5676f8f742199f01e4d1e9664bdd}{end}} () const
-\begin{DoxyCompactList}\small\item\em Returns a const iterator to the end of the molar abundance map. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_composition_abstract}{Composition\+Abstract}}}
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{detail\+::\+Composition\+Iterator}}$<$ true $>$ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aabcde53961ecadfa823de5a766f0da84}{end}} () const override
+\begin{DoxyCompactList}\small\item\em Returns a const iterator to the end of the molar abundance map. \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a5b3631fa33b0c6809ad652b0e31663a1}{hash}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract}{fourdst\+::composition\+::\+Composition\+Abstract}}}
 \begin{DoxyCompactItemize}
 \item 
-virtual \mbox{\hyperlink{class_composition_abstract_aaae3d6215b7433cb9871664852a95d1b}{\texorpdfstring{$\sim$}{\string~}\+Composition\+Abstract}} ()=default
+virtual \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_a83ff77f3f390bb66c978e157d9bb6394}{\texorpdfstring{$\sim$}{\string~}\+Composition\+Abstract}} ()=default
 \begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aeef903d5b7d02467c6462d183ac47db8}{Species\+Index\+Lookup\+Error}} \+: uint8\+\_\+t \{ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aeef903d5b7d02467c6462d183ac47db8ac7cc0e85688b85571f30fd16a46d9891}{NO\+\_\+\+REGISTERED\+\_\+\+SPECIES}}
+, \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aeef903d5b7d02467c6462d183ac47db8a3659baf2b06bba6c02bad8316d517761}{SPECIES\+\_\+\+NOT\+\_\+\+FOUND}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::expected$<$ std\+::ptrdiff\+\_\+t, \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aeef903d5b7d02467c6462d183ac47db8}{Species\+Index\+Lookup\+Error}} $>$ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aded88f0ad4a97eaae1e356fa8428cab5}{find\+Species\+Index}} (const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} \&species) const noexcept
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static quill\+::\+Logger \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a46a706f9e4c06a45b45ae3dffdde5e9e}{get\+Logger}} ()
-\begin{DoxyCompactList}\small\item\em Gets the logger instance for the \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} class. This is static to ensure that all composition objects share the same logger instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Gets the logger instance for the \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} class. This is static to ensure that all composition objects share the same logger instance. \end{DoxyCompactList}\item 
+static std\+::vector$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} $>$ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a3f013e33b8978baf81447e5bd177f38b}{symbol\+Vector\+To\+Species\+Vector}} (const std\+::vector$<$ std\+::string $>$ \&symbols)
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-std\+::set$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} $>$ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a452b0affb86dc971a96c80d01f4fcb2b}{m\+\_\+registered\+Species}}
-\begin{DoxyCompactList}\small\item\em Set of registered species in the composition. \end{DoxyCompactList}\item 
-std\+::map$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}}, double $>$ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}{m\+\_\+molar\+Abundances}}
-\begin{DoxyCompactList}\small\item\em Map of species to their molar abundances. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} $>$ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aa0edc4976ccd24f2d9f6ad730f058b27}{m\+\_\+species}}
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ab2faabe2e64c587bda8106687f752479}{m\+\_\+molar\+Abundances}}
+\item 
 \mbox{\hyperlink{structfourdst_1_1composition_1_1_composition_1_1_composition_cache}{Composition\+Cache}} \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a02cd9d9608da082a200fdfa86d14bf5d}{m\+\_\+cache}}
 \begin{DoxyCompactList}\small\item\em Cache for computed properties to avoid redundant calculations. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Friends}
@@ -184,14 +234,60 @@ This class only accepts molar abundances as input. If you wish to construct a \d
 \end{DoxyParagraph}
 
 
-Definition at line \mbox{\hyperlink{composition_8h_source_l00097}{97}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+Definition at line \mbox{\hyperlink{composition_8h_source_l00099}{99}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+
+
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classfourdst_1_1composition_1_1_composition_a38bbc17eb83b6155163382b27b3818e6}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!const\_iterator@{const\_iterator}}
+\index{const\_iterator@{const\_iterator}!fourdst::composition::Composition@{fourdst::composition::Composition}}
+\doxysubsubsection{\texorpdfstring{const\_iterator}{const\_iterator}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_a38bbc17eb83b6155163382b27b3818e6} 
+using \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a38bbc17eb83b6155163382b27b3818e6}{fourdst\+::composition\+::\+Composition\+::const\+\_\+iterator}} = \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{detail\+::\+Composition\+Iterator}}$<$true$>$}
+
+
+
+Definition at line \mbox{\hyperlink{composition_8h_source_l00102}{102}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1_composition_a7eace279c95ac7cccb05434320203343}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!iterator@{iterator}}
+\index{iterator@{iterator}!fourdst::composition::Composition@{fourdst::composition::Composition}}
+\doxysubsubsection{\texorpdfstring{iterator}{iterator}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_a7eace279c95ac7cccb05434320203343} 
+using \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a7eace279c95ac7cccb05434320203343}{fourdst\+::composition\+::\+Composition\+::iterator}} = \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{detail\+::\+Composition\+Iterator}}$<$false$>$}
+
+
+
+Definition at line \mbox{\hyperlink{composition_8h_source_l00101}{101}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+
+
+
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{classfourdst_1_1composition_1_1_composition_aeef903d5b7d02467c6462d183ac47db8}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!SpeciesIndexLookupError@{SpeciesIndexLookupError}}
+\index{SpeciesIndexLookupError@{SpeciesIndexLookupError}!fourdst::composition::Composition@{fourdst::composition::Composition}}
+\doxysubsubsection{\texorpdfstring{SpeciesIndexLookupError}{SpeciesIndexLookupError}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_aeef903d5b7d02467c6462d183ac47db8} 
+enum class \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aeef903d5b7d02467c6462d183ac47db8}{fourdst\+::composition\+::\+Composition\+::\+Species\+Index\+Lookup\+Error}} \+: uint8\+\_\+t\hspace{0.3cm}{\ttfamily [strong]}, {\ttfamily [private]}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NO\_REGISTERED\_SPECIES@{NO\_REGISTERED\_SPECIES}!fourdst::composition::Composition@{fourdst::composition::Composition}}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!NO\_REGISTERED\_SPECIES@{NO\_REGISTERED\_SPECIES}}}\Hypertarget{classfourdst_1_1composition_1_1_composition_aeef903d5b7d02467c6462d183ac47db8ac7cc0e85688b85571f30fd16a46d9891}\label{classfourdst_1_1composition_1_1_composition_aeef903d5b7d02467c6462d183ac47db8ac7cc0e85688b85571f30fd16a46d9891} 
+NO\+\_\+\+REGISTERED\+\_\+\+SPECIES&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SPECIES\_NOT\_FOUND@{SPECIES\_NOT\_FOUND}!fourdst::composition::Composition@{fourdst::composition::Composition}}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!SPECIES\_NOT\_FOUND@{SPECIES\_NOT\_FOUND}}}\Hypertarget{classfourdst_1_1composition_1_1_composition_aeef903d5b7d02467c6462d183ac47db8a3659baf2b06bba6c02bad8316d517761}\label{classfourdst_1_1composition_1_1_composition_aeef903d5b7d02467c6462d183ac47db8a3659baf2b06bba6c02bad8316d517761} 
+SPECIES\+\_\+\+NOT\+\_\+\+FOUND&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{composition_8h_source_l00146}{146}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
 
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a23b83b76ee025f6fc009184ee19bba88}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!Composition@{Composition}}
 \index{Composition@{Composition}!fourdst::composition::Composition@{fourdst::composition::Composition}}
-\doxysubsubsection{\texorpdfstring{Composition()}{Composition()}\hspace{0.1cm}{\footnotesize\ttfamily [1/9]}}
+\doxysubsubsection{\texorpdfstring{Composition()}{Composition()}\hspace{0.1cm}{\footnotesize\ttfamily [1/16]}}
 {\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_a23b83b76ee025f6fc009184ee19bba88} 
 fourdst\+::composition\+::\+Composition\+::\+Composition (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
 
@@ -211,7 +307,7 @@ Default destructor.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_ae3cc2099efd7db8eec3d9af2294b75fa}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!Composition@{Composition}}
 \index{Composition@{Composition}!fourdst::composition::Composition@{fourdst::composition::Composition}}
-\doxysubsubsection{\texorpdfstring{Composition()}{Composition()}\hspace{0.1cm}{\footnotesize\ttfamily [2/9]}}
+\doxysubsubsection{\texorpdfstring{Composition()}{Composition()}\hspace{0.1cm}{\footnotesize\ttfamily [2/16]}}
 {\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_ae3cc2099efd7db8eec3d9af2294b75fa} 
 fourdst\+::composition\+::\+Composition\+::\+Composition (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{symbols}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
 
@@ -240,11 +336,11 @@ Constructs a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition}
 \end{DoxyParagraph}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00084}{84}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00081}{81}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_afa95dddfa88a101ad6ce261295a4460c}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!Composition@{Composition}}
 \index{Composition@{Composition}!fourdst::composition::Composition@{fourdst::composition::Composition}}
-\doxysubsubsection{\texorpdfstring{Composition()}{Composition()}\hspace{0.1cm}{\footnotesize\ttfamily [3/9]}}
+\doxysubsubsection{\texorpdfstring{Composition()}{Composition()}\hspace{0.1cm}{\footnotesize\ttfamily [3/16]}}
 {\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_afa95dddfa88a101ad6ce261295a4460c} 
 fourdst\+::composition\+::\+Composition\+::\+Composition (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} $>$ \&}]{species}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
 
@@ -271,11 +367,11 @@ Because species are strongly typed, this constructor does not need to check if t
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00100}{100}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00085}{85}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a2d6fbe5c8142b358641bbe7ffde51053}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!Composition@{Composition}}
 \index{Composition@{Composition}!fourdst::composition::Composition@{fourdst::composition::Composition}}
-\doxysubsubsection{\texorpdfstring{Composition()}{Composition()}\hspace{0.1cm}{\footnotesize\ttfamily [4/9]}}
+\doxysubsubsection{\texorpdfstring{Composition()}{Composition()}\hspace{0.1cm}{\footnotesize\ttfamily [4/16]}}
 {\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_a2d6fbe5c8142b358641bbe7ffde51053} 
 fourdst\+::composition\+::\+Composition\+::\+Composition (\begin{DoxyParamCaption}\item[{const std\+::set$<$ std\+::string $>$ \&}]{symbols}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
 
@@ -300,15 +396,15 @@ Constructs a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition}
 \DoxyCodeLine{\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a23b83b76ee025f6fc009184ee19bba88}{Composition}}\ comp(symbols);}
 
 \end{DoxyCode}
- 
+
 \end{DoxyParagraph}
+Constructors without molar abundances /// These all delegate to the ctor /// vector$<$\+Species$>$ /// 
 
-
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00092}{92}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00065}{65}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a7d19fb3326e51c8fc8db5e0738e97d95}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!Composition@{Composition}}
 \index{Composition@{Composition}!fourdst::composition::Composition@{fourdst::composition::Composition}}
-\doxysubsubsection{\texorpdfstring{Composition()}{Composition()}\hspace{0.1cm}{\footnotesize\ttfamily [5/9]}}
+\doxysubsubsection{\texorpdfstring{Composition()}{Composition()}\hspace{0.1cm}{\footnotesize\ttfamily [5/16]}}
 {\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_a7d19fb3326e51c8fc8db5e0738e97d95} 
 fourdst\+::composition\+::\+Composition\+::\+Composition (\begin{DoxyParamCaption}\item[{const std\+::set$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} $>$ \&}]{species}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
 
@@ -335,11 +431,31 @@ Because species are strongly typed, this constructor does not need to check if t
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00108}{108}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00069}{69}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1_composition_aae910b7824058f70b96460425a637837}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!Composition@{Composition}}
+\index{Composition@{Composition}!fourdst::composition::Composition@{fourdst::composition::Composition}}
+\doxysubsubsection{\texorpdfstring{Composition()}{Composition()}\hspace{0.1cm}{\footnotesize\ttfamily [6/16]}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_aae910b7824058f70b96460425a637837} 
+fourdst\+::composition\+::\+Composition\+::\+Composition (\begin{DoxyParamCaption}\item[{const std\+::unordered\+\_\+set$<$ std\+::string $>$ \&}]{symbols}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00073}{73}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1_composition_a8e7f19488c52c8aba1d7e488688ced7f}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!Composition@{Composition}}
+\index{Composition@{Composition}!fourdst::composition::Composition@{fourdst::composition::Composition}}
+\doxysubsubsection{\texorpdfstring{Composition()}{Composition()}\hspace{0.1cm}{\footnotesize\ttfamily [7/16]}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_a8e7f19488c52c8aba1d7e488688ced7f} 
+fourdst\+::composition\+::\+Composition\+::\+Composition (\begin{DoxyParamCaption}\item[{const std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} $>$ \&}]{species}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00077}{77}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a0b3c93ce7c9473ac4aa4c9ee04f78051}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!Composition@{Composition}}
 \index{Composition@{Composition}!fourdst::composition::Composition@{fourdst::composition::Composition}}
-\doxysubsubsection{\texorpdfstring{Composition()}{Composition()}\hspace{0.1cm}{\footnotesize\ttfamily [6/9]}}
+\doxysubsubsection{\texorpdfstring{Composition()}{Composition()}\hspace{0.1cm}{\footnotesize\ttfamily [8/16]}}
 {\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_a0b3c93ce7c9473ac4aa4c9ee04f78051} 
 fourdst\+::composition\+::\+Composition\+::\+Composition (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{symbols}{, }\item[{const std\+::vector$<$ double $>$ \&}]{molar\+Abundances}{}\end{DoxyParamCaption})}
 
@@ -372,15 +488,15 @@ Constructs a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition}
 
 \end{DoxyParagraph}
 \begin{DoxyNote}{Note}
-Molar abundances do not need to sum to 1.\+0, they are an absolute quantity. 
+Molar abundances do not need to sum to 1.\+0, they are an absolute quantity.
 \end{DoxyNote}
+Constructors with molar abundances /// These all delegate to the ctor /// vector$<$\+Species, vector$<$double$>$$>$ /// 
 
-
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00116}{116}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00105}{105}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a7f0798b3f1191561b38f336406acf62a}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!Composition@{Composition}}
 \index{Composition@{Composition}!fourdst::composition::Composition@{fourdst::composition::Composition}}
-\doxysubsubsection{\texorpdfstring{Composition()}{Composition()}\hspace{0.1cm}{\footnotesize\ttfamily [7/9]}}
+\doxysubsubsection{\texorpdfstring{Composition()}{Composition()}\hspace{0.1cm}{\footnotesize\ttfamily [9/16]}}
 {\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_a7f0798b3f1191561b38f336406acf62a} 
 fourdst\+::composition\+::\+Composition\+::\+Composition (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} $>$ \&}]{species}{, }\item[{const std\+::vector$<$ double $>$ \&}]{molar\+Abundances}{}\end{DoxyParamCaption})}
 
@@ -415,11 +531,11 @@ Molar abundances do not need to sum to 1.\+0, they are an absolute quantity.
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00131}{131}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00144}{144}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_ad6cdb28598267743f236d053cd5a62ae}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!Composition@{Composition}}
 \index{Composition@{Composition}!fourdst::composition::Composition@{fourdst::composition::Composition}}
-\doxysubsubsection{\texorpdfstring{Composition()}{Composition()}\hspace{0.1cm}{\footnotesize\ttfamily [8/9]}}
+\doxysubsubsection{\texorpdfstring{Composition()}{Composition()}\hspace{0.1cm}{\footnotesize\ttfamily [10/16]}}
 {\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_ad6cdb28598267743f236d053cd5a62ae} 
 fourdst\+::composition\+::\+Composition\+::\+Composition (\begin{DoxyParamCaption}\item[{const std\+::set$<$ std\+::string $>$ \&}]{symbols}{, }\item[{const std\+::vector$<$ double $>$ \&}]{molar\+Abundances}{}\end{DoxyParamCaption})}
 
@@ -456,17 +572,59 @@ Molar abundances do not need to sum to 1.\+0, they are an absolute quantity.
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00146}{146}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00110}{110}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1_composition_a1e5e0bd7cf77d5cf260c94418612bb36}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!Composition@{Composition}}
+\index{Composition@{Composition}!fourdst::composition::Composition@{fourdst::composition::Composition}}
+\doxysubsubsection{\texorpdfstring{Composition()}{Composition()}\hspace{0.1cm}{\footnotesize\ttfamily [11/16]}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_a1e5e0bd7cf77d5cf260c94418612bb36} 
+fourdst\+::composition\+::\+Composition\+::\+Composition (\begin{DoxyParamCaption}\item[{const std\+::unordered\+\_\+map$<$ std\+::string, double $>$ \&}]{symbol\+Molar\+Abundances}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00116}{116}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1_composition_a5d3fe0a5d2c6aeae667d4e3894b0ee3b}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!Composition@{Composition}}
+\index{Composition@{Composition}!fourdst::composition::Composition@{fourdst::composition::Composition}}
+\doxysubsubsection{\texorpdfstring{Composition()}{Composition()}\hspace{0.1cm}{\footnotesize\ttfamily [12/16]}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_a5d3fe0a5d2c6aeae667d4e3894b0ee3b} 
+fourdst\+::composition\+::\+Composition\+::\+Composition (\begin{DoxyParamCaption}\item[{const std\+::map$<$ std\+::string, double $>$ \&}]{symbol\+Molar\+Abundances}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00123}{123}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1_composition_a321598f3b8bb4c58992d09a90ea3079b}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!Composition@{Composition}}
+\index{Composition@{Composition}!fourdst::composition::Composition@{fourdst::composition::Composition}}
+\doxysubsubsection{\texorpdfstring{Composition()}{Composition()}\hspace{0.1cm}{\footnotesize\ttfamily [13/16]}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_a321598f3b8bb4c58992d09a90ea3079b} 
+fourdst\+::composition\+::\+Composition\+::\+Composition (\begin{DoxyParamCaption}\item[{const std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}}, double $>$ \&}]{species\+Molar\+Abundances}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00130}{130}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1_composition_a8a371588eaa38c8d54b4baec2a594fc2}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!Composition@{Composition}}
+\index{Composition@{Composition}!fourdst::composition::Composition@{fourdst::composition::Composition}}
+\doxysubsubsection{\texorpdfstring{Composition()}{Composition()}\hspace{0.1cm}{\footnotesize\ttfamily [14/16]}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_a8a371588eaa38c8d54b4baec2a594fc2} 
+fourdst\+::composition\+::\+Composition\+::\+Composition (\begin{DoxyParamCaption}\item[{const std\+::map$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}}, double $>$ \&}]{species\+Molar\+Abundances}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00137}{137}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a21369a80378d4c90438a34f0e4a275ca}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!Composition@{Composition}}
 \index{Composition@{Composition}!fourdst::composition::Composition@{fourdst::composition::Composition}}
-\doxysubsubsection{\texorpdfstring{Composition()}{Composition()}\hspace{0.1cm}{\footnotesize\ttfamily [9/9]}}
+\doxysubsubsection{\texorpdfstring{Composition()}{Composition()}\hspace{0.1cm}{\footnotesize\ttfamily [15/16]}}
 {\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_a21369a80378d4c90438a34f0e4a275ca} 
 fourdst\+::composition\+::\+Composition\+::\+Composition (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} \&}]{composition}{}\end{DoxyParamCaption})}
 
 
 
 Constructs a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} from another \doxylink{classfourdst_1_1composition_1_1_composition}{Composition}. 
+
+Copy and conversion constructors ///.
 
 
 \begin{DoxyParams}{Parameters}
@@ -475,48 +633,26 @@ Constructs a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition}
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00161}{161}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00192}{192}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1_composition_a11e281872b4047e5c757923f2b0682cf}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!Composition@{Composition}}
+\index{Composition@{Composition}!fourdst::composition::Composition@{fourdst::composition::Composition}}
+\doxysubsubsection{\texorpdfstring{Composition()}{Composition()}\hspace{0.1cm}{\footnotesize\ttfamily [16/16]}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_a11e281872b4047e5c757923f2b0682cf} 
+fourdst\+::composition\+::\+Composition\+::\+Composition (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract}{Composition\+Abstract}} \&}]{composition}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00197}{197}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classfourdst_1_1composition_1_1_composition_ab1701644ff1c83c220dc04eb58d1621b}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!begin@{begin}}
+\Hypertarget{classfourdst_1_1composition_1_1_composition_ae4600dc915645fc1b50c67e0218b794d}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!begin@{begin}}
 \index{begin@{begin}!fourdst::composition::Composition@{fourdst::composition::Composition}}
 \doxysubsubsection{\texorpdfstring{begin()}{begin()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_ab1701644ff1c83c220dc04eb58d1621b} 
-auto fourdst\+::composition\+::\+Composition\+::begin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Returns an iterator to the beginning of the molar abundance map. 
-
-\begin{DoxyReturn}{Returns}
-An iterator to the beginning.
-\end{DoxyReturn}
-\begin{DoxyParagraph}{Example\+:}
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a23b83b76ee025f6fc009184ee19bba88}{Composition}}\ comp(\{\textcolor{stringliteral}{"{}H-\/1"{}},\ \textcolor{stringliteral}{"{}He-\/4"{}},\ \textcolor{stringliteral}{"{}C-\/12"{}}\},\ \{1.02,\ 0.56,\ 0.02\});}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [sp,\ y]\ :\ comp)\ \{}
-\DoxyCodeLine{\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Species:\ "{}}\ <<\ sp\ <<\ \textcolor{stringliteral}{"{},\ Molar\ Abundance:\ "{}}\ <<\ y\ <<\ std::endl;}
-\DoxyCodeLine{\}}
-
-\end{DoxyCode}
-
-\end{DoxyParagraph}
-\begin{DoxyNote}{Note}
-Because we store molar abundances as a sorted map, keyed by species. And Because the \texorpdfstring{$<$}{<} and \texorpdfstring{$>$}{>} operators for species are defined based on their atomic mass. When iterating over the molar abundance map, species will be seen in order from lightest to heaviest. 
-\end{DoxyNote}
-
-
-Definition at line \mbox{\hyperlink{composition_8h_source_l00753}{753}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
-
-\Hypertarget{classfourdst_1_1composition_1_1_composition_adf41a833e8b704daf4f581fca5c8cb9b}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!begin@{begin}}
-\index{begin@{begin}!fourdst::composition::Composition@{fourdst::composition::Composition}}
-\doxysubsubsection{\texorpdfstring{begin()}{begin()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_adf41a833e8b704daf4f581fca5c8cb9b} 
-auto fourdst\+::composition\+::\+Composition\+::begin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_ae4600dc915645fc1b50c67e0218b794d} 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a38bbc17eb83b6155163382b27b3818e6}{const\+\_\+iterator}} fourdst\+::composition\+::\+Composition\+::begin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -542,7 +678,61 @@ Because we store molar abundances as a sorted map, keyed by species. And Because
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{composition_8h_source_l00774}{774}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+Implements \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_a0a1845dab0dbf23399233cac7aeb05c1}{fourdst\+::composition\+::\+Composition\+Abstract}}.
+
+
+
+Definition at line \mbox{\hyperlink{composition_8h_source_l00808}{808}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1_composition_a5bdb6ca3f734fae901b3d6179dbc17a0}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!begin@{begin}}
+\index{begin@{begin}!fourdst::composition::Composition@{fourdst::composition::Composition}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_a5bdb6ca3f734fae901b3d6179dbc17a0} 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a7eace279c95ac7cccb05434320203343}{iterator}} fourdst\+::composition\+::\+Composition\+::begin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns an iterator to the beginning of the molar abundance map. 
+
+\begin{DoxyReturn}{Returns}
+An iterator to the beginning.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a23b83b76ee025f6fc009184ee19bba88}{Composition}}\ comp(\{\textcolor{stringliteral}{"{}H-\/1"{}},\ \textcolor{stringliteral}{"{}He-\/4"{}},\ \textcolor{stringliteral}{"{}C-\/12"{}}\},\ \{1.02,\ 0.56,\ 0.02\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [sp,\ y]\ :\ comp)\ \{}
+\DoxyCodeLine{\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Species:\ "{}}\ <<\ sp\ <<\ \textcolor{stringliteral}{"{},\ Molar\ Abundance:\ "{}}\ <<\ y\ <<\ std::endl;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+\end{DoxyParagraph}
+\begin{DoxyNote}{Note}
+Because we store molar abundances as a sorted map, keyed by species. And Because the \texorpdfstring{$<$}{<} and \texorpdfstring{$>$}{>} operators for species are defined based on their atomic mass. When iterating over the molar abundance map, species will be seen in order from lightest to heaviest. 
+\end{DoxyNote}
+
+
+Implements \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_a643f2e1f843d8a6f81c9382278916fe5}{fourdst\+::composition\+::\+Composition\+Abstract}}.
+
+
+
+Definition at line \mbox{\hyperlink{composition_8h_source_l00787}{787}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1_composition_a5a1f5661a329ec7bc8b7e118ff9d6c25}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!clone@{clone}}
+\index{clone@{clone}!fourdst::composition::Composition@{fourdst::composition::Composition}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_a5a1f5661a329ec7bc8b7e118ff9d6c25} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract}{Composition\+Abstract}} $>$ fourdst\+::composition\+::\+Composition\+::clone (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_a81d5a4da267e24662ae90c6a29f3d0a1}{fourdst\+::composition\+::\+Composition\+Abstract}}.
+
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00226}{226}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a194f715788e7921bd611579440de2ecd}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!contains@{contains}}
 \index{contains@{contains}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -564,11 +754,11 @@ True if the species is in the composition, false otherwise.
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{class_composition_abstract_af42050fabc3c888d77f0fc98f08bc80a}{Composition\+Abstract}}.
+Implements \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_a2e6c4d27d2b295b6be87c6964cac1e1e}{fourdst\+::composition\+::\+Composition\+Abstract}}.
 
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00509}{509}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00693}{693}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_ac3bfb56a2587215a59894e76d4867ede}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!contains@{contains}}
 \index{contains@{contains}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -595,49 +785,17 @@ True if the symbol is in the composition, false otherwise.
 \end{DoxyExceptions}
 
 
-Implements \mbox{\hyperlink{class_composition_abstract_aebd1997d8b3a59356f587c234b290796}{Composition\+Abstract}}.
+Implements \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_a6fe83824aefb045d8a5399e8ac9852f9}{fourdst\+::composition\+::\+Composition\+Abstract}}.
 
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00515}{515}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00699}{699}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
-\Hypertarget{classfourdst_1_1composition_1_1_composition_adeaf6f1213e78cb1fe8a8317f0a8adc2}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!end@{end}}
+\Hypertarget{classfourdst_1_1composition_1_1_composition_aabcde53961ecadfa823de5a766f0da84}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!end@{end}}
 \index{end@{end}!fourdst::composition::Composition@{fourdst::composition::Composition}}
 \doxysubsubsection{\texorpdfstring{end()}{end()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_adeaf6f1213e78cb1fe8a8317f0a8adc2} 
-auto fourdst\+::composition\+::\+Composition\+::end (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Returns an iterator to the end of the molar abundance map. 
-
-\begin{DoxyReturn}{Returns}
-An iterator to the end.
-\end{DoxyReturn}
-\begin{DoxyParagraph}{Example\+:}
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a23b83b76ee025f6fc009184ee19bba88}{Composition}}\ comp(\{\textcolor{stringliteral}{"{}H-\/1"{}},\ \textcolor{stringliteral}{"{}He-\/4"{}},\ \textcolor{stringliteral}{"{}C-\/12"{}}\},\ \{1.02,\ 0.56,\ 0.02\});}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [sp,\ y]\ :\ comp)\ \{}
-\DoxyCodeLine{\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Species:\ "{}}\ <<\ sp\ <<\ \textcolor{stringliteral}{"{},\ Molar\ Abundance:\ "{}}\ <<\ y\ <<\ std::endl;}
-\DoxyCodeLine{\}}
-
-\end{DoxyCode}
-
-\end{DoxyParagraph}
-\begin{DoxyNote}{Note}
-Because we store molar abundances as a sorted map, keyed by species. And Because the \texorpdfstring{$<$}{<} and \texorpdfstring{$>$}{>} operators for species are defined based on their atomic mass. When iterating over the molar abundance map, species will be seen in order from lightest to heaviest. 
-\end{DoxyNote}
-
-
-Definition at line \mbox{\hyperlink{composition_8h_source_l00795}{795}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
-
-\Hypertarget{classfourdst_1_1composition_1_1_composition_aed2f5676f8f742199f01e4d1e9664bdd}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!end@{end}}
-\index{end@{end}!fourdst::composition::Composition@{fourdst::composition::Composition}}
-\doxysubsubsection{\texorpdfstring{end()}{end()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_aed2f5676f8f742199f01e4d1e9664bdd} 
-auto fourdst\+::composition\+::\+Composition\+::end (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_aabcde53961ecadfa823de5a766f0da84} 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{detail\+::\+Composition\+Iterator}}$<$ true $>$ fourdst\+::composition\+::\+Composition\+::end (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -663,7 +821,57 @@ Because we store molar abundances as a sorted map, keyed by species. And Because
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{composition_8h_source_l00816}{816}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+Implements \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_a9ac49da6e4df7bee8aa7974e8fec8181}{fourdst\+::composition\+::\+Composition\+Abstract}}.
+
+
+
+Definition at line \mbox{\hyperlink{composition_8h_source_l00850}{850}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1_composition_aaa89050308dda5e51d4b47d18d54cb58}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!end@{end}}
+\index{end@{end}!fourdst::composition::Composition@{fourdst::composition::Composition}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_aaa89050308dda5e51d4b47d18d54cb58} 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{detail\+::\+Composition\+Iterator}}$<$ false $>$ fourdst\+::composition\+::\+Composition\+::end (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns an iterator to the end of the molar abundance map. 
+
+\begin{DoxyReturn}{Returns}
+An iterator to the end.
+\end{DoxyReturn}
+\begin{DoxyParagraph}{Example\+:}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a23b83b76ee025f6fc009184ee19bba88}{Composition}}\ comp(\{\textcolor{stringliteral}{"{}H-\/1"{}},\ \textcolor{stringliteral}{"{}He-\/4"{}},\ \textcolor{stringliteral}{"{}C-\/12"{}}\},\ \{1.02,\ 0.56,\ 0.02\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [sp,\ y]\ :\ comp)\ \{}
+\DoxyCodeLine{\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Species:\ "{}}\ <<\ sp\ <<\ \textcolor{stringliteral}{"{},\ Molar\ Abundance:\ "{}}\ <<\ y\ <<\ std::endl;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+\end{DoxyParagraph}
+\begin{DoxyNote}{Note}
+Because we store molar abundances as a sorted map, keyed by species. And Because the \texorpdfstring{$<$}{<} and \texorpdfstring{$>$}{>} operators for species are defined based on their atomic mass. When iterating over the molar abundance map, species will be seen in order from lightest to heaviest. 
+\end{DoxyNote}
+
+
+Implements \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_a9f903ec8d0444c7ed9178c09de902176}{fourdst\+::composition\+::\+Composition\+Abstract}}.
+
+
+
+Definition at line \mbox{\hyperlink{composition_8h_source_l00829}{829}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1_composition_aded88f0ad4a97eaae1e356fa8428cab5}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!findSpeciesIndex@{findSpeciesIndex}}
+\index{findSpeciesIndex@{findSpeciesIndex}!fourdst::composition::Composition@{fourdst::composition::Composition}}
+\doxysubsubsection{\texorpdfstring{findSpeciesIndex()}{findSpeciesIndex()}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_aded88f0ad4a97eaae1e356fa8428cab5} 
+std\+::expected$<$ std\+::ptrdiff\+\_\+t, \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_aeef903d5b7d02467c6462d183ac47db8}{Composition\+::\+Species\+Index\+Lookup\+Error}} $>$ fourdst\+::composition\+::\+Composition\+::find\+Species\+Index (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} \&}]{species}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00713}{713}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_aac5b214a3d1278e127422224cb9cee50}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getCanonicalComposition@{getCanonicalComposition}}
 \index{getCanonicalComposition@{getCanonicalComposition}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -694,7 +902,7 @@ A \doxylink{structfourdst_1_1composition_1_1_canonical_composition}{Canonical\+C
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00330}{330}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00552}{552}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a90fc71d1fe03017ee4c7a1cac69d24fb}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getElectronAbundance@{getElectronAbundance}}
 \index{getElectronAbundance@{getElectronAbundance}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -718,11 +926,11 @@ Ye (electron abundance).
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{class_composition_abstract_a86b60205094ed72435ee84abf9498e21}{Composition\+Abstract}}.
+Implements \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_ad0fcf2e51cca02c4224241828335db1a}{fourdst\+::composition\+::\+Composition\+Abstract}}.
 
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00321}{321}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00543}{543}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a46a706f9e4c06a45b45ae3dffdde5e9e}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getLogger@{getLogger}}
 \index{getLogger@{getLogger}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -739,7 +947,7 @@ pointer to the logger instance.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{composition_8h_source_l00144}{144}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+Definition at line \mbox{\hyperlink{composition_8h_source_l00156}{156}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a9ea2b673341fdc67afeb0f0517a54c8c}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getMassFraction@{getMassFraction}}
 \index{getMassFraction@{getMassFraction}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -759,11 +967,11 @@ This method will construct a new unordered map each time it is called.
 \end{DoxyNote}
 
 
-Implements \mbox{\hyperlink{class_composition_abstract_afb72c61da511b7963382804a0e87a54a}{Composition\+Abstract}}.
+Implements \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_a3e3248162611754ca4c54b9979f6664d}{fourdst\+::composition\+::\+Composition\+Abstract}}.
 
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00251}{251}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00460}{460}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_ae8fe4e7158f8317bf29b5cd0c65a9524}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getMassFraction@{getMassFraction}}
 \index{getMassFraction@{getMassFraction}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -800,11 +1008,11 @@ The mass fraction for the given isotope.
 \end{DoxyExceptions}
 
 
-Implements \mbox{\hyperlink{class_composition_abstract_a401e8298ed93b7963624e8a17eb17b55}{Composition\+Abstract}}.
+Implements \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_a0396f17ba252d053c0126323a76e9142}{fourdst\+::composition\+::\+Composition\+Abstract}}.
 
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00235}{235}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00440}{440}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_ae5d8d21632fca2b35b0898f2b205cd10}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getMassFraction@{getMassFraction}}
 \index{getMassFraction@{getMassFraction}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -833,11 +1041,11 @@ The mass fraction for the given symbol.
 \end{DoxyExceptions}
 
 
-Implements \mbox{\hyperlink{class_composition_abstract_ae0044d30efddccacc9fe7c8e58003066}{Composition\+Abstract}}.
+Implements \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_a0ebe22344f785e5db693e04b9b598a5a}{fourdst\+::composition\+::\+Composition\+Abstract}}.
 
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00227}{227}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00432}{432}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_af4f44aaf8b7e0d63872a70b5e2131369}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getMassFractionVector@{getMassFractionVector}}
 \index{getMassFractionVector@{getMassFractionVector}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -854,11 +1062,11 @@ the vector of mass fractions sorted by species mass (lightest to heaviest).
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{class_composition_abstract_a82583ffa3c08297cda6c3957a6a7dbc6}{Composition\+Abstract}}.
+Implements \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_a752af872347c612bf3b43b1711c2cfc0}{fourdst\+::composition\+::\+Composition\+Abstract}}.
 
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00373}{373}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00596}{596}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_afbbb5e51ad5ae5c0fa6bc0094195aecd}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getMeanParticleMass@{getMeanParticleMass}}
 \index{getMeanParticleMass@{getMeanParticleMass}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -883,11 +1091,11 @@ Mean particle mass in atomic mass units (g/mol).
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{class_composition_abstract_a85bf97a30ecadd0750bece4442f4deff}{Composition\+Abstract}}.
+Implements \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_afedcef16ed403b95ce7f1e6756aa46e8}{fourdst\+::composition\+::\+Composition\+Abstract}}.
 
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00311}{311}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00530}{530}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a78a43e9e77a9c1b0f27c50b9feb52449}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getMolarAbundance@{getMolarAbundance}}
 \index{getMolarAbundance@{getMolarAbundance}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -917,11 +1125,11 @@ These are the most performant quantities to retrieve since they are stored direc
 \end{DoxyNote}
 
 
-Implements \mbox{\hyperlink{class_composition_abstract_a4cfc9e37370caae275c0f801b700e37b}{Composition\+Abstract}}.
+Implements \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_adf861bd58e80025b021af2949b41d126}{fourdst\+::composition\+::\+Composition\+Abstract}}.
 
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00302}{302}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00515}{515}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_add67a92d73e3a57a2bbdb52bc9ca3bfe}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getMolarAbundance@{getMolarAbundance}}
 \index{getMolarAbundance@{getMolarAbundance}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -948,11 +1156,11 @@ These are the most performant quantities to retrieve since they are stored direc
 \end{DoxyNote}
 
 
-Implements \mbox{\hyperlink{class_composition_abstract_a71fb459bf4375af2fe33c8a7c0747ce0}{Composition\+Abstract}}.
+Implements \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_a29613d8197cee96f764aeeaa3b7286f8}{fourdst\+::composition\+::\+Composition\+Abstract}}.
 
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00291}{291}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00504}{504}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_abcb391f5fca2b636127e48e681e4c3ee}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getMolarAbundanceVector@{getMolarAbundanceVector}}
 \index{getMolarAbundanceVector@{getMolarAbundanceVector}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -969,11 +1177,11 @@ the vector of molar abundances sorted by species mass (lightest to heaviest).
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{class_composition_abstract_a1ad7a33d17db32b2c9ce0a30cd6628f9}{Composition\+Abstract}}.
+Implements \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_a657c12d36b2f44e44c32e86d5296c063}{fourdst\+::composition\+::\+Composition\+Abstract}}.
 
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00416}{416}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00631}{631}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a1f87ed64a1be9a6091c852131d24e476}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getNumberFraction@{getNumberFraction}}
 \index{getNumberFraction@{getNumberFraction}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -993,11 +1201,11 @@ This method will construct a new unordered map each time it is called.
 \end{DoxyNote}
 
 
-Implements \mbox{\hyperlink{class_composition_abstract_a506ef92e69f99ad02598c8d178df1c31}{Composition\+Abstract}}.
+Implements \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_a65bae043ffbf4514b2593ccb63c6e265}{fourdst\+::composition\+::\+Composition\+Abstract}}.
 
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00283}{283}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00496}{496}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a1aa79993925f16ba3c30a376aa39161b}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getNumberFraction@{getNumberFraction}}
 \index{getNumberFraction@{getNumberFraction}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1033,11 +1241,11 @@ The number fraction for the given isotope.
 \end{DoxyExceptions}
 
 
-Implements \mbox{\hyperlink{class_composition_abstract_a27d1d91203adb736454aa9b9936fc8c3}{Composition\+Abstract}}.
+Implements \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_a71b351d6e69cf0d7e7c43409e1b13c4c}{fourdst\+::composition\+::\+Composition\+Abstract}}.
 
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00270}{270}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00479}{479}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a34f71d4d8f0297c576fd62fabd490305}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getNumberFraction@{getNumberFraction}}
 \index{getNumberFraction@{getNumberFraction}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1066,11 +1274,11 @@ The number fraction for the given symbol.
 \end{DoxyExceptions}
 
 
-Implements \mbox{\hyperlink{class_composition_abstract_ae6026b1335230c6dfbd897ec8dfda295}{Composition\+Abstract}}.
+Implements \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_af490daa6942717605093b4fca3e676b8}{fourdst\+::composition\+::\+Composition\+Abstract}}.
 
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00260}{260}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00469}{469}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_ae4f72972cf4d1ff422d0790080e11473}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getNumberFractionVector@{getNumberFractionVector}}
 \index{getNumberFractionVector@{getNumberFractionVector}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1087,17 +1295,17 @@ the vector of number fractions sorted by species mass (lightest to heaviest).
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{class_composition_abstract_a883ea47508557952b9f15432bf0be376}{Composition\+Abstract}}.
+Implements \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_a83343286d738d101635b2a7f5b7d96ef}{fourdst\+::composition\+::\+Composition\+Abstract}}.
 
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00395}{395}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00614}{614}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
-\Hypertarget{classfourdst_1_1composition_1_1_composition_a33db253ca50431b5166d43412ff18f71}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getRegisteredSpecies@{getRegisteredSpecies}}
+\Hypertarget{classfourdst_1_1composition_1_1_composition_af4b01ec4140e278d92c18f139f69ab1f}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getRegisteredSpecies@{getRegisteredSpecies}}
 \index{getRegisteredSpecies@{getRegisteredSpecies}!fourdst::composition::Composition@{fourdst::composition::Composition}}
 \doxysubsubsection{\texorpdfstring{getRegisteredSpecies()}{getRegisteredSpecies()}}
-{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_a33db253ca50431b5166d43412ff18f71} 
-const std\+::set$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} $>$ \& fourdst\+::composition\+::\+Composition\+::get\+Registered\+Species (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_af4b01ec4140e278d92c18f139f69ab1f} 
+const std\+::vector$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} $>$ \& fourdst\+::composition\+::\+Composition\+::get\+Registered\+Species (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
 
 
 
@@ -1111,11 +1319,11 @@ This will return a constant reference to the internal m\+\_\+registered\+Species
 \end{DoxyNote}
 
 
-Implements \mbox{\hyperlink{class_composition_abstract_ae6e7152d69fc5f5a128f8cb2cfce1587}{Composition\+Abstract}}.
+Implements \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_ad17ae8649860ef4f7a949e7c9143c0ec}{fourdst\+::composition\+::\+Composition\+Abstract}}.
 
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00222}{222}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00312}{312}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a3ae885c28580ae15be8c16614bef3b0e}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getRegisteredSymbols@{getRegisteredSymbols}}
 \index{getRegisteredSymbols@{getRegisteredSymbols}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1131,15 +1339,15 @@ Gets the registered symbols.
 A set of registered symbols.
 \end{DoxyReturn}
 \begin{DoxyNote}{Note}
-This method will construct a new set each time it is called. If you need just need access to the registered species, consider using {\ttfamily \doxylink{classfourdst_1_1composition_1_1_composition_a33db253ca50431b5166d43412ff18f71}{get\+Registered\+Species()}} instead which returns a constant reference to the internal set. 
+This method will construct a new set each time it is called. If you need just need access to the registered species, consider using {\ttfamily \doxylink{classfourdst_1_1composition_1_1_composition_af4b01ec4140e278d92c18f139f69ab1f}{get\+Registered\+Species()}} instead which returns a constant reference to the internal set. 
 \end{DoxyNote}
 
 
-Implements \mbox{\hyperlink{class_composition_abstract_a5a4362dc0d77659b75d528a0e884ed7b}{Composition\+Abstract}}.
+Implements \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_a94c2cadeae32ab19cee42fc1670c4c6c}{fourdst\+::composition\+::\+Composition\+Abstract}}.
 
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00214}{214}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00304}{304}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_ae4f854ded38f5e6fcd157a74a57cbf0c}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getSpeciesAtIndex@{getSpeciesAtIndex}}
 \index{getSpeciesAtIndex@{getSpeciesAtIndex}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1166,11 +1374,11 @@ The species at the given index in the sorted vector representation.
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{class_composition_abstract_aaee3651c1672b2763181e966e4525ba6}{Composition\+Abstract}}.
+Implements \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_a43138cbf3d399e8f278db742fe1b02a7}{fourdst\+::composition\+::\+Composition\+Abstract}}.
 
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00483}{483}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00668}{668}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a3d220b42fa06d7d3a43944ee2b8f6a5f}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getSpeciesIndex@{getSpeciesIndex}}
 \index{getSpeciesIndex@{getSpeciesIndex}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1197,11 +1405,11 @@ The index of the symbol in the sorted vector representation.
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{class_composition_abstract_ab41311a8c20a9556d087a604da735767}{Composition\+Abstract}}.
+Implements \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_a5d04b801f152f7955b392710275105bc}{fourdst\+::composition\+::\+Composition\+Abstract}}.
 
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00449}{449}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00650}{650}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a0d94f62402bb90b5d12679faeaa8c5d7}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!getSpeciesIndex@{getSpeciesIndex}}
 \index{getSpeciesIndex@{getSpeciesIndex}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1230,15 +1438,29 @@ The index of the symbol in the sorted vector representation.
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{class_composition_abstract_a1e5195debe590960aa064289733958ba}{Composition\+Abstract}}.
+Implements \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_aebf28eab9c902a285589fe2ab7f3060f}{fourdst\+::composition\+::\+Composition\+Abstract}}.
 
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00438}{438}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00639}{639}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1_composition_a5b3631fa33b0c6809ad652b0e31663a1}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!hash@{hash}}
+\index{hash@{hash}!fourdst::composition::Composition@{fourdst::composition::Composition}}
+\doxysubsubsection{\texorpdfstring{hash()}{hash()}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_a5b3631fa33b0c6809ad652b0e31663a1} 
+std\+::size\+\_\+t fourdst\+::composition\+::\+Composition\+::hash (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_a2d5472a63e2dbfc94d7e4617b5660e23}{fourdst\+::composition\+::\+Composition\+Abstract}}.
+
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00684}{684}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a4ec1e23cfecef764cb831171fed62fc2}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!operator=@{operator=}}
 \index{operator=@{operator=}!fourdst::composition::Composition@{fourdst::composition::Composition}}
-\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_a4ec1e23cfecef764cb831171fed62fc2} 
 \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} \& fourdst\+::composition\+::\+Composition\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} const \&}]{other}{}\end{DoxyParamCaption})}
 
@@ -1256,7 +1478,17 @@ A reference to this \doxylink{classfourdst_1_1composition_1_1_composition}{Compo
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00168}{168}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00204}{204}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1_composition_afba49b5ceeb42e0372b6118f48b4ee54}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!operator=@{operator=}}
+\index{operator=@{operator=}!fourdst::composition::Composition@{fourdst::composition::Composition}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_afba49b5ceeb42e0372b6118f48b4ee54} 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} \& fourdst\+::composition\+::\+Composition\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract}{Composition\+Abstract}} \&}]{other}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00215}{215}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a392a34c19f45d6c936cc7030e6cfaf3f}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!registerSpecies@{registerSpecies}}
 \index{registerSpecies@{registerSpecies}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1293,7 +1525,7 @@ All species are in the {\ttfamily \doxylink{species_8h}{fourdst/atomic/species.\
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00197}{197}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00251}{251}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a2846f4ea0d6075ecdaf4334741a54750}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!registerSpecies@{registerSpecies}}
 \index{registerSpecies@{registerSpecies}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1328,7 +1560,7 @@ All species are in the {\ttfamily \doxylink{species_8h}{fourdst/atomic/species.\
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00206}{206}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00262}{262}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a3ab4dcda0bfd1a35b169bcc57fe66725}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!registerSymbol@{registerSymbol}}
 \index{registerSymbol@{registerSymbol}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1365,7 +1597,7 @@ upon registering a symbol, its molar abundance is initialized to 0.\+0.
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00178}{178}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00234}{234}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a156d1198ef47deed9689949f271969e2}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!registerSymbol@{registerSymbol}}
 \index{registerSymbol@{registerSymbol}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1402,7 +1634,7 @@ upon registering a symbol, its molar abundance is initialized to 0.\+0. Therefor
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00189}{189}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00245}{245}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_ac386709ef1e872fa558b8e30fc8b4c44}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!setMolarAbundance@{setMolarAbundance}}
 \index{setMolarAbundance@{setMolarAbundance}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1444,7 +1676,7 @@ Since this method does not need to validate the species exists in the database, 
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00541}{541}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00333}{333}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_ad7af2f8f3050969a6c5b9a9ef5fead64}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!setMolarAbundance@{setMolarAbundance}}
 \index{setMolarAbundance@{setMolarAbundance}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1486,7 +1718,7 @@ Since this method does not need to validate the species exists in the database, 
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00582}{582}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00373}{373}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a49b06737a50df9c25a234499a1431388}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!setMolarAbundance@{setMolarAbundance}}
 \index{setMolarAbundance@{setMolarAbundance}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1526,7 +1758,7 @@ Sets the molar abundances for a set of symbols.
 \end{DoxyParagraph}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00573}{573}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00366}{366}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a262d7133035d4e6f45daa81827abf5e7}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!setMolarAbundance@{setMolarAbundance}}
 \index{setMolarAbundance@{setMolarAbundance}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1566,7 +1798,7 @@ Sets the molar abundance for a given symbol.
 \end{DoxyParagraph}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00529}{529}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00321}{321}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_ae908cda3a994292e2eb767fa476b666b}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!setMolarAbundance@{setMolarAbundance}}
 \index{setMolarAbundance@{setMolarAbundance}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1607,7 +1839,7 @@ Since this method does not need to validate the species exists in the database, 
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00564}{564}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00380}{380}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a6baa22b92a78fd43d10d4941f30c8ac2}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!setMolarAbundance@{setMolarAbundance}}
 \index{setMolarAbundance@{setMolarAbundance}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1642,11 +1874,13 @@ Sets the molar abundances for a list of symbols.
 \DoxyCodeLine{comp.setMolarAbundance(\{\textcolor{stringliteral}{"{}H-\/1"{}},\ \textcolor{stringliteral}{"{}He-\/4"{}}\},\ \{1.0,\ 0.5\});}
 
 \end{DoxyCode}
- 
+
 \end{DoxyParagraph}
+\DoxyHorRuler{0}
+ Methods which set multiple molar abundances \hypertarget{classfourdst_1_1composition_1_1_composition_autotoc_md10}{}\doxysubsubsection{\texorpdfstring{delegate to vector$<$\+Species$>$, vector$<$double$>$}{delegate to vector$<$\+Species$>$, vector$<$double$>$}}\label{classfourdst_1_1composition_1_1_composition_autotoc_md10}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00555}{555}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00359}{359}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 \Hypertarget{classfourdst_1_1composition_1_1_composition_a9d177d36b728442bcbd8cb66712c7c75}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!size@{size}}
 \index{size@{size}!fourdst::composition::Composition@{fourdst::composition::Composition}}
@@ -1663,11 +1897,21 @@ The number of registered species.
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{class_composition_abstract_a230f58ef18a9816c1d13c287eaf3ba05}{Composition\+Abstract}}.
+Implements \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract_af7ec2eaa16a0c78d19728e32469cec06}{fourdst\+::composition\+::\+Composition\+Abstract}}.
 
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00525}{525}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00709}{709}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1_composition_a3f013e33b8978baf81447e5bd177f38b}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!symbolVectorToSpeciesVector@{symbolVectorToSpeciesVector}}
+\index{symbolVectorToSpeciesVector@{symbolVectorToSpeciesVector}!fourdst::composition::Composition@{fourdst::composition::Composition}}
+\doxysubsubsection{\texorpdfstring{symbolVectorToSpeciesVector()}{symbolVectorToSpeciesVector()}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_a3f013e33b8978baf81447e5bd177f38b} 
+std\+::vector$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} $>$ fourdst\+::composition\+::\+Composition\+::symbol\+Vector\+To\+Species\+Vector (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{symbols}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [nodiscard]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00725}{725}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 
 
@@ -1694,7 +1938,7 @@ The output stream.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{composition_8cpp_source_l00593}{593}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
+Definition at line \mbox{\hyperlink{composition_8cpp_source_l00746}{746}} of file \mbox{\hyperlink{composition_8cpp_source}{composition.\+cpp}}.
 
 
 
@@ -1711,35 +1955,27 @@ Cache for computed properties to avoid redundant calculations.
 
 
 
-Definition at line \mbox{\hyperlink{composition_8h_source_l00152}{152}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+Definition at line \mbox{\hyperlink{composition_8h_source_l00167}{167}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
 
-\Hypertarget{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!m\_molarAbundances@{m\_molarAbundances}}
+\Hypertarget{classfourdst_1_1composition_1_1_composition_ab2faabe2e64c587bda8106687f752479}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!m\_molarAbundances@{m\_molarAbundances}}
 \index{m\_molarAbundances@{m\_molarAbundances}!fourdst::composition::Composition@{fourdst::composition::Composition}}
 \doxysubsubsection{\texorpdfstring{m\_molarAbundances}{m\_molarAbundances}}
-{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_aa05a640e0ea80142682bf4ee30a93c7f} 
-std\+::map$<$\mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}}, double$>$ fourdst\+::composition\+::\+Composition\+::m\+\_\+molar\+Abundances\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_ab2faabe2e64c587bda8106687f752479} 
+std\+::vector$<$double$>$ fourdst\+::composition\+::\+Composition\+::m\+\_\+molar\+Abundances\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Map of species to their molar abundances. 
+Definition at line \mbox{\hyperlink{composition_8h_source_l00165}{165}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1_composition_aa0edc4976ccd24f2d9f6ad730f058b27}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!m\_species@{m\_species}}
+\index{m\_species@{m\_species}!fourdst::composition::Composition@{fourdst::composition::Composition}}
+\doxysubsubsection{\texorpdfstring{m\_species}{m\_species}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_aa0edc4976ccd24f2d9f6ad730f058b27} 
+std\+::vector$<$\mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}}$>$ fourdst\+::composition\+::\+Composition\+::m\+\_\+species\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{composition_8h_source_l00150}{150}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
-
-\Hypertarget{classfourdst_1_1composition_1_1_composition_a452b0affb86dc971a96c80d01f4fcb2b}\index{fourdst::composition::Composition@{fourdst::composition::Composition}!m\_registeredSpecies@{m\_registeredSpecies}}
-\index{m\_registeredSpecies@{m\_registeredSpecies}!fourdst::composition::Composition@{fourdst::composition::Composition}}
-\doxysubsubsection{\texorpdfstring{m\_registeredSpecies}{m\_registeredSpecies}}
-{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1_composition_a452b0affb86dc971a96c80d01f4fcb2b} 
-std\+::set$<$\mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}}$>$ fourdst\+::composition\+::\+Composition\+::m\+\_\+registered\+Species\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-Set of registered species in the composition. 
-
-
-
-Definition at line \mbox{\hyperlink{composition_8h_source_l00149}{149}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
+Definition at line \mbox{\hyperlink{composition_8h_source_l00164}{164}} of file \mbox{\hyperlink{composition_8h_source}{composition.\+h}}.
 
 
 

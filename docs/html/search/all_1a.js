@@ -29,5 +29,8 @@ var searchData=
   ['v_5f65_26',['V_65',['../namespacefourdst_1_1atomic.html#aa83f8c6438f4c36a306ae0ed218b29f1',1,'fourdst::atomic']]],
   ['v_5f66_27',['V_66',['../namespacefourdst_1_1atomic.html#a98330237c2316efd679cc4d81e8e491f',1,'fourdst::atomic']]],
   ['v_5f67_28',['V_67',['../namespacefourdst_1_1atomic.html#ae5e9d25600b0e210c0dc25dc0a938df5',1,'fourdst::atomic']]],
-  ['vector_20interfaces_29',['4. Iterating and Sorted Vector Interfaces',['../index.html#autotoc_md18',1,'']]]
+  ['value_5ftype_29',['value_type',['../classfourdst_1_1composition_1_1detail_1_1_composition_iterator.html#a63f5c58c0dd0a2488f9a28f1d9c7dbd9',1,'fourdst::composition::detail::CompositionIterator']]],
+  ['vector_20double_30',['delegate to vector&lt;Species&gt;, vector&lt;double&gt;',['../classfourdst_1_1composition_1_1_composition.html#autotoc_md10',1,'']]],
+  ['vector_20interfaces_31',['4. Iterating and Sorted Vector Interfaces',['../index.html#autotoc_md19',1,'']]],
+  ['vector_20species_20vector_20double_32',['delegate to vector&lt;Species&gt;, vector&lt;double&gt;',['../classfourdst_1_1composition_1_1_composition.html#autotoc_md10',1,'']]]
 ];

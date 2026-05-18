@@ -1,0 +1,11 @@
+<map id="fourdst::composition::detail::CompositionIterator&lt; IsConst &gt;" name="fourdst::composition::detail::CompositionIterator&lt; IsConst &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,436,188,492"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="29,333,164,373"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,387,99,437,94,435,95,391"/>
+<area shape="rect" id="Node000003" href="$structfourdst_1_1atomic_1_1_species.html" title="Represents an atomic species (isotope) with its fundamental physical properties." alt="" coords="15,244,178,270"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="97,283,99,333,94,332,96,288"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="57,95,136,121"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="97,134,99,244,94,243,96,139"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="34,5,159,46"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="97,59,99,95,94,95,96,64"/>
+</map>

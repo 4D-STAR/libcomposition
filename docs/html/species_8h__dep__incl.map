@@ -1,7 +1,9 @@
 <map id="src/composition/include/fourdst/atomic/species.h" name="src/composition/include/fourdst/atomic/species.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="64,5,232,46"/>
-<area shape="rect" id="Node000002" href="$composition_8cpp.html" title=" " alt="" coords="5,94,136,135"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,60,90,95,86,92,118,56"/>
-<area shape="rect" id="Node000003" href="$utils_8cpp.html" title=" " alt="" coords="160,94,290,135"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="178,56,210,92,206,95,174,60"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="156,5,324,46"/>
+<area shape="rect" id="Node000002" href="$composition_8cpp.html" title=" " alt="" coords="5,102,136,142"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="194,53,107,103,105,99,189,55"/>
+<area shape="rect" id="Node000003" href="$composition__masked_8cpp.html" title=" " alt="" coords="160,94,320,150"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="242,59,242,95,238,92,238,63"/>
+<area shape="rect" id="Node000004" href="$utils_8cpp.html" title=" " alt="" coords="344,102,474,142"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="289,51,376,101,371,101,288,56"/>
 </map>

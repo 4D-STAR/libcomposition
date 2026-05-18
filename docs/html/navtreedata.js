@@ -35,6 +35,7 @@ var NAVTREE =
         [ "Enumerations", "namespacemembers_enum.html", null ]
       ] ]
     ] ],
+    [ "Concepts", "concepts.html", "concepts" ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -43,6 +44,8 @@ var NAVTREE =
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", null ],
         [ "Variables", "functions_vars.html", null ],
+        [ "Typedefs", "functions_type.html", null ],
+        [ "Enumerations", "functions_enum.html", null ],
         [ "Related Symbols", "functions_rela.html", null ]
       ] ]
     ] ],
@@ -55,38 +58,24 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"classfourdst_1_1composition_1_1MaskedComposition.html#a0e146a8433a786702b03bbeddce38ff8",
-"namespacefourdst_1_1atomic.html#a063b35d882d26a90b7ecad0a557c90e2",
-"namespacefourdst_1_1atomic.html#a177a45b882b291b0b3d36aa12c6834c1",
-"namespacefourdst_1_1atomic.html#a299fbb89e951b7c0e6cd88675e42eaa8",
-"namespacefourdst_1_1atomic.html#a3b0a882eda8911632a7b09bdccf1038c",
-"namespacefourdst_1_1atomic.html#a4c7bcd891facb064ffca8f3cf4d7b599",
-"namespacefourdst_1_1atomic.html#a5d867bb2b2ef43f96f4a28f55faeb61a",
-"namespacefourdst_1_1atomic.html#a6f60bb665e1cb21f7f46c787bc4bee46",
-"namespacefourdst_1_1atomic.html#a8274ae0115bb053f907112786dedb66d",
-"namespacefourdst_1_1atomic.html#a95eb889900c5d0f8a306ff217da499d9",
-"namespacefourdst_1_1atomic.html#aa85bb30f5484544fb5e0a37f51cde483",
-"namespacefourdst_1_1atomic.html#abba47639d93174033c4446f3a3ae5e3c",
-"namespacefourdst_1_1atomic.html#ace58a02d4c2d7d6fcfcc9fd5e8238ec3",
-"namespacefourdst_1_1atomic.html#adfaa31e006f67e1fbc043da81444c713",
-"namespacefourdst_1_1atomic.html#af145f72c2ff7bef74d100a10491557d2",
-"namespacemembers_func_f.html",
-"species_8h.html#a0ddde36192e029dc700b161c0790aa13",
-"species_8h.html#a1f8f714e128c6d61eac4b0aa619560ce",
-"species_8h.html#a3106e28fb53608b51accbf42b2f983b6",
-"species_8h.html#a435f4aa80d272acdb11adf80c1cfe859",
-"species_8h.html#a55127132366a6c262a0ae4363467b079",
-"species_8h.html#a667f0a9536e42703dd33f461c2041807",
-"species_8h.html#a78887ec137127d5e9c63dc78387f3726",
-"species_8h.html#a8bdd8e97730a6750ab4573b384a58fe2",
-"species_8h.html#a9eaebc26e55a6124dad2dbc690c9b097",
-"species_8h.html#ab0c8afc81ed81801c49589932d6b2e8d",
-"species_8h.html#ac4c2ee2883fb41eb04e699dda65e5965",
-"species_8h.html#ad6d522c7020751ef6b4c22c4a3f7521f",
-"species_8h.html#ae7ad9527adbe5d26719dd71ae2d34cf5",
-"species_8h.html#af9bad28199f56e721eaea8146cbcde8b",
-"structstd_1_1hash_3_01fourdst_1_1composition_1_1Composition_01_4.html#a20ef7280a7d2353f5b391a1a00263d0c"
+"classfourdst_1_1composition_1_1_composition_decorator.html#a996066b4bf67e415eb2dd3ea7aed68bd",
+"index.html#install_sec",
+"namespacefourdst_1_1atomic.html#a107b4fe11cc3d7e79e18939845df6af8",
+"namespacefourdst_1_1atomic.html#a21ee45ed2638293bd712ca09370cbc7f",
+"namespacefourdst_1_1atomic.html#a33986dfb73a1445774b01d1d48b4ec9a",
+"namespacefourdst_1_1atomic.html#a45832f1cf5925dad348df3f4b396e0d5",
+"namespacefourdst_1_1atomic.html#a56e279843013d1fa3f2dd06c63b53c96",
+"namespacefourdst_1_1atomic.html#a6900ebeb5226b9e6018a26c6de7c0215",
+"namespacefourdst_1_1atomic.html#a7adae0ec4f68ec35b16a35affdb22ebc",
+"namespacefourdst_1_1atomic.html#a8e910782efd797a0ece49a032cdd30f2",
+"namespacefourdst_1_1atomic.html#aa0a6c3cca5d429cd6fdf97d141f4d84d",
+"namespacefourdst_1_1atomic.html#ab34efae4c852e973afe61bd48c7fe146",
+"namespacefourdst_1_1atomic.html#ac71e0f64b8b0cdca0a36d862ac62e383",
+"namespacefourdst_1_1atomic.html#ad8b293c2eba01790ae82eaced5bab656",
+"namespacefourdst_1_1atomic.html#ae9bd5f771c09c857fae9c2edc7f3977e",
+"namespacefourdst_1_1atomic.html#afb7413e848ec4fdaec36bea95fda9f35",
+"structfourdst_1_1composition_1_1_composition_1_1_composition_cache.html#af291583560120bb53c4546a598666477"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronisation';
-var SYNCOFFMSG = 'click to enable panel synchronisation';
+var SYNCONMSG = 'click to disable panel synchronization';
+var SYNCOFFMSG = 'click to enable panel synchronization';

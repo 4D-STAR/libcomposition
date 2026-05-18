@@ -1,0 +1,522 @@
+\doxysection{Composition\+Abstract Class Reference}
+\hypertarget{class_composition_abstract}{}\label{class_composition_abstract}\index{CompositionAbstract@{CompositionAbstract}}
+
+
+Abstract base class for chemical composition representations.  
+
+
+
+
+{\ttfamily \#include $<$composition\+\_\+abstract.\+h$>$}
+
+
+
+Inheritance diagram for Composition\+Abstract\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=188pt]{class_composition_abstract__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_composition_abstract_aaae3d6215b7433cb9871664852a95d1b}{\texorpdfstring{$\sim$}{\string~}\+Composition\+Abstract}} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_composition_abstract_af42050fabc3c888d77f0fc98f08bc80a}{contains}} (const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}} \&species) const noexcept=0
+\begin{DoxyCompactList}\small\item\em Check if the composition contains the given species. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_composition_abstract_aebd1997d8b3a59356f587c234b290796}{contains}} (const std\+::string \&symbol) const =0
+\begin{DoxyCompactList}\small\item\em Check if the composition contains the given species. \end{DoxyCompactList}\item 
+virtual size\+\_\+t \mbox{\hyperlink{class_composition_abstract_a230f58ef18a9816c1d13c287eaf3ba05}{size}} () const noexcept=0
+\item 
+virtual std\+::set$<$ std\+::string $>$ \mbox{\hyperlink{class_composition_abstract_a5a4362dc0d77659b75d528a0e884ed7b}{get\+Registered\+Symbols}} () const noexcept=0
+\begin{DoxyCompactList}\small\item\em Get all registered chemical symbols in the composition. \end{DoxyCompactList}\item 
+virtual const std\+::set$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}} $>$ \& \mbox{\hyperlink{class_composition_abstract_ae6e7152d69fc5f5a128f8cb2cfce1587}{get\+Registered\+Species}} () const noexcept=0
+\begin{DoxyCompactList}\small\item\em Get all registered atomic species in the composition. \end{DoxyCompactList}\item 
+virtual std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}}, double $>$ \mbox{\hyperlink{class_composition_abstract_afb72c61da511b7963382804a0e87a54a}{get\+Mass\+Fraction}} () const noexcept=0
+\begin{DoxyCompactList}\small\item\em Get the mass fraction for all registered symbols. \end{DoxyCompactList}\item 
+virtual std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}}, double $>$ \mbox{\hyperlink{class_composition_abstract_a506ef92e69f99ad02598c8d178df1c31}{get\+Number\+Fraction}} () const noexcept=0
+\begin{DoxyCompactList}\small\item\em Get the number fraction for all registered symbols. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{class_composition_abstract_ae0044d30efddccacc9fe7c8e58003066}{get\+Mass\+Fraction}} (const std\+::string \&symbol) const =0
+\begin{DoxyCompactList}\small\item\em Get the mass fraction for a given symbol. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{class_composition_abstract_a401e8298ed93b7963624e8a17eb17b55}{get\+Mass\+Fraction}} (const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}} \&species) const =0
+\begin{DoxyCompactList}\small\item\em Get the mass fraction for a given species. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{class_composition_abstract_ae6026b1335230c6dfbd897ec8dfda295}{get\+Number\+Fraction}} (const std\+::string \&symbol) const =0
+\begin{DoxyCompactList}\small\item\em Get the number fraction for a given symbol. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{class_composition_abstract_a27d1d91203adb736454aa9b9936fc8c3}{get\+Number\+Fraction}} (const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}} \&species) const =0
+\begin{DoxyCompactList}\small\item\em Get the number fraction for a given species. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{class_composition_abstract_a71fb459bf4375af2fe33c8a7c0747ce0}{get\+Molar\+Abundance}} (const std\+::string \&symbol) const =0
+\begin{DoxyCompactList}\small\item\em Get the molar abundance for a given symbol. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{class_composition_abstract_a4cfc9e37370caae275c0f801b700e37b}{get\+Molar\+Abundance}} (const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}} \&species) const =0
+\begin{DoxyCompactList}\small\item\em Get the molar abundance for a given species. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{class_composition_abstract_a85bf97a30ecadd0750bece4442f4deff}{get\+Mean\+Particle\+Mass}} () const noexcept=0
+\begin{DoxyCompactList}\small\item\em Get the mean particle mass of the composition. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{class_composition_abstract_a86b60205094ed72435ee84abf9498e21}{get\+Electron\+Abundance}} () const noexcept=0
+\begin{DoxyCompactList}\small\item\em Get the electron abundance of the composition. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ double $>$ \mbox{\hyperlink{class_composition_abstract_a82583ffa3c08297cda6c3957a6a7dbc6}{get\+Mass\+Fraction\+Vector}} () const noexcept=0
+\begin{DoxyCompactList}\small\item\em Get the mass fraction as a vector. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ double $>$ \mbox{\hyperlink{class_composition_abstract_a883ea47508557952b9f15432bf0be376}{get\+Number\+Fraction\+Vector}} () const noexcept=0
+\begin{DoxyCompactList}\small\item\em Get the number fraction as a vector. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ double $>$ \mbox{\hyperlink{class_composition_abstract_a1ad7a33d17db32b2c9ce0a30cd6628f9}{get\+Molar\+Abundance\+Vector}} () const noexcept=0
+\begin{DoxyCompactList}\small\item\em Get the molar abundance as a vector. \end{DoxyCompactList}\item 
+virtual size\+\_\+t \mbox{\hyperlink{class_composition_abstract_a1e5195debe590960aa064289733958ba}{get\+Species\+Index}} (const std\+::string \&symbol) const =0
+\begin{DoxyCompactList}\small\item\em Get the index of a species by symbol. \end{DoxyCompactList}\item 
+virtual size\+\_\+t \mbox{\hyperlink{class_composition_abstract_ab41311a8c20a9556d087a604da735767}{get\+Species\+Index}} (const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}} \&species) const =0
+\begin{DoxyCompactList}\small\item\em Get the index of a species. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}} \mbox{\hyperlink{class_composition_abstract_aaee3651c1672b2763181e966e4525ba6}{get\+Species\+At\+Index}} (size\+\_\+t index) const =0
+\begin{DoxyCompactList}\small\item\em Get the species at a given index. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract base class for chemical composition representations. 
+
+The purpose of this class is to define a standard interface for all composition types. Children of this class are responsible for implementing the setter methods, but any object that is a child of \doxylink{class_composition_abstract}{Composition\+Abstract} will always have these getter methods.
+
+This ensures that all derived composition classes provide a consistent API for querying composition properties, regardless of how the data is set or stored.
+
+\begin{DoxyParagraph}{Example}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{class\ }MyComposition\ :\ \textcolor{keyword}{public}\ CompositionAbstract\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ ...implement\ all\ pure\ virtual\ methods...}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{MyComposition\ comp;}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (comp.hasSymbol(\textcolor{stringliteral}{"{}H"{}}))\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{double}\ mf\ =\ comp.getMassFraction(\textcolor{stringliteral}{"{}H"{}});}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{std::set<std::string>\ symbols\ =\ comp.getRegisteredSymbols();}
+
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+
+
+Definition at line \mbox{\hyperlink{composition__abstract_8h_source_l00033}{33}} of file \mbox{\hyperlink{composition__abstract_8h_source}{composition\+\_\+abstract.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_composition_abstract_aaae3d6215b7433cb9871664852a95d1b}\index{CompositionAbstract@{CompositionAbstract}!````~CompositionAbstract@{\texorpdfstring{$\sim$}{\string~}CompositionAbstract}}
+\index{````~CompositionAbstract@{\texorpdfstring{$\sim$}{\string~}CompositionAbstract}!CompositionAbstract@{CompositionAbstract}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}CompositionAbstract()}{\string~CompositionAbstract()}}
+{\footnotesize\ttfamily \label{class_composition_abstract_aaae3d6215b7433cb9871664852a95d1b} 
+virtual Composition\+Abstract\+::\texorpdfstring{$\sim$}{\string~}\+Composition\+Abstract (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+Virtual destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_composition_abstract_af42050fabc3c888d77f0fc98f08bc80a}\index{CompositionAbstract@{CompositionAbstract}!contains@{contains}}
+\index{contains@{contains}!CompositionAbstract@{CompositionAbstract}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_composition_abstract_af42050fabc3c888d77f0fc98f08bc80a} 
+virtual bool Composition\+Abstract\+::contains (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}} \&}]{species}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Check if the composition contains the given species. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em species} & The atomic species to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the species is contained, false otherwise. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a194f715788e7921bd611579440de2ecd}{fourdst\+::composition\+::\+Composition}}.
+
+\Hypertarget{class_composition_abstract_aebd1997d8b3a59356f587c234b290796}\index{CompositionAbstract@{CompositionAbstract}!contains@{contains}}
+\index{contains@{contains}!CompositionAbstract@{CompositionAbstract}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_composition_abstract_aebd1997d8b3a59356f587c234b290796} 
+virtual bool Composition\+Abstract\+::contains (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{symbol}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Check if the composition contains the given species. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol} & The symbol of the atomic species to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the species is contained, false otherwise. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ac3bfb56a2587215a59894e76d4867ede}{fourdst\+::composition\+::\+Composition}}.
+
+\Hypertarget{class_composition_abstract_a86b60205094ed72435ee84abf9498e21}\index{CompositionAbstract@{CompositionAbstract}!getElectronAbundance@{getElectronAbundance}}
+\index{getElectronAbundance@{getElectronAbundance}!CompositionAbstract@{CompositionAbstract}}
+\doxysubsubsection{\texorpdfstring{getElectronAbundance()}{getElectronAbundance()}}
+{\footnotesize\ttfamily \label{class_composition_abstract_a86b60205094ed72435ee84abf9498e21} 
+virtual double Composition\+Abstract\+::get\+Electron\+Abundance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Get the electron abundance of the composition. 
+
+\begin{DoxyReturn}{Returns}
+The electron abundance. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a90fc71d1fe03017ee4c7a1cac69d24fb}{fourdst\+::composition\+::\+Composition}}.
+
+\Hypertarget{class_composition_abstract_afb72c61da511b7963382804a0e87a54a}\index{CompositionAbstract@{CompositionAbstract}!getMassFraction@{getMassFraction}}
+\index{getMassFraction@{getMassFraction}!CompositionAbstract@{CompositionAbstract}}
+\doxysubsubsection{\texorpdfstring{getMassFraction()}{getMassFraction()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_composition_abstract_afb72c61da511b7963382804a0e87a54a} 
+virtual std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}}, double $>$ Composition\+Abstract\+::get\+Mass\+Fraction (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Get the mass fraction for all registered symbols. 
+
+\begin{DoxyReturn}{Returns}
+An unordered map from symbol to mass fraction. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a9ea2b673341fdc67afeb0f0517a54c8c}{fourdst\+::composition\+::\+Composition}}.
+
+\Hypertarget{class_composition_abstract_a401e8298ed93b7963624e8a17eb17b55}\index{CompositionAbstract@{CompositionAbstract}!getMassFraction@{getMassFraction}}
+\index{getMassFraction@{getMassFraction}!CompositionAbstract@{CompositionAbstract}}
+\doxysubsubsection{\texorpdfstring{getMassFraction()}{getMassFraction()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_composition_abstract_a401e8298ed93b7963624e8a17eb17b55} 
+virtual double Composition\+Abstract\+::get\+Mass\+Fraction (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}} \&}]{species}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Get the mass fraction for a given species. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em species} & The atomic species. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The mass fraction for the species. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ae8fe4e7158f8317bf29b5cd0c65a9524}{fourdst\+::composition\+::\+Composition}}.
+
+\Hypertarget{class_composition_abstract_ae0044d30efddccacc9fe7c8e58003066}\index{CompositionAbstract@{CompositionAbstract}!getMassFraction@{getMassFraction}}
+\index{getMassFraction@{getMassFraction}!CompositionAbstract@{CompositionAbstract}}
+\doxysubsubsection{\texorpdfstring{getMassFraction()}{getMassFraction()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_composition_abstract_ae0044d30efddccacc9fe7c8e58003066} 
+virtual double Composition\+Abstract\+::get\+Mass\+Fraction (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{symbol}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Get the mass fraction for a given symbol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol} & The chemical symbol. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The mass fraction for the symbol. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ae5d8d21632fca2b35b0898f2b205cd10}{fourdst\+::composition\+::\+Composition}}.
+
+\Hypertarget{class_composition_abstract_a82583ffa3c08297cda6c3957a6a7dbc6}\index{CompositionAbstract@{CompositionAbstract}!getMassFractionVector@{getMassFractionVector}}
+\index{getMassFractionVector@{getMassFractionVector}!CompositionAbstract@{CompositionAbstract}}
+\doxysubsubsection{\texorpdfstring{getMassFractionVector()}{getMassFractionVector()}}
+{\footnotesize\ttfamily \label{class_composition_abstract_a82583ffa3c08297cda6c3957a6a7dbc6} 
+virtual std\+::vector$<$ double $>$ Composition\+Abstract\+::get\+Mass\+Fraction\+Vector (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Get the mass fraction as a vector. 
+
+\begin{DoxyReturn}{Returns}
+A vector of mass fractions for all species. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_af4f44aaf8b7e0d63872a70b5e2131369}{fourdst\+::composition\+::\+Composition}}.
+
+\Hypertarget{class_composition_abstract_a85bf97a30ecadd0750bece4442f4deff}\index{CompositionAbstract@{CompositionAbstract}!getMeanParticleMass@{getMeanParticleMass}}
+\index{getMeanParticleMass@{getMeanParticleMass}!CompositionAbstract@{CompositionAbstract}}
+\doxysubsubsection{\texorpdfstring{getMeanParticleMass()}{getMeanParticleMass()}}
+{\footnotesize\ttfamily \label{class_composition_abstract_a85bf97a30ecadd0750bece4442f4deff} 
+virtual double Composition\+Abstract\+::get\+Mean\+Particle\+Mass (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Get the mean particle mass of the composition. 
+
+\begin{DoxyReturn}{Returns}
+The mean particle mass. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_afbbb5e51ad5ae5c0fa6bc0094195aecd}{fourdst\+::composition\+::\+Composition}}.
+
+\Hypertarget{class_composition_abstract_a4cfc9e37370caae275c0f801b700e37b}\index{CompositionAbstract@{CompositionAbstract}!getMolarAbundance@{getMolarAbundance}}
+\index{getMolarAbundance@{getMolarAbundance}!CompositionAbstract@{CompositionAbstract}}
+\doxysubsubsection{\texorpdfstring{getMolarAbundance()}{getMolarAbundance()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_composition_abstract_a4cfc9e37370caae275c0f801b700e37b} 
+virtual double Composition\+Abstract\+::get\+Molar\+Abundance (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}} \&}]{species}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Get the molar abundance for a given species. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em species} & The atomic species. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The molar abundance for the species. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a78a43e9e77a9c1b0f27c50b9feb52449}{fourdst\+::composition\+::\+Composition}}.
+
+\Hypertarget{class_composition_abstract_a71fb459bf4375af2fe33c8a7c0747ce0}\index{CompositionAbstract@{CompositionAbstract}!getMolarAbundance@{getMolarAbundance}}
+\index{getMolarAbundance@{getMolarAbundance}!CompositionAbstract@{CompositionAbstract}}
+\doxysubsubsection{\texorpdfstring{getMolarAbundance()}{getMolarAbundance()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_composition_abstract_a71fb459bf4375af2fe33c8a7c0747ce0} 
+virtual double Composition\+Abstract\+::get\+Molar\+Abundance (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{symbol}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Get the molar abundance for a given symbol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol} & The chemical symbol. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The molar abundance for the symbol. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_add67a92d73e3a57a2bbdb52bc9ca3bfe}{fourdst\+::composition\+::\+Composition}}.
+
+\Hypertarget{class_composition_abstract_a1ad7a33d17db32b2c9ce0a30cd6628f9}\index{CompositionAbstract@{CompositionAbstract}!getMolarAbundanceVector@{getMolarAbundanceVector}}
+\index{getMolarAbundanceVector@{getMolarAbundanceVector}!CompositionAbstract@{CompositionAbstract}}
+\doxysubsubsection{\texorpdfstring{getMolarAbundanceVector()}{getMolarAbundanceVector()}}
+{\footnotesize\ttfamily \label{class_composition_abstract_a1ad7a33d17db32b2c9ce0a30cd6628f9} 
+virtual std\+::vector$<$ double $>$ Composition\+Abstract\+::get\+Molar\+Abundance\+Vector (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Get the molar abundance as a vector. 
+
+\begin{DoxyReturn}{Returns}
+A vector of molar abundances for all species. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abcb391f5fca2b636127e48e681e4c3ee}{fourdst\+::composition\+::\+Composition}}.
+
+\Hypertarget{class_composition_abstract_a506ef92e69f99ad02598c8d178df1c31}\index{CompositionAbstract@{CompositionAbstract}!getNumberFraction@{getNumberFraction}}
+\index{getNumberFraction@{getNumberFraction}!CompositionAbstract@{CompositionAbstract}}
+\doxysubsubsection{\texorpdfstring{getNumberFraction()}{getNumberFraction()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_composition_abstract_a506ef92e69f99ad02598c8d178df1c31} 
+virtual std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}}, double $>$ Composition\+Abstract\+::get\+Number\+Fraction (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Get the number fraction for all registered symbols. 
+
+\begin{DoxyReturn}{Returns}
+An unordered map from symbol to number fraction. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a1f87ed64a1be9a6091c852131d24e476}{fourdst\+::composition\+::\+Composition}}.
+
+\Hypertarget{class_composition_abstract_a27d1d91203adb736454aa9b9936fc8c3}\index{CompositionAbstract@{CompositionAbstract}!getNumberFraction@{getNumberFraction}}
+\index{getNumberFraction@{getNumberFraction}!CompositionAbstract@{CompositionAbstract}}
+\doxysubsubsection{\texorpdfstring{getNumberFraction()}{getNumberFraction()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_composition_abstract_a27d1d91203adb736454aa9b9936fc8c3} 
+virtual double Composition\+Abstract\+::get\+Number\+Fraction (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}} \&}]{species}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Get the number fraction for a given species. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em species} & The atomic species. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number fraction for the species. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a1aa79993925f16ba3c30a376aa39161b}{fourdst\+::composition\+::\+Composition}}.
+
+\Hypertarget{class_composition_abstract_ae6026b1335230c6dfbd897ec8dfda295}\index{CompositionAbstract@{CompositionAbstract}!getNumberFraction@{getNumberFraction}}
+\index{getNumberFraction@{getNumberFraction}!CompositionAbstract@{CompositionAbstract}}
+\doxysubsubsection{\texorpdfstring{getNumberFraction()}{getNumberFraction()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_composition_abstract_ae6026b1335230c6dfbd897ec8dfda295} 
+virtual double Composition\+Abstract\+::get\+Number\+Fraction (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{symbol}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Get the number fraction for a given symbol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol} & The chemical symbol. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number fraction for the symbol. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a34f71d4d8f0297c576fd62fabd490305}{fourdst\+::composition\+::\+Composition}}.
+
+\Hypertarget{class_composition_abstract_a883ea47508557952b9f15432bf0be376}\index{CompositionAbstract@{CompositionAbstract}!getNumberFractionVector@{getNumberFractionVector}}
+\index{getNumberFractionVector@{getNumberFractionVector}!CompositionAbstract@{CompositionAbstract}}
+\doxysubsubsection{\texorpdfstring{getNumberFractionVector()}{getNumberFractionVector()}}
+{\footnotesize\ttfamily \label{class_composition_abstract_a883ea47508557952b9f15432bf0be376} 
+virtual std\+::vector$<$ double $>$ Composition\+Abstract\+::get\+Number\+Fraction\+Vector (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Get the number fraction as a vector. 
+
+\begin{DoxyReturn}{Returns}
+A vector of number fractions for all species. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ae4f72972cf4d1ff422d0790080e11473}{fourdst\+::composition\+::\+Composition}}.
+
+\Hypertarget{class_composition_abstract_ae6e7152d69fc5f5a128f8cb2cfce1587}\index{CompositionAbstract@{CompositionAbstract}!getRegisteredSpecies@{getRegisteredSpecies}}
+\index{getRegisteredSpecies@{getRegisteredSpecies}!CompositionAbstract@{CompositionAbstract}}
+\doxysubsubsection{\texorpdfstring{getRegisteredSpecies()}{getRegisteredSpecies()}}
+{\footnotesize\ttfamily \label{class_composition_abstract_ae6e7152d69fc5f5a128f8cb2cfce1587} 
+virtual const std\+::set$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}} $>$ \& Composition\+Abstract\+::get\+Registered\+Species (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Get all registered atomic species in the composition. 
+
+\begin{DoxyReturn}{Returns}
+A set of registered atomic species. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a33db253ca50431b5166d43412ff18f71}{fourdst\+::composition\+::\+Composition}}.
+
+\Hypertarget{class_composition_abstract_a5a4362dc0d77659b75d528a0e884ed7b}\index{CompositionAbstract@{CompositionAbstract}!getRegisteredSymbols@{getRegisteredSymbols}}
+\index{getRegisteredSymbols@{getRegisteredSymbols}!CompositionAbstract@{CompositionAbstract}}
+\doxysubsubsection{\texorpdfstring{getRegisteredSymbols()}{getRegisteredSymbols()}}
+{\footnotesize\ttfamily \label{class_composition_abstract_a5a4362dc0d77659b75d528a0e884ed7b} 
+virtual std\+::set$<$ std\+::string $>$ Composition\+Abstract\+::get\+Registered\+Symbols (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Get all registered chemical symbols in the composition. 
+
+\begin{DoxyReturn}{Returns}
+A set of registered chemical symbols. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a3ae885c28580ae15be8c16614bef3b0e}{fourdst\+::composition\+::\+Composition}}.
+
+\Hypertarget{class_composition_abstract_aaee3651c1672b2763181e966e4525ba6}\index{CompositionAbstract@{CompositionAbstract}!getSpeciesAtIndex@{getSpeciesAtIndex}}
+\index{getSpeciesAtIndex@{getSpeciesAtIndex}!CompositionAbstract@{CompositionAbstract}}
+\doxysubsubsection{\texorpdfstring{getSpeciesAtIndex()}{getSpeciesAtIndex()}}
+{\footnotesize\ttfamily \label{class_composition_abstract_aaee3651c1672b2763181e966e4525ba6} 
+virtual \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}} Composition\+Abstract\+::get\+Species\+At\+Index (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Get the species at a given index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index of the species. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The atomic species at the specified index. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_ae4f854ded38f5e6fcd157a74a57cbf0c}{fourdst\+::composition\+::\+Composition}}.
+
+\Hypertarget{class_composition_abstract_ab41311a8c20a9556d087a604da735767}\index{CompositionAbstract@{CompositionAbstract}!getSpeciesIndex@{getSpeciesIndex}}
+\index{getSpeciesIndex@{getSpeciesIndex}!CompositionAbstract@{CompositionAbstract}}
+\doxysubsubsection{\texorpdfstring{getSpeciesIndex()}{getSpeciesIndex()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_composition_abstract_ab41311a8c20a9556d087a604da735767} 
+virtual size\+\_\+t Composition\+Abstract\+::get\+Species\+Index (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}} \&}]{species}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Get the index of a species. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em species} & The atomic species. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The index of the species. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a3d220b42fa06d7d3a43944ee2b8f6a5f}{fourdst\+::composition\+::\+Composition}}.
+
+\Hypertarget{class_composition_abstract_a1e5195debe590960aa064289733958ba}\index{CompositionAbstract@{CompositionAbstract}!getSpeciesIndex@{getSpeciesIndex}}
+\index{getSpeciesIndex@{getSpeciesIndex}!CompositionAbstract@{CompositionAbstract}}
+\doxysubsubsection{\texorpdfstring{getSpeciesIndex()}{getSpeciesIndex()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_composition_abstract_a1e5195debe590960aa064289733958ba} 
+virtual size\+\_\+t Composition\+Abstract\+::get\+Species\+Index (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{symbol}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Get the index of a species by symbol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol} & The chemical symbol. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The index of the species. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a0d94f62402bb90b5d12679faeaa8c5d7}{fourdst\+::composition\+::\+Composition}}.
+
+\Hypertarget{class_composition_abstract_a230f58ef18a9816c1d13c287eaf3ba05}\index{CompositionAbstract@{CompositionAbstract}!size@{size}}
+\index{size@{size}!CompositionAbstract@{CompositionAbstract}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily \label{class_composition_abstract_a230f58ef18a9816c1d13c287eaf3ba05} 
+virtual size\+\_\+t Composition\+Abstract\+::size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Implemented in \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_a9d177d36b728442bcbd8cb66712c7c75}{fourdst\+::composition\+::\+Composition}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/composition/include/fourdst/composition/\mbox{\hyperlink{composition__abstract_8h}{composition\+\_\+abstract.\+h}}\end{DoxyCompactItemize}

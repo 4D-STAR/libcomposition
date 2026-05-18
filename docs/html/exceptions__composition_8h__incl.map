@@ -1,7 +1,9 @@
 <map id="src/composition/include/fourdst/composition/exceptions/exceptions_composition.h" name="src/composition/include/fourdst/composition/exceptions/exceptions_composition.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,212,61"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="26,109,103,135"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,62,80,96,75,94,92,60"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="127,109,180,135"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="125,60,143,94,138,96,120,62"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="30,5,236,61"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,109,83,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,60,69,100,66,96,103,62"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="107,109,160,135"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="135,59,136,95,131,92,132,63"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="184,109,237,135"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="158,59,192,97,187,97,156,64"/>
 </map>

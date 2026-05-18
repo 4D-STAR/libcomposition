@@ -29,7 +29,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">fourdst::libcomposition<span id="projectnumber">&#160;v2.0.1</span>
+   <div id="projectname">fourdst::libcomposition<span id="projectnumber">&#160;v2.3.1</span>
    </div>
    <div id="projectbrief">Robust atomic species information library</div>
   </td>
@@ -106,19 +106,21 @@ $(function(){initNavTree('atomic_species_8h.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">atomicSpecies.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;string_view&gt;</code><br />
+<div class="textblock"><code>#include &lt;format&gt;</code><br />
+<code>#include &lt;string_view&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;optional&gt;</code><br />
 <code>#include &lt;limits&gt;</code><br />
+<code>#include &lt;stdexcept&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for atomicSpecies.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="atomic_species_8h__incl.svg" width="343" height="126"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="atomic_species_8h__incl.svg" width="528" height="126"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="atomic_species_8h__dep__incl.svg" width="616" height="422"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="atomic_species_8h__dep__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 </div>
 <p><a href="atomic_species_8h_source.html">Go to the source code of this file.</a></p>
@@ -151,12 +153,8 @@ Functions</h2></td></tr>
 <tr class="memitem:a2b6c699988f0748a0627f447863240ad" id="r_a2b6c699988f0748a0627f447863240ad"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefourdst_1_1atomic.html#a2b6c699988f0748a0627f447863240ad">fourdst::atomic::operator!=</a> (const <a class="el" href="structfourdst_1_1atomic_1_1_species.html">Species</a> &amp;lhs, const <a class="el" href="structfourdst_1_1atomic_1_1_species.html">Species</a> &amp;rhs)</td></tr>
 <tr class="memdesc:a2b6c699988f0748a0627f447863240ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inequality operator for <a class="el" href="structfourdst_1_1atomic_1_1_species.html" title="Represents an atomic species (isotope) with its fundamental physical properties.">Species</a>. Compares based on name.  <br /></td></tr>
 <tr class="separator:a2b6c699988f0748a0627f447863240ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34d001fa83e2bac9f8ebd96285d8821a" id="r_a34d001fa83e2bac9f8ebd96285d8821a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefourdst_1_1atomic.html#a34d001fa83e2bac9f8ebd96285d8821a">fourdst::atomic::operator&lt;</a> (const <a class="el" href="structfourdst_1_1atomic_1_1_species.html">Species</a> &amp;lhs, const <a class="el" href="structfourdst_1_1atomic_1_1_species.html">Species</a> &amp;rhs)</td></tr>
-<tr class="memdesc:a34d001fa83e2bac9f8ebd96285d8821a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Less-than operator for <a class="el" href="structfourdst_1_1atomic_1_1_species.html" title="Represents an atomic species (isotope) with its fundamental physical properties.">Species</a>. Compares based on atomic mass.  <br /></td></tr>
-<tr class="separator:a34d001fa83e2bac9f8ebd96285d8821a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a289c90cf53fd83e6808768b0befa2c00" id="r_a289c90cf53fd83e6808768b0befa2c00"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefourdst_1_1atomic.html#a289c90cf53fd83e6808768b0befa2c00">fourdst::atomic::operator&gt;</a> (const <a class="el" href="structfourdst_1_1atomic_1_1_species.html">Species</a> &amp;lhs, const <a class="el" href="structfourdst_1_1atomic_1_1_species.html">Species</a> &amp;rhs)</td></tr>
-<tr class="memdesc:a289c90cf53fd83e6808768b0befa2c00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Greater-than operator for <a class="el" href="structfourdst_1_1atomic_1_1_species.html" title="Represents an atomic species (isotope) with its fundamental physical properties.">Species</a>. Compares based on atomic mass.  <br /></td></tr>
-<tr class="separator:a289c90cf53fd83e6808768b0befa2c00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf3d9814380a02c289f8514e74675abc" id="r_aaf3d9814380a02c289f8514e74675abc"><td class="memItemLeft" align="right" valign="top">std::partial_ordering&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefourdst_1_1atomic.html#aaf3d9814380a02c289f8514e74675abc">fourdst::atomic::operator&lt;=&gt;</a> (const <a class="el" href="structfourdst_1_1atomic_1_1_species.html">Species</a> &amp;lhs, const <a class="el" href="structfourdst_1_1atomic_1_1_species.html">Species</a> &amp;rhs)</td></tr>
+<tr class="separator:aaf3d9814380a02c289f8514e74675abc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

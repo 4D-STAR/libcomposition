@@ -1,0 +1,48 @@
+\doxysection{src/composition/lib/utils.cpp File Reference}
+\hypertarget{utils_8cpp}{}\label{utils_8cpp}\index{src/composition/lib/utils.cpp@{src/composition/lib/utils.cpp}}
+{\ttfamily \#include "{}fourdst/composition/composition.\+h"{}}\newline
+{\ttfamily \#include "{}fourdst/composition/exceptions/exceptions\+\_\+composition.\+h"{}}\newline
+{\ttfamily \#include "{}fourdst/atomic/atomic\+Species.\+h"{}}\newline
+{\ttfamily \#include "{}fourdst/atomic/species.\+h"{}}\newline
+{\ttfamily \#include "{}fourdst/composition/utils.\+h"{}}\newline
+{\ttfamily \#include "{}fourdst/logging/logging.\+h"{}}\newline
+{\ttfamily \#include $<$numeric$>$}\newline
+{\ttfamily \#include $<$ranges$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$set$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include "{}quill/\+Log\+Macros.\+h"{}}\newline
+Include dependency graph for utils.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{utils_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacefourdst}{fourdst}}
+\item 
+namespace \mbox{\hyperlink{namespacefourdst_1_1composition}{fourdst\+::composition}}
+\begin{DoxyCompactList}\small\item\em Utilities and types for representing and manipulating chemical compositions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} \mbox{\hyperlink{namespacefourdst_1_1composition_a2cb98194b465f646973ceba38d0e7d95}{fourdst\+::composition\+::build\+Composition\+From\+Mass\+Fractions}} (const std\+::set$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} $>$ \&species, const std\+::vector$<$ double $>$ \&mass\+Fractions)
+\begin{DoxyCompactList}\small\item\em Build a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} object from species in a set and their corresponding mass fractions. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} \mbox{\hyperlink{namespacefourdst_1_1composition_a39d4f84dfa85ddda3b9feb5dda1afc1e}{fourdst\+::composition\+::build\+Composition\+From\+Mass\+Fractions}} (const std\+::vector$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} $>$ \&species, const std\+::vector$<$ double $>$ \&mass\+Fractions)
+\begin{DoxyCompactList}\small\item\em Build a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} object from species and their corresponding mass fractions. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} \mbox{\hyperlink{namespacefourdst_1_1composition_aa90b1ef07d607c0c829bedccf381cf54}{fourdst\+::composition\+::build\+Composition\+From\+Mass\+Fractions}} (const std\+::vector$<$ std\+::string $>$ \&symbols, const std\+::vector$<$ double $>$ \&mass\+Fractions)
+\begin{DoxyCompactList}\small\item\em Build a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} object from symbols and their corresponding mass fractions. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} \mbox{\hyperlink{namespacefourdst_1_1composition_ada2fea5f3ac5cff3ecd67541a0a094fc}{fourdst\+::composition\+::build\+Composition\+From\+Mass\+Fractions}} (const std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}}, double $>$ \&mass\+Fractions\+Map)
+\begin{DoxyCompactList}\small\item\em Build a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} object from a map of species to mass fractions. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} \mbox{\hyperlink{namespacefourdst_1_1composition_a8163289e584a05b4075c775279761e55}{fourdst\+::composition\+::build\+Composition\+From\+Mass\+Fractions}} (std\+::map$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}}, double $>$ mass\+Fractions)
+\begin{DoxyCompactList}\small\item\em Build a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} object from a map of species to mass fractions. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} \mbox{\hyperlink{namespacefourdst_1_1composition_abd0e185f7fd52130f36414faf2dc07d7}{fourdst\+::composition\+::build\+Composition\+From\+Mass\+Fractions}} (std\+::map$<$ std\+::string, double $>$ mass\+Fractions)
+\begin{DoxyCompactList}\small\item\em Build a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} object from a map of species to mass fractions. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} \mbox{\hyperlink{namespacefourdst_1_1composition_abf844ad6e10524bf99fc3bf6c9d68465}{fourdst\+::composition\+::build\+Composition\+From\+Mass\+Fractions}} (const std\+::unordered\+\_\+map$<$ std\+::string, double $>$ \&mass\+Fractions)
+\begin{DoxyCompactList}\small\item\em Build a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} object from a map of species to mass fractions. \end{DoxyCompactList}\item 
+std\+::optional$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{fourdst\+::atomic\+::\+Species}} $>$ \mbox{\hyperlink{namespacefourdst_1_1composition_adcc2e4ca25ab7b93983730fc78f4deea}{fourdst\+::composition\+::get\+Species}} (const std\+::string \&symbol)
+\end{DoxyCompactItemize}

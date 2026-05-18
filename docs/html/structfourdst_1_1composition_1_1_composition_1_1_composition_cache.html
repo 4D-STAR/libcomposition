@@ -29,7 +29,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">fourdst::libcomposition<span id="projectnumber">&#160;v2.0.1</span>
+   <div id="projectname">fourdst::libcomposition<span id="projectnumber">&#160;v2.3.1</span>
    </div>
    <div id="projectbrief">Robust atomic species information library</div>
   </td>
@@ -142,12 +142,14 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:ae844e5a1d2b85c7cfee50157ccf189ce" id="r_ae844e5a1d2b85c7cfee50157ccf189ce"><td class="memItemLeft" align="right" valign="top">std::optional&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae844e5a1d2b85c7cfee50157ccf189ce">Ye</a></td></tr>
 <tr class="memdesc:ae844e5a1d2b85c7cfee50157ccf189ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cached electron abundance.  <br /></td></tr>
 <tr class="separator:ae844e5a1d2b85c7cfee50157ccf189ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8580c92659fff18f7453496939ecd427" id="r_a8580c92659fff18f7453496939ecd427"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8580c92659fff18f7453496939ecd427">hash</a></td></tr>
+<tr class="separator:a8580c92659fff18f7453496939ecd427"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Caches computed properties of the composition to avoid redundant calculations. </p>
 <p>This struct holds optional cached values for various computed properties of the composition, such as canonical composition, mass fractions, number fractions, molar abundances, sorted species, sorted symbols, and electron abundance. The cache can be cleared when the composition is modified. </p>
 
-<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00106">106</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00111">111</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ac8b576c3b48c4cedda6e9e2790072b0d" name="ac8b576c3b48c4cedda6e9e2790072b0d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac8b576c3b48c4cedda6e9e2790072b0d">&#9670;&#160;</a></span>clear()</h2>
@@ -174,7 +176,7 @@ Public Attributes</h2></td></tr>
 
 <p>Clears all cached values. </p>
 
-<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00118">118</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00124">124</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
 
 </div>
 </div>
@@ -204,7 +206,7 @@ Public Attributes</h2></td></tr>
 <p>Checks if the cache is clear (i.e., all cached values are empty). </p>
 <dl class="section return"><dt>Returns</dt><dd>True if the cache is clear, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00132">132</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00139">139</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
 
 </div>
 </div>
@@ -223,7 +225,23 @@ Public Attributes</h2></td></tr>
 
 <p>Cached canonical composition data. </p>
 
-<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00107">107</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00112">112</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+
+</div>
+</div>
+<a id="a8580c92659fff18f7453496939ecd427" name="a8580c92659fff18f7453496939ecd427"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8580c92659fff18f7453496939ecd427">&#9670;&#160;</a></span>hash</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt;std::size_t&gt; fourdst::composition::Composition::CompositionCache::hash</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00119">119</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
 
 </div>
 </div>
@@ -241,7 +259,7 @@ Public Attributes</h2></td></tr>
 
 <p>Cached vector of mass fractions. </p>
 
-<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00108">108</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00113">113</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
 
 </div>
 </div>
@@ -259,7 +277,7 @@ Public Attributes</h2></td></tr>
 
 <p>Cached vector of molar abundances. </p>
 
-<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00110">110</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00115">115</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
 
 </div>
 </div>
@@ -277,7 +295,7 @@ Public Attributes</h2></td></tr>
 
 <p>Cached vector of number fractions. </p>
 
-<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00109">109</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00114">114</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
 
 </div>
 </div>
@@ -295,7 +313,7 @@ Public Attributes</h2></td></tr>
 
 <p>Cached vector of sorted species (by mass). </p>
 
-<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00111">111</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00116">116</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
 
 </div>
 </div>
@@ -313,7 +331,7 @@ Public Attributes</h2></td></tr>
 
 <p>Cached vector of sorted species (by mass). </p>
 
-<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00112">112</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00117">117</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
 
 </div>
 </div>
@@ -331,7 +349,7 @@ Public Attributes</h2></td></tr>
 
 <p>Cached electron abundance. </p>
 
-<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00113">113</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="composition_8h_source.html#l00118">118</a> of file <a class="el" href="composition_8h_source.html">composition.h</a>.</p>
 
 </div>
 </div>

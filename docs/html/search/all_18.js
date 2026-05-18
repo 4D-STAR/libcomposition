@@ -306,11 +306,12 @@ var searchData=
   ['tm_5f180_303',['Tm_180',['../namespacefourdst_1_1atomic.html#a131a318d978279eaf0f5e55313e724bf',1,'fourdst::atomic']]],
   ['tm_5f181_304',['Tm_181',['../namespacefourdst_1_1atomic.html#a0af5277d66a1dae98c3c6db99e58fa7e',1,'fourdst::atomic']]],
   ['tm_5f182_305',['Tm_182',['../namespacefourdst_1_1atomic.html#ada62c9a65656b9a7277053024294ed61',1,'fourdst::atomic']]],
-  ['ts_5f291_306',['Ts_291',['../namespacefourdst_1_1atomic.html#a8236b458d572980e99cb504df6edc3f4',1,'fourdst::atomic']]],
-  ['ts_5f292_307',['Ts_292',['../namespacefourdst_1_1atomic.html#aff27c6884dd0efa31476d4b625651c26',1,'fourdst::atomic']]],
-  ['ts_5f293_308',['Ts_293',['../namespacefourdst_1_1atomic.html#a5c30badbc2aaafdc7816b23e784ffeb6',1,'fourdst::atomic']]],
-  ['ts_5f294_309',['Ts_294',['../namespacefourdst_1_1atomic.html#a45832f1cf5925dad348df3f4b396e0d5',1,'fourdst::atomic']]],
-  ['typed_20species_310',['2. Constructing from Strongly Typed Species',['../index.html#autotoc_md16',1,'']]],
-  ['types_20and_20functions_311',['Main types and functions',['../namespacefourdst_1_1composition.html#autotoc_md6',1,'']]],
-  ['typical_20usage_312',['Typical usage',['../namespacefourdst_1_1atomic.html#autotoc_md3',1,'']]]
+  ['to_20vector_20species_20vector_20double_306',['delegate to vector&lt;Species&gt;, vector&lt;double&gt;',['../classfourdst_1_1composition_1_1_composition.html#autotoc_md10',1,'']]],
+  ['ts_5f291_307',['Ts_291',['../namespacefourdst_1_1atomic.html#a8236b458d572980e99cb504df6edc3f4',1,'fourdst::atomic']]],
+  ['ts_5f292_308',['Ts_292',['../namespacefourdst_1_1atomic.html#aff27c6884dd0efa31476d4b625651c26',1,'fourdst::atomic']]],
+  ['ts_5f293_309',['Ts_293',['../namespacefourdst_1_1atomic.html#a5c30badbc2aaafdc7816b23e784ffeb6',1,'fourdst::atomic']]],
+  ['ts_5f294_310',['Ts_294',['../namespacefourdst_1_1atomic.html#a45832f1cf5925dad348df3f4b396e0d5',1,'fourdst::atomic']]],
+  ['typed_20species_311',['2. Constructing from Strongly Typed Species',['../index.html#autotoc_md17',1,'']]],
+  ['types_20and_20functions_312',['Main types and functions',['../namespacefourdst_1_1composition.html#autotoc_md6',1,'']]],
+  ['typical_20usage_313',['Typical usage',['../namespacefourdst_1_1atomic.html#autotoc_md3',1,'']]]
 ];

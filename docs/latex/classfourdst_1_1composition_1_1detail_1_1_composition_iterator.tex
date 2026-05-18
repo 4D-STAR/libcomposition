@@ -1,0 +1,530 @@
+\doxysection{fourdst\+::composition\+::detail\+::Composition\+Iterator\texorpdfstring{$<$}{<} Is\+Const \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{}\label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+
+
+{\ttfamily \#include $<$composition\+\_\+abstract\+\_\+iterator.\+h$>$}
+
+
+
+Collaboration diagram for fourdst\+::composition\+::detail\+::Composition\+Iterator\texorpdfstring{$<$}{<} Is\+Const \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{classfourdst_1_1composition_1_1detail_1_1_composition_iterator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structfourdst_1_1composition_1_1detail_1_1_composition_iterator_1_1_arrow_proxy}{Arrow\+Proxy}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_ae232e6536bd96aa9964a8052c9339c1a}{iterator\+\_\+category}} = std\+::random\+\_\+access\+\_\+iterator\+\_\+tag
+\item 
+using \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a4fb602e579f8770e027c986aaecc5100}{difference\+\_\+type}} = std\+::ptrdiff\+\_\+t
+\item 
+using \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a63f5c58c0dd0a2488f9a28f1d9c7dbd9}{value\+\_\+type}} = std\+::pair$<$const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}}, double$>$
+\item 
+using \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_aa4974fbcd3f4b3d387bdcb698b1760e6}{Species\+Ref}} = const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}}\&
+\item 
+using \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_af4da2e6b206ac0f7b1d921fd98450f25}{Abund\+Ref}} = std\+::conditional\+\_\+t$<$Is\+Const, const double\&, double\&$>$
+\item 
+using \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_aa7a1fa49ae5d7b8de165078bce02ebb2}{reference}} = std\+::pair$<$\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_aa4974fbcd3f4b3d387bdcb698b1760e6}{Species\+Ref}}, \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_af4da2e6b206ac0f7b1d921fd98450f25}{Abund\+Ref}}$>$
+\item 
+using \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a8d9af7fd266819ed7bb4da38d4f952a5}{pointer}} = \mbox{\hyperlink{structfourdst_1_1composition_1_1detail_1_1_composition_iterator_1_1_arrow_proxy}{Arrow\+Proxy}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a4fa613024e05b77ee3973bcabf736761}{Composition\+Iterator}} ()=default
+\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_ad6877ffbc5dcfd2b498f112e2a185099}{Composition\+Iterator}} (\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_aed9bfe4d2ddae0b750c962550b93bcbf}{Spec\+It}} s\+It, \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a396f26d92a6d87a85499a6f5135b7352}{Abun\+It}} a\+It)
+\item 
+{\footnotesize template$<$bool Was\+Const, typename = std\+::enable\+\_\+if\+\_\+t$<$\+Is\+Const \&\& !\+Was\+Const$>$$>$ }\\\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_adc43e2e4b4aa222c1eb88e1adcc32cb8}{Composition\+Iterator}} (const \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}}$<$ Was\+Const $>$ \&other)
+\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_aed9bfe4d2ddae0b750c962550b93bcbf}{Spec\+It}} \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a30ee7e1431e51d0539c2ccdc2804d598}{get\+Species\+It}} () const
+\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a396f26d92a6d87a85499a6f5135b7352}{Abun\+It}} \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a19e25dd39d7c6676da47666faef58116}{get\+Abundance\+It}} () const
+\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_aa7a1fa49ae5d7b8de165078bce02ebb2}{reference}} \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a6b9c3c600231743338de576dd412cb8c}{operator\texorpdfstring{$\ast$}{*}}} () const
+\item 
+\mbox{\hyperlink{structfourdst_1_1composition_1_1detail_1_1_composition_iterator_1_1_arrow_proxy}{Arrow\+Proxy}} \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_ae67c4393a15603e621e7bd30d7268fe3}{operator-\/$>$}} () const
+\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_aa7a1fa49ae5d7b8de165078bce02ebb2}{reference}} \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a69e657461059b8d319b83db18a1a3a41}{operator\mbox{[}$\,$\mbox{]}}} (\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a4fb602e579f8770e027c986aaecc5100}{difference\+\_\+type}} n) const
+\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}} \& \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a0ecda1668ba394e3a54b4d1b5b3a374e}{operator++}} ()
+\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}} \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a69a1da5e4e9b1ae8f7d6e3a213fe22d3}{operator++}} (int)
+\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}} \& \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_ad59ec70158a89a7a8e3465849e4b980d}{operator-\/-\/}} ()
+\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}} \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_aa2ddd5987de5124bc511e5a604eb6356}{operator-\/-\/}} (int)
+\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}} \& \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a209e18773d997fef6606ec324b605506}{operator+=}} (\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a4fb602e579f8770e027c986aaecc5100}{difference\+\_\+type}} n)
+\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}} \& \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a1feb5c9ac42680fba1f59515be077062}{operator-\/=}} (\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a4fb602e579f8770e027c986aaecc5100}{difference\+\_\+type}} n)
+\item 
+{\footnotesize template$<$bool R$>$ }\\bool \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_abbc456f46b7df3c4c76d8cb3ca58b3ce}{operator==}} (const \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}}$<$ R $>$ \&other) const
+\item 
+{\footnotesize template$<$bool R$>$ }\\bool \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a31007a52d4cdc1b51c8c8e4bc6ff64c6}{operator!=}} (const \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}}$<$ R $>$ \&other) const
+\item 
+{\footnotesize template$<$bool R$>$ }\\bool \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a4e2368ae5f9824356a6773e62de82c3a}{operator$<$}} (const \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}}$<$ R $>$ \&other) const
+\item 
+{\footnotesize template$<$bool R$>$ }\\bool \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a86579157940d117296d3e2982b98e4d7}{operator$>$}} (const \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}}$<$ R $>$ \&other) const
+\item 
+{\footnotesize template$<$bool R$>$ }\\bool \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a9aee8e08c491010401d77058183e9d96}{operator$<$=}} (const \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}}$<$ R $>$ \&other) const
+\item 
+{\footnotesize template$<$bool R$>$ }\\bool \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a3a2743e694b03437a6c333dd9f53ed86}{operator$>$=}} (const \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}}$<$ R $>$ \&other) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_aed9bfe4d2ddae0b750c962550b93bcbf}{Spec\+It}} = std\+::vector$<$\mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}}$>$\+::const\+\_\+iterator
+\item 
+using \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a396f26d92a6d87a85499a6f5135b7352}{Abun\+It}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_aed9bfe4d2ddae0b750c962550b93bcbf}{Spec\+It}} \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a624ae61ce7193d043284ff404fb1eae3}{m\+\_\+s\+It}}
+\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a396f26d92a6d87a85499a6f5135b7352}{Abun\+It}} \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a3d29053504e91c7328ebdb044d596550}{m\+\_\+a\+It}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}} \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a3ba3d677d692c81ee4e5a3bb1a3b6d13}{operator+}} (\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}} it, \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a4fb602e579f8770e027c986aaecc5100}{difference\+\_\+type}} n)
+\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}} \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_ae528bf1d5a35963d39556bf9efc3d0a4}{operator+}} (\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a4fb602e579f8770e027c986aaecc5100}{difference\+\_\+type}} n, \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}} it)
+\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}} \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_ae70d43e1178265d80c051119f259b6e0}{operator-\/}} (\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}} it, \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a4fb602e579f8770e027c986aaecc5100}{difference\+\_\+type}} n)
+\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a4fb602e579f8770e027c986aaecc5100}{difference\+\_\+type}} \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a917c6ae8912ee7b45cf416f6c29af215}{operator-\/}} (const \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}} \&lhs, const \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}} \&rhs)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$bool Is\+Const$>$\newline
+class fourdst\+::composition\+::detail\+::\+Composition\+Iterator$<$ Is\+Const $>$}
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00013}{13}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_af4da2e6b206ac0f7b1d921fd98450f25}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!AbundRef@{AbundRef}}
+\index{AbundRef@{AbundRef}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{AbundRef}{AbundRef}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_af4da2e6b206ac0f7b1d921fd98450f25} 
+template$<$bool Is\+Const$>$ \\
+using \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::\+Abund\+Ref = std\+::conditional\+\_\+t$<$Is\+Const, const double\&, double\&$>$}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00023}{23}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a396f26d92a6d87a85499a6f5135b7352}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!AbunIt@{AbunIt}}
+\index{AbunIt@{AbunIt}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{AbunIt}{AbunIt}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a396f26d92a6d87a85499a6f5135b7352} 
+template$<$bool Is\+Const$>$ \\
+using \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::\+Abun\+It\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ std::conditional\_t<IsConst,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<double>::const\_iterator,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<double>::iterator>}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00035}{35}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a4fb602e579f8770e027c986aaecc5100}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!difference\_type@{difference\_type}}
+\index{difference\_type@{difference\_type}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{difference\_type}{difference\_type}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a4fb602e579f8770e027c986aaecc5100} 
+template$<$bool Is\+Const$>$ \\
+using \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::difference\+\_\+type = std\+::ptrdiff\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00016}{16}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_ae232e6536bd96aa9964a8052c9339c1a}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!iterator\_category@{iterator\_category}}
+\index{iterator\_category@{iterator\_category}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{iterator\_category}{iterator\_category}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_ae232e6536bd96aa9964a8052c9339c1a} 
+template$<$bool Is\+Const$>$ \\
+using \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::iterator\+\_\+category = std\+::random\+\_\+access\+\_\+iterator\+\_\+tag}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00015}{15}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a8d9af7fd266819ed7bb4da38d4f952a5}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!pointer@{pointer}}
+\index{pointer@{pointer}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{pointer}{pointer}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a8d9af7fd266819ed7bb4da38d4f952a5} 
+template$<$bool Is\+Const$>$ \\
+using \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::pointer = \mbox{\hyperlink{structfourdst_1_1composition_1_1detail_1_1_composition_iterator_1_1_arrow_proxy}{Arrow\+Proxy}}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00031}{31}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_aa7a1fa49ae5d7b8de165078bce02ebb2}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!reference@{reference}}
+\index{reference@{reference}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{reference}{reference}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_aa7a1fa49ae5d7b8de165078bce02ebb2} 
+template$<$bool Is\+Const$>$ \\
+using \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::reference = std\+::pair$<$\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_aa4974fbcd3f4b3d387bdcb698b1760e6}{Species\+Ref}}, \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_af4da2e6b206ac0f7b1d921fd98450f25}{Abund\+Ref}}$>$}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00024}{24}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_aa4974fbcd3f4b3d387bdcb698b1760e6}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!SpeciesRef@{SpeciesRef}}
+\index{SpeciesRef@{SpeciesRef}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{SpeciesRef}{SpeciesRef}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_aa4974fbcd3f4b3d387bdcb698b1760e6} 
+template$<$bool Is\+Const$>$ \\
+using \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::\+Species\+Ref = const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}}\&}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00022}{22}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_aed9bfe4d2ddae0b750c962550b93bcbf}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!SpecIt@{SpecIt}}
+\index{SpecIt@{SpecIt}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{SpecIt}{SpecIt}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_aed9bfe4d2ddae0b750c962550b93bcbf} 
+template$<$bool Is\+Const$>$ \\
+using \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::\+Spec\+It = std\+::vector$<$\mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}}$>$\+::const\+\_\+iterator\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00034}{34}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a63f5c58c0dd0a2488f9a28f1d9c7dbd9}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!value\_type@{value\_type}}
+\index{value\_type@{value\_type}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{value\_type}{value\_type}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a63f5c58c0dd0a2488f9a28f1d9c7dbd9} 
+template$<$bool Is\+Const$>$ \\
+using \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::value\+\_\+type = std\+::pair$<$const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}}, double$>$}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00018}{18}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a4fa613024e05b77ee3973bcabf736761}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!CompositionIterator@{CompositionIterator}}
+\index{CompositionIterator@{CompositionIterator}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{CompositionIterator()}{CompositionIterator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a4fa613024e05b77ee3973bcabf736761} 
+template$<$bool Is\+Const$>$ \\
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::\+Composition\+Iterator (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_ad6877ffbc5dcfd2b498f112e2a185099}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!CompositionIterator@{CompositionIterator}}
+\index{CompositionIterator@{CompositionIterator}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{CompositionIterator()}{CompositionIterator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_ad6877ffbc5dcfd2b498f112e2a185099} 
+template$<$bool Is\+Const$>$ \\
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::\+Composition\+Iterator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_aed9bfe4d2ddae0b750c962550b93bcbf}{Spec\+It}}}]{s\+It}{, }\item[{\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a396f26d92a6d87a85499a6f5135b7352}{Abun\+It}}}]{a\+It}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00044}{44}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_adc43e2e4b4aa222c1eb88e1adcc32cb8}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!CompositionIterator@{CompositionIterator}}
+\index{CompositionIterator@{CompositionIterator}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{CompositionIterator()}{CompositionIterator()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_adc43e2e4b4aa222c1eb88e1adcc32cb8} 
+template$<$bool Is\+Const$>$ \\
+template$<$bool Was\+Const, typename = std\+::enable\+\_\+if\+\_\+t$<$\+Is\+Const \&\& !\+Was\+Const$>$$>$ \\
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::\+Composition\+Iterator (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}}$<$ Was\+Const $>$ \&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00047}{47}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a19e25dd39d7c6676da47666faef58116}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!getAbundanceIt@{getAbundanceIt}}
+\index{getAbundanceIt@{getAbundanceIt}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{getAbundanceIt()}{getAbundanceIt()}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a19e25dd39d7c6676da47666faef58116} 
+template$<$bool Is\+Const$>$ \\
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a396f26d92a6d87a85499a6f5135b7352}{Abun\+It}} \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::get\+Abundance\+It (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00051}{51}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a30ee7e1431e51d0539c2ccdc2804d598}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!getSpeciesIt@{getSpeciesIt}}
+\index{getSpeciesIt@{getSpeciesIt}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{getSpeciesIt()}{getSpeciesIt()}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a30ee7e1431e51d0539c2ccdc2804d598} 
+template$<$bool Is\+Const$>$ \\
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_aed9bfe4d2ddae0b750c962550b93bcbf}{Spec\+It}} \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::get\+Species\+It (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00050}{50}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a31007a52d4cdc1b51c8c8e4bc6ff64c6}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a31007a52d4cdc1b51c8c8e4bc6ff64c6} 
+template$<$bool Is\+Const$>$ \\
+template$<$bool R$>$ \\
+bool \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}}$<$ R $>$ \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00091}{91}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a6b9c3c600231743338de576dd412cb8c}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
+\index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}()}{operator*()}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a6b9c3c600231743338de576dd412cb8c} 
+template$<$bool Is\+Const$>$ \\
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_aa7a1fa49ae5d7b8de165078bce02ebb2}{reference}} \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::operator\texorpdfstring{$\ast$}{*} (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00053}{53}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a0ecda1668ba394e3a54b4d1b5b3a374e}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!operator++@{operator++}}
+\index{operator++@{operator++}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{operator++()}{operator++()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a0ecda1668ba394e3a54b4d1b5b3a374e} 
+template$<$bool Is\+Const$>$ \\
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}} \& \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::operator++ (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00066}{66}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a69a1da5e4e9b1ae8f7d6e3a213fe22d3}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!operator++@{operator++}}
+\index{operator++@{operator++}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{operator++()}{operator++()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a69a1da5e4e9b1ae8f7d6e3a213fe22d3} 
+template$<$bool Is\+Const$>$ \\
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}} \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::operator++ (\begin{DoxyParamCaption}\item[{int}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00067}{67}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a209e18773d997fef6606ec324b605506}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a209e18773d997fef6606ec324b605506} 
+template$<$bool Is\+Const$>$ \\
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}} \& \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::operator+= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a4fb602e579f8770e027c986aaecc5100}{difference\+\_\+type}}}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00072}{72}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_ad59ec70158a89a7a8e3465849e4b980d}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!operator-\/-\/@{operator-\/-\/}}
+\index{operator-\/-\/@{operator-\/-\/}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/-\/()}{operator--()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_ad59ec70158a89a7a8e3465849e4b980d} 
+template$<$bool Is\+Const$>$ \\
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}} \& \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::operator-\/-\/ (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00069}{69}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_aa2ddd5987de5124bc511e5a604eb6356}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!operator-\/-\/@{operator-\/-\/}}
+\index{operator-\/-\/@{operator-\/-\/}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/-\/()}{operator--()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_aa2ddd5987de5124bc511e5a604eb6356} 
+template$<$bool Is\+Const$>$ \\
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}} \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::operator-\/-\/ (\begin{DoxyParamCaption}\item[{int}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00070}{70}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a1feb5c9ac42680fba1f59515be077062}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/=()}{operator-=()}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a1feb5c9ac42680fba1f59515be077062} 
+template$<$bool Is\+Const$>$ \\
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}} \& \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::operator-\/= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a4fb602e579f8770e027c986aaecc5100}{difference\+\_\+type}}}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00073}{73}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_ae67c4393a15603e621e7bd30d7268fe3}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!operator-\/$>$@{operator-\/$>$}}
+\index{operator-\/$>$@{operator-\/$>$}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/$>$()}{operator->()}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_ae67c4393a15603e621e7bd30d7268fe3} 
+template$<$bool Is\+Const$>$ \\
+\mbox{\hyperlink{structfourdst_1_1composition_1_1detail_1_1_composition_iterator_1_1_arrow_proxy}{Arrow\+Proxy}} \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::operator-\/$>$ (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00057}{57}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a4e2368ae5f9824356a6773e62de82c3a}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a4e2368ae5f9824356a6773e62de82c3a} 
+template$<$bool Is\+Const$>$ \\
+template$<$bool R$>$ \\
+bool \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}}$<$ R $>$ \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00094}{94}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a9aee8e08c491010401d77058183e9d96}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{operator$<$=()}{operator<=()}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a9aee8e08c491010401d77058183e9d96} 
+template$<$bool Is\+Const$>$ \\
+template$<$bool R$>$ \\
+bool \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::operator$<$= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}}$<$ R $>$ \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00100}{100}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_abbc456f46b7df3c4c76d8cb3ca58b3ce}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!operator==@{operator==}}
+\index{operator==@{operator==}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_abbc456f46b7df3c4c76d8cb3ca58b3ce} 
+template$<$bool Is\+Const$>$ \\
+template$<$bool R$>$ \\
+bool \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}}$<$ R $>$ \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00088}{88}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a86579157940d117296d3e2982b98e4d7}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{operator$>$()}{operator>()}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a86579157940d117296d3e2982b98e4d7} 
+template$<$bool Is\+Const$>$ \\
+template$<$bool R$>$ \\
+bool \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::operator$>$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}}$<$ R $>$ \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00097}{97}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a3a2743e694b03437a6c333dd9f53ed86}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!operator$>$=@{operator$>$=}}
+\index{operator$>$=@{operator$>$=}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{operator$>$=()}{operator>=()}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a3a2743e694b03437a6c333dd9f53ed86} 
+template$<$bool Is\+Const$>$ \\
+template$<$bool R$>$ \\
+bool \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::operator$>$= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}}$<$ R $>$ \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00103}{103}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a69e657461059b8d319b83db18a1a3a41}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a69e657461059b8d319b83db18a1a3a41} 
+template$<$bool Is\+Const$>$ \\
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_aa7a1fa49ae5d7b8de165078bce02ebb2}{reference}} \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a4fb602e579f8770e027c986aaecc5100}{difference\+\_\+type}}}]{n}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00061}{61}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a3ba3d677d692c81ee4e5a3bb1a3b6d13}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!operator+@{operator+}}
+\index{operator+@{operator+}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{operator+}{operator+}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a3ba3d677d692c81ee4e5a3bb1a3b6d13} 
+template$<$bool Is\+Const$>$ \\
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}} operator+ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}}$<$ Is\+Const $>$}]{it}{, }\item[{\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a4fb602e579f8770e027c986aaecc5100}{difference\+\_\+type}}}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00076}{76}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_ae528bf1d5a35963d39556bf9efc3d0a4}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!operator+@{operator+}}
+\index{operator+@{operator+}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{operator+}{operator+}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_ae528bf1d5a35963d39556bf9efc3d0a4} 
+template$<$bool Is\+Const$>$ \\
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}} operator+ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a4fb602e579f8770e027c986aaecc5100}{difference\+\_\+type}}}]{n}{, }\item[{\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}}$<$ Is\+Const $>$}]{it}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00079}{79}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_ae70d43e1178265d80c051119f259b6e0}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/}{operator-}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_ae70d43e1178265d80c051119f259b6e0} 
+template$<$bool Is\+Const$>$ \\
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}} operator-\/ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}}$<$ Is\+Const $>$}]{it}{, }\item[{\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a4fb602e579f8770e027c986aaecc5100}{difference\+\_\+type}}}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00080}{80}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a917c6ae8912ee7b45cf416f6c29af215}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/}{operator-}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a917c6ae8912ee7b45cf416f6c29af215} 
+template$<$bool Is\+Const$>$ \\
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a4fb602e579f8770e027c986aaecc5100}{difference\+\_\+type}} operator-\/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}}$<$ Is\+Const $>$ \&}]{lhs}{, }\item[{const \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{Composition\+Iterator}}$<$ Is\+Const $>$ \&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00083}{83}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a3d29053504e91c7328ebdb044d596550}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!m\_aIt@{m\_aIt}}
+\index{m\_aIt@{m\_aIt}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{m\_aIt}{m\_aIt}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a3d29053504e91c7328ebdb044d596550} 
+template$<$bool Is\+Const$>$ \\
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a396f26d92a6d87a85499a6f5135b7352}{Abun\+It}} \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::m\+\_\+a\+It\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00040}{40}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+\Hypertarget{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a624ae61ce7193d043284ff404fb1eae3}\index{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}!m\_sIt@{m\_sIt}}
+\index{m\_sIt@{m\_sIt}!fourdst::composition::detail::CompositionIterator$<$ IsConst $>$@{fourdst::composition::detail::CompositionIterator$<$ IsConst $>$}}
+\doxysubsubsection{\texorpdfstring{m\_sIt}{m\_sIt}}
+{\footnotesize\ttfamily \label{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_a624ae61ce7193d043284ff404fb1eae3} 
+template$<$bool Is\+Const$>$ \\
+\mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator_aed9bfe4d2ddae0b750c962550b93bcbf}{Spec\+It}} \mbox{\hyperlink{classfourdst_1_1composition_1_1detail_1_1_composition_iterator}{fourdst\+::composition\+::detail\+::\+Composition\+Iterator}}$<$ Is\+Const $>$\+::m\+\_\+s\+It\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__abstract__iterator_8h_source_l00039}{39}} of file \mbox{\hyperlink{composition__abstract__iterator_8h_source}{composition\+\_\+abstract\+\_\+iterator.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/composition/include/fourdst/composition/iterators/\mbox{\hyperlink{composition__abstract__iterator_8h}{composition\+\_\+abstract\+\_\+iterator.\+h}}\end{DoxyCompactItemize}

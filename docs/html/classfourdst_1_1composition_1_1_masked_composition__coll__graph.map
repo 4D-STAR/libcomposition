@@ -1,0 +1,20 @@
+<map id="fourdst::composition::MaskedComposition" name="fourdst::composition::MaskedComposition">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1221,119,1369,159"/>
+<area shape="rect" id="Node000002" href="$classfourdst_1_1composition_1_1_composition_decorator.html" title=" " alt="" coords="888,45,1047,86"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1062,84,1224,123,1218,122,1062,89"/>
+<area shape="rect" id="Node000003" href="$classfourdst_1_1composition_1_1_composition_abstract.html" title="Abstract base class for chemical composition representations." alt="" coords="180,5,331,46"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="346,23,447,24,656,25,747,30,864,43,890,49,885,49,863,48,747,35,656,31,447,30,347,29"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="471,45,713,86"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="346,38,356,39,473,54,468,56,355,45,347,43"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="728,63,890,65,885,66,729,68"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="900,119,1035,159"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="1051,136,1223,139,1218,139,1051,142"/>
+<area shape="rect" id="Node000006" href="$structfourdst_1_1atomic_1_1_species.html" title="Represents an atomic species (isotope) with its fundamental physical properties." alt="" coords="510,133,674,158"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="689,141,902,140,897,140,689,147"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="216,136,295,161"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="310,145,447,145,513,146,507,147,447,150,311,151"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="5,128,131,169"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="146,146,218,147,213,149,146,151"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="895,184,1040,209"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="1055,181,1197,157,1218,155,1223,154,1197,162,1055,186"/>
+</map>

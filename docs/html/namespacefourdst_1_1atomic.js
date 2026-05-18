@@ -1,6 +1,6 @@
 var namespacefourdst_1_1atomic =
 [
-    [ "Species", "structfourdst_1_1atomic_1_1Species.html", "structfourdst_1_1atomic_1_1Species" ],
+    [ "Species", "structfourdst_1_1atomic_1_1_species.html", "structfourdst_1_1atomic_1_1_species" ],
     [ "SpeciesErrorType", "namespacefourdst_1_1atomic.html#a6c728f75913c5bfb62f6dcf9dff294fe", [
       [ "ELEMENT_SYMBOL_NOT_FOUND", "namespacefourdst_1_1atomic.html#a6c728f75913c5bfb62f6dcf9dff294fea3118448fccedc8cc00213d97349eec7a", null ],
       [ "SPECIES_SYMBOL_NOT_FOUND", "namespacefourdst_1_1atomic.html#a6c728f75913c5bfb62f6dcf9dff294feabad4f0ccf5dd67ba5efc3be855889ef3", null ]
@@ -2048,9 +2048,8 @@ var namespacefourdst_1_1atomic =
     [ "Og_294", "namespacefourdst_1_1atomic.html#ad34259c587ac92df0678beea6fde37bc", null ],
     [ "Og_295", "namespacefourdst_1_1atomic.html#a65016df026582f5d1718fd741c25b675", null ],
     [ "operator!=", "namespacefourdst_1_1atomic.html#a2b6c699988f0748a0627f447863240ad", null ],
-    [ "operator<", "namespacefourdst_1_1atomic.html#a34d001fa83e2bac9f8ebd96285d8821a", null ],
+    [ "operator<=>", "namespacefourdst_1_1atomic.html#aaf3d9814380a02c289f8514e74675abc", null ],
     [ "operator==", "namespacefourdst_1_1atomic.html#a277fa6e5107f1358e204c807146deeb4", null ],
-    [ "operator>", "namespacefourdst_1_1atomic.html#a289c90cf53fd83e6808768b0befa2c00", null ],
     [ "Os_161", "namespacefourdst_1_1atomic.html#a7d0b9b726da85668c21671df0da21200", null ],
     [ "Os_162", "namespacefourdst_1_1atomic.html#ad083631b81c7f1ceabe55cff3d114394", null ],
     [ "Os_163", "namespacefourdst_1_1atomic.html#a6db5de8d69ebcc78d3f4863bd476c9a3", null ],

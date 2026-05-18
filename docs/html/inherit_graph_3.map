@@ -1,3 +1,9 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$structfourdst_1_1composition_1_1_composition_1_1_composition_cache.html" title="Caches computed properties of the composition to avoid redundant calculations." alt="" coords="5,5,227,46"/>
+<area shape="rect" id="Node000000" href="$classfourdst_1_1composition_1_1_composition_abstract.html" title="Abstract base class for chemical composition representations." alt="" coords="5,39,157,79"/>
+<area shape="rect" id="Node000001" href="$classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances." alt="" coords="215,5,354,46"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="172,41,217,36,212,38,173,47"/>
+<area shape="rect" id="Node000002" href="$classfourdst_1_1composition_1_1_composition_decorator.html" title=" " alt="" coords="205,71,364,111"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="172,71,207,78,202,79,172,76"/>
+<area shape="rect" id="Node000003" href="$classfourdst_1_1composition_1_1_masked_composition.html" title=" " alt="" coords="412,71,560,111"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="380,88,415,91,409,91,380,94"/>
 </map>

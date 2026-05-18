@@ -1,0 +1,126 @@
+\doxysection{composition\+\_\+hash.\+h}
+\hypertarget{composition__hash_8h_source}{}\label{composition__hash_8h_source}\index{src/composition/include/fourdst/composition/utils/composition\_hash.h@{src/composition/include/fourdst/composition/utils/composition\_hash.h}}
+\mbox{\hyperlink{composition__hash_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <cstring>}}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <bit>}}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}xxhash64.h"{}}}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{composition_8h}{fourdst/composition/composition.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{composition__abstract_8h}{fourdst/composition/composition\_abstract.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00011}\mbox{\hyperlink{namespacefourdst_1_1composition_1_1utils}{00011}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacefourdst_1_1composition_1_1utils}{fourdst::composition::utils}}\ \{}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ Make\ a\ concept\ which\ checks\ if\ a\ type\ inherits\ from\ CompositionAbstract}}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00013}00013\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ CompT>}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00014}\mbox{\hyperlink{conceptfourdst_1_1composition_1_1utils_1_1_composition_type}{00014}}\ \ \ \ \ \textcolor{keyword}{concept\ }\mbox{\hyperlink{conceptfourdst_1_1composition_1_1utils_1_1_composition_type}{CompositionType}}\ =\ std::is\_base\_of\_v<CompositionAbstract,\ CompT>;}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00016}\mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash}{00016}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash}{CompositionHash}}\ \{}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <CompositionType\ CompositionT>}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00018}\mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_af30bb4f60999d9ad99ad3893efa2de65}{00018}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ uint64\_t\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_af30bb4f60999d9ad99ad3893efa2de65}{hash\_exact}}(\textcolor{keyword}{const}\ CompositionT\&\ comp)\ \{}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ uint64\_t\ h0\ =\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_ac80f1cb0966ae3d0358e77c7a6f904f5}{kSeed}};}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ uint64\_t\ h1\ =\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_ac80f1cb0966ae3d0358e77c7a6f904f5}{kSeed}}\ \string^\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a534655db7f5270577d2ebd99f7afb233}{kPrime1}};}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ uint64\_t\ h2\ =\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_ac80f1cb0966ae3d0358e77c7a6f904f5}{kSeed}}\ \string^\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a3ec846d75e05a3f9d852e479bbdeffc0}{kPrime2}};}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ uint64\_t\ h3\ =\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_ac80f1cb0966ae3d0358e77c7a6f904f5}{kSeed}}\ \string^\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_aaada3987c54d6a960843d28ecac48b12}{kPrime3}};}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ comp.begin();}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ remaining\ =\ comp.size();}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (remaining\ >=\ 4)\ \{}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ p0\ =\ *it;}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++it;}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h0\ \string^=\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a84329d89ee262cfc08e358033b4ae6c3}{pack\_species\_id}}(p0.first);}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h0\ =\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_ae4645b210880b3d76e205783fa9a3076}{mum}}(h0,\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a534655db7f5270577d2ebd99f7afb233}{kPrime1}});}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h0\ \string^=\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a492812c018520c057c0a113c9113f9d2}{normalize\_double\_bits}}(p0.second);}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h0\ =\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_ae4645b210880b3d76e205783fa9a3076}{mum}}(h0,\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a3ec846d75e05a3f9d852e479bbdeffc0}{kPrime2}});}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ p1\ =\ *it;}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++it;}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h1\ \string^=\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a84329d89ee262cfc08e358033b4ae6c3}{pack\_species\_id}}(p1.first);}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h1\ =\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_ae4645b210880b3d76e205783fa9a3076}{mum}}(h1,\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a534655db7f5270577d2ebd99f7afb233}{kPrime1}});}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h1\ \string^=\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a492812c018520c057c0a113c9113f9d2}{normalize\_double\_bits}}(p1.second);}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h1\ =\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_ae4645b210880b3d76e205783fa9a3076}{mum}}(h1,\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a3ec846d75e05a3f9d852e479bbdeffc0}{kPrime2}});}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ p2\ =\ *it;}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++it;}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h2\ \string^=\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a84329d89ee262cfc08e358033b4ae6c3}{pack\_species\_id}}(p2.first);}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h2\ =\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_ae4645b210880b3d76e205783fa9a3076}{mum}}(h2,\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a534655db7f5270577d2ebd99f7afb233}{kPrime1}});}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h2\ \string^=\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a492812c018520c057c0a113c9113f9d2}{normalize\_double\_bits}}(p2.second);}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h2\ =\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_ae4645b210880b3d76e205783fa9a3076}{mum}}(h2,\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a3ec846d75e05a3f9d852e479bbdeffc0}{kPrime2}});}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ p3\ =\ *it;}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++it;}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h3\ \string^=\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a84329d89ee262cfc08e358033b4ae6c3}{pack\_species\_id}}(p3.first);}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h3\ =\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_ae4645b210880b3d76e205783fa9a3076}{mum}}(h3,\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a534655db7f5270577d2ebd99f7afb233}{kPrime1}});}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h3\ \string^=\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a492812c018520c057c0a113c9113f9d2}{normalize\_double\_bits}}(p3.second);}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h3\ =\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_ae4645b210880b3d76e205783fa9a3076}{mum}}(h3,\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a3ec846d75e05a3f9d852e479bbdeffc0}{kPrime2}});}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ remaining\ -\/=\ 4;}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (remaining\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ p\ =\ *it;}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++it;}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h0\ \string^=\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a84329d89ee262cfc08e358033b4ae6c3}{pack\_species\_id}}(p.first);}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h0\ =\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_ae4645b210880b3d76e205783fa9a3076}{mum}}(h0,\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a534655db7f5270577d2ebd99f7afb233}{kPrime1}});}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h0\ \string^=\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a492812c018520c057c0a113c9113f9d2}{normalize\_double\_bits}}(p.second);}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h0\ =\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_ae4645b210880b3d76e205783fa9a3076}{mum}}(h0,\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a3ec846d75e05a3f9d852e479bbdeffc0}{kPrime2}});}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/-\/remaining;}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_ae4645b210880b3d76e205783fa9a3076}{mum}}(h0\ \string^\ h1\ \string^\ h2\ \string^\ h3,\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_aaada3987c54d6a960843d28ecac48b12}{kPrime3}});}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00070}00070\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00072}00072\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00073}\mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_ac80f1cb0966ae3d0358e77c7a6f904f5}{00073}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint64\_t\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_ac80f1cb0966ae3d0358e77c7a6f904f5}{kSeed}}\ =\ 0xC04D5EEDBEEFull;}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00074}\mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a534655db7f5270577d2ebd99f7afb233}{00074}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint64\_t\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a534655db7f5270577d2ebd99f7afb233}{kPrime1}}\ =\ 0xa0761d6478bd642fULL;}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00075}\mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a3ec846d75e05a3f9d852e479bbdeffc0}{00075}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint64\_t\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a3ec846d75e05a3f9d852e479bbdeffc0}{kPrime2}}\ =\ 0xe7037ed1a0b428dbULL;}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00076}\mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_aaada3987c54d6a960843d28ecac48b12}{00076}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint64\_t\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_aaada3987c54d6a960843d28ecac48b12}{kPrime3}}\ =\ 0x8ebc6af09c88c6e3ULL;}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ Helper:\ Fast\ integer\ mixing\ -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00079}\mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_ae4645b210880b3d76e205783fa9a3076}{00079}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint64\_t\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_ae4645b210880b3d76e205783fa9a3076}{mum}}(\textcolor{keyword}{const}\ uint64\_t\ a,\ \textcolor{keyword}{const}\ uint64\_t\ b)\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \_\_int128\ r\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \_\_int128\textcolor{keyword}{>}(a)\ *\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \_\_int128\textcolor{keyword}{>}(b);}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}uint64\_t\textcolor{keyword}{>}(r)\ \string^\ \textcolor{keyword}{static\_cast<}uint64\_t\textcolor{keyword}{>}(r\ >>\ 64);}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00082}00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00084}\mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a8f6f7432f29b9da29d09efccd11373fa}{00084}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint64\_t\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a8f6f7432f29b9da29d09efccd11373fa}{mix}}(\textcolor{keyword}{const}\ uint64\_t\ h)\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_ae4645b210880b3d76e205783fa9a3076}{mum}}(h,\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a534655db7f5270577d2ebd99f7afb233}{kPrime1}});}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00086}00086\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00088}00088\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ Normalization\ Logic\ -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00089}\mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a492812c018520c057c0a113c9113f9d2}{00089}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint64\_t\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a492812c018520c057c0a113c9113f9d2}{normalize\_double\_bits}}(\textcolor{keywordtype}{double}\ v)\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (v\ ==\ 0.0)\ v\ =\ 0.0;\ \textcolor{comment}{//\ fold\ -\/0.0\ -\/>\ +0.0}}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::isnan(v))\ \{}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0x7ff8000000000000ULL;\ \textcolor{comment}{//\ canonical\ quiet\ NaN}}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::bit\_cast<uint64\_t>(v);}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00095}00095\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00097}\mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a84329d89ee262cfc08e358033b4ae6c3}{00097}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint32\_t\ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a84329d89ee262cfc08e358033b4ae6c3}{pack\_species\_id}}(\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ s)\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ z\ =\ \textcolor{keyword}{static\_cast<}uint16\_t\textcolor{keyword}{>}(s.z());}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ a\ =\ \textcolor{keyword}{static\_cast<}uint16\_t\textcolor{keyword}{>}(s.a());}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(z)\ <<\ 16)\ |\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(a);}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00101}00101\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00102}00102\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00103}00103\ \}}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00105}00105\ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00106}\mbox{\hyperlink{structstd_1_1hash_3_01fourdst_1_1composition_1_1_composition_abstract_01_4}{00106}}\ \textcolor{keyword}{struct\ }std::hash<\mbox{\hyperlink{namespacefourdst}{fourdst}}::composition::CompositionAbstract>\ \{}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00107}\mbox{\hyperlink{structstd_1_1hash_3_01fourdst_1_1composition_1_1_composition_abstract_01_4_a1d1f55cfb8f4605a477e368bb2f8d860}{00107}}\ \ \ \ \ std::size\_t\ \mbox{\hyperlink{structstd_1_1hash_3_01fourdst_1_1composition_1_1_composition_abstract_01_4_a1d1f55cfb8f4605a477e368bb2f8d860}{operator()}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition_abstract}{fourdst::composition::CompositionAbstract}}\&\ c)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00108}00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_af30bb4f60999d9ad99ad3893efa2de65}{fourdst::composition::utils::CompositionHash::hash\_exact}}(c)}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00110}00110\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00111}00111\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00112}00112\ \};}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00113}00113\ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00114}\mbox{\hyperlink{structstd_1_1hash_3_01fourdst_1_1composition_1_1_composition_01_4}{00114}}\ \textcolor{keyword}{struct\ }std::hash<\mbox{\hyperlink{namespacefourdst}{fourdst}}::composition::Composition>\ \{}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00115}\mbox{\hyperlink{structstd_1_1hash_3_01fourdst_1_1composition_1_1_composition_01_4_a20ef7280a7d2353f5b391a1a00263d0c}{00115}}\ \ \ \ \ std::size\_t\ \mbox{\hyperlink{structstd_1_1hash_3_01fourdst_1_1composition_1_1_composition_01_4_a20ef7280a7d2353f5b391a1a00263d0c}{operator()}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{fourdst::composition::Composition}}\&\ c)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00116}00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_af30bb4f60999d9ad99ad3893efa2de65}{fourdst::composition::utils::CompositionHash::hash\_exact}}(c)}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00118}00118\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00119}00119\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{composition__hash_8h_source_l00120}00120\ \};}
+
+\end{DoxyCode}

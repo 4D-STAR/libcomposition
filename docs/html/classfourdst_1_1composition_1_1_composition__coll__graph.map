@@ -1,18 +1,17 @@
 <map id="fourdst::composition::Composition" name="fourdst::composition::Composition">
-<area shape="rect" id="Node000001" title="Manages a collection of chemical species and their abundances." alt="" coords="1038,83,1177,124"/>
-<area shape="rect" id="Node000002" href="$class_composition_abstract.html" title="Abstract base class for chemical composition representations." alt="" coords="682,5,825,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="841,27,925,42,1015,64,1061,80,1059,85,1013,69,924,47,840,32"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="690,55,817,96"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="833,79,1038,95,1037,101,832,84"/>
-<area shape="rect" id="Node000004" href="$structfourdst_1_1atomic_1_1_species.html" title="Represents an atomic species (isotope) with its fundamental physical properties." alt="" coords="399,96,563,122"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="578,94,689,81,689,86,579,100"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="667,120,840,161"/>
-<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="579,121,587,123,666,131,666,136,586,128,578,127"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="180,96,259,122"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="275,106,399,106,399,112,275,112"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="5,88,131,129"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="146,106,179,106,179,112,146,112"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="856,129,1014,113,1037,110,1038,116,1014,118,856,135"/>
-<area shape="rect" id="Node000008" href="$structfourdst_1_1composition_1_1_composition_1_1_composition_cache.html" title="Caches computed properties of the composition to avoid redundant calculations." alt="" coords="643,186,864,226"/>
-<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="878,183,946,167,1013,147,1068,122,1071,127,1015,152,947,172,879,188"/>
+<area shape="rect" id="Node000001" title="Manages a collection of chemical species and their abundances." alt="" coords="1063,100,1202,141"/>
+<area shape="rect" id="Node000002" href="$classfourdst_1_1composition_1_1_composition_abstract.html" title="Abstract base class for chemical composition representations." alt="" coords="703,5,854,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="869,38,953,56,1040,79,1089,100,1083,99,1038,84,951,61,869,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="711,71,846,111"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="862,95,1065,114,1060,115,862,101"/>
+<area shape="rect" id="Node000004" href="$structfourdst_1_1atomic_1_1_species.html" title="Represents an atomic species (isotope) with its fundamental physical properties." alt="" coords="399,78,563,104"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="578,88,713,91,708,91,578,94"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="180,78,259,104"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="274,88,401,90,396,92,275,94"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="5,71,131,111"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="146,88,182,90,177,92,147,94"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="706,136,851,161"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="867,147,950,145,1039,138,1060,137,1065,137,1039,143,950,150,867,152"/>
+<area shape="rect" id="Node000008" href="$structfourdst_1_1composition_1_1_composition_1_1_composition_cache.html" title="Caches computed properties of the composition to avoid redundant calculations." alt="" coords="668,185,889,226"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="904,195,971,184,1038,167,1069,154,1097,142,1102,141,1072,159,1040,173,973,190,905,200"/>
 </map>

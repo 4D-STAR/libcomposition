@@ -1,0 +1,142 @@
+\doxysection{fourdst\+::composition\+::utils\+::Composition\+Hash Struct Reference}
+\hypertarget{structfourdst_1_1composition_1_1utils_1_1_composition_hash}{}\label{structfourdst_1_1composition_1_1utils_1_1_composition_hash}\index{fourdst::composition::utils::CompositionHash@{fourdst::composition::utils::CompositionHash}}
+
+
+{\ttfamily \#include $<$composition\+\_\+hash.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$Composition\+Type CompositionT$>$ }\\static uint64\+\_\+t \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_af30bb4f60999d9ad99ad3893efa2de65}{hash\+\_\+exact}} (const CompositionT \&comp)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static uint64\+\_\+t \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_ae4645b210880b3d76e205783fa9a3076}{mum}} (const uint64\+\_\+t a, const uint64\+\_\+t b) noexcept
+\item 
+static uint64\+\_\+t \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a8f6f7432f29b9da29d09efccd11373fa}{mix}} (const uint64\+\_\+t h) noexcept
+\item 
+static uint64\+\_\+t \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a492812c018520c057c0a113c9113f9d2}{normalize\+\_\+double\+\_\+bits}} (double v) noexcept
+\item 
+static uint32\+\_\+t \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a84329d89ee262cfc08e358033b4ae6c3}{pack\+\_\+species\+\_\+id}} (const auto \&s) noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr uint64\+\_\+t \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_ac80f1cb0966ae3d0358e77c7a6f904f5}{k\+Seed}} = 0x\+C04\+D5\+EEDBEEFull
+\item 
+static constexpr uint64\+\_\+t \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a534655db7f5270577d2ebd99f7afb233}{k\+Prime1}} = 0xa0761d6478bd642f\+ULL
+\item 
+static constexpr uint64\+\_\+t \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a3ec846d75e05a3f9d852e479bbdeffc0}{k\+Prime2}} = 0xe7037ed1a0b428db\+ULL
+\item 
+static constexpr uint64\+\_\+t \mbox{\hyperlink{structfourdst_1_1composition_1_1utils_1_1_composition_hash_aaada3987c54d6a960843d28ecac48b12}{k\+Prime3}} = 0x8ebc6af09c88c6e3\+ULL
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{composition__hash_8h_source_l00016}{16}} of file \mbox{\hyperlink{composition__hash_8h_source}{composition\+\_\+hash.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structfourdst_1_1composition_1_1utils_1_1_composition_hash_af30bb4f60999d9ad99ad3893efa2de65}\index{fourdst::composition::utils::CompositionHash@{fourdst::composition::utils::CompositionHash}!hash\_exact@{hash\_exact}}
+\index{hash\_exact@{hash\_exact}!fourdst::composition::utils::CompositionHash@{fourdst::composition::utils::CompositionHash}}
+\doxysubsubsection{\texorpdfstring{hash\_exact()}{hash\_exact()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1utils_1_1_composition_hash_af30bb4f60999d9ad99ad3893efa2de65} 
+template$<$Composition\+Type CompositionT$>$ \\
+static uint64\+\_\+t fourdst\+::composition\+::utils\+::\+Composition\+Hash\+::hash\+\_\+exact (\begin{DoxyParamCaption}\item[{const CompositionT \&}]{comp}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__hash_8h_source_l00018}{18}} of file \mbox{\hyperlink{composition__hash_8h_source}{composition\+\_\+hash.\+h}}.
+
+\Hypertarget{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a8f6f7432f29b9da29d09efccd11373fa}\index{fourdst::composition::utils::CompositionHash@{fourdst::composition::utils::CompositionHash}!mix@{mix}}
+\index{mix@{mix}!fourdst::composition::utils::CompositionHash@{fourdst::composition::utils::CompositionHash}}
+\doxysubsubsection{\texorpdfstring{mix()}{mix()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a8f6f7432f29b9da29d09efccd11373fa} 
+static uint64\+\_\+t fourdst\+::composition\+::utils\+::\+Composition\+Hash\+::mix (\begin{DoxyParamCaption}\item[{const uint64\+\_\+t}]{h}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__hash_8h_source_l00084}{84}} of file \mbox{\hyperlink{composition__hash_8h_source}{composition\+\_\+hash.\+h}}.
+
+\Hypertarget{structfourdst_1_1composition_1_1utils_1_1_composition_hash_ae4645b210880b3d76e205783fa9a3076}\index{fourdst::composition::utils::CompositionHash@{fourdst::composition::utils::CompositionHash}!mum@{mum}}
+\index{mum@{mum}!fourdst::composition::utils::CompositionHash@{fourdst::composition::utils::CompositionHash}}
+\doxysubsubsection{\texorpdfstring{mum()}{mum()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1utils_1_1_composition_hash_ae4645b210880b3d76e205783fa9a3076} 
+static uint64\+\_\+t fourdst\+::composition\+::utils\+::\+Composition\+Hash\+::mum (\begin{DoxyParamCaption}\item[{const uint64\+\_\+t}]{a}{, }\item[{const uint64\+\_\+t}]{b}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__hash_8h_source_l00079}{79}} of file \mbox{\hyperlink{composition__hash_8h_source}{composition\+\_\+hash.\+h}}.
+
+\Hypertarget{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a492812c018520c057c0a113c9113f9d2}\index{fourdst::composition::utils::CompositionHash@{fourdst::composition::utils::CompositionHash}!normalize\_double\_bits@{normalize\_double\_bits}}
+\index{normalize\_double\_bits@{normalize\_double\_bits}!fourdst::composition::utils::CompositionHash@{fourdst::composition::utils::CompositionHash}}
+\doxysubsubsection{\texorpdfstring{normalize\_double\_bits()}{normalize\_double\_bits()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a492812c018520c057c0a113c9113f9d2} 
+static uint64\+\_\+t fourdst\+::composition\+::utils\+::\+Composition\+Hash\+::normalize\+\_\+double\+\_\+bits (\begin{DoxyParamCaption}\item[{double}]{v}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__hash_8h_source_l00089}{89}} of file \mbox{\hyperlink{composition__hash_8h_source}{composition\+\_\+hash.\+h}}.
+
+\Hypertarget{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a84329d89ee262cfc08e358033b4ae6c3}\index{fourdst::composition::utils::CompositionHash@{fourdst::composition::utils::CompositionHash}!pack\_species\_id@{pack\_species\_id}}
+\index{pack\_species\_id@{pack\_species\_id}!fourdst::composition::utils::CompositionHash@{fourdst::composition::utils::CompositionHash}}
+\doxysubsubsection{\texorpdfstring{pack\_species\_id()}{pack\_species\_id()}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a84329d89ee262cfc08e358033b4ae6c3} 
+static uint32\+\_\+t fourdst\+::composition\+::utils\+::\+Composition\+Hash\+::pack\+\_\+species\+\_\+id (\begin{DoxyParamCaption}\item[{const auto \&}]{s}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__hash_8h_source_l00097}{97}} of file \mbox{\hyperlink{composition__hash_8h_source}{composition\+\_\+hash.\+h}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a534655db7f5270577d2ebd99f7afb233}\index{fourdst::composition::utils::CompositionHash@{fourdst::composition::utils::CompositionHash}!kPrime1@{kPrime1}}
+\index{kPrime1@{kPrime1}!fourdst::composition::utils::CompositionHash@{fourdst::composition::utils::CompositionHash}}
+\doxysubsubsection{\texorpdfstring{kPrime1}{kPrime1}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a534655db7f5270577d2ebd99f7afb233} 
+uint64\+\_\+t fourdst\+::composition\+::utils\+::\+Composition\+Hash\+::k\+Prime1 = 0xa0761d6478bd642f\+ULL\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__hash_8h_source_l00074}{74}} of file \mbox{\hyperlink{composition__hash_8h_source}{composition\+\_\+hash.\+h}}.
+
+\Hypertarget{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a3ec846d75e05a3f9d852e479bbdeffc0}\index{fourdst::composition::utils::CompositionHash@{fourdst::composition::utils::CompositionHash}!kPrime2@{kPrime2}}
+\index{kPrime2@{kPrime2}!fourdst::composition::utils::CompositionHash@{fourdst::composition::utils::CompositionHash}}
+\doxysubsubsection{\texorpdfstring{kPrime2}{kPrime2}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1utils_1_1_composition_hash_a3ec846d75e05a3f9d852e479bbdeffc0} 
+uint64\+\_\+t fourdst\+::composition\+::utils\+::\+Composition\+Hash\+::k\+Prime2 = 0xe7037ed1a0b428db\+ULL\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__hash_8h_source_l00075}{75}} of file \mbox{\hyperlink{composition__hash_8h_source}{composition\+\_\+hash.\+h}}.
+
+\Hypertarget{structfourdst_1_1composition_1_1utils_1_1_composition_hash_aaada3987c54d6a960843d28ecac48b12}\index{fourdst::composition::utils::CompositionHash@{fourdst::composition::utils::CompositionHash}!kPrime3@{kPrime3}}
+\index{kPrime3@{kPrime3}!fourdst::composition::utils::CompositionHash@{fourdst::composition::utils::CompositionHash}}
+\doxysubsubsection{\texorpdfstring{kPrime3}{kPrime3}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1utils_1_1_composition_hash_aaada3987c54d6a960843d28ecac48b12} 
+uint64\+\_\+t fourdst\+::composition\+::utils\+::\+Composition\+Hash\+::k\+Prime3 = 0x8ebc6af09c88c6e3\+ULL\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__hash_8h_source_l00076}{76}} of file \mbox{\hyperlink{composition__hash_8h_source}{composition\+\_\+hash.\+h}}.
+
+\Hypertarget{structfourdst_1_1composition_1_1utils_1_1_composition_hash_ac80f1cb0966ae3d0358e77c7a6f904f5}\index{fourdst::composition::utils::CompositionHash@{fourdst::composition::utils::CompositionHash}!kSeed@{kSeed}}
+\index{kSeed@{kSeed}!fourdst::composition::utils::CompositionHash@{fourdst::composition::utils::CompositionHash}}
+\doxysubsubsection{\texorpdfstring{kSeed}{kSeed}}
+{\footnotesize\ttfamily \label{structfourdst_1_1composition_1_1utils_1_1_composition_hash_ac80f1cb0966ae3d0358e77c7a6f904f5} 
+uint64\+\_\+t fourdst\+::composition\+::utils\+::\+Composition\+Hash\+::k\+Seed = 0x\+C04\+D5\+EEDBEEFull\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{composition__hash_8h_source_l00073}{73}} of file \mbox{\hyperlink{composition__hash_8h_source}{composition\+\_\+hash.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/composition/include/fourdst/composition/utils/\mbox{\hyperlink{composition__hash_8h}{composition\+\_\+hash.\+h}}\end{DoxyCompactItemize}

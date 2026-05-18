@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['species_0',['Species',['../structfourdst_1_1atomic_1_1_species.html',1,'fourdst::atomic']]]
+  ['unknownsymbolerror_0',['UnknownSymbolError',['../classfourdst_1_1composition_1_1exceptions_1_1_unknown_symbol_error.html',1,'fourdst::composition::exceptions']]],
+  ['unregisteredsymbolerror_1',['UnregisteredSymbolError',['../classfourdst_1_1composition_1_1exceptions_1_1_unregistered_symbol_error.html',1,'fourdst::composition::exceptions']]]
 ];

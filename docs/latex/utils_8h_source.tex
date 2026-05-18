@@ -1,0 +1,49 @@
+\doxysection{utils.\+h}
+\hypertarget{utils_8h_source}{}\label{utils_8h_source}\index{src/composition/include/fourdst/composition/utils.h@{src/composition/include/fourdst/composition/utils.h}}
+\mbox{\hyperlink{utils_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{composition_8h}{fourdst/composition/composition.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{atomic_species_8h}{fourdst/atomic/atomicSpecies.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <optional>}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00010}00010\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacefourdst_1_1composition}{fourdst::composition}}\ \{}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00020}00020\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}}\ \mbox{\hyperlink{namespacefourdst_1_1composition_aa90b1ef07d607c0c829bedccf381cf54}{buildCompositionFromMassFractions}}(}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::string>\&\ symbols,}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<double>\&\ massFractions}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00023}00023\ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00033}00033\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}}\ \mbox{\hyperlink{namespacefourdst_1_1composition_aa90b1ef07d607c0c829bedccf381cf54}{buildCompositionFromMassFractions}}(}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<atomic::Species>\&\ species,}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<double>\&\ massFractions}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00036}00036\ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00048}00048\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}}\ \mbox{\hyperlink{namespacefourdst_1_1composition_aa90b1ef07d607c0c829bedccf381cf54}{buildCompositionFromMassFractions}}(}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::set<atomic::Species>\&\ species,}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<double>\&\ massFractions}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00051}00051\ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00059}00059\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}}\ \mbox{\hyperlink{namespacefourdst_1_1composition_aa90b1ef07d607c0c829bedccf381cf54}{buildCompositionFromMassFractions}}(}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::unordered\_map<atomic::Species,\ double>\&\ massFractionsMap}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00061}00061\ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00069}00069\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}}\ \mbox{\hyperlink{namespacefourdst_1_1composition_aa90b1ef07d607c0c829bedccf381cf54}{buildCompositionFromMassFractions}}(}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::unordered\_map<std::string,\ double>\&\ massFractions}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00071}00071\ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00079}00079\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}}\ \mbox{\hyperlink{namespacefourdst_1_1composition_aa90b1ef07d607c0c829bedccf381cf54}{buildCompositionFromMassFractions}}(}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00080}00080\ \ \ \ \ \ \ \ \ std::map<atomic::Species,\ double>\ massFractions}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00081}00081\ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00089}00089\ \ \ \ \ \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}}\ \mbox{\hyperlink{namespacefourdst_1_1composition_aa90b1ef07d607c0c829bedccf381cf54}{buildCompositionFromMassFractions}}(}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00090}00090\ \ \ \ \ \ \ \ \ std::map<std::string,\ double>\ massFractions}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00091}00091\ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00093}00093\ \ \ \ \ std::optional<fourdst::atomic::Species>\ \mbox{\hyperlink{namespacefourdst_1_1composition_adcc2e4ca25ab7b93983730fc78f4deea}{getSpecies}}(\textcolor{keyword}{const}\ std::string\&\ symbol);}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00094}00094\ \}}
+
+\end{DoxyCode}

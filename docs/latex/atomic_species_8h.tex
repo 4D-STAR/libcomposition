@@ -1,17 +1,21 @@
 \doxysection{src/composition/include/fourdst/atomic/atomic\+Species.h File Reference}
 \hypertarget{atomic_species_8h}{}\label{atomic_species_8h}\index{src/composition/include/fourdst/atomic/atomicSpecies.h@{src/composition/include/fourdst/atomic/atomicSpecies.h}}
+{\ttfamily \#include $<$format$>$}\newline
 {\ttfamily \#include $<$string\+\_\+view$>$}\newline
 {\ttfamily \#include $<$string$>$}\newline
 {\ttfamily \#include $<$optional$>$}\newline
 {\ttfamily \#include $<$limits$>$}\newline
-Include dependency graph for atomic\+Species.\+h\+:\nopagebreak
+{\ttfamily \#include $<$stdexcept$>$}\newline
+Include dependency graph for atomic\+Species.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=329pt]{atomic_species_8h__incl}
+\includegraphics[width=350pt]{atomic_species_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -41,7 +45,5 @@ bool \mbox{\hyperlink{namespacefourdst_1_1atomic_a277fa6e5107f1358e204c807146dee
 \begin{DoxyCompactList}\small\item\em Equality operator for \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. Compares based on name. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{namespacefourdst_1_1atomic_a2b6c699988f0748a0627f447863240ad}{fourdst\+::atomic\+::operator!=}} (const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&lhs, const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&rhs)
 \begin{DoxyCompactList}\small\item\em Inequality operator for \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. Compares based on name. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{namespacefourdst_1_1atomic_a34d001fa83e2bac9f8ebd96285d8821a}{fourdst\+::atomic\+::operator$<$}} (const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&lhs, const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&rhs)
-\begin{DoxyCompactList}\small\item\em Less-\/than operator for \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. Compares based on atomic mass. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{namespacefourdst_1_1atomic_a289c90cf53fd83e6808768b0befa2c00}{fourdst\+::atomic\+::operator$>$}} (const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&lhs, const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&rhs)
-\begin{DoxyCompactList}\small\item\em Greater-\/than operator for \doxylink{structfourdst_1_1atomic_1_1_species}{Species}. Compares based on atomic mass. \end{DoxyCompactList}\end{DoxyCompactItemize}
+std\+::partial\+\_\+ordering \mbox{\hyperlink{namespacefourdst_1_1atomic_aaf3d9814380a02c289f8514e74675abc}{fourdst\+::atomic\+::operator$<$=$>$}} (const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&lhs, const \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{Species}} \&rhs)
+\end{DoxyCompactItemize}

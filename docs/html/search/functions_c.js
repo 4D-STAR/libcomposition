@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['n_0',['n',['../structfourdst_1_1atomic_1_1Species.html#a957734e413f07adf1d570885c480768d',1,'fourdst::atomic::Species']]],
+  ['n_0',['n',['../structfourdst_1_1atomic_1_1_species.html#a957734e413f07adf1d570885c480768d',1,'fourdst::atomic::Species']]],
   ['n_5f1_1',['n_1',['../namespacefourdst_1_1atomic.html#afff5a7a24aa908259d28e901e110ef96',1,'fourdst::atomic']]],
   ['n_5f10_2',['N_10',['../namespacefourdst_1_1atomic.html#a05fdce835e2d5a79f1e992f204e662a9',1,'fourdst::atomic']]],
   ['n_5f11_3',['N_11',['../namespacefourdst_1_1atomic.html#ab7c954618e0f39ceac80b689f309c270',1,'fourdst::atomic']]],
@@ -41,7 +41,7 @@ var searchData=
   ['na_5f37_38',['Na_37',['../namespacefourdst_1_1atomic.html#ab4522bf4f2c4e86a4886044057552bf2',1,'fourdst::atomic']]],
   ['na_5f38_39',['Na_38',['../namespacefourdst_1_1atomic.html#af54c10fc762dbecf819573b0b9c1804e',1,'fourdst::atomic']]],
   ['na_5f39_40',['Na_39',['../namespacefourdst_1_1atomic.html#a9a18add3ba5e57fe3b6381435b62c5d7',1,'fourdst::atomic']]],
-  ['name_41',['name',['../structfourdst_1_1atomic_1_1Species.html#a1fcc01fc978b34ba2531117f10be6741',1,'fourdst::atomic::Species']]],
+  ['name_41',['name',['../structfourdst_1_1atomic_1_1_species.html#a1fcc01fc978b34ba2531117f10be6741',1,'fourdst::atomic::Species']]],
   ['nb_5f100_42',['Nb_100',['../namespacefourdst_1_1atomic.html#a9f768e6f999bcf050968c40a0aa5998a',1,'fourdst::atomic']]],
   ['nb_5f101_43',['Nb_101',['../namespacefourdst_1_1atomic.html#ac07f6acb5cef27a0fd0bbd4f105c12d1',1,'fourdst::atomic']]],
   ['nb_5f102_44',['Nb_102',['../namespacefourdst_1_1atomic.html#af17d30f9a4580c17aed5a9746fa0472a',1,'fourdst::atomic']]],
@@ -205,7 +205,7 @@ var searchData=
   ['no_5f262_202',['No_262',['../namespacefourdst_1_1atomic.html#a128e0417fc48c1a9546489bb61526be2',1,'fourdst::atomic']]],
   ['no_5f263_203',['No_263',['../namespacefourdst_1_1atomic.html#a5fe3546e9bed36a04ca065970f802da8',1,'fourdst::atomic']]],
   ['no_5f264_204',['No_264',['../namespacefourdst_1_1atomic.html#a993fb6df1faecf8d096f6b0432bbdf17',1,'fourdst::atomic']]],
-  ['normalize_5fdouble_5fbits_205',['normalize_double_bits',['../structfourdst_1_1composition_1_1utils_1_1CompositionHash.html#a261eca83fbaf3a8a261d2991ab295350',1,'fourdst::composition::utils::CompositionHash']]],
+  ['normalize_5fdouble_5fbits_205',['normalize_double_bits',['../structfourdst_1_1composition_1_1utils_1_1_composition_hash.html#a492812c018520c057c0a113c9113f9d2',1,'fourdst::composition::utils::CompositionHash']]],
   ['np_5f219_206',['Np_219',['../namespacefourdst_1_1atomic.html#a952e6ad311b7799176fb5498a8e44232',1,'fourdst::atomic']]],
   ['np_5f220_207',['Np_220',['../namespacefourdst_1_1atomic.html#ad9cc3938e7f3ac07b1fc8d406cde8cf6',1,'fourdst::atomic']]],
   ['np_5f221_208',['Np_221',['../namespacefourdst_1_1atomic.html#a7e4490aad62442dc394b586fe1035fad',1,'fourdst::atomic']]],
@@ -233,5 +233,5 @@ var searchData=
   ['np_5f243_230',['Np_243',['../namespacefourdst_1_1atomic.html#acbd65d6ae4c017144efd3761981b1de9',1,'fourdst::atomic']]],
   ['np_5f244_231',['Np_244',['../namespacefourdst_1_1atomic.html#ae902a255822a5ec3fd429d95bbdd2d22',1,'fourdst::atomic']]],
   ['np_5f245_232',['Np_245',['../namespacefourdst_1_1atomic.html#aca92cb8d2eba337119fe8a0505192b76',1,'fourdst::atomic']]],
-  ['nz_233',['nz',['../structfourdst_1_1atomic_1_1Species.html#aa5e452accca3a9b4937867044617a032',1,'fourdst::atomic::Species']]]
+  ['nz_233',['nz',['../structfourdst_1_1atomic_1_1_species.html#aa5e452accca3a9b4937867044617a032',1,'fourdst::atomic::Species']]]
 ];
