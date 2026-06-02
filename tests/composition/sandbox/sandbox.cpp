@@ -15,6 +15,8 @@
 #include <unordered_map>
 #include <print>
 #include <ranges>
+#include <algorithm>
+#include "CLI/CLI.hpp"
 
 int main(int argc, char** argv) {
 
@@ -23,21 +25,29 @@ int main(int argc, char** argv) {
     // Options for metal_frac_scheme: ['AG89', 'GN93', 'GS98', 'L03', 'AGS05', 'AGSS09', 'A09_Przybilla', 'MB22_photospheric', 'AAG21_photospheric', 'L09']
     // Options for isotopic percentage scheme: [L03_data, L09_data]
 
-    
-    // CLI::App app("Loading Z fractions");
+    double initial_z;
+    std::string metal_fraction_scheme;
 
-    // fourdst::config::Config<Options> config;
-    // fourdst::config::register_as_cli(config, app);
-    // app.parse(argc, argv)
+    auto keys = fourdst::composition::io::SolarCompositions_to_string_map | std::views::values | std::ranges::to<std::vector>();
     
-    std::string metal_fraction_scheme, isotopic_percentage_scheme;
-    double initial_z, initial_y;
+    CLI::App app("Example App To Load Solar Composition");
+    app.add_option("-z,--initial_z", initial_z, "Initial Z")->required();
+    app.add_option("-c,--solar-composition", metal_fraction_scheme)->
+        check(
+            CLI::IsMember(
+                keys,
+                CLI::ignore_case)
+        );
+
+    CLI11_PARSE(app, argc, argv);
+    
+    std::string  isotopic_percentage_scheme;
+    double initial_y;
 
     // the following four should be user input
     // initial_y can be optional
-    initial_z = 0.02;
+    // initial_z = 0.02;
     initial_y = 0.24 + 2*initial_z;
-    metal_fraction_scheme = "AG89";
     isotopic_percentage_scheme = "L03_data";
 
     fourdst::composition::io::ChemicalFileParser parser;

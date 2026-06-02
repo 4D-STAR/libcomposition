@@ -1,1 +1,1 @@
-executable('sandbox', 'sandbox.cpp', dependencies: [species_weight_dep, composition_dep, config_dep,])
+executable('sandbox', 'sandbox.cpp', dependencies: [species_weight_dep, composition_dep, config_dep, cli11_dep])

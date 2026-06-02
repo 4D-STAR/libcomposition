@@ -44,7 +44,7 @@ namespace fourdst::composition::io  {
         L09
     };
 
-    std::unordered_map<SolarCompositions, std::string> SolarCompositions_to_string_map = {
+    inline std::unordered_map<SolarCompositions, std::string> SolarCompositions_to_string_map = {
         {SolarCompositions::AG89, "AG89"},
         {SolarCompositions::GN93, "GN93"},
         {SolarCompositions::GS98, "GS98"},
@@ -57,7 +57,7 @@ namespace fourdst::composition::io  {
         {SolarCompositions::L09, "L09"}
     };
 
-    std::unordered_map<IsotopicPercentages, std::string> IsotopicPercentages_to_string_map = {
+    inline std::unordered_map<IsotopicPercentages, std::string> IsotopicPercentages_to_string_map = {
         {IsotopicPercentages::L03, "L03"},
         {IsotopicPercentages::L09, "L09"}
     };
@@ -114,9 +114,9 @@ namespace fourdst::composition {
                                                      double initial_z,
                                                      double initial_y);
 
-    [[nodiscard]] Composition get_composition_record(const SolarCompositions metal_fraction_scheme,
-                                                     const IsotopicPercentages isotopic_percentage_scheme,
-                                                     double initial_z,
-                                                     double initial_y);
+    // [[nodiscard]] Composition get_composition_record(const SolarCompositions metal_fraction_scheme,
+    //                                                  const IsotopicPercentages isotopic_percentage_scheme,
+    //                                                  double initial_z,
+    //                                                  double initial_y);
 
 }
