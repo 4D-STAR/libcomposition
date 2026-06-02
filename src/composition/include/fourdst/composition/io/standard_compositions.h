@@ -25,6 +25,43 @@ namespace fourdst::composition::io  {
         std::vector<int> mass_numbers;
         std::vector<double> percentages;
     };
+
+    enum class SolarCompositions {
+        AG89,
+        GN93,
+        GS98,
+        L03,
+        AGS05,
+        AGS09,
+        A09_Pryzbilla,
+        MB22_photospheric,
+        AAG21_photospheric,
+        L09
+    };
+
+    enum class IsotopicPercentages {
+        L03,
+        L09
+    };
+
+    std::unordered_map<SolarCompositions, std::string> SolarCompositions_to_string_map = {
+        {SolarCompositions::AG89, "AG89"},
+        {SolarCompositions::GN93, "GN93"},
+        {SolarCompositions::GS98, "GS98"},
+        {SolarCompositions::L03, "L03"},
+        {SolarCompositions::AGS05, "AGS05"},
+        {SolarCompositions::AGS09, "AGS09"},
+        {SolarCompositions::A09_Pryzbilla, "A09_Pryzbilla"},
+        {SolarCompositions::MB22_photospheric, "MB22_photospheric"},
+        {SolarCompositions::AAG21_photospheric, "AAG21_photospheric"},
+        {SolarCompositions::L09, "L09"}
+    };
+
+    std::unordered_map<IsotopicPercentages, std::string> IsotopicPercentages_to_string_map = {
+        {IsotopicPercentages::L03, "L03"},
+        {IsotopicPercentages::L09, "L09"}
+    };
+
     /**
      * @class ChemicalFileParser
      * @brief An abstract base class for chemical file parsers.
@@ -73,7 +110,13 @@ namespace fourdst::composition::io  {
 
 namespace fourdst::composition {
     [[nodiscard]] Composition get_composition_record(const std::string& metal_fraction_scheme,
-                                                                    const std::string& isotopic_percentage_scheme,
-                                                                    double initial_z, double initial_y);
+                                                     const std::string& isotopic_percentage_scheme,
+                                                     double initial_z,
+                                                     double initial_y);
+
+    [[nodiscard]] Composition get_composition_record(const SolarCompositions metal_fraction_scheme,
+                                                     const IsotopicPercentages isotopic_percentage_scheme,
+                                                     double initial_z,
+                                                     double initial_y);
 
 }

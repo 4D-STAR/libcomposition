@@ -343,4 +343,16 @@ namespace fourdst::composition {
         return comp;
 
     }
+    
+    Composition get_composition_record(const SolarCompositions metal_fraction_scheme,
+                                       const IsotopicPercentages isotopic_percentage_scheme,
+                                       double initial_z,
+                                       double initial_y) {
+        return get_composition_record(
+            SolarComposition_to_string_map.at(metal_fraction_scheme),
+            IsotopicPercentages_to_string.at(isotopic_percentage_scheme),
+            initial_z,
+            initial_y
+        );
+    }
 }
