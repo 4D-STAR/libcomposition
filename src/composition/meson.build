@@ -4,7 +4,9 @@ required_headers = [
     'fourdst/composition/composition.h',
     'fourdst/composition/utils.h',
     'fourdst/composition/composition_abstract.h',
-    'fourdst/composition/exceptions/exceptions_composition.h'
+    'fourdst/composition/exceptions/exceptions_composition.h',
+    'fourdst/composition/io/standard_compositions.h',
+    'fourdst/composition/io/StandardAbundancesBinary.h'
 ]
 
 foreach h : required_headers
@@ -23,6 +25,8 @@ composition_sources = files(
   'lib/composition.cpp',
   'lib/utils.cpp',
   'lib/decorators/composition_masked.cpp',
+  'lib/io/standard_compositions.cpp'
+
 )
 
 
@@ -50,7 +54,10 @@ composition_dep = declare_dependency(
 # Make headers accessible
 composition_headers = files(
   'include/fourdst/composition/composition.h',
-  'include/fourdst/composition/composition_abstract.h'
+  'include/fourdst/composition/composition_abstract.h',
+  'include/fourdst/composition/io/standard_compositions.h',
+  'include/fourdst/composition/io/StandardAbundancesBinary.h'
+
 )
 install_headers(composition_headers, subdir : 'fourdst/fourdst/composition')
 
@@ -63,6 +70,7 @@ composition_headers_atomic = files(
     'include/fourdst/atomic/atomicSpecies.h',
     'include/fourdst/atomic/elements.h',
     'include/fourdst/atomic/species.h',
+    
 )
 install_headers(composition_headers_atomic, subdir : 'fourdst/fourdst/atomic')
 
