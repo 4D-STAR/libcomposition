@@ -74,6 +74,7 @@ subprojects/libconstants/
 subprojects/liblogging/
 subprojects/.wraplock
 subprojects/tomlplusplus-*/
+subprojects/CLI11-*/
 
 qhull.wrap
 quill.wrap
