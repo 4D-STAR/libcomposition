@@ -95,6 +95,9 @@ namespace fourdst::composition::io  {
          *     ParsedChemicalData data = parser->parse("my_reactions.txt");
          *     for (const auto& reaction_name : data.reactionPENames) {
          *         // ... process reaction name
+        const mfem::GridFunction& grav_potential_at_inf(FEM& fem, const Args& args, const mfem::GridFunction& rho, bool pho_warm) {
+
+}
          *     }
          * } catch (const std::runtime_error& e) {
          *     // ... handle error
@@ -109,14 +112,47 @@ namespace fourdst::composition::io  {
 }
 
 namespace fourdst::composition {
+    /**
+     * @brief Function to retrieve a standard solar composition record indexed by their canonical names including
+     *  - AG89
+     *  - GN93
+     *  - GS98
+     *  - L03
+     *  - AGS05
+     *  - AGS08
+     *  - A09_Pryzbilla
+     *  - MB22_photospheric
+     *  - AAG21_photospheric
+     *  - L09
+     *  Further, isotopic percentages can be selected as either
+     *  - L03
+     *  - L09
+     *
+     *  These data have been extracted from chem_def.f90 from MESA <version>
+     *
+     *  @note Composition names are case normalized; therefore, the inputs for metal fraction scheme and isotopic percentage scheme are case insensitive.
+     *
+     *  @param metal_fraction_scheme The name of the metal fraction scheme to use. Must be one of the following: AG89, GN93, GS98, L03, AGS05, AGS08, A09_Pryzbilla, MB22_photospheric, AAG21_photospheric, L09
+     *  @param isotopic_percentage_scheme The name of the isotopic percentage scheme to use. Must be one of the following: L03, L09
+     *  @param initial_z <poojan_documenent_here>
+     *  @param initial_y <poojan document here>
+     */
     [[nodiscard]] Composition get_composition_record(const std::string& metal_fraction_scheme,
                                                      const std::string& isotopic_percentage_scheme,
                                                      double initial_z,
                                                      double initial_y);
 
-    // [[nodiscard]] Composition get_composition_record(const SolarCompositions metal_fraction_scheme,
-    //                                                  const IsotopicPercentages isotopic_percentage_scheme,
-    //                                                  double initial_z,
-    //                                                  double initial_y);
+    /**
+     * @brief Overload of the string based version of this function which accepts the enums Solar
+     * @param metal_fraction_scheme Enum corresponding to the standard solar composition to select
+     * @param isotopic_percentage_scheme Enum corresponding to the isotopic percentages prescription to select
+     * @param initial_z <poojan_document_here>
+     * @param initial_y <poojan_document_here>
+     * @return
+     */
+    [[nodiscard]] Composition get_composition_record(io::SolarCompositions metal_fraction_scheme,
+                                                     io::IsotopicPercentages isotopic_percentage_scheme,
+                                                     double initial_z,
+                                                     double initial_y);
 
 }
