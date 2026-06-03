@@ -248,6 +248,7 @@ namespace fourdst::composition {
                                                                         const std::string& isotopic_percentage_scheme,
                                                                         double initial_z, double initial_y) {
 
+
         std::vector<char> data;
 
         io::ChemicalFileParser parser;
@@ -260,18 +261,16 @@ namespace fourdst::composition {
         compositions = parser.parse_compositon_data(data,metal_fraction_scheme);
         isotopes = parser.parse_isotopic_percentage(data,isotopic_percentage_scheme);
 
+
         std::string name;
         std::vector<fourdst::atomic::Species> species;
+
 
         // construct name of the isotopes
         for (const auto [E,A] : std::ranges::views::zip(isotopes.elements, isotopes.mass_numbers)){
             name = std::format("{}-{}",E,A);
-            // std::println("{}", name);
             auto SpeciesObject = fourdst::atomic::species.at(name);
             species.push_back(SpeciesObject);
-
-            // std::println("Species: {} has mass: {}", SpeciesObject.name(), SpeciesObject.mass());
-
         }
 
         std::vector<double> massFracs, metal_fractions;
@@ -324,7 +323,6 @@ namespace fourdst::composition {
         double sum = std::accumulate(metal_fractions.begin(),metal_fractions.end(),0.0);
 
         for(size_t i=0;i < metal_fractions.size();++i){
-            std::println("testing: {} , {}", i,compositions.elements[i]);
             metal_fractions[i] = metal_fractions[i]/sum;
         }
 

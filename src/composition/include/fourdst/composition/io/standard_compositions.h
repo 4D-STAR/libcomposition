@@ -58,8 +58,8 @@ namespace fourdst::composition::io  {
     };
 
     inline std::unordered_map<IsotopicPercentages, std::string> IsotopicPercentages_to_string_map = {
-        {IsotopicPercentages::L03, "L03"},
-        {IsotopicPercentages::L09, "L09"}
+        {IsotopicPercentages::L03, "L03_data"},
+        {IsotopicPercentages::L09, "L09_data"}
     };
 
     /**
