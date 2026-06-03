@@ -23,7 +23,7 @@ int main(int argc, char** argv) {
 
     // @input: initial_z, initial_y, metal_fraction_scheme & isotopic_percentage_scheme
     // Options for metal_frac_scheme: ['AG89', 'GN93', 'GS98', 'L03', 'AGS05', 'AGSS09', 'A09_Przybilla', 'MB22_photospheric', 'AAG21_photospheric', 'L09']
-    // Options for isotopic percentage scheme: [L03_data, L09_data]
+    // Options for isotopic percentage scheme: ['L03_data', 'L09_data']
 
     double initial_z;
     std::string metal_fraction_scheme;
@@ -50,7 +50,6 @@ int main(int argc, char** argv) {
     initial_y = 0.24 + 2*initial_z;
     isotopic_percentage_scheme = "L03_data";
 
-    fourdst::composition::io::ChemicalFileParser parser;
     fourdst::composition::Composition comp;
     comp = fourdst::composition::get_composition_record(metal_fraction_scheme, isotopic_percentage_scheme, initial_z, initial_y);
     std::cout << comp << std::endl;

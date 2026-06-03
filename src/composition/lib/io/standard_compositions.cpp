@@ -261,21 +261,24 @@ namespace fourdst::composition {
         compositions = parser.parse_compositon_data(data,metal_fraction_scheme);
         isotopes = parser.parse_isotopic_percentage(data,isotopic_percentage_scheme);
 
-
         std::string name;
         std::vector<fourdst::atomic::Species> species;
 
-
-        // construct name of the isotopes
+        // construct name of the isotopes for all elements
         for (const auto [E,A] : std::ranges::views::zip(isotopes.elements, isotopes.mass_numbers)){
-            name = std::format("{}-{}",E,A);
-            auto SpeciesObject = fourdst::atomic::species.at(name);
-            species.push_back(SpeciesObject);
+            if (std::ranges::contains(compositions.elements,E)) {
+                name = std::format("{}-{}",E,A);
+                // std::println("{}", name);
+                auto SpeciesObject = fourdst::atomic::species.at(name);
+                species.push_back(SpeciesObject);
+                // std::println("Species: {} has mass: {}", SpeciesObject.name(), SpeciesObject.mass());
+            }
         }
 
-        std::vector<double> massFracs, metal_fractions;
+        std::vector<double> massFracs;
+        std::unordered_map<std::string, double> metal_fractions;
 
-        // hydrogen and helium are treated separately since they are not metals
+        // hydrogen and helium are treated separately
         // H1
         massFracs.push_back(std::max(0.0, std::min(1.0, 1.0 - (initial_z + initial_y))));
         // H2
@@ -283,57 +286,97 @@ namespace fourdst::composition {
         // He3
         // anders & grevesse 1989 solar mass fractions
         double xsol_he3,xsol_he4;
-        xsol_he3=2.9291e-05;
-        xsol_he4=2.7521e-01;
+        xsol_he3 = 2.9291e-05;
+        xsol_he4 = 2.7521e-01;
         massFracs.push_back(initial_y*xsol_he3/(xsol_he3 + xsol_he4));
         // He4
         massFracs.push_back(initial_y*xsol_he4/(xsol_he3 + xsol_he4));
         // Metals
+
+        double ztotal = 1.0-std::accumulate(massFracs.begin(), massFracs.end(), 0.0);
+
         // multiply by atomic weight if needed
 
         if (compositions.requires_atomic_weight){
             // get isotope with max abundance for each metal
+            // and store the corresponding mass
             std::vector<double> element_atomic_weight;
-
-            for (size_t i = 0; i < isotopes.atomic_numbers.size();) {
+            size_t i = 0;
+            while (i < isotopes.atomic_numbers.size()) {
                 size_t Z = isotopes.atomic_numbers[i];
-                if (Z<2) {
+                if (Z<=2) {
+                    ++i;
                     continue;
                 }
                 double max_iso = isotopes.percentages[i];
                 size_t loc = i;
                 size_t j = i ;
-                while (j<isotopes.atomic_numbers.size() && isotopes.atomic_numbers[j] == Z) {
-                    if (isotopes.percentages[j]>max_iso) {
-                        loc = j;
+
+                if (std::ranges::contains(compositions.elements,isotopes.elements[i])) {
+                    while (j<isotopes.atomic_numbers.size() && isotopes.atomic_numbers[j] == Z) {
+                        if (isotopes.percentages[j]>max_iso) {
+                            loc = j;
+                        }
+                        ++j;
                     }
-                    ++j;
+                    element_atomic_weight.push_back(species[loc].mass());
                 }
-                element_atomic_weight.push_back(species[loc].mass());
                 i=j;
             }
-
             for(size_t i=0;i < compositions.abundances.size();++i){
-                metal_fractions.push_back(element_atomic_weight[i]*compositions.abundances[i]);
+                metal_fractions.emplace(compositions.elements[i], element_atomic_weight[i]*compositions.abundances[i]);
+                // std::println("metal_fractions: {}", metal_fractions);
             }
+
         } else {
-            metal_fractions = compositions.abundances;
-        }
-
-        double sum = std::accumulate(metal_fractions.begin(),metal_fractions.end(),0.0);
-
-        for(size_t i=0;i < metal_fractions.size();++i){
-            metal_fractions[i] = metal_fractions[i]/sum;
-        }
-
-        // Z = max(0d0, min(1d0, 1d0 - (h1 + h2 + he3 + he4)))
-
-        for (size_t i = 0; i < isotopes.atomic_numbers.size();++i) {
-            if (isotopes.atomic_numbers[i]<2) {
-                continue;
+            for (const auto [E,A] : std::ranges::views::zip(compositions.elements, compositions.abundances)) {
+                metal_fractions.emplace(E,A);
             }
-            double frac = 1e-2*isotopes.percentages[i]*species[i].mass();
+        }
 
+        double sum = [&metal_fractions]() {
+          double accumulator = 0.0;
+            for (const auto& frac : metal_fractions | std::views::values) {
+                accumulator += frac;
+            }
+            return accumulator;
+        }();
+
+        for (auto& frac : metal_fractions | std::views::values) {
+            frac/=sum;
+        }
+
+        double zsum = 0.0;
+
+        // get mass Fracs for each metal and scale it to required ztotal
+        for (size_t i = 0; i < species.size();++i) {
+            size_t Z = isotopes.atomic_numbers[i];
+            if (Z<=2) continue;
+
+            if (metal_fractions.contains(isotopes.elements[i])) {
+                double frac = 1e-2*isotopes.percentages[i]*species[i].mass();
+                double frac_sum = 0.0;
+                size_t j = i ;
+                while (j<species.size() && isotopes.atomic_numbers[j] == Z) {
+                    frac_sum += 1e-2*isotopes.percentages[j]*species[j].mass();
+                    ++j;
+                }
+                // extract zfrac for the corresponding Z symbol/ isotopes.elements
+                double zfrac = metal_fractions.at(isotopes.elements[i]);
+                auto temp = ztotal*zfrac*frac/frac_sum;
+                massFracs.push_back(temp);
+                zsum += temp;
+                // std::println("isotope:{}",species[i].name());
+            }
+        }
+
+        std::println("ztotal: {}, zsum:{}", ztotal, zsum);
+        //Renormalize
+        if (zsum > 0.0) {
+            for (size_t i = 0; i < massFracs.size();++i) {
+                if (isotopes.atomic_numbers[i]<=2) continue;
+                massFracs[i] *= ztotal/zsum;
+            }
         }
 
         //
@@ -341,7 +384,7 @@ namespace fourdst::composition {
         return comp;
 
     }
-    
+
     Composition get_composition_record(const io::SolarCompositions metal_fraction_scheme,
                                        const io::IsotopicPercentages isotopic_percentage_scheme,
                                        double initial_z,
