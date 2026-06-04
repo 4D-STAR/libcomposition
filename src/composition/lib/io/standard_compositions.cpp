@@ -262,14 +262,14 @@ namespace fourdst::composition {
         isotopes = parser.parse_isotopic_percentage(data,isotopic_percentage_scheme);
 
         std::string name;
-        std::vector<fourdst::atomic::Species> species;
+        std::vector<atomic::Species> species;
+
 
         // construct name of the isotopes for all elements
         for (const auto [E,A] : std::ranges::views::zip(isotopes.elements, isotopes.mass_numbers)){
             if (std::ranges::contains(compositions.elements,E)) {
                 name = std::format("{}-{}",E,A);
-                // std::println("{}", name);
-                auto SpeciesObject = fourdst::atomic::species.at(name);
+                auto SpeciesObject = atomic::species.at(name);
                 species.push_back(SpeciesObject);
                 // std::println("Species: {} has mass: {}", SpeciesObject.name(), SpeciesObject.mass());
             }
@@ -299,35 +299,32 @@ namespace fourdst::composition {
 
         if (compositions.requires_atomic_weight){
             // get isotope with max abundance for each metal
-            // and store the corresponding mass
-            std::vector<double> element_atomic_weight;
-            size_t i = 0;
-            while (i < isotopes.atomic_numbers.size()) {
-                size_t Z = isotopes.atomic_numbers[i];
-                if (Z<=2) {
-                    ++i;
-                    continue;
-                }
-                double max_iso = isotopes.percentages[i];
-                size_t loc = i;
-                size_t j = i ;
+            // and store the corresponding mass number
+            auto element_atomic_weight = [&isotopes]() {
+                std::unordered_map<std::string, std::pair<double, int>> elem_info;
 
-                if (std::ranges::contains(compositions.elements,isotopes.elements[i])) {
-                    while (j<isotopes.atomic_numbers.size() && isotopes.atomic_numbers[j] == Z) {
-                        if (isotopes.percentages[j]>max_iso) {
-                            loc = j;
-                        }
-                        ++j;
+                for (const auto& [iso, prcnt, a] : std::views::zip(isotopes.elements, isotopes.percentages, isotopes.mass_numbers)) {
+                    if (iso == "H" || iso == "He") {
+                        continue;
                     }
-                    element_atomic_weight.push_back(species[loc].mass());
+                    if (elem_info.contains(iso) && elem_info.at(iso).first <= prcnt) {
+                        elem_info[iso] = std::make_pair(prcnt, a);
+                    } else if (! elem_info.contains(iso)) {
+                        elem_info[iso] = std::make_pair(prcnt, a);
+                    }
                 }
-                i=j;
-            }
-            for(size_t i=0;i < compositions.abundances.size();++i){
-                metal_fractions.emplace(compositions.elements[i], element_atomic_weight[i]*compositions.abundances[i]);
-                // std::println("metal_fractions: {}", metal_fractions);
-            }
+                return elem_info;
+            }();
 
+            for (const auto [E,A] : std::ranges::views::zip(compositions.elements, compositions.abundances)) {
+                // std::println("element: {}", E);
+                auto name = std::format("{}-{}",E,element_atomic_weight.at(E).second);
+                // std::println("{}", name);
+                auto SpeciesObject = atomic::species.at(name);
+                double weight = SpeciesObject.mass();
+                metal_fractions.emplace(E,A*weight);
+                // std::println("End");
+            }
         } else {
             for (const auto [E,A] : std::ranges::views::zip(compositions.elements, compositions.abundances)) {
                 metal_fractions.emplace(E,A);
@@ -370,7 +367,7 @@ namespace fourdst::composition {
             }
         }
 
-        std::println("ztotal: {}, zsum:{}", ztotal, zsum);
+        // std::println("ztotal: {}, zsum:{}", ztotal, zsum);
         //Renormalize
         if (zsum > 0.0) {
             for (size_t i = 0; i < massFracs.size();++i) {

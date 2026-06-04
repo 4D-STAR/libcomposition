@@ -32,8 +32,8 @@ namespace fourdst::composition::io  {
         GS98,
         L03,
         AGS05,
-        AGS09,
-        A09_Pryzbilla,
+        AGSS09,
+        A09_Przybilla,
         MB22_photospheric,
         AAG21_photospheric,
         L09
@@ -50,8 +50,8 @@ namespace fourdst::composition::io  {
         {SolarCompositions::GS98, "GS98"},
         {SolarCompositions::L03, "L03"},
         {SolarCompositions::AGS05, "AGS05"},
-        {SolarCompositions::AGS09, "AGS09"},
-        {SolarCompositions::A09_Pryzbilla, "A09_Pryzbilla"},
+        {SolarCompositions::AGSS09, "AGSS09"},
+        {SolarCompositions::A09_Przybilla, "A09_Przybilla"},
         {SolarCompositions::MB22_photospheric, "MB22_photospheric"},
         {SolarCompositions::AAG21_photospheric, "AAG21_photospheric"},
         {SolarCompositions::L09, "L09"}

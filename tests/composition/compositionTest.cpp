@@ -492,9 +492,9 @@ TEST_F(compositionTest, standardSolarCompositions) {
         io::SolarCompositions::AG89,
         io::SolarCompositions::GS98,
         io::SolarCompositions::L03,
-        io::SolarCompositions::A09_Pryzbilla,
+        io::SolarCompositions::A09_Przybilla,
         io::SolarCompositions::AGS05,
-        io::SolarCompositions::AGS09,
+        io::SolarCompositions::AGSS09,
         io::SolarCompositions::AAG21_photospheric,
         io::SolarCompositions::MB22_photospheric,
         io::SolarCompositions::L09
@@ -511,6 +511,7 @@ TEST_F(compositionTest, standardSolarCompositions) {
             std::string string_comp = io::SolarCompositions_to_string_map.at(comp);
             std::string string_iso = io::IsotopicPercentages_to_string_map.at(iso);
 
+            // std::println("Testing: {} with {}", string_comp, string_iso);
             EXPECT_NO_THROW(get_composition_record(comp, iso, 0.02, 0.28));
             EXPECT_NO_THROW(get_composition_record(string_comp, string_iso, 0.02, 0.28));
         }
