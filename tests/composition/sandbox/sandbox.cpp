@@ -1,21 +1,12 @@
 #include "fourdst/composition/io/standard_compositions.h"
-#include "fourdst/composition/io/StandardAbundancesBinary.h"
-
 #include "fourdst/composition/composition.h"
-#include "fourdst/atomic/atomicSpecies.h"
 #include "fourdst/atomic/species.h"
-#include "fourdst/composition/utils.h"
 
 #include <string>
 #include <vector>
-#include <algorithm>
-#include <fstream>
 #include <numeric>
-#include <stdexcept>
 #include <unordered_map>
-#include <print>
 #include <ranges>
-#include <algorithm>
 #include "CLI/CLI.hpp"
 
 int main(int argc, char** argv) {
@@ -32,7 +23,7 @@ int main(int argc, char** argv) {
     
     CLI::App app("Example App To Load Solar Composition");
     app.add_option("-z,--initial_z", initial_z, "Initial Z")->required();
-    app.add_option("-c,--solar-composition", metal_fraction_scheme)->
+    app.add_option("-c,--metal-fraction-scheme", metal_fraction_scheme)->
         check(
             CLI::IsMember(
                 keys,
@@ -46,7 +37,6 @@ int main(int argc, char** argv) {
 
     // the following four should be user input
     // initial_y can be optional
-    // initial_z = 0.02;
     initial_y = 0.24 + 2*initial_z;
     isotopic_percentage_scheme = "L03_data";
 

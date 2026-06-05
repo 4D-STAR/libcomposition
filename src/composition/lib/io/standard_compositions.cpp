@@ -1,5 +1,5 @@
 #include "fourdst/composition/io/standard_compositions.h"
-#include "fourdst/composition/io/StandardAbundancesBinary.h"
+#include "fourdst/composition/io/StandardMetalFractionsBinary.h"
 
 #include "fourdst/composition/composition.h"
 #include "fourdst/atomic/atomicSpecies.h"
@@ -252,13 +252,13 @@ namespace fourdst::composition {
         std::vector<char> data;
 
         io::ChemicalFileParser parser;
-        io::CompositionData compositions;
+        io::CompositionData metals;
 
         io::IsotopicPercentage isotopes;
 
-        data = std::ranges::to<std::vector<char>>(StandardAbundances);
+        data = std::ranges::to<std::vector<char>>(StandardMetalFractions);
 
-        compositions = parser.parse_compositon_data(data,metal_fraction_scheme);
+        metals = parser.parse_compositon_data(data,metal_fraction_scheme);
         isotopes = parser.parse_isotopic_percentage(data,isotopic_percentage_scheme);
 
         std::string name;
@@ -267,7 +267,7 @@ namespace fourdst::composition {
 
         // construct name of the isotopes for all elements
         for (const auto [E,A] : std::ranges::views::zip(isotopes.elements, isotopes.mass_numbers)){
-            if (std::ranges::contains(compositions.elements,E)) {
+            if (std::ranges::contains(metals.elements,E ) || E == "H" || E == "He") {
                 name = std::format("{}-{}",E,A);
                 auto SpeciesObject = atomic::species.at(name);
                 species.push_back(SpeciesObject);
@@ -297,7 +297,7 @@ namespace fourdst::composition {
 
         // multiply by atomic weight if needed
 
-        if (compositions.requires_atomic_weight){
+        if (metals.requires_atomic_weight){
             // get isotope with max abundance for each metal
             // and store the corresponding mass number
             auto element_atomic_weight = [&isotopes]() {
@@ -316,7 +316,7 @@ namespace fourdst::composition {
                 return elem_info;
             }();
 
-            for (const auto [E,A] : std::ranges::views::zip(compositions.elements, compositions.abundances)) {
+            for (const auto [E,A] : std::ranges::views::zip(metals.elements, metals.abundances)) {
                 // std::println("element: {}", E);
                 auto name = std::format("{}-{}",E,element_atomic_weight.at(E).second);
                 // std::println("{}", name);
@@ -326,7 +326,7 @@ namespace fourdst::composition {
                 // std::println("End");
             }
         } else {
-            for (const auto [E,A] : std::ranges::views::zip(compositions.elements, compositions.abundances)) {
+            for (const auto [E,A] : std::ranges::views::zip(metals.elements, metals.abundances)) {
                 metal_fractions.emplace(E,A);
             }
         }

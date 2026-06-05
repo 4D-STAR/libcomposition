@@ -6,7 +6,7 @@ required_headers = [
     'fourdst/composition/composition_abstract.h',
     'fourdst/composition/exceptions/exceptions_composition.h',
     'fourdst/composition/io/standard_compositions.h',
-    'fourdst/composition/io/StandardAbundancesBinary.h'
+    'fourdst/composition/io/StandardMetalFractionsBinary.h'
 ]
 
 foreach h : required_headers
@@ -56,7 +56,7 @@ composition_headers = files(
   'include/fourdst/composition/composition.h',
   'include/fourdst/composition/composition_abstract.h',
   'include/fourdst/composition/io/standard_compositions.h',
-  'include/fourdst/composition/io/StandardAbundancesBinary.h'
+  'include/fourdst/composition/io/StandardMetalFractionsBinary.h'
 
 )
 install_headers(composition_headers, subdir : 'fourdst/fourdst/composition')
