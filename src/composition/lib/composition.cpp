@@ -38,7 +38,7 @@
 #include <numeric>
 
 #include "fourdst/composition/utils/composition_hash.h"
-#include "fourdst/composition/utils.h"
+#include "../include/fourdst/composition/utils/utils.h"
 
 #include "fourdst/composition/exceptions/exceptions_composition.h"
 

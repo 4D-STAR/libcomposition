@@ -4,7 +4,7 @@
 #include "fourdst/composition/composition.h"
 #include "fourdst/atomic/atomicSpecies.h"
 #include "fourdst/atomic/species.h"
-#include "fourdst/composition/utils.h"
+#include "../../../src/composition/include/fourdst/composition/utils/utils.h"
 
 #include <string>
 #include <vector>

@@ -9,7 +9,7 @@
 #include "fourdst/atomic/species.h"
 #include "fourdst/composition/composition.h"
 #include "fourdst/composition/exceptions/exceptions_composition.h"
-#include "fourdst/composition/utils.h"
+#include "fourdst/composition/utils/utils.h"
 #include "fourdst/composition/decorators/composition_masked.h"
 #include "fourdst/composition/io/standard_compositions.h"
 #include "fourdst/composition/utils/composition_hash.h"
@@ -511,7 +511,6 @@ TEST_F(compositionTest, standardSolarCompositions) {
             std::string string_comp = io::SolarCompositions_to_string_map.at(comp);
             std::string string_iso = io::IsotopicPercentages_to_string_map.at(iso);
 
-            // std::println("Testing: {} with {}", string_comp, string_iso);
             EXPECT_NO_THROW(get_composition_record(comp, iso, 0.02, 0.28));
             EXPECT_NO_THROW(get_composition_record(string_comp, string_iso, 0.02, 0.28));
         }

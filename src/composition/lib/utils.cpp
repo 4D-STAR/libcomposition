@@ -2,7 +2,7 @@
 #include "fourdst/composition/exceptions/exceptions_composition.h"
 #include "fourdst/atomic/atomicSpecies.h"
 #include "fourdst/atomic/species.h"
-#include "fourdst/composition/utils.h"
+#include "../include/fourdst/composition/utils/utils.h"
 #include "fourdst/logging/logging.h"
 
 #include <numeric>
