@@ -511,8 +511,8 @@ TEST_F(compositionTest, standardSolarCompositions) {
             std::string string_comp = io::SolarCompositions_to_string_map.at(comp);
             std::string string_iso = io::IsotopicPercentages_to_string_map.at(iso);
 
-            EXPECT_NO_THROW(get_composition_record(comp, iso, 0.02, 0.28));
-            EXPECT_NO_THROW(get_composition_record(string_comp, string_iso, 0.02, 0.28));
+            EXPECT_NO_THROW((void)get_composition_record(comp, iso, 0.02, 0.28));
+            EXPECT_NO_THROW((void)get_composition_record(string_comp, string_iso, 0.02, 0.28));
         }
     }
 

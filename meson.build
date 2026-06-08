@@ -51,7 +51,6 @@ if get_option('pkg_config')
         description: 'Composition module for SERiF and related projects',
         version: meson.project_version(),
         libraries: [libcomposition],
-        subdirs: ['fourdst'],
         filebase: 'fourdst_composition',
         install_dir: join_paths(get_option('libdir'), 'pkgconfig')
     )

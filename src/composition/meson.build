@@ -90,6 +90,12 @@ composition_exception_headers = files(
 )
 install_headers(composition_exception_headers, subdir : 'fourdst/composition/exceptions')
 
+composition_iterator_headers = files(
+    'include/fourdst/composition/iterators/composition_abstract_iterator.h',
+)
+
+install_headers(composition_iterator_headers, subdir : 'fourdst/composition/iterators')
+
 v = meson.project_version()
 
 conf_data = configuration_data()
