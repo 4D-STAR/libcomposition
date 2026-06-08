@@ -27,3 +27,5 @@ foreach test_file : test_sources
     test_exe,
     env: ['MESON_SOURCE_ROOT=' + meson.project_source_root(), 'MESON_BUILD_ROOT=' + meson.project_build_root()])
 endforeach
+
+subdir('sandbox')

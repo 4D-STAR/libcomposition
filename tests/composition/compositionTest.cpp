@@ -9,8 +9,9 @@
 #include "fourdst/atomic/species.h"
 #include "fourdst/composition/composition.h"
 #include "fourdst/composition/exceptions/exceptions_composition.h"
-#include "fourdst/composition/utils.h"
+#include "fourdst/composition/utils/utils.h"
 #include "fourdst/composition/decorators/composition_masked.h"
+#include "fourdst/composition/io/standard_compositions.h"
 #include "fourdst/composition/utils/composition_hash.h"
 
 #include "fourdst/config/config.h"
@@ -482,4 +483,37 @@ TEST_F(compositionTest, iterationOrdering) {
         EXPECT_EQ(sp, speciesInOrder[count]);
         ++count;
     }
+}
+
+TEST_F(compositionTest, standardSolarCompositions) {
+    using namespace fourdst::composition;
+
+    std::vector<io::SolarCompositions> comps = {
+        io::SolarCompositions::AG89,
+        io::SolarCompositions::GS98,
+        io::SolarCompositions::L03,
+        io::SolarCompositions::A09_Przybilla,
+        io::SolarCompositions::AGS05,
+        io::SolarCompositions::AGSS09,
+        io::SolarCompositions::AAG21_photospheric,
+        io::SolarCompositions::MB22_photospheric,
+        io::SolarCompositions::L09
+    };
+
+    std::vector<io::IsotopicPercentages> isos = {
+        io::IsotopicPercentages::L03,
+        io::IsotopicPercentages::L09
+    };
+
+
+    for (const auto comp : comps) {
+        for (const auto iso: isos) {
+            std::string string_comp = io::SolarCompositions_to_string_map.at(comp);
+            std::string string_iso = io::IsotopicPercentages_to_string_map.at(iso);
+
+            EXPECT_NO_THROW((void)get_composition_record(comp, iso, 0.02, 0.28));
+            EXPECT_NO_THROW((void)get_composition_record(string_comp, string_iso, 0.02, 0.28));
+        }
+    }
+
 }

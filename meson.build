@@ -18,7 +18,7 @@
 #   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 #
 # *********************************************************************** #
-project('libcomposition', 'cpp', version: 'v2.3.1', default_options: ['cpp_std=c++23'], meson_version: '>=1.5.0')
+project('libcomposition', 'cpp', version: 'v2.4.0', default_options: ['cpp_std=c++23'], meson_version: '>=1.5.0')
 
 # Add default visibility for all C++ targets
 add_project_arguments('-fvisibility=default', language: 'cpp')
@@ -51,7 +51,6 @@ if get_option('pkg_config')
         description: 'Composition module for SERiF and related projects',
         version: meson.project_version(),
         libraries: [libcomposition],
-        subdirs: ['fourdst'],
         filebase: 'fourdst_composition',
         install_dir: join_paths(get_option('libdir'), 'pkgconfig')
     )
