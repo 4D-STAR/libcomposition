@@ -2,7 +2,7 @@ required_headers = [
     'fourdst/atomic/atomicSpecies.h',
     'fourdst/atomic/species.h',
     'fourdst/composition/composition.h',
-    'fourdst/composition/utils.h',
+    'fourdst/composition/utils/utils.h',
     'fourdst/composition/composition_abstract.h',
     'fourdst/composition/exceptions/exceptions_composition.h',
     'fourdst/composition/io/standard_compositions.h',
