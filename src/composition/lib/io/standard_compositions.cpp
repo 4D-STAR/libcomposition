@@ -66,9 +66,6 @@ namespace fourdst:: composition::io {
         // LOG_TRACE_L1(m_logger, "Parsing chemical abundance for: {}", scheme);
 
         bool debug = false;
-        if (debug){
-            std::println("Parsing chemical abundance for: {}", scheme);
-        }
 
         std::istringstream stream(std::string(data.begin(), data.end()));
 
@@ -139,12 +136,6 @@ namespace fourdst:: composition::io {
         //     raise error ("Scheme {} not found", scheme)
 
 
-        if (debug){
-            std::println("he_abundance: {}", comp.he_abundance);
-            std::println("requires_atomic_weight: {}", comp.requires_atomic_weight);
-            std::println("elements: {}",comp.elements);
-            std::println("abundances: {}", comp.abundances);
-        }
 
         return comp;
 
@@ -159,9 +150,6 @@ namespace fourdst:: composition::io {
         // IsotopicPercentage object
 
         bool debug = false;
-        if (debug){
-            std::println("Parsing Isotopic Percentage for: {}", scheme);
-        }
 
         std::istringstream stream(std::string(data.begin(), data.end()));
 
@@ -232,12 +220,6 @@ namespace fourdst:: composition::io {
             i+=1;
         }
 
-        if (debug){
-            std::println("atomic_numbers: {}", iso.atomic_numbers);
-            std::println("elements: {}",iso.elements);
-            std::println("mass_numbers: {}", iso.mass_numbers);
-            std::println("percentages: {}", iso.percentages);
-        }
 
         return iso;
     }
