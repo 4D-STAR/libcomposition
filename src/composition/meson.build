@@ -49,7 +49,6 @@ libcomposition = library('composition',
 composition_dep = declare_dependency(
     link_with: libcomposition,
     dependencies: dependencies,
-    sources: composition_sources,
 )
 
 # Make headers accessible
