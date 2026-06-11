@@ -17,55 +17,55 @@
 #include <ranges>
 #include <cctype>
 
-namespace fourdst:: composition::io {
-    namespace {
-        inline void ltrim(std::string &s) {
-            s.erase(
-                s.begin(),
-                std::ranges::find_if(s,
-                                     [](const unsigned char ch) {
-                                         return !std::isspace(ch);
-                                     })
-             );
-        }
-
-        inline void rtrim(std::string &s) {
-            s.erase(
-                std::find_if(
-                    s.rbegin(),
-                    s.rend(),
-                    [](const unsigned char ch) {
-                        return !std::isspace(ch);
-                    }).base(),
-                    s.end()
-                );
-        }
-
-        inline void trim(std::string &s) {
-            ltrim(s);
-            rtrim(s);
-        }
-
-
+namespace {
+    void ltrim(std::string &s) {
+        s.erase(
+            s.begin(),
+            std::ranges::find_if(s,
+                                 [](const unsigned char ch) {
+                                     return !std::isspace(ch);
+                                 })
+         );
     }
 
+    void rtrim(std::string &s) {
+        s.erase(
+            std::find_if(
+                s.rbegin(),
+                s.rend(),
+                [](const unsigned char ch) {
+                    return !std::isspace(ch);
+                }).base(),
+                s.end()
+            );
+    }
+
+    void trim(std::string &s) {
+        ltrim(s);
+        rtrim(s);
+    }
+
+
     bool to_bool(std::string s) {
-        std::transform(s.begin(), s.end(), s.begin(),
-                    [](unsigned char c){ return std::tolower(c); });
+        std::ranges::transform(s, s.begin(),
+                               [](const unsigned char c){ return std::tolower(c); });
 
         return s == "true";
     }
 
-    CompositionData ChemicalFileParser::parse_compositon_data(const std::vector<char>& data,const std::string& scheme) const {
+}
+
+namespace fourdst:: composition::io {
+    std::span<const unsigned char> get_raw_standard_solar_composition_data() {
+        return StandardMetalFractions;
+    }
+
+    CompositionData ChemicalFileParser::parse_composition_data(const std::vector<char>& data,const std::string& scheme) {
 
         // get file and metal_fraction_scheme
         // Load the file
         // find the metal_fraction_scheme
         // return abundances
-
-        // LOG_TRACE_L1(m_logger, "Parsing chemical abundance for: {}", scheme);
-
-        bool debug = false;
 
         std::istringstream stream(std::string(data.begin(), data.end()));
 
@@ -141,15 +141,13 @@ namespace fourdst:: composition::io {
 
     }
 
-    IsotopicPercentage ChemicalFileParser::parse_isotopic_percentage(const std::vector<char>& data,const std::string& scheme) const {
+    IsotopicPercentage ChemicalFileParser::parse_isotopic_percentage(const std::vector<char>& data,const std::string& scheme) {
 
         // get file and iso_scheme
         // Load the file
         // find the iso_scheme
         // get iso_comp data
         // IsotopicPercentage object
-
-        bool debug = false;
 
         std::istringstream stream(std::string(data.begin(), data.end()));
 
@@ -240,7 +238,7 @@ namespace fourdst::composition {
 
         data = std::ranges::to<std::vector<char>>(StandardMetalFractions);
 
-        metals = parser.parse_compositon_data(data,metal_fraction_scheme);
+        metals = parser.parse_composition_data(data,metal_fraction_scheme);
         isotopes = parser.parse_isotopic_percentage(data,isotopic_percentage_scheme);
 
         std::string name;

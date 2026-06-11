@@ -63,6 +63,12 @@ namespace fourdst::composition::io  {
     };
 
     /**
+     * @brief Fetch the raw byte array of the standard solar composition data
+     * @return Raw Byte array to be used with ChemicalFileParser
+     */
+    std::span<const unsigned char> get_raw_standard_solar_composition_data();
+
+    /**
      * @class ChemicalFileParser
      * @brief An abstract base class for chemical file parsers.
      *
@@ -104,8 +110,8 @@ namespace fourdst::composition::io  {
          * }
          * @endcode
          */
-        [[nodiscard]] CompositionData parse_compositon_data(const std::vector<char>& data,const std::string& scheme) const ;
-        [[nodiscard]] IsotopicPercentage parse_isotopic_percentage(const std::vector<char>& data,const std::string& scheme) const ;
+        [[nodiscard]] static CompositionData parse_composition_data(const std::vector<char>& data,const std::string& scheme);
+        [[nodiscard]] static IsotopicPercentage parse_isotopic_percentage(const std::vector<char>& data,const std::string& scheme);
     };
 
 
