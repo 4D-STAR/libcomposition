@@ -53,32 +53,36 @@ composition_dep = declare_dependency(
     sources: composition_sources,
 )
 
+composition_header_install_dir = get_option('header_install_dir') != '' \
+    ? get_option('header_install_dir') / 'fourdst' / 'composition' \
+    : get_option('includedir') / 'fourdst' / 'composition'
+
 # Make headers accessible
 composition_headers = files(
   'include/fourdst/composition/composition.h',
   'include/fourdst/composition/composition_abstract.h',
 )
-install_headers(composition_headers, subdir : 'fourdst/composition')
+install_headers(composition_headers, install_dir : composition_header_install_dir)
 
 composition_headers_utils = files(
     'include/fourdst/composition/utils/utils.h',
     'include/fourdst/composition/utils/composition_hash.h'
 )
-install_headers(composition_headers_utils, subdir : 'fourdst/composition/utils')
+install_headers(composition_headers_utils, install_dir: composition_header_install_dir / 'utils')
 
 composition_headers_io = files(
     'include/fourdst/composition/io/standard_compositions.h',
     'include/fourdst/composition/io/StandardMetalFractionsBinary.h'
 )
 
-install_headers(composition_headers_io, subdir : 'fourdst/composition/io')
+install_headers(composition_headers_io, install_dir: composition_header_install_dir / 'io')
 
 composition_headers_decorators = files(
     'include/fourdst/composition/decorators/composition_masked.h',
     'include/fourdst/composition/decorators/composition_decorator_abstract.h',
 )
 
-install_headers(composition_headers_decorators, subdir : 'fourdst/composition/decorators')
+install_headers(composition_headers_decorators, install_dir: composition_header_install_dir / 'decorators')
 
 composition_headers_atomic = files(
     'include/fourdst/atomic/atomicSpecies.h',
@@ -86,18 +90,18 @@ composition_headers_atomic = files(
     'include/fourdst/atomic/species.h',
     
 )
-install_headers(composition_headers_atomic, subdir : 'fourdst/atomic')
+install_headers(composition_headers_atomic, install_dir: composition_header_install_dir / 'atomic')
 
 composition_exception_headers = files(
     'include/fourdst/composition/exceptions/exceptions_composition.h',
 )
-install_headers(composition_exception_headers, subdir : 'fourdst/composition/exceptions')
+install_headers(composition_exception_headers, install_dir: composition_header_install_dir / 'exceptions')
 
 composition_iterator_headers = files(
     'include/fourdst/composition/iterators/composition_abstract_iterator.h',
 )
 
-install_headers(composition_iterator_headers, subdir : 'fourdst/composition/iterators')
+install_headers(composition_iterator_headers, install_dir: composition_header_install_dir / 'iterators')
 
 v = meson.project_version()
 
