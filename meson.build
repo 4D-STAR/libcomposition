@@ -18,12 +18,30 @@
 #   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 #
 # *********************************************************************** #
-project('libcomposition', 'cpp', version: 'v2.4.5', default_options: ['cpp_std=c++23'], meson_version: '>=1.5.0')
+project('libcomposition', 'cpp', version: 'v2.4.6', default_options: ['cpp_std=c++23'], meson_version: '>=1.5.0')
 
 # Add default visibility for all C++ targets
 add_project_arguments('-fvisibility=default', language: 'cpp')
 # Disable shadow warnings
 add_project_arguments('-Wno-shadow', language: 'cpp')
+
+if get_option('build_python')
+    local_py_install = import('python').find_installation('python3', pure: false)
+    fourdst_pkg = local_py_install.get_install_dir() / 'fourdst'
+
+    composition_libdir             = fourdst_pkg / 'lib'
+    composition_header_install_dir = fourdst_pkg / 'include' / 'fourdst' / 'composition'
+
+    vendor_lib_dir             = fourdst_pkg / 'lib' / 'vendor'
+    vendor_header_dir          = fourdst_pkg / 'include' / 'fourdst' / 'vendor'
+    message('Installing libcomposition in python mode. Install locations are...')
+else
+    composition_libdir             = get_option('libdir')
+    composition_header_install_dir = get_option('includedir') / 'fourdst' / 'composition'
+    message('Installing libcomposition in non python (normal) mode. Install locations are...')
+endif
+message('    Libraries: ' + composition_libdir)
+message('    Headers:   ' + composition_header_install_dir)
 
 cpp = meson.get_compiler('cpp')
 subdir('build-config')

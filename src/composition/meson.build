@@ -37,14 +37,13 @@ dependencies = [
     xxhash_dep
 ]
 
-fourdst_component_libdir = get_option('lib_install_dir') != '' ? get_option('lib_install_dir') : get_option('libdir')
-
 libcomposition = library('composition',
-                         composition_sources,
-                         cpp_args: ['-fvisibility=default'],
-                         dependencies: dependencies,
-                         install: true,
-                         install_dir: fourdst_component_libdir)
+    composition_sources,
+    cpp_args: ['-fvisibility=default'],
+    dependencies: dependencies,
+    install: true,
+    install_dir: composition_libdir
+)
 
 
 composition_dep = declare_dependency(
@@ -52,10 +51,6 @@ composition_dep = declare_dependency(
     dependencies: dependencies,
     sources: composition_sources,
 )
-
-composition_header_install_dir = get_option('header_install_dir') != '' \
-    ? get_option('header_install_dir') / 'fourdst' / 'composition' \
-    : get_option('includedir') / 'fourdst' / 'composition'
 
 # Make headers accessible
 composition_headers = files(
