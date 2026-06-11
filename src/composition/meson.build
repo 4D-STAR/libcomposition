@@ -37,12 +37,15 @@ dependencies = [
     xxhash_dep
 ]
 
-# Define the libcomposition library so it can be linked against by other parts of the build system
+fourdst_component_libdir = get_option('lib_install_dir') != '' ? get_option('lib_install_dir') : get_option('libdir')
+
 libcomposition = library('composition',
-    composition_sources, 
-    cpp_args: ['-fvisibility=default'],
-    dependencies: dependencies,
-    install : true)
+                         composition_sources,
+                         cpp_args: ['-fvisibility=default'],
+                         dependencies: dependencies,
+                         install: true,
+                         install_dir: fourdst_component_libdir)
+
 
 composition_dep = declare_dependency(
     link_with: libcomposition,
