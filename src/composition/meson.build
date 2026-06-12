@@ -98,7 +98,7 @@ if get_option('build_python')
     install_data(composition_headers_utils, install_dir: composition_header_install_dir / 'utils')
     install_data(composition_headers_io, install_dir: composition_header_install_dir / 'io')
     install_data(composition_headers_decorators, install_dir: composition_header_install_dir / 'decorators')
-    install_data(composition_headers_atomic, install_dir: composition_header_install_dir / 'atomic')
+    install_data(composition_headers_atomic, install_dir: atomic_header_install_dir)
     install_data(composition_exception_headers, install_dir: composition_header_install_dir / 'exceptions')
     install_data(composition_iterator_headers, install_dir: composition_header_install_dir / 'iterators')
 else
@@ -106,7 +106,7 @@ else
     install_headers(composition_headers_utils, install_dir: composition_header_install_dir / 'utils')
     install_headers(composition_headers_io, install_dir: composition_header_install_dir / 'io')
     install_headers(composition_headers_decorators, install_dir: composition_header_install_dir / 'decorators')
-    install_headers(composition_headers_atomic, install_dir: composition_header_install_dir / 'atomic')
+    install_headers(composition_headers_atomic, install_dir: atomic_header_install_dir)
     install_headers(composition_exception_headers, install_dir: composition_header_install_dir / 'exceptions')
     install_headers(composition_iterator_headers, install_dir: composition_header_install_dir / 'iterators')
 endif

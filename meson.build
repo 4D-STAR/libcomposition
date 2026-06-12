@@ -18,7 +18,7 @@
 #   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 #
 # *********************************************************************** #
-project('libcomposition', 'cpp', version: 'v2.4.8', default_options: ['cpp_std=c++23'], meson_version: '>=1.5.0')
+project('libcomposition', 'cpp', version: 'v2.4.9', default_options: ['cpp_std=c++23'], meson_version: '>=1.5.0')
 
 # Add default visibility for all C++ targets
 add_project_arguments('-fvisibility=default', language: 'cpp')
@@ -31,6 +31,7 @@ if get_option('build_python')
 
     composition_libdir             = fourdst_pkg / 'lib'
     composition_header_install_dir = fourdst_pkg / 'include' / 'fourdst' / 'composition'
+    atomic_header_install_dir = fourdst_pkg / 'include' / 'fourdst' / 'atomic'
 
     vendor_lib_dir             = fourdst_pkg / 'lib' / 'vendor'
     vendor_header_dir          = fourdst_pkg / 'include' / 'fourdst' / 'vendor'
@@ -38,6 +39,7 @@ if get_option('build_python')
 else
     composition_libdir             = get_option('libdir')
     composition_header_install_dir = get_option('includedir') / 'fourdst' / 'composition'
+    atomic_header_install_dir      = get_option('includedir') / 'fourdst' / 'atomic'
     message('Installing libcomposition in non python (normal) mode. Install locations are...')
 endif
 message('    Libraries: ' + composition_libdir)
