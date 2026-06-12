@@ -1,3 +1,13 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$structstd_1_1hash_3_01fourdst_1_1composition_1_1_composition_abstract_01_4.html" title=" " alt="" coords="5,5,186,61"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,140,109,166"/>
+<area shape="rect" id="Node000001" href="$classfourdst_1_1composition_1_1exceptions_1_1_composition_error.html" title="Base class for exceptions related to composition objects." alt="" coords="157,93,358,134"/>
+<area shape="poly" id="edge4_Node000000_Node000001" title=" " alt="" coords="123,137,158,132,154,135,125,142"/>
+<area shape="rect" id="Node000004" href="$classfourdst_1_1composition_1_1exceptions_1_1_species_error.html" title="Base class for exceptions related to atomic species." alt="" coords="170,165,345,206"/>
+<area shape="poly" id="edge7_Node000000_Node000004" title=" " alt="" coords="124,161,172,170,167,172,124,167"/>
+<area shape="rect" id="Node000002" href="$classfourdst_1_1composition_1_1exceptions_1_1_invalid_composition_error.html" title="Exception thrown when a composition is in an invalid or inconsistent state." alt="" coords="410,5,621,61"/>
+<area shape="poly" id="edge5_Node000001_Node000002" title=" " alt="" coords="339,85,426,61,421,62,340,90"/>
+<area shape="rect" id="Node000003" href="$classfourdst_1_1composition_1_1exceptions_1_1_unregistered_symbol_error.html" title="Exception thrown when a symbol is used that has not been registered." alt="" coords="406,85,624,141"/>
+<area shape="poly" id="edge6_Node000001_Node000003" title=" " alt="" coords="373,111,408,113,403,114,374,116"/>
+<area shape="rect" id="Node000005" href="$classfourdst_1_1composition_1_1exceptions_1_1_unknown_symbol_error.html" title="Exception thrown when an unknown symbol is encountered." alt="" coords="416,165,615,221"/>
+<area shape="poly" id="edge8_Node000004_Node000005" title=" " alt="" coords="360,186,418,190,412,190,360,191"/>
 </map>

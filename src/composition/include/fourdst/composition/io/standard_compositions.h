@@ -63,55 +63,104 @@ namespace fourdst::composition::io  {
     };
 
     /**
-     * @brief Fetch the raw byte array of the standard solar composition data
-     * @return Raw Byte array to be used with ChemicalFileParser
+     * @brief Returns a read-only span over the embedded standard solar composition data.
+     *
+     * The data are stored as a compile-time binary array generated from the
+     * embedded resource file at build time.  The returned span references static
+     * storage directly — no copies are made.
+     *
+     * @return `std::span<const unsigned char>` Non-owning view over the raw tagged
+     *         composition data bytes, suitable for passing to `ChemicalFileParser`.
+     *
+     * @par Examples
+     * @code{.cpp}
+     * auto raw = fourdst::composition::io::get_raw_standard_solar_composition_data();
+     * std::vector<char> buf(raw.begin(), raw.end());
+     * @endcode
      */
     std::span<const unsigned char> get_raw_standard_solar_composition_data();
 
     /**
      * @class ChemicalFileParser
-     * @brief An abstract base class for chemical file parsers.
+     * @brief Parser for the tagged flat-text chemical composition data format.
      *
-     * This class defines the interface for parsing fortran code files that contain
-     * nuclide fractions. Derived classes must implement the `parse`
-     * method to handle specific file formats.
+     * Reads data buffers that contain one or more named blocks delimited by
+     * `BEGIN <scheme>` / `END <scheme>` sentinels and extracts either bulk metal
+     * composition records or per-isotope percentage tables.
      */
     class ChemicalFileParser {
     private:
-        
+
     public:
 
         /**
-         * @brief Parses a chemical file and returns the parsed data.
+         * @brief Parses a named composition block from a tagged flat-text data buffer.
          *
-         * This is a pure virtual function that must be implemented by derived
-         * classes. It takes a filename as input and returns a `ParsedChemicalData`
-         * struct containing the information extracted from the file.
+         * Scans the buffer line by line for `BEGIN {scheme}`, then extracts five
+         * fixed-position fields (comment, He abundance, atomic-weight flag, element
+         * list, log10 abundance list) until `END {scheme}` is reached.  He abundance
+         * and metal abundances are converted from log10 to linear scale via
+         * `pow(10, x)` before storage.
          *
-         * @param filename The path to the Chemical file to parse.
-         * @return A `ParsedChemicalData` struct containing the parsed reaction data.
+         * @param[in] data   Raw byte buffer (e.g., from
+         *                   `get_raw_standard_solar_composition_data()`).
+         * @param[in] scheme Block tag to extract (e.g., `"GS98"`, `"AGSS09"`).
          *
-         * @throws std::runtime_error If the file cannot be opened or a parsing
-         * error occurs.
+         * @return `CompositionData` Populated struct; default-initialized if the
+         *         scheme is not found.
          *
-         * @b Usage
-         * @code
-         * std::unique_ptr<ChemicalFileParser> parser = std::make_unique<SimpleReactionListFileParser>();
-         * try {
-         *     ParsedChemicalData data = parser->parse("my_reactions.txt");
-         *     for (const auto& reaction_name : data.reactionPENames) {
-         *         // ... process reaction name
-        const mfem::GridFunction& grav_potential_at_inf(FEM& fem, const Args& args, const mfem::GridFunction& rho, bool pho_warm) {
-
-}
-         *     }
-         * } catch (const std::runtime_error& e) {
-         *     // ... handle error
+         * @throws std::invalid_argument If a numeric field cannot be parsed by
+         *         `std::stod`.
+         * @throws std::out_of_range If a numeric field value is out of `double` range.
+         *
+         * @par Examples
+         * @code{.cpp}
+         * auto raw = fourdst::composition::io::get_raw_standard_solar_composition_data();
+         * std::vector<char> buf(raw.begin(), raw.end());
+         *
+         * fourdst::composition::io::ChemicalFileParser parser;
+         * auto comp = parser.parse_composition_data(buf, "GS98");
+         *
+         * for (size_t i = 0; i < comp.elements.size(); ++i) {
+         *     std::println("{}: {:.6e}", comp.elements[i], comp.abundances[i]);
          * }
          * @endcode
          */
-        [[nodiscard]] static CompositionData parse_composition_data(const std::vector<char>& data,const std::string& scheme);
-        [[nodiscard]] static IsotopicPercentage parse_isotopic_percentage(const std::vector<char>& data,const std::string& scheme);
+        [[nodiscard]] static CompositionData parse_composition_data(const std::vector<char>& data, const std::string& scheme);
+
+        /**
+         * @brief Parses a named isotopic-percentage block from a tagged flat-text data buffer.
+         *
+         * Scans the buffer for `BEGIN {scheme}`, then extracts five fixed-position
+         * fields (comment, atomic numbers, element symbols, mass numbers, isotopic
+         * percentages) until `END {scheme}` is reached.  Percentages are stored on
+         * the 0-100 scale.
+         *
+         * @param[in] data   Raw byte buffer containing tagged isotopic percentage blocks.
+         * @param[in] scheme Block tag to extract (e.g., `"L03_data"`, `"L09_data"`).
+         *
+         * @return `IsotopicPercentage` Populated struct; default-initialized if the
+         *         scheme is not found.
+         *
+         * @throws std::invalid_argument If an integer or double field cannot be
+         *         parsed by `std::stoi` / `std::stod`.
+         * @throws std::out_of_range If any parsed value exceeds its target type range.
+         *
+         * @par Examples
+         * @code{.cpp}
+         * auto raw = fourdst::composition::io::get_raw_standard_solar_composition_data();
+         * std::vector<char> buf(raw.begin(), raw.end());
+         *
+         * fourdst::composition::io::ChemicalFileParser parser;
+         * auto iso = parser.parse_isotopic_percentage(buf, "L03_data");
+         *
+         * for (size_t i = 0; i < iso.elements.size(); ++i) {
+         *     std::println("{}-{}: {:.4f}%",
+         *                  iso.elements[i], iso.mass_numbers[i], iso.percentages[i]);
+         * }
+         * @endcode
+         */
+        [[nodiscard]] static IsotopicPercentage parse_isotopic_percentage(const std::vector<char>& data, const std::string& scheme);
     };
 
 
@@ -119,29 +168,81 @@ namespace fourdst::composition::io  {
 
 namespace fourdst::composition {
     /**
-     * @brief Function to retrieve a standard solar composition record indexed by their canonical names including
-     *  - AG89
-     *  - GN93
-     *  - GS98
-     *  - L03
-     *  - AGS05
-     *  - AGS08
-     *  - A09_Pryzbilla
-     *  - MB22_photospheric
-     *  - AAG21_photospheric
-     *  - L09
-     *  Further, isotopic percentages can be selected as either
-     *  - L03
-     *  - L09
+     * @brief Constructs a stellar `Composition` from a named solar metal-fraction
+     *        scheme and isotopic-percentage table, scaled to the supplied bulk
+     *        hydrogen and helium mass fractions.
      *
-     *  These data have been extracted from chem_def.f90 from MESA <version>
+     * Available metal fraction schemes (extracted from MESA `chem_def.f90`):
+     *  - `AG89`  (Anders & Grevesse 1989)
+     *  - `GN93`  (Grevesse & Noels 1993)
+     *  - `GS98`  (Grevesse & Sauval 1998)
+     *  - `L03`   (Lodders 2003)
+     *  - `AGS05` (Asplund, Grevesse & Sauval 2005)
+     *  - `AGSS09` (Asplund et al. 2009)
+     *  - `A09_Przybilla`
+     *  - `MB22_photospheric`
+     *  - `AAG21_photospheric`
+     *  - `L09`   (Lodders 2009)
      *
-     *  @note Composition names are case normalized; therefore, the inputs for metal fraction scheme and isotopic percentage scheme are case insensitive.
+     * Available isotopic percentage schemes:
+     *  - `L03_data` (Lodders 2003)
+     *  - `L09_data` (Lodders 2009)
      *
-     *  @param metal_fraction_scheme The name of the metal fraction scheme to use. Must be one of the following: AG89, GN93, GS98, L03, AGS05, AGS08, A09_Pryzbilla, MB22_photospheric, AAG21_photospheric, L09
-     *  @param isotopic_percentage_scheme The name of the isotopic percentage scheme to use. Must be one of the following: L03, L09
-     *  @param initial_z <poojan_documenent_here>
-     *  @param initial_y <poojan document here>
+     * **Algorithm:**
+     * 1. **Data loading** — The embedded binary `StandardMetalFractions` is copied
+     *    into a `std::vector<char>` and parsed twice: once for `metal_fraction_scheme`
+     *    and once for `isotopic_percentage_scheme`.
+     * 2. **Species list** — The isotope table is iterated; any isotope whose element
+     *    appears in the metals list or is `"H"` / `"He"` is looked up in the global
+     *    `atomic::species` registry by `"<Element>-<A>"` and added to the list.
+     * 3. **H and He mass fractions** — Four entries are prepended (H-1, H-2, He-3,
+     *    He-4) using Anders & Grevesse (1989) solar He3/He4 ratio:
+     *    - X(H-1) = clamp(1 - Z - Y, 0, 1)
+     *    - X(H-2) = 0
+     *    - X(He-3) = Y * xsol_He3 / (xsol_He3 + xsol_He4)
+     *    - X(He-4) = Y * xsol_He4 / (xsol_He3 + xsol_He4)
+     *    where xsol_He3 = 2.9291e-5 and xsol_He4 = 2.7521e-1.
+     * 4. **Atomic-weight weighting** — When `CompositionData::requires_atomic_weight`
+     *    is `true`, each metal's number-fraction abundance is multiplied by the
+     *    atomic mass of its most-abundant isotope (determined from the isotopic table).
+     * 5. **Normalisation** — Metal fractions are summed and normalised to unity.
+     * 6. **Isotope distribution** — Per-isotope mass fractions are computed as:
+     *    X_i = Z_total * f_E * (p_i * m_i) / sum_j(p_j * m_j)
+     *    where f_E is the normalised metal fraction, p_i the isotopic percentage
+     *    (0-100 scale), and m_i the isotope's atomic mass.
+     * 7. **Renormalisation** — Metal mass fractions are rescaled so their sum
+     *    equals Z_total exactly.
+     * 8. **Assembly** — `buildCompositionFromMassFractions(species, massFracs)` builds
+     *    the final `Composition` object.
+     *
+     * @param[in] metal_fraction_scheme      Block tag of the desired solar metal
+     *            composition (e.g., `"GS98"`, `"AGSS09"`).  Case-sensitive; must
+     *            match a `BEGIN`/`END` tag in the embedded data exactly.
+     * @param[in] isotopic_percentage_scheme Block tag of the isotopic percentage
+     *            table (e.g., `"L03_data"`, `"L09_data"`).
+     * @param[in] initial_z                  Total metal mass fraction Z (0 <= Z < 1).
+     * @param[in] initial_y                  Total helium mass fraction Y (0 <= Y < 1,
+     *            with X + Y + Z <= 1 recommended).  X(H-1) is clamped to [0, 1]
+     *            if the constraint is violated.
+     *
+     * @return `Composition` Fully populated composition object with per-isotope
+     *         mass fractions normalised to `initial_z` and `initial_y`.
+     *
+     * @throws std::out_of_range If a species name derived from the isotopic table
+     *         is absent from `atomic::species`, or if either scheme tag is not
+     *         present in the embedded data.
+     * @throws std::invalid_argument If numeric fields in the embedded data are
+     *         malformed (propagated from `std::stod` / `std::stoi`).
+     *
+     * @par Examples
+     * @code{.cpp}
+     * // Grevesse & Sauval (1998) at Z = 0.02, Y = 0.28
+     * fourdst::composition::Composition comp =
+     *     fourdst::composition::get_composition_record("GS98", "L03_data", 0.02, 0.28);
+     *
+     * double x_h1 = comp.massFraction("H-1");
+     * std::println("X(H-1) = {:.6f}", x_h1);  // approx 0.70
+     * @endcode
      */
     [[nodiscard]] Composition get_composition_record(const std::string& metal_fraction_scheme,
                                                      const std::string& isotopic_percentage_scheme,
@@ -149,12 +250,41 @@ namespace fourdst::composition {
                                                      double initial_y);
 
     /**
-     * @brief Overload of the string based version of this function which accepts the enums Solar
-     * @param metal_fraction_scheme Enum corresponding to the standard solar composition to select
-     * @param isotopic_percentage_scheme Enum corresponding to the isotopic percentages prescription to select
-     * @param initial_z <poojan_document_here>
-     * @param initial_y <poojan_document_here>
-     * @return
+     * @brief Enum-based overload of `get_composition_record()`.
+     *
+     * Translates strongly-typed enum values to their canonical string
+     * representations via `SolarCompositions_to_string_map` and
+     * `IsotopicPercentages_to_string_map`, then delegates to the string-based
+     * overload.  This overload is preferred as it prevents scheme name typos.
+     *
+     * @param[in] metal_fraction_scheme      Enum identifying the desired solar metal
+     *            composition (e.g., `SolarCompositions::GS98`).
+     * @param[in] isotopic_percentage_scheme Enum identifying the isotopic percentage
+     *            table (e.g., `IsotopicPercentages::L03`).
+     * @param[in] initial_z                  Total metal mass fraction Z (0 <= Z < 1).
+     * @param[in] initial_y                  Total helium mass fraction Y (0 <= Y < 1).
+     *
+     * @return `Composition` Fully populated composition; see the string-based
+     *         overload for the complete algorithm description.
+     *
+     * @throws std::out_of_range If the enum value is absent from its lookup map
+     *         (should not occur with valid named enum members).
+     *
+     * @par Examples
+     * @code{.cpp}
+     * using namespace fourdst::composition;
+     * using namespace fourdst::composition::io;
+     *
+     * // Asplund et al. (2009) at proto-solar Z and Y
+     * Composition comp = get_composition_record(
+     *     SolarCompositions::AGSS09,
+     *     IsotopicPercentages::L09,
+     *     0.0134, 0.2485
+     * );
+     *
+     * double x_he4 = comp.massFraction("He-4");
+     * std::println("X(He-4) = {:.6f}", x_he4);
+     * @endcode
      */
     [[nodiscard]] Composition get_composition_record(io::SolarCompositions metal_fraction_scheme,
                                                      io::IsotopicPercentages isotopic_percentage_scheme,

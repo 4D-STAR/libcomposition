@@ -18,6 +18,14 @@
 #include <cctype>
 
 namespace {
+    /**
+     * @brief Removes leading whitespace from a string in-place.
+     *
+     * Uses `std::ranges::find_if` with an `std::isspace` predicate to locate the
+     * first non-whitespace character, then erases all characters before that position.
+     *
+     * @param[in,out] s String to modify.
+     */
     void ltrim(std::string &s) {
         s.erase(
             s.begin(),
@@ -28,6 +36,15 @@ namespace {
          );
     }
 
+    /**
+     * @brief Removes trailing whitespace from a string in-place.
+     *
+     * Iterates in reverse via a reverse iterator pair and `std::find_if` with an
+     * `std::isspace` predicate to locate the last non-whitespace character, then
+     * erases everything after it.
+     *
+     * @param[in,out] s String to modify.
+     */
     void rtrim(std::string &s) {
         s.erase(
             std::find_if(
@@ -40,12 +57,29 @@ namespace {
             );
     }
 
+    /**
+     * @brief Removes both leading and trailing whitespace from a string in-place.
+     *
+     * Delegates to ltrim() then rtrim() in sequence.
+     *
+     * @param[in,out] s String to modify.
+     */
     void trim(std::string &s) {
         ltrim(s);
         rtrim(s);
     }
 
 
+    /**
+     * @brief Converts a string to a boolean value, case-insensitively.
+     *
+     * Lower-cases every character via `std::ranges::transform` and returns `true`
+     * only when the resulting string is exactly `"true"`.  All other inputs
+     * (including `"1"`, `"yes"`, empty string) return `false`.
+     *
+     * @param s String to interpret (e.g., `"true"`, `"True"`, `"TRUE"`, `"false"`).
+     * @return `true` if the lower-cased string equals `"true"`, `false` otherwise.
+     */
     bool to_bool(std::string s) {
         std::ranges::transform(s, s.begin(),
                                [](const unsigned char c){ return std::tolower(c); });
@@ -61,11 +95,6 @@ namespace fourdst:: composition::io {
     }
 
     CompositionData ChemicalFileParser::parse_composition_data(const std::vector<char>& data,const std::string& scheme) {
-
-        // get file and metal_fraction_scheme
-        // Load the file
-        // find the metal_fraction_scheme
-        // return abundances
 
         std::istringstream stream(std::string(data.begin(), data.end()));
 
@@ -144,10 +173,6 @@ namespace fourdst:: composition::io {
     IsotopicPercentage ChemicalFileParser::parse_isotopic_percentage(const std::vector<char>& data,const std::string& scheme) {
 
         // get file and iso_scheme
-        // Load the file
-        // find the iso_scheme
-        // get iso_comp data
-        // IsotopicPercentage object
 
         std::istringstream stream(std::string(data.begin(), data.end()));
 

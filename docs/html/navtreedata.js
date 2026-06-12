@@ -32,6 +32,7 @@ var NAVTREE =
         [ "All", "namespacemembers.html", "namespacemembers_dup" ],
         [ "Functions", "namespacemembers_func.html", "namespacemembers_func" ],
         [ "Variables", "namespacemembers_vars.html", null ],
+        [ "Typedefs", "namespacemembers_type.html", null ],
         [ "Enumerations", "namespacemembers_enum.html", null ]
       ] ]
     ] ],
@@ -50,31 +51,35 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ]
+      [ "File List", "files.html", "files_dup" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Variables", "globals_vars.html", null ]
+      ] ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"annotated.html",
-"classfourdst_1_1composition_1_1_composition_decorator.html#a996066b4bf67e415eb2dd3ea7aed68bd",
-"index.html#install_sec",
-"namespacefourdst_1_1atomic.html#a107b4fe11cc3d7e79e18939845df6af8",
-"namespacefourdst_1_1atomic.html#a21ee45ed2638293bd712ca09370cbc7f",
-"namespacefourdst_1_1atomic.html#a33986dfb73a1445774b01d1d48b4ec9a",
-"namespacefourdst_1_1atomic.html#a45832f1cf5925dad348df3f4b396e0d5",
-"namespacefourdst_1_1atomic.html#a56e279843013d1fa3f2dd06c63b53c96",
-"namespacefourdst_1_1atomic.html#a6900ebeb5226b9e6018a26c6de7c0215",
-"namespacefourdst_1_1atomic.html#a7adae0ec4f68ec35b16a35affdb22ebc",
-"namespacefourdst_1_1atomic.html#a8e910782efd797a0ece49a032cdd30f2",
-"namespacefourdst_1_1atomic.html#aa0a6c3cca5d429cd6fdf97d141f4d84d",
-"namespacefourdst_1_1atomic.html#ab34efae4c852e973afe61bd48c7fe146",
-"namespacefourdst_1_1atomic.html#ac71e0f64b8b0cdca0a36d862ac62e383",
-"namespacefourdst_1_1atomic.html#ad8b293c2eba01790ae82eaced5bab656",
-"namespacefourdst_1_1atomic.html#ae9bd5f771c09c857fae9c2edc7f3977e",
-"namespacefourdst_1_1atomic.html#afb7413e848ec4fdaec36bea95fda9f35",
-"structfourdst_1_1composition_1_1_composition_1_1_composition_cache.html#af291583560120bb53c4546a598666477"
+"_standard_metal_fractions_binary_8h.html",
+"classfourdst_1_1composition_1_1_composition_decorator.html#a8c1a4cd69465ef5b65bea547ed919ca5",
+"functions_vars.html",
+"namespacefourdst_1_1atomic.html#a0f9a5c1b69513e2bbcfdde083e983584",
+"namespacefourdst_1_1atomic.html#a20aadafdccef633f6d9cd856ffaaac56",
+"namespacefourdst_1_1atomic.html#a325fad35221bd97e9740180289ed9a1d",
+"namespacefourdst_1_1atomic.html#a449e29a5ec80ffe42d469b362d8d3d13",
+"namespacefourdst_1_1atomic.html#a563669399e7389f47a0ea94ffe1fb0ec",
+"namespacefourdst_1_1atomic.html#a67f61c44c21d486a6320a963e404818a",
+"namespacefourdst_1_1atomic.html#a79d655903893b101c85ad0e808f3099f",
+"namespacefourdst_1_1atomic.html#a8d7ec5b78863fd6f6b72a11d93ea507a",
+"namespacefourdst_1_1atomic.html#a9f847deba3f7e85f15e89658d3d7c93d",
+"namespacefourdst_1_1atomic.html#ab1edabf72265983082ffe4f45ce74070",
+"namespacefourdst_1_1atomic.html#ac63108088d29333dfa13a3add4f70d68",
+"namespacefourdst_1_1atomic.html#ad7b745261073b646201118bb68c29a46",
+"namespacefourdst_1_1atomic.html#ae8aea95bd949ddc77f5830ce5251ef38",
+"namespacefourdst_1_1atomic.html#afa9405de2154203c3090faf7e56edc8c",
+"structfourdst_1_1atomic_1_1_species.html#ae1cc99d92a460877ec5bc28f13424c04"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

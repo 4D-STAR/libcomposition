@@ -29,7 +29,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">fourdst::libcomposition<span id="projectnumber">&#160;v2.3.1</span>
+   <div id="projectname">fourdst::libcomposition<span id="projectnumber">&#160;v2.4.9</span>
    </div>
    <div id="projectbrief">Robust atomic species information library</div>
   </td>
@@ -116,6 +116,8 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefourdst_1_1composition_1_1exceptions.html">exceptions</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefourdst_1_1composition_1_1io.html">io</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefourdst_1_1composition_1_1utils.html">utils</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -139,6 +141,12 @@ Classes</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a06f5abc74104de40349e47ad367c402a" id="r_a06f5abc74104de40349e47ad367c402a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a06f5abc74104de40349e47ad367c402a">operator==</a> (const <a class="el" href="classfourdst_1_1composition_1_1_composition.html">Composition</a> &amp;a, const <a class="el" href="classfourdst_1_1composition_1_1_composition.html">Composition</a> &amp;b) noexcept</td></tr>
 <tr class="separator:a06f5abc74104de40349e47ad367c402a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a708d71303db2fa22c8871f3bfc3d11d4" id="r_a708d71303db2fa22c8871f3bfc3d11d4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfourdst_1_1composition_1_1_composition.html">Composition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a708d71303db2fa22c8871f3bfc3d11d4">get_composition_record</a> (const std::string &amp;metal_fraction_scheme, const std::string &amp;isotopic_percentage_scheme, double initial_z, double initial_y)</td></tr>
+<tr class="memdesc:a708d71303db2fa22c8871f3bfc3d11d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a stellar <code><a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a></code> from a named solar metal-fraction scheme and isotopic-percentage table, scaled to the supplied bulk hydrogen and helium mass fractions.  <br /></td></tr>
+<tr class="separator:a708d71303db2fa22c8871f3bfc3d11d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad96edce7a144f1d73e62f622f3063de" id="r_aad96edce7a144f1d73e62f622f3063de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfourdst_1_1composition_1_1_composition.html">Composition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad96edce7a144f1d73e62f622f3063de">get_composition_record</a> (<a class="el" href="namespacefourdst_1_1composition_1_1io.html#a2cd2f870d30e26ed92265cb2d74d40d3">io::SolarCompositions</a> metal_fraction_scheme, <a class="el" href="namespacefourdst_1_1composition_1_1io.html#aaaa91e1b71ac0285d0bcdbd5abf4f381">io::IsotopicPercentages</a> isotopic_percentage_scheme, double initial_z, double initial_y)</td></tr>
+<tr class="memdesc:aad96edce7a144f1d73e62f622f3063de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum-based overload of <code><a class="el" href="#a708d71303db2fa22c8871f3bfc3d11d4" title="Constructs a stellar Composition from a named solar metal-fraction scheme and isotopic-percentage tab...">get_composition_record()</a></code>.  <br /></td></tr>
+<tr class="separator:aad96edce7a144f1d73e62f622f3063de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa90b1ef07d607c0c829bedccf381cf54" id="r_aa90b1ef07d607c0c829bedccf381cf54"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfourdst_1_1composition_1_1_composition.html">Composition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa90b1ef07d607c0c829bedccf381cf54">buildCompositionFromMassFractions</a> (const std::vector&lt; std::string &gt; &amp;symbols, const std::vector&lt; double &gt; &amp;massFractions)</td></tr>
 <tr class="memdesc:aa90b1ef07d607c0c829bedccf381cf54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a <a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a> object from symbols and their corresponding mass fractions.  <br /></td></tr>
 <tr class="separator:aa90b1ef07d607c0c829bedccf381cf54"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -223,13 +231,12 @@ Usage examples</h2>
 <div class="ttc" id="acomposition_8h_html"><div class="ttname"><a href="composition_8h.html">composition.h</a></div></div>
 <div class="ttc" id="anamespacefourdst_1_1composition_html"><div class="ttname"><a href="namespacefourdst_1_1composition.html">fourdst::composition</a></div><div class="ttdoc">Utilities and types for representing and manipulating chemical compositions.</div></div>
 <div class="ttc" id="astructfourdst_1_1composition_1_1_canonical_composition_html"><div class="ttname"><a href="structfourdst_1_1composition_1_1_canonical_composition.html">fourdst::composition::CanonicalComposition</a></div><div class="ttdoc">Represents the canonical (X, Y, Z) composition of stellar material.</div><div class="ttdef"><b>Definition</b> <a href="composition_8h_source.html#l00046">composition.h:46</a></div></div>
-</div><!-- fragment --><p>Example 2 – constructing from mass fractions: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="utils_8h.html">fourdst/composition/utils.h</a>&quot;</span></div>
+</div><!-- fragment --><p>Example 2 – constructing from mass fractions: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;fourdst/composition/utils.h&quot;</span></div>
 <div class="line"> </div>
 <div class="line">std::vector&lt;std::string&gt; symbols = {<span class="stringliteral">&quot;H-1&quot;</span>, <span class="stringliteral">&quot;He-4&quot;</span>, <span class="stringliteral">&quot;C-12&quot;</span>};</div>
 <div class="line">std::vector&lt;double&gt; massFractions = {0.70, 0.28, 0.02};</div>
 <div class="line"><a class="code hl_class" href="classfourdst_1_1composition_1_1_composition.html">Composition</a> comp = <a class="code hl_function" href="#aa90b1ef07d607c0c829bedccf381cf54">buildCompositionFromMassFractions</a>(symbols, massFractions);</div>
 <div class="ttc" id="anamespacefourdst_1_1composition_html_aa90b1ef07d607c0c829bedccf381cf54"><div class="ttname"><a href="#aa90b1ef07d607c0c829bedccf381cf54">fourdst::composition::buildCompositionFromMassFractions</a></div><div class="ttdeci">Composition buildCompositionFromMassFractions(const std::vector&lt; std::string &gt; &amp;symbols, const std::vector&lt; double &gt; &amp;massFractions)</div><div class="ttdoc">Build a Composition object from symbols and their corresponding mass fractions.</div><div class="ttdef"><b>Definition</b> <a href="utils_8cpp_source.html#l00077">utils.cpp:77</a></div></div>
-<div class="ttc" id="autils_8h_html"><div class="ttname"><a href="utils_8h.html">utils.h</a></div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
 Notes and remarks</h2>
 <ul>
@@ -243,7 +250,7 @@ See also</h2>
 <li><a class="el" href="species_8h.html">fourdst/atomic/species.h</a> — canonical atomic species definitions and symbols.</li>
 <li><a class="el" href="composition_8h.html">fourdst/composition/composition.h</a> — concrete <a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a> implementation.</li>
 <li><a class="el" href="composition__abstract_8h.html">fourdst/composition/composition_abstract.h</a> — abstract composition interface.</li>
-<li><a class="el" href="utils_8h.html">fourdst/composition/utils.h</a> — helpers for constructing compositions from mass fractions. </li>
+<li>fourdst/composition/utils.h — helpers for constructing compositions from mass fractions. </li>
 </ul>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a2cb98194b465f646973ceba38d0e7d95" name="a2cb98194b465f646973ceba38d0e7d95"></a>
@@ -501,6 +508,182 @@ See also</h2>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00134">134</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a708d71303db2fa22c8871f3bfc3d11d4" name="a708d71303db2fa22c8871f3bfc3d11d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a708d71303db2fa22c8871f3bfc3d11d4">&#9670;&#160;</a></span>get_composition_record() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classfourdst_1_1composition_1_1_composition.html">Composition</a> fourdst::composition::get_composition_record </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>metal_fraction_scheme</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>isotopic_percentage_scheme</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>initial_z</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>initial_y</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructs a stellar <code><a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a></code> from a named solar metal-fraction scheme and isotopic-percentage table, scaled to the supplied bulk hydrogen and helium mass fractions. </p>
+<p>Available metal fraction schemes (extracted from MESA <code>chem_def.f90</code>):</p><ul>
+<li><code>AG89</code> (Anders &amp; Grevesse 1989)</li>
+<li><code>GN93</code> (Grevesse &amp; Noels 1993)</li>
+<li><code>GS98</code> (Grevesse &amp; Sauval 1998)</li>
+<li><code>L03</code> (Lodders 2003)</li>
+<li><code>AGS05</code> (Asplund, Grevesse &amp; Sauval 2005)</li>
+<li><code>AGSS09</code> (Asplund et al. 2009)</li>
+<li><code>A09_Przybilla</code></li>
+<li><code>MB22_photospheric</code></li>
+<li><code>AAG21_photospheric</code></li>
+<li><code>L09</code> (Lodders 2009)</li>
+</ul>
+<p>Available isotopic percentage schemes:</p><ul>
+<li><code>L03_data</code> (Lodders 2003)</li>
+<li><code>L09_data</code> (Lodders 2009)</li>
+</ul>
+<p><b>Algorithm:</b></p><ol type="1">
+<li><b>Data loading</b> — The embedded binary <code>StandardMetalFractions</code> is copied into a <code>std::vector&lt;char&gt;</code> and parsed twice: once for <code>metal_fraction_scheme</code> and once for <code>isotopic_percentage_scheme</code>.</li>
+<li><b>Species list</b> — The isotope table is iterated; any isotope whose element appears in the metals list or is <code>"H"</code> / <code>"He"</code> is looked up in the global <code><a class="el" href="namespacefourdst_1_1atomic.html#a3f619cc8f8b2cd718a4082c6adb0de90" title="Map of species names to their corresponding Species objects.">atomic::species</a></code> registry by <code>"&lt;Element&gt;-&lt;A&gt;"</code> and added to the list.</li>
+<li><b>H and He mass fractions</b> — Four entries are prepended (H-1, H-2, He-3, He-4) using Anders &amp; Grevesse (1989) solar He3/He4 ratio:<ul>
+<li>X(H-1) = clamp(1 - Z - Y, 0, 1)</li>
+<li>X(H-2) = 0</li>
+<li>X(He-3) = Y * xsol_He3 / (xsol_He3 + xsol_He4)</li>
+<li>X(He-4) = Y * xsol_He4 / (xsol_He3 + xsol_He4) where xsol_He3 = 2.9291e-5 and xsol_He4 = 2.7521e-1.</li>
+</ul>
+</li>
+<li><b>Atomic-weight weighting</b> — When <code>CompositionData::requires_atomic_weight</code> is <code>true</code>, each metal's number-fraction abundance is multiplied by the atomic mass of its most-abundant isotope (determined from the isotopic table).</li>
+<li><b>Normalisation</b> — Metal fractions are summed and normalised to unity.</li>
+<li><b>Isotope distribution</b> — Per-isotope mass fractions are computed as: X_i = Z_total * f_E * (p_i * m_i) / sum_j(p_j * m_j) where f_E is the normalised metal fraction, p_i the isotopic percentage (0-100 scale), and m_i the isotope's atomic mass.</li>
+<li><b>Renormalisation</b> — Metal mass fractions are rescaled so their sum equals Z_total exactly.</li>
+<li><b>Assembly</b> — <code>buildCompositionFromMassFractions(species, massFracs)</code> builds the final <code><a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a></code> object.</li>
+</ol>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">metal_fraction_scheme</td><td>Block tag of the desired solar metal composition (e.g., <code>"GS98"</code>, <code>"AGSS09"</code>). Case-sensitive; must match a <code>BEGIN</code>/<code>END</code> tag in the embedded data exactly. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">isotopic_percentage_scheme</td><td>Block tag of the isotopic percentage table (e.g., <code>"L03_data"</code>, <code>"L09_data"</code>). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">initial_z</td><td>Total metal mass fraction Z (0 &lt;= Z &lt; 1). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">initial_y</td><td>Total helium mass fraction Y (0 &lt;= Y &lt; 1, with X + Y + Z &lt;= 1 recommended). X(H-1) is clamped to [0, 1] if the constraint is violated.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code><a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a></code> Fully populated composition object with per-isotope mass fractions normalised to <code>initial_z</code> and <code>initial_y</code>.</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::out_of_range</td><td>If a species name derived from the isotopic table is absent from <code><a class="el" href="namespacefourdst_1_1atomic.html#a3f619cc8f8b2cd718a4082c6adb0de90" title="Map of species names to their corresponding Species objects.">atomic::species</a></code>, or if either scheme tag is not present in the embedded data. </td></tr>
+    <tr><td class="paramname">std::invalid_argument</td><td>If numeric fields in the embedded data are malformed (propagated from <code>std::stod</code> / <code>std::stoi</code>).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section user"><dt>Examples</dt><dd><div class="fragment"><div class="line"><span class="comment">// Grevesse &amp; Sauval (1998) at Z = 0.02, Y = 0.28</span></div>
+<div class="line"><a class="code hl_class" href="classfourdst_1_1composition_1_1_composition.html">fourdst::composition::Composition</a> comp =</div>
+<div class="line">    <a class="code hl_function" href="#a708d71303db2fa22c8871f3bfc3d11d4">fourdst::composition::get_composition_record</a>(<span class="stringliteral">&quot;GS98&quot;</span>, <span class="stringliteral">&quot;L03_data&quot;</span>, 0.02, 0.28);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">double</span> x_h1 = comp.massFraction(<span class="stringliteral">&quot;H-1&quot;</span>);</div>
+<div class="line">std::println(<span class="stringliteral">&quot;X(H-1) = {:.6f}&quot;</span>, x_h1);  <span class="comment">// approx 0.70</span></div>
+<div class="ttc" id="anamespacefourdst_1_1composition_html_a708d71303db2fa22c8871f3bfc3d11d4"><div class="ttname"><a href="#a708d71303db2fa22c8871f3bfc3d11d4">fourdst::composition::get_composition_record</a></div><div class="ttdeci">Composition get_composition_record(const std::string &amp;metal_fraction_scheme, const std::string &amp;isotopic_percentage_scheme, double initial_z, double initial_y)</div><div class="ttdoc">Constructs a stellar Composition from a named solar metal-fraction scheme and isotopic-percentage tab...</div><div class="ttdef"><b>Definition</b> <a href="standard__compositions_8cpp_source.html#l00252">standard_compositions.cpp:252</a></div></div>
+</div><!-- fragment --> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="standard__compositions_8cpp_source.html#l00252">252</a> of file <a class="el" href="standard__compositions_8cpp_source.html">standard_compositions.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aad96edce7a144f1d73e62f622f3063de" name="aad96edce7a144f1d73e62f622f3063de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad96edce7a144f1d73e62f622f3063de">&#9670;&#160;</a></span>get_composition_record() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classfourdst_1_1composition_1_1_composition.html">Composition</a> fourdst::composition::get_composition_record </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacefourdst_1_1composition_1_1io.html#a2cd2f870d30e26ed92265cb2d74d40d3">io::SolarCompositions</a></td>          <td class="paramname"><span class="paramname"><em>metal_fraction_scheme</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacefourdst_1_1composition_1_1io.html#aaaa91e1b71ac0285d0bcdbd5abf4f381">io::IsotopicPercentages</a></td>          <td class="paramname"><span class="paramname"><em>isotopic_percentage_scheme</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>initial_z</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>initial_y</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Enum-based overload of <code><a class="el" href="#a708d71303db2fa22c8871f3bfc3d11d4" title="Constructs a stellar Composition from a named solar metal-fraction scheme and isotopic-percentage tab...">get_composition_record()</a></code>. </p>
+<p>Translates strongly-typed enum values to their canonical string representations via <code>SolarCompositions_to_string_map</code> and <code>IsotopicPercentages_to_string_map</code>, then delegates to the string-based overload. This overload is preferred as it prevents scheme name typos.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">metal_fraction_scheme</td><td>Enum identifying the desired solar metal composition (e.g., <code>SolarCompositions::GS98</code>). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">isotopic_percentage_scheme</td><td>Enum identifying the isotopic percentage table (e.g., <code>IsotopicPercentages::L03</code>). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">initial_z</td><td>Total metal mass fraction Z (0 &lt;= Z &lt; 1). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">initial_y</td><td>Total helium mass fraction Y (0 &lt;= Y &lt; 1).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code><a class="el" href="classfourdst_1_1composition_1_1_composition.html" title="Manages a collection of chemical species and their abundances.">Composition</a></code> Fully populated composition; see the string-based overload for the complete algorithm description.</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::out_of_range</td><td>If the enum value is absent from its lookup map (should not occur with valid named enum members).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section user"><dt>Examples</dt><dd><div class="fragment"><div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacefourdst_1_1composition.html">fourdst::composition</a>;</div>
+<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacefourdst_1_1composition_1_1io.html">fourdst::composition::io</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Asplund et al. (2009) at proto-solar Z and Y</span></div>
+<div class="line"><a class="code hl_class" href="classfourdst_1_1composition_1_1_composition.html">Composition</a> comp = <a class="code hl_function" href="#a708d71303db2fa22c8871f3bfc3d11d4">get_composition_record</a>(</div>
+<div class="line">    <a class="code hl_enumvalue" href="namespacefourdst_1_1composition_1_1io.html#a2cd2f870d30e26ed92265cb2d74d40d3a17c7e97c4d885537aac6da32b91d47ee">SolarCompositions::AGSS09</a>,</div>
+<div class="line">    <a class="code hl_enumvalue" href="namespacefourdst_1_1composition_1_1io.html#aaaa91e1b71ac0285d0bcdbd5abf4f381af205819a717ff6a23ec8e04854f3d9bb">IsotopicPercentages::L09</a>,</div>
+<div class="line">    0.0134, 0.2485</div>
+<div class="line">);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">double</span> x_he4 = comp.massFraction(<span class="stringliteral">&quot;He-4&quot;</span>);</div>
+<div class="line">std::println(<span class="stringliteral">&quot;X(He-4) = {:.6f}&quot;</span>, x_he4);</div>
+<div class="ttc" id="anamespacefourdst_1_1composition_1_1io_html"><div class="ttname"><a href="namespacefourdst_1_1composition_1_1io.html">fourdst::composition::io</a></div><div class="ttdef"><b>Definition</b> <a href="standard__compositions_8h_source.html#l00012">standard_compositions.h:12</a></div></div>
+<div class="ttc" id="anamespacefourdst_1_1composition_1_1io_html_a2cd2f870d30e26ed92265cb2d74d40d3a17c7e97c4d885537aac6da32b91d47ee"><div class="ttname"><a href="namespacefourdst_1_1composition_1_1io.html#a2cd2f870d30e26ed92265cb2d74d40d3a17c7e97c4d885537aac6da32b91d47ee">fourdst::composition::io::SolarCompositions::AGSS09</a></div><div class="ttdeci">@ AGSS09</div><div class="ttdef"><b>Definition</b> <a href="standard__compositions_8h_source.html#l00035">standard_compositions.h:35</a></div></div>
+<div class="ttc" id="anamespacefourdst_1_1composition_1_1io_html_aaaa91e1b71ac0285d0bcdbd5abf4f381af205819a717ff6a23ec8e04854f3d9bb"><div class="ttname"><a href="namespacefourdst_1_1composition_1_1io.html#aaaa91e1b71ac0285d0bcdbd5abf4f381af205819a717ff6a23ec8e04854f3d9bb">fourdst::composition::io::IsotopicPercentages::L09</a></div><div class="ttdeci">@ L09</div><div class="ttdef"><b>Definition</b> <a href="standard__compositions_8h_source.html#l00044">standard_compositions.h:44</a></div></div>
+</div><!-- fragment --> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="standard__compositions_8cpp_source.html#l00390">390</a> of file <a class="el" href="standard__compositions_8cpp_source.html">standard_compositions.cpp</a>.</p>
 
 </div>
 </div>

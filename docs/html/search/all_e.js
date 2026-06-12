@@ -133,7 +133,10 @@ var searchData=
   ['ir_5f204_130',['Ir_204',['../namespacefourdst_1_1atomic.html#acf9185e7d53062fc2dccaa82786cd06c',1,'fourdst::atomic']]],
   ['ir_5f205_131',['Ir_205',['../namespacefourdst_1_1atomic.html#aceac8d6d45e2e85722426528ad89f48b',1,'fourdst::atomic']]],
   ['is_5fclear_132',['is_clear',['../structfourdst_1_1composition_1_1_composition_1_1_composition_cache.html#af291583560120bb53c4546a598666477',1,'fourdst::composition::Composition::CompositionCache']]],
-  ['iterating_20and_20sorted_20vector_20interfaces_133',['4. Iterating and Sorted Vector Interfaces',['../index.html#autotoc_md19',1,'']]],
-  ['iterator_134',['iterator',['../classfourdst_1_1composition_1_1_composition.html#a7eace279c95ac7cccb05434320203343',1,'fourdst::composition::Composition::iterator'],['../classfourdst_1_1composition_1_1_composition_abstract.html#abd12f3a9a5b6217498ff19e25ee3ddb0',1,'fourdst::composition::CompositionAbstract::iterator'],['../classfourdst_1_1composition_1_1_masked_composition.html#afe3129b1dbebfbe0578c3a555aa742bf',1,'fourdst::composition::MaskedComposition::iterator']]],
-  ['iterator_5fcategory_135',['iterator_category',['../classfourdst_1_1composition_1_1detail_1_1_composition_iterator.html#ae232e6536bd96aa9964a8052c9339c1a',1,'fourdst::composition::detail::CompositionIterator']]]
+  ['isotopicpercentage_133',['IsotopicPercentage',['../structfourdst_1_1composition_1_1io_1_1_isotopic_percentage.html',1,'fourdst::composition::io']]],
+  ['isotopicpercentages_134',['IsotopicPercentages',['../namespacefourdst_1_1composition_1_1io.html#aaaa91e1b71ac0285d0bcdbd5abf4f381',1,'fourdst::composition::io']]],
+  ['isotopicpercentages_5fto_5fstring_5fmap_135',['IsotopicPercentages_to_string_map',['../namespacefourdst_1_1composition_1_1io.html#adb5d67dd82e0b032426f67532603ba51',1,'fourdst::composition::io']]],
+  ['iterating_20and_20sorted_20vector_20interfaces_136',['4. Iterating and Sorted Vector Interfaces',['../index.html#autotoc_md19',1,'']]],
+  ['iterator_137',['iterator',['../classfourdst_1_1composition_1_1_composition.html#a7eace279c95ac7cccb05434320203343',1,'fourdst::composition::Composition::iterator'],['../classfourdst_1_1composition_1_1_composition_abstract.html#abd12f3a9a5b6217498ff19e25ee3ddb0',1,'fourdst::composition::CompositionAbstract::iterator'],['../classfourdst_1_1composition_1_1_masked_composition.html#afe3129b1dbebfbe0578c3a555aa742bf',1,'fourdst::composition::MaskedComposition::iterator']]],
+  ['iterator_5fcategory_138',['iterator_category',['../classfourdst_1_1composition_1_1detail_1_1_composition_iterator.html#ae232e6536bd96aa9964a8052c9339c1a',1,'fourdst::composition::detail::CompositionIterator']]]
 ];

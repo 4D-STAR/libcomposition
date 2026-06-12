@@ -15,6 +15,11 @@ var annotated_dup =
           [ "UnknownSymbolError", "classfourdst_1_1composition_1_1exceptions_1_1_unknown_symbol_error.html", "classfourdst_1_1composition_1_1exceptions_1_1_unknown_symbol_error" ],
           [ "UnregisteredSymbolError", "classfourdst_1_1composition_1_1exceptions_1_1_unregistered_symbol_error.html", "classfourdst_1_1composition_1_1exceptions_1_1_unregistered_symbol_error" ]
         ] ],
+        [ "io", "namespacefourdst_1_1composition_1_1io.html", [
+          [ "ChemicalFileParser", "classfourdst_1_1composition_1_1io_1_1_chemical_file_parser.html", "classfourdst_1_1composition_1_1io_1_1_chemical_file_parser" ],
+          [ "CompositionData", "structfourdst_1_1composition_1_1io_1_1_composition_data.html", "structfourdst_1_1composition_1_1io_1_1_composition_data" ],
+          [ "IsotopicPercentage", "structfourdst_1_1composition_1_1io_1_1_isotopic_percentage.html", "structfourdst_1_1composition_1_1io_1_1_isotopic_percentage" ]
+        ] ],
         [ "utils", "namespacefourdst_1_1composition_1_1utils.html", [
           [ "CompositionHash", "structfourdst_1_1composition_1_1utils_1_1_composition_hash.html", "structfourdst_1_1composition_1_1utils_1_1_composition_hash" ]
         ] ],

@@ -12,6 +12,8 @@ namespace \mbox{\hyperlink{namespacefourdst_1_1composition_1_1detail}{detail}}
 \item 
 namespace \mbox{\hyperlink{namespacefourdst_1_1composition_1_1exceptions}{exceptions}}
 \item 
+namespace \mbox{\hyperlink{namespacefourdst_1_1composition_1_1io}{io}}
+\item 
 namespace \mbox{\hyperlink{namespacefourdst_1_1composition_1_1utils}{utils}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Classes}
@@ -32,6 +34,10 @@ class \mbox{\hyperlink{classfourdst_1_1composition_1_1_masked_composition}{Maske
 \item 
 bool \mbox{\hyperlink{namespacefourdst_1_1composition_a06f5abc74104de40349e47ad367c402a}{operator==}} (const \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} \&a, const \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} \&b) noexcept
 \item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} \mbox{\hyperlink{namespacefourdst_1_1composition_a708d71303db2fa22c8871f3bfc3d11d4}{get\+\_\+composition\+\_\+record}} (const std\+::string \&metal\+\_\+fraction\+\_\+scheme, const std\+::string \&isotopic\+\_\+percentage\+\_\+scheme, double initial\+\_\+z, double initial\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Constructs a stellar {\ttfamily \doxylink{classfourdst_1_1composition_1_1_composition}{Composition}} from a named solar metal-\/fraction scheme and isotopic-\/percentage table, scaled to the supplied bulk hydrogen and helium mass fractions. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} \mbox{\hyperlink{namespacefourdst_1_1composition_aad96edce7a144f1d73e62f622f3063de}{get\+\_\+composition\+\_\+record}} (\mbox{\hyperlink{namespacefourdst_1_1composition_1_1io_a2cd2f870d30e26ed92265cb2d74d40d3}{io\+::\+Solar\+Compositions}} metal\+\_\+fraction\+\_\+scheme, \mbox{\hyperlink{namespacefourdst_1_1composition_1_1io_aaaa91e1b71ac0285d0bcdbd5abf4f381}{io\+::\+Isotopic\+Percentages}} isotopic\+\_\+percentage\+\_\+scheme, double initial\+\_\+z, double initial\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Enum-\/based overload of {\ttfamily \doxylink{namespacefourdst_1_1composition_a708d71303db2fa22c8871f3bfc3d11d4}{get\+\_\+composition\+\_\+record()}}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} \mbox{\hyperlink{namespacefourdst_1_1composition_aa90b1ef07d607c0c829bedccf381cf54}{build\+Composition\+From\+Mass\+Fractions}} (const std\+::vector$<$ std\+::string $>$ \&symbols, const std\+::vector$<$ double $>$ \&mass\+Fractions)
 \begin{DoxyCompactList}\small\item\em Build a \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} object from symbols and their corresponding mass fractions. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} \mbox{\hyperlink{namespacefourdst_1_1composition_a39d4f84dfa85ddda3b9feb5dda1afc1e}{build\+Composition\+From\+Mass\+Fractions}} (const std\+::vector$<$ \mbox{\hyperlink{structfourdst_1_1atomic_1_1_species}{atomic\+::\+Species}} $>$ \&species, const std\+::vector$<$ double $>$ \&mass\+Fractions)
@@ -110,7 +116,7 @@ Example 1 – basic construction and queries\+:
 
 Example 2 – constructing from mass fractions\+: 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{utils_8h}{fourdst/composition/utils.h}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}fourdst/composition/utils.h"{}}}
 \DoxyCodeLine{}
 \DoxyCodeLine{std::vector<std::string>\ symbols\ =\ \{\textcolor{stringliteral}{"{}H-\/1"{}},\ \textcolor{stringliteral}{"{}He-\/4"{}},\ \textcolor{stringliteral}{"{}C-\/12"{}}\};}
 \DoxyCodeLine{std::vector<double>\ massFractions\ =\ \{0.70,\ 0.28,\ 0.02\};}
@@ -129,7 +135,7 @@ Example 2 – constructing from mass fractions\+:
 \item \doxylink{species_8h}{fourdst/atomic/species.\+h} — canonical atomic species definitions and symbols.
 \item \doxylink{composition_8h}{fourdst/composition/composition.\+h} — concrete \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} implementation.
 \item \doxylink{composition__abstract_8h}{fourdst/composition/composition\+\_\+abstract.\+h} — abstract composition interface.
-\item \doxylink{utils_8h}{fourdst/composition/utils.\+h} — helpers for constructing compositions from mass fractions. 
+\item fourdst/composition/utils.\+h — helpers for constructing compositions from mass fractions. 
 \end{DoxyItemize}
 
 \doxysubsection{Function Documentation}
@@ -338,6 +344,146 @@ A \doxylink{classfourdst_1_1composition_1_1_composition}{Composition} object con
 
 
 Definition at line \mbox{\hyperlink{utils_8cpp_source_l00134}{134}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+\Hypertarget{namespacefourdst_1_1composition_a708d71303db2fa22c8871f3bfc3d11d4}\index{fourdst::composition@{fourdst::composition}!get\_composition\_record@{get\_composition\_record}}
+\index{get\_composition\_record@{get\_composition\_record}!fourdst::composition@{fourdst::composition}}
+\doxysubsubsection{\texorpdfstring{get\_composition\_record()}{get\_composition\_record()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{namespacefourdst_1_1composition_a708d71303db2fa22c8871f3bfc3d11d4} 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} fourdst\+::composition\+::get\+\_\+composition\+\_\+record (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{metal\+\_\+fraction\+\_\+scheme}{, }\item[{const std\+::string \&}]{isotopic\+\_\+percentage\+\_\+scheme}{, }\item[{double}]{initial\+\_\+z}{, }\item[{double}]{initial\+\_\+y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Constructs a stellar {\ttfamily \doxylink{classfourdst_1_1composition_1_1_composition}{Composition}} from a named solar metal-\/fraction scheme and isotopic-\/percentage table, scaled to the supplied bulk hydrogen and helium mass fractions. 
+
+Available metal fraction schemes (extracted from MESA {\ttfamily chem\+\_\+def.\+f90})\+:
+\begin{DoxyItemize}
+\item {\ttfamily AG89} (Anders \& Grevesse 1989)
+\item {\ttfamily GN93} (Grevesse \& Noels 1993)
+\item {\ttfamily GS98} (Grevesse \& Sauval 1998)
+\item {\ttfamily L03} (Lodders 2003)
+\item {\ttfamily AGS05} (Asplund, Grevesse \& Sauval 2005)
+\item {\ttfamily AGSS09} (Asplund et al. 2009)
+\item {\ttfamily A09\+\_\+\+Przybilla}
+\item {\ttfamily MB22\+\_\+photospheric}
+\item {\ttfamily AAG21\+\_\+photospheric}
+\item {\ttfamily L09} (Lodders 2009)
+\end{DoxyItemize}
+
+Available isotopic percentage schemes\+:
+\begin{DoxyItemize}
+\item {\ttfamily L03\+\_\+data} (Lodders 2003)
+\item {\ttfamily L09\+\_\+data} (Lodders 2009)
+\end{DoxyItemize}
+
+{\bfseries{Algorithm\+:}}
+\begin{DoxyEnumerate}
+\item {\bfseries{Data loading}} — The embedded binary {\ttfamily Standard\+Metal\+Fractions} is copied into a {\ttfamily std\+::vector\texorpdfstring{$<$}{<}char\texorpdfstring{$>$}{>}} and parsed twice\+: once for {\ttfamily metal\+\_\+fraction\+\_\+scheme} and once for {\ttfamily isotopic\+\_\+percentage\+\_\+scheme}.
+\item {\bfseries{Species list}} — The isotope table is iterated; any isotope whose element appears in the metals list or is {\ttfamily "{}\+H"{}} / {\ttfamily "{}\+He"{}} is looked up in the global {\ttfamily \doxylink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{atomic\+::species}} registry by {\ttfamily "{}$<$\+Element$>$-\/$<$\+A$>$"{}} and added to the list.
+\item {\bfseries{H and He mass fractions}} — Four entries are prepended (H-\/1, H-\/2, He-\/3, He-\/4) using Anders \& Grevesse (1989) solar He3/\+He4 ratio\+:
+\begin{DoxyItemize}
+\item X(H-\/1) = clamp(1 -\/ Z -\/ Y, 0, 1)
+\item X(H-\/2) = 0
+\item X(He-\/3) = Y \texorpdfstring{$\ast$}{*} xsol\+\_\+\+He3 / (xsol\+\_\+\+He3 + xsol\+\_\+\+He4)
+\item X(He-\/4) = Y \texorpdfstring{$\ast$}{*} xsol\+\_\+\+He4 / (xsol\+\_\+\+He3 + xsol\+\_\+\+He4) where xsol\+\_\+\+He3 = 2.\+9291e-\/5 and xsol\+\_\+\+He4 = 2.\+7521e-\/1.
+\end{DoxyItemize}
+\item {\bfseries{Atomic-\/weight weighting}} — When {\ttfamily Composition\+Data\+::requires\+\_\+atomic\+\_\+weight} is {\ttfamily true}, each metal\textquotesingle{}s number-\/fraction abundance is multiplied by the atomic mass of its most-\/abundant isotope (determined from the isotopic table).
+\item {\bfseries{Normalisation}} — Metal fractions are summed and normalised to unity.
+\item {\bfseries{Isotope distribution}} — Per-\/isotope mass fractions are computed as\+: X\+\_\+i = Z\+\_\+total \texorpdfstring{$\ast$}{*} f\+\_\+E \texorpdfstring{$\ast$}{*} (p\+\_\+i \texorpdfstring{$\ast$}{*} m\+\_\+i) / sum\+\_\+j(p\+\_\+j \texorpdfstring{$\ast$}{*} m\+\_\+j) where f\+\_\+E is the normalised metal fraction, p\+\_\+i the isotopic percentage (0-\/100 scale), and m\+\_\+i the isotope\textquotesingle{}s atomic mass.
+\item {\bfseries{Renormalisation}} — Metal mass fractions are rescaled so their sum equals Z\+\_\+total exactly.
+\item {\bfseries{Assembly}} — {\ttfamily build\+Composition\+From\+Mass\+Fractions(species, mass\+Fracs)} builds the final {\ttfamily \doxylink{classfourdst_1_1composition_1_1_composition}{Composition}} object.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em metal\+\_\+fraction\+\_\+scheme} & Block tag of the desired solar metal composition (e.\+g., {\ttfamily "{}\+GS98"{}}, {\ttfamily "{}\+AGSS09"{}}). Case-\/sensitive; must match a {\ttfamily BEGIN}/{\ttfamily END} tag in the embedded data exactly. \\
+\hline
+\mbox{\texttt{ in}}  & {\em isotopic\+\_\+percentage\+\_\+scheme} & Block tag of the isotopic percentage table (e.\+g., {\ttfamily "{}\+L03\+\_\+data"{}}, {\ttfamily "{}\+L09\+\_\+data"{}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em initial\+\_\+z} & Total metal mass fraction Z (0 \texorpdfstring{$<$}{<}= Z \texorpdfstring{$<$}{<} 1). \\
+\hline
+\mbox{\texttt{ in}}  & {\em initial\+\_\+y} & Total helium mass fraction Y (0 \texorpdfstring{$<$}{<}= Y \texorpdfstring{$<$}{<} 1, with X + Y + Z \texorpdfstring{$<$}{<}= 1 recommended). X(H-\/1) is clamped to \mbox{[}0, 1\mbox{]} if the constraint is violated.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily \doxylink{classfourdst_1_1composition_1_1_composition}{Composition}} Fully populated composition object with per-\/isotope mass fractions normalised to {\ttfamily initial\+\_\+z} and {\ttfamily initial\+\_\+y}.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & If a species name derived from the isotopic table is absent from {\ttfamily \doxylink{namespacefourdst_1_1atomic_a3f619cc8f8b2cd718a4082c6adb0de90}{atomic\+::species}}, or if either scheme tag is not present in the embedded data. \\
+\hline
+{\em std\+::invalid\+\_\+argument} & If numeric fields in the embedded data are malformed (propagated from {\ttfamily std\+::stod} / {\ttfamily std\+::stoi}).\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyParagraph}{Examples}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Grevesse\ \&\ Sauval\ (1998)\ at\ Z\ =\ 0.02,\ Y\ =\ 0.28}}
+\DoxyCodeLine{\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{fourdst::composition::Composition}}\ comp\ =}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{namespacefourdst_1_1composition_a708d71303db2fa22c8871f3bfc3d11d4}{fourdst::composition::get\_composition\_record}}(\textcolor{stringliteral}{"{}GS98"{}},\ \textcolor{stringliteral}{"{}L03\_data"{}},\ 0.02,\ 0.28);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{double}\ x\_h1\ =\ comp.massFraction(\textcolor{stringliteral}{"{}H-\/1"{}});}
+\DoxyCodeLine{std::println(\textcolor{stringliteral}{"{}X(H-\/1)\ =\ \{:.6f\}"{}},\ x\_h1);\ \ \textcolor{comment}{//\ approx\ 0.70}}
+
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+
+
+Definition at line \mbox{\hyperlink{standard__compositions_8cpp_source_l00252}{252}} of file \mbox{\hyperlink{standard__compositions_8cpp_source}{standard\+\_\+compositions.\+cpp}}.
+
+\Hypertarget{namespacefourdst_1_1composition_aad96edce7a144f1d73e62f622f3063de}\index{fourdst::composition@{fourdst::composition}!get\_composition\_record@{get\_composition\_record}}
+\index{get\_composition\_record@{get\_composition\_record}!fourdst::composition@{fourdst::composition}}
+\doxysubsubsection{\texorpdfstring{get\_composition\_record()}{get\_composition\_record()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{namespacefourdst_1_1composition_aad96edce7a144f1d73e62f622f3063de} 
+\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}} fourdst\+::composition\+::get\+\_\+composition\+\_\+record (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacefourdst_1_1composition_1_1io_a2cd2f870d30e26ed92265cb2d74d40d3}{io\+::\+Solar\+Compositions}}}]{metal\+\_\+fraction\+\_\+scheme}{, }\item[{\mbox{\hyperlink{namespacefourdst_1_1composition_1_1io_aaaa91e1b71ac0285d0bcdbd5abf4f381}{io\+::\+Isotopic\+Percentages}}}]{isotopic\+\_\+percentage\+\_\+scheme}{, }\item[{double}]{initial\+\_\+z}{, }\item[{double}]{initial\+\_\+y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Enum-\/based overload of {\ttfamily \doxylink{namespacefourdst_1_1composition_a708d71303db2fa22c8871f3bfc3d11d4}{get\+\_\+composition\+\_\+record()}}. 
+
+Translates strongly-\/typed enum values to their canonical string representations via {\ttfamily Solar\+Compositions\+\_\+to\+\_\+string\+\_\+map} and {\ttfamily Isotopic\+Percentages\+\_\+to\+\_\+string\+\_\+map}, then delegates to the string-\/based overload. This overload is preferred as it prevents scheme name typos.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em metal\+\_\+fraction\+\_\+scheme} & Enum identifying the desired solar metal composition (e.\+g., {\ttfamily Solar\+Compositions\+::\+GS98}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em isotopic\+\_\+percentage\+\_\+scheme} & Enum identifying the isotopic percentage table (e.\+g., {\ttfamily Isotopic\+Percentages\+::\+L03}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em initial\+\_\+z} & Total metal mass fraction Z (0 \texorpdfstring{$<$}{<}= Z \texorpdfstring{$<$}{<} 1). \\
+\hline
+\mbox{\texttt{ in}}  & {\em initial\+\_\+y} & Total helium mass fraction Y (0 \texorpdfstring{$<$}{<}= Y \texorpdfstring{$<$}{<} 1).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily \doxylink{classfourdst_1_1composition_1_1_composition}{Composition}} Fully populated composition; see the string-\/based overload for the complete algorithm description.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & If the enum value is absent from its lookup map (should not occur with valid named enum members).\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyParagraph}{Examples}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacefourdst_1_1composition}{fourdst::composition}};}
+\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacefourdst_1_1composition_1_1io}{fourdst::composition::io}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Asplund\ et\ al.\ (2009)\ at\ proto-\/solar\ Z\ and\ Y}}
+\DoxyCodeLine{\mbox{\hyperlink{classfourdst_1_1composition_1_1_composition}{Composition}}\ comp\ =\ \mbox{\hyperlink{namespacefourdst_1_1composition_a708d71303db2fa22c8871f3bfc3d11d4}{get\_composition\_record}}(}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{namespacefourdst_1_1composition_1_1io_a2cd2f870d30e26ed92265cb2d74d40d3a17c7e97c4d885537aac6da32b91d47ee}{SolarCompositions::AGSS09}},}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{namespacefourdst_1_1composition_1_1io_aaaa91e1b71ac0285d0bcdbd5abf4f381af205819a717ff6a23ec8e04854f3d9bb}{IsotopicPercentages::L09}},}
+\DoxyCodeLine{\ \ \ \ 0.0134,\ 0.2485}
+\DoxyCodeLine{);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{double}\ x\_he4\ =\ comp.massFraction(\textcolor{stringliteral}{"{}He-\/4"{}});}
+\DoxyCodeLine{std::println(\textcolor{stringliteral}{"{}X(He-\/4)\ =\ \{:.6f\}"{}},\ x\_he4);}
+
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+
+
+Definition at line \mbox{\hyperlink{standard__compositions_8cpp_source_l00390}{390}} of file \mbox{\hyperlink{standard__compositions_8cpp_source}{standard\+\_\+compositions.\+cpp}}.
 
 \Hypertarget{namespacefourdst_1_1composition_adcc2e4ca25ab7b93983730fc78f4deea}\index{fourdst::composition@{fourdst::composition}!getSpecies@{getSpecies}}
 \index{getSpecies@{getSpecies}!fourdst::composition@{fourdst::composition}}

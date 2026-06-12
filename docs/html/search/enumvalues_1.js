@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['no_5fregistered_5fspecies_0',['NO_REGISTERED_SPECIES',['../classfourdst_1_1composition_1_1_composition.html#aeef903d5b7d02467c6462d183ac47db8ac7cc0e85688b85571f30fd16a46d9891',1,'fourdst::composition::Composition']]]
+  ['element_5fsymbol_5fnot_5ffound_0',['ELEMENT_SYMBOL_NOT_FOUND',['../namespacefourdst_1_1atomic.html#a6c728f75913c5bfb62f6dcf9dff294fea3118448fccedc8cc00213d97349eec7a',1,'fourdst::atomic']]]
 ];

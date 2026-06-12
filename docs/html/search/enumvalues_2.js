@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['species_5fnot_5ffound_0',['SPECIES_NOT_FOUND',['../classfourdst_1_1composition_1_1_composition.html#aeef903d5b7d02467c6462d183ac47db8a3659baf2b06bba6c02bad8316d517761',1,'fourdst::composition::Composition']]],
-  ['species_5fsymbol_5fnot_5ffound_1',['SPECIES_SYMBOL_NOT_FOUND',['../namespacefourdst_1_1atomic.html#a6c728f75913c5bfb62f6dcf9dff294feabad4f0ccf5dd67ba5efc3be855889ef3',1,'fourdst::atomic']]]
+  ['gn93_0',['GN93',['../namespacefourdst_1_1composition_1_1io.html#a2cd2f870d30e26ed92265cb2d74d40d3a0e11f5e14f98eca8cbe464d71c7dfa4d',1,'fourdst::composition::io']]],
+  ['gs98_1',['GS98',['../namespacefourdst_1_1composition_1_1io.html#a2cd2f870d30e26ed92265cb2d74d40d3a575f1b60ad856a878ddd2514adca6e8f',1,'fourdst::composition::io']]]
 ];

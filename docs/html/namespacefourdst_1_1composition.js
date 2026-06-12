@@ -2,6 +2,7 @@ var namespacefourdst_1_1composition =
 [
     [ "detail", "namespacefourdst_1_1composition_1_1detail.html", "namespacefourdst_1_1composition_1_1detail" ],
     [ "exceptions", "namespacefourdst_1_1composition_1_1exceptions.html", "namespacefourdst_1_1composition_1_1exceptions" ],
+    [ "io", "namespacefourdst_1_1composition_1_1io.html", "namespacefourdst_1_1composition_1_1io" ],
     [ "utils", "namespacefourdst_1_1composition_1_1utils.html", "namespacefourdst_1_1composition_1_1utils" ],
     [ "CanonicalComposition", "structfourdst_1_1composition_1_1_canonical_composition.html", "structfourdst_1_1composition_1_1_canonical_composition" ],
     [ "Composition", "classfourdst_1_1composition_1_1_composition.html", "classfourdst_1_1composition_1_1_composition" ],
@@ -15,6 +16,8 @@ var namespacefourdst_1_1composition =
     [ "buildCompositionFromMassFractions", "namespacefourdst_1_1composition.html#aa90b1ef07d607c0c829bedccf381cf54", null ],
     [ "buildCompositionFromMassFractions", "namespacefourdst_1_1composition.html#a8163289e584a05b4075c775279761e55", null ],
     [ "buildCompositionFromMassFractions", "namespacefourdst_1_1composition.html#abd0e185f7fd52130f36414faf2dc07d7", null ],
+    [ "get_composition_record", "namespacefourdst_1_1composition.html#a708d71303db2fa22c8871f3bfc3d11d4", null ],
+    [ "get_composition_record", "namespacefourdst_1_1composition.html#aad96edce7a144f1d73e62f622f3063de", null ],
     [ "getSpecies", "namespacefourdst_1_1composition.html#adcc2e4ca25ab7b93983730fc78f4deea", null ],
     [ "operator<<", "namespacefourdst_1_1composition.html#a5e8ccc2bd9e91eebcd3ef5fe470163a1", null ],
     [ "operator==", "namespacefourdst_1_1composition.html#a06f5abc74104de40349e47ad367c402a", null ]
